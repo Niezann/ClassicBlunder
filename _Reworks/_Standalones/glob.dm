@@ -90,6 +90,7 @@ progressTracker
 //TODO add a proc that increases total rpp/pot daily, ensuring nothing goes over the rpp limit
 
 		Era = 1
+		SpawnLoc=1 //1 for midgar, 2 for space colony
 
 //economy
 		EconomyIncome = 1000

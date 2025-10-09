@@ -14,6 +14,7 @@ race
 		recovery = 1.25
 		regeneration = 1
 		imagination = 3
+		var/devil_arm_upgrades = 1
 
 		passives = list("HolyMod" = 0.5, "StaticWalk" = 1, "SpaceWalk" = 1, "SpiritPower" = 1, "MartialMagic" = 1)
 		skills = list()

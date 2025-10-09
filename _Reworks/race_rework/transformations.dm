@@ -6,7 +6,7 @@
 
 globalTracker
 	var/lockTransAutomation = TRUE
-	var/list/transLocked = list(/transformation/saiyan/super_saiyan, /transformation/saiyan/super_saiyan_2,/transformation/saiyan/super_saiyan_3)
+	var/list/transLocked = list()///transformation/saiyan/super_saiyan,/transformation/saiyan/hellspawn_super_saiyan,/transformation/saiyan/super_saiyan_2,/transformation/saiyan/super_saiyan_3)
 
 mob/var/transActive = 0
 mob/var/bypassTransAutomation = 0
@@ -167,7 +167,7 @@ transformation
 			if(is_active) return
 			if(!forceTrans)
 				if(!user.CanTransform()) return
-					
+
 				if(user.transUnlocked < user.transActive+1)
 					if(!(user.bypassTransAutomation >= user.transActive+1) && glob.lockTransAutomation && (type in glob.transLocked)) return
 					if(unlock_potential >= user.Potential) return
@@ -300,7 +300,7 @@ transformation
 					user.Revert()
 					user.LoseEnergy(30)
 					user << "The strain of [src] is too much for you to handle!"
-		
+
 		gainMastery(mob/user)
 			if(mastery >= 100) return
 			mastery += randValue(glob.racials.SSJ_MIN_MASTERY_GAIN,glob.racials.SSJ_MAX_MASTERY_GAIN)

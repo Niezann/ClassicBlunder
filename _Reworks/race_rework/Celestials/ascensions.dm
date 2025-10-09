@@ -69,8 +69,7 @@ ascension
 						owner.AddSkill(s)
 		five
 			unlock_potential = ASCENSION_FIVE_POTENTIAL
-			passives = list("SpiritPower" = 0.2)
-			intimidation = 250
+			passives = list("SpiritPower" = 1)
 
 			postAscension(mob/owner)
 				..()

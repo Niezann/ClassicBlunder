@@ -22,9 +22,16 @@ obj/Special
 mob
 	proc
 		ChooseSpawn()
+			if(glob.progress.SpawnLoc==1)
+				src.loc = locate(307, 151, 1)
+			if(glob.progress.SpawnLoc==2)
+				src.loc = locate(250,250,3)
+
+/*
+
 			var/list/obj/Special/Spawn/Choices=list()
 			var/SpawnFound=0
-			for(var/obj/Special/Spawn/S in glob.Spawns)
+for(var/obj/Special/Spawn/S in glob.Spawns)
 				if(src.race.name in S.DefaultRaces)
 					SpawnFound=1
 					Choices.Add(S)
@@ -77,7 +84,7 @@ mob
 			src.Spawn=Choice.name
 			src << "Your native location is [src.Spawn]."
 			MoveToSpawn(src)
-			src.loc = locate(Choice.gotoX, Choice.gotoY, Choice.gotoZ)
+			src.loc = locate(Choice.gotoX, Choice.gotoY, Choice.gotoZ)*/
 
 
 proc
@@ -232,7 +239,7 @@ mob
 				set category="Admin"
 				var/obj/Special/Spawn/NewS=new()
 				NewS.name="The World"
-				NewS.desc="Our miraculous homeland. A small, livable pocket in an otherwise vast, empty(?) universe, and the only piece of the Old World that remains."
+				NewS.desc="Our miraculous homeland. A small, livable pocket in an otherwise vast  universe, and the only piece of the Old World that remains."
 
 
 				NewS.gotoX=307

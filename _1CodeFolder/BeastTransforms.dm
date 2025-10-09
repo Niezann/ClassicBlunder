@@ -76,6 +76,11 @@
 				EndMult = 1.2
 				SpdMult = 0.4
 				OffMult = 1.4
+			if("Demonic")
+				StrMult = 1.25
+				ForMult = 1.25
+				SpdMult = 0.75
+				OffMult = 1.4
 		if(p.Potential > OOZARU_POTENTIAL_TRANS)
 			passives["Transformation Power"] = p.AscensionsAcquired
 		if(length(p.race.transformations) >= 4 && p.race.transformations[4].type == /transformation/saiyan/super_saiyan_4 && p.transUnlocked >= 4)
