@@ -47,7 +47,6 @@ ascension
 			unlock_potential = ASCENSION_THREE_POTENTIAL
 			passives = list("HellPower" = 0.25, "AbyssMod" = 1, "HolyMod" = 2, "SpiritPower" = 0.25, "TechniqueMastery" = 1)
 			anger = 0.2
-			power = 3
 			intimidation = 100
 			strength = 0.25
 			force = 0.25
@@ -55,6 +54,8 @@ ascension
 			recovery = 0.25
 			postAscension(mob/owner)
 				..()
+				if(istype(owner.race, /race/makaioshin))
+					owner.race.power = 3 //Has to be in this proc because it's referencing the race tree. Iff this is not intended let me know and I will revert it ASAP.
 				owner.Class = "Shadowlord"
 				if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Ultra_Instinct, owner))
 					var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Ultra_Instinct
