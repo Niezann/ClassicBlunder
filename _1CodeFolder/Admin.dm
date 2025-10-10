@@ -1,5 +1,5 @@
 var/list
-	CodedAdmins=list("Sunshine Jesse"=4, "Nightmare Zarkus"=4, "NeoGalaxyEyesPhotonDragon"=4)
+	CodedAdmins=list("Sunshine Jesse"=4, "Nightmare Zarkus"=4, "NeoGalaxyEyesPhotonDragon"=4, "Lanni.k"=4)
 	Admins=new
 	Mappers=new
 	Punishments=new
