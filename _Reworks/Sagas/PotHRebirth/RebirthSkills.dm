@@ -141,8 +141,8 @@ obj/Skills/Queue
 			if(world.realtime < src.RebirthLastUse+(600*60*24))
 				usr << "You can only use this technique once every 24 hours."
 				return
-			RandomMult=rand(0.1,7)
-			DamageMult=RandomMult
+			RandomMult=rand(1,70)
+			DamageMult=RandomMult/10
 			usr.SetQueue(src)
 			usr.TriggerAwakeningSkill(ActNumber)
 obj/Skills/Utility

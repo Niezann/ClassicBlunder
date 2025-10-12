@@ -34,3 +34,18 @@ debug_log.txt
 DragonballRebirth.zip
 .vscode/settings.json
 oldNuDBRSource.rar
+*.db
+Icons/Characters/Androids/Thumbs.db
+Icons/Characters/Changlings/Thumbs.db
+Icons/Characters/Demons/Thumbs.db
+Icons/Characters/Makyo/Thumbs.db
+Icons/Characters/Namek/Thumbs.db
+Icons/Characters/Thumbs.db
+Icons/IntIcons/Thumbs.db
+Icons/NSE/spells/cast/Thumbs.db
+Icons/NSE/spells/debuff/Thumbs.db
+Icons/NSE/spells/tilebuff/Thumbs.db
+Icons/Objects/Thumbs.db
+Icons/Old Icons/Thumbs.db
+Icons/Turfs/Thumbs.db
+Icons/Weather/Thumbs.db
