@@ -466,6 +466,7 @@ mob/var
 	Confused//The amount of time you have reversed movement for.
 	AngerMult//allows anger multipliers to stack. oh my god
 	AngerThreshold//if you're not angry enough, this will make you angry enough
+	AngerAdd //just adds anger
 	AngerCD=0
 	CyberCancel//Basically the same, but for cyber stuffs.
 	CyberPowerAngerNerf

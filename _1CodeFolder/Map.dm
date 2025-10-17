@@ -4349,6 +4349,10 @@ obj/Turfs/Surf
 		icon_state="9"
 	Water9Surf2
 		icon_state="9N"
+	Water9Surf3
+		icon_state="9W"
+	Water9Surf4
+		icon_state="9E"
 	Water99
 		icon_state="99"
 

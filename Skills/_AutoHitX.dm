@@ -5065,6 +5065,9 @@ mob
 			else
 				if(Z.WindupMessage)
 					OMsg(src, "<b><font color='[Z.WindupColor]'>[src] [Z.WindupMessage]</font color></b>")
+					if(Z.PlatinumMad)
+						for(var/mob/E in hearers(12,src))
+							E << output("<font color=[src.Text_Color]>[src.name]: <b>GOD FUCKING DAMN IIIIIIIIIIIIIIIIT!</b></font>", "output")
 			if(src.TomeSpell(Z))
 				Z.Cooldown()
 			else
@@ -5209,6 +5212,8 @@ mob
 			else
 				if(Z.ActiveMessage)
 					OMsg(src, "<b><font color='[Z.ActiveColor]'>[src] [Z.ActiveMessage]</font color></b>")
+					if(Z.PlatinumMad)
+						world<<"<font color=[src.Text_Color]>[src.name]</font>: <font color=red><b>FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK!</b></font>"
 			if(passive_handler["AirBend"] && can_use_style_effect("AirBend"))
 				flick("KB", Target)
 				step_away(Target, src)
@@ -5458,6 +5463,8 @@ mob
 				src.HitSparkLife=null
 			if(Z.HealthCost)
 				src.DoDamage(src, Z.HealthCost*CostMultiplier*glob.WorldDamageMult)
+			if(Z.PlatinumMad)
+				src.DoDamage(src, 9001)
 			if(Z.WoundCost)
 				src.WoundSelf(Z.WoundCost*CostMultiplier*glob.WorldDamageMult)
 			if(Z.EnergyCost)

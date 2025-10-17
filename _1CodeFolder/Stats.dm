@@ -64,7 +64,7 @@ mob/proc/GetAssess()
 	</style>
 	<body>
 	[src.name]<br><br>
-	Current Anger:	[EffectiveAnger*100]%<br>
+	Current Anger:	[(EffectiveAnger+src.AngerAdd)*100]%<br>
 	<table cellspacing="6%" cellpadding="1%">
 	<tr><ts>Current Power:</td><td>[Power] / Power Mult: [round(src.potential_power_mult, 0.05)]</td></tr>
 	<tr><td>Base:</td><td>[BaseDisplay]/([src.PowerBoost*src.RPPower*round(src.potential_power_mult, 0.05)])</td></tr>
@@ -82,7 +82,7 @@ mob/proc/GetAssess()
 	<tr><td>Offense:</td><td> [round(src.GetOff(), 0.01)] ([src.BaseOff()])</td></tr>
 	<tr><td>Defense:</td><td> [round(src.GetDef(), 0.01)] ([src.BaseDef()])</td></tr>
 	<tr><td>Recovery:</td><td> [round(src.GetRecov(), 0.01)] ([src.BaseRecov()])</td></tr>
-	<tr><td>Anger:</td><td>[src.AngerMax*100]%</td></tr>
+	<tr><td>Anger:</td><td>[(src.AngerMax+src.AngerAdd)*100]%</td></tr>
 	<tr><td>Power Mult:</td><td>[round(src.potential_power_mult, 0.05) + src.PowerBoost]%</td></tr>
 	<tr><td>Potential:</td><td>[Potential]/100</td></tr>
 	<tr><td>Transformation Potential:</td><td>[src.potential_trans]/100</td></tr>
@@ -447,6 +447,9 @@ mob/proc/GetPowerUpRatio()
 
 	if(Ratio<=0)
 		Ratio=0.01
+	if(src.passive_handler.Get("Red Hot Rage"))
+		src.WeirdAngerStuff()
+		Ratio=1
 
 	return Ratio
 
@@ -785,6 +788,8 @@ mob/proc/
 							a=1
 			/*					if(src.PhylacteryNerf)
 						a-=(a*src.PhylacteryNerf)*/
+					if(src.AngerAdd)
+						a+=src.AngerAdd
 					if(a<=0)
 						a=0.01
 					Ratio*=a
@@ -913,6 +918,8 @@ mob/proc/
 			src.PowerControl+=PUGain
 
 			var/PUThreshold=150
+			if(src.passive_handler.Get("Red Hot Rage"))
+				PUThreshold=300
 /*
 			if(src.Race=="Changeling"&&src.transActive()==4)
 				PUThreshold+=50
@@ -1014,7 +1021,7 @@ mob/proc/Update_Stat_Labels()
 			src<<output("[passive_handler["RenameMana"]]: [round(ManaAmount/ManaMax*100)]","BarMana")
 		else
 			src<<output("Mana: [round((ManaAmount/100)*100)][ManaMessage]","BarMana")
-		if(!src.Kaioken)
+		if(!src.Kaioken&&!src.passive_handler.Get("Red Hot Rage"))
 			if(src.PoweringUp)
 				src<<output("Power: [round((Energy/EnergyMax)*100)*round(src.GetPowerUpRatioVisble(), 0.01)]% (+)","BarPower")
 			else if(src.PowerControl<100)
@@ -1028,6 +1035,8 @@ mob/proc/Update_Stat_Labels()
 				src<<output("Power: [round((100/EnergyMax)*100)*round(src.GetPowerUpRatioVisble(), 0.01)*src.KaiokenBP]% (-)","BarPower")
 			else
 				src<<output("Power: [round((100/EnergyMax)*100)*round(src.GetPowerUpRatioVisble(), 0.01)*src.KaiokenBP]%","BarPower")
+		if(src.passive_handler.Get("Red Hot Rage"))
+			src<<output("Fury: [(src.AngerMax+src.AngerAdd)*100]% (+)","BarPower")
 		if(src.Poison>0)
 			winshow(src, "BarPoison",1)
 			src<<output("POI: [round(Poison, 1)]","BarPoison")
@@ -1307,6 +1316,8 @@ mob/proc/Get_Scouter_Reading(mob/B)
 						a=1
 				if(a<=0)
 					a=0.01
+				if(B.AngerAdd)
+					a+=B.AngerAdd
 				Ratio*=a
 
 		if(B.HasIntimidation()&&B.PowerControl>25)

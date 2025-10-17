@@ -85,6 +85,7 @@ mob/proc/Auraz(var/Z)
 	superhairglow3.color=list(1,0,0, 0,0.82,0, 0,0,0, -0.26,-0.26,-0.26)
 	var/image/tensiona=image('AurasBig.dmi',icon_state="HT1",pixel_x=-32)
 	var/image/tensionas=image('AurasBig.dmi',icon_state="HT2",pixel_x=-32)
+	var/image/rainbowaura=image('RainbowAura.dmi', pixel_x=-32)
 	tensiona.color=list(0.5,0.3,0.7, 0.78,0.59,0.99, 0.3,0.11,0.51, 0,0,0)
 	var/image/flameaura=image('FlameAura.dmi',pixel_x=-16,pixel_y=-8)
 	flameaura.blend_mode=BLEND_ADD
@@ -101,6 +102,8 @@ mob/proc/Auraz(var/Z)
 			else
 				src.overlays+=image(icon=src.AuraLock, pixel_x=src.AuraX, pixel_y=src.AuraY)
 			return
+		else if(passive_handler.Get("Controlled Chaos"))
+			src.overlays+=rainbowaura
 
 		else if(src.CheckSpecial("Kamui Unite"))
 			src.underlays+=image('BijuuInitial.dmi',pixel_x=-32, pixel_y=-32)
