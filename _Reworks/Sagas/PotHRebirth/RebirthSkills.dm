@@ -107,6 +107,11 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Show_Must_Go_On //third act
 	Cooldown = 1
 	AwakeningRequired=1
 	passives = list("BuffMastery" = 1,"KiControlMaster" =1, "TechniqueMastery"=1)
+obj/Skills/Buffs/SlotlessBuffs/Autonomous/Red_Hot_Rage
+	ActiveMessage="is so not owned right now."
+	Cooldown = 1
+	AwakeningRequired=1
+	passives = list("Red Hot Rage" = 1, "Wrathful" = 1)
 //debuffs
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Rebirth/Dissociation
 	ActiveMessage="doesn't appear to be all there."
@@ -124,7 +129,7 @@ obj/Skills/AutoHit
 		Area="Strike"
 		AwakeningSkill=1
 		ActNumber=3
-		NeedsHealth=50
+		NeedsHealth=25
 		Rush=10
 		SpecialAttack=1
 		CanBeDodged=0
