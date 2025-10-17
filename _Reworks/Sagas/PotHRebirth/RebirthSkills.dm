@@ -289,7 +289,6 @@ obj/Skills/AutoHit
 			src.RebirthLastUse=world.realtime
 			usr.Activate(src)
 	Burning_Up_Everything
-		SignatureTechnique=1
 		StrOffense=0
 		ForOffense=1
 		DamageMult=14
@@ -320,19 +319,91 @@ obj/Skills/AutoHit
 		verb/Burning_Up_Everything()
 			set category="Skills"
 			usr.Activate(src)
+	Scream_of_Fury
+		Area="Circle"
+		Distance=10
+		RedTechnique=1
+		AdaptRate = 1
+		GuardBreak=1
+		DamageMult=6
+		Knockback=15
+		Cooldown=120
+		NeedsHealth=50
+		Shockwaves=3
+		Shockwave=4
+		SpecialAttack=1
+		Stunner=3
+		HitSparkIcon='BLANK.dmi'
+		HitSparkX=0
+		HitSparkY=0
+		ActiveMessage="lets loose a furious roar!"
+		adjust(mob/p)
+			if(altered) return
+			if(p.passive_handler.Get("Red Hot Rage"))
+				Cooldown=10
+				RedPUSpike=pick(25, 50)
+				DamageMult=9
+				ActiveMessage="screams so fucking loud that you start to worry about their mental health. Are they okay?"
+				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Red_Hot_Rage/s in p)
+					s.passives["PUSpike"] += RedPUSpike
+				p.WeirdAngerStuff()
+			else
+				Cooldown=150
+				RedPUSpike=0
+		verb/Scream_of_Fury()
+			set category="Skills"
+			adjust(usr)
+			usr.Activate(src)
+	Platinum_Mad
+		StrOffense=1
+		ForOffense=1
+		DamageMult=3
+		Area="Circle"
+		Distance=12
+		TurfErupt=2
+		TurfEruptOffset=3
+		Scorching = 30
+		Slow=1
+		WindUp=4
+		WindupIcon='Amazing SSj4 Aura.dmi'
+		WindupIconX=-32
+		WindupIconY=32
+		WindupIconSize=2
+		Divide=1
+		PullIn=25
+		WindupMessage="is, unfortunately, not too angry to die."
+		ActiveMessage="burns up everything around them, including themselves!"
+		HitSparkIcon='BLANK.dmi'
+		HitSparkX=0
+		HitSparkY=0
+	//	Cooldown=30
+		Earthshaking=15
+		PreQuake=1
+		PlatinumMad=1
+		verb/Platinum_Mad()
+			set category="Skills"
+			set hidden=1
+			usr.Activate(src)
 mob/proc/TriggerAwakeningSkill(ActNumber)
 	if(ActNumber>=1)
-		src<< "act 1 placeholder msg lol"
+		src<< "<b>Fate turns its eye to you, watching with interest.</b>"
 		src.AwakeningSkillUsed=1
 		src.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Dont_Stop_Me_Now)
 	if(ActNumber>=2)
-		src<< "act 2 placeholder msg lol"
+		src<< "<b>You hear the scratching of pen to paper, your story being recorded.</b>"
 		src.AwakeningSkillUsed=2
 		src.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/We_Are_The_Champions)
+	if(ActNumber>=3)
+		src<< "<b>The book closes on this chapter. Yet, surely, there is more to be told.</b>"
+		src.AwakeningSkillUsed=3
+		src.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Show_Must_Go_On)
 obj/Skills
 	var/AwakeningSkill
 	var/ActNumber
 	var/RebirthLastUse
+	var/RedTechnique
+	var/RedPUSpike
+	var/PlatinumMad
 obj/Skills/Queue
 	var/RandomMult
 	NeverKnowsBest
@@ -435,6 +506,23 @@ obj/Skills/Utility
 			src.RebirthLastUse=world.realtime
 			usr.TriggerAwakeningSkill(ActNumber)
 			usr.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Blue_Experience)
+	Red_Hot_Rage
+		Copyable=0
+		ActNumber=3
+		icon_state="Heal"
+		desc="Shine brightly. Your awakening skill strengthens, but you burn out quicker."
+		verb/RedHotRage()
+			set category="Utility"
+			set name="Red Hot Rage (Act 3)"
+			if(world.realtime < src.RebirthLastUse+(600*60*24*7))
+				src << "You can only use this technique once every week."
+				return
+			if(usr.Health>25)
+				usr<<"Can't use yet!"
+				return
+			src.RebirthLastUse=world.realtime
+			usr.TriggerAwakeningSkill(ActNumber)
+			usr.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Red_Hot_Rage)
 	SoulShift
 		Copyable=0
 		verb/SoulRed()
@@ -608,6 +696,30 @@ obj/Skills/Projectile
 			verb/Taste_The_Rainbow()
 				set category="Skills"
 				usr.UseProjectile(src)
+		Unbelievable_Rage
+			DamageMult=12
+			Immediate=1
+			Dodgeable=0
+			IconLock='Pride Beam.dmi'
+			Cooldown=120
+			Instinct=1
+			adjust(mob/p)
+				if(altered) return
+				if(p.passive_handler.Get("Red Hot Rage"))
+					Cooldown=30
+					RedPUSpike=pick(25, 50)
+					DamageMult=15
+					for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Red_Hot_Rage/s in p)
+						s.passives["PUSpike"] += RedPUSpike
+					p.WeirdAngerStuff()
+				else
+					Cooldown=120
+					RedPUSpike=0
+			verb/Unbelievable_Rage()
+				set category="Skills"
+				adjust(usr)
+				usr.UseProjectile(src)
+
 	Zone_Attacks
 		Final_Chaos
 			Speed = 0.25
@@ -760,3 +872,10 @@ obj/Skills/Grapple
 		verb/CHAOS_DUNK()
 			set category="Skills"
 			src.Activate(usr)
+/mob/Admin4/verb/RedHotTest()
+	set category = "Debug"
+	usr.passive_handler.Set("Red Hot Rage", 1)
+	usr.TotalInjury=50
+/mob/Admin4/verb/RedHotTurnOff()
+	set category = "Debug"
+	usr.passive_handler.Set("Red Hot Rage", 0)

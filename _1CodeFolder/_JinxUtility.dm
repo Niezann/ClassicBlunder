@@ -1920,6 +1920,18 @@ mob
 			src.AngerMax=1+((src.AngerMax-1)*num)
 		AngerDiv(var/num)
 			src.AngerMax=1+((src.AngerMax-1)/num)
+		WeirdAngerStuff() //additive anger that won't be affected by mult
+			var/AngerTotal
+			if(src.passive_handler.Get("Red Hot Rage"))
+				AngerTotal+=((src.PowerControl-100)/100)+(passive_handler.Get("PUSpike")/100)
+				if(AngerTotal>=500)
+					var/obj/Skills/s = src.findOrAddSkill(/obj/Skills/AutoHit/Platinum_Mad)
+					src.Activate(s)
+					spawn(100)
+						del s
+			else
+				AngerTotal=0
+			src.AngerAdd=AngerTotal
 
 		GetBPM()
 			return (src.potential_power_mult)

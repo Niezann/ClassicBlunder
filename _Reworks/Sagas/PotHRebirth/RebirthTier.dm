@@ -38,6 +38,7 @@ sagaTierUpMessages/Rebirth
 							src.passive_handler.Increase("Determination(Red)")
 							src<< "Your ACT meter slows, but as it builds, a certain power wells up within you..."
 							src<< "You unlock the Red SOUL color, boosting your crit rate as you gain ACT!"
+							src.AddSkill(new/obj/Skills/AutoHit/Scream_of_Fury)
 						if(src.RebirthHeroType=="Rainbow")
 							src.AddSkill(new/obj/Skills/AutoHit/NeverSeeItComing)
 							src.AddSkill(new/obj/Skills/Projectile/Beams/TasteTheRainbow)
@@ -94,6 +95,7 @@ sagaTierUpMessages/Rebirth
 				if(src.RebirthHeroType=="Red")
 					src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Unwavering_Soul)
 					src.AddSkill(new/obj/Skills/Queue/FistOfTheRedStar)
+					src.AddSkill(new/obj/Skills/Projectile/Beams/Unbelievable_Rage)
 
 				if(src.RebirthHeroType=="Rainbow")
 					src.AddSkill(new/obj/Skills/AutoHit/PowerWordGenderDysphoria)
@@ -126,6 +128,6 @@ sagaTierUpMessages/Rebirth
 				if(src.RebirthHeroType=="Blue")
 					src.AddSkill(new/obj/Skills/AutoHit/MakeItCount)
 				if(src.RebirthHeroType=="Red")
-					src<<"nothing yet but thank you for reading my commits <3"
+					src.AddSkill(new/obj/Skills/Utility/Red_Hot_Rage)
 			if(5)
 			if(6)
