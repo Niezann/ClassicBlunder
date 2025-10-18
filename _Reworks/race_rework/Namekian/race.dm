@@ -27,7 +27,7 @@ race
 			user.EnhancedHearing = 1
 			if(user.Class=="Dragon")
 				if(!locate(/obj/Skills/Utility/Inner_Dragon_Wish) in user.contents)
-					spawn(30)
+					spawn(20)
 						var/obj/Skills/Utility/Inner_Dragon_Wish/W = new /obj/Skills/Utility/Inner_Dragon_Wish(user)
 						if(!W) return
 						user.contents += W
