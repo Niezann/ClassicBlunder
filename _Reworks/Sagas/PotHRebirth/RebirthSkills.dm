@@ -135,7 +135,7 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Show_Must_Go_On //third act
 	Cooldown = 1
 	AwakeningRequired=1
 	passives = list("BuffMastery" = 1,"KiControlMaster" =1, "TechniqueMastery"=1)
-obj/Skills/Buffs/SlotlessBuffs/Autonomous/Red_Hot_Rage
+obj/Skills/Buffs/SlotlessBuffs/Autonomous/Burning_Soul
 	ActiveMessage="transforms their passion into fury, their desire to win surpassing all."
 	Cooldown = 1
 	AwakeningRequired=1
@@ -372,7 +372,7 @@ obj/Skills/AutoHit
 				RedPUSpike=pick(25, 50)
 				DamageMult=5
 				ActiveMessage="screams so fucking loud that you start to worry about their mental health. Are they okay?"
-				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Red_Hot_Rage/s in p)
+				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Burning_Soul/s in p)
 					s.passives["PUSpike"] += RedPUSpike
 				p.WeirdAngerStuff()
 			else
@@ -538,12 +538,12 @@ obj/Skills/Utility
 			src.RebirthLastUse=world.realtime
 			usr.TriggerAwakeningSkill(ActNumber)
 			usr.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Blue_Experience)
-	Red_Hot_Rage
+	Burning_Soul
 		Copyable=0
 		ActNumber=3
 		icon_state="Heal"
 		desc="Translate all your power into rage. Your Rebirth skills become faster, but make you more and more angrier. At 500% Fury, your rage explodes outwards, damaging yourself and everyone in view."
-		verb/RedHotRage()
+		verb/Burning_Soul()
 			set category="Utility"
 			set name="Red Hot Rage (Act 3)"
 			if(world.realtime < src.RebirthLastUse+(600*60*24*7))
@@ -554,7 +554,7 @@ obj/Skills/Utility
 				return
 			src.RebirthLastUse=world.realtime
 			usr.TriggerAwakeningSkill(ActNumber)
-			usr.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Red_Hot_Rage)
+			usr.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Burning_Soul)
 	SoulShift
 		Copyable=0
 		verb/SoulRed()
@@ -741,7 +741,7 @@ obj/Skills/Projectile
 					Cooldown=30
 					RedPUSpike=pick(25, 50)
 					DamageMult=12
-					for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Red_Hot_Rage/s in p)
+					for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Burning_Soul/s in p)
 						s.passives["PUSpike"] += RedPUSpike
 					p.WeirdAngerStuff()
 				else

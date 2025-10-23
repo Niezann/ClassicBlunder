@@ -128,6 +128,6 @@ sagaTierUpMessages/Rebirth
 				if(src.RebirthHeroType=="Blue")
 					src.AddSkill(new/obj/Skills/AutoHit/MakeItCount)
 				if(src.RebirthHeroType=="Red")
-					src.AddSkill(new/obj/Skills/Utility/Red_Hot_Rage)
+					src.AddSkill(new/obj/Skills/Utility/Burning_Soul)
 			if(5)
 			if(6)

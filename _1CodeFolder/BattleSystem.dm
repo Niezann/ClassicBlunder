@@ -251,7 +251,7 @@ mob/proc/Unconscious(mob/P,var/text)
 				if(Time > BPPoisonTimer)
 					src.BPPoisonTimer=Time
 				src.BPPoison=0.5
-				MortallyWounded+=1
+				src.MortallyWounded+=1
 				src.OMessage(10, "[src] has been grieviously wounded!", "[src]([src.key]) has over 85% injury.")
 	if(src.client)
 		if((transActive||tension)&&!src.HasNoRevert()&&!src.HasMystic())

@@ -6,7 +6,7 @@ race
 
 		locked = TRUE
 
-		power = 5
+		power = 2.5
 		strength = 1.75
 		endurance = 1.75
 		speed = 1
