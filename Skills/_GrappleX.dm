@@ -189,6 +189,19 @@ obj/Skills/Grapple
 		ThrowMult=0
 		ThrowAdd=0
 		//still set from other queues
+	Instinct_Reversal
+		Reversal = 1
+		OneAndDone = 1
+		DamageMult = 2.5
+		StrRate = 1
+		EndRate = 0.9
+		ThrowAdd = 2
+		ThrowMult = 1.25
+		ThrowSpeed = 1.25
+		Effect = "Lotus"
+		EffectMult = 2
+		Stunner = 3
+		TriggerMessage = "instinctively reverses and throws"
 ////UNARMED
 	Snake_Fang_Bites
 		MultiHit=2

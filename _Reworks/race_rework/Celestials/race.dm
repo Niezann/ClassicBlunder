@@ -24,8 +24,8 @@ race
 				switch(Choice)
 					if("Angel")
 						Confirm=alert(user, "Your body was imparted with the spark of the divine normally reserved for the soul, granting your mind and body natural harmony far beyond that of the average mortal.", "Angel", "Yes", "No")
-						if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Selfless_State, user))
-							var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Selfless_State
+						if(!locate(/obj/Skills/Buffs/NuStyle/MortalUI/Mortal_Instinct_Style, user))
+							var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/MortalUI/Mortal_Instinct_Style
 							user.AddSkill(s)
 							user << "You have embarked upon the path of true martial arts mastery: Ultra Instinct."
 					if("Demon")

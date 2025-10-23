@@ -105,6 +105,7 @@ mob/proc/GrantGuardianItem(path)
 		NeedsSword=0
 		StyleSpd=1.15
 		StyleDef=1.15
+		SagaSignature = 1
 		SignatureTechnique=1
 		NoSword=1
 		StyleActive="Selfless State"
@@ -118,6 +119,7 @@ mob/proc/GrantGuardianItem(path)
 		StyleSpd=1.25
 		StyleOff=1.15
 		StyleDef=1.25
+		SagaSignature = 1
 		SignatureTechnique=2
 		NoSword=1
 		StyleActive="Ultra Instinct (In-Training)"
@@ -131,6 +133,7 @@ mob/proc/GrantGuardianItem(path)
 		StyleSpd=1.5
 		StyleOff=1.5
 		StyleDef=1.5
+		SagaSignature = 1
 		SignatureTechnique=3
 		NoSword=1
 		StyleActive="Ultra Instinct (Complete)"
@@ -144,6 +147,7 @@ mob/proc/GrantGuardianItem(path)
 		StyleSpd=1.75
 		StyleOff=1.75
 		StyleDef=1.75
+		SagaSignature = 1
 		SignatureTechnique=4
 		NoSword=1
 		StyleActive="Perfected Ultra Instinct"

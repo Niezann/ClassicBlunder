@@ -8,6 +8,7 @@
 		StyleSpd = 1.05
 		StyleOff = 1.1
 		StyleDef = 1.1
+		SagaSignature = 1
 		SignatureTechnique = 1
 		verb/Incomplete_Mortal_Ultra_Instinct()
 			set hidden = 1
@@ -21,6 +22,7 @@
 		StyleSpd=1.25
 		StyleOff=1.15
 		StyleDef=1.25
+		SagaSignature = 1
 		SignatureTechnique = 2
 		StyleActive="Mortal Ultra Instinct (In-Training)"
 		verb/Incomplete_Ultra_Instinct()
@@ -36,6 +38,7 @@
 		StyleSpd = 1.5
 		StyleOff = 1.5
 		StyleDef = 1.5
+		SagaSignature = 1
 		SignatureTechnique = 3
 		verb/Mortal_Ultra_Instinct()
 			set hidden = 1
@@ -50,6 +53,7 @@
 		StyleSpd = 1.6
 		StyleOff = 1.55
 		StyleDef = 1.6
+		SagaSignature = 1
 		SignatureTechnique = 4
 		PUSpike = 25
 		verb/Perfected_Mortal_Ultra_Instinct()

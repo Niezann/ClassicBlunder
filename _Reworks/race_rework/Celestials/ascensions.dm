@@ -32,8 +32,8 @@ ascension
 						owner.FindSkill(/obj/Skills/Buffs/SlotlessBuffs/Devil_Arm2).pickSelection(owner, TRUE)
 						owner.race?:sub_devil_arm_upgrades = 1
 				if(owner.CelestialAscension=="Angel")
-					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Incomplete_Ultra_Instinct, owner))
-						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Incomplete_Ultra_Instinct
+					if(!locate(/obj/Skills/Buffs/NuStyle/MortalUI/Incomplete_Ultra_Instinct_Style, owner))
+						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/MortalUI/Incomplete_Ultra_Instinct_Style
 						owner.AddSkill(s)
 				owner.Class = "Lightbringer"
 		three
@@ -47,8 +47,8 @@ ascension
 			postAscension(mob/owner)
 				..()
 				if(owner.CelestialAscension=="Angel")
-					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Ultra_Instinct, owner))
-						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Ultra_Instinct
+					if(!locate(/obj/Skills/Buffs/NuStyle/MortalUI/Ultra_Instinct_Style, owner))
+						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/MortalUI/Ultra_Instinct_Style
 						owner.AddSkill(s)
 		four
 			unlock_potential = ASCENSION_FOUR_POTENTIAL
@@ -64,8 +64,8 @@ ascension
 			postAscension(mob/owner)
 				..()
 				if(owner.CelestialAscension=="Angel")
-					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Perfected_Ultra_Instinct, owner))
-						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/HalfbreedAngelStyles/Perfected_Ultra_Instinct
+					if(!locate(/obj/Skills/Buffs/NuStyle/MortalUI/Perfected_Ultra_Instinct_Style, owner))
+						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/MortalUI/Perfected_Ultra_Instinct_Style
 						owner.AddSkill(s)
 		five
 			unlock_potential = ASCENSION_FIVE_POTENTIAL
