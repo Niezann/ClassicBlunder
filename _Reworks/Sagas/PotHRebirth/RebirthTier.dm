@@ -2,7 +2,7 @@ sagaTierUpMessages/Rebirth
 	messages = list("You embark on the path of a Hero... but which Hero you become remains to be seen. Will you simply choose to be the strongest or defy everything for victory?", \
 	"Now you can choose: Are you the hero spoken of in legend, or are you one who has not yet written their story?", \
 	"Your legend shifts ever-closer to completion. Your name is starting to be recognized.", \
-	"You are experiencing the first glimmers of Seventh Sense when in a pinch along with the ability to call upon your zodiac!", \
+	"You are experiencing the first glimmers of Seventh Sense- wait this isn't the Saint Seiya Saga.", \
 	"You reach the level of a Golden Saint, standing at the summit as a champion of Gods!", \
 	"Your Cosmos burns with the power of a god!", \
 	)

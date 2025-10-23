@@ -4,7 +4,9 @@
 
 
 /mob/proc/gainCorruption(n)
-    if(!isRace(DEMON)) return
+    if(!isRace(DEMON))
+    	if(!ArsGoetiaOwner)
+		    return
     if(Corruption + n < MaxCorruption)
         Corruption+=n
     if(Corruption < MinCorruption)
@@ -13,7 +15,7 @@
         Corruption = 0
     Corruption = Corruption
     client.updateCorruption()
-    
+
 
 
 
@@ -26,8 +28,8 @@
         if(!(corruptionHolder in screen))
             corruptionHolder.screen_loc = "RIGHT-0.25,BOTTOM+0.78"
             screen += corruptionHolder
-        
+
         corruptionHolder.maptext = "[round(mob.Corruption,1)]/[mob.MaxCorruption]"
         corruptionHolder.maptext_width = 400
-        
+
 

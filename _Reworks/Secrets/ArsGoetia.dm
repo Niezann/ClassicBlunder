@@ -1,9 +1,21 @@
 /obj/Items/Demon_Summoning/ArsGoetia
 	name = "Ars Goetia"
 	icon = 'Icons/NSE/Icons/Thot_book.dmi'
-	var/BloodSacrifice
+	var/BloodSacrifice=3
 	var/BloodSacrificeCD
-	var/AbsurdSummonCD
+	var/DemonSummonCD
+	var/DemonRevivalCD
+	var/Owner
+	verb/Claim_Ownership() //unfinished
+		set name= "Ars Goetia: Claim Ownership"
+		set category = "Utility"
+		var/Confirm=alert(usr, "You can choose to forcibly claim ownership of the Ars Goetia in exchange for incredible demonic magic. However, should anyone else claim ownership over it, you will die. Do you wish to sign this pact?", "Claim Ownership", "Yes", "No")
+		if(Confirm=="Yes")
+			src.Owner=usr
+			usr.ArsGoetiaOwner=1
+			user.client.updateCorruption()
+			user.demon.selectPassive(user, "CORRUPTION_PASSIVES", "Buff", TRUE)
+			user.demon.selectPassive(user, "CORRUPTION_DEBUFFS", "Debuff")
 	verb/Blood_Sacrifice(mob/M in get_step(usr, usr.dir))
 		set name = "Blood Sacrifice"
 		set category = "Skills"
@@ -16,7 +28,7 @@
 			M.MortallyWounded+=1
 			M.DoDamage(M, 100)
 			M.TotalInjury+=85
-			src.BloodSacrificeCD = world.realtime + 4 HOURS
+			src.BloodSacrificeCD = world.realtime + 24 HOURS
 		else
 			usr << "You're on cooldown till [time2text(src.BloodSacrificeCD, "hh:ss") ]"
 	verb/Summon_Demon()
@@ -27,8 +39,8 @@
 			return
 		if(!usr.Move_Requirements()||usr.KO)
 			return
-		if(world.realtime<src.AbsurdSummonCD)
-			usr << "It's too soon to use this!  ([round((src.AbsurdSummonCD-world.realtime)/Hour(1), 0.1)] hours)"
+		if(world.realtime<src.DemonSummonCD)
+			usr << "It's too soon to use this!  ([round((src.DemonSummonCD-world.realtime)/Hour(1), 0.1)] hours)"
 			return
 		src.Using=1
 
@@ -66,28 +78,51 @@
 
 
 
-		if(!Failure)
-			var/Delay = input(src, "You are being summoned by [usr]! This process cannot be resisted, but you CAN delay it by a minute if you want to finish up whatever you're doing.") in list("Delay", "Go")
-			if(Delay=="Delay")
-				spawn(60)
-					OMsg(Choice, "[Choice] suddenly vanishes.")
-					Choice.loc=locate(usr.x, usr.y-1, usr.z)
-				spawn()
-					for(var/x=0, x<5, x++)
-						LightningBolt(Choice)
-						sleep(3)
-			if(Delay=="Go")
-				OMsg(Choice, "[Choice] suddenly vanishes.")
-				Choice.loc=locate(usr.x, usr.y-1, usr.z)
-				spawn()
-					for(var/x=0, x<5, x++)
-						LightningBolt(Choice)
-						sleep(3)
-			OMsg(usr, "[usr] invokes the True Name of [Choice] to compel them to appear!")
-		else
-			OMsg(usr, "[usr] does not invoke the True Name of [Choice] properly.")
+		if(!Failure) //wanna do something cool with this but I think I'll just have it straight up summon someone atm
+			Choice.AddSkill(S)
+			Choice<<"<b>You are being summoned by [usr] using the Ars Goetia...</b>"
+			spawn()
+				for(var/x=0, x<5, x++)
+					LightningBolt(Choice)
+					sleep(3)
 		src.BloodSacrifice--
 		src<<"You have [src.BloodSacrifice] sacrifices left stored in the Ars Goetia."
-		src.AbsurdSummonCD=world.realtime+Day(1)
+		src.DemonSummonCD=world.realtime+Day(7)
 		src.Using=0
 		return
+	verb/Revive_Demon(mob/A in players)
+		set name= "Summon Demon"
+		set category = "Utility"
+		if(src.Using)
+			return
+		if(!usr.Move_Requirements()||usr.KO)
+			return
+		src.Using=1
+
+		var/Cost=3
+
+		if(src.BloodSacrifice<3)
+			usr << "You don't have enough capacity to revive an otherworldly entity!  It takes [Cost] sacrifices to revive someone."
+			src.Using=0
+			return
+		if(A.isRace(DEMON))
+			A.loc=locate(usr.x, usr.y-1, usr.z)
+			A.Revive()
+			src.BloodSacrifice-=3
+			src<<"You have [src.BloodSacrifice] sacrifices left stored in the Ars Goetia."
+			OMsg(usr, "INSERT COOL FLAVOR TEXT HERE")
+			src.Using=0
+			src.DemonSRevivalCD=world.realtime+Day(1)
+		else
+			usr<<"This can only be used on Demons."
+			return
+obj/Skills/Buffs/SlotlessBuffs/Autonomous/Beckoned
+	AlwaysOn=1
+	TimerLimit=30
+	ActiveMessage="starts to fade in and out of reality..."
+	OffMessage="suddenly vanishes."
+	Cooldown=-1
+	WarpZone=1
+/*	WarpX=1
+	WarpY=1
+	WarpZ=1*/

@@ -630,6 +630,8 @@ mob/var
 	HellspawnBerserk
 	HellspawnTimer
 
+	ArsGoetiaOwner
+
 /proc/reduceGodKi(mob/player, num)
 	player.GodKi -= num
 	if(num < 0)
