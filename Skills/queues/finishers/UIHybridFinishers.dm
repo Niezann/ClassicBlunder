@@ -9,7 +9,7 @@
 		InstantStrikes = 4
 		DamageMult = 1.75
 		KBAdd = 1
-		Shining = 1
+		KBDelayed = 1
 		FollowUp = "/obj/Skills/AutoHit/Flash_Draw"
 		BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Awareness_Resonance"
 		BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Overwhelmed"
@@ -106,7 +106,7 @@
 		FollowUp = "/obj/Skills/AutoHit/Prismatic_Bloom"
 		BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Prismatic_Trance"
 		BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Disoriented_Aura"
-		HitMessage = "lets every color of ki converge into an endless bloom of tranquil destruction!"
+		HitMessage = "commands every element of ki to converge into an endless bloom of tranquil destruction!"
 
 	Heavenly_Palm_Transcendence
 		name = "Heavenly Palm: Transcendence"

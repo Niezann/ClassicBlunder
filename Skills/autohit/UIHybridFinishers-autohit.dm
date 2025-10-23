@@ -1,9 +1,10 @@
 /obj/Skills/AutoHit
 	Flash_Draw//sword
-		Area = "Wide Wave"
+		Area = "Cross"
 		ComboMaster = 1
 		NoLock = 1
 		NoAttackLock = 1
+		Rounds = 2
 		StrOffense = 1
 		DamageMult = 2.2
 		Instinct = 2
@@ -12,12 +13,13 @@
 		Knockback = 1
 		SpeedStrike = 2
 		Stunner = 1
-		TurfStrike = 2
-		TurfShift = 'Slash - IDKYET.dmi'
-		TurfShiftDuration = 10
-		HitSparkIcon = 'Slash - IDKYET.dmi'
-		HitSparkX = -16
-		HitSparkY = -16
+		ShockIcon = 'KenShockwaveGod.dmi'
+		Shockwaves = 0
+		Shockwave = 0
+		TurfStrike = 5
+		HitSparkIcon = 'Slash - Power.dmi'
+		HitSparkX = -32
+		HitSparkY = -32
 		HitSparkSize = 2
 		HitSparkTurns = 1
 		HitSparkLife = 6
