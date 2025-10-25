@@ -2841,6 +2841,8 @@ obj/Turfs
 		var/antispam
 		density=1
 		Glass=1
+		var/GodDoor=0
+		var/AutoOpen=0
 		Grabbable=0
 		icon='Doors.dmi'
 		icon_state="Closed1"

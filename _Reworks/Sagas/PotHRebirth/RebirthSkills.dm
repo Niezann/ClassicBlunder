@@ -253,8 +253,9 @@ obj/Skills/AutoHit
 			if(world.realtime < src.RebirthLastUse+(600*60*72))
 				usr << "You can only use this technique once every 72 hours."
 				return
-			RandomMult=rand(1,10)
-			DamageMult=RandomMult
+			if(usr.Health>50)
+				usr<<"You can only use this at 50% health or below."
+				return
 			usr.Activate(src)
 			usr.TriggerAwakeningSkill(ActNumber)
 			src.RebirthLastUse=world.realtime
@@ -614,7 +615,6 @@ obj/Skills/Projectile
 	var/PartyReqType
 	Rude_Buster
 		Distance=40
-		Charge=0.25
 		ManaCost=50
 		DamageMult=4
 		Shearing=1
@@ -623,16 +623,9 @@ obj/Skills/Projectile
 		Dodgeable=-1
 		Deflectable=-1
 		IconLock='RudeBuster.dmi'
-		Knockback=1
-		IconSize=3
+		IconSize=1
 		Radius=3
 		Homing=1
-		ZoneAttack=1
-		ZoneAttackX=0
-		ZoneAttackY=0
-		FireFromSelf=1
-		FireFromEnemy=0
-		Striking=1
 		verb/Rude_Buster()
 			set category="Skills"
 			set name="Rude Buster"
@@ -650,16 +643,9 @@ obj/Skills/Projectile
 		Dodgeable=-1
 		Deflectable=-1
 		IconLock='RudeBuster.dmi'
-		Knockback=1
-		IconSize=3
+		IconSize=1
 		Radius=3
 		Homing=1
-		ZoneAttack=1
-		ZoneAttackX=0
-		ZoneAttackY=0
-		FireFromSelf=1
-		FireFromEnemy=0
-		Striking=1
 		verb/Red_Buster()
 			set category="Skills"
 			set name="Red Buster"
@@ -672,19 +658,12 @@ obj/Skills/Projectile
 		Shearing=1
 		AccMult=50
 		HyperHoming=1
-		Dodgeable=1
+		Dodgeable=-1
 		Deflectable=-1
 		IconLock='RudeBuster.dmi'
-		Knockback=1
-		IconSize=3
+		IconSize=1
 		Radius=3
 		Homing=1
-		ZoneAttack=1
-		ZoneAttackX=0
-		ZoneAttackY=0
-		FireFromSelf=1
-		FireFromEnemy=0
-		Striking=1
 		verb/Devilsbuster()
 			set category="Skills"
 			set name="Devilsbuster"
@@ -700,16 +679,9 @@ obj/Skills/Projectile
 		Dodgeable=-1
 		Deflectable=-1
 		IconLock='RudeBuster.dmi'
-		Knockback=1
-		IconSize=3
+		IconSize=1
 		Radius=3
 		Homing=1
-		ZoneAttack=1
-		ZoneAttackX=0
-		ZoneAttackY=0
-		FireFromSelf=1
-		FireFromEnemy=0
-		Striking=1
 		Cooldown=180
 		verb/Red_Buster()
 			set category="Skills"

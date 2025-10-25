@@ -1,4 +1,34 @@
+mob/Players/verb
+	Self_Potential_Boost(var/val as num|null)
+		set category="Test Server"
+		set name="Self Potential Boost"
+		if(val&&usr)
+			usr.Potential+=val
+			usr.PotentialCap+=val
+			Log("Admin", "[ExtractInfo(src)] boosted [ExtractInfo(usr)]'s potential by [val].")
+			usr << "You feel yourself grow more experienced!"
+	Give_Self_Money(var/num as num)
+		set category="Test Server"
+		set name="Give Money"
+		var/Highest=glob.progress.EconomyMult
+		if(usr.EconomyMult>Highest)
+			Highest=usr.EconomyMult
+		usr.GiveMoney(num*Highest)
+		Log("Admin","[ExtractInfo(usr)] increased [usr]'s money by [Commas(num)] (x[Highest] economy mult).")
+	Self_RPP_Set()
+		set category="Test Server"
 
+		var/EMult=glob.progress.RPPBaseMult
+		EMult*=usr.GetRPPMult()
+
+		var/OldRPP=usr.RPPSpent+usr.GetRPPSpendable()
+		var/NewRPP=input(usr,"Set the value that [usr]'s RPP should be at.  They currently have [Commas(usr.GetRPPSpendable())] with [Commas(usr.RPPSpent)] RPP spent for [Commas(OldRPP)] total. (x[EMult] RPP Mult)") as num|null
+		NewRPP*=EMult
+
+		NewRPP-=usr.RPPSpent
+		if(NewRPP>=0)
+			usr.RPPSpendable=NewRPP
+			Log("Admin","[ExtractInfo(usr)] set [ExtractInfo(usr)]'s total RPP (Spent and Unused) from [Commas(OldRPP)] to [Commas(NewRPP)]. (RPP mult of x[EMult])")
 atom/proc/Examined(mob/user)
 mob/Players/var/tmp/current_party_target_index = 1
 mob/Players/verb

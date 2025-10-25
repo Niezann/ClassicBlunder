@@ -220,7 +220,7 @@ globalTracker
 		WorldDefaultAcc = 50
 		WorldWhiffRate = 25
 		celestialObjectTicks
-		NoSagaRaces = list(DEMON, DRAGON, ELF, SAIYAN, ANGEL)
+		NoSagaRaces = list(DEMON, DRAGON, ELF, SAIYAN, ANGEL, CELESTIAL, MAKAIOSHIN)
 		WILL_NOT_TARP_LIST = list("JustLat", "TheUltimateHope")
 		T3_STYLES_GODKI_VALUE = 0.25
 		DOUBLESTRIKECHANCE = 10

@@ -6,7 +6,7 @@ mob/var/warperTimeLock = 0
 
 proc
 	PlanetEnterBump(var/A,var/Q)
-		if(istype(A,/obj/Items/Tech/Door))
+		if(istype(A,/obj/Items/Tech/Door)||istype(A,/obj/Turfs/Door))
 			var/obj/Items/Tech/Door/B=A
 			var/mob/M=Q
 			if(B.Password)
@@ -47,6 +47,53 @@ proc
 													X.Open()
 								else
 									if(istype(B,/obj/Items/Tech/Door/LazerDoor))
+										Q << "The lazer door burns your hand!"
+										Q:AddBurn(1)
+					else
+						B.Open()
+			else
+				B.Open()
+		else if(istype(A,/obj/Turfs/Door))
+			var/obj/Turfs/Door/B=A
+			var/mob/M=Q
+			if(B.Password)
+				if(B.GodDoor)
+					if(M.Spawn==B.Password)
+						B.Open()
+				else
+					if(B.Password&&!B.AutoOpen)
+						var/happened
+						if(!happened)
+							var/eee
+							for(var/obj/Items/Tech/Door_Pass/L in Q)
+								if(L.Password==B.Password)
+									B.Open()
+									if(istype(B,/obj/Turfs/Door/LazerDoor))
+										if(B.DoorID)
+											for(var/obj/Turfs/Door/LazerDoor/X in world)
+												if(X.DoorID==B.DoorID)
+													X.Open()
+									eee=1
+							for(var/obj/Items/Tech/Digital_Key/C in Q)
+								if(C.Password==B.Password||C.Password2==B.Password||C.Password3==B.Password)
+									B.Open()
+									if(istype(B,/obj/Turfs/Door/LazerDoor))
+										if(B.DoorID)
+											for(var/obj/Turfs/Door/LazerDoor/X in world)
+												if(X.DoorID==B.DoorID)
+													X.Open()
+									eee=1
+							if(!eee&&!Q:Knockbacked)
+								var/Guess=input(Q,"You must know the password to enter here") as text
+								if(Guess==B.Password)
+									B.Open()
+									if(istype(B,/obj/Turfs/Door/LazerDoor))
+										if(B.DoorID)
+											for(var/obj/Turfs/Door/LazerDoor/X in world)
+												if(X.DoorID==B.DoorID)
+													X.Open()
+								else
+									if(istype(B,/obj/Turfs/Door/LazerDoor))
 										Q << "The lazer door burns your hand!"
 										Q:AddBurn(1)
 					else
