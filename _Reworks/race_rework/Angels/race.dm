@@ -27,6 +27,7 @@ race
 				switch(Choice)
 					if("Guardian")
 						Confirm=alert(user, "Do you wish to guard the gates to the world beyond?", "Angel Ascension", "Yes", "No")
+						user.GrantGuardianItem(/obj/Items/Sword/Guardian/Sword_of_the_Saint)
 					if("Mentor")
 						Confirm=alert(user, "Do you wish to mentor humanity and ensure the spiritual arts remain unforgotten?", "Angel  Ascension", "Yes", "No")
 						if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Selfless_State, user))

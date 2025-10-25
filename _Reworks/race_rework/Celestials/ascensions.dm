@@ -35,6 +35,36 @@ ascension
 					if(!locate(/obj/Skills/Buffs/NuStyle/MortalUI/Incomplete_Ultra_Instinct_Style, owner))
 						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/MortalUI/Incomplete_Ultra_Instinct_Style
 						owner.AddSkill(s)
+						spawn(5)
+							if(!owner || !owner.client)
+								return
+							var/list/HybridStyleChoices = list(
+								"Mortal Instinct Sword" = /obj/Skills/Buffs/NuStyle/MortalUIStyles/Mortal_Instinct_Sword,
+								"Mortal Instinct Grappling" = /obj/Skills/Buffs/NuStyle/MortalUIStyles/Mortal_Instinct_Grappling,
+								"Mortal Instinct Mystic" = /obj/Skills/Buffs/NuStyle/MortalUIStyles/Mortal_Instinct_Mystic,
+								"Mortal Instinct Martial" = /obj/Skills/Buffs/NuStyle/MortalUIStyles/Mortal_Instinct_Martial)
+							var/choice = input(owner,"Your angelic awareness manifests as divine instinct, which discipline will guide it?","Choose Your Instinct Style") as null|anything in HybridStyleChoices
+							if(!choice)
+								return
+							var/path = HybridStyleChoices[choice]
+							if(!path)
+								return
+							if(locate(path) in owner.contents)
+								return
+							var/obj/Skills/Buffs/NuStyle/MortalUIStyles/newStyle = new path(owner)
+							owner.contents += newStyle
+							switch(choice)
+								if("Mortal Instinct Sword")
+									owner.HybridChoice = "Sword"
+								if("Mortal Instinct Grappling")
+									owner.HybridChoice = "Grappling"
+								if("Mortal Instinct Mystic")
+									owner.HybridChoice = "Mystic"
+								if("Mortal Instinct Martial")
+									owner.HybridChoice = "Martial"
+								else
+									owner.HybridChoice = ""
+							owner << "<font color='#b4f0ff'><b>You awaken the <u>[choice]</u> within your divine instinct!</b></font>"
 				owner.Class = "Lightbringer"
 		three
 			unlock_potential = ASCENSION_THREE_POTENTIAL

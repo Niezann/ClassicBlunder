@@ -11623,10 +11623,23 @@ mob
 							src.StyleBuff.StyleStr=1.5
 							src.StyleBuff.StyleFor=1.4
 							src.StyleBuff.StyleOff=1.4
-
-
-
 					src.StyleBuff.Mastery=4
+
+			if(src.StyleBuff.StyleActive == "Mortal Instinct (Incomplete)" || \
+			   src.StyleBuff.StyleActive == "Mortal Ultra Instinct (In-Training)" || \
+			   src.StyleBuff.StyleActive == "Mortal Ultra Instinct" || \
+			   src.StyleBuff.StyleActive == "Perfected Ultra Instinct")
+				switch(src.HybridChoice)
+					if("Sword")
+						src.StyleBuff.Finisher = "/obj/Skills/Queue/Finisher/Sword_of_Awareness"
+					if("Grappling")
+						src.StyleBuff.Finisher = "/obj/Skills/Queue/Finisher/Instinct_Grapple"
+					if("Mystic")
+						src.StyleBuff.Finisher = "/obj/Skills/Queue/Finisher/Dancing_Prism"
+					if("Martial")
+						src.StyleBuff.Finisher = "/obj/Skills/Queue/Finisher/Instinct_Palm"
+					else
+						src.StyleBuff.Finisher = null
 
 			src.Power_Multiplier+=(src.StyleBuff.PowerMult-1)
 			src.StrMultTotal+=(src.StyleBuff.StrMult-1)

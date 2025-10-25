@@ -19,7 +19,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 		ActiveMessage = "draws a blade born of mortal awareness!"
 		OffMessage = "lets their sword dissolve into light..."
 		var/tmp/obj/Items/Sword/EquippedSword
-		verb/Attune_MortalInstinct_Blade()
+		verb/Attune_Mortal_Blade()
 			set category = "Utility"
 			if(!usr.BuffOn(src))
 				var/classChoice = input(usr, "Choose your preferred sword type.") in list("Light", "Medium", "Heavy")

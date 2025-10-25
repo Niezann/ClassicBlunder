@@ -25,12 +25,28 @@ race
 
 		onFinalization(mob/user)
 			..()
+
 			if(user.Class == "Compassion")
-				user.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/HalfSaiyan/Hidden_Potential)
+				user.AddSkill(new /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/HalfSaiyan/Hidden_Potential)
 				anger = 1.4
 			else
-				user.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/HalfSaiyan/Saiyan_Pride)
-			user.Tail(1)
-			var/list/transpaths = subtypesof(text2path("/transformation/saiyan"))
-			for(var/i in transpaths)
-				transformations += new i
+				user.AddSkill(new /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/HalfSaiyan/Saiyan_Pride)
+
+			if(!user.Tail)
+				user.Tail(1)
+
+			if(!islist(user.race.transformations))
+				user.race.transformations = list()
+
+			user.race.transformations.Cut()
+
+			if(user.Class == "Compassion")
+				user.race.transformations += new /transformation/saiyan/super_saiyan()
+				user.race.transformations += new /transformation/saiyan/super_saiyan_2()
+				user.race.transformations += new /transformation/half_saiyan/human/ultimate_mode()
+				user.race.transformations += new /transformation/half_saiyan/human/beast_mode()
+			else if(user.Class == "Anger")
+				user.race.transformations += new /transformation/saiyan/super_saiyan()
+				user.race.transformations += new /transformation/saiyan/super_saiyan_2()
+				user.race.transformations += new /transformation/saiyan/super_saiyan_3()
+				user.race.transformations += new /transformation/saiyan/super_saiyan_4()

@@ -88,7 +88,7 @@ mob/var
 	EnergySignature//holds your unique energy signature
 	list/EnergySignaturesKnown=list()//holds signatures you identified
 	list/ai_alliances=list()//these classes of ai wont attack you
-
+	HybridChoice
 	list/SkillsLocked=list()//paths of skills that have been locked out due to being prerequisites for upgraded versions
 	tmp/SignatureSelecting=0//flag that disables checking for more sigs
 	list/SignatureSelected=list()//names of signatures that have been selected already, so they can be removed from the global list when signature selection is activated

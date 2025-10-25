@@ -26,6 +26,23 @@ mob/proc/GrantGuardianItem(path)
 		src << "<font color='#bfefff'><b>[I.name]</b> manifests in radiant light!</font>"
 	else
 		I.AlignEquip(src)
+//no ascensions
+/obj/Items/Sword/Guardian/Sword_of_the_Saint
+	passives = list()
+	Class = "Medium"
+	SubType = "Weapons"
+	DamageEffectiveness=1.05
+	AccuracyEffectiveness=0.85
+	SpeedEffectiveness=1.15
+	ShatterCounter=800
+	ShatterMax=800
+	Ascended = 1
+	Augmented = 1
+	Stealable = 0
+	Destructable = 0
+	name = "Sword of the Saint"
+	desc = "The Saint’s dulled edge that keeps the peace."
+	icon = 'Samurai_sword_3.dmi'
 //ascension 1
 /obj/Items/Wearables/Guardian/Belt_of_Truth
 	Augmented = 1
@@ -105,6 +122,11 @@ mob/proc/GrantGuardianItem(path)
 		NeedsSword=0
 		StyleSpd=1.15
 		StyleDef=1.15
+		Finisher = "/obj/Skills/Queue/Finisher/Instinct_Palm"
+		IconLock='AuraMysticBig.dmi'
+		IconLockBlend=4
+		LockX=-32
+		LockY=-32
 		SagaSignature = 1
 		SignatureTechnique=1
 		NoSword=1
@@ -119,6 +141,11 @@ mob/proc/GrantGuardianItem(path)
 		StyleSpd=1.25
 		StyleOff=1.15
 		StyleDef=1.25
+		Finisher = "/obj/Skills/Queue/Finisher/Instinct_Palm"
+		IconLock='AuraMysticBig.dmi'
+		IconLockBlend=4
+		LockX=-32
+		LockY=-32
 		SagaSignature = 1
 		SignatureTechnique=2
 		NoSword=1
@@ -133,6 +160,11 @@ mob/proc/GrantGuardianItem(path)
 		StyleSpd=1.5
 		StyleOff=1.5
 		StyleDef=1.5
+		Finisher = "/obj/Skills/Queue/Finisher/Heavenly_Palm_Transcendence"
+		IconLock='GentleDivine.dmi'
+		IconLockBlend=4
+		LockX=-32
+		LockY=-32
 		SagaSignature = 1
 		SignatureTechnique=3
 		NoSword=1
@@ -147,6 +179,11 @@ mob/proc/GrantGuardianItem(path)
 		StyleSpd=1.75
 		StyleOff=1.75
 		StyleDef=1.75
+		Finisher = "/obj/Skills/Queue/Finisher/Heavenly_Palm_Transcendence"
+		IconLock='GentleDivine.dmi'
+		IconLockBlend=4
+		LockX=-32
+		LockY=-32
 		SagaSignature = 1
 		SignatureTechnique=4
 		NoSword=1
