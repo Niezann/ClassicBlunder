@@ -4911,7 +4911,6 @@ mob
 					for(var/obj/Skills/AutoHit/Snowgrave/SG in src)
 						del SG
 				if(Z.HahaWhoops)
-					Z.RebirthLastUse=world.realtime
 					if(prob(50))
 						src.Target.HealHealth(Z.DamageMult)
 						for(var/mob/E in hearers(12,src))

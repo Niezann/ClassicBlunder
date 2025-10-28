@@ -179,13 +179,13 @@ obj/Skills/AutoHit
 			set category="Skills"
 			set name="Make It Count (Act 3)"
 			if(world.realtime < src.RebirthLastUse+(600*60*24*7))
-				usr << "You can only use this technique once every week."
+				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			if(usr.Health>25)
 				usr<<"You have to be below 25% health to use this!"
 				return
 			usr.Activate(src)
-			src.RebirthLastUse=world.realtime
+			src.RebirthLastUse=world.realtime + 24 HOURS
 			usr.TriggerAwakeningSkill(ActNumber)
 	Snowgrave
 		ElementalClass="Water"
@@ -224,10 +224,11 @@ obj/Skills/AutoHit
 			set category="Skills"
 			set name="Never See It Coming (Act 1)"
 			if(world.realtime < src.RebirthLastUse+(600*60*24))
-				usr << "You can only use this technique once every 24 hours."
+				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			RandomMult=rand(1,10)
 			DamageMult=RandomMult
+			src.RebirthLastUse=world.realtime + 24 HOURS
 			usr.Activate(src)
 			usr.TriggerAwakeningSkill(ActNumber)
 	PowerWordGenderDysphoria
@@ -252,14 +253,14 @@ obj/Skills/AutoHit
 			set category="Skills"
 			set name="Power Word: Gender Dysphoria (Act 2)"
 			if(world.realtime < src.RebirthLastUse+(600*60*72))
-				usr << "You can only use this technique once every 72 hours."
+				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			if(usr.Health>50)
 				usr<<"You can only use this at 50% health or below."
 				return
 			usr.Activate(src)
 			usr.TriggerAwakeningSkill(ActNumber)
-			src.RebirthLastUse=world.realtime
+			src.RebirthLastUse=world.realtime + 72 HOURS
 	Unleash
 		ManaCost=75
 		StrOffense=0
@@ -314,9 +315,9 @@ obj/Skills/AutoHit
 		verb/Banish()
 			set category="Skills"
 			if(world.realtime < src.RebirthLastUse+(600*60*168))
-				usr << "You can only use this technique once every week."
+				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
-			src.RebirthLastUse=world.realtime
+			src.RebirthLastUse=world.realtime + 168 HOURS
 			usr.Activate(src)
 	Burning_Up_Everything
 		StrOffense=0
@@ -459,13 +460,14 @@ obj/Skills/Queue
 			set category="Skills"
 			set name="Never Knows Best (Act 1)"
 			if(world.realtime < src.RebirthLastUse+(600*60*24))
-				usr << "You can only use this technique once every 24 hours."
+				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			if(usr.Health>75)
 				usr<<"You have to be below 75% health to use this!"
 				return
 			RandomMult=rand(1,70)
 			DamageMult=RandomMult/10
+			src.RebirthLastUse=world.realtime + 24 HOURS
 			usr.SetQueue(src)
 			usr.TriggerAwakeningSkill(ActNumber)
 	FistOfTheRedStar
@@ -486,11 +488,12 @@ obj/Skills/Queue
 			set category="Skills"
 			set name="Fist Of The Red Star (Act 2)"
 			if(world.realtime < src.RebirthLastUse+(600*60*72))
-				usr << "You can only use this technique once every 72 hours."
+				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			if(usr.Health>50)
 				usr<<"You have to be below 50% health to use this!"
 				return
+			src.RebirthLastUse=world.realtime + 72 HOURS
 			usr.SetQueue(src)
 			usr.TriggerAwakeningSkill(ActNumber)
 
@@ -517,12 +520,12 @@ obj/Skills/Utility
 			set category="Skills"
 			set name="Never Too Late (Act 1)"
 			if(world.realtime < src.RebirthLastUse+(600*60*24))
-				src << "You can only use this technique once every 24 hours."
+				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			if(usr.Health>75)
 				usr<<"You can't use this below 75% health!"
 				return
-			src.RebirthLastUse=world.realtime
+			src.RebirthLastUse=world.realtime + 24 HOURS
 			RandomMult=rand(1,25)
 			usr.DoDamage(usr, 10)
 			usr.HealHealth(RandomMult)
@@ -536,12 +539,12 @@ obj/Skills/Utility
 			set category="Skills"
 			set name="The Blue Experience (Act 2)"
 			if(world.realtime < src.RebirthLastUse+(600*60*72))
-				src << "You can only use this technique once every 3 days."
+				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			if(usr.Health>50)
 				usr<<"Can't use yet!"
 				return
-			src.RebirthLastUse=world.realtime
+			src.RebirthLastUse=world.realtime + 72 HOURS
 			usr.TriggerAwakeningSkill(ActNumber)
 			usr.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Blue_Experience)
 	Burning_Soul
@@ -553,12 +556,12 @@ obj/Skills/Utility
 			set category="Skills"
 			set name="Red Hot Rage (Act 3)"
 			if(world.realtime < src.RebirthLastUse+(600*60*24*7))
-				src << "You can only use this technique once every week."
+				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			if(usr.Health>25)
 				usr<<"Can't use below 25% health!"
 				return
-			src.RebirthLastUse=world.realtime
+			src.RebirthLastUse=world.realtime + 168  HOURS
 			usr.TriggerAwakeningSkill(ActNumber)
 			usr.buffSelf(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Burning_Soul)
 	SoulShift
@@ -751,12 +754,12 @@ obj/Skills/Projectile
 				set category="Skills"
 				set name="Final Chaos (Act 3)"
 				if(world.realtime < src.RebirthLastUse+(600*60*168))
-					src << "You can only use this technique once every week."
+					usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 					return
 				if(usr.Health>25)
 					usr<<"Can't use yet!"
 					return
-				src.RebirthLastUse=world.realtime
+				src.RebirthLastUse=world.realtime + 168 HOURS
 				usr.TriggerAwakeningSkill(ActNumber)
 				usr.UseProjectile(src)
 obj/Skills/Buffs

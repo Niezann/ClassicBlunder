@@ -1,4 +1,4 @@
-mob/Players/verb
+/*mob/Players/verb
 	Self_Potential_Boost(var/val as num|null)
 		set category="Test Server"
 		set name="Self Potential Boost"
@@ -28,7 +28,7 @@ mob/Players/verb
 		NewRPP-=usr.RPPSpent
 		if(NewRPP>=0)
 			usr.RPPSpendable=NewRPP
-			Log("Admin","[ExtractInfo(usr)] set [ExtractInfo(usr)]'s total RPP (Spent and Unused) from [Commas(OldRPP)] to [Commas(NewRPP)]. (RPP mult of x[EMult])")
+			Log("Admin","[ExtractInfo(usr)] set [ExtractInfo(usr)]'s total RPP (Spent and Unused) from [Commas(OldRPP)] to [Commas(NewRPP)]. (RPP mult of x[EMult])")*/
 atom/proc/Examined(mob/user)
 mob/Players/var/tmp/current_party_target_index = 1
 mob/Players/verb

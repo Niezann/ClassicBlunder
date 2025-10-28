@@ -67,7 +67,7 @@
 		return statDamage
 	var/endExtra = passive_handler.Get("CallousedHands")
 	if(endExtra>0)
-		statDamage += GetEnd(endExtra) 
+		statDamage += GetEnd(endExtra/5)
 	// there should only b one use case for this
 	var/full_effeciency = passive_handler.Get("FullyEffecient")
 	if(full_effeciency)
@@ -75,7 +75,7 @@
 			if((HasSpiritHand() || spirithand)&&unarmed)
 				if(spirithand < GetSpiritHand())
 					spirithand = GetSpiritHand()
-				statDamage += GetStr(spirithand/4) 
+				statDamage += GetStr(spirithand/4)
 			if((HasSpiritSword())&&sword)
 				statDamage += GetStr(GetSpiritSword())
 			if(HasHybridStrike())
@@ -91,7 +91,7 @@
 		statDamage += GetFor(GetSpiritSword())
 	if(HasHybridStrike())
 		statDamage *=  1 + (GetFor(GetHybridStrike())/10)
-	
+
 	return statDamage
 
 

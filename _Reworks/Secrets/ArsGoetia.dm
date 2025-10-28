@@ -7,22 +7,53 @@
 	var/DemonRevivalCD
 	var/GoetiaOwner
 	var/OwnerPassword
-/*	verb/Claim_Ownership() //unfinished
+	var/GoetiaNumber
+	verb/Claim_Ownership()
 		set name= "Ars Goetia: Claim Ownership"
 		set category = "Ars Goetia"
+		if(usr.ArsGoetiaOwner)
+			usr<<"You already own this and have no need to claim it."
+			return
 		if(!src.OwnerPassword)
-			var/Confirm=alert(usr, "You can choose to forcibly claim ownership of the Ars Goetia in exchange for incredible demonic magic, as well as a demonic True Name that will function as a password. However, should anyone else claim ownership over it, you will die, and if it's stolen from you, they will be told your true name. Do you wish to sign this pact?", "Claim Ownership", "Yes", "No")
+			var/Confirm=alert(usr, "You can choose to sell your soul to the Ars Goetia in exchange for incredible demonic magic, as well as a demonic True Name that will function as a password. However, should anyone else claim ownership over it, you will die, and if it's stolen from you, they will be know your true name. Do you wish to sign this pact? This is not required to summon or revive Demons.", "Claim Ownership", "Yes", "No")
 			if(Confirm=="Yes")
-				src.Owner=usr
+				if(usr.isRace(DEMON)||usr.isRace(ELDRITCH))
+					usr<<"Races native to the Depths cannot utilize or claim ownership over the Ars Goetia."
+					return
+				usr.TrueName=input(usr, "As the owner of the Ars Goetia, you have a True Name that functions as the password to open the book. It should be kept secret. What is your True Name?", "Get True Name") as text
+				src.GoetiaOwner=usr.TrueName
 				usr.ArsGoetiaOwner=1
-				user.TrueName=input(user, "As the owner of the Ars Goetia, you have a True Name. It should be kept secret. What is your True Name?", "Get True Name") as text
-				src.OwnerPassword=usr.name
-				user.client.updateCorruption()
-				user.demon.selectPassive(user, "CORRUPTION_PASSIVES", "Buff", TRUE)
-				user.demon.selectPassive(user, "CORRUPTION_DEBUFFS", "Debuff")
-		else*/
+				src.OwnerPassword=usr.TrueName
+				usr.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/DemonMagic/DarkMagic)
+				usr.passive_handler.Increase("Hellpower" = 0.25)
+				usr.client.updateCorruption()
+				usr.demon.selectPassive(usr, "CORRUPTION_PASSIVES", "Buff", TRUE)
+				usr.demon.selectPassive(usr, "CORRUPTION_DEBUFFS", "Debuff")
+		else
+			var/AGPass=input(usr,"You must know the True Name of the original owner to claim ownership.") as text
+			if(AGPass==src.OwnerPassword)
+				if(usr.isRace(DEMON)||usr.isRace(ELDRITCH))
+					usr<<"Races native to the Depths cannot claim ownership over the Ars Goetia."
+					return
+				for(var/mob/M in world)
+					if(AGPass==M.TrueName)
+						M.Death(src, "the Ars Goetia claiming their soul.")
+						src.BloodSacrifice++
+				usr.TrueName=input(usr, "As the owner of the Ars Goetia, you have a True Name that functions as the password to open the book. It should be kept secret. What is your True Name?", "Get True Name") as text
+				src.GoetiaOwner=usr.TrueName
+				usr.ArsGoetiaOwner=1
+				src.OwnerPassword=usr.TrueName
+				usr.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/DemonMagic/DarkMagic)
+				usr.passive_handler.Increase("Hellpower" = 0.25)
+				usr.client.updateCorruption()
+				usr.demon.selectPassive(usr, "CORRUPTION_PASSIVES", "Buff", TRUE)
+				usr.demon.selectPassive(usr, "CORRUPTION_DEBUFFS", "Debuff")
+			else
+				usr<<"You guessed incorrectly. The Ars Goetia doesn't appreciate intrusion."
+				return
+
 	verb/Blood_Sacrifice(mob/M in get_step(usr, usr.dir))
-		set name = "Blood Sacrifice"
+		set name = "Ars Goetia: Blood Sacrifice"
 		set category = "Ars Goetia"
 		if(!M.KO)
 			usr << "[M] needs to be KO'd!"
@@ -33,13 +64,17 @@
 			M.MortallyWounded+=1
 			M.DoDamage(M, 100)
 			M.TotalInjury+=85
+			M.HealthCut+=10
 			src.BloodSacrificeCD = world.realtime + 24 HOURS
 		else
 			usr << "You're on cooldown till [time2text(src.BloodSacrificeCD, "hh:ss") ]"
 	verb/Summon_Demon()
-		set name= "Summon Demon"
+		set name= "Ars Goetia: Summon Demon"
 		set category = "Ars Goetia"
 		var/mob/Choice
+		if(usr.isRace(DEMON)||usr.isRace(ELDRITCH))
+			usr<<"Races native to the Depths cannot utilize or claim ownership over the Ars Goetia."
+			return
 		if(src.Using)
 			return
 		if(!usr.Move_Requirements()||usr.KO)
@@ -67,9 +102,20 @@
 			var/Found=0
 			for(var/mob/Players/m in world)
 				if(m.TrueName==Invocation)
-					Found=1
-					Choice=m
-					break
+					if(m.isRace(MAKAIOSHIN))
+						usr<<"They are outside of your authority."
+						OMsg(usr, "[usr] attempted to invoke the True Name of something they have no authority over, causing magical backlash.")
+						usr.DoDamage(usr, 25)
+						src.Using=0
+						return
+					if(m.isRace(CELESTIAL))
+						usr<<"The demon they're connected to slumbers and cannot be awoken through mere magic alone."
+						src.Using=0
+						return
+					else
+						Found=1
+						Choice=m
+						break
 
 			if(!Found)
 				OMsg(usr, "[usr] invoked a True Name properly, but the being slumbers currently...")
@@ -96,8 +142,11 @@
 		src.Using=0
 		return
 	verb/Revive_Demon(mob/A in players)
-		set name= "Summon Demon"
+		set name= "Ars Goetia: Revive Demon"
 		set category = "Ars Goetia"
+		if(usr.isRace(DEMON)||usr.isRace(ELDRITCH))
+			usr<<"Races native to the Depths cannot utilize or claim ownership over the Ars Goetia."
+			return
 		if(src.Using)
 			return
 		if(!usr.Move_Requirements()||usr.KO)
@@ -115,7 +164,7 @@
 			A.Revive()
 			src.BloodSacrifice-=3
 			src<<"You have [src.BloodSacrifice] sacrifices left stored in the Ars Goetia."
-			OMsg(usr, "INSERT COOL FLAVOR TEXT HERE")
+			OMsg(usr, "The Ars Goetia floods [A] with stored up blood, bringing them back from the dead.")
 			src.Using=0
 			src.DemonRevivalCD=world.realtime+Day(1)
 		else
