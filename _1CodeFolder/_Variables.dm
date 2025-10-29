@@ -202,6 +202,7 @@ mob/var
 	NoRevert=0 //Transformations don't revert.
 	NoVoid //YOU THOUGHT YOU WERE GONNA VOID, BITCH?!
 	NoDeath=0 //it means no worries...for the rest of your daaaays
+	Damned=0
 
 
 	Warping//You forcewarp.

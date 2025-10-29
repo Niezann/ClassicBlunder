@@ -713,6 +713,9 @@ mob
 					if(defender.client)
 						var/obj/Items/Sword/Medium/Legendary/WeaponSoul/Blade_of_Ruin/bor=EquippedSword()
 						bor.onKill(src, defender)
+				if(src.IsRace(DEMON)||src.oozaru_type=="Demonic"&&src.TransActive)
+					defender<<"Your soul has been irrevocably corrupted, a peaceful afterlife eternally torn from you."
+					defender.Damned=1
 				defender.Death(src, null)
 
 			return val
