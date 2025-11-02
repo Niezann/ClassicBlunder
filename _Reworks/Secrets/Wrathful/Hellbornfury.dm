@@ -23,11 +23,11 @@ scaling with potential as well
 	AutoAnger = 1
 	adjust(mob/p)
 		if(altered) return
-		passives = list("AutoAnger" = 1, "Instinct" = 1, "Flow" = 1, \
-						"LikeWater" = 1 + round(p.Potential/25,1), "Meaty Paws" = round(p.Potential/20,1), "AbyssMod" = round(p.Potential/40,1))
-		StrMult = 1.1 + (p.Potential/150)
-		ForMult = 1.1 + (p.Potential/150)
-		OffMult = 1.2 + p.Potential/200
+		passives = list("AutoAnger" = 1, "Instinct" = 2, \
+						"LikeWater" = 1 + round(p.Potential/25,1), "AbyssMod" = round(p.Potential/40,1))
+		StrMult = 1.15 + (p.Potential/150)
+		ForMult = 1.15 + (p.Potential/150)
+		OffMult = 1.15 + (p.Potential/200)
 		PowerMult = 1.05 + (p.Potential/200)
 	Trigger(mob/User, Override=FALSE)
 		adjust(User)
@@ -48,9 +48,10 @@ scaling with potential as well
 		if(altered) return
 		passives = list("AutoAnger" = 1, \
 						"LikeWater" = 2 + round(p.Potential/25,1), "Flicker" = 1, "Pursuer" = 1,  "BuffMastery" = 1.5, "PureDamage" = 1, \
-						"Meaty Paws" = round(p.Potential/20,1), "Instinct" = 2, "Flow" = 2 , "AbyssMod" = round(p.Potential/30,1))
-		StrMult = 1.2 + (p.Potential/100)
-		ForMult = 1.2 + (p.Potential/100)
+						"Instinct" = 3, "AbyssMod" = round(p.Potential/30,1))
+		StrMult = 1.25 + (p.Potential/100)
+		ForMult = 1.25 + (p.Potential/100)
+		OffMult = 1.25 + (p.Potential/200)
 		PowerMult = 1.075 + (p.Potential/200)
 		if(p.Potential>=100)
 			passives["Wrathful"] = 1
@@ -71,12 +72,12 @@ scaling with potential as well
 	adjust(mob/p)
 		if(altered) return
 		passives = list("AutoAnger" = 1, "AngerAdaptiveForce" = round(p.Potential/100), \
-						"Powerhouse" = 1 + (p.Potential/75), "Instinct" = 3, "Flow" = 3, "Flicker" = 2, "Pursuer" = 2, "BuffMastery" = 2, "PureDamage" = 2, "AbyssMod" = round(p.Potential/20,1))
-		StrMult = 1.3 + (p.Potential/50)
-		ForMult = 1.3 + (p.Potential/50)
+						"Powerhouse" = 1 + (p.Potential/75), "Instinct" = 4, "Flicker" = 2, "Pursuer" = 2, "BuffMastery" = 2, "PureDamage" = 2, "AbyssMod" = round(p.Potential/20,1))
+		StrMult = 1.35 + (p.Potential/50)
+		ForMult = 1.35 + (p.Potential/50)
+		OffMult = 1.35 + (p.Potential/50)
 		PowerMult = 1.1 + (p.Potential/150)
 		EnergyHeal = 0.005 * p.Potential
-		VaizardHealth = (10 * (p.Potential/100))
 		if(p.Potential>=75)
 			passives["Wrathful"] = 1
 	Trigger(mob/User, Override=FALSE)
@@ -94,12 +95,12 @@ scaling with potential as well
 	adjust(mob/p)
 		if(altered) return
 		passives = list("AutoAnger" = 1, "AngerAdaptiveForce" = round(p.Potential/100), \
-						"Powerhouse" = 2 + (p.Potential/25), "Instinct" = 4, "Flow" = 4, "Flicker" = 3, "Pursuer" = 3, "BuffMastery" = 3, "PureDamage" = 2.5, "AbyssMod" = round(p.Potential/15,1))
-		StrMult = 1.4 + (p.Potential/30)
-		ForMult = 1.4 + (p.Potential/30)
+						"Powerhouse" = 2 + (p.Potential/25), "Instinct" = 5, "Flicker" = 3, "Pursuer" = 3, "BuffMastery" = 3, "PureDamage" = 2.5, "AbyssMod" = round(p.Potential/15,1))
+		StrMult = 1.45 + (p.Potential/30)
+		ForMult = 1.45 + (p.Potential/30)
+		OffMult = 1.45 + (p.Potential/30)
 		PowerMult = 1.2 + (p.Potential/75)
 		EnergyHeal = 0.01 * p.Potential
-		VaizardHealth = (10 * (p.Potential/100))
 		if(p.Potential>=50)
 			passives["Wrathful"] = 1
 	Trigger(mob/User, Override=FALSE)

@@ -988,6 +988,8 @@ mob
 			src.Anger=0
 			race.onCalm(src)
 			src.AngerCD=5
+			if(src.oozaru_type=="Demonic")
+				src.AngerCD=0 //hopefully this won't affect anything other than their buff not reapplying anger when the last stage deactivates
 		AddHealthCut(var/Val)
 			src.HealthCut+=Val
 			if(src.HealthCut>=1)

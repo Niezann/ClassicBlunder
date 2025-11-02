@@ -23,7 +23,7 @@ proc
 			DebuffIntensity /= glob.ITEM_DEBUFF_APPLY_NERF
 		if(sord && sord.Element)
 			attackElements |= sord.Element
-			DebuffIntensity /= glob.ITEM_DEBUFF_APPLY_NERF // 4 
+			DebuffIntensity /= glob.ITEM_DEBUFF_APPLY_NERF // 4
 		if(sord2)
 			attackElements |= sord2.Element
 			DebuffIntensity /= glob.ITEM_DEBUFF_APPLY_NERF * 1.25
@@ -44,6 +44,11 @@ proc
 		var/DamageMod=0
 		for(var/element in attackElements)
 			var/DebuffRate=GetDebuffRate(element, Defense, ForcedDebuff)
+			var/CelestialDebuffRate=1
+			if(Attacker.isRace(CELESTIAL))
+				CelestialDebuffRate=0.2*(Attacker.AscensionsAcquired+1)
+				if(CelestialDebuffRate>1)
+					CelestialDebuffRate=1
 			if(Attacker.SenseUnlocked>5&&Attacker.SenseUnlocked>Attacker.SenseRobbed)
 				DebuffRate+=10*(Attacker.SenseUnlocked-5)
 			if(Defender.HasDebuffResistance())
@@ -142,9 +147,9 @@ proc
 			if(!damageOnly&&prob(DebuffRate))
 				switch(element)
 					if("HellFire")
-						Defender.AddPoison(2*DebuffIntensity*glob.POISON_INTENSITY, Attacker)
-						Defender.AddBurn(3*DebuffIntensity*glob.BURN_INTENSITY, Attacker)
-						Defender.AddShearing(4*DebuffIntensity, Attacker)
+						Defender.AddPoison(2*DebuffIntensity*glob.POISON_INTENSITY*CelestialDebuffRate, Attacker)
+						Defender.AddBurn(3*DebuffIntensity*glob.BURN_INTENSITY*CelestialDebuffRate, Attacker)
+						Defender.AddShearing(4*DebuffIntensity*CelestialDebuffRate, Attacker)
 					if("Felfire")
 						Defender.AddBurn(2*DebuffIntensity*glob.BURN_INTENSITY, Attacker)
 						Defender.AddShatter(2*DebuffIntensity*glob.SHATTER_INTENSITY, Attacker)

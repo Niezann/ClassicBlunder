@@ -197,6 +197,9 @@ mob/proc/Void(override, zombie, forceVoid, extraChance = 0, extraRolls = 0)
 			else
 				src<<"You sustain the injuries detailed in your death -- as the pain fades, you awaken in the afterlife. Alone, but not for long."
 				src.loc=locate(glob.DEATH_LOCATION[1], glob.DEATH_LOCATION[2], glob.DEATH_LOCATION[3])
+				if(src.isRace(DEMON, ELDRITCH)||src.Damned||src.Secret=="Eldritch")
+					src.Damned=0
+					src.loc=locate(198, 238, 8)
 				if(istype(src, /mob/Players/))
 					ArchiveSave(src)
 				Dead = 1

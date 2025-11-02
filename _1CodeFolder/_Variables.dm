@@ -632,6 +632,7 @@ mob/var
 	HellspawnTimer
 
 	ArsGoetiaOwner
+	GoetiaContacted
 
 /proc/reduceGodKi(mob/player, num)
 	player.GodKi -= num

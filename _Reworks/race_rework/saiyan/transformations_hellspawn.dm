@@ -10,7 +10,7 @@ transformation
 			form_glow_x = -32
 			form_glow_y = -32
 			unlock_potential = 55
-			passives = list("Instinct" = 2, "Flow" = 2, "Flicker" = 1, "Pursuer" = 3,  "BuffMastery" = 4, "PureDamage" = 3)
+			passives = list("Instinct" = 3, "Flicker" = 1, "Pursuer" = 3,  "BuffMastery" = 4, "PureDamage" = 3, "Unstoppable"=1)
 			angerPoint = 75
 			PUSpeedModifier = 1.5
 
@@ -99,7 +99,7 @@ transformation
 
 			mastery_boons(mob/user)
 				passives = list("GiantForm" = 1, "Juggernaut" = 1+(mastery/25), "BuffMastery" = 5 + (mastery/10), "SweepingStrike" = 1, "Brutalize" = 3, "Meaty Paws" = 2 + (mastery/50), "KiControlMastery" = 3 + (mastery/50), "PureReduction" = 5 + (mastery/10),\
-				"LifeGeneration" = 1 + (mastery/15), "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.1 + (mastery/200), "Flow" = 4, "Instinct" = 4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20))
+				"LifeGeneration" = 1 + (mastery/15), "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.1 + (mastery/200), "Instinct" = 5, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20))
 				speed = 1.5 + (mastery/200)
 				endurance = 1.5 + (mastery/200)
 				offense = 1.5 + (mastery/200)

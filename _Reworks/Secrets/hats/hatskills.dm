@@ -60,9 +60,9 @@
 		set category="Skills"
 		usr.SetQueue(src)
 
-#define GOETIC_HELL_X 100
-#define GOETIC_HELL_Y 100
-#define GOETIC_HELL_Z 12
+#define GOETIC_HELL_X 198
+#define GOETIC_HELL_Y 238
+#define GOETIC_HELL_Z 8
 
 /obj/Skills/Buffs/SlotlessBuffs/Hats/SufferInHellWithNoHoes
 	WarpZone=1
