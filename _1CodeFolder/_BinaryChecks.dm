@@ -2558,12 +2558,30 @@ mob
 				if(S.ExtraClass&&S.Class=="Light")
 					Found+=1
 			return Found
+		BonusParry()
+			var/Found=0
+			var/obj/Items/Sword/S=src.EquippedSword()
+			if(!S) return 0
+			if(S)
+				if(S.ExtraClass&&S.Class=="Medium")
+					Found+=0.5
+			return Found
+
 		UsingGladiator()
 			var/Found=0
 			if(src.StyleActive=="Sword Savant")
 				Found+=0.25 + (0.125 * SagaLevel)
 			if(passive_handler["Disarm"])
 				Found = passive_handler["Disarm"]
+			return Found
+		UsingHalfSword()
+			var/Found=0
+			var/obj/Items/Sword/S=src.EquippedSword()
+			if(!S) return 0
+			Found += passive_handler.Get("Half-Sword")
+			if(S)
+				if(S.ExtraClass&&S.Class=="Heavy")
+					Found+=0.5
 			return Found
 		UsingFTG()
 			return passive_handler["Flying Thunder God"]

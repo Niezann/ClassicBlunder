@@ -241,7 +241,7 @@
 			var/mob/Players/selector=input("Select a demon to contact.") in who||null
 			if(selector=="Cancel")
 				return
-			usr.TwoWayTelepath(selector, 1)
+			usr.TwoWayTelepath(selector, 0)
 			Choice.GoetiaContacted=1
 /*	verb/Change_Scent()
 		set category = "Ars Goetia"

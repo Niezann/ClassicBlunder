@@ -16,6 +16,7 @@ race
 		anger = 1
 		intellect = 1.5
 		imagination = 0.67
+		skills = list(/obj/Skills/Utility/Telepathy, /obj/Skills/Teleport/Traverse_Depths,/obj/Skills/Buffs/SpecialBuffs/FadeIntoShadows)
 
 		onFinalization(mob/user)
 			..()

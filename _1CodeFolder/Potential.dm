@@ -64,7 +64,7 @@ mob
 
 			src.potential_max()
 
-			if(src.Potential>=15)
+			if(src.Potential>=10)
 				if(passive_handler.Get("KiControlMastery")<1)
 					passive_handler.Set("KiControlMastery", 1)
 

@@ -1625,6 +1625,45 @@ NEW VARIABLES
 					usr.passive_handler.Set("Kaioken", 0)
 				usr.Auraz("Remove")
 				src.Trigger(usr)
+		FadeIntoShadows
+			IconTint=list(0,0,0, 0,0,0, 0,0,0, 0,0,0)
+			passives = list("Nightmare" = 1, "PULock" = 1)
+			AllowedPower=0.5
+		//	DarkChange=1
+			Invisible=20
+			IconTransform = 'mist.dmi'
+			verb/Fade_Into_Shadows()
+				set category="Roleplay"
+				src.Trigger(usr)
+			verb/All_Seeing_Eyes()
+				set category="Roleplay"
+				var/list/who=list("Cancel")
+				for(var/mob/Players/M in view(50, usr))
+					who.Add(M)
+				for(var/mob/W in view(50, usr))
+					if(W.AdminInviso)
+						who.Remove(W)
+					if(usr.HasJagan()&&W.z==usr.z)
+						continue
+					if(W.z == ArcaneRealmZ)
+						who.Remove(W)
+					if(!usr.HasSpiritPower() && !usr.HasEmptyGrimoire())
+						if(!(locate(W.EnergySignature) in usr.EnergySignaturesKnown))
+							who.Remove(W)
+					if(W.HasGodKi() && !usr.HasGodKi())
+						who.Remove(W)
+					if(W.invisibility)
+						who.Remove(W)
+				var/mob/Players/selector=input("Who do you want to observe?","Observe")in who||null
+				if(selector=="Cancel")
+					Observify(usr,usr)
+					usr.Observing=0
+					return
+				else
+					Observify(usr,selector)
+					if(prob(10))
+						selector << "Nobody is watching you. But some<b>thing</b> might be."
+					usr.Observing=1
 		Rekkaken
 			SignatureTechnique=3
 			UnrestrictedBuff=1

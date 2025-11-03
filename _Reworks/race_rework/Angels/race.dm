@@ -34,6 +34,7 @@ race
 						if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Selfless_State, user))
 							var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Selfless_State
 							user.AddSkill(s)
+							user.AddSkill(/obj/Skills/Utility/Mentor_System)
 							user << "You have embarked upon the path of true martial arts mastery: Ultra Instinct."
 							user.Secret="Ultra Instinct"
 							user.UILevel=1

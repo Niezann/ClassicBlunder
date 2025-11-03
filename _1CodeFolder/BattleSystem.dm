@@ -121,8 +121,8 @@ mob/proc/Unconscious(mob/P,var/text)
 			src.OMessage(15,"[src] is knocked out by [text]!","<font color=red>[src]([src.key]) is knocked out by [text]")
 	if(src.AwakeningSkillUsed)
 		src.AwakeningSkillUsed=0
-	var/HellspawnOdds=(10+(src.TotalInjury-50))/(src.Potential/20)//less likely the further you are from 20 pot without outright disabling it before then
-	if(src.oozaru_type=="Demonic" && src.TotalInjury>=50&&prob(HellspawnOdds)&&src.transUnlocked<1)
+	var/HellspawnOdds=(10+(src.TotalInjury-40))/(src.Potential/20)//less likely the further you are from 20 pot without outright disabling it before then
+	if(src.oozaru_type=="Demonic" && src.TotalInjury>=40&&prob(HellspawnOdds)&&src.transUnlocked<1&&!src.HellspawnBerserk)
 		src.OMessage(15,"...you thought it was over? You thought you had hope?","<font color=red>[src]([src.key]) awakens.")
 		src.RPModeSwitch() //gives them time to post
 		src.KO=0

@@ -240,8 +240,8 @@ obj/Skills
 		proc
 			Activate(var/mob/User)
 				if(src.type==/obj/Skills/Teleport/Traverse_Underworld&&User.Saga!="Cosmo")
-					src.TeleportMessage="bends their godly energy to traverse mortality!"
-					src.ArriveMessage="arrives with a flux of godly energy!"
+					src.TeleportMessage="bends their demonic energy to traverse mortality!"
+					src.ArriveMessage="arrives with a flux of demonic energy!"
 				if(src.NoPassengers)
 					if(usr.Grab)
 						usr << "You can't use [src] while having someone grabbed!"
@@ -340,7 +340,7 @@ obj/Skills
 					Modes.Add("Traverse Underworld")
 				if(src.DepthsWarp)
 					Modes.Add("Traverse Depths")
-					Modes.Add("Traverse Underworld")
+				//	Modes.Add("Traverse Underworld")
 
 				if(Modes.len==2)
 					Modes.Remove("Cancel")

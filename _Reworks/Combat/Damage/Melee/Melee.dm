@@ -761,8 +761,8 @@
 									p.Target = enemy
 									enemy.vis_contents += p
 									flick("parry", p)
-									damage /= enemy.passive_handler["Parry"] * glob.PARRY_REDUCTION_MULT
-									enemy.Melee1(dmgmulti = (glob.PARRY_BASE_DMG * enemy.passive_handler["Parry"]), forcedTarget=src, hitback=hitback+1) // this does mean that they will hit from no matter the range if hit by melee
+									damage /= (enemy.passive_handler["Parry"]+enemy.BonusParry()) * glob.PARRY_REDUCTION_MULT
+									enemy.Melee1(dmgmulti = (glob.PARRY_BASE_DMG * (enemy.passive_handler["Parry"]+enemy.BonusParry())), forcedTarget=src, hitback=hitback+1) // this does mean that they will hit from no matter the range if hit by melee
 							if(enemy.passive_handler["Iaijutsu"])
 								if(prob(enemy.passive_handler["Iaijutsu"] * glob.IAI_CHANCE) && hitback <= glob.MAX_CHAIN_PARRY)
 									var/obj/Effects/Iai/p = new()
@@ -775,8 +775,8 @@
 								enemy.TriggerPerfectCounter(src) // i cant actually test this
 							if(defArmor&&!passive_handler.Get("ArmorPeeling"))
 								var/dmgEffective = enemy.GetArmorDamage(defArmor)
-								if(passive_handler["Half-Sword"])
-									dmgEffective -= passive_handler["Half-Sword"] * glob.HALF_SWORD_ARMOR_REDUCTION
+								if(UsingHalfSword())
+									dmgEffective -= UsingHalfSword() * glob.HALF_SWORD_ARMOR_REDUCTION
 								if(dmgEffective>0)
 									damage -=  damage * dmgEffective/10
 								else
@@ -785,8 +785,8 @@
 								log2text("damage", "After Armor", "damageDebugs.txt", "[ckey]/[name]")
 								log2text("damage", damage, "damageDebugs.txt", "[ckey]/[name]")
 								#endif
-							if(passive_handler["Half-Sword"] && !defArmor)
-								damage += damage * (passive_handler["Half-Sword"]/glob.HALF_SWORD_UNARMOURED_DIVISOR)
+							if(UsingHalfSword() && !defArmor)
+								damage += damage * (UsingHalfSword()/glob.HALF_SWORD_UNARMOURED_DIVISOR)
 							damage *= glob.GLOBAL_MELEE_MULT
 							#if DEBUG_MELEE
 							log2text("Damage", "After Global Multiplier", "damageDebugs.txt", "[ckey]/[name]")

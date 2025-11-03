@@ -6141,16 +6141,16 @@ obj
 				var/obj/Items/Armor/WearingArmor=src.Owner.EquippedArmor()
 				if(HittingArmor)//Reduced damage
 					var/dmgEffective = m.GetArmorDamage(HittingArmor)
-					if(Owner.passive_handler["Half-Sword"])
-						dmgEffective -= Owner.passive_handler["Half-Sword"] * glob.HALF_SWORD_ARMOR_REDUCTION
+					if(Owner.UsingHalfSword())
+						dmgEffective -= Owner.UsingHalfSword() * glob.HALF_SWORD_ARMOR_REDUCTION
 					if(dmgEffective>0)
 						FinalDmg -=  FinalDmg * dmgEffective/10
 					else
 						FinalDmg += FinalDmg * abs(dmgEffective/10)
 					Owner.log2text("FinalDmg - Auto Hit", "After HittingArmor", "damageDebugs.txt", "[Owner.ckey]/[Owner.name]")
 					Owner.log2text("FinalDmg - Auto Hit", FinalDmg, "damageDebugs.txt", "[Owner.ckey]/[Owner.name]")
-				if(Owner.passive_handler["Half-Sword"] && !HittingArmor)
-					FinalDmg += FinalDmg * (Owner.passive_handler["Half-Sword"]/glob.HALF_SWORD_UNARMOURED_DIVISOR)
+				if(Owner.UsingHalfSword() && !HittingArmor)
+					FinalDmg += FinalDmg * (Owner.UsingHalfSword()/glob.HALF_SWORD_UNARMOURED_DIVISOR)
 
 				if(WearingArmor)//Reduced delay and accuracy
 					Precision*=src.Owner.GetArmorAccuracy(WearingArmor)
