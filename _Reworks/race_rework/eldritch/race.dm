@@ -7,11 +7,11 @@ race
 		passives = list("VenomResistance" = 0.25, "Void" = 1, "SoulFire" = 0.25, "DeathField" = 0.5, "VoidField" = 0.5)
 		locked = TRUE
 		strength = 1.5
-		endurance = 2
-		speed = 1
+		endurance = 2.25
+		speed = 1.5
 		force = 1.5
 		offense = 1.5
-		defense = 1.5
+		defense = 1.75
 		regeneration = 2.5
 		anger = 1
 		intellect = 1.5

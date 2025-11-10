@@ -70,7 +70,7 @@ ascension
 						//power = 1.5
 						force= 0.25
 						endurance = 0.5
-						passives = list("Spirit Flow" = 0.25, "HybridStrike" = 0.25, "QuickCast"=1)
+						passives = list("SpiritFlow" = 0.25, "HybridStrike" = 0.25, "QuickCast"=1)
 						recovery = 0.25
 					if("Warrior")
 						//power = 2

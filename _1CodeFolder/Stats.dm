@@ -818,6 +818,9 @@ mob/proc/
 		if(passive_handler["Incomplete"])
 			IncompleteRatio=1-(passive_handler["Incomplete"]*0.5)
 			Ratio*=IncompleteRatio
+		if(passive_handler["Holding Back"])
+			IncompleteRatio=passive_handler["Holding Back"]
+			Ratio/=IncompleteRatio
 		Power=Ratio*GetPowerUpRatio()
 
 		if(Power < 1)

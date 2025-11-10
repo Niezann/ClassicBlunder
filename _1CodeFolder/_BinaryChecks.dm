@@ -2236,6 +2236,8 @@ mob
 				return 1
 			if(passive_handler.Get("Curse"))
 				return 1
+			if(HellspawnBerserk)
+				return 1
 			return 0
 		SwordWounds()
 			for(var/obj/Items/Sword/s in src)

@@ -222,6 +222,7 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 /mob/proc/drainTransformations(trans, transMastery)
 	// TRANS / TRANSMASTERY FOR CHANGIE 4TH FORM
 	var/drain
+
 	if(trans && transMastery <= 75)
 		drain = round(30 - ((transMastery - 5) * 30) / (75 - 5), 1)
 		if(drain < 0)
@@ -245,16 +246,7 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 	if(Lethal-- <= 0 && Lethal)
 		Lethal = 0
 		OMsg(src, "<font color='grey'>[src] will no longer deal lethal damage.</font color>")
-	if(HellspawnTimer)
-		HellspawnTimer--
-	if(HellspawnTimer-- <= 0 && HellspawnTimer)
-		HellspawnTimer = 0
-		src.passive_handler.Decrease("Cursed Wounds")
-		OMsg(src, "<font color='grey'>[src] is no longer posessed by that thing.</font color>")
-		if(HellspawnBerserk)
-			HellspawnBerserk=0
-			Energy=0
-			Health=-1
+
 	// Move this to a different loop, most likely
 
 	if(TsukiyomiTime-- <= 0 && TsukiyomiTime)
@@ -358,6 +350,7 @@ mob
 			// 	calmcounter=5
 			// 	if(Anger)
 			// 		src.Calm()
+
 
 			if(MovementCharges < GetMaxMovementCharges())
 				MovementChargeBuildUp()
@@ -506,6 +499,15 @@ mob
 			if(passive_handler["Grit"])
 				AdjustGrit("sub", glob.racials.GRITSUBTRACT)
 			if((isRace(SAIYAN) || isRace(HALFSAIYAN))&&transActive>0)
+				if(HellspawnBerserk)
+					HellspawnTimer-=1
+				if(HellspawnTimer <= 0 && HellspawnBerserk)
+					HellspawnTimer = 0
+					OMsg(src, "<font color='grey'>[src] is no longer posessed by that thing.</font color>")
+					if(HellspawnBerserk)
+						Unconscious(src, "the power of the Depths leaving their body.")
+						Health=-1
+
 				var/cut_off = 0
 				var/drain = 0
 				if(race.transformations[transActive].mastery<100)

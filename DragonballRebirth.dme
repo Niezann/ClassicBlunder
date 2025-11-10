@@ -467,6 +467,7 @@
 #include "_Reworks\race_rework\Namekian\namekRacials.dm"
 #include "_Reworks\race_rework\Namekian\race.dm"
 #include "_Reworks\race_rework\Namekian\transformations.dm"
+#include "_Reworks\race_rework\Popo\ascensions.dm"
 #include "_Reworks\race_rework\Popo\race.dm"
 #include "_Reworks\race_rework\saiyan\ascensions.dm"
 #include "_Reworks\race_rework\saiyan\race.dm"

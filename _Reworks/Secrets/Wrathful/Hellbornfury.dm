@@ -20,7 +20,6 @@ scaling with potential as well
 	TooLittleInjury=4
 	EndMult = 1
 	StrMult = 1
-	AutoAnger = 1
 	adjust(mob/p)
 		if(altered) return
 		passives = list("CalmAnger" = 1, "Instinct" = 2, "PureDamage" = 1.5,\
@@ -30,6 +29,7 @@ scaling with potential as well
 		ForMult = 1.15 + (p.Potential/150)
 		OffMult = 1.15 + (p.Potential/200)
 		PowerMult = 1.05 + (p.Potential/200)
+		AutoAnger=0
 	Trigger(mob/User, Override=FALSE)
 		adjust(User)
 		..()
@@ -43,7 +43,6 @@ scaling with potential as well
 	NeedsInjury=15
 	InjuryThreshold=24
 	TooLittleInjury=14
-	AutoAnger = 1
 	BuffName = "Hellspawn"
 	adjust(mob/p)
 		if(altered) return
@@ -54,6 +53,7 @@ scaling with potential as well
 		ForMult = 1.25 + (p.Potential/100)
 		OffMult = 1.25 + (p.Potential/200)
 		PowerMult = 1.075 + (p.Potential/200)
+		AutoAnger=0
 		if(p.Potential>=100)
 			passives["Wrathful"] = 1
 	Trigger(mob/User, Override=FALSE)
@@ -68,7 +68,6 @@ scaling with potential as well
 	NeedsInjury=25
 	TooLittleInjury=24
 	InjuryThreshold=39
-	AutoAnger = 1
 	BuffName = "True Hellspawn"
 	adjust(mob/p)
 		if(altered) return
@@ -80,6 +79,7 @@ scaling with potential as well
 		OffMult = 1.35 + (p.Potential/50)
 		PowerMult = 1.1 + (p.Potential/150)
 		EnergyHeal = 0.005 * p.Potential
+		AutoAnger=0
 		if(p.Potential>=75)
 			passives["Wrathful"] = 1
 	Trigger(mob/User, Override=FALSE)
@@ -92,7 +92,6 @@ scaling with potential as well
 	//injury
 	NeedsInjury=41
 	TooLittleInjury=40
-	AutoAnger = 1
 	BuffName = "Herald of the Depths"
 	adjust(mob/p)
 		if(altered) return
@@ -103,6 +102,7 @@ scaling with potential as well
 		OffMult = 1.45 + (p.Potential/30)
 		PowerMult = 1.2 + (p.Potential/75)
 		EnergyHeal = 0.01 * p.Potential
+		AutoAnger=0
 		if(p.Potential>=50)
 			passives["Wrathful"] = 1
 	Trigger(mob/User, Override=FALSE)

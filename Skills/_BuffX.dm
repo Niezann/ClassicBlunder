@@ -939,7 +939,13 @@ NEW VARIABLES
 				Stop_Cultivation()
 				source.GatesActive = 0
 			proc/setUpGateVars(mob/p, num)
-
+				for(var/obj/Skills/Buffs/ActiveBuffs/Ki_Control/KC in p)
+					IconLock=KC.IconLock
+					LockX=KC.LockX
+					LockY=KC.LockY
+					AuraLock=KC.AuraLock
+					AuraX=KC.AuraX
+					AuraY=KC.AuraY
 			/*	if(altered) return
 				SuperDash=0
 				FatigueHeal=0
@@ -1093,6 +1099,9 @@ NEW VARIABLES
 				if(usr.GatesActive > 8 || usr.GatesActive > min(8,usr.SagaLevel+1))
 					usr<<"You can't do that!!"
 					return
+				if(usr.GatesActive==1)
+					usr.Auraz("Add")
+
 				handleGates(usr, TRUE)
 
 			verb/Stop_Cultivation()
@@ -1105,6 +1114,7 @@ NEW VARIABLES
 					usr << "You can't close the Gates because they aren't open!!"
 				else if(usr.GatesActive)
 					usr.GatesActive=0
+					usr.Auraz("Remove")
 
 
 

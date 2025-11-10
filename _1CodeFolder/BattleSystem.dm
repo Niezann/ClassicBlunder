@@ -125,7 +125,7 @@ mob/proc/Unconscious(mob/P,var/text)
 
 	if(src.oozaru_type=="Demonic" && src.TotalInjury>=40&&prob(HellspawnOdds)&&src.transUnlocked<1&&!src.HellspawnBerserk&&!src.HellspawnBerserking||src.ForcedHellspawn&&!src.HellspawnBerserk&&!src.HellspawnBerserking)
 
-		src.RPModeSwitch() //gives them time to post
+		src.HellspawnTimer=360
 		src.ForcedHellspawn=0
 		src.KO=0
 		src.Health=60
@@ -139,13 +139,11 @@ mob/proc/Unconscious(mob/P,var/text)
 		src.race.transformations[1].transform(src, TRUE)
 		src.OMessage(15,"<b>HOW INTERESTING THAT YOU CONTINUE TO MISUNDERSTAND WHAT'S AT STAKE HERE.</b>","<font color=red>[src]([src.key]) heralds the end..")
 		src.HellspawnBerserk=1
-		src.passive_handler.Increase("Cursed Wounds")
-		src.HellspawnTimer=360
 		src.Health=30
+		src.RPModeSwitch()
 		return
 	if(src.HellspawnBerserk)
 		src.HellspawnBerserk=0
-		src.passive_handler.Decrease("Cursed Wounds")
 		src.HellspawnTimer=0
 		src.TotalInjury=85
 	if(src.GatesActive==8 && src.Gate8Getups<2)
@@ -562,6 +560,7 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 		if(src.isRace(DEMON, ELDRITCH)||src.Damned||src.Secret=="Eldritch")
 			src.Damned=0
 			src.loc=locate(198, 238, 8)
+			return
 
 	if(src.client)
 		Void(SuperDead, Zombie, fakeDeath, 0)

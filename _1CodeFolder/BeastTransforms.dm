@@ -33,7 +33,7 @@
 	DefMult = 0.1
 	PowerMult=1.2
 	AutoAnger = 0
-	TimerLimit = 180
+	TimerLimit = 360
 	verb/Moon_Toggle()
 		set category="Other"
 		if(!(world.time > usr.verb_delay)) return
@@ -59,22 +59,22 @@
 				StrMult = 1.2
 				ForMult = 1.15
 				EndMult = 1.2
-				SpdMult = 0.3
+				SpdMult = 0.5
 				OffMult = 0.8
 			if("Enlightened")
 				StrMult = 1.2
 				ForMult = 1.2
 				EndMult = 1.2
-				SpdMult = 0.3
+				SpdMult = 0.5
 				OffMult = 1.2
-				TimerLimit = 360
+				TimerLimit = 720
 			if("Instinctual")
 				passives["Flow"] = 1
 				passives["Instinct"] = 1
 				StrMult = 1.2
 				ForMult = 1.2
 				EndMult = 1.2
-				SpdMult = 0.4
+				SpdMult = 0.7
 				OffMult = 1.4
 			if("Demonic")
 				IconTransform = 'DTRed.dmi'
@@ -82,7 +82,6 @@
 				TransformY = 0
 				StrMult = 1.25
 				ForMult = 1.25
-				SpdMult = 0.75
 				OffMult = 1.4
 				TimerLimit = 720
 		if(p.Potential > OOZARU_POTENTIAL_TRANS)
@@ -98,11 +97,11 @@
 			StrMult = 1.5
 			ForMult = 1.5
 			EndMult = 1.5
-			SpdMult = 0.5
+			SpdMult = 0.9
 			OffMult = 1.5
-			TimerLimit = 1200
+			TimerLimit = 2400
 			if(p.oozaru_type=="Demonic")
-				TimerLimit = 2400
+				TimerLimit = 4800
 			VaizardHealth = 1 + (p.AscensionsAcquired/1.5)
 			VaizardShatter = 1
 			PowerMult = 1.5

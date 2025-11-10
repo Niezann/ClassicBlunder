@@ -45,7 +45,7 @@ proc
 		for(var/element in attackElements)
 			var/DebuffRate=GetDebuffRate(element, Defense, ForcedDebuff)
 			var/CelestialDebuffRate=1
-			if(Attacker.isRace(CELESTIAL))
+			if(Attacker.isRace(CELESTIAL, DEMON, MAKAIOSHIN))
 				CelestialDebuffRate=0.2*(Attacker.AscensionsAcquired+1)
 				if(CelestialDebuffRate>1)
 					CelestialDebuffRate=1
@@ -123,7 +123,7 @@ proc
 					if("Wind" in defenseElements)
 						DamageMod+=1
 					if("Water" in defenseElements)
-						DamageMod-=1//Reduced damage
+						DamageMod-=2//Reduced damage
 				if("Fire")
 					if("Water" in defenseElements)
 						DamageMod-=1//Reduced damage
@@ -223,9 +223,9 @@ proc
 					if("Fire")
 						Return+=20
 					if("Water")
-						Return-=10
+						Return-=35
 					if("Earth")
-						Return-=10
+						Return-=35
 					if("Wind")//Super effective
 						Return+=20
 					if("Ultima")

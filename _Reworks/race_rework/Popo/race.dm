@@ -3,18 +3,17 @@ race
 		name = "Popo"
 		desc = "Oh, I like you."
 		visual = 'Humans.png'
-		passives = list("Tenacity" = 1, "Adrenaline" = 1, "Innovation" = 1)
-		statPoints = 12
+		passives = list("Tenacity" = 1, "Adrenaline" = 1, "TechniqueMastery" = 1, "StyleMastery" = 1, "CashCow" = 1, , "ManaGeneration" =1, "QuickCast" = 1, "Holding Back" = 10)
+		statPoints = 10
 		locked = TRUE
-		removed = TRUE
-		power = 0.1
+		power = 1
 		strength = 5
 		endurance = 5
 		force = 5
 		offense = 5
 		defense = 5
 		speed = 3
-		anger = 5
+		anger = 2.5
 		learning = 4
 		intellect = 4
 		imagination = 4

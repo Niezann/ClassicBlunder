@@ -2366,6 +2366,7 @@ mob
 				OMsg(src, "[src] suddenly appears as a result of their binding!")
 
 		SetStasis(var/StasisTime)
+			StasisTime*=glob.STASIS_LENGTH_MODIFIER
 			if(src.HasDebuffResistance())
 				StasisTime/=min(1.5,passive_handler["DebuffResistance"])
 			src.Stasis=StasisTime
