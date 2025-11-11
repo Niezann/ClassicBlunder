@@ -89,7 +89,7 @@ mob/tierUpSaga(Path)
 					if("Muramasa")
 						src << "The blade of assured Death whispers the arts of Death to you..."
 						passive_handler.Increase("CriticalChance", 5)
-						passive_handler.Increase("CriticalHit", 0.2)
+						passive_handler.Increase("CriticalDamage", 0.2)
 						AddSkill(new/obj/Skills/AutoHit/Masterful_Death)
 
 					if("Masamune")

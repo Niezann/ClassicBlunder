@@ -15,7 +15,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 22
+	var/UPDATE_VERSION = 23
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -406,6 +406,34 @@ update
 				if(o.AngelAscension == "Mentor"||o.CelestialAscension=="Angel")
 					NewPassives = list("TechniqueMastery" = 0.5, "StyleMastery" = 1)
 					o.passive_handler.increaseList(NewPassives)
+	version23
+		version = 23
+		updateMob(mob/o)
+			. = ..()
+			if(o.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/zeal)
+				o.passive_handler.Set("Zeal", 1)
+			if(o.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/honor)
+				o.passive_handler.Set("Honor", 1)
+			if(o.isRace(CELESTIAL)||o.isRace(ANGEL))
+				if(o.AngelAscension == "Mentor"||o.CelestialAscension=="Angel")
+					o.passive_handler.Set("StyleMastery", 4)
+					o.passive_handler.Set("TechniqueMastery", 3)
+			if(o.Secret=="Haki")
+				if(o.getSecretLevel()>=1)
+					if(prob((1**3)+4) && o.secretDatum.secretVariable["ConquerorsHaki"] != 1)
+						o << "You have the qualities of a King..."
+						o << "You have awakened the power of Conqueror's Haki!"
+						o.secretDatum.secretVariable["ConquerorsHaki"] = 1
+						o.AddSkill(new/obj/Skills/AutoHit/Haki/Conquerors_Haki)
+						if(o.getSecretLevel()>=2)
+							o.AddSkill(new/obj/Skills/Queue/Haki/Kings_Infusion)
+				if(o.getSecretLevel()>=2)
+					if(prob((2**3)+4) &&  o.secretDatum.secretVariable["ConquerorsHaki"] != 1)
+						o << "You have the qualities of a King..."
+						o << "You have awakened the power of Conqueror's Haki!"
+						o.secretDatum.secretVariable["ConquerorsHaki"] = 1
+						o.AddSkill(new/obj/Skills/AutoHit/Haki/Conquerors_Haki)
+						o.AddSkill(new/obj/Skills/Queue/Haki/Kings_Infusion)
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25

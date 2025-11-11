@@ -29,7 +29,7 @@
 		PowerMult = 1 + level/20
 		SureHitTimerLimit = 30 - (level * 3)
 		SureDodgeTimerLimit = 30 - (level * 3)
-		passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 0.5, "Anaerobic" = 1, "CriticalHit" = 1 + level/10, "CriticalChance" = level * 5, "CriticalBlock" = 1 + level/10, "BlockChance" = level * 5)
+		passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 0.5, "Anaerobic" = 1, "CriticalDamage" = 1 + level/10, "CriticalChance" = level * 5, "CriticalBlock" = 1 + level/10, "BlockChance" = level * 5)
 		ActiveMessage="becomes one with the very concept of Life Fibers!<br><center><font color='white'><b>Life Fiber Domination: Shinra Koketsu!</b></font color></center>"
 		OffMessage="seperates from their unity with Life Fibers..."
 
@@ -67,7 +67,7 @@ obj/Skills/Mental_Refitting
 				m << "You know at a thought - that any attacks against the one who did this to you? They'd do hardly a thing as your very body would resist..."
 				m.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Life_Fiber_Hybrid)
 				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Life_Fiber_Hybrid/lfh in m.contents)
-					lfh.Password = usr?:UniqueID 
+					lfh.Password = usr?:UniqueID
 			else return
 
 obj/Skills/Buffs/SlotlessBuffs/Autonomous/Life_Fiber_Hybrid

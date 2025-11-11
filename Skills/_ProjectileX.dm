@@ -4859,7 +4859,7 @@ mob
 				spawn() for(var/mob/m in view(2, src))
 					for(var/obj/Items/Wearables/Guardian/Belt_of_Truth/W in m.contents)
 						if(findtext(W.suffix, "*Equipped*"))
-							var/insightLevel = m.AscensionsAcquired || 1
+							var/insightLevel = m.AscensionsAcquired+1 || 1
 							var/techTier = Z.Copyable
 							if(insightLevel < techTier)
 								continue

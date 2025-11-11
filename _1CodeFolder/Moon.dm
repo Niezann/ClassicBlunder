@@ -1,9 +1,9 @@
 var/global/celestialObjectTicks = Hour(12)/10
 var
-	MoonMessage="The lone local holmin moon shines brightly!"
-	MakyoMessage="A cursed star shines in the sky"
-	MoonSetMessage="The lone local moon sets!"
-	MakyoSetMessage="A cursed star disappears from the sky"
+	MoonMessage="The moon shines brightly!"
+	MakyoMessage="A cursed star shines in the sky..."
+	MoonSetMessage="The moon sets!"
+	MakyoSetMessage="A cursed star disappears from the sky..."
 
 proc/CelestialBodiesLoop()
 	set waitfor = 0

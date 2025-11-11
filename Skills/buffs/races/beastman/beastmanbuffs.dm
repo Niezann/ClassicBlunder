@@ -33,7 +33,7 @@
 		Dominator = 2 + (p.AscensionsAcquired * 0.5)
 		Finisher = 2 + (p.AscensionsAcquired * 0.5)
 		Cooldown = 45 - (p.AscensionsAcquired * 5)
-	
+
 	verb/Savagery()
 		set category = "Skills"
 		adjust(usr)
@@ -69,7 +69,7 @@
 	adjust(mob/p)
 		TimerLimit = 10 + (glob.racials.UNDYINGRAGE_DURATION * (p.AscensionsAcquired))
 		var/wT = 1.5 - p.passive_handler["Wrathful Tenacity"]
-		passives = list("Undying Rage" = 1, "Fury" = 1 + p.AscensionsAcquired, "Godspeed" = 3, "Relentlessness" = 1, "Adrenaline" = 3, "LifeSteal" = 25 + (15 * p.AscensionsAcquired), \
+		passives = list("Undying Rage" = 1, "Fury" = 1 + p.AscensionsAcquired, "Godspeed" = 3, "Relentlessness" = 1, "Adrenaline" = 3, "LifeSteal" = 50 + (25 * p.AscensionsAcquired), \
 						"Enrage" = p.AscensionsAcquired, "Rage" = p.AscensionsAcquired, "Wrathful Tenacity" = wT) // 150% of str as end
 	Trigger(mob/User, Override)
 		. = ..()
@@ -85,11 +85,11 @@
 		passives = list("Hardening" = clamp(asc, 1, 5), "Deflection" = 0.5 + (asc * 0.5), "Reversal" = 0.1 + (asc * 0.1))
 		VaizardShatter = 1
 		Cooldown = 180 - (asc * 15)
-	
+
 	verb/Feather_Cowl()
 		set category = "Skills"
 		Trigger(usr)
-	
+
 
 /obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Clean_Cuts
 	IconLock = 'Innovator Wings.dmi'
@@ -112,7 +112,7 @@
 		for(var/index in SlotlessBuffs)
 			if(istype(SlotlessBuffs[index], /obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Spirit_Walker))
 				SlotlessBuffs[index].Trigger(src, TRUE)
-				
+
 
 
 
@@ -183,7 +183,7 @@
 			var/raa = "[uppertext(copytext(full2short[x],1,2))][copytext(full2short[x], 2,4)]"
 			vars["[raa]Mult"] = c_buff.statsadd.calc_stat(c_buff.statsmult.vars[x], TRUE)
 			vars["[full2short[x]]Add"] = c_buff.statsadd.calc_stat(c_buff.statsadd.vars[x], TRUE)
-		
+
 		passives = c_buff.current_passives
 	verb/Adjust_Shapeshifter()
 		set category = "Utility"

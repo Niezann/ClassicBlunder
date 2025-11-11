@@ -42,8 +42,8 @@ race
 					if("Angel")
 						Confirm=alert(user, "Your body was imparted with the spark of the divine normally reserved for the soul, granting your mind and body natural harmony far beyond that of the average mortal.", "Angel", "Yes", "No")
 						if("Yes")
-							passives["TechniqueMastery"]=0.5
-							passives["StyleMastery"]=1
+							passives["TechniqueMastery"]=1
+							passives["StyleMastery"]=2
 							if(!locate(/obj/Skills/Buffs/NuStyle/MortalUI/Mortal_Instinct_Style, user))
 								var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/MortalUI/Mortal_Instinct_Style
 								user.AddSkill(s)

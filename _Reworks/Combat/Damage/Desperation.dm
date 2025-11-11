@@ -3,7 +3,9 @@
 	if(passive_handler.Get("UnderDog") && !HasInjuryImmune())
 		// they are able to get the bonus
 		bonus += Saga == "King of Braves" ? 0.15 : 0
+		bonus += Saga == "Kamui" ? 0.15 : 0
 		bonus += isRace(HUMAN) ? 0.15 : 0
+		bonus += isRace(HALFSAIYAN) ? 0.15 : 0
 		return bonus
 	return FALSE
 

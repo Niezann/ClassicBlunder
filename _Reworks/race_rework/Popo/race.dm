@@ -14,6 +14,6 @@ race
 		defense = 5
 		speed = 3
 		anger = 2.5
-		learning = 4
+		learning = 1.25
 		intellect = 4
 		imagination = 4

@@ -90,7 +90,7 @@ var/list/SkillTree=list(
 			"/obj/Skills/AutoHit/Dropkick_Surprise"=160
 ),
 "UnarmedT5"=list(
-			"/obj/Skills/Grapple/The_Show_Stopper"=TIER_5_COST
+			"/obj/Skills/Grapple/The_Show_Stopper"=200
 
 ),
 

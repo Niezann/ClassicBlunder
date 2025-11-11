@@ -835,10 +835,22 @@ mob
 			return 0
 		GetEnergyLeak()
 			var/Total=0
+			var/PrideDrain=0
 			Total+=passive_handler.Get("EnergyLeak")
 			if(src.transActive()&&!src.HasMystic())
 				if(race.transformations[transActive].mastery>10&&race.transformations[transActive].mastery<75)
 					Total+=src.transActive()*0.25
+			if(passive_handler.Get("Pride"))
+				PrideDrain=(100-Health)*0.01
+				if(PrideDrain>1)
+					PrideDrain=1
+				if(PrideDrain<0.01)
+					PrideDrain=0.01
+
+		//		Total=PrideDrain
+				Total*=PrideDrain
+			if(passive_handler.Get("Pride")&&Health>=90)
+				Total = 0
 			return Total
 		HasFatigueLeak()
 			if(passive_handler.Get("FatigueLeak"))
@@ -1001,9 +1013,11 @@ mob
 			Return += passive_handler.Get("Mythical") * glob.MYTHICALPUREREDMULT
 			if(passive_handler["Determination(Green)"])
 				if(SagaLevel<4)
-					Return+=(ManaAmount/25)
+					Return+=(ManaAmount/50)
 				else if(SagaLevel>=4)
-					Return+=(ManaAmount/10)
+					Return+=(ManaAmount/25)
+			if(passive_handler["Honor"])
+				Return+=(DefianceCounter/3)
 			if(src.isRace(MAJIN))
 				Return += AscensionsAcquired * getMajinRates("Reduction")
 			if(passive_handler["Rage"] && Health <= 50)
@@ -1053,6 +1067,8 @@ mob
 				return 1
 			if(src.TarotFate=="The World")
 				return 1
+			if(src.passive_handler.Get("Zeal"))
+				return 1
 			if(Target)
 				if(isDominating(Target) && passive_handler.Get("HellRisen"))
 					return 1
@@ -1073,6 +1089,8 @@ mob
 			if(Target)
 				if(Target.passive_handler.Get("Pressure"))
 					Return -= Target.passive_handler.Get("Pressure")
+			if(src.passive_handler.Get("Zeal"))
+				Return+=1
 			return Return
 		HasUnarmedDamage()
 			if(passive_handler.Get("UnarmedDamage"))
@@ -1545,6 +1563,8 @@ mob
 			var/Return=0
 			if(isRace(HUMAN))
 				Return+=100
+			if(src.passive_handler.Get("Zeal"))
+				Return+=100
 
 			if(m)
 				if(m.isRace(HUMAN))
@@ -1900,10 +1920,10 @@ mob
 					if(enemy.race.name == passive_handler["FavoredPrey"])
 						return 1
 				else if(passive_handler["FavoredPrey"] == "Depths")
-					if(enemy.isRace(DEMON, ELDRITCH))
+					if(enemy.isRace(DEMON)||enemy.isRace(ELDRITCH))
 						return 1
 				else if(passive_handler["FavoredPrey"] == "Beyond")
-					if(enemy.isRace(DEMON, ELDRITCH, MAKAIOSHIN, ANGEL, POPO))
+					if(enemy.isRace(DEMON)||enemy.isRace(ELDRITCH)||enemy.isRace(MAKAIOSHIN)||enemy.isRace(ANGEL)||enemy.isRace(POPO))
 						return 1
 				return 0
 			return 0

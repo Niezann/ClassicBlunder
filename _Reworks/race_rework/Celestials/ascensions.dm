@@ -15,8 +15,8 @@ ascension
 				..()
 				owner.Class = "Pale Imitation"
 				if(owner.CelestialAscension=="Angel")
-					passives["TechniqueMastery"]=0.5
-					passives["StyleMastery"]=1
+					passives["TechniqueMastery"]=2
+					passives["StyleMastery"]=2
 					passives["GotUpdate22"]=1
 
 		two

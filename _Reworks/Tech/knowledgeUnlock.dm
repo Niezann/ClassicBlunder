@@ -57,7 +57,7 @@ var/knowledgePaths/tech/list/TechnologyTree = list()
 			MilitaryEngineeringUnlocked=0
 			ForgingUnlocked--
 		if("Forge")
-			ForgingUnlocked=0
+			ForgingUnlocked--
 		if("Enhancement")
 			for(var/obj/Skills/Utility/Upgrade_Equipment/ue in src)
 				del ue

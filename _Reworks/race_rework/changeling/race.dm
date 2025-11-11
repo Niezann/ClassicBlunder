@@ -7,7 +7,7 @@ race
 		desc	=	"A race with many transformations, their body is designed to handle the harshest of climates."
 		visual	=	'Changeling.png'
 
-		passives = list("Xenobiology" = 1, "Juggernaut" = 1, "CriticalBlock" = 0.25, "BlockChance" = 25, "PureReduction" = 3, "PureDamage" = -5, "AllOutAttack" = 1, "MovementMastery" = -8)
+		passives = list("Xenobiology" = 1, "Juggernaut" = 1, "CriticalBlock" = 0.25, "BlockChance" = 25, "PureReduction" = 3, "PureDamage" = -2, "AllOutAttack" = 1, "MovementMastery" = -8)
 		statPoints 	= 8
 		strength	=	0.25
 		endurance	=	2

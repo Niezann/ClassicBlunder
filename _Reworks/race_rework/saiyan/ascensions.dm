@@ -67,7 +67,7 @@ ascension
 		saiyan
 			honor
 				skills = list(/obj/Skills/Buffs/SlotlessBuffs/Saiyan_Grit)
-				passives = list("Defiance" = 1, "Juggernaut" = 0.5)
+				passives = list("Honor" = 1, "Defiance" = 1, "Juggernaut" = 0.5)
 
 			pride
 				skills = list(/obj/Skills/Buffs/SlotlessBuffs/Saiyan_Dominance)
@@ -75,4 +75,4 @@ ascension
 
 			zeal
 				skills = list(/obj/Skills/Buffs/SlotlessBuffs/Saiyan_Soul)
-				passives = list("Adaptation" = 0.5)
+				passives = list("Zeal" = 1, "Adaptation" = 0.5)

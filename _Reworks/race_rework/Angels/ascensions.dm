@@ -15,8 +15,8 @@ ascension
 					owner.GrantGuardianItem(/obj/Items/Wearables/Guardian/Belt_of_Truth)
 					owner << "(Please re-equip your Heavenly Armaments to receive their boons.)"
 				if(owner.AngelAscension == "Mentor")
-					passives["TechniqueMastery"]=0.5
-					passives["StyleMastery"]=1
+					passives["TechniqueMastery"]=1
+					passives["StyleMastery"]=2
 					passives["GotUpdate22"]=1
 				owner.Class = "Principality"
 		two

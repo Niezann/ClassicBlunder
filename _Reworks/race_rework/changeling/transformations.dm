@@ -10,7 +10,7 @@ transformation
 			offense = 1.25
 			force = 1.5
 			strength = 1.5
-			passives = list("PureDamage" = 2, "Instinct" = 1, "Flicker" = 1, "Godspeed" = 1, "PureReduction" = -3, "MovementMastery" = 2)
+			passives = list("PureDamage" = 1, "Instinct" = 1, "Flicker" = 1, "Godspeed" = 1, "PureReduction" = -3, "MovementMastery" = 2)
 			form_base = 'Chilled2.dmi'
 			transformation_message = "usrName cracks their tail, entering their Second Form in a burst of power!"
 
@@ -24,7 +24,7 @@ transformation
 			offense = 1.25
 			force = 1.5
 			strength = 1.5
-			passives = list("PureDamage" = 3, "Instinct" = 1, "Flicker" = 1, "Godspeed" = 1, "PureReduction" = -3, "MovementMastery" = 2, "Juggernaut" = -1)
+			passives = list("PureDamage" = 1, "Instinct" = 1, "Flicker" = 1, "Godspeed" = 1, "PureReduction" = -3, "MovementMastery" = 2, "Juggernaut" = -1)
 			form_base = 'Chilled3.dmi'
 			transformation_message = "usrName cracks their tail, entering their Third Form in a burst of power!"
 

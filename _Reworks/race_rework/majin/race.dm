@@ -8,7 +8,7 @@ race
 		skills = list(/obj/Skills/Absorb, /obj/Skills/Buffs/SlotlessBuffs/Regeneration)
 
 		locked = TRUE
-		intellect = 0.25
+		intellect = 1.25
 		imagination = 4
 		anger = 1.5
 		regeneration = 4

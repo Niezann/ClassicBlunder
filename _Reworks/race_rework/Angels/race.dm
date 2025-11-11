@@ -38,8 +38,8 @@ race
 							user << "You have embarked upon the path of true martial arts mastery: Ultra Instinct."
 							user.Secret="Ultra Instinct"
 							user.UILevel=1
-							passives["TechniqueMastery"]=0.5
-							passives["StyleMastery"]=1
+							passives["TechniqueMastery"]=2
+							passives["StyleMastery"]=2
 				user.AngelAscension = Choice
 				//t1 style/armor unlocked
 			user.passive_handler.increaseList(passives)

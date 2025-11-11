@@ -1,7 +1,7 @@
 // when buff is on and you entere  tile, attempt to surround the block in water
 // if the block is already effected or the surrounding ones are, back out
 // passive 'Ocean Bringer"
-// 
+//
 // make dragon roar pull in and flood the area with water
 
 
@@ -14,7 +14,7 @@
 	OffMessage = "returns the land to its former form..."
 	adjust(mob/p)
 		var/asc = p.AscensionsAcquired
-		passives = list("Ocean Bringer" = 1 + (round(asc/2)), "AbsoluteZero" = 5 + (asc * 2), "Erosion" = min(0.6, 0.25 + (asc * 0.1)), "FluidForm" = 1 + (0.25 * asc), "Flow" = 1 + asc, "VoidField" = 3 + (asc * 2), \
+		passives = list("Ocean Bringer" = 1 + (round(asc/2)), "AbsoluteZero" = 5 + (asc * 2), "Erosion" = min(0.2, 0.25 + (asc * 0.1)), "FluidForm" = 1 + (0.25 * asc), "Flow" = 1 + asc, "VoidField" = 3 + (asc * 2), \
 		"Godspeed" = asc)
 		ElementalDefense = "Void"
 	Trigger(mob/User, Override = FALSE)

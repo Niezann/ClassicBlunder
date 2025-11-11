@@ -32,6 +32,7 @@
 	EndMult = 1.2
 	DefMult = 0.1
 	PowerMult=1.2
+	HealthThreshold=0.01
 	AutoAnger = 0
 	TimerLimit = 360
 	verb/Moon_Toggle()
