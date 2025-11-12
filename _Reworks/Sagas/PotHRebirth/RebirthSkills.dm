@@ -10,6 +10,10 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/Hero_Heart
 	adjust(mob/p)
 		if(altered) return
 		passives = list("Tenacity" = round(p.Potential/20,1), "Hardening" = round(p.Potential/20,1))
+		PowerMult=1.15
+		StrMult=1.15
+		ForMult = 1.15
+		EndMult = 1.35
 		EndMult += (p.Potential/200)
 		StrMult += (p.Potential/300)
 		ForMult += (p.Potential/300)
@@ -29,6 +33,11 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/Hero_Soul
 	adjust(mob/p)
 		if(altered) return
 		passives = list("Instinct" = round(p.Potential/20,1), "Pursuer" = round(p.Potential/20,1))
+		PowerMult=1.15
+		StrMult=1.25
+		ForMult = 1.15
+		SpdMult=1.35
+		RecovMult=1.25
 		SpdMult += (p.Potential/150)
 		StrMult += (p.Potential/250)
 		ForMult += (p.Potential/250)
@@ -49,6 +58,10 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/Prismatic_Hero
 	adjust(mob/p)
 		if(altered) return
 		passives = list("FluidForm" = round(p.Potential/20,1), "LikeWater" = round(p.Potential/20,1)) //cat joke
+		StrMult=1.1
+		EndMult = 1.1
+		ForMult = 1.1
+		SpdMult=1.15
 		SpdMult += (p.Potential/250)
 		StrMult += (p.Potential/250)
 		ForMult += (p.Potential/250)

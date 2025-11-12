@@ -6,7 +6,7 @@ obj
 				SkillCost=TIER_2_COST
 				Copyable=3
 				ActiveMessage="enters a thoughtful stance!"
-				DamageMult=0.8
+				DamageMult=1.5
 				AccuracyMult = 1.15
 				KBMult=0.00001
 				Stunner=3
@@ -16,7 +16,7 @@ obj
 				PushOut=1
 				PushOutIcon='BLANK.dmi'
 				Duration=5
-				Cooldown=60
+				Cooldown=45
 				NeedsSword=1
 				EnergyCost=5
 				HitSparkIcon='Slash - Zero.dmi'
@@ -31,7 +31,7 @@ obj
 				SkillCost=TIER_2_COST
 				Copyable=3
 				ActiveMessage="enters a low stance!"
-				DamageMult=3
+				DamageMult=4.5
 				AccuracyMult = 1.15
 				KBMult=0.00001
 				SpeedStrike=2
@@ -39,7 +39,7 @@ obj
 				Counter=1
 				Warp=2
 				Duration=5
-				Cooldown=60
+				Cooldown=45
 				NeedsSword=1
 				EnergyCost=5
 				HitSparkIcon='Slash - Black.dmi'
@@ -56,7 +56,7 @@ obj
 				DamageMult=0.9
 				AccuracyMult = 1.15
 				Duration=8
-				Cooldown=60
+				Cooldown=45
 				Launcher=2
 				NeedsSword=1
 				MultiHit=3
@@ -72,10 +72,10 @@ obj
 				Copyable=3
 				HarderTheyFall=3
 				Opener=1
-				Cooldown=60
+				Cooldown=45
 				Duration=5
 				ActiveMessage="prepares a chain of giant-toppling attacks!"
-				DamageMult=1.2
+				DamageMult=2.25
 				AccuracyMult=1.1
 				NeedsSword=1
 				EnergyCost=5

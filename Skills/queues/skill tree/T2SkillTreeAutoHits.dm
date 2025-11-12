@@ -20,8 +20,8 @@ obj
 			NoPierce=0
 			StrOffense=1
 			EndDefense=0.9
-			DamageMult=4.5
-			Cooldown=60
+			DamageMult=6
+			Cooldown=45
 			HitSparkIcon='BLANK.dmi'
 			HitSparkX=0
 			HitSparkY=0
@@ -42,8 +42,8 @@ obj
 			ComboMaster=1
 			Distance=4
 			StrOffense=1
-			DamageMult=1
-			Cooldown=60
+			DamageMult=3
+			Cooldown=45
 			Stunner=2
 			Knockback=12
 			Size=4
@@ -73,11 +73,11 @@ obj
 			PostShockwave=0
 			Shockwave=2
 			Shockwaves=2
-			DamageMult=5
+			DamageMult=7
 			Knockback=2
 			Distance=4
 			ActiveMessage="vanishes with a burst of speed to strike at their foe!"
-			Cooldown=60
+			Cooldown=45
 			EnergyCost=6
 			Instinct=1
 			verb/Phantom_Strike()
@@ -92,7 +92,7 @@ obj
 			NoLock=1
 			NoAttackLock=1
 			StrOffense=1
-			DamageMult=3.5
+			DamageMult=5
 			DelayTime=0
 			PreShockwave=1
 			PreShockwaveDelay=1
@@ -112,7 +112,7 @@ obj
 			HitSparkDispersion=12
 			Launcher=3
 			DelayedLauncher=1
-			Cooldown=60
+			Cooldown=45
 			EnergyCost=5
 			ActiveMessage="rushes forward to deliver a flurry of strikes!"
 			verb/Dragon_Rush()
@@ -145,11 +145,11 @@ obj
 			Area="Circle"
 			Distance=1
 			StrOffense=1
-			DamageMult=1.8
+			DamageMult=3.6
 			Launcher=3
 			NoLock=1
 			NoAttackLock=1
-			Cooldown=60
+			Cooldown=45
 			Size=0.75
 			Rounds=3
 			Icon='SweepingKick.dmi'
@@ -167,8 +167,8 @@ obj
 			UnarmedOnly=1
 			Area="Circle"
 			StrOffense=1
-			DamageMult=1.25
-			Cooldown=60
+			DamageMult=1.75
+			Cooldown=45
 			Rounds=5
 			Shattering=1
 			RoundMovement=1
@@ -182,13 +182,13 @@ obj
 			verb/Helicopter_Kick()
 				set category="Skills"
 				usr.Activate(src)
-		
+
 		Three_Thousand_Worlds
 			SkillCost= TIER_2_COST
 			Copyable=3
 			NeedsSword=1
 			Area="Circle"
-			DamageMult=2
+			DamageMult=2.5
 			Rounds=2
 			ChargeTech=1
 			StrOffense=1
@@ -197,7 +197,7 @@ obj
 			Grapple=1
 			GrabTrigger="/obj/Skills/AutoHit/Oni_Giri"
 			GrabMaster=1
-			Cooldown=60
+			Cooldown=45
 			Size=1
 			FlickSpin=1
 			EnergyCost=2
@@ -279,7 +279,7 @@ obj
 			Rounds=5
 			StrOffense=1
 			DamageMult=1
-			Cooldown=60
+			Cooldown=45
 			Knockback=1
 			Size=1
 			Icon='CircleWind.dmi'
@@ -339,8 +339,8 @@ obj
 			Area="Wave"
 			StrOffense=1
 			ComboMaster = 1
-			DamageMult=1
-			Cooldown=60
+			DamageMult=3
+			Cooldown=45
 			Knockback=0
 			Rounds=4
 			Launcher=2
@@ -369,8 +369,8 @@ obj
 			Area="Circle"
 			StrOffense=1
 			EndDefense=1
-			DamageMult=5
-			Cooldown=60
+			DamageMult=6.5
+			Cooldown=45
 			Knockback=5
 			Size=2
 			Distance=2
@@ -403,8 +403,8 @@ obj
 			NeedsSword=1
 			Area="Circle"
 			StrOffense=1
-			Cooldown = 60
-			DamageMult=0.35
+			Cooldown = 45
+			DamageMult=0.5
 			Rounds=20
 			ComboMaster=1
 			Size=2

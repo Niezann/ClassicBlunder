@@ -1215,7 +1215,7 @@ obj
 				RoundMovement=0
 				NoAttackLock=1
 				NoLock=1
-				Cooldown=90
+				Cooldown=75
 				Icon='Nest Slash.dmi'
 				IconX=-16
 				IconY=-16
@@ -1255,7 +1255,7 @@ obj
 				Rush=8
 				Jump=1
 				ControlledRush=1
-				DamageMult=6
+				DamageMult=9
 				Knockback=1
 				Shattering = 15
 				GuardBreak=1
@@ -1263,7 +1263,7 @@ obj
 				IconX=-16
 				IconY=-16
 				Size=2
-				Cooldown=90
+				Cooldown=75
 				EnergyCost=4
 				ActiveMessage="goes flying through the air to deliver a graceful kick!"
 				verb/Flying_Kick()

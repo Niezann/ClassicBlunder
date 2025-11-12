@@ -1105,12 +1105,12 @@ obj
 				Copyable=2
 				Distance=20
 				AccMult=0.7
-				DamageMult=0.3
+				DamageMult=0.6
 				Blasts=25
 				Delay=0.75
 				Stream=-1
 				EnergyCost=8
-				Cooldown=90
+				Cooldown=75
 				Deflectable = 1
 				Homing=1
 				LosesHoming=3
@@ -1206,7 +1206,7 @@ obj
 				SkillCost=40
 				Copyable=2
 				Distance=30
-				DamageMult=2
+				DamageMult=5
 				Blasts=3
 				AccMult=2
 				Launcher=4
@@ -1220,7 +1220,7 @@ obj
 				Speed=1
 				IconChargeOverhead=1
 				Explode=1
-				Cooldown=90
+				Cooldown=75
 				IconLock='Plasma2.dmi'
 				Variation=0
 				verb/Spirit_Ball()
@@ -1236,7 +1236,7 @@ obj
 				Distance=20
 				Blasts=20
 				Charge=1
-				DamageMult=0.15
+				DamageMult=0.45
 				AccMult=0.8
 				Homing=1
 				Explode=1
@@ -1249,7 +1249,7 @@ obj
 				LockY=-12
 				IconSize=0.75
 				Variation=4
-				Cooldown=90
+				Cooldown=75
 				verb/Crash_Burst()
 					set category="Skills"
 					usr.UseProjectile(src)
@@ -1307,7 +1307,7 @@ obj
 				HomingCharge=1
 				RandomPath=1
 				IconLock='Dancing.dmi'
-				DamageMult=0.55
+				DamageMult=0.85
 				AccMult = 1.15
 				Distance=25
 				IconSize=0.5
@@ -1318,7 +1318,7 @@ obj
 				HyperHoming=1
 				FireFromSelf=1
 				FireFromEnemy=0
-				Cooldown=90
+				Cooldown=75
 				EnergyCost=5
 				verb/Sudden_Storm()
 					set category="Skills"

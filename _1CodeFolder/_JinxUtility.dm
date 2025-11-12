@@ -2213,6 +2213,9 @@ mob
 
 		HolyDamage(var/mob/P, var/Forced=0)//Stick this in the DoDamage proc.
 			//To get to this proc, you have to already have holy damage
+			var/HolyDamageValue=src.GetHolyMod()
+			if(P.CheckSlotless("Devil Arm"))
+				HolyDamageValue=1+(1.5*src.GetHolyMod())
 			if(P.UsingMuken())
 				if(!Forced)
 					return (-1)*src.GetHolyMod()
@@ -2220,15 +2223,15 @@ mob
 					return (-1)*Forced
 			else if(P.IsEvil() || HasBeyondPurity())
 				if(!Forced)
-					return src.GetHolyMod()
+					return HolyDamageValue
 				else
-					return Forced
+					return HolyDamageValue
 			else if(src.HasSpiritPower()>=0.25)
 				if(!Forced)
 					var/spiritPower = (HasSpiritPower() / 2)
-					return max(src.GetHolyMod()*spiritPower, 1)
+					return max(HolyDamageValue*spiritPower, 1)
 				else
-					return Forced
+					return HolyDamageValue
 			else
 				return 1
 		AbyssDamage(mob/P, Forced=0)//Stick this in the DoDamage proc.

@@ -2,18 +2,18 @@
 	var/bonus = 1
 	if(passive_handler.Get("UnderDog") && !HasInjuryImmune())
 		// they are able to get the bonus
-		bonus += Saga == "King of Braves" ? 0.15 : 0
-		bonus += Saga == "Kamui" ? 0.15 : 0
-		bonus += isRace(HUMAN) ? 0.15 : 0
-		bonus += isRace(HALFSAIYAN) ? 0.15 : 0
+		bonus += Saga == "King of Braves" ? 0.35 : 0
+		bonus += Saga == "Kamui" ? 0.35 : 0
+		bonus += isRace(HUMAN) ? 0.35 : 0
+		bonus += isRace(HALFSAIYAN) ? 0.35 : 0
 		return bonus
 	return FALSE
 
 /mob/proc/GetDesperationBonus(mob/defender)
 	var/bonusRatio = desperationCheck()
 	var/defBonusRatio = defender ? defender.desperationCheck() : 0
-	var/atkVal = 0.1
-	var/defVal = 0.05
+	var/atkVal = 0.15
+	var/defVal = 0.075
 	var/injuries = TotalInjury/100
 	var/defInjuries = defender ? defender.TotalInjury/100 : 0
 	. = 0

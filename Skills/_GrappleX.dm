@@ -251,7 +251,7 @@ obj/Skills/Grapple
 	Judo_Throw
 		SkillCost=TIER_3_COST
 		Copyable=4
-		DamageMult=4
+		DamageMult=7
 		Reversal=1
 		Stunner=2
 		StrRate=1
@@ -259,14 +259,14 @@ obj/Skills/Grapple
 		ThrowMult=0
 		TriggerMessage="performs a judo throw on"
 		Effect="Shockwave"
-		Cooldown=90
+		Cooldown=75
 		verb/Judo_Throw()
 			set category="Skills"
 			src.Activate(usr)
 	Izuna_Drop
 		SkillCost=TIER_3_COST
 		Copyable=4
-		DamageMult=4
+		DamageMult=7
 		EndRate = 0.8
 		StrRate=1
 		ThrowAdd=0
@@ -275,7 +275,7 @@ obj/Skills/Grapple
 		Effect="Lotus"
 		EffectMult=2
 		OneAndDone=1
-		Cooldown=60
+		Cooldown=75
 		verb/Izuna_Drop()
 			set category="Skills"
 			src.Activate(usr)
@@ -320,7 +320,7 @@ obj/Skills/Grapple
 		NewCopyable = 3
 		SkillCost=120
 		Copyable=4
-		DamageMult=3
+		DamageMult=3.5
 		ForRate=2
 		StrRate=0.5
 		TriggerMessage="shoves their burning red hand through"
@@ -328,7 +328,7 @@ obj/Skills/Grapple
 		EffectMult=2
 		ThrowMult=0
 		ThrowAdd=5
-		Cooldown=60
+		Cooldown=45
 		verb/Burning_Finger()
 			set category="Skills"
 			src.Activate(usr)
@@ -431,7 +431,7 @@ obj/Skills/Grapple
 		Eviscerate
 			Copyable=4
 			SkillCost=TIER_3_COST
-			DamageMult=1
+			DamageMult=1.5
 			MultiHit=8
 			StrRate=1
 			ThrowMult=0
@@ -439,14 +439,14 @@ obj/Skills/Grapple
 			TriggerMessage="eviscerates"
 			Effect="Strike"
 			EffectMult=5
-			Cooldown=90
+			Cooldown=75
 			verb/Eviscerate()
 				set category="Skills"
 				src.Activate(usr)
 		Hacksaw
 			Copyable=4
 			SkillCost=TIER_3_COST
-			DamageMult=8
+			DamageMult=15
 			StrRate=1
 			ThrowMult=0
 			ThrowAdd=0
@@ -454,7 +454,7 @@ obj/Skills/Grapple
 			Effect="Strike"
 			EffectMult=3
 			MortalBlow=1
-			Cooldown=90
+			Cooldown=75
 			verb/Hacksaw()
 				set category="Skills"
 				src.Activate(usr)
@@ -475,7 +475,7 @@ obj/Skills/Grapple
 		Form_Ataru
 			Copyable=4
 			SkillCost=TIER_3_COST
-			DamageMult=8
+			DamageMult=10
 			Reversal=1
 			StrRate=1
 			ThrowMult=0
@@ -483,7 +483,7 @@ obj/Skills/Grapple
 			TriggerMessage="does a slashing flip to break free of"
 			Effect="Strike"
 			EffectMult=2
-			Cooldown=90
+			Cooldown=75
 			verb/Form_Ataru()
 				set category="Skills"
 				set name="Form: Ataru"
