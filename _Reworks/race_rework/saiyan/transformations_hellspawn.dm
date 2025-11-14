@@ -10,9 +10,11 @@ transformation
 			form_glow_x = -32
 			form_glow_y = -32
 			unlock_potential = 55
-			passives = list("Instinct" = 3, "Flicker" = 1, "Pursuer" = 3,  "BuffMastery" = 4, "PureDamage" = 3, "Unstoppable"=1)
+			passives = list("Instinct" = 3, "Flicker" = 2, "Pursuer" = 3,  "BuffMastery" = 4, "PureDamage" = 3, "SlayerMod"=1)
 			angerPoint = 75
 			PUSpeedModifier = 1.5
+			mastery_boons(mob/user)
+				passives = list("Instinct" = 3, "Flicker" = 3, "Pursuer" = 3,  "BuffMastery" = 4, "PureDamage" = 3, "Unstoppable"=1, "SlayerMod"= 1)
 
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)
