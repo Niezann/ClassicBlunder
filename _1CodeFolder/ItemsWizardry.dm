@@ -33,8 +33,8 @@ proc/Add_Enchantment()
 				TomeCreation_List+=B
 			if(B.EnchType=="CrestCreation")
 				CrestCreation_List+=B
-			if(B.EnchType=="SummoningMagic")
-				SummoningMagic_List+=B
+		//	if(B.EnchType=="SummoningMagic")
+		//		SummoningMagic_List+=B
 			if(B.EnchType=="SealingMagic")
 				SealingMagic_List+=B
 			if(B.EnchType=="SpaceMagic")

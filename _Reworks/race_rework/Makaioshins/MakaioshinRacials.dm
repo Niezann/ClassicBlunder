@@ -26,6 +26,7 @@
 		passives["HellPower"] = hellpowerdif
 	verb/Falldown_Mode()
 		set category = "Skills"
+		adjust(usr)
 		if(!usr.BuffOn(src))
 			if(current_charges - 1 < 0)
 				usr << "You have ran out of true form charges..."

@@ -1272,6 +1272,30 @@ obj/Items/Tech
 						if(A.MortallyWounded<=src.HealingEffectiveness)
 							A.MortallyWounded=0
 							A.TsukiyomiTime=1
+						if(A.StrTax)
+							A.SubStrTax(1/(1 DAYS))
+						if(A.EndTax)
+							A.SubEndTax(1/(1 DAYS))
+						if(A.SpdTax)
+							A.SubSpdTax(1/(1 DAYS))
+						if(A.ForTax)
+							A.SubForTax(1/(1 DAYS))
+						if(A.OffTax)
+							A.SubOffTax(1/(1 DAYS))
+						if(A.DefTax)
+							A.SubDefTax(1/(1 DAYS))
+						if(A.RecovTax)
+							A.SubRecovTax(1/(1 DAYS))
+						if(A.GatesNerfPerc)
+							if(A.GatesNerf>0)
+								A.GatesNerf--
+								if(A.Satiated&&!A.Drunk)
+									A.GatesNerf--
+								if(A.GatesNerf<=0)
+									A.GatesNerfPerc=0
+									A.GatesNerf=0
+									A << "You've recovered from the strain of your ability!"
+									A.GatesActive = 0
 						A.Conscious()
 				sleep(10)
 

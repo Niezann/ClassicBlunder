@@ -224,7 +224,7 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 	var/drain
 	var/PrideDrain
 
-	if(trans && transMastery <= 75)
+	if(trans && transMastery <= 75||trans && passive_handler.Get("True Inheritor"))
 		drain = round(30 - ((transMastery - 5) * 30) / (75 - 5), 1)
 		if(passive_handler.Get("Pride"))
 			PrideDrain=(100-Health)*0.01
@@ -235,6 +235,8 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 			drain*=PrideDrain
 		if(passive_handler.Get("Pride")&&Health>=90)
 			drain = 0
+		if(passive_handler.Get("True Inheritor"))
+			drain/=3
 		if(drain < 0)
 			drain = 0
 		if(Energy < drain && !HasNoRevert() && !Dead && !HasMystic())
@@ -506,6 +508,13 @@ mob
 				scrollTicker--
 				if(scrollTicker<=0)
 					scrollTicker=0
+			if(passive_handler["LegendarySaiyan"]&&src.Tension<100&&src.transActive==src.transUnlocked)
+				var/TensionRando=rand(6,15)
+				src.Tension+=0.7 * (glob.TENSION_MULTIPLIER)*(TensionRando/10)
+				if(src.Tension>100)
+					src.Tension=100
+			if(passive_handler["LegendarySaiyan"]&&src.Tension>=100&&src.transActive==src.transUnlocked)
+				src.DoDamage(src, (rand(1,5)/10))
 			if(passive_handler["Grit"])
 				AdjustGrit("sub", glob.racials.GRITSUBTRACT)
 			if((isRace(SAIYAN) || isRace(HALFSAIYAN))&&transActive>0)

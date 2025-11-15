@@ -13,7 +13,7 @@
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Intercepting_Fist"
         BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/Death_Mark"
         HitMessage="looks <i>locked in</i>."
-    
+
     Big_Boot
         Instinct=2
         Grapple=1
@@ -26,6 +26,16 @@
         GrabTrigger="/obj/Skills/Grapple/Tombstone_Piledriver"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/The_8th_Wonder_Of_The_World"
         HitMessage="places their foot to the face of their fellow wrestler!"
+    Erupting_Mugen_Tengenkotsu
+        KBMult=7
+        KBAdd = 8
+        Quaking=9
+        DamageMult=10
+        HitSparkIcon='fevExplosion.dmi'
+        HitSparkX=-32
+        HitSparkY=-32
+        BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Legendary_Exhaustion"
+        HitMessage="unleashes their pent up legendary power, quaking all of reality with their might!"
 
     Soul_Seller
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/True_Form/Demon"

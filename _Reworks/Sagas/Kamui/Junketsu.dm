@@ -33,7 +33,7 @@
 		OverClock = 1 / level
 		if(level >= 5)
 			OverClock = 0
-		passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 0.5, "Anaerobic" = 1, "CriticalHit" = 1 + level/10, "CriticalChance" = level * 5, "CriticalBlock" = 1 + level/10, "BlockChance" = level * 5)
+		passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 0.5, "Anaerobic" = 1, "CriticalDamage" = (0.1 + (level/10)), "CriticalChance" = level * 5, "CriticalBlock" = 1 + level/10, "BlockChance" = level * 5)
 		ActiveMessage="forces their blood into their Kamui, making use of its full power!<br><center><font color='red'>Life Fiber Override: Kamui Junketsu!</font color></center>"
 		OffMessage="relaxes their bloodflow, allowing the Kamui they wear to revert..."
 
@@ -86,7 +86,7 @@ obj/Items/Sword/Light/Bakuzan_Koryu
 	passives = list("Life Fiber Rending" = 2)*/
 
 /obj/Skills/Bestow_Life_Fiber
-	var/consentNeeded = TRUE 
+	var/consentNeeded = TRUE
 	var/role = "Life Fiber Hybrid"
 	proc/consentCheck(mob/source, mob/consentNeeded)
 		if(!consentNeeded) return TRUE
@@ -184,7 +184,7 @@ obj/Items/Sword/Light/Bakuzan_Koryu
 		verb/Athletics_Chair()
 			set category="Skills"
 			src.Trigger(usr)
-	
+
 	Non_Athletics_Chair
 		ForMult = 1.25
 		passives = list("DualCast" = 1)

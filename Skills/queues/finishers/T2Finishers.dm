@@ -32,6 +32,16 @@
         GrabTrigger="/obj/Skills/Grapple/Ryukoha"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Cruel_Shadow"
         BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/Death_Mark"
+    Mugen_Tengenkotsu
+        KBMult=5
+        KBAdd = 10
+        Quaking=5
+        DamageMult=6.5
+        HitSparkIcon='fevExplosion.dmi'
+        HitSparkX=-32
+        HitSparkY=-32
+        BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Legendary_Exhaustion"
+        HitMessage="unleashes their pent up legendary power, manifesting their infinite will into reality!"
     // same style
 
     Jarret_Jarret

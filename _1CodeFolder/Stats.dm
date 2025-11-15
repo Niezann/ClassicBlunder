@@ -4,7 +4,6 @@ mob/verb/Character_Sheet()
 
 mob/proc/GetAssess()
 	var/PowerDisplay
-	var/RealPower=src.Available_Power()
 	var/IntimDisplay
 	var/BaseDisplay
 	var/GodKiDisplay
@@ -74,7 +73,7 @@ mob/proc/GetAssess()
 	<tr><td>Damage Reduction:</td><td>x[PRed] ([PRed*100]%)</td></tr>
 	<tr><td>God Ki:</td><td>x[GodKiDisplay]</td></tr>
 	<tr><td>Current BP:</td><td>[Commas(PowerDisplay)]</td></tr>
-	<tr><td>Real BP:</td><td>[Commas(RealPower)]</td></tr>
+	<tr><td>Real BP:</td><td>[Commas(src.potential_power_mult)]</td></tr>
 	<tr><td>Energy:</td><td>[Commas(round(src.EnergyMax))] (1)</td></tr>
 	<tr><td>Buffed Stat/True Stat (Mod)</td></tr>
 	<tr><td>Strength:</td><td> [round(src.GetStr(), 0.01)] ([src.BaseStr()])</td></tr>
@@ -821,6 +820,8 @@ mob/proc/
 		if(passive_handler["Holding Back"])
 			IncompleteRatio=passive_handler["Holding Back"]
 			Ratio/=IncompleteRatio
+		if(passive_handler["LegendarySaiyan"]&&Tension==100&&src.transActive==src.transUnlocked)
+			Ratio*=1.5
 		Power=Ratio*GetPowerUpRatio()
 
 		if(Power < 1)
@@ -1244,6 +1245,8 @@ mob/proc/Get_Scouter_Reading(mob/B)
 	Ratio*=B.Base() * 100
 	temp_potential_power(B)//get them potential powers
 	Ratio*=B.potential_power_mult
+	if(passive_handler["LegendarySaiyan"]&&Tension==100&&src.transActive==src.transUnlocked)
+		Ratio*=50
 
 	//BODY CONDITION ADJUSTMENTS
 	if(!B.passive_handler.Get("Piloting"))

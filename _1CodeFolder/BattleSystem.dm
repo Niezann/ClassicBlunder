@@ -124,7 +124,8 @@ mob/proc/Unconscious(mob/P,var/text)
 	var/HellspawnOdds=(10+(src.TotalInjury-40))/(src.Potential/20)//less likely the further you are from 20 pot without outright disabling it before then
 
 	if(src.oozaru_type=="Demonic" && src.TotalInjury>=40&&prob(HellspawnOdds)&&src.transUnlocked<1&&!src.HellspawnBerserk&&!src.HellspawnBerserking||src.ForcedHellspawn&&!src.HellspawnBerserk&&!src.HellspawnBerserking)
-
+		src.RPModeSwitch()
+		src.Energy=src.EnergyMax
 		src.HellspawnTimer=360
 		src.ForcedHellspawn=0
 		src.KO=0
@@ -140,7 +141,6 @@ mob/proc/Unconscious(mob/P,var/text)
 		src.OMessage(15,"<b>HOW INTERESTING THAT YOU CONTINUE TO MISUNDERSTAND WHAT'S AT STAKE HERE.</b>","<font color=red>[src]([src.key]) heralds the end..")
 		src.HellspawnBerserk=1
 		src.Health=30
-		src.RPModeSwitch()
 		return
 	if(src.HellspawnBerserk)
 		src.HellspawnBerserk=0

@@ -32,6 +32,15 @@
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Diable_Jambe"
         HitMessage="springs into a handstand, launching a destructive kick from below!"
         FollowUp="/obj/Skills/AutoHit/Flamberge_Shot"
+    Tengenkotsu
+        KBMult=5
+        KBAdd = 3
+        DamageMult=5
+        HitSparkIcon='fevExplosion.dmi'
+        HitSparkX=-32
+        HitSparkY=-32
+        BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Legendary_Exhaustion"
+        HitMessage="unleashes their pent up legendary power."
     Heavenly_Dragons_Omniscient_Surge
         Warp = 10
         Bolt = 1
@@ -99,7 +108,7 @@
         HitMessage=""
         FollowUp="/obj/Skills/AutoHit/Great_Cleave"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Zwercopter"
-    
+
 
 
 
@@ -124,7 +133,7 @@
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Ignited"
         FollowUp="/obj/Skills/Projectile/Precept_Flame_Emperor"
         DamageMult = 2
-    
+
     Bloodcurdle
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Bloodsurge"
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Itchy_Blood"

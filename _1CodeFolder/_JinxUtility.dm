@@ -1257,6 +1257,10 @@ mob
 				Mod+=1
 			if(src.Saga=="Eight Gates")
 				Mod+=0.01*GatesActive
+			if(src.passive_handler.Get("LegendarySaiyan")&&src.Tension>=50&&src.Tension<100&&src.transActive==src.transUnlocked)
+				Mod+=0.01*(src.Tension/10)
+			if(src.passive_handler.Get("LegendarySaiyan")&&src.Tension==100&&src.transActive==src.transUnlocked)
+				Mod+=0.75
 			// if(src.isRace(HUMAN))
 			// 	if(src.AscensionsAcquired)
 			// 		Mod+=(src.AscensionsAcquired/20)
@@ -1382,6 +1386,10 @@ mob
 			if(KaiokenBP > 1)
 				forMult += KaiokenBP-0.8
 			Mod+=(forMult-1)
+			if(src.passive_handler.Get("LegendarySaiyan")&&src.Tension>=50&&src.Tension<100&&src.transActive==src.transUnlocked)
+				Mod+=0.01*(src.Tension/10)
+			if(src.passive_handler.Get("LegendarySaiyan")&&src.Tension==100&&src.transActive==src.transUnlocked)
+				Mod+=0.75
 			// if(src.isRace(HUMAN))
 			// 	if(src.AscensionsAcquired)
 			// 		Mod+=(src.AscensionsAcquired/20)
@@ -1516,6 +1524,10 @@ mob
 			// if((isRace(SAIYAN) || isRace(HALFSAIYAN))&&transActive&&!src.SpecialBuff)
 			// 	if(src.race.transformations[transActive].mastery==100)
 			// 		Mod+=0.1
+			if(src.passive_handler.Get("LegendarySaiyan")&&src.Tension>=50&&src.Tension<100)
+				Mod+=0.01*(src.Tension/10)
+			if(src.passive_handler.Get("LegendarySaiyan")&&src.Tension==100)
+				Mod+=0.75
 			if(glob.racials.DEVIL_ARM_STAT_MULTS)
 				if(src.CheckSlotless("Devil Arm")&&!src.SpecialBuff)
 					Mod+=(0.05 * AscensionsAcquired)
@@ -2837,6 +2849,12 @@ mob
 					return
 				src.saga_up_self()
 				return
+			if(src.Potential>=glob.progress.T2_STYLES[1]&&src.passive_handler.Get("True Inheritor"))
+				if(!locate(/obj/Skills/Buffs/NuStyle/Legendary/Legacy_Of_The_Fabled_King, src))
+					src.AddSkill(new/obj/Skills/Buffs/NuStyle/Legendary/Legacy_Of_The_Fabled_King)
+			if(src.Potential>=glob.progress.T2_STYLES[2]&&src.passive_handler.Get("True Inheritor"))
+				if(!locate(/obj/Skills/Buffs/NuStyle/Legendary/True_Fist_Of_The_Fabled_King, src))
+					src.AddSkill(new/obj/Skills/Buffs/NuStyle/Legendary/True_Fist_Of_The_Fabled_King)
 
 			if(styles_available(1) && src.Potential>=glob.progress.T1_STYLES[1] && src.req_styles(0, 1))
 				DevelopSignature(src, 1, "Style")

@@ -100,6 +100,12 @@
         IconLock='SweatDrop.dmi'
         ActiveMessage="advances with the bloodlust of a manslayer."
         IconApart=1
+    Legendary_Exhaustion
+        SpdMult=0.75
+        StrMult=0.75
+        EndMult=0.75
+        TimerLimit = 20
+        IconLock='SweatDrop.dmi'
     Alpha_Strike
         passives = list("AfterImages" = 4, "Godspeed" = 4, "Speed Force" = 2, "Iaijutsu" = 1, "Rain" = 5,\
                          "CriticalChance" = 33, "TensionLock" = 1)

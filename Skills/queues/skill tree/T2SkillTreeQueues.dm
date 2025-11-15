@@ -53,7 +53,7 @@ obj
 				SkillCost=TIER_2_COST
 				Copyable=3
 				ActiveMessage="begins to move fluidly, countering incoming blows!"
-				DamageMult=0.9
+				DamageMult=1.2
 				AccuracyMult = 1.15
 				Duration=8
 				Cooldown=45

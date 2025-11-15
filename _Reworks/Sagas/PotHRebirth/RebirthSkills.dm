@@ -247,7 +247,7 @@ obj/Skills/AutoHit
 				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			RandomMult=rand(1,10)
-			DamageMult=RandomMult
+			src.DamageMult=RandomMult
 			src.RebirthLastUse=world.realtime + 24 HOURS
 			usr.Activate(src)
 			usr.TriggerAwakeningSkill(ActNumber)
@@ -809,12 +809,16 @@ obj/Skills/Buffs
 			SwordY=-32
 			SwordClass="Small"
 			StrMult=1.85
+			PowerMult=1.25
 			Cooldown = 1
 			SwordAscension=5
 			OffMult=0.45
 			passives = list("HolyMod" = 3)
 			ActiveMessage="pulls out a small shard of glass that seems barely usable as a weapon."
 			OffMessage="puts the black shard away."
+			adjust(mob/p)
+				passives = list("PUSpike"=50)
+				PowerMult=1.25
 			verb/BlackShard()
 				set category="Skills"
 				adjust(usr)
@@ -829,10 +833,14 @@ obj/Skills/Buffs
 			SwordClass="Medium"
 			ForMult=1.15
 			StrMult=1.3
+			PowerMult=1.25
 			Cooldown = 1
 			SwordAscension=3
 			ActiveMessage="draws forth a skull emblazoned scythe-ax!"
 			OffMessage="pockets the weap-... did it just smile at you?!"
+			adjust(mob/p)
+				passives = list("PUSpike"=50)
+				PowerMult=1.25
 			verb/Devilsknife()
 				set category="Skills"
 				adjust(usr)
@@ -849,8 +857,12 @@ obj/Skills/Buffs
 			StrMult=1.75
 			SwordAscension=5
 			Cooldown = 1
+			PowerMult=1.25
 			ActiveMessage="faces fate with the Axe of Justice."
 			OffMessage="puts the Axe of Justice away."
+			adjust(mob/p)
+				passives = list("PUSpike"=50)
+				PowerMult=1.25
 			verb/Devilsknife()
 				set category="Skills"
 				adjust(usr)
@@ -868,6 +880,9 @@ obj/Skills/Buffs
 			SwordAscension=3
 			ActiveMessage="draws forth a black and orange sword!"
 			OffMessage="sheathes their spooky blade!"
+			adjust(mob/p)
+				passives = list("PUSpike"=50)
+				PowerMult=1.25
 			verb/Spookysword()
 				set category="Skills"
 				adjust(usr)

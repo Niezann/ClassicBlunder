@@ -20,7 +20,7 @@ obj
 			NoPierce=0
 			StrOffense=1
 			EndDefense=0.9
-			DamageMult=6
+			DamageMult=8
 			Cooldown=45
 			HitSparkIcon='BLANK.dmi'
 			HitSparkX=0
@@ -42,7 +42,7 @@ obj
 			ComboMaster=1
 			Distance=4
 			StrOffense=1
-			DamageMult=3
+			DamageMult=5
 			Cooldown=45
 			Stunner=2
 			Knockback=12
@@ -73,7 +73,7 @@ obj
 			PostShockwave=0
 			Shockwave=2
 			Shockwaves=2
-			DamageMult=7
+			DamageMult=8.5
 			Knockback=2
 			Distance=4
 			ActiveMessage="vanishes with a burst of speed to strike at their foe!"
@@ -92,7 +92,7 @@ obj
 			NoLock=1
 			NoAttackLock=1
 			StrOffense=1
-			DamageMult=5
+			DamageMult=6.5
 			DelayTime=0
 			PreShockwave=1
 			PreShockwaveDelay=1
@@ -145,7 +145,7 @@ obj
 			Area="Circle"
 			Distance=1
 			StrOffense=1
-			DamageMult=3.6
+			DamageMult=4.75
 			Launcher=3
 			NoLock=1
 			NoAttackLock=1

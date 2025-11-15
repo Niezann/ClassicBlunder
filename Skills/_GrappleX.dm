@@ -275,7 +275,7 @@ obj/Skills/Grapple
 		Effect="Lotus"
 		EffectMult=2
 		OneAndDone=1
-		Cooldown=75
+		Cooldown=45
 		verb/Izuna_Drop()
 			set category="Skills"
 			src.Activate(usr)
@@ -284,7 +284,7 @@ obj/Skills/Grapple
 		NewCopyable = 3
 		SkillCost=120
 		Copyable=4
-		DamageMult=3
+		DamageMult=5.5
 		Stunner=3
 		StrRate=1
 		ThrowAdd=1
@@ -320,7 +320,7 @@ obj/Skills/Grapple
 		NewCopyable = 3
 		SkillCost=120
 		Copyable=4
-		DamageMult=3.5
+		DamageMult=5
 		ForRate=2
 		StrRate=0.5
 		TriggerMessage="shoves their burning red hand through"
@@ -333,12 +333,12 @@ obj/Skills/Grapple
 			set category="Skills"
 			src.Activate(usr)
 //T4 is in Queues and Autohits.
-//T5 (Sig 1) is damage mult 5, usually.
+//T5 (Sig 1) is damage mult 5, usually. //not anymore motherfucker
 	Erupting_Burning_Finger
 		UnarmedOnly=0
 		NeedsSword=0
 		SignatureTechnique=1
-		DamageMult=8
+		DamageMult=12
 		StrRate=1
 		ForRate=2
 		TriggerMessage="shoves their grossly incandescent hand through"

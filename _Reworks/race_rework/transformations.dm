@@ -191,6 +191,12 @@ transformation
 				user.BioArmor = user.BioArmorMax
 
 			user.potential_trans = user.Potential+pot_trans
+			var/SaiyanTrans=0
+			if(user.isRace(SAIYAN)||user.isRace(HALFSAIYAN))
+				SaiyanTrans=unlock_potential-user.Potential
+				if(SaiyanTrans<5)
+					SaiyanTrans=5
+				user.potential_trans=user.Potential+SaiyanTrans
 			if(form_base)
 				stored_base = user.icon
 				stored_base_x = user.pixel_x
