@@ -11736,7 +11736,7 @@ mob
 					src.ActiveBuff.IconReplace=1
 					src.ActiveBuff.icon=src.ExpandBase
 					src.ActiveBuff.passives["BleedHit"] = 0
-					src.ActiveBuff.passives["EnergyLeak"] = max(6-AscensionsAcquired,1)
+					src.ActiveBuff.passives["EnergyLeak"] = min(1/(1+AscensionsAcquired),1)
 					src.ActiveBuff.passives["ManaLeak"] = 0
 					src.ActiveBuff.passives["GiantForm"] = round(AscensionsAcquired/2)
 					src.ActiveBuff.passives["Godspeed"] = AscensionsAcquired
@@ -11745,21 +11745,21 @@ mob
 					if(src.passive_handler.Get("HellPower")||src.StarPowered)
 						src.ActiveBuff.AutoAnger=1
 						src.ActiveBuff.AngerMult=2
-						src.ActiveBuff.passives["PUSpike"] = 50
+						src.ActiveBuff.passives["PUSpike"] = 100
 						src.ActiveBuff.passives["Pursuer"] = 2 * AscensionsAcquired
 
 					else if(passive_handler.Get("ArtificalStar"))
 						src.ActiveBuff.AutoAnger=1
 						src.ActiveBuff.AngerMult=1.5
-						src.ActiveBuff.passives["PUSpike"] = 25
+						src.ActiveBuff.passives["PUSpike"] = 50
 						src.ActiveBuff.passives["Pursuer"] = 1.5 * AscensionsAcquired
 					else
 						if(AscensionsAcquired)
 							src.ActiveBuff.AngerPoint = 5 * AscensionsAcquired
 						src.ActiveBuff.passives["Pursuer"] = 0.5 * AscensionsAcquired
-						src.ActiveBuff.AngerMult = round(2/(8-AscensionsAcquired), 0.01)
-						src.ActiveBuff.passives["PUSpike"] = round(25/(5-AscensionsAcquired))
-						src.ActiveBuff.PUSpike=round(25/(5-AscensionsAcquired))
+						src.ActiveBuff.AngerMult = 1+round(2/(9-AscensionsAcquired), 0.01)
+						src.ActiveBuff.passives["PUSpike"] = round(50/(6-AscensionsAcquired))
+						src.ActiveBuff.PUSpike=round(50/(6-AscensionsAcquired))
 				if(src.Saga=="Spiral")
 					src.ActiveBuff.ActiveMessage="channels their evolution with full strength!!!"
 					src.ActiveBuff.OffMessage="calms their evolution..."
