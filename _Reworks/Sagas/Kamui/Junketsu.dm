@@ -5,7 +5,7 @@
 	HairLock=1
 	IconLayer=3
 	KenWave=1
-	KenWaveIcon='SparkleRed.dmi'
+	KenWaveIcon='SparkleBlue.dmi'
 	KenWaveSize=5
 	KenWaveTime=30
 	KenWaveX=105
@@ -19,7 +19,7 @@
 	IconLock='junketsu_activated.dmi'
 	TopOverlayLock='junketsu_activated_headpiece.dmi'
 
-	ActiveMessage="forces their blood into their Kamui, making use of its full power!<br><center><font color='red'>Life Fiber Override: Kamui Junketsu!</font color></center>"
+	ActiveMessage="forces their blood into their Kamui, making use of its full power!<br><center><font color='blue'>Life Fiber Override: Kamui Junketsu!</font color></center>"
 	OffMessage="relaxes their bloodflow, allowing the Kamui they wear to revert..."
 	BuffName="Life Fiber Override"
 	adjust(mob/p)
@@ -34,7 +34,7 @@
 		if(level >= 5)
 			OverClock = 0
 		passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 0.5, "Anaerobic" = 1, "CriticalDamage" = (0.1 + (level/10)), "CriticalChance" = level * 5, "CriticalBlock" = 1 + level/10, "BlockChance" = level * 5)
-		ActiveMessage="forces their blood into their Kamui, making use of its full power!<br><center><font color='red'>Life Fiber Override: Kamui Junketsu!</font color></center>"
+		ActiveMessage="forces their blood into their Kamui, making use of its full power!<br><center><font color='blue'>Life Fiber Override: Kamui Junketsu!</font color></center>"
 		OffMessage="relaxes their bloodflow, allowing the Kamui they wear to revert..."
 
 	verb/Life_Fiber_Override()
