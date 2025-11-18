@@ -1447,8 +1447,8 @@ mob
 							src << "You feel as if those eyes on your form just bolster you, instead of hamper you! You feel fully in sync with your Kamui!"
 							src << "You can now tweak the size of the life fibers in your scissor blade to your whim!"
 						else if(src.KamuiType=="Junketsu")
-							src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Life_Fiber_Hybrid/Kamui_Senpu)
-							src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Life_Fiber_Hybrid/Kamui_Senpu_Zanken)
+							src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Kamui_Senpu)
+							src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Kamui_Senpu_Zanken)
 							src << "Kamui Senpu & Senpu Zanken beckon to your imperial will!"
 							src << "Though your body may fail you, your ambition will reach across the world!"
 

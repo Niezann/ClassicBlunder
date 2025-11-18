@@ -204,12 +204,11 @@ obj/Items/Sword/Light/Bakuzan_Koryu
 			set category="Skills"
 			src.Trigger(usr)
 
+obj/Skills/Buffs/SpecialBuffs
 	Kamui_Senpu
-		KiControl=1
-		PUSpike=100
 		FlashChange=1
 		KenWave=1
-		KenWaveIcon='SparkleRed.dmi'
+		KenWaveIcon='SparkleBlue.dmi'
 		KenWaveSize=2
 		KenWaveTime=5
 		KenWaveX=105
@@ -222,11 +221,11 @@ obj/Items/Sword/Light/Bakuzan_Koryu
 		passives = list("VoidField" = 1, "PureReduction" = 1, "Flicker" = 1)
 
 		IconLock='junketsu_senpu.dmi'
-		LockX=-16
-		LockY=-16
+		LockX=-20
+		LockY=-20
 		TopOverlayLock='junketsu_senpu_headpiece.dmi'
-		TopOverlayX=-32
-		TopOverlayY=-32
+		TopOverlayX=0
+		TopOverlayY=-4
 		adjust(mob/p)
 			SpdMult = 1.05 + (p.SagaLevel * 0.05)
 			DefMult = 1.05 + (p.SagaLevel * 0.05)
@@ -241,7 +240,7 @@ obj/Items/Sword/Light/Bakuzan_Koryu
 	Kamui_Senpu_Zanken
 		FlashChange=1
 		KenWave=1
-		KenWaveIcon='SparkleRed.dmi'
+		KenWaveIcon='SparkleBlue.dmi'
 		KenWaveSize=2
 		KenWaveTime=5
 		KenWaveX=105
@@ -252,13 +251,13 @@ obj/Items/Sword/Light/Bakuzan_Koryu
 		StrMult=1.25
 		SpdMult=1.3
 		EndMult=1.25
-		passives = list("KiControl" = 1, "PureDamage" = 1, "DeathField" = 1, "HardStyle" = 1, "VoidField" = 1, "PureReduction" = 1, "Flicker" = 1)
+		passives = list("PureDamage" = 1, "DeathField" = 1, "HardStyle" = 1, "VoidField" = 1, "PureReduction" = 1, "Flicker" = 1)
 		IconLock='junketsu_senpuzenkan.dmi'
-		LockX=-16
-		LockY=-16
+		LockX=-20
+		LockY=-20
 		TopOverlayLock='junketsu_senpuzenkan_headpiece.dmi'
-		TopOverlayX=-16
-		TopOverlayY=-16
+		TopOverlayX=0
+		TopOverlayY=-4
 		adjust(mob/p)
 			StrMult = 1.04 + (p.SagaLevel * 0.04)
 			OffMult = 1.04 + (p.SagaLevel * 0.04)
