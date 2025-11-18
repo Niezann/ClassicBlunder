@@ -1842,14 +1842,6 @@ NEW VARIABLES
 				CooldownScaling = 1
 				ActiveMessage="is taken over by a violent rage as a mask forms on their face!"
 				OffMessage="violently rips off their mask as it shatters into fragments..."
-				verb/Customize_Mask()
-					if(!usr.VaizardType)
-						usr.VaizardType = input(usr, "What type?") in list("Berserker", "Manipulator", "Hellion", "Phantasm")
-					var/changeIcon = input(usr, "Do you want to change your mask icon?") in list("Yes", "No")
-					if(changeIcon == "Yes")
-						IconLock = input(usr, "What icon?") as file
-						LockX = input(usr, "What X offset?") as num
-						LockY = input(usr, "What Y offset?") as num
 				proc/changeVariables(mob/p)
 					if(altered) return
 					AngerMult = 1.3 + (0.1 * Mastery)
@@ -1888,8 +1880,10 @@ NEW VARIABLES
 				verb/Don_Mask()
 					set category="Skills"
 					if(!usr.BuffOn(src))
+						if(!usr.VaizardType)
+							usr.VaizardType = input(usr, "What type?") in list("Berserker", "Manipulator", "Hellion", "Phantasm")
 						changeVariables(usr)
-					src.Trigger(usr)
+						src.Trigger(usr)
 
 		Aphotic_Shield
 			SignatureTechnique=3
