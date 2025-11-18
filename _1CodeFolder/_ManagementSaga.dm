@@ -1447,6 +1447,9 @@ mob
 							src << "You feel as if those eyes on your form just bolster you, instead of hamper you! You feel fully in sync with your Kamui!"
 							src << "You can now tweak the size of the life fibers in your scissor blade to your whim!"
 						else if(src.KamuiType=="Junketsu")
+							src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Life_Fiber_Hybrid/Kamui_Senpu)
+							src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Life_Fiber_Hybrid/Kamui_Senpu_Zanken)
+							src << "Kamui Senpu & Senpu Zanken beckon to your imperial will!"
 							src << "Though your body may fail you, your ambition will reach across the world!"
 
 					if(src.SagaLevel==5)
@@ -1486,7 +1489,7 @@ mob
 									del ks
 
 							if(choice == "Rebellion")
-								src << "placeholder"
+								src << "...You will know your destiny in time...."
 
 					if(src.SagaLevel==6)
 						if(src.KamuiType=="Senketsu")
@@ -1496,8 +1499,11 @@ mob
 							src << "Your being has merged with life fibers."
 						else if(src.KamuiType=="Junketsu")
 							src << "Unshatterable, your resolve gains a twofold edge...Your goals are nearly within your grasp."
+							src.contents+=new/obj/Skills/Buffs/SpecialBuffs/Kamui_Unite
+							src << "You gain the ability to force your Kamui to unite with you!"
 						else if (KamuiType == "Shinra Koketsu")
 							contents += new/obj/Items/Symbiotic/Kamui/Shinra_Koketsu
+							src << "Your Magnum opus is complete... the power of Shinra Koketsu is your's to command!"
 				if("Path of a Hero: Rebirth")
 
 				if("Keyblade")
@@ -1601,7 +1607,6 @@ mob
 								src.AddSkill(new/obj/Skills/AutoHit/Magic/Flare)
 							if("Thunder")
 								src.AddSkill(new/obj/Skills/Projectile/Magic/Disintegrate)
-						src.AddSkill(new/obj/Skills/Projectile/Magic/Meteor)
 						passive_handler.Increase("ManaCapMult",0.25)
 
 					if(src.SagaLevel==5)

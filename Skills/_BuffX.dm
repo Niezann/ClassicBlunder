@@ -9238,7 +9238,7 @@ NEW VARIABLES
 						ActiveMessage="beckons their luckless foe into an inescapable showdown!"
 						OffMessage="runs out of their Devil's Luck..."
 					Reversal_Mastery
-						StyleNeeded="Flow Reversal"
+						StyleNeeded="Psycho Boxing"
 						ManaGlow="#369"
 						ManaGlowSize=2
 						passives = list("TensionLock" = 1, "CyberStigma" = 2, "PureReduction" = 1, "CounterMaster" = 10, "Attracting" = 3)

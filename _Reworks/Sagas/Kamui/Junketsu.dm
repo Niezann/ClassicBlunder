@@ -83,7 +83,7 @@ obj/Items/Sword/Light/Bakuzan_Koryu
 	icon = 'cybox_sword.dm'
 	pixel_x = -32
 	pixel_y = -32
-	passives = list("Life Fiber Rending" = 2)*/
+	passives = list("Life Fiber Rending" = 2) */
 
 /obj/Skills/Bestow_Life_Fiber
 	var/consentNeeded = TRUE

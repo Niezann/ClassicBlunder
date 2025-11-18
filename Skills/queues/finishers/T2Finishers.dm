@@ -181,6 +181,12 @@
         HitSparkIcon = 'Slash_Multi.dmi'
 
     Psycho_Barrage
+        Combo=5
+        DamageMult = 0.5
+        Launcher=3
+        Crippling=15
+        BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Forced_Mechanize"
+        HitMessage="overwhelms their opponent with a barrage of Magnetizing blows!"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Reversal_Mastery"
 
     // end hybird?
