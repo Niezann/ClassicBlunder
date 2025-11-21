@@ -281,20 +281,30 @@ obj/Skills/Buffs/SpecialBuffs
 		StyleStr=1.1
 		StyleEnd=1.1
 		StyleSpd=1.1
-		passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 2, "NeedsSecondSword" = 1, "TechniqueMastery" = 3, "BuffMastery" = 3)
+		SureHitTimerLimit=25
+		SureDodgeTimerLimit=25
+		passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 2, "TechniqueMastery" = 3, "BuffMastery" = 3)
 		NeedsSecondSword = 1
 		Mastery=4
-		Finisher="/obj/Skills/Queue/Finisher/Rashomon"
+		Finisher="/obj/Skills/Queue/Finisher/Generic_Finisher"
 		adjust(mob/p)
-			passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 2, "NeedsSecondSword" = 1, "TechniqueMastery" = p.SagaLevel/2, "BuffMastery" = p.SagaLevel/2)
+			passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 0.5* p.SagaLevel, "TechniqueMastery" = p.SagaLevel/2, "BuffMastery" = p.SagaLevel/2)
 			if(p.ActiveBuff != "Life Fiber Override") // Nudist Beach Satsuki, no Kamui allowed, just shank them if they bypass this, come back to this later and make it.. actually work how I'd like
-				StyleStr=1.1 * (0.05 * p.SagaLevel)
-				StyleEnd=1.1 * (0.05 * p.SagaLevel)
-				StyleSpd=1.1 * (0.05 * p.SagaLevel)
-				StyleOff=1.1
-				StyleDef=1.1
+				StyleStr=1.1 + (0.05 * p.SagaLevel)
+				StyleEnd=1.1 + (0.05 * p.SagaLevel)
+				StyleSpd=1.1 + (0.05 * p.SagaLevel)
+				StyleOff=1.1 + (0.05 * p.SagaLevel)
+				StyleDef=1.1 + (0.05 * p.SagaLevel)
+		verb/Toggle_Sword_Count()
+			set category="Other"
+			if(!src.NeedsSecondSword)
+				src.NeedsSecondSword=1
+				usr << "You decide to wield <font color='yellow'>two</font color> swords."
+			else if(src.NeedsSecondSword)
+				src.NeedsSecondSword=0
+				usr << "You decide to wield a <font color='red'>single</font color> sword."
 		verb/Resolve()
 			set hidden=1
 			src.Trigger(usr)
 
-			// To Do: Unique Finisher.
+			// To Do: Unique Finisher

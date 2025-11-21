@@ -33,11 +33,11 @@ transformation
 				if(mastery >= 50)
 					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade2))
 						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade2)
-					user << "You can draw out greater power from your mastery over super Saiyan - Grade 2 unlocked!"
+						user << "You can draw out greater power from your mastery over super Saiyan - Grade 2 unlocked!"
 				if(mastery >= 75)
 					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade3))
 						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade3)
-					user << "You can strain past the limits of your Super Saiyan form! Grade 3 Unlocked!"
+						user << "You can strain past the limits of your Super Saiyan form! Grade 3 Unlocked!"
 
 			transform_animation(mob/user)
 				if(first_time)

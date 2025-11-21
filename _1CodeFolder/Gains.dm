@@ -814,6 +814,7 @@ mob
 					src.SureHitTimer--
 					if(src.SureHitTimer<=0)
 						src.SureHit=1
+						src <<"<b><i> You have a Sure Hit Stack! </b></i>"
 						src.SureHitTimer=src.SureHitTimerLimit
 			if(src.SureDodgeTimerLimit)
 				if(!src.SureDodge)

@@ -478,11 +478,8 @@ update
 		updateMob(mob/o)
 			.=..()
 			if(o.isRace(HUMAN)||o.isRace(CELESTIAL))
-				o.race.transformations -= /transformation/human/high_tension()
-				o.race.transformations -= /transformation/human/high_tension_MAX()
-				o.race.transformations -= /transformation/human/super_high_tension()
-				o.race.transformations -= /transformation/human/super_high_tension_MAX()
-				o.race.transformations -= /transformation/human/unlimited_high_tension()
+				for(var/transformation/human/HT in o.race.transformations)
+					del HT
 				o<< "Your old High Tension Forms have been Removed due to Updates making them better. They have been summarily Regranted, please restore your <b>Customizations</b>"
 				o.race.transformations += new /transformation/human/high_tension()
 				o.race.transformations += new /transformation/human/high_tension_MAX()
