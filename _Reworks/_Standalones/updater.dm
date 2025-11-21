@@ -473,6 +473,23 @@ update
 				o.race.transformations += new /transformation/human/unlimited_high_tension()
 				o<<"You have been given High Tension. <b>Please customize your hair for HT1, or it will just make you bald..</b>"
 
+	version27
+		version = 27
+		updateMob(mob/o)
+			.=..()
+			if(o.isRace(HUMAN)||o.isRace(CELESTIAL))
+				o.race.transformations -= /transformation/human/high_tension()
+				o.race.transformations -= /transformation/human/high_tension_MAX()
+				o.race.transformations -= /transformation/human/super_high_tension()
+				o.race.transformations -= /transformation/human/super_high_tension_MAX()
+				o.race.transformations -= /transformation/human/unlimited_high_tension()
+				o<< "Your old High Tension Forms have been Removed due to Updates making them better. They have been summarily Regranted, please restore your <b>Customizations</b>"
+				o.race.transformations += new /transformation/human/high_tension()
+				o.race.transformations += new /transformation/human/high_tension_MAX()
+				o.race.transformations += new /transformation/human/super_high_tension()
+				o.race.transformations += new /transformation/human/super_high_tension_MAX()
+				o.race.transformations += new /transformation/human/unlimited_high_tension()
+
 
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
