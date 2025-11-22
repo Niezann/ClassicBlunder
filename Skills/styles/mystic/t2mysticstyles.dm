@@ -78,7 +78,7 @@
 				BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Aura/Water"
 				passives = list("CoolingDown" = 1,"Familiar" = 2, "Amplify" = 2, "Hardening" = 3, "Freezing" = 10, "IceAge" = 50, "SpiritFlow" = 3, "WaveDancer" = 2)
 
-				Finisher="/obj/Skills/Queue/Finisher/Phosphor" 
+				Finisher="/obj/Skills/Queue/Finisher/Phosphor"
 			else
 				StyleActive = "Hot Style"
 				ElementalOffense = "Fire"
@@ -89,7 +89,7 @@
 				BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Aura/Fire"
 				passives = list("HeatingUp" = 1,"Familiar" = 2, "Amplify" = 2, "Heavy Strike" = "Inferno", "Scorching" = 10, "Combustion" = 50, "SpiritFlow" = 3, "SpiritHand" = 1)
 
-				Finisher="/obj/Skills/Queue/Finisher/Jet_Kindling" 
+				Finisher="/obj/Skills/Queue/Finisher/Jet_Kindling"
 		verb/Swap_Stance()
 			set category="Skills"
 			if(usr.BuffOn(src))
@@ -97,3 +97,4 @@
 			swap_stance()
 			Trigger(usr, 1)
 			giveBackTension(usr)
+			giveBackHotCold(usr)

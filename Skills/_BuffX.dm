@@ -11698,6 +11698,10 @@ mob
 					AllSkillsRemove(s)
 					SlotlessBuffs -= name2remove //TODO: this may still not work
 			OMsg(src, "[src] relaxes their [src.StyleBuff]...")
+			if(src.StyleBuff.StyleActive == "Hot Style" || \
+			   src.StyleBuff.StyleActive == "Cold Style")
+				StyleBuff?:hotCold = 0
+				client.hud_ids["HotnCold"]?:Update()
 			src.Tension=0
 			src.StanceActive=0
 			src.StyleBuff=null

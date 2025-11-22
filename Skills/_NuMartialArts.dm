@@ -29,10 +29,14 @@ obj
 //Martial
 			NuStyle
 				var/tensionStorage = 0
+				var/hotColdStorage = 0
 				var/last_storage = 0
 				var/tmp/triggerTension
 				proc/turnOff(mob/p)
 					tensionStorage = p.Tension
+					if(p.StyleBuff.StyleActive == "Hot Style" || \
+			   p.StyleBuff.StyleActive == "Cold Style")
+						hotColdStorage = p.StyleBuff?:hotCold
 					last_storage = world.time
 					Trigger(usr, 1)
 					cooldown_remaining = 0
@@ -44,6 +48,13 @@ obj
 							tensionStorage = 0
 					else
 						tensionStorage = 0
+				proc/giveBackHotCold(mob/p)
+					if(last_storage + 1200 > world.time)
+						if(hotColdStorage)
+							p.StyleBuff?:hotCold = hotColdStorage
+							hotColdStorage = 0
+						else
+							hotColdStorage = 0
 				proc/initUnlock()
 					// hehe
 					var/obj/Skills/Buffs/NuStyle/eh = new type

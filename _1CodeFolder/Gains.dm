@@ -780,9 +780,6 @@ mob
 					AddCrippling(abs(val)/(glob.HOTNCOLD_DEBUFF_DIVISOR*4))
 				else
 					AddBurn(abs(val)/(glob.HOTNCOLD_DEBUFF_DIVISOR))
-			else
-				if(client&&client.hud_ids["HotnCold"])
-					client.remove_hud("HotnCold")
 			if(passive_handler["Grit"])
 				if(client&&hudIsLive("Grit", /obj/bar))
 					client.hud_ids["Grit"]?:Update()
