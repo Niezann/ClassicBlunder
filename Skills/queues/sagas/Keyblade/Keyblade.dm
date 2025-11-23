@@ -75,3 +75,8 @@ obj/Skills/Queue
 		NeedsSword=1
 		Quaking=10
 		EnergyCost=2
+	SonicBlade
+		ActiveMessage="'s legs glow with Boundless Light!"
+
+obj/Skills/Projectile
+	StrikeRaid

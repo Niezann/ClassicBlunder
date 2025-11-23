@@ -24,7 +24,7 @@ obj
 				disableInnovation(usr)
 			adjust(mob/p)
 				if(p.isInnovative(HUMAN, "Sword") && !isInnovationDisable(p))
-					Area = "Around Target"
+					Area="Around Target"
 					Slow=3
 					Knockback=0
 					Rounds= 2 + round(p.Potential/25)
@@ -33,8 +33,9 @@ obj
 					Distance = 12
 					DistanceAround=4
 					DamageMult = 2 + p.Potential/100
+					ActiveMessage="traps their foe in a bubble of Pressure with a thrust of their blade!"
 				else
-					Area = "Wave"
+					Area="Wave"
 					Slow=0
 					Knockback=5
 					Rounds = 0
@@ -255,7 +256,7 @@ obj
 			TurfShift='Dirt1.dmi'
 			TurfShiftDuration=1
 			Cooldown=30
-			ActiveMessage="passes forth with their blade, cleaving through misfortune!"
+			ActiveMessage="swings their weapon in a quick pattern!"
 			verb/Disable_Innovate()
 				set category = "Other"
 				disableInnovation(usr)
@@ -308,7 +309,7 @@ obj
 			HitSparkSize=1.5
 			HitSparkDispersion=1
 			Cooldown=30
-			ActiveMessage="swings their weapon in a quick pattern!"
+			ActiveMessage="passes forth with their blade, cleaving through misfortune!"
 			adjust(mob/p)
 				var/pot = p.Potential
 				Size = 1 + round(pot/25)

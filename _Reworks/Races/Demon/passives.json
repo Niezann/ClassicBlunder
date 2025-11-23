@@ -44,7 +44,7 @@
     "ARMOR_PASSIVES_I": {
         "Juggernaut": [0.25, 4],
         "DebuffResistance": [0.25, 2],
-        "Hardening": [0.5, 5],
+        "Hardening": [0.5, 5]
     },
     "ARMOR_PASSIVES_II": {
         "GiantForm": [1, 1],

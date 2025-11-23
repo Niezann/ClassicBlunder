@@ -283,15 +283,18 @@ obj/Skills/Buffs/SpecialBuffs
 		StyleSpd=1.1
 		SureHitTimerLimit=25
 		SureDodgeTimerLimit=25
-		passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 2, "TechniqueMastery" = 3, "BuffMastery" = 3)
+		passives = list("HybridStyle" = "UnarmedStyle", "DoubleStrike" = 2, "TechniqueMastery" = 3, "BuffMastery" = 3)
 		NeedsSecondSword = 1
 		Mastery=4
 		Finisher="/obj/Skills/Queue/Finisher/Generic_Finisher"
 		adjust(mob/p)
-			passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 0.5* p.SagaLevel)
+			passives = list("HybridStyle" = "UnarmedStyle", "DoubleStrike" = 0.5* p.SagaLevel)
 			if(p.ActiveBuff == "Life Fiber Override") // So it doesn't fuck up your Sure Hit/SureDodge from Kamui
 				SureHitTimerLimit=null
 				SureDodgeTimerLimit=null
+				StyleStr=1.1
+				StyleEnd=1.1
+				StyleSpd=1.1
 			if(p.ActiveBuff != "Life Fiber Override") // Nudist Beach/Pre Junketsu Satsuki, no Kamui allowed, just shank them if they bypass this, come back to this later and make it.. actually work how I'd like
 				StyleStr=1.05 + (0.05 * p.SagaLevel)
 				StyleEnd=1.05 + (0.05 * p.SagaLevel)
@@ -301,7 +304,7 @@ obj/Skills/Buffs/SpecialBuffs
 				SureHitTimerLimit=25 - (2.5 * p.SagaLevel)
 				SureDodgeTimerLimit=25 - (2.5 * p.SagaLevel)
 			if(p.SagaLevel >= 5)
-				passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 0.5* p.SagaLevel, "TechniqueMastery" = p.SagaLevel/2, "BuffMastery" = p.SagaLevel/2)
+				passives = list("HybridStyle" = "UnarmedStyle", "DoubleStrike" = 0.5* p.SagaLevel, "TechniqueMastery" = p.SagaLevel/2, "BuffMastery" = p.SagaLevel/2)
 
 		verb/Toggle_Sword_Count()
 			set category="Other"
