@@ -19,7 +19,7 @@ blobDropper/proc/dropBlob(mob/Players/p, override = 0)
     var/turf/T = p.loc
     var/newX = T.x + rand(-3, 3)
     var/newY = T.y + rand(-3, 3)
-    for(var/i = 0, i < 10; i++)
+    for(var/i = 0, i < 10, i++)
         var/turf/t = locate(newX,newY,p.z)
         if(t.density)
             if(i == 9) break

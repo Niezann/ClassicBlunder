@@ -264,8 +264,8 @@ obj/Items/Tech
 	SpaceTravel
 obj/PodConsole
 	var/Launching
-	Health=9999999999999999999
-	LogPEndurance=999999999999
+	Health=100000000000000
+	LogPEndurance=100000000000000
 	var/SpeakerToggle=0
 	var/PodID
 	Grabbable=0

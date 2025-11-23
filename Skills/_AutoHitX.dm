@@ -6115,7 +6115,7 @@ obj
 						if(money.Level>0)
 							var/newX = m.x + rand(-3, 3)
 							var/newY = m.y + rand(-3, 3)
-							for(var/i = 0, i < 10; i++)
+							for(var/i = 0, i < 10, i++)
 								var/turf/t = locate(newX,newY,m.z)
 								if(t.density)
 									if(i == 9) break

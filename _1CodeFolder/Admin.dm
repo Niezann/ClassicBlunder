@@ -1966,6 +1966,9 @@ atom/Topic(A,B[])/*
 		Log("Admin","[ExtractInfo(usr)] created a [variable], and gave to/placed under/near [ExtractInfo(src)].")
 	.=..()
 mob/Topic(href,href_list[])
+	if(href_list["action"] == "GetInfo")
+		if(href_list["passe"] in PassiveInfo) usr.OutputPassiveInfo(href_list["passe"]);
+		
 	if(Admin)
 		switch(href_list["action"])
 			if("listview")

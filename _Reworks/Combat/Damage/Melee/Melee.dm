@@ -1070,7 +1070,7 @@
 				if(!glob.racials.CASHLEAKREMOVES)
 					newX = src.x + rand(-3, 3)
 					newY = src.y + rand(-3, 3)
-					for(var/i = 0, i < 10; i++)
+					for(var/i = 0, i < 10, i++)
 						var/turf/t = locate(newX,newY,src.z)
 						if(t.density)
 							if(i == 9) break

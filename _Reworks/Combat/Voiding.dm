@@ -32,7 +32,7 @@ mob/proc/getVoidRolls(extraRolls = 0)
 /mob/proc/applyVoidNerf()
 	if(src.passive_handler.Get("Undying"))
 		return
-	if(glob.VoidMaim||!src.)
+	if(glob.VoidMaim||!src)
 		Maimed++
 		src << "After managing to survive, you're left with a maim."
 	if(glob.VoidCut)
