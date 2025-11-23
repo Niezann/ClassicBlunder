@@ -7,12 +7,15 @@ obj
 					icon='scissorcasetilted.dmi'
 					UnderlayIcon = 'scissorcasetilted_under.dmi'
 					passives = list("Shearing" = 1)
+					ShatterTier=0
+					Destructable=0
 					iconAlt='Scissor_blade_decap.dmi'
 					iconAltX=-32
 					iconAltY=-32
 					ClassAlt="Heavy"
 					Cost = 0
 					LegendaryItem = 1
+					Ascended= 3
 					Saga = "Kamui"
 					TierTechniques=list(null, list("/obj/Skills/Buffs/SlotlessBuffs/WeaponSystems/Decapitation_Mode", "/obj/Skills/Queue/Sen_I_Soshitsu", "/obj/Skills/AutoHit/Life_Fiber_Weave"), null, null, null, null)
 					icon = 'scissor_blade.dmi'

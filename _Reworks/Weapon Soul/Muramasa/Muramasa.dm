@@ -4,7 +4,9 @@ obj/Items/Sword/Light/Legendary/WeaponSoul/Bane_of_Blades//Muramasa
 	pixel_x=-16
 	pixel_y=-16
 	passives = list("WeaponBreaker" = 1)
-
+	Ascended=3
+	Destructable=0
+	ShatterTier=0
 obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Muramasa
 	name = "Heavenly Regalia: The Death"
 	StrMult=1.3

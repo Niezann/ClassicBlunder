@@ -335,8 +335,8 @@ mob/Admin3/verb
 						P.passive_handler.Increase("CriticalBlock", 0.1)
 						P.passive_handler.Increase("BlockChance", 10)
 						P.passive_handler.Increase("LikeWater", 2)
-						P.SureHitTimerLimit = 25
-						P.SureDodgeTimerLimit = 25
+						P.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Resolve)
+						P<<"With each movement forward towards the realization of your ideals, your resolve strengthens..."
 
 				if("Magic Knight")
 					P.SagaLevel=1

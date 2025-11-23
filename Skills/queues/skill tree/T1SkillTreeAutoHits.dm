@@ -33,7 +33,6 @@ obj
 					Distance = 12
 					DistanceAround=4
 					DamageMult = 2 + p.Potential/100
-
 				else
 					Area = "Wave"
 					Slow=0
@@ -43,7 +42,6 @@ obj
 					WindUp=0
 					Distance = 6
 					DamageMult=2.8
-
 			verb/Sword_Pressure()
 				set category="Skills"
 				usr.Activate(src)
@@ -257,7 +255,7 @@ obj
 			TurfShift='Dirt1.dmi'
 			TurfShiftDuration=1
 			Cooldown=30
-			ActiveMessage="swings their weapon in a quick pattern!"
+			ActiveMessage="passes forth with their blade, cleaving through misfortune!"
 			verb/Disable_Innovate()
 				set category = "Other"
 				disableInnovation(usr)
@@ -282,15 +280,15 @@ obj
 					Rounds = 0
 					DamageMult = 1.5
 					EnergyCost = 3
-					Launcher = 0 
+					Launcher = 0
 					ControlledRush = 0
-					Rush = 1 
+					Rush = 1
 					FollowUp=null
 			verb/Cross_Slash()
 				set category="Skills"
 				adjust(usr)
 				usr.Activate(src)
-		
+
 		Cross_Slash_Inno_Follow
 			name = "Parting Seas"
 			Copyable=0

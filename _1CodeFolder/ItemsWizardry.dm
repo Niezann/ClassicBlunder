@@ -2615,15 +2615,16 @@ obj/Items/Enchantment/Staff
 			Legendary
 				LegendaryItem=1
 				Unobtainable=1
-				Ascended=5
+				Ascended=3
 
 				Bolverk
 					name="Bolverk"
 					icon='Bolverk.dmi'
 					pixel_x=-32
 					pixel_y=-32
-					Destructable=0
 					passives = list("ManaGeneration" = 4, "CalmAnger" = 1)
+					Destructable=0
+					ShatterTier=0
 					NoSaga=1
 					ManaGeneration=4
 					CalmAnger=1

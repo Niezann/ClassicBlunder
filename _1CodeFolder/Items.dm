@@ -895,7 +895,7 @@ obj/Items/Sword
 		Legendary
 			LegendaryItem=1
 			Unobtainable=1
-			Ascended=5
+			Ascended=3
 			ShatterCounter=700
 			ShatterMax=700
 			Yukianesa
@@ -909,6 +909,8 @@ obj/Items/Sword
 				Element="Water"
 				unsheatheIcon = 'Yukianesa.dmi'
 				passives = list("CalmAnger" = 1, "MagicSword" = 1, "ManaGeneration" = 3, "AngerThreshold" = 1.5)
+				Destructable=0
+				ShatterTier=0
 				ManaGeneration=3
 				Techniques=list("/obj/Skills/Buffs/SlotlessBuffs/Grimoire/OverDrive/Frost_End", "/obj/Skills/AutoHit/FrostBite", "/obj/Skills/Projectile/Sword/TougaHyoujin", "/obj/Skills/Queue/KokujinYukikaze")
 
@@ -931,7 +933,7 @@ obj/Items/Sword
 		Legendary
 			LegendaryItem=1
 			Unobtainable=1
-			Ascended=5
+			Ascended=3
 			ShatterCounter=800
 			ShatterMax=800
 
@@ -942,6 +944,7 @@ obj/Items/Sword
 				pixel_y=-16
 				Techniques=list("/obj/Skills/Queue/Heart_Slayer","/obj/Skills/AutoHit/Dark_Break","/obj/Skills/AutoHit/Shadowbreaker","/obj/Skills/Buffs/NuStyle/SwordStyle/Seeker_of_Darkness")
 				Destructable = 0
+				ShatterTier = 0
 				NoSaga=1
 				MagicSword=1
 				Class="Light"
@@ -1008,7 +1011,7 @@ obj/Items/Sword
 		Legendary
 			LegendaryItem=1
 			Unobtainable=1
-			Ascended=5
+			Ascended=3
 			ShatterCounter=1000
 			ShatterMax=1000
 
@@ -1019,6 +1022,8 @@ obj/Items/Sword
 				pixel_y=-32
 				NoSaga=1
 				passives = list("CalmAnger" = 1,"MagicSword" = 1, "Extend" = 1, "BulletKill" = 1, "ManaGeneration" = 3, "AngerThreshold" = 1.5)
+				Destructable=0
+				ShatterTier=0
 				CalmAnger=1
 				MagicSword=1
 				Extend=1

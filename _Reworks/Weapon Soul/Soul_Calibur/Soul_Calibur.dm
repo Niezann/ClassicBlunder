@@ -2,6 +2,9 @@ obj/Items/Sword/Medium/Legendary/WeaponSoul/Blade_of_Order // SOUL CALIBUR
 	name="Blade of Order"
 	icon='SoulCalibur.dmi'
 	Element="Silver"
+	Ascended=3
+	Destructable=0
+	ShatterTier=0
 	var/caliburLight = TRUE
 
 obj/Skills/Buffs/SlotlessBuffs/Defrost

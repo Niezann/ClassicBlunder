@@ -41,7 +41,7 @@ mob/proc/getSenketsuViewers()
 			ActiveMessage="attempts to wear a Kamui which they have no connection to!<br><center><font color='red'>Life Fiber ?Synchronize?: Kamui Senketsu!?!?</font color></center>"
 			OffMessage="has their power stolen from them..."
 			passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 2, "Shameful Display" = 1, "Persistence" = 3, "UnderDog" = 3, "DemonicDurability" = 2, "ContinuallyStun" = 5)
-			
+
 		else
 			passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 0.5, "Shameful Display" = level, "Persistence" = level, "UnderDog" = level, "Adrenaline" = level / 2, "Underdog" = level / 2, "DemonicDurability" = level)
 			if(usr.SagaLevel == 1)
@@ -158,7 +158,7 @@ obj/Skills/Buffs/SpecialBuffs
 		adjust(mob/p)
 			StrMult = 1.05 + (p.SagaLevel * 0.05)
 			OffMult = 1.05 + (p.SagaLevel * 0.05)
-			passives = list("DeathField" = p.SagaLevel*1.5, "SwordAscension" = p.SagaLevel, "HardStyle" = p.SagaLevel, "PureDamage" = p.SagaLevel/2, "BleedHit" = 6-p.SagaLevel)
+			passives = list("DeathField" = round(p.SagaLevel*1.5,1), "SwordAscension" = p.SagaLevel, "HardStyle" = p.SagaLevel, "PureDamage" = p.SagaLevel/2, "BleedHit" = 6-p.SagaLevel)
 
 		verb/Kamui_Senjin()
 			set category="Skills"
@@ -219,7 +219,7 @@ obj/Skills/Buffs/SpecialBuffs
 			OffMult = 1.04 + (p.SagaLevel * 0.04)
 			SpdMult = 1.04 + (p.SagaLevel * 0.04)
 			DefMult = 1.04 + (p.SagaLevel * 0.04)
-			passives = list("DeathField" = p.SagaLevel*1.25, "SwordAscension" = p.SagaLevel/1.5, "HardStyle" = p.SagaLevel/1.5, "PureDamage" = p.SagaLevel/2.5, "Skimming" = 2, "Flicker" = p.SagaLevel/1.25, "Flow" = p.SagaLevel/2.5, "DoubleStrike" = p.SagaLevel/2.5, "Pursuer" = p.SagaLevel/2.5, "CounterMaster" = p.SagaLevel/1.25, "BleedHit" = 8-p.SagaLevel)
+			passives = list("DeathField" = round(p.SagaLevel*1.25,1), "SwordAscension" = round(p.SagaLevel/1.5,1), "HardStyle" = p.SagaLevel/1.5, "PureDamage" = round(p.SagaLevel/2.5,1), "Skimming" = 2, "Flicker" = round(p.SagaLevel/1.25,1), "Flow" = round(p.SagaLevel/2.5,1), "DoubleStrike" = round(p.SagaLevel/2.5,1), "Pursuer" = round(p.SagaLevel/2.5,1), "CounterMaster" = round(p.SagaLevel/1.25,1), "BleedHit" = 8-p.SagaLevel)
 
 		verb/Kamui_Senjin_Shippu()
 			set category="Skills"

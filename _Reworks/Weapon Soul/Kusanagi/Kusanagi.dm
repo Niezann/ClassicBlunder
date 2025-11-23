@@ -4,6 +4,9 @@ obj/Items/Sword/Medium/Legendary/WeaponSoul/Sword_of_Faith // Kusanagi
 	pixel_x=-16
 	pixel_y=-16
 	passives = list("MagicSword" = 1, "ManaSteal" = 2, "WindRelease" = 1)
+	ShatterTier=0
+	Destructable=0
+	Ascended=3
 	MagicSword=1
 	TierTechniques=list(null, null, null, null, null, "/obj/Skills/Buffs/SlotlessBuffs/Totsuka_no_Tsurugi")
 

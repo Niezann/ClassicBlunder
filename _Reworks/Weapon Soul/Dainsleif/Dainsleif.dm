@@ -3,6 +3,9 @@ mob/var/dainsleifDrawn = FALSE
 obj/Items/Sword/Medium/Legendary/WeaponSoul/Blade_of_Ruin//Dainsleif
 	name="Blade of Ruin"
 	icon='Dainsleif.dmi'
+	Destructable=0
+	ShatterTier=0
+	Ascended=3
 	passives = list("Shearing" = 1, "CursedWounds" = 1, "MortalStrike" = 0.5)
 	var/hasKilled = FALSE
 	proc/drawDainsleif(mob/p)
@@ -58,14 +61,14 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Dainsleif
 	verb/Heavenly_Regalia()
 		set category="Skills"
 		src.Trigger(usr)
-	
+
 obj/Skills/Queue
 	Blood_Craving
 		HitMessage="upward slash rends their target! The trickles of ichor form into a red barrier!"
 		ActiveMessage="sword gleams blood red!"
 		ABuffNeeded="Soul Resonance"
 		DamageMult=0.75
-		FollowUp="/obj/Skills/AutoHit/Bloody_CravingEnhanced" 
+		FollowUp="/obj/Skills/AutoHit/Bloody_CravingEnhanced"
 		FollowUpDelay=1
 		Duration=5
 		KBMult=0.00001

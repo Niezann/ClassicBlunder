@@ -1956,8 +1956,8 @@ NEW VARIABLES
 		Spirit_Burst
 			SignatureTechnique=3
 			EnergyThreshold=25
+			FatigueLeak=3
 			passives = list("Instinct" = 1, "PureDamage" = 2, "FatigueLeak" = 3)
-			FatigueDrain = 0.0025
 			Cooldown=60
 			Instinct=1
 			Flicker=1
@@ -3391,7 +3391,7 @@ NEW VARIABLES
 				if(!usr.BuffOn(src))
 					if(usr.CheckActive("Keyblade"))
 						if(!src.Using)
-							if(prob(7.5*usr.LimitCounter) && usr.SagaLevel < 8)
+							if(prob(7.5*usr.LimitCounter) && usr.SagaLevel < 6)
 								usr.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/AntiForm)
 								usr.LimitCounter=0
 								return

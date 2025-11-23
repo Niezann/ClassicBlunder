@@ -8,6 +8,8 @@ obj/Items/Sword/Wooden/Legendary/WeaponSoul/RyuiJinguBang
 	unsheatheOffsetX = -32
 	unsheatheOffsetY = -32
 	passives = list("Steady" = 1)
+	Destructable=0
+	ShatterTier=0
 	ElementallyInfused = "Earth"
 
 obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Ryui_Jingu_Bang

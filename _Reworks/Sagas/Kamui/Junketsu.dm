@@ -265,7 +265,7 @@ obj/Skills/Buffs/SpecialBuffs
 			OffMult = 1.04 + (p.SagaLevel * 0.04)
 			SpdMult = 1.04 + (p.SagaLevel * 0.04)
 			DefMult = 1.04 + (p.SagaLevel * 0.04)
-			passives = list("DeathField" = p.SagaLevel*1.25, "SwordAscension" = p.SagaLevel/1.5, "HardStyle" = p.SagaLevel/1.5, "PureDamage" = p.SagaLevel/2.5, "Skimming" = 2, "Flicker" = p.SagaLevel/1.25, "Flow" = p.SagaLevel/2.5, "DoubleStrike" = p.SagaLevel/2.5, "Pursuer" = p.SagaLevel/2.5, "CounterMaster" = p.SagaLevel/1.25, "BleedHit" = 8-p.SagaLevel)
+			passives = list("DeathField" = round(p.SagaLevel*1.25,1), "SwordAscension" = round(p.SagaLevel/1.5,1), "HardStyle" = round(p.SagaLevel/1.5,1), "PureDamage" = round(p.SagaLevel/2.5,1), "Skimming" = 2, "Flicker" = round(p.SagaLevel/1.25,1), "Flow" = round(p.SagaLevel/2.5,1), "DoubleStrike" = round(p.SagaLevel/2.5,1), "Pursuer" = round(p.SagaLevel/2.5,1), "CounterMaster" = round(p.SagaLevel/1.25,1), "BleedHit" = 8-p.SagaLevel)
 
 		verb/Kamui_Senpu_Zanken()
 			set category="Skills"
@@ -288,13 +288,21 @@ obj/Skills/Buffs/SpecialBuffs
 		Mastery=4
 		Finisher="/obj/Skills/Queue/Finisher/Generic_Finisher"
 		adjust(mob/p)
-			passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 0.5* p.SagaLevel, "TechniqueMastery" = p.SagaLevel/2, "BuffMastery" = p.SagaLevel/2)
-			if(p.ActiveBuff != "Life Fiber Override") // Nudist Beach Satsuki, no Kamui allowed, just shank them if they bypass this, come back to this later and make it.. actually work how I'd like
-				StyleStr=1.1 + (0.05 * p.SagaLevel)
-				StyleEnd=1.1 + (0.05 * p.SagaLevel)
-				StyleSpd=1.1 + (0.05 * p.SagaLevel)
+			passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 0.5* p.SagaLevel)
+			if(p.ActiveBuff == "Life Fiber Override") // So it doesn't fuck up your Sure Hit/SureDodge from Kamui
+				SureHitTimerLimit=null
+				SureDodgeTimerLimit=null
+			if(p.ActiveBuff != "Life Fiber Override") // Nudist Beach/Pre Junketsu Satsuki, no Kamui allowed, just shank them if they bypass this, come back to this later and make it.. actually work how I'd like
+				StyleStr=1.05 + (0.05 * p.SagaLevel)
+				StyleEnd=1.05 + (0.05 * p.SagaLevel)
+				StyleSpd=1.05 + (0.05 * p.SagaLevel)
 				StyleOff=1.1 + (0.05 * p.SagaLevel)
 				StyleDef=1.1 + (0.05 * p.SagaLevel)
+				SureHitTimerLimit=25 - (2.5 * p.SagaLevel)
+				SureDodgeTimerLimit=25 - (2.5 * p.SagaLevel)
+			if(p.SagaLevel >= 5)
+				passives = list("HybridStyle" = "Unarmed", "DoubleStrike" = 0.5* p.SagaLevel, "TechniqueMastery" = p.SagaLevel/2, "BuffMastery" = p.SagaLevel/2)
+
 		verb/Toggle_Sword_Count()
 			set category="Other"
 			if(!src.NeedsSecondSword)

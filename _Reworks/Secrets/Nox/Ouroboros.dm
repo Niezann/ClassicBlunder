@@ -1,7 +1,8 @@
 /obj/Items/Sword/Light/Nox
 	LegendaryItem = 1
-	Ascended = 5
+	Ascended = 3
 	Destructable = 0
+	ShatterTier = 0
 	Unobtainable = 1
 
 /obj/Items/Sword/Light/Nox/Ouroboros
