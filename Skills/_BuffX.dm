@@ -1414,7 +1414,7 @@ NEW VARIABLES
 			StrMult=1.1
 			ForMult=1.1
 			EnergyThreshold = 1
-			passives = list("Hellrisen" = 0.25, "Hellpower" = 0.1, "Flicker" = 1)
+			passives = list("HellRisen" = 0.25, "Hellpower" = 0.1, "Flicker" = 1)
 			ActiveMessage="unleashes the herectical power of the Demon clan!"
 			OffMessage="discards the Demon clan's abominal power..."
 			Cooldown=-1
