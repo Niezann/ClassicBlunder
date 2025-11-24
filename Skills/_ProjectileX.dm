@@ -1107,7 +1107,7 @@ obj
 				Copyable=2
 				Distance=20
 				AccMult=0.7
-				DamageMult=0.6
+				DamageMult=0.8
 				Blasts=25
 				Delay=0.75
 				Stream=-1
@@ -1129,7 +1129,7 @@ obj
 				Copyable=2
 				Distance=15
 				AccMult=0.75
-				DamageMult=0.2
+				DamageMult=0.5
 				Speed = 0.75
 				Knockback=0
 				Blasts=23
@@ -1208,7 +1208,7 @@ obj
 				SkillCost=40
 				Copyable=2
 				Distance=30
-				DamageMult=5
+				DamageMult=10
 				Blasts=3
 				AccMult=2
 				Launcher=4
@@ -1238,7 +1238,7 @@ obj
 				Distance=20
 				Blasts=20
 				Charge=1
-				DamageMult=0.45
+				DamageMult=1
 				AccMult=0.8
 				Homing=1
 				Explode=1
@@ -1309,7 +1309,7 @@ obj
 				HomingCharge=1
 				RandomPath=1
 				IconLock='Dancing.dmi'
-				DamageMult=0.85
+				DamageMult=1.2
 				AccMult = 1.15
 				Distance=25
 				IconSize=0.5
@@ -1413,7 +1413,7 @@ obj
 				NewCopyable = 4
 				SkillCost=80
 				Copyable=3
-				DamageMult=6
+				DamageMult=12
 				Knockback=5
 				Radius=1
 				AccMult=50
@@ -1429,7 +1429,7 @@ obj
 				IconChargeOverhead=1
 				IconSize=3
 				IconSizeGrowTo=1
-				Cooldown=90
+				Cooldown=60
 				Explode=3
 				EnergyCost=5
 				verb/Tracking_Bomb()
@@ -3984,12 +3984,12 @@ obj
 					SkillCost=120
 					Copyable=3
 					Distance=30
-					DamageMult=1
+					DamageMult=3
 					ChargeRate=1.5
 					Knockback=1
 					BeamTime=20
 					IconLock='Beam8.dmi'
-					Cooldown=90
+					Cooldown=45
 					EnergyCost=1
 					verb/Ray()
 						set category="Skills"
@@ -4000,12 +4000,12 @@ obj
 					SkillCost=120
 					Copyable=4
 					Distance=50
-					DamageMult=1
+					DamageMult=2
 					ChargeRate=2
 					Knockback=1
 					BeamTime=50
 					IconLock='Beam20.dmi'
-					Cooldown=60
+					Cooldown=45
 					EnergyCost=1.5
 					verb/Eraser_Gun()
 						set category="Skills"
@@ -4016,12 +4016,12 @@ obj
 					SkillCost=120
 					Copyable=4
 					Distance=15
-					DamageMult=7
+					DamageMult=10
 					ChargeRate=0
 					Knockback=0
 					BeamTime=20
 					IconLock='Beam8.dmi'
-					Cooldown=60
+					Cooldown=45
 					EnergyCost=1.5
 					Immediate=1
 					verb/Shine_Ray()
@@ -4032,13 +4032,13 @@ obj
 					NewCopyable = 3
 					SkillCost=120
 					Copyable=4
-					DamageMult=0.75
+					DamageMult=1.5
 					ChargeRate=5
 					Distance=50
 					Knockback=1
 					BeamTime=20
 					IconLock='Beam17Dark.dmi'
-					Cooldown=60
+					Cooldown=45
 					EnergyCost=1.5
 					verb/Gamma_Ray()
 						set category="Skills"
@@ -4048,13 +4048,13 @@ obj
 					NewCopyable = 3
 					SkillCost=120
 					Copyable=4
-					DamageMult=7
+					DamageMult=10
 					Distance=50
 					ChargeRate=1
 					Knockback=0
 					BeamTime=30
 					IconLock='Makkankosappo.dmi'
-					Cooldown=60
+					Cooldown=45
 					EnergyCost=1.5
 					Piercing=1
 					Instinct=1
