@@ -34,7 +34,7 @@ obj/Skills/Buffs/NuStyle/Legendary
 		Enlarge = 1.75
 		passives = list("GiantForm" = 1, "DoubleStrike" = 3, "Fa Jin" = 2, "Momentum" = 3, "Hard Style"=1, "Instinct"=4, "Juggernaut" = 1, "PureDamage" = 1, "PureReduction" = 2,\
 						"NoDodge" = 1, "SweepingStrike" = 1, "Brutalize" = 2, "Meaty Paws" = 1.5, "KiControlMastery" = 2,"LegendarySaiyan"=1, "Pride"=1, "Zeal"=1, "Honor"=1,\
-						"Hardening" = 2, "Deflection" = 1)
+						"Hardening" = 2, "Deflection" = 1,"Gum Gum" =1)
 		StyleActive="Fist Of The Fabled King (True)"
 		Finisher="/obj/Skills/Queue/Finisher/Erupting_Mugen_Tengenkotsu"
 		verb/Fist_Of_The_Fabled_King_Stance()

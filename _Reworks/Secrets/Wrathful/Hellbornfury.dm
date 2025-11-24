@@ -7,6 +7,8 @@ scaling with potential as well
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/HellbornFury
 	AllOutAttack = 0
 	Cooldown = -1
+/obj/Skills/Buffs/SlotlessBuffs/Autonomous
+	var/TooLittleHealth=0
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/HellbornFury/adjust(mob/p)
 
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/HellbornFury/Stage_One
@@ -96,6 +98,35 @@ scaling with potential as well
 		PowerMult = 1.15 + (p.Potential/75)
 		EnergyHeal = 0.01 * p.Potential
 		AutoAnger=0
+		if(prob(15)&&p.transUnlocked<2&&p.passive_handler.Get("Herald of the End"))
+			p.passive_handler.Increase("The Clock Is Ticking", 0.5)
+			p<<"<font color=red><b>You of all people should know how dangerous this power is. The clock is ticking, [p]...</font></b>"
+	Trigger(mob/User, Override=FALSE)
+		adjust(User)
+		..()
+/obj/Skills/Buffs/SlotlessBuffs/Autonomous/HellbornFury/Stage_Five
+	ActiveMessage = "shrouds themselves in darkness, awakening the monster they  were all along."
+	OffMessage = "somehow manages to return to normal. Is it over?"
+	//injury
+	NeedsSSJ=2
+	TooLittleHealth=0.1
+	BuffName = "Bringer of the Calamity"
+	adjust(mob/p)
+		if(altered) return
+		passives = list("EndlessAnger" = 1, "LikeWater" = 2 + round(p.Potential/15,1),"SlayerMod"= 0.5*(p.AscensionsAcquired+1),\
+						"Powerhouse" = 2 + (p.Potential/25), "Instinct" = 5, "Flicker" = 5, "Pursuer" = 5, "PureDamage" = 5, "AbyssMod" = round(p.Potential/15,1), "FavoredPrey" = "Beyond")
+		StrMult = 1.25 + (p.Potential/50)
+		ForMult = 1.25 + (p.Potential/50)
+		OffMult = 1.25 + (p.Potential/50)
+		PowerMult = 1.15 + (p.Potential/75)
+		AutoAnger=1
+		if(p.transUnlocked<2)
+			passives = list("InjuryImmune"=1, "EndlessAnger" = 1, "LikeWater" = 2 + round(p.Potential/15,1),"SlayerMod"= 0.5*(p.AscensionsAcquired+1),\
+							"Powerhouse" = 2 + (p.Potential/25), "Instinct" = 5, "Flicker" = 5, "Pursuer" = 5, "PureDamage" = 5, "AbyssMod" = round(p.Potential/15,1), "FavoredPrey" = "Beyond")
+			Enlarge = 3
+			DarkChange=1
+			IconTint=list(0.15,0,0, 0.05,0.25,0.15, 0.05,0.05,0.35, 0,0,0)
+			BioArmor=500
 	Trigger(mob/User, Override=FALSE)
 		adjust(User)
 		..()

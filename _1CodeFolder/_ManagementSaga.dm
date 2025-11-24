@@ -85,6 +85,7 @@ mob/var
 	Snowgrave=5
 	TranceLevel=0
 	UndyingLoc
+	FinalHeroChoice
 	//SAINT SEIYA
 	SenseUnlocked=5
 	ClothBronze
@@ -897,6 +898,7 @@ mob
 								src<<"The special power you wield grows stronger, heightening the strength of your SOUL colors."
 								src<<"You have gained Banish."
 								src.AddSkill(new/obj/Skills/AutoHit/Banish)
+								src.AddSkill(new/obj/Skills/Utility/SoulShiftPurple)
 							if(src.RebirthHeroType=="Purple")
 								src<<"<font color='#9BFD4D'><b>I see a story hidden in your eyes.</font></b>" //i literally extracted the mod files for gerson's rude buster to make sure this color was as accurate as possible. praise me.
 								src<<"<font color='#9BFD4D'><b>Burnin' bright...</font></b>"
@@ -917,6 +919,29 @@ mob
 								src.AddSkill(new/obj/Skills/AutoHit/MakeItCount)
 							if(src.RebirthHeroType=="Red")
 								src.AddSkill(new/obj/Skills/Utility/Burning_Soul)
+						if(5)
+							src.SagaLevel=5
+							if(src.RebirthHeroType=="Cyan")
+								var/list/Choices=list("Roaring Knight", "White Pen of Hope")
+								var/choice
+								var/confirm
+								while(confirm!="Yes")
+									choice=input(src, "Will you bring your tragic fate to fruition? Or will you face it with courage?", "Hero Path") in Choices
+									switch(choice)
+										if("Roaring Knight")
+											confirm=alert(src, "A tragedy taken into your own hands. A bringer of the end.", "The Roaring Knight, a bringer of the end.", "Yes", "No")
+										if("White Pen of Hope")
+											confirm=alert(src, "Fate accepted, yet change made possible through others", "The White Pen of Hope, author of a new story..", "Yes", "No")
+									src.FinalHeroChoice=choice
+								if(src.FinalHeroChoice=="Roaring Knight")
+									src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/The_Roaring_Knight)
+									src.AddSkill(new/obj/Skills/Buffs/Rebirth/BlackKnife)
+									src.AddSkill(new/obj/Skills/Buffs/Slotless/Rebirth/RefractiveArmor)
+								if(src.FinalHeroChoice=="White Pen of Hope")
+									src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/White_Pen_Of_Hope)
+							if(src.RebirthHeroType=="Purple")
+								src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Justice_Incarnate)
+
 
 				if("Cosmo")
 					tierUpSaga("Cosmo")

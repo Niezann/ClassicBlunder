@@ -100,6 +100,25 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/Temporary_Hero_Soul
 	Cooldown = 1
 	TimerLimit = 30
 	passives = list("Instinct" = 1, "Pursuer" = 1)
+obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Temporary_Hero_Heart
+	ActiveMessage="awakens a heroic heart!"
+	PowerMult=1.15
+	StrMult=1.15
+	ForMult = 1.15
+	EndMult = 1.5
+	AlwaysOn = 1
+	TimerLimit = 30
+	passives = list("Tenacity" = 1, "Hardening" = 1)
+obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Temporary_Hero_Soul
+	ActiveMessage="awakens a heroic soul!"
+	PowerMult=1.15
+	StrMult=1.25
+	ForMult = 1.15
+	SpdMult=1.35
+	RecovMult=1.25
+	AlwaysOn = 1
+	TimerLimit = 30
+	passives = list("Instinct" = 1, "Pursuer" = 1)
 //t3 path buffs
 obj/Skills/Buffs/SlotlessBuffs/Autonomous/Shining_Star
 	TooMuchHealth = 100
@@ -144,6 +163,7 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Blue_Experience //second act
 	SpdMult=1.5
 	Cooldown = 1
 	AwakeningRequired=1
+	AlwaysOn = 1
 	HealthDrain = 0.05
 	passives = list("BuffMastery" = 1,"Pursuer" =2, "Godspeed"=2)
 //t4 path buffs
@@ -158,6 +178,7 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Show_Must_Go_On //third act
 obj/Skills/Buffs/SlotlessBuffs/Autonomous/Burning_Soul
 	ActiveMessage="transforms their passion into fury, their desire to win surpassing all."
 	Cooldown = 1
+	AlwaysOn = 1
 	AwakeningRequired=1
 	passives = list("Red Hot Rage" = 1, "Wrathful" = 1)
 //debuffs
@@ -232,7 +253,8 @@ obj/Skills/AutoHit
 	NeverSeeItComing
 		SpecialAttack=1
 		GuardBreak=1
-		DamageMult=0
+		DamageMult=1
+		StrOffense=1
 		TurfShift='IceGround.dmi'
 		Distance=15
 		WindUp=0.5
@@ -249,6 +271,7 @@ obj/Skills/AutoHit
 				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			src.RebirthLastUse=world.realtime + 24 HOURS
+			adjust(usr)
 			usr.Activate(src)
 			usr.TriggerAwakeningSkill(ActNumber)
 	PowerWordGenderDysphoria
@@ -305,8 +328,12 @@ obj/Skills/AutoHit
 		HitSparkIcon='BLANK.dmi'
 		HitSparkX=0
 		HitSparkY=0
+		adjust(mob/p)
+			if(p.passive_handler.Get("Determination(White)"))
+				src.ManaCost=40
 		verb/Unleash()
 			set category="Skills"
+			adjust(usr)
 			usr.Activate(src)
 	Banish
 		ManaCost=100
@@ -401,6 +428,33 @@ obj/Skills/AutoHit
 			set category="Skills"
 			adjust(usr)
 			usr.Activate(src)
+	HorrifyingRoar
+		Area="Circle"
+		ManaCost=100
+		Distance=10
+		RedTechnique=1
+		AdaptRate = 1
+		GuardBreak=1
+		DamageMult=15
+		Knockback=15
+		Cooldown=120
+		Stunner=4
+		ComboMaster=1
+		Shockwaves=3
+		Shockwave=4
+		SpecialAttack=1
+		Stunner=3
+		HitSparkIcon='BLANK.dmi'
+		HitSparkX=0
+		HitSparkY=0
+		ShockIcon='KenShockwave.dmi'
+		ActiveMessage="lets loose a horrifying roar!"
+		adjust(mob/p)
+			if(altered) return
+		verb/Horrifying_Roar()
+			set category="Skills"
+			adjust(usr)
+			usr.Activate(src)
 	Platinum_Mad
 		StrOffense=1
 		ForOffense=1
@@ -458,30 +512,28 @@ obj/Skills/Queue
 	var/RandomMult
 	HoldingOutForAHero
 		ManaCost=100
-		Cooldown=-1
+		Cooldown=1
 		var/buffpicked
 		icon_state="Heal"
 		Copyable=3
 		HarderTheyFall=3
 		Opener=1
 		Duration=5
-		ActiveMessage="prepares a chain of giant-toppling attacks!"
-		DamageMult=3
+		ActiveMessage="strikes with a desire for heroism in her heart!"
+		DamageMult=4
 		AccuracyMult=1.1
 		InstantStrikes=4
 		InstantStrikesDelay=1.5
-		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Temporary_Hero_Heart"
+		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Temporary_Hero_Heart"
 		desc="Randomly cast Hero Heart or Hero Soul on yourself."
 		adjust(mob/p)
 			if(prob(50))
-				src.BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Temporary_Hero_Heart"
+				src.BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Temporary_Hero_Heart"
 			else
-				src.BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Temporary_Hero_Soul"
+				src.BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Temporary_Hero_Soul"
 		verb/HoldingOutForAHero()
 			set name="Holding Out For a Hero"
 			set category="Skills"
-			if(usr.ManaAmount<src.ManaCost)
-				usr<<"You need [src.ManaCost] ACT to use this."
 			adjust(usr)
 			usr.SetQueue(src)
 	NeverKnowsBest
@@ -503,7 +555,7 @@ obj/Skills/Queue
 		verb/NeverKnowsBest()
 			set category="Skills"
 			set name="Never Knows Best (Act 1)"
-			if(world.realtime < src.RebirthLastUse+(600*60*24))
+			if(world.realtime < src.RebirthLastUse)
 				usr << "This is on cooldown until [time2text(src.RebirthLastUse, "hh:ss") ]"
 				return
 			if(usr.Health>75)
@@ -616,6 +668,7 @@ obj/Skills/Utility
 			usr.passive_handler.Set("Determination(Red)", 1)
 			usr.passive_handler.Set("Determination(Yellow)", 0)
 			usr.passive_handler.Set("Determination(Green)", 0)
+			usr.passive_handler.Set("Determination(Purple)", 0)
 			usr<<"You are now using the Red SOUL color."
 		verb/SoulYellow()
 			set category="Utility"
@@ -623,6 +676,7 @@ obj/Skills/Utility
 			usr.passive_handler.Set("Determination(Red)", 0)
 			usr.passive_handler.Set("Determination(Yellow)", 1)
 			usr.passive_handler.Set("Determination(Green)", 0)
+			usr.passive_handler.Set("Determination(Purple)", 0)
 			usr<<"You are now using the Yellow SOUL color."
 	SoulShiftGreen
 		Copyable=0
@@ -632,6 +686,17 @@ obj/Skills/Utility
 			usr.passive_handler.Set("Determination(Red)", 0)
 			usr.passive_handler.Set("Determination(Yellow)", 0)
 			usr.passive_handler.Set("Determination(Green)", 1)
+			usr.passive_handler.Set("Determination(Purple)", 0)
+			usr<<"You are now using the Green SOUL color."
+	SoulShiftPurple
+		Copyable=0
+		verb/SoulGreen()
+			set category="Utility"
+			set name="SOUL Shift (Green)"
+			usr.passive_handler.Set("Determination(Red)", 0)
+			usr.passive_handler.Set("Determination(Yellow)", 0)
+			usr.passive_handler.Set("Determination(Green)", 0)
+			usr.passive_handler.Set("Determination(Purple)", 1)
 			usr<<"You are now using the Green SOUL color."
 	UltimateHeal
 		ManaCost=100
@@ -712,6 +777,7 @@ obj/Skills/Utility
 			animate(GG, alpha=0, time=50)
 			usr.passive_handler.Increase("CalmAnger")
 			usr.passive_handler.Increase("FutureRewritten")
+			usr.passive_handler.Increase("Determination(Purple)")
 			usr.OMessage(15,"[usr] <b>unlocks the full potential of the Axe of Justice!!!</b>","<font color=red>[usr]([usr.key]) used Undying.")
 			spawn(50)
 				GO.filters=null
@@ -869,6 +935,21 @@ obj/Skills/Projectile
 				usr.TriggerAwakeningSkill(ActNumber)
 				usr.UseProjectile(src)
 obj/Skills/Buffs
+	Slotless
+		Rebirth
+			RefractiveArmor
+				MakesArmor=1
+				DarkChange=1
+				ArmorAscension=1
+				ArmorElement="Mirror"
+				IconTint=list(0.15,0,0, 0.05,0.25,0.15, 0.05,0.05,0.35, 0,0,0)
+				ArmorClass="Light"
+				ArmorIcon='BLANK.dmi'
+				ActiveMessage="dons a refractive armor that turns their entire body black."
+				OffMessage="disperses their armor."
+				verb/Refractive_Armor()
+					adjust(usr)
+					src.Trigger(usr)
 	Rebirth
 		ActiveSlot=1
 		RemoveSOUL
@@ -898,7 +979,7 @@ obj/Skills/Buffs
 			SpdMult=1.5
 			PowerMult=1.25
 			Cooldown = 1
-			SwordAscension=5
+			SwordAscension=6
 			passives = list("HolyMod" = 3)
 			ActiveMessage="materializes the Black Knife."
 			OffMessage="puts the black knight away."
@@ -1045,7 +1126,7 @@ obj/Skills/Grapple
 		StyleStr=1.5
 	White_Pen_Of_Hope //cyan t5 good path
 		StyleActive="The White Pen of Hope"
-		passives = list("ManaGeneration" = 1)
+		passives = list("ManaGeneration" = 2, "ManaStats"=1, "Determination(White)" = 1)
 		StyleSpd=1.5
 		StyleStr=1.25
 		StyleFor=1.25
@@ -1054,4 +1135,4 @@ obj/Skills/Grapple
 		StyleStr=1.25
 		StyleFor=1.25
 		StyleEnd=1.5
-		passives = list("DisableGodKi" = 1, "Deicide" = 10, "Rage" = 5, "Momentum" = 1)
+		passives = list("DisableGodKi" = 1, "Deicide" = 10, "Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1)

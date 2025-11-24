@@ -16,7 +16,10 @@ transformation
 				if(mastery>=75&&mastery<100)
 					passives = list("Instinct" = 3, "Flicker" = 4, "Pursuer" = 5, "BuffMastery" = 4, "PureDamage" = 3, "UnderDog" = 1, "PureReduction"=-1)
 				if(mastery==100)
-					passives = list("Instinct" = 3, "Flicker" = 4, "Pursuer" = 5, "BuffMastery" = 4, "PureDamage" = 3, "UnderDog" = 1)
+					passives = list("Instinct" = 3, "Flicker" = 4, "Pursuer" = 5, "BuffMastery" = 4, "PureDamage" = 3, "UnderDog" = 1, "Persistence"=1, "Herald of the End"=1)
+					if(prob(15)&&user.transUnlocked<2)
+						user.passive_handler.Increase("The Clock Is Ticking", 0.5)
+						user<<"<font color=red><b>This form is not to be used lightly, [user]. The clock is ticking.</font></b>"
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)
 					var/icon/x=new(user.Hair_Base)
@@ -92,7 +95,6 @@ transformation
 			var/tailIcon = 'saiyantail_ssj4.dmi'
 			var/tailUnderlayIcon = 'saiyantail_ssj4_under.dmi'
 			var/tailWrappedIcon = 'saiyantail-wrapped_ssj4.dmi'
-			form_icon_1_icon = 'GokentoMaleBase_SSJ4.dmi'
 			passives = list("GiantForm" = 1, "SweepingStrike" = 1, "Brutalize" = 3, "Meaty Paws" = 2, "KiControlMastery" = 3, "PureReduction" = 5, "LifeGeneration" = 5, "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.3)
 			adjust_transformation_visuals(mob/user)
 				if(user.Hair_Base && !form_hair_icon)

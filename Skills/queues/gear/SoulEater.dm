@@ -96,32 +96,31 @@ obj
 		ManaGlowSize=2
 		adjust(mob/p)
 			if(altered) return
-			for(var/obj/Items/Sword/Medium/Legendary/Soul_Eater/SE in src)
-				if(findtext(SE.suffix, "Equipped"))
-					if(SE.SEType=="Sword")
-						passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
-						 "Iaijutsu" = 1, "BlurringStrikes"=2.5, "CriticalChance" = 15, "CriticalDamage"= 0.1,"Fury" = 3 )
-						StyleSpd = 1.3
-						StyleStr = 1.3
-						StyleFor = 1
-						StyleEnd = 1
-						Finisher="/obj/Skills/Queue/Finisher/Dark_Aura"
-					else if(SE.SEType=="Staff")
-						passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
-						 "ManaGeneration"=2, "SpiritSword" = 0.15, "QuickCast"=1)
-						StyleFor = 1.3
-						StyleStr = 1.3
-						StyleSpd = 1
-						StyleEnd = 1
-						Finisher="/obj/Skills/Queue/Finisher/Dark_Firaga"
-					else if(SE.SEType=="Shield")
-						passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
-						 "Hardening"=2, "Momentum" = 1.5, "Pressure" = 1, "BlockChance" = 15)
-						StyleEnd = 1.3
-						StyleStr = 1.15
-						StyleFor = 1.15
-						StyleSpd=1
-						Finisher="/obj/Skills/Queue/Finisher/Dark_Wave"
+			var/obj/Items/Sword/Medium/Legendary/Soul_Eater/SE=p.EquippedSword()
+			if(SE.SEType=="Sword")
+				passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
+				 "Iaijutsu" = 1, "BlurringStrikes"=2.5, "CriticalChance" = 15, "CriticalDamage"= 0.1,"Fury" = 3 )
+				StyleSpd = 1.3
+				StyleStr = 1.3
+				StyleFor = 1
+				StyleEnd = 1
+				Finisher="/obj/Skills/Queue/Finisher/Dark_Aura"
+			else if(SE.SEType=="Staff")
+				passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
+				 "ManaGeneration"=2, "SpiritSword" = 0.15, "QuickCast"=1)
+				StyleFor = 1.3
+				StyleStr = 1.3
+				StyleSpd = 1
+				StyleEnd = 1
+				Finisher="/obj/Skills/Queue/Finisher/Dark_Firaga"
+			else if(SE.SEType=="Shield")
+				passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
+				 "Hardening"=2, "Momentum" = 1.5, "Pressure" = 1, "BlockChance" = 15)
+				StyleEnd = 1.3
+				StyleStr = 1.15
+				StyleFor = 1.15
+				StyleSpd=1
+				Finisher="/obj/Skills/Queue/Finisher/Dark_Wave"
 		verb/Seeker_of_Darkness()
 			set hidden=1
 			adjust(usr)
@@ -141,33 +140,32 @@ obj
 		NeedsSecondSword = 1
 		adjust(mob/p)
 			if(altered) return
-			for(var/obj/Items/Sword/Medium/Legendary/Soul_Eater/SE in src)
-				if(findtext(SE.suffix, "Equipped"))
-					if(SE.SEType=="Sword")
-						passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
-						 "Iaijutsu" = 1, "BlurringStrikes"=2.5, "DoubleStrike" = 3, "NeedsSecondSword" = 1,"Fury" = 3 )
-						StyleSpd = 1.3
-						StyleStr = 1.3
-						StyleFor = 1
-						StyleEnd = 1
-						Finisher="/obj/Skills/Queue/Finisher/Dark_Aura"
-					else if(SE.SEType=="Staff")
-						passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
-						 "ManaGeneration"=2, "SpiritSword" = 0.15, "QuickCast"=1, "DoubleStrike" = 3, "NeedsSecondSword" = 1)
-						StyleFor = 1.3
-						StyleStr = 1.3
-						StyleSpd = 1
-						StyleEnd = 1
-						Finisher="/obj/Skills/Queue/Finisher/Dark_Firaga"
-					else if(SE.SEType=="Shield")
-						passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
-						 "Hardening"=2, "Momentum" = 1.5, "Pressure" = 1, "BlockChance" = 15, "DoubleStrike" = 3, "NeedsSecondSword" = 1)
-						StyleEnd = 1.3
-						StyleStr = 1.15
-						StyleFor = 1.15
-						StyleSpd=1
-						Finisher="/obj/Skills/Queue/Finisher/Dark_Wave"
-		verb/Seeker_of_Darkness()
+			var/obj/Items/Sword/Medium/Legendary/Soul_Eater/SE=p.EquippedSword()
+			if(SE.SEType=="Sword")
+				passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
+				 "Iaijutsu" = 1, "BlurringStrikes"=2.5, "DoubleStrike" = 3, "NeedsSecondSword" = 1,"Fury" = 3 )
+				StyleSpd = 1.3
+				StyleStr = 1.3
+				StyleFor = 1
+				StyleEnd = 1
+				Finisher="/obj/Skills/Queue/Finisher/Dark_Aura"
+			else if(SE.SEType=="Staff")
+				passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
+				 "ManaGeneration"=2, "SpiritSword" = 0.15, "DoubleCast"=1, "DoubleStrike" = 3, "NeedsSecondSword" = 1)
+				StyleFor = 1.3
+				StyleStr = 1.3
+				StyleSpd = 1
+				StyleEnd = 1
+				Finisher="/obj/Skills/Queue/Finisher/Dark_Firaga"
+			else if(SE.SEType=="Shield")
+				passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
+				 "Hardening"=1, "Momentum" = 2, "BlockChance" = 15, "DoubleStrike" = 3, "NeedsSecondSword" = 1)
+				StyleEnd = 1.3
+				StyleStr = 1.15
+				StyleFor = 1.15
+				StyleSpd=1
+				Finisher="/obj/Skills/Queue/Finisher/Dark_Wave"
+		verb/Seeker_of_Darkness_Dual_Wield()
 			set hidden=1
 			adjust(usr)
 			src.Trigger(usr)

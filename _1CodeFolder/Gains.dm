@@ -528,11 +528,16 @@ mob
 			if((isRace(SAIYAN) || isRace(HALFSAIYAN))&&transActive>0)
 				if(HellspawnBerserk)
 					HellspawnTimer-=1
-				if(HellspawnTimer <= 0 && HellspawnBerserk)
+				if(TheCalamity&&BioArmor)
+					BioArmor-=1
+				if(HellspawnTimer <= 0 && HellspawnBerserk||Health<=50&&TheCalamity)
 					HellspawnTimer = 0
 					OMsg(src, "<font color='grey'>[src] is no longer posessed by that thing.</font color>")
 					if(HellspawnBerserk)
 						Unconscious(src, "the power of the Depths leaving their body.")
+						Health=-1
+					if(TheCalamity)
+						Unconscious(src, "finally finding rest.")
 						Health=-1
 
 				var/cut_off = 0
@@ -1402,6 +1407,9 @@ mob
 					if(A.NeedsAnger&&!A.Using&&!src.KO&&!AGLock)
 						if(src.Anger)
 							A.Trigger(src,Override=1)
+					if(A.NeedsSSJ)
+						if(src.isRace(SAIYAN)&&src.transActive==A.NeedsSSJ)
+							A.Trigger(src,Override=1)
 					if(A.NeedsAlignment&&!AGLock)
 						if(A.NeedsAlignment=="Evil")
 							if(src.IsEvil())
@@ -1447,6 +1455,9 @@ mob
 						if(src.StyleActive!=A.StyleNeeded)
 							A.Trigger(src,Override=1)
 							continue
+					if(A.NeedsSSJ)
+						if(src.isRace(SAIYAN)&&src.transActive!=A.NeedsSSJ)
+							A.Trigger(src,Override=1)
 					if(A.TimerLimit)
 						if(A.Timer>=A.TimerLimit)
 							A.Trigger(src,Override=1)
@@ -1474,6 +1485,11 @@ mob
 							continue
 					if(A.TooMuchHealth)
 						if(src.Health>=A.TooMuchHealth)
+							if(A.SlotlessOn)
+								A.Trigger(src,Override=1)
+								continue
+					if(A.TooLittleHealth)
+						if(src.Health<=A.TooLittleHealth)
 							if(A.SlotlessOn)
 								A.Trigger(src,Override=1)
 								continue

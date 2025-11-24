@@ -747,12 +747,17 @@ mob
 				return 1
 			if(src.isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman" && src.VaizardHealth>0)
 				return 1
+			if(passive_handler.Get("Determination(Green)"))
+				return 1
 			return 0
 		GetDeathField()
 			var/HeartVal=0
+			var/GreenVal=0
+			if(passive_handler.Get("Determination(Green)"))
+				GreenVal=round(ManaAmount/20,1)
 			if(src.isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman" && src.VaizardHealth>0)
 				HeartVal += 5
-			return passive_handler.Get("DeathField")+(src.KamuiBuffLock*5)+HeartVal
+			return passive_handler.Get("DeathField")+(src.KamuiBuffLock*5)+HeartVal + GreenVal
 		HasVoidField()
 			if(passive_handler.Get("VoidField"))
 				return 1
@@ -1227,11 +1232,14 @@ mob
 				Return += 1
 			return Return
 		HasDebuffResistance()
-			if(passive_handler.Get("DebuffResistance"))
+			if(passive_handler.Get("DebuffResistance")||passive_handler.Get("Determination(Green"))
 				return 1
 			return 0
 		GetDebuffResistance()
-			return passive_handler.Get("DebuffResistance")
+			var/GreenVal=0
+			if(passive_handler.Get("Determination(Green"))
+				GreenVal=round(ManaAmount/20,1)
+			return passive_handler.Get("DebuffResistance") + GreenVal
 		HasVenomImmune()
 			if(passive_handler.Get("VenomImmune"))
 				return 1
@@ -1970,6 +1978,8 @@ mob
 		GetAngerThreshold()
 			return passive_handler.Get("AngerThreshold")
 		HasWeaponBreaker()
+			if(passive_handler.Get("WeaponBreakerQOL"))
+				return 0
 			if(passive_handler.Get("WeaponBreaker"))
 				return 1
 			if(src.HasAdaptation()&&src.AdaptationTarget&&istype(src.AdaptationTarget, /mob/Players)&&src.AdaptationTarget.HasSword())
@@ -1979,6 +1989,8 @@ mob
 			var/Extra=0
 			if(src.HasAdaptation()&&src.AdaptationTarget&&istype(src.AdaptationTarget, /mob/Players)&&src.AdaptationTarget.HasSword())
 				Extra=1*src.AdaptationCounter
+			if(passive_handler.Get("WeaponBreakerQOL"))
+				return 0
 			return passive_handler.Get("WeaponBreaker")+Extra
 		HasGiantForm()
 			if(passive_handler.Get("GiantForm"))
@@ -2273,6 +2285,8 @@ mob
 			if(passive_handler.Get("Curse"))
 				return 1
 			if(HellspawnBerserk)
+				return 1
+			if(TheCalamity)
 				return 1
 			return 0
 		SwordWounds()

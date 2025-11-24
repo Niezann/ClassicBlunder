@@ -47,6 +47,8 @@ obj
 				HomingDelay=3
 				LosesHoming
 				Static
+				ComboMaster
+				IgnoreStun
 
 				UnarmedOnly
 				StaffOnly
@@ -1889,6 +1891,8 @@ obj
 				Charge=1.5
 				Distance=200
 				GrowingLife=1
+				ComboMaster=1
+				IgnoreStun=1
 				IconSizeGrowTo=1
 				IconSize=0.3
 				IconLock='OmegaBlaster.dmi'
@@ -1902,7 +1906,7 @@ obj
 				FireFromEnemy=0
 				Dodgeable=-1
 				Knockback=1
-				DamageMult=2
+				DamageMult=2.5
 				Stunner=3
 				AccMult=30
 				MultiHit=10
@@ -4251,6 +4255,7 @@ obj
 					Radius=1
 					Dodgeable=-1
 					Knockback=1
+					ComboMaster=1
 					Super_Dodompa//Penetrate, high charge and low distance
 						PreRequisite=list("/obj/Skills/Projectile/Beams/Dodompa")
 						SignatureTechnique=2
@@ -4322,6 +4327,7 @@ obj
 						DamageMult=12
 						BeamTime=50
 						Immediate=1
+						ComboMaster=0
 						Knockback=1
 						Piercing=1
 						Stunner=1
@@ -4414,6 +4420,7 @@ obj
 							ChainBeam=1
 							Striking=1
 							Immediate=1
+							ComboMaster=0
 							Distance=3
 							BeamTime=3
 							Knockback=1
@@ -5723,6 +5730,12 @@ obj
 										if(a:UsingAnsatsuken())
 											a:HealMana(a:SagaLevel)
 										if(a:SagaLevel>1&&a:Saga=="Path of a Hero: Rebirth")
+											if(a:passive_handler["Determination(Purple)"])
+												a:HealMana(a:SagaLevel / 2, 1)
+												if(a:ManaAmount>=100 && a:RebirthHeroType=="Cyan")
+													a:passive_handler.Set("Determination(Green)", 1)
+													a:passive_handler.Set("Determination(Purple)", 0)
+													a<<"Your SOUL color shifts to green!"
 											if(a:passive_handler["Determination"])
 												a:HealMana(a:SagaLevel / 4)
 											else
@@ -5819,7 +5832,8 @@ obj
 
 						var/EffectiveDamage=Damage
 						if(a:Launched||a:Stunned)
-							EffectiveDamage *= glob.CCDamageModifier
+							if(!src.ComboMaster)
+								EffectiveDamage *= glob.CCDamageModifier
 
 						if(GoldScatter||Owner.CheckSlotless("Hoarders Riches"))
 							for(var/obj/Money/money in a.contents)
@@ -5992,6 +6006,8 @@ obj
 						if(Snaring)
 							m.applySnare(Snaring, 'root.dmi')
 						if(src.Stunner)
+							if(src.IgnoreStun)
+								a:StunImmune=0
 							Stun(a, src.Stunner+src.Owner.GetStunningStrike())
 							if(src.Stunner>=5)
 								a << "Your mind is under attack!"

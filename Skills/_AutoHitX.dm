@@ -6307,6 +6307,12 @@ obj
 						if(m.UsingAnsatsuken())
 							m.HealMana(m.SagaLevel*5)
 						if(m.SagaLevel>1&&m.Saga=="Path of a Hero: Rebirth")
+							if(m.passive_handler["Determination(Purple)"])
+								m.HealMana(m.SagaLevel*3, 1)
+								if(m.ManaAmount>=100 && m.RebirthHeroType=="Cyan")
+									m.passive_handler.Set("Determination(Green)", 1)
+									m.passive_handler.Set("Determination(Purple)", 0)
+									m<<"Your SOUL color shifts to green!"
 							if(m.passive_handler["Determination"])
 								m.HealMana(m.SagaLevel*1.25)
 							else

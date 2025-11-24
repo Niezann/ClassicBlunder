@@ -106,7 +106,12 @@ mob
 			// 	src.WoundSelf(defender.GetDeathField()*0.01*min((1/val),1))
 			// if(defender.HasVoidField()&&SpiritAttack)
 			// 	src.GainFatigue(defender.GetVoidField()*0.01*min((1/val),1))
-
+			if(defender.passive_handler["Determination(Purple)"])
+				defender.HealMana(defender.SagaLevel / 60, 1)
+				if(defender.ManaAmount>=100 && defender.RebirthHeroType=="Cyan")
+					defender.passive_handler.Set("Determination(Green)", 1)
+					defender.passive_handler.Set("Determination(Purple)", 0)
+					defender<<"Your SOUL color shifts to green!"
 			if(src.HasSoftStyle())
 				defender.GainFatigue(val*clamp(glob.SOFT_STYLE_RATIO*src.GetSoftStyle(), 0.0001, 0.75))
 			if(src.HasHardStyle())
@@ -1581,6 +1586,8 @@ mob
 				Mod-=src.EndEroded
 			if(passive_handler.Get("TensionPowered")&&transActive>=3)
 				Mod+=passive_handler.Get("TensionPowered")
+			if(passive_handler.Get("Determination(Green)"))
+				Mod+=(0.02*ManaAmount)
 
 			End*=Mod
 			End*=Mult

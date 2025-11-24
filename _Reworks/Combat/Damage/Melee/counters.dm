@@ -26,6 +26,12 @@
 			if(enemy.UsingAnsatsuken())
 				enemy.HealMana(enemy.SagaLevel / 15, 1)
 			if(enemy.SagaLevel>1&&enemy.Saga=="Path of a Hero: Rebirth")
+				if(enemy.passive_handler["Determination(Purple)"])
+					enemy.HealMana(enemy.SagaLevel / 60, 1)
+					if(enemy.ManaAmount>=100 && enemy.RebirthHeroType=="Cyan")
+						enemy.passive_handler.Set("Determination(Green)", 1)
+						enemy.passive_handler.Set("Determination(Purple)", 0)
+						enemy<<"Your SOUL color shifts to green!"
 				if(enemy.passive_handler["Determination"])
 					enemy.HealMana(enemy.SagaLevel / 60, 1)
 				else

@@ -33,7 +33,7 @@ globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 		if("Poison")
 			if(Antivenomed)
 				damage = damage / 2
-		
+
 	return clamp(damage, glob.LOWER_DEBUFF_CLAMP, glob.MAX_DEBUFF_CLAMP)
 
 /mob/proc/doDebuffDamage(typeOfDebuff)
@@ -100,7 +100,7 @@ globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 					BlindingVenom=0
 					if(client.client_plane_master)
 						client.client_plane_master.filters = null
-				
+
 /mob/var/tmp/last_implode
 mob/proc/implodeDebuff(n, type)
 	if(last_implode + glob.IMPLODE_CD < world.time)
@@ -116,8 +116,6 @@ mob/proc/implodeDebuff(n, type)
 				var/obj/Effects/Freeze/b = new(overwrite_alpha = 255)
 				b.Target = src
 				vis_contents += b
-				if(StunImmune)
-					StunImmune = 0
 				Stun(src, 4)
 				passive_handler.Set("Shellshocked", 1)
 				Slow = 0

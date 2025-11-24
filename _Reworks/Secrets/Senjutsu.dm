@@ -7,9 +7,8 @@ var/senjutsuOverloadAlert = FALSE
         if(ManaAmount > maxMana)
             if(senjutsuOverloadAlert == FALSE)
                 senjutsuOverloadAlert = TRUE
-                src << "You have drawn in too much natural energy and started to turn to stone!" 
             ManaDeath = 1
-            return TRUE
+            return FALSE
     return FALSE
 
 
@@ -23,6 +22,6 @@ var/senjutsuOverloadAlert = FALSE
         maxStatBoon = 2
     if(ManaMax >= 100 && manaStatPerc > 1 && Secret == "Senjutsu") // essentially senjutsu
         maxStatBoon = 4
-    var/manaMissing = (ManaAmount / 100) 
+    var/manaMissing = (ManaAmount / 100)
     var/bonus = (baseBoon * manaMissing) * manaStatPerc >= maxStatBoon ? maxStatBoon : (baseBoon * manaMissing) * manaStatPerc
     return bonus

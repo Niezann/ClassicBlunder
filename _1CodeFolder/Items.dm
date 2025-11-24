@@ -950,6 +950,7 @@ obj/Items/Sword
 				NoSaga=1
 				MagicSword=1
 				Class="Light"
+				ExtraClass=1
 				var/SEType="Sword"
 				verb/ChooseForm()
 					set category="Other"

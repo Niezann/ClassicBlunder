@@ -632,6 +632,9 @@ mob/var
 	HellspawnTimer
 	tmp/HellspawnBerserking
 	ForcedHellspawn=0
+	ForcedCalamity=0
+	TheCalamity=0
+	CalamityCaused
 
 	ArsGoetiaOwner
 	GoetiaContacted

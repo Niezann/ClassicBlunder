@@ -121,8 +121,13 @@ mob/proc/Unconscious(mob/P,var/text)
 			src.OMessage(15,"[src] is knocked out by [text]!","<font color=red>[src]([src.key]) is knocked out by [text]")
 	if(src.AwakeningSkillUsed)
 		src.AwakeningSkillUsed=0
+	if(src.passive_handler.Get("Herald of the End")&&src.transUnlocked<2)
+		src.passive_handler.Increase("The Clock Is Ticking", 1)
+		src<<"<font color=red><b>You really let someone get the better of you like that...? The clock is ticking.</font></b>"
 	var/HellspawnOdds=(10+(src.TotalInjury-40))/(src.Potential/20)//less likely the further you are from 20 pot without outright disabling it before then
-
+	var/CalamityOdds=src.passive_handler.Get("The Clock Is Ticking")*(src.Potential/55)
+	if(CalamityOdds<0)
+		CalamityOdds=0
 	if(src.oozaru_type=="Demonic" && src.TotalInjury>=40&&prob(HellspawnOdds)&&src.transUnlocked<1&&!src.HellspawnBerserk&&!src.HellspawnBerserking||src.ForcedHellspawn&&!src.HellspawnBerserk&&!src.HellspawnBerserking)
 		src.RPModeSwitch()
 		src.Energy=src.EnergyMax
@@ -142,9 +147,31 @@ mob/proc/Unconscious(mob/P,var/text)
 		src.HellspawnBerserk=1
 		src.Health=30
 		return
-	if(src.HellspawnBerserk)
+	if(src.oozaru_type=="Demonic" && prob(CalamityOdds)&&src.transUnlocked==1&&!src.TheCalamity&&!src.CalamityCaused&&src.race.transformations[1].mastery==100||src.ForcedCalamity&&!src.CalamityCaused)
+		src.Revert()
+		world<<"<font color=red><b>The hearts of all those in creation beat as one. Their breath is stolen away from them. </b></font>"
+		src.RPModeSwitch()
+		sleep(30)
+		world<<"<font color=red><b>There is no chance to question, no chance to wonder. To all those who live, the answer presents itself.</b></font>"
+		src.TheCalamity=1
+		src.CalamityCaused=1
+		sleep(30)
+		src.Health=100
+		src.TotalInjury=0
+		world<<"<font color=red><b>Here, on this one fateful day...</b></font>"
+		sleep(30)
+		world<<"<font color=red><b>...The Calamity...</b></font>"
+		src.transActive = 1
+		src.race.transformations[2].transform(src, TRUE)
+		src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/HellbornFury/Stage_Five)
+		sleep(30)
+		world<<"<font color=red><b>...begins anew.</b></font>"
+		src.RPModeSwitch()
+		return
+	if(src.HellspawnBerserk||src.TheCalamity)
 		src.HellspawnBerserk=0
 		src.HellspawnTimer=0
+		src.TheCalamity=0
 		src.TotalInjury=85
 	if(src.GatesActive==8 && src.Gate8Getups<2)
 		src.KO=0

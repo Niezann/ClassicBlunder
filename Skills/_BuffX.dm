@@ -8967,6 +8967,11 @@ NEW VARIABLES
 						PowerMult=1+(0.05+(0.05*ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25)))
 						// passives["PureReduction"] = p.AscensionsAcquired
 						TimerLimit = 55 + (p.secretDatum.secretVariable["Madness"]/5)
+						if(p.isRace(ELDRITCH))
+							EndMult=1+(0.15*p.AscensionsAcquired)
+							StrMult=1+(0.15*p.AscensionsAcquired)
+							ForMult=1+(0.15*p.AscensionsAcquired)
+							PowerMult+=0.05*p.AscensionsAcquired
 
 				HealthThreshold=0.1
 				KenWave=4
