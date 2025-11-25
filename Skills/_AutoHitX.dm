@@ -214,6 +214,9 @@ obj
 				OffTax
 
 				NeedsHealth
+
+				DirectWounds//Deals (this value) of wound % per hit.
+
 			skillDescription()
 				..()
 				if(StrOffense)
@@ -2236,15 +2239,15 @@ obj
 				StrOffense=0
 				ForOffense=1
 				DamageMult=13
-				WoundCost=3
+				WoundCost=5
 				ComboMaster=1
 				Area="Around Target"
 				Distance=15
 				DistanceAround=4
 				Divide=1
-				Launcher=1
+				Launcher=2
 				GuardBreak=1
-				Stunner=0.5
+				Stunner=2
 				WindUp=1.5
 				WindupIcon='Ripple Radiance.dmi'
 				WindupIconUnder=1
@@ -2276,8 +2279,11 @@ obj
 				GuardBreak=1
 				Crippling=3
 				Instinct=1
+				DirectWounds=5
+				Shearing=5
 				verb/Kikoho()
 					set category="Skills"
+					src.StrOffense= usr.TotalInjury > 25 ? (usr.TotalInjury/100) : 0;
 					usr.Activate(src)
 
 			Shin_Kikoho
@@ -2286,9 +2292,9 @@ obj
 				AllOutAttack=1
 				StrOffense=0
 				ForOffense=1
-				Launcher=1
-				WoundCost=20
-				DamageMult=12
+				Launcher=2
+				WoundCost=6.2
+				DamageMult=13
 				Rounds=4
 				DelayTime = 5
 				ComboMaster=1
@@ -2327,8 +2333,11 @@ obj
 				GuardBreak=1
 				Crippling=3
 				Instinct=1
+				DirectWounds=6.2;
+				Shearing=5;
 				verb/Shin_Kikoho()
 					set category="Skills"
+					src.StrOffense= usr.TotalInjury > 25 ? (usr.TotalInjury/50) : 0;
 					usr.Activate(src)
 
 ////Racial
@@ -5738,6 +5747,8 @@ obj
 			BuffSelf
 			FollowUpDelay
 
+			DirectWounds
+
 		Update()
 			..()
 
@@ -5889,6 +5900,8 @@ obj
 				src.Toxic+=Z.Toxic
 			if(Z.Crippling)
 				src.Crippling+=Z.Crippling
+			if(Z.DirectWounds)
+				src.DirectWounds=Z.DirectWounds;
 			if(Z.ObjIcon)
 				src.ObjIcon=Z.ObjIcon
 				var/icon/i=Z.Icon
@@ -6368,6 +6381,8 @@ obj
 					spawn()
 						LaunchEnd(m)
 				DEBUGMSG("FINAL TOTAL DAMAGE DEALT before do damage! [FinalDmg]")
+				if(src.DirectWounds)
+					src.Owner.DealWounds(m, src.DirectWounds);
 				var/damageDealt = src.Owner.DoDamage(m, FinalDmg, src.UnarmedTech, src.SwordTech, Destructive=src.Destructive, innateLifeSteal = LifeSteal, Autohit = TRUE)
 				DEBUGMSG("FINAL TOTAL DAMAGE DEALT! [damageDealt]")
 				if(!damageDealt)

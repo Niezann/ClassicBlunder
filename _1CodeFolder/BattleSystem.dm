@@ -1928,16 +1928,12 @@ mob/proc/Grab_Mob(var/mob/P, var/Forced=0)
 
 /mob/var/tmp/mob/Player/grabbed = null
 mob/proc/Grab_Release()
-	src.Grab.grabbed = null
-	sleep(1)
-
-	src.Grab=null
-
-
-
-
-
-
+	if(src.Grab)
+	{
+		src.Grab.grabbed = null
+		sleep(1)
+		src.Grab=null
+	}
 
 mob/proc/Grab_Update()
 	if(src.Grab)
