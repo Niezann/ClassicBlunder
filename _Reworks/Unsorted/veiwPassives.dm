@@ -80,7 +80,7 @@ var/list/PassiveInfo = list("Extend"="increases the range of armed autohits base
 "Pressure"= "Negates opposing Technique Mastery",
 "WeaponBreaker"= "dealing damage also deals damage to a Weapon's Durability, potentially breaking it.",
 "HeavyHitter"= "increases KB",
-"ShonenPower"= "Gain Power from Fatigue and a scaling VaiHP shield when knocked to 25% HP, also gain stats like HellPower.",
+"ShonenPower"= "Gain Power from Fatigue and a scaling VaiHP shield when knocked to 25% HP, also gain stats like HellPower",
 "HellPower"= "Gain Strength and Force at a rate based on tick, gain Power from missing health. Makes you Evil.",
 "SpiritPower"= "Marks you as Good, allows you to access mild Divinity when brought extremely Low. and boosts effectiveness of Holy/Abyss Mod.",
 "Adrenaline"= "When brought to low HP, increase your Movement Speed instead of Reduce it.",
