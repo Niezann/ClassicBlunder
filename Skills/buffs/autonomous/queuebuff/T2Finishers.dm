@@ -163,7 +163,7 @@
 
     Time_Freeze
         IconLock='Stun.dmi'
-        passives = list("Shellshocked" = 1, "NoDodge" = 1)
+        passives = list("NoDodge" = 1)
 
 
     Silence

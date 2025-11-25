@@ -136,6 +136,6 @@ obj/blades
 	Cooldown = 15
 	AlwaysOn = 1
 	ShatterAffected = 2
-	passives = list("Shellshocked" = 1, "Flow" = -1)
+	passives = list("Flow" = -1)
 	IconLock = 'LegendSparks.dmi'
 	TimerLimit = 30

@@ -86,6 +86,6 @@
 		SpdMult = 0.9
 		OffMult = 0.9
 		DefMult = 0.9
-		passives = list("Shellshocked" = 1, "Flow" = -1)
+		passives = list("Flow" = -1)
 		ActiveMessage = "stumbles as their fighting rhythm falters!"
 		OffMessage = "regains their composure."

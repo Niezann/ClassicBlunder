@@ -117,7 +117,7 @@ mob/proc/implodeDebuff(n, type)
 				b.Target = src
 				vis_contents += b
 				Stun(src, 4)
-				passive_handler.Set("Shellshocked", 1)
+			//	passive_handler.Set("Shellshocked", 1)
 				Slow = 0
 
 
