@@ -19,20 +19,17 @@ obj
 			Cooldown=30
 			EnergyCost=3
 			ActiveMessage="thrusts their blade forward, causing a powerful wave of pressure!"
-			verb/Disable_Innovate()
-				set category = "Other"
-				disableInnovation(usr)
 			adjust(mob/p)
 				if(p.isInnovative(HUMAN, "Sword") && !isInnovationDisable(p))
 					Area="Around Target"
 					Slow=3
 					Knockback=0
 					Rounds= 2 + round(p.Potential/25)
-					Size = 1 + round(p.Potential/50)
+					Size= 1 + round(p.Potential/50)
 					WindUp=0.5
-					Distance = 12
+					Distance= 12
 					DistanceAround=4
-					DamageMult = 2 + p.Potential/100
+					DamageMult= 2 + p.Potential/100
 					ActiveMessage="traps their foe in a bubble of Pressure with a thrust of their blade!"
 				else
 					Area="Wave"
@@ -45,7 +42,11 @@ obj
 					DamageMult=2.8
 			verb/Sword_Pressure()
 				set category="Skills"
+				adjust(usr)
 				usr.Activate(src)
+			verb/Disable_Innovate()
+				set category = "Other"
+				disableInnovation(usr)
 		Stinger
 			SkillCost= TIER_1_COST
 			Copyable=2
