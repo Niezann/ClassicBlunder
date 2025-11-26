@@ -77,6 +77,9 @@ var/knowledgePaths/tech/list/TechnologyTree = list()
 		if("Espionage Equipment")
 			for(var/obj/Skills/Utility/Espionage_Scan/es in src)
 				del es
+		if("Culinary Basics")
+			for(var/obj/Skills/Utility/Cooking/cock in src)
+				del cock
 
 /mob/verb/learnTech()
 	set category = "Utility"
@@ -341,6 +344,10 @@ var/knowledgePaths/tech/list/TechnologyTree = list()
 			if(!locate(/obj/Skills/Utility/Espionage_Scan, src))
 				src.AddSkill(new/obj/Skills/Utility/Espionage_Scan)
 				src << "You can right click a nearby person to scan them for espionage equipment!"
+		if("Culinary Basics")
+			if(!locate(/obj/Skills/Utility/Cooking, src))
+				src.AddSkill(new/obj/Skills/Utility/Cooking);
+				src << "You have learned the basics of <u>Cooking</u>!"
 
 /knowledgePaths/proc/meetsReqs(list/acquired)
 	for(var/req in requires)
@@ -572,3 +579,7 @@ var/knowledgePaths/tech/list/TechnologyTree = list()
 			if(locate(/obj/Skills/Utility/Espionage_Scan, src))
 				for(var/obj/Skills/Utility/Espionage_Scan/sc in src)
 					del sc
+		if("Culinary Basics")
+			if(locate(/obj/Skills/Utility/Cooking, src))
+				for(var/obj/Skills/Utility/Cooking/cock in src)
+					del cock

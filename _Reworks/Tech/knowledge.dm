@@ -291,3 +291,8 @@ Fast Actig -> Automed dispensers
         Vehicular_Power_Armor
             name = "Vehicular Power Armor"
             requires = list("Hydraulic Weaponry", "Blast Shielding", "Combat Scanning", "Prosthetic Limbs" )
+        
+        Culinary_Basics
+            name="Culinary Basics"
+            requires = list();
+            description = "Learn the basics of getting yourself fed. Or drunk.";

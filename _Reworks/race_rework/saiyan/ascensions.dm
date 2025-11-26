@@ -71,7 +71,7 @@ ascension
 				
 				onAscension(mob/owner)
 					owner.Class = "Honor"
-				..()	
+					..()	
 
 			pride
 				skills = list(/obj/Skills/Buffs/SlotlessBuffs/Saiyan_Dominance)
@@ -79,7 +79,7 @@ ascension
 				
 				onAscension(mob/owner)
 					owner.Class = "Pride"
-				..()
+					..()
 
 			zeal
 				skills = list(/obj/Skills/Buffs/SlotlessBuffs/Saiyan_Soul)
@@ -87,4 +87,4 @@ ascension
 				
 				onAscension(mob/owner)
 					owner.Class = "Zeal"
-				..()
+					..()
