@@ -26,7 +26,7 @@ majinAbsorb/proc/updateVariables(mob/p, clear = FALSE)
     absorbLimit = MAJIN_ABSORB_LIMIT + (Super ? asc : floor(asc/2))
     absorbPassiveTickLimit = MAJIN_PASSIVE_LIMIT + ( (asc-1) * MAJIN_PASSIVE_LIMIT ) + (Super ? MAJIN_PASSIVE_LIMIT : 0)
     absorbTax = 3 + (MAJIN_ABSORB_TAX * asc)
-    tickPerAbsorb = 0.25 + ((asc-1) * 0.1) + (Super ? 0.25 : 0)
+    tickPerAbsorb = 0.25 + ((asc*0.5) * 1) + (Super ? 1.25 : 0.25)
     absorbCount = absorbed.len
 
 #define BOOSTPASSIVES list("Piloting Prowess", "Intimidation")
