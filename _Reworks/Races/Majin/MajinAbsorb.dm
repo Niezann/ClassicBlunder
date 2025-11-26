@@ -23,7 +23,7 @@ majinAbsorb
 majinAbsorb/proc/updateVariables(mob/p, clear = FALSE)
     var/Super = p.Class == "Super" ? TRUE : FALSE
     var/asc = p.AscensionsAcquired
-    absorbLimit = MAJIN_ABSORB_LIMIT + (Super ? asc : floor(asc/2))
+    absorbLimit = MAJIN_ABSORB_LIMIT + (Super ? (asc*2) : asc)
     absorbPassiveTickLimit = MAJIN_PASSIVE_LIMIT + ( (asc-1) * MAJIN_PASSIVE_LIMIT ) + (Super ? MAJIN_PASSIVE_LIMIT : 0)
     absorbTax = 3 + (MAJIN_ABSORB_TAX * asc)
     tickPerAbsorb = 0.25 + ((asc*0.5) * 1) + (Super ? 1.25 : 0.25)
