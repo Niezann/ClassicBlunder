@@ -43,22 +43,23 @@ ascension
 
 			onAscension(mob/owner)
 				if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/majin/innocence)
-					endurance = 0.25
-					defense = 0.25
-					strength = 0.25
+					endurance = 0.5
+					defense = 0.5
 					passives = list("Blubber" = 1, "CallousedHands" = 0.15)
 				else if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/majin/super)
-					strength = 0.15
+					strength = 0.2
 					defense = 0.15
 					speed = 0.15
-					force = 0.15
+					force = 0.2
 					offense = 0.15
+					defense = 0.15
 				else if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/majin/unhinged)
 					strength = 0.5
 					defense = -0.25
 					force = 0.5
 					endurance = -0.25
 					speed = 0.25
+					offense = 0.25
 					passives = list("UnhingedForm" = 0.5)
 				..()
 
@@ -97,20 +98,21 @@ ascension
 
 			onAscension(mob/owner)
 				if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/majin/innocence)
-					endurance = 0.25
+					endurance = 0.5
 					defense = 0.25
 					strength = 0.25
 					passives = list("Blubber" = 1)
 				else if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/majin/super)
-					endurance = 0.15
-					defense = 0.15
-					speed = 0.15
-					force = 0.15
-					offense = 0.15
+					endurance = 0.2
+					defense = 0.2
+					speed = 0.2
+					force = 0.2
+					offense = 0.2
 				else if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/majin/unhinged)
 					strength = 0.25
 					force = 0.25
 					speed = 0.25
+					offense = 0.25
 					passives = list("UnhingedForm" = 0.5)
 					anger = 0.15
 				..()
