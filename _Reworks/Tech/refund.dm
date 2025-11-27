@@ -17,7 +17,7 @@
 		"ArmamentEnchantmentUnlocked",
 		"TomeCreationUnlocked",
 		"CrestCreationUnlocked",
-		"SummoningMagicUnlocked",
+		"GeneralMagicKnowledgeUnlocked",
 		"SealingMagicUnlocked",
 		"SpaceMagicUnlocked",
 		"TimeMagicUnlocked")
@@ -29,7 +29,7 @@
 	for(var/p in knowledgeTracker.learnedKnowledge)
 		if(p in EnchantmentKnowledge)
 			var/theCost
-			if(p in list("Alchemy", "Tool Enchantment", "Tome Creation", "Summoning Magic", "Space Magic"))
+			if(p in list("Alchemy", "Tool Enchantment", "Tome Creation", "General Magic Knowledge", "Space Magic"))
 				theCost = 20 / Imagination
 			else if(p in list("Improved Alchemy", "Armament Enchantment", "Crest Creation", "Sealing Magic", "Time Magic"))
 				theCost = 40 / Imagination

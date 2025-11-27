@@ -222,13 +222,10 @@ var/knowledgePaths/tech/list/TechnologyTree = list()
 		if("Crest Legend")
 			CrestCreationUnlocked++
 
-		if("Summon Magic")
-			SummoningMagicUnlocked++
-			if(!locate(/obj/Skills/Utility/Summon_Entity, src))
-				src.AddSkill(new/obj/Skills/Utility/Summon_Entity)
-				src << "You learn to summon an entity from a realm far away."
-			if(SummoningMagicUnlocked>5)
-				SummoningMagicUnlocked=5
+		if("General Magic Knowledge")
+			GeneralMagicKnowledgeUnlocked++;
+			if(GeneralMagicKnowledgeUnlocked>5)
+				GeneralMagicKnowledgeUnlocked=5
 
 		if("Object Sealing")
 			SealingMagicUnlocked++

@@ -295,6 +295,15 @@ mob/Players
 
 		// var/Dif=glob.progress.Era-src.EraAge
 
+		if(src.SummoningMagicUnlocked>0)
+			src.GeneralMagicKnowledgeUnlocked=src.SummoningMagicUnlocked;
+			src.SummoningMagicUnlocked=0;
+			src << "Summoning magic knowledge has been replaced with general magic knowledge."
+		for(var/obj/Skills/Utility/Summon_Entity/se in src)
+			src << "Your summon entity verb has been removed because it does not actually do anything."
+			src << "I'm sorry..."
+			del se
+
 		if(icon_state == "KB")
 			icon_state = ""
 		if(src.ParasiteCrest())

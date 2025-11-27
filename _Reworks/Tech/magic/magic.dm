@@ -30,7 +30,7 @@ ArmamentEnchantment -> tome creation (articact manufactioning + ArmamentEnchantm
     total += SpaceMagicUnlocked
     total += TimeMagicUnlocked
     total += SealingMagicUnlocked
-    total += SummoningMagicUnlocked
+    total += GeneralMagicKnowledgeUnlocked
     if(passive_handler.Get("Crimson Grimoire"))
         total = 20
     if(total >= MAX_MAGIC_LEVEL)
@@ -178,8 +178,9 @@ ArmamentEnchantment -> tome creation (articact manufactioning + ArmamentEnchantm
     requires = list("Crest Grandmaster")
     // make this go up to 10 or something
 
+//TODO: Rename GMK between wipes
 /knowledgePaths/magic/SummonMagic
-    name = "Summon Magic"
+    name = "General Magic Knowledge"
     requires = list()
     // make this go up to 5
 

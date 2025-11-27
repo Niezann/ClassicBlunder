@@ -95,4 +95,5 @@ var/list/PassiveInfo = list("Extend"="increases the range of armed autohits base
 "Brutalize"= "ignore some of a Target's Endurance when dealing damage",
 "Deicide"= "bonus damage to people with god ki",
 "KillerInstinct"= "increases force when below 75% hp, increases str when below 50%",
-"BurningShot"= "burn yourself, the amount of burn stacks you have give you Boons");
+"BurningShot"= "burn yourself, the amount of burn stacks you have give you Boons",
+"Piloting"="Replaces your effective stats with the stats of your mech.");

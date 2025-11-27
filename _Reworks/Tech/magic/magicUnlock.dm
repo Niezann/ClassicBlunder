@@ -47,8 +47,8 @@ var/knowledgePaths/magic/list/MagicTree = list()
 	for(var/n in global.vars["[pathType]Tree"])
 		var/knowledgePaths/knowledge = global.vars["[pathType]Tree"][n]
 		if(n in knowledgeList)
-			if(n == "Summon Magic")
-				if(SummoningMagicUnlocked<5)
+			if(n == "General Magic Knowledge")
+				if(GeneralMagicKnowledgeUnlocked<5)
 					buyList += knowledge
 			if(n == "Crest Legend")
 				if(CrestCreationUnlocked<7)
@@ -140,9 +140,10 @@ mob/Admin3/verb/RefundMagic(mob/p in players)
 	SpaceMagicUnlocked=0
 	TimeMagicUnlocked=0
 	TotalMagicLevel=0
+	GeneralMagicKnowledgeUnlocked=0
 
 
-
+//TODO: Remove
 /mob/proc/legacyRefundmagic()
 	if(length(MagicTree) < 1)
 		fillMagicTree()

@@ -853,9 +853,9 @@ mob/proc
 						src<<output(ST,"GridX:1,[Row]")
 						src<<output("[Commas(ST.Cost*(glob.progress.EconomyMana/100))]","GridX:2,[Row]")
 
-			if(usr.SummoningMagicUnlocked)
+			if(usr.SummoningMagicUnlocked)//TODO: Rename this stuff or make actual summoning
 				Row++
-				src<<output("-Summoning Magic-","GridX:1,[Row]")
+				src<<output("-General Magic Knowledge ;)-","GridX:1,[Row]")
 				for(var/obj/Items/MS in SummoningMagic_List)
 					if(MS.Unobtainable)
 						continue

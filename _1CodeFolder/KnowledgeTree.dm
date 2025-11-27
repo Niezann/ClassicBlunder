@@ -70,6 +70,7 @@ mob
 		SealingMagicUnlocked
 		SpaceMagicUnlocked
 		TimeMagicUnlocked
+		GeneralMagicKnowledgeUnlocked
 		TotalMagicLevel = 0
 
 
