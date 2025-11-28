@@ -107,7 +107,7 @@ obj
 				Finisher="/obj/Skills/Queue/Finisher/Dark_Aura"
 			else if(SE.SEType=="Staff")
 				passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2,\
-				 "ManaGeneration"=3, "SpiritSword" = 1.25, "QuickCast"=3, "SpiritFlow" = 3)
+				 "ManaGeneration"=3, "SpiritSword" = 1.25, "MovingCharge"=1, "SpiritFlow" = 3)
 				StyleFor = 1.3
 				StyleStr = 1.3
 				StyleSpd = 1
@@ -151,7 +151,7 @@ obj
 				Finisher="/obj/Skills/Queue/Finisher/Dark_Aura"
 			else if(SE.SEType=="Staff")
 				passives = list("HybridStyle" = "MysticStyle", "SweepingStrike" = 1, "BladeFisting" = 1, "MagicSword" = 1, "AbyssMod" = 2,\
-				 "ManaGeneration"=2, "SpiritSword" = 0.75, "SpiritFlow" = 2, "DoubleCast"=1, "DoubleStrike" = 3, "NeedsSecondSword" = 1)
+				 "ManaGeneration"=2, "SpiritSword" = 0.75, "SpiritFlow" = 2, "DualCast"=1, "DoubleStrike" = 3, "NeedsSecondSword" = 1)
 				StyleFor = 1.3
 				StyleStr = 1.3
 				StyleSpd = 1
@@ -200,8 +200,9 @@ obj
 	Dark_Firagun
 		Distance=50
 		AdaptRate=1
-		DamageMult=0.35
+		DamageMult=0.5
 		HyperHoming=1
+		IgnoreStun=1
 		ComboMaster=1
 		Stunner=5
 		MultiHit=20
@@ -210,7 +211,7 @@ obj
 		Radius=4
 		Charge=0.33
 		Explode=2
-		IconLock='DeathBallStrong.dmi'
+		IconLock='Comet.dmi'
 		LockX=-158
 		LockY=-169
 		IconSize=0.025
@@ -240,6 +241,8 @@ obj
 		BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Ignited"
 		FollowUp="/obj/Skills/Projectile/Dark_Firagun"//Precept_Flame_Emperor"
 		DamageMult = 2
+		Warp=1
+		Stunner = 5
 	Dark_Wave
 		Warp = 20
 		Stunner = 5

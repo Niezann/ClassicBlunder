@@ -513,7 +513,7 @@ mob
 			if(src.isRace(HUMAN) && src.transActive>=1&&src.icon_state=="Meditate"||src.isRace(CELESTIAL) && src.transActive>=1&&src.icon_state=="Meditate")
 				src.Revert()
 			if(passive_handler["TensionPowered"] && src.Tension>=50)
-				if(src.isRace(HUMAN)&& src.transActive<2 && src.transUnlocked>=3||src.isRace(CELESTIAL)&& src.transActive<2 && src.transUnlocked>=3)
+				if(src.isRace(HUMAN)&& src.transActive<2 && src.transUnlocked>=2||src.isRace(CELESTIAL)&& src.transActive<2 && src.transUnlocked>=2)
 					if(src.icon_state!="Meditate")
 						src.race.transformations[2].transform(src, TRUE)
 			if(passive_handler["LegendarySaiyan"]&&src.Tension<100&&src.transActive==src.transUnlocked)

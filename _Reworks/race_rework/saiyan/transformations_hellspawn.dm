@@ -14,9 +14,9 @@ transformation
 			PUSpeedModifier = 1.5
 			mastery_boons(mob/user)
 				if(mastery>=75&&mastery<100)
-					passives = list("Instinct" = 3, "Flicker" = 4, "Pursuer" = 5, "BuffMastery" = 4, "PureDamage" = 3, "UnderDog" = 1, "PureReduction"=-1)
+					passives = list("Instinct" = 3, "Flicker" = 4, "Pursuer" = 5, "BuffMastery" = 4, "PureDamage" = 3, "UnderDog" = 1, "PureReduction"=-1, "BleedHit"=0.75)
 				if(mastery==100)
-					passives = list("Instinct" = 3, "Flicker" = 4, "Pursuer" = 5, "BuffMastery" = 4, "PureDamage" = 3, "UnderDog" = 1, "Persistence"=2, "Herald of the End"=1)
+					passives = list("Instinct" = 3, "Flicker" = 4, "Pursuer" = 5, "BuffMastery" = 4, "PureDamage" = 3, "UnderDog" = 1, "Persistence"=2, "BleedHit"=0.75, "Herald of the End"=1)
 					if(prob(15)&&user.transUnlocked<2)
 						user.passive_handler.Increase("The Clock Is Ticking", 0.5)
 						user<<"<font color=red><b>This form is not to be used lightly, [user]. The clock is ticking.</font></b>"

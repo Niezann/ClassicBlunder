@@ -3285,7 +3285,7 @@ obj
 					IconSize=1
 					ManaCost=100
 					Distance=50
-					DamageMult=0.5
+					DamageMult=1.5
 					Dodgeable=-1
 					Speed=3
 					Variation=0
