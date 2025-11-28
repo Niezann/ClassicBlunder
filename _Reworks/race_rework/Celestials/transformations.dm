@@ -50,7 +50,7 @@ transformation
 			transformation_message = "usrName pushes their tension beyond its limits, becoming everything they could ever be!"
 			mastery_boons(mob/user)
 				if(mastery >= 0)
-					passives = list("HighTension"=0.25,"TensionPowered"=0.25, "SuperHighTension" = 1, "BuffMastery" = 2,"TechniqueMastery"=3, "PureDamage"=2, "PureReduction"=2))
+					passives = list("HighTension"=0.25, "TensionPowered"= 0.25, "SuperHighTension" = 1, "BuffMastery" = 2,"TechniqueMastery"=3, "PureDamage"=2, "PureReduction"=2)
 					pot_trans = 1
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)
@@ -66,7 +66,7 @@ transformation
 					KenShockwave(user, icon='KenShockwaveLegend.dmi', Size=ShockSize, Blend=2, Time=8)
 					ShockSize*=2
 		super_high_tension_MAX
-			passives = list("HighTension"=0.75,"TensionPowered"=0.25, "SuperHighTension" = 1, "StyleMastery" = 10, "BuffMastery" = 2,"TechniqueMastery"=5, "DoubleHelix" = 1
+			passives = list("HighTension"=0.75,"TensionPowered"=0.25, "SuperHighTension" = 1, "StyleMastery" = 10, "BuffMastery" = 2,"TechniqueMastery"=5, "DoubleHelix" = 1)
 			pot_trans = 5
 			transformation_message = "usrName maximizes the very limits of their potential, evolving beyond the person they were a minute before!"
 		unlimited_high_tension
