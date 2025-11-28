@@ -634,6 +634,10 @@ mob
 			if(Return > 4)
 				Return=4
 			return Return*/
+		HasKOB()
+			if(Saga=="King of Braves")
+				return 1
+			return 0
 		HasJagan()
 			if(locate(/obj/Skills/Buffs/SpecialBuffs/Cursed/Jagan_Eye, src))
 				return 1
