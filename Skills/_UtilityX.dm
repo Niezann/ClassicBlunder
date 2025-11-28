@@ -2807,13 +2807,7 @@ obj/Skills/Utility
 				OMsg(usr, "[usr] decides not to tinker.")
 				src.Using=0
 				return
-			if(M!=usr)
-				if(!("War Crimes" in usr.knowledgeTracker.learnedKnowledge)||!M.KO)
-					Consent=alert(M, "Do you want to undergo the augmentation procedure?", "Cybernetic Augmentation", "No", "Yes")
-					if(Consent!="Yes")
-						OMsg(usr, "[usr] rejects the surgery.")
-						src.Using=0
-						return
+			
 
 			if(M.EnhanceChips>=M.EnhanceChipsMax)
 				ModChoices.Remove("Enhanced Strength")
@@ -2956,8 +2950,18 @@ obj/Skills/Utility
 
 			if(M.isRace(ANDROID))
 				Cost*=2
+			
+			if(M!=usr)
+				if(("War Crimes" in usr.knowledgeTracker.learnedKnowledge)&&M.KO) Consent="Yes"//i hate this btw
+				else Consent=alert(M, "[ModDesc]\nDo you want to undergo the augmentation procedure?", "Cybernetic Augmentation", "No", "Yes")//hate hate hate
+				
+				if(Consent!="Yes")
+					OMsg(usr, "[usr] rejects the surgery.")
+					src.Using=0
+					return
 
 			ModDesc="[ModDesc]  It costs [Commas(Cost)] to install.  Do you wish to install this module into [M]?"
+
 			Confirm=alert(usr, "[ModDesc]", "Cybernetic Augmentation ([ModChoice])", "No", "Yes")
 			if(Confirm=="No")
 				OMsg(usr, "[usr] decided to not operate.")

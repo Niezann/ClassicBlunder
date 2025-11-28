@@ -1916,6 +1916,7 @@ obj
 				Cooldown=180
 				Instinct=2
 				EnergyCost=10
+				ComboMaster=1
 				verb/Omega_Blaster()
 					set category="Skills"
 					usr.UseProjectile(src)
