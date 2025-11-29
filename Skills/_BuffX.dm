@@ -3445,7 +3445,7 @@ NEW VARIABLES
 			ABuffNeeded=list("Keyblade")
 			ManaLeak=1
 			ManaThreshold=1
-			passives = list("ManaLeak"= 1, "QuickCast"= 2, "TechniqueMastery" = 5, "Skimming" = 1, "DualCast" = 1, "SpecialStrike" = 1)
+			passives = list("ManaLeak"= 1, "QuickCast"= 2, "TechniqueMastery" = 5, "Skimming" = 1, "DualCast" = 1, "SpecialStrike" = 1, "MasterfulCasting" = 1)
 			ForMult=1.5
 			DefMult=1.5
 			KenWave=1
@@ -3513,7 +3513,7 @@ NEW VARIABLES
 							src.SwordDelaySecond=GetKeychainDelay(usr.SyncAttached)
 							src.SwordElementSecond=GetKeychainElement(usr.SyncAttached)
 							src.SwordIconSecond=GetKeychainIconReversed(usr.SyncAttached)
-							passives = list("ManaLeak" = 2, "SwordAscensionSecond" = 2, "TechniqueMastery" = 10, "Pursuer" = 1, "QuickCast" = 4, "Flicker" = 1, "DoubleStrike" = 3, "DualCast" = 1, "MovementMastery" = 8, "MovingCharge" = 1)
+							passives = list("ManaLeak" = 2, "SwordAscensionSecond" = 2, "TechniqueMastery" = 5, "Pursuer" = 1, "QuickCast" = 4, "Flicker" = 1, "DoubleStrike" = 3, "DualCast" = 1, "MovementMastery" = 8, "MovingCharge" = 1, "MasterfulCasting" = 2)
 							if(usr.SyncAttached=="Way To Dawn")
 								passives["HolyMod"] = 3
 								passives["AbyssMod"] = 3
@@ -3559,7 +3559,7 @@ NEW VARIABLES
 			SwordXSecond=-32
 			SwordYSecond=-32
 			TechniqueMastery=10
-			GodKi=0.25
+			GodKi=0.5
 			Intimidation=2
 			AngerMult=2
 			QuickCast=2
@@ -3594,7 +3594,7 @@ NEW VARIABLES
 							src.SwordDelaySecond=GetKeychainDelay(usr.SyncAttached)
 							src.SwordElementSecond=GetKeychainElement(usr.SyncAttached)
 							src.SwordIconSecond=GetKeychainIconReversed(usr.SyncAttached)
-							passives = list("ManaLeak" = 0.5, "SwordAscensionSecond" = 2, "TechniqueMastery" = 10, "Pursuer" = 1, "QuickCast" = 2, "Flicker" = 1, "DualCast" = 1, "DoubleStrike" = 3, "MovingCharge" = 1, "TripleStrike" = 1, "CalmAnger" = 1, "GodKi" = 1)
+							passives = list("ManaLeak" = 0.5, "SwordAscensionSecond" = 2, "TechniqueMastery" = 10, "Pursuer" = 1, "QuickCast" = 2, "Flicker" = 1, "DualCast" = 1, "DoubleStrike" = 3, "MovingCharge" = 1, "TripleStrike" = 1, "CalmAnger" = 1, "GodKi" = 0.5, "MasterfulCasting" = 5)
 							if(usr.SyncAttached=="Way To Dawn")
 								passives["HolyMod"] = 3
 								passives["AbyssMod"] = 3
@@ -7133,10 +7133,10 @@ NEW VARIABLES
 			MakesSword=1
 			NeedsSword=0
 			MagicSword=1
-			passives = list("SpiritStrike" = 1, "SwordAscension" = 3, "TechniqueMastery" = 10)
+			passives = list("SpiritStrike" = 1, "SwordAscension" = 3, "TechniqueMastery" = 5)
 			SpiritStrike=1
 			SwordAscension=3
-			TechniqueMastery=10
+			TechniqueMastery=5
 			SwordClass="Medium"
 			SwordIcon='Bass.dmi'
 			SwordX=-3
@@ -10501,7 +10501,7 @@ NEW VARIABLES
 				AutoAnger=1
 				TooLittleMana=1
 				AuraLock='AntiAura.dmi'
-				VaizardHealth = 1
+				VaizardHealth = 15
 				VaizardShatter = 1
 				AuraX=-18
 				AuraY=-22

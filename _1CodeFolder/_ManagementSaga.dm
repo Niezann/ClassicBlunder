@@ -1134,7 +1134,7 @@ mob
 							// src.SagaThreshold("Spd", 0.25*src.SagaLevel)
 							// src.SagaThreshold("Off", 0.25*src.SagaLevel)
 							// src.SagaThreshold("Def", 0.25*src.SagaLevel)
-							passive_handler.Increase("GodKi", 0.75)
+							passive_handler.Increase("GodKi", 0.5)
 							UBWLegendaryWeapon()
 							src<< "You grasp the understanding of a legendary weapon forgotten to time..."
 
@@ -1283,7 +1283,7 @@ mob
 									SI.TooMuchHealth = 0
 									SI.NeedsAnger=1
 									SI.VaizardHealth=0
-									SI.ActiveMessage="emitts pure killing intent in an auta around them, striving for victory at any cost!"
+									SI.ActiveMessage="emits pure killing intent in an aura around them, striving for victory at any cost!"
 									SI.OffMessage="conceals their murderous intent..."
 								switch(src.AnsatsukenPath)
 									if("Hadoken")
@@ -1382,9 +1382,15 @@ mob
 							src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Protect_Wall)
 						if(!locate(/obj/Skills/Projectile/King_of_Braves/Broken_Phantom, src))
 							src.AddSkill(new/obj/Skills/Projectile/King_of_Braves/Broken_Phantom)
+						for(var/obj/Skills/Buffs/SlotlessBuffs/Genesic_Brave/gb in src)
+							gb.TooMuchHealth=75
 						passive_handler.Increase("SpaceWalk", 1)
+						passive_handler.Increase("PilotingProwess", 1) //2 Piloting Prowess at T5 instead of 1
 						src << "You upgrade your abilities to carry you into the Space Era!"
 					if(src.SagaLevel==6)
+						for(var/obj/Skills/Buffs/SlotlessBuffs/Genesic_Brave/gb in src)
+							gb.TooMuchHealth=99
+							gb.GodKi=0.5
 						src << "You master using the power of Destruction and Protection simultaneously!"
 						src << "Your Heaven and Hell reaches its perfected form: <b>Genesic Heaven and Hell</b>!"
 
@@ -1653,8 +1659,8 @@ mob
 								rf.DefMult=1.5
 								rf.RegenMult=1.5
 								rf.RecovMult=1.5
-								rf.passives["TechniqueMastery"] = 10
-								rf.passives["MovementMastery"] = 10
+								rf.passives["TechniqueMastery"] = 5
+								rf.passives["MovementMastery"] = 5
 								rf.passives["Godspeed"] = 2
 								rf.passives["Pursuer"] = 2
 								rf.passives["Flicker"] = 2
