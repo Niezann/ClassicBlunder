@@ -73,7 +73,7 @@ obj/Items/Sword/Medium/Bakuzan_Gako
 	Ascended = 3
 	Unobtainable = 1
 	LegendaryItem = 1
-	icon = 'cybox_sword.dmi'
+	icon = 'Gako Sword2.dmi'
 	pixel_x = -32
 	pixel_y = -32
 	passives = list("Life Fiber Rending" = 3)
@@ -82,9 +82,9 @@ obj/Items/Sword/Light/Bakuzan_Koryu
 	Ascended = 3
 	Unobtainable = 1
 	LegendaryItem = 1
-	icon = 'cybox_sword.dmi'
-	pixel_x = -32
-	pixel_y = -32
+	icon = 'Kouryu Sword 2.dmi'
+	pixel_x = -16
+	pixel_y = -16
 	passives = list("Life Fiber Rending" = 2)
 
 /obj/Skills/Bestow_Life_Fiber

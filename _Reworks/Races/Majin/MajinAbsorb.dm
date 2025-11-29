@@ -207,9 +207,8 @@ proc/removeDuplicates(list/list1)
             if(Class=="Heart of The Beastman")
                 . += "Grit"
             if(Class=="Unseen Predator")
-                . += "Momentum"
-                . += "KillerInstinct"
-                . += "Wrathful Tenacity"
+                . += "Steady"
+                . += "Brutalize"
             if(Class=="Monkey King")
                 . += "Hardening"
                 . += "Instinct"

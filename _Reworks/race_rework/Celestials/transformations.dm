@@ -50,7 +50,7 @@ transformation
 			transformation_message = "usrName pushes their tension beyond its limits, becoming everything they could ever be!"
 			mastery_boons(mob/user)
 				if(mastery >= 0)
-					passives = list("HighTension"=0.25,"TensionPowered"=0.25, "SuperHighTension" = 1, "BuffMastery" = 2,"TechniqueMastery"=3, "PureDamage"=2, "PureReduction"=2)
+					passives = list("HighTension"=0.25, "TensionPowered"= 0.25, "SuperHighTension" = 1, "BuffMastery" = 2,"TechniqueMastery"=3, "PureDamage"=2, "PureReduction"=2)
 					pot_trans = 1
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)

@@ -6991,19 +6991,19 @@ NEW VARIABLES
 			SwordIcon='Aether Blade.dmi'
 			SwordX=-32
 			SwordY=-32
-			passives = list("SpiritSword" = 1.25, "SwordAscension" = 2, "SwordAscensionSecond" = 2, "SwordAscensionThird" = 2)
-			SwordAscension=2
+			passives = list("SpiritSword" = 1, "SwordAscension" = 3, "SwordAscensionSecond" = 3, "SwordAscensionThird" = 3)
+			SwordAscension=3
 			SwordNameSecond="Spirit Sword"
 			SwordIconSecond='Aether Blade Alternate.dmi'
-			SwordAscensionSecond=2
+			SwordAscensionSecond=3
 			SwordXSecond=-32
 			SwordYSecond=-32
 			SwordNameThird="Spirit Sword"
-			SwordAscensionThird=2
+			SwordAscensionThird=3
 			ActiveMessage="draws spirit energy into their hand to form a blade!"
 			OffMessage="dispels their Spirit Sword!"
 			adjust(mob/p)
-				passives = list("SpiritSword" = 0.25, "SwordAscension" = 2, "SwordAscensionSecond" = 2, "SwordAscensionThird" = 2)
+				passives = list("SpiritSword" = 1 , "SwordAscension" = 3, "SwordAscensionSecond" = 3, "SwordAscensionThird" = 3)
 			verb/Transfigure_Spirit_Sword()
 				set category="Utility"
 				var/Choice
