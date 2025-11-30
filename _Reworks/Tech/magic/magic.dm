@@ -176,6 +176,7 @@ ArmamentEnchantment -> tome creation (articact manufactioning + ArmamentEnchantm
 /knowledgePaths/magic/Crest_Legend
     name = "Crest Legend"
     requires = list("Crest Grandmaster")
+    description = "Buying this will allow you to put another spell into a crest. It can be purchased an infinite number of times."
     // make this go up to 10 or something
 
 //TODO: Rename GMK between wipes

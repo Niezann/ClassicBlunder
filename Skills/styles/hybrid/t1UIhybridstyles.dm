@@ -178,7 +178,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 		IconLockBlend=4
 		LockX=-32
 		LockY=-32
-		passives = list("Instinct" = 1.5, "SpiritFlow" = 2, "LikeWater" = 1.5, "Amplify" = 1, "Flow" = 1.5, "AirBend" = 1, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
+		passives = list("Instinct" = 1.5, "SpiritFlow" = 2, "LikeWater" = 1.5, "Amplify" = 1, "Flow" = 1.5, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
                         "Shocking" = 1, "Shattering" = 1, "MartialMagic" = 1,"PUSpike" = 15)
 		StyleActive = "Aetherial Spark"
 		StyleFor = 1.15
@@ -194,7 +194,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 		adjust(mob/p)
 			if(p.AscensionsAcquired==2)
 				if(p.isRace(ANGEL))
-					passives = list("Instinct" = 1.5, "SpiritFlow" = 2, "LikeWater" = 2, "Amplify" = 1, "Flow" = 2, "AirBend" = 1, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
+					passives = list("Instinct" = 1.5, "SpiritFlow" = 2, "LikeWater" = 2, "Amplify" = 1, "Flow" = 2, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
 			                        "Shocking" = 1, "Shattering" = 1, "MartialMagic" = 1,"PUSpike" = 15)
 					StyleFor = 1.35
 					StyleOff = 1.15
@@ -202,7 +202,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 					StyleSpd = 1.25
 					StyleEnd = 1.1
 				if(p.isRace(CELESTIAL))
-					passives = list("Instinct" = 2, "SpiritFlow" = 2, "LikeWater" = 1.5, "Amplify" = 1, "Flow" = 2, "AirBend" = 1, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
+					passives = list("Instinct" = 2, "SpiritFlow" = 2, "LikeWater" = 1.5, "Amplify" = 1, "Flow" = 2, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
 			                        "Shocking" = 1, "Shattering" = 1, "MartialMagic" = 1,"PUSpike" = 15)
 					StyleFor = 1.35
 					StyleOff = 1.15
@@ -211,7 +211,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 					StyleEnd = 1.1
 			if(p.AscensionsAcquired==3)
 				if(p.isRace(ANGEL))
-					passives = list("Instinct" = 2.5, "SpiritFlow" = 2, "LikeWater" = 3, "Amplify" = 1, "Flow" = 1.5, "AirBend" = 1, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
+					passives = list("Instinct" = 2.5, "SpiritFlow" = 2, "LikeWater" = 3, "Amplify" = 1, "Flow" = 1.5, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
 			                        "Shocking" = 1, "Shattering" = 1, "MartialMagic" = 1,"PUSpike" = 15)
 					StyleFor = 1.4
 					StyleOff = 1.15
@@ -219,7 +219,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 					StyleSpd = 1.5
 					StyleEnd = 1.1
 				if(p.isRace(CELESTIAL))
-					passives = list("Instinct" = 3.5, "SpiritFlow" = 2, "LikeWater" = 3, "Amplify" = 1, "Flow" = 1.5, "AirBend" = 1, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
+					passives = list("Instinct" = 3.5, "SpiritFlow" = 2, "LikeWater" = 3, "Amplify" = 1, "Flow" = 1.5, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
 			                        "Shocking" = 1, "Shattering" = 1, "MartialMagic" = 1,"PUSpike" = 15)
 					StyleFor = 1.35
 					StyleOff = 1.15

@@ -72,7 +72,7 @@ var/knowledgePaths/magic/list/MagicTree = list()
 			if(knowledge.breakthrough)
 				theCost /= 4
 			theCost = round(theCost, 1)
-			var/confirm = input(src, "Are you sure you want to learn [knowledge.name]? It will cost [theCost] rp points.") in list("Yes" , "No")
+			var/confirm = input(src, "Are you sure you want to learn [knowledge.name]? It will cost [theCost] rp points.\nDescription: [knowledge.description]]") in list("Yes" , "No")
 			if(confirm == "Yes")
 				if(SpendRPP(theCost, "[knowledge.name]"))
 					UnlockTech(knowledge, pathType)

@@ -5,7 +5,7 @@
         SignatureTechnique = 3
         passives = list("DemonicInfusion" = 1,, "IceHerald" = 1, "ThunderHerald" = 1, "Heavy Strike" = "HellfireInferno", \
                         "Chaos" = 15, "Scorching" = 15, "Combustion" = 80, "IceAge" = 25, "SpiritFlow" = 4, "Familiar" = 3,\
-                        "CriticalChance" = 35, "CriticalDamage" = 0.25,"Hardening" = 2, "AirBend" = 2, "WaveDancer" = 2)
+                        "CriticalChance" = 35, "CriticalDamage" = 0.25,"Hardening" = 2, "WaveDancer" = 2)
         StyleFor = 1.6
         StyleSpd = 1.2
         StyleOff = 1.2
@@ -43,7 +43,7 @@
                     ElementalClass = list("Wind","Water")
                     BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Aura/Water"
                     passives = list("IceHerald" = 1,"Familiar" = 2, "ThunderHerald" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "SpiritFlow" = 4, "Hardening" = 2, \
-                                    "Freezing" = 5, "Shocking" = 5, "AirBend" = 2, "WaveDancer" = 1.5)
+                                    "Freezing" = 5, "Shocking" = 5, "WaveDancer" = 1.5)
                     Finisher="/obj/Skills/Queue/Finisher/Frostfist"
                     StyleActive = "Blizzard"
                     StyleOff=1.15

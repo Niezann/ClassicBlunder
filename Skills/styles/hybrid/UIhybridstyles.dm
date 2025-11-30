@@ -127,7 +127,7 @@ obj/Skills/Buffs/NuStyle/UIHybridStyles// ~~ Angel-taught advanced forms ~~ not 
 		LockX=-32
 		LockY=-32
 		passives = list("Instinct" = 4, "SpiritFlow" = 5, "LikeWater" = 4, "Amplify" = 3, "Familiar" = 3, "Hardening" = 2, "Flow" = 3, "Godspeed" = 1.5,\
-                       "Erosion" = 0.15, "Deterioration" = 1, "AirBend" = 2, "WaveDancer" = 2, "Rain" = 3,\
+                       "Erosion" = 0.15, "Deterioration" = 1, "WaveDancer" = 2, "Rain" = 3,\
                        "Burning" = 2, "Freezing" = 2, "Shocking" = 2, "Shattering" = 2, "PUSpike" = 50)/*This should bridge the gap between grappling/sword/martial without being too bad to fight against.
                                                                                         Should. Might need to finetune it because I'm not super familiar with magic shenanigans*/
 		StyleActive = "Aetherial Flow"

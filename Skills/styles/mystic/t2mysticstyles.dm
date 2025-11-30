@@ -42,7 +42,7 @@
 		ElementalClass = list("Wind","Water")
 		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Aura/Water"
 		passives = list("IceHerald" = 1,"IceAge" = 40, "Familiar" = 2, "ThunderHerald" = 1, "CriticalChance" = 25, "CriticalDamage" = 0.2,\
-						"SpiritFlow" = 3, "Hardening" = 2,"Freezing" = 8, "Rain" = 8, "AirBend" = 2, "WaveDancer" = 1.5, "Godspeed" = 2)
+						"SpiritFlow" = 3, "Hardening" = 2,"Freezing" = 8, "Rain" = 8, "WaveDancer" = 1.5, "Godspeed" = 2)
 		Finisher="/obj/Skills/Queue/Finisher/Frostfist"
 		StyleActive = "Blizzard"
 		StyleOff=1.15

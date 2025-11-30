@@ -2672,9 +2672,9 @@ obj
 								Bolt=2
 								Size=0.5
 								WindUp=0.25
-								Rounds= round(magicLevel/5) + asc
+								Rounds= max(1, round(magicLevel/5) + asc)
 								DamageMult = clamp(magicLevel/3 + asc * 2, 4, 12)/(Rounds)
-								ManaCost *= DamageMult/4
+								ManaCost = 3*(DamageMult/4)
 							else
 								Rush=0
 								ControlledRush=0

@@ -179,6 +179,7 @@ client/verb/Whisper(T as text)
 
 			if(E.BeingObserved.len>0)
 				for(var/mob/m as anything in E.BeingObserved)
+					if(m in transmitTo) continue
 					m?.client.outputToChat("[OBSERVE_HEADER][header][m.Controlz(usr)] whispers: [message]", IC_OUTPUT)
 		else
 			if(get_dist(usr, E) <= WHISPER_RADIUS)
@@ -188,12 +189,14 @@ client/verb/Whisper(T as text)
 
 				if(E.BeingObserved.len>0)
 					for(var/mob/m as anything in E.BeingObserved)
+						if(get_dist(m, E) <= WHISPER_RADIUS) continue
 						m?.client.outputToChat("[OBSERVE_HEADER][header][m.Controlz(usr)] whispers: [message]", IC_OUTPUT)
 			else
 				E?.client.outputToChat("[header][E.Controlz(usr)] whispers...", IC_OUTPUT)
 				if(E.BeingObserved.len>0)
 					for(var/mob/m as anything in E.BeingObserved)
-						m?.client.outputToChat("[header][m.Controlz(usr)] whispers...", IC_OUTPUT)
+						if(m in transmitTo) continue
+						m?.client.outputToChat("[OBSERVE_HEADER][header][m.Controlz(usr)] whispers...", IC_OUTPUT)
 
 	usr.CheckAFK()
 
