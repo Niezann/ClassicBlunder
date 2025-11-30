@@ -2775,7 +2775,7 @@ obj
 								Icon=null
 								IconX=0
 								Size = initial(Size)
-								Cooldown = 60
+								Cooldown = 45
 								NoLock=0
 								NoAttackLock=0
 								WindUp=1
