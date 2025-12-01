@@ -96,7 +96,7 @@ obj
 				Copyable=5
 				name="Skullcrusher"
 				HitMessage="brings their elbow down with crushing might!"
-				DamageMult=5
+				DamageMult=8
 				InstantStrikes=2
 				InstantStrikesDelay=1.5
 				AccuracyMult = 1.1
