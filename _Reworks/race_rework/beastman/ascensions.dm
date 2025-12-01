@@ -66,7 +66,7 @@ ascension
 
 						if("Fox Fire")
 							owner.passive_handler.Increase("SoftStyle", 1)
-							owner.passive_handler.Increase("Soulfire", 1)
+							owner.passive_handler.Increase("SoulFire", 1)
 							offense = 0.25
 							force = 0.5
 				..()
@@ -144,7 +144,7 @@ ascension
 
 						if("Fox Fire")
 							owner.passive_handler.Increase("SoftStyle", 1)
-							owner.passive_handler.Increase("Soulfire", 1)
+							owner.passive_handler.Increase("SoulFire", 1)
 							offense = 0.25
 							force = 0.5
 				..()
@@ -216,7 +216,7 @@ ascension
 
 						if("Fox Fire")
 							owner.passive_handler.Increase("SoftStyle", 1)
-							owner.passive_handler.Increase("Soulfire", 1)
+							owner.passive_handler.Increase("SoulFire", 1)
 							offense = 0.25
 							force = 0.5
 				..()
@@ -288,7 +288,7 @@ ascension
 
 						if("Fox Fire")
 							owner.passive_handler.Increase("SoftStyle", 1)
-							owner.passive_handler.Increase("Soulfire", 1)
+							owner.passive_handler.Increase("SoulFire", 1)
 							offense = 0.25
 							force = 0.5
 				..()

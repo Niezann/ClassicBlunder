@@ -226,7 +226,7 @@ proc/removeDuplicates(list/list1)
                 . += "BladeFisting"
             if(Class=="Fox Fire")
                 . += "SoftStyle"
-                . += "Soulfire"
+                . += "SoulFire"
             if(Class=="Spirit Walker")
                 . += "Flow"
                 . += "Instinct"
@@ -266,7 +266,7 @@ proc/removeDuplicates(list/list1)
                 . += "KBRes"
             if(Class=="Gold")
                 . += "Blubber"
-                . += "CashCow"               
+                . += "CashCow"
         if(ANGEL)
             . += "SpiritPower"
             . += "HolyMod"
@@ -310,7 +310,7 @@ majinAbsorb/proc/doAbsorb(mob/absorber, mob/absorbee)
         if(absorbed[absorbee.ckey] == absorbee.ckey)
             absorber << "You've already absorbed this person, absorb another person."
             return
-    if(absorbCount >= absorbLimit)        
+    if(absorbCount >= absorbLimit)
         if(absorber.AscensionsAcquired==0 && absorber.Potential >= 10)
             var/ascension/next
             switch(absorber.AscensionsAcquired + 1)
@@ -333,7 +333,7 @@ majinAbsorb/proc/doAbsorb(mob/absorber, mob/absorbee)
                 next.onAscension(absorber)
                 absorber << "You've awakened to your next ascension through absorbing countless victims."
         else
-            absorber << "You can't absorb any more passives, you've reached your limit."	                               
+            absorber << "You can't absorb any more passives, you've reached your limit."
         return
     var/list/racialPassives = absorbee.getRacialPassives()
     var/passiveInQuestion = input(absorber, "Which passive would you like to absorb?", "Absorb") in racialPassives

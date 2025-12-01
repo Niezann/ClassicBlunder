@@ -2190,7 +2190,7 @@ mob
 				good = 1
 			if(src.Secret=="Ripple")
 				good = 1
-			if(src.HasSpiritPower()>=1)
+			if(src.GetSpiritPower()>=1)
 				good = 1
 
 			if(passive_handler.Get("Illusion"))
@@ -2218,7 +2218,7 @@ mob
 				good = 1
 			if(src.HasHolyMod() && !src.HasAbyssMod())
 				good = 1
-			if(src.HasSpiritPower()>=1)
+			if(src.GetSpiritPower()>=1)
 				good = 1
 			//these are all bad.
 			if(src.HasMaki())

@@ -501,6 +501,17 @@ update
 				o.race.transformations += new /transformation/celestial/super_high_tension()
 				o.race.transformations += new /transformation/celestial/super_high_tension_MAX()
 				o.race.transformations += new /transformation/celestial/unlimited_high_tension()
+	version29
+		version = 29
+		updateMob(mob/o)
+			.=..()
+			if(o.isRace(BEASTMAN))
+				if(o.Class=="Fox Fire" && o.AscensionsAcquired == 2)
+					o.passive_handler.Set("SoulFire", 2)
+					o.passive_handler.Set("Soulfire", 0)
+				else if(o.Class=="Fox Fire" && o.AscensionsAcquired == 1)
+					o.passive_handler.Set("SoulFire", 1)
+					o.passive_handler.Set("Soulfire", 0)
 
 
 

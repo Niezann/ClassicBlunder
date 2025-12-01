@@ -51,7 +51,7 @@ ascension
 						force = 0.5
 				..()
 		three
-			unlock_potential = 40 // ?
+			unlock_potential = ASCENSION_THREE_POTENTIAL // ?
 			intimidation = 10
 			passives = list("Brutalize" = 0.25, "Tenacity" = 0.5, "TechniqueMastery" = -1)
 
@@ -73,7 +73,7 @@ ascension
 				..()
 
 		four
-			unlock_potential = 65
+			unlock_potential = ASCENSION_FOUR_POTENTIAL
 			intimidation = 10
 			passives = list("Brutalize" = 0.25, "Tenacity" = 0.5)
 
@@ -96,9 +96,26 @@ ascension
 				..()
 
 		five
-			unlock_potential = 80
+			unlock_potential = ASCENSION_FIVE_POTENTIAL
 			intimidation = 10
 			passives = list("Brutalize" = 0.25, "Tenacity" = 0.5)
+			onAscension(mob/owner)
+				switch(owner.Class)
+					if("Compassion")
+						passives["Adrenaline"] = 0.5
+						passives["Tenacity"] = 0.5
+						strength = 0.25
+						defense = 0.25
+						offense = 0.5
+						force = 0.25
+					if("Anger")
+						passives["Brutalize"] = 0.5
+						passives["KillerInstinct"] = 0.05
+						strength = 0.25
+						force = 0.25
+						offense = 0.5
+						speed = 0.5
+				..()
 
 ascension
 	sub_ascension
