@@ -58,7 +58,7 @@ z/mob/proc/checkHealthAlert()
 		if(Health>=75*(1-HealthCut) && Anger!=0)
 			calmcounter -= tick_second
 		else
-			calmcounter = 5 
+			calmcounter = 5
 
 		if(Secret == "Vampire" && MeditateTime == 10 SECONDS)
 			var/obj/Skills/Buffs/SlotlessBuffs/R = GetSlotless("Rotshreck")
@@ -74,7 +74,7 @@ z/mob/proc/checkHealthAlert()
 				s.Timer = 400
 
 
-		if(MeditateTime >= 15 SECONDS) 
+		if(MeditateTime >= 15 SECONDS)
 			reduceErodeStolen()
 
 		if(MeditateTime == 15 SECONDS)
@@ -178,7 +178,7 @@ z/mob/proc/checkHealthAlert()
 	if(PureRPMode)
 		if(!Stasis)
 			Stasis=1
-		// return 
+		// return
 	if(!PureRPMode)
 		checkHealthAlert()
 		meditationChecks()

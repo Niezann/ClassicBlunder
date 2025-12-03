@@ -9,11 +9,14 @@ ascension
 					switch(choice)
 						if("Heart of The Beastman")
 							owner.passive_handler.Increase("Adrenaline", 1)
+							owner.passive_handler.Increase("Hardening", 1)
+							owner.passive_handler.Increase("CallousedHands", 0.1)
 							endurance = 0.25
 							strength = 0.5
 						if("Monkey King")
 							owner.passive_handler.Increase("Nimbus", 1)
 							owner.passive_handler.Increase("HybridStrike", 1)
+							owner.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Monkey_Gourd)
 							endurance = 0.15
 							strength = 0.15
 							offense = 0.15
@@ -83,6 +86,8 @@ ascension
 					switch(choice)
 						if("Heart of The Beastman")
 							owner.passive_handler.Increase("Blubber", 0.25)
+							owner.passive_handler.Increase("Hardening", 1)
+							owner.passive_handler.Increase("CallousedHands", 0.1)
 							endurance = 0.25
 							strength = 0.25
 							speed = 0.25
@@ -156,6 +161,8 @@ ascension
 					switch(choice)
 						if("Heart of The Beastman")
 							owner.passive_handler.Increase("Blubber", 0.25)
+							owner.passive_handler.Increase("Hardening", 1)
+							owner.passive_handler.Increase("CallousedHands", 0.1)
 							endurance = 0.25
 							strength = 0.25
 							speed = 0.25
@@ -228,6 +235,8 @@ ascension
 					switch(choice)
 						if("Heart of The Beastman")
 							owner.passive_handler.Increase("Blubber", 0.25)
+							owner.passive_handler.Increase("Hardening", 1)
+							owner.passive_handler.Increase("CallousedHands", 0.1)
 							endurance = 0.25
 							strength = 0.25
 							speed = 0.25

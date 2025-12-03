@@ -15,7 +15,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 28
+	var/UPDATE_VERSION = 30
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -512,7 +512,36 @@ update
 				else if(o.Class=="Fox Fire" && o.AscensionsAcquired == 1)
 					o.passive_handler.Set("SoulFire", 1)
 					o.passive_handler.Set("Soulfire", 0)
-
+	version30
+		version = 30
+		updateMob(mob/o)
+			.=..()
+			if(o.isRace(BEASTMAN))
+				if(o.Class=="Heart of The Beastman" && o.AscensionsAcquired == 3)
+					o.passive_handler.Set("Steady", 1)
+					o.passive_handler.Set("DoubleStrike",1)
+					o.passive_handler.Set("Hardening",3)
+					o.passive_handler.Set("CallousedHands",0.4)
+					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
+				else if(o.Class=="Heart of The Beastman" && o.AscensionsAcquired == 2)
+					o.passive_handler.Set("Steady", 1)
+					o.passive_handler.Set("DoubleStrike",1)
+					o.passive_handler.Set("Hardening",2)
+					o.passive_handler.Set("CallousedHands",0.3)
+					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
+				else if(o.Class=="Heart of The Beastman" && o.AscensionsAcquired == 1)
+					o.passive_handler.Set("Steady", 1)
+					o.passive_handler.Set("DoubleStrike",1)
+					o.passive_handler.Set("Hardening",1)
+					o.passive_handler.Set("CallousedHands",0.2)
+					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
+				else if(o.Class=="Heart of The Beastman" && o.AscensionsAcquired == 0)
+					o.passive_handler.Set("Steady", 1)
+					o.passive_handler.Set("DoubleStrike",1)
+					o.passive_handler.Set("CallousedHands",0.1)
+					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
+				if(o.Class=="Monkey King")
+					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Monkey_Gourd)
 
 
 

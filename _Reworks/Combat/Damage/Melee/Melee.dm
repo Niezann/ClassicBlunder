@@ -191,15 +191,21 @@
 			if(passive_handler["AirBend"])
 				last_style_effect = world.time
 	if(passive_handler["Nimbus"] && last_nimbus + glob.NIMBUSCD - (passive_handler["Nimbus"]*10) < world.time)
-		if(HasTarget() && TargetInRange(glob.NIMBUSRANGE + passive_handler["Nimbus"]))
+		if(HasTarget() && TargetInRange(glob.NIMBUSRANGE + passive_handler["Nimbus"]) && !CheckSlotless("Nimbus Rider"))
 			if(CanDash())
 				is_dashing++
 				AfterImageGhost(src)
 				DashTo(Target, glob.NIMBUSRANGE + passive_handler["Nimbus"], 1 - (passive_handler["Nimbus"]/4), 0)
 				var/msg = replacetext(nimbus_message, "player_name", "[src]")
 				msg = replacetext(msg, "target_name", "[src.Target]")
-				src.OMessage(10,"[msg]","<font color=red>[src]([src.key]) used Nimbus.")
+				src.OMessage(10,"[msg]","<font color=red>[src]([src.key]) rides the Nimbus.")
 				last_nimbus = world.time
+				if(!locate(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider, src)) // TODO maybe change this so its better
+					AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider)
+				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider/nr in src)
+					if(!nr.Using)
+						nr.passives = /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider::passives
+						nr.Trigger(src)
 				// TODO: make hud later if we feel like it chat
 	if(warpingStrike)
 		if(Target && Target.loc && Target != src && Target && get_dist(Target, src) < warpingStrike)
