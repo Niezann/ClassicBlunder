@@ -2270,7 +2270,7 @@ NEW VARIABLES
 			SpdMult=1.3
 			OffMult=1.2
 			DefMult=1.3
-			passives = list("MovementMastery" = 2, "BlurringStrike" = 1, "DoubleStrike" = 1, "TripleStrike" = 0.25, "Flicker" = 1, "Pursuer" = 3)
+			passives = list("MovementMastery" = 2, "BlurringStrikes" = 1, "DoubleStrike" = 1, "TripleStrike" = 0.25, "Flicker" = 1, "Pursuer" = 3)
 			DoubleStrike=1
 			TripleStrike=0.25
 			Flicker=1
@@ -2291,7 +2291,7 @@ NEW VARIABLES
 			OffMessage="seals off the magical might..."
 			proc/alter(mob/p)
 				if(altered) return
-				passives = list("MovementMastery" = 2, "BlurringStrike" = 1, "DoubleStrike" = 1, "TripleStrike" = 0.25, "Flicker" = 1, "Pursuer" = 3)
+				passives = list("MovementMastery" = 2, "BlurringStrikes" = 1, "DoubleStrike" = 1, "TripleStrike" = 0.25, "Flicker" = 1, "Pursuer" = 3)
 
 		High_Tension
 			SignatureTechnique=3

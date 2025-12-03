@@ -43,7 +43,7 @@ mob/proc/getSenketsuViewers()
 			passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 2, "Shameful Display" = 1, "Persistence" = 3, "UnderDog" = 3, "DemonicDurability" = 2, "ContinuallyStun" = 5)
 
 		else
-			passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 0.5, "Shameful Display" = level, "Persistence" = level, "UnderDog" = level, "Adrenaline" = level / 2, "UnderDog" = level / 2, "DemonicDurability" = level)
+			passives = list("KiControl" = 1, "HealthPU" = 1, "BleedHit" = 0.5, "Shameful Display" = level, "Persistence" = level, "UnderDog" = level, "Adrenaline" = level / 2, "DemonicDurability" = level)
 			if(usr.SagaLevel == 1)
 				IconLock='senketsu_activated.dmi'
 				TopOverlayLock='senketsu_activated_headpiece.dmi'
