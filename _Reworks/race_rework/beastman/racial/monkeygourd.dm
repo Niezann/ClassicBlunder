@@ -6,7 +6,7 @@
 		CooldownStatic=1
 		TimerLimit=1
 		ActiveMessage = "takes a sip from their trusty gourd."
-		HealthHeal = 3
+		HealthHeal = 9 //for some reason 3 healed only 1%???
 		StableHeal = 1 // don't take recov into account
 		EnergyHeal = 25
 		var/monkeyUsed = 0
