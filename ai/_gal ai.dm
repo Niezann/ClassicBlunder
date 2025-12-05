@@ -1224,7 +1224,7 @@ mob/Player/AI
 			src.HealthAnnounce25=1
 
 		if(src.Health < 10*(1-src.HealthCut) && !src.HealthAnnounce10)
-			if(src.SpecialBuff&&src.SlotlessBuffs["Genesic Brave"])
+			if(src.SlotlessBuffs["Genesic Brave"])
 				src.OMessage(10, "<b><font color=#00FF55>[src] unites the powers of Destruction and Protection to defy the odds!", "[src]([src.key]) has 10% health left.</font></b>")
 				src.PowerControl+=25*src.SagaLevel
 				src.VaizardHealth+=5*src.SagaLevel

@@ -5,7 +5,7 @@
                         "BlurringStrikes" = 1,  "TensionLock" = 1)
         OffMult=1.5
         DefMult=1.5
-    
+
     The_8th_Wonder_Of_The_World
         StyleNeeded = "All Star Wrestling"
         VaizardHealth = 5
@@ -15,4 +15,15 @@
         EndMult = 1.75
         passives = list("Muscle Power" = 4, "TechniqueMastery" = 5, "DeathField" = 7, \
                         "Juggernaut"= 5, "KBRes"= 5, "PureReduction" = 2, "GiantForm" = 1,  "TensionLock" = 1)
+
+    Kensei
+        StyleNeeded="Two Heavens As One"
+        ManaGlow=rgb(255, 255, 255)
+        ManaGlowSize=2
+        passives = list("TensionLock" = 1,"CursedWounds" = 1, "PureDamage" = 5, "Instinct" = 4, "SpiritFlow" = 1)
+        HitSpark='Slash - Ragna.dmi'
+        HitX=-32
+        HitY=-32
+        HitTurn=1
+        OffMessage="represses their nature as a Swordmaster..."
 

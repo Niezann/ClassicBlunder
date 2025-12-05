@@ -8343,6 +8343,8 @@ NEW VARIABLES
 				if(usr.SagaLevel<6 && usr.Health>50)
 					usr << "You aren't pressed enough to fuse the powers of Protection and Destruction!"
 					return
+				if(usr.SagaLevel==6)
+					TooMuchHealth=99
 				src.Trigger(usr)
 		Will_Knife
 			MakesSword=1
@@ -8411,9 +8413,9 @@ NEW VARIABLES
 			verb/Protect_Wall()
 				set category="Skills"
 				if(!usr.BuffOn(src))
-					VaizardHealth = (1.5 * usr.SagaLevel)
+					VaizardHealth = (2 * usr.SagaLevel)
 					TimerLimit = 5 * usr.SagaLevel
-					Cooldown = 300
+					Cooldown = 300 - (15 * usr.SagaLevel)
 				src.Trigger(usr)
 		Plasma_Hold
 			TimerLimit=2

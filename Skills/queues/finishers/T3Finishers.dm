@@ -53,6 +53,11 @@
         FollowUp="/obj/Skills/Projectile/ThreeShot_Path"
         HitMessage = "hurls skyward a cascade of blades!"
     Clear_Water //Two Heavens as One
+        DamageMult=6
+        HitSparkIcon='Slash - Zan.dmi'
+        HitSparkX=-32
+        HitSparkY=-32
+        BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Kensei"
         HitMessage = "ushers in absolute serenity with a humble slash..."
     Divine_Wrath //Fierce Diety
         HarderTheyFall=4
