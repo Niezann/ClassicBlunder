@@ -24,7 +24,6 @@
 		InstantStrikes = 4
 		Crushing = 20
 		DamageMult = 3
-		UnarmedOnly = 1
 		GrabTrigger = "/obj/Skills/Grapple/Instinct_Reversal"
 		BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Flow_State"
 		BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Thrown_Off_Balance"
@@ -54,7 +53,6 @@
 		Quaking = 3
 		PushOut = 1
 		PushOutWaves = 1
-		UnarmedOnly = 1
 		FollowUp = "/obj/Skills/AutoHit/Tranquil_Burst"
 		BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Stillness_of_Motion"
 		BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Disrupted_Flow"
@@ -118,7 +116,6 @@
 		Quaking = 4
 		PushOut = 2
 		PushOutWaves = 1
-		UnarmedOnly = 1
 		FollowUp = "/obj/Skills/AutoHit/Tranquil_Burst"
 		BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Stillness_of_Motion"
 		BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Disrupted_Flow"
