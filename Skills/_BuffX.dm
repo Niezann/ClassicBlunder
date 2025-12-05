@@ -2671,7 +2671,7 @@ NEW VARIABLES
 					OffMult = 1.1 + totalPot/150
 					DefMult = 0.4 + clamp(totalPot/150, 0.1, 0.4)
 					var/reducedPot = totalPot/10
-					SureHitTimerLimit = 30 + (100-totalPot)
+					SureHitTimerLimit = -40 + (100-totalPot)
 					passives = list("ManaLeak" = 1 - totalPot/200, "HardStyle" = 0.3 * reducedPot, \
 					"Flicker" = clamp(round(reducedPot/5,1), 1, 2), "Pursuer" = clamp(round(reducedPot/5,1), 1, 2), \
 					"Instinct" = reducedPot * 0.5, "Godspeed" = round(reducedPot/2.5, 1), "Steady" = reducedPot * 0.5)
@@ -8374,6 +8374,7 @@ NEW VARIABLES
 					IconLock = null
 			verb/Audacious_Bravery_Armament()
 				set category="Skills"
+				adjust(usr)
 				src.Trigger(usr)
 
 		Protect_Shade

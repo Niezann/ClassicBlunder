@@ -25,10 +25,10 @@
             CriticalDamage = round(totalPot/100, 0.01)
             Crippling = totalPotRounded/10
             SlayerMod = totalPotRounded/12.5 // lol 1 pure damage at 100
-            Warp = totalPotRounded/25
+            Warping = totalPotRounded/25
             passives = list("CoolerAfterImages" = 3, "Godspeed" = Godspeed, "CriticalChance" = CriticalChance, \
             "CriticalDamage" = CriticalDamage, "Crippling" = Crippling, "SlayerMod" = SlayerMod,\
-            "Warp" = Warp, "CursedWounds" = 1, "MortalStrike" = totalPotRounded/250, "FavoredPrey" = "Races")
+            "Warping" = Warping, "CursedWounds" = 1, "MortalStrike" = totalPotRounded/250, "FavoredPrey" = "Races")
             Cooldown = 120 - (totalPotRounded)
             TimerLimit = 10 + (totalPotRounded/10)
             if(p.SpecialBuff?:sandevistanUsages >= 0)
@@ -97,4 +97,3 @@
         set category="Skills"
         adjust(usr)
         Trigger(usr)
-            
