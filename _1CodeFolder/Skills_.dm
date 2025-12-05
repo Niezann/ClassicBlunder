@@ -763,13 +763,16 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 					CanTransform()
 					return
 				if(passive_handler.Get("Piloting"))return
-				if(src.Kaioken)
+				if(src.passive_handler.Get("Kaioken"))
 					var/Mastery
 					for(var/obj/Skills/Buffs/SpecialBuffs/Kaioken/KK in src)
 						Mastery=KK.Mastery
 					if(src.Kaioken<2+Mastery)
 						if(src.passive_handler.Get("Super Kaioken"))
 							switch(src.Kaioken)
+								if(0)
+									src.Kaioken=1
+									src <<"<b>Super Kaioken!</b>"
 								if(1)
 									src.Kaioken=2
 									src <<"<b>Super Kaioken Times Three!</b>"
@@ -787,6 +790,9 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 
 						else
 							switch(src.Kaioken)
+								if(0)
+									src.Kaioken=1
+									src <<"<b>Kaioken!</b>"
 								if(1)
 									src.Kaioken=2
 									src <<"<b>Kaioken Times Three!</b>"
@@ -843,7 +849,8 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 				if(src.Kaioken)
 					switch(src.Kaioken)
 						if(1)
-							src <<"<b>You're at the minimum Kaioken!</b>"
+							src.Kaioken=0
+							src <<"<b>You fully relax your Kaioken!</b>"
 						if(2)
 							src.Kaioken=1
 							src <<"<b>You relax your Kaioken to its minimum!</b>"

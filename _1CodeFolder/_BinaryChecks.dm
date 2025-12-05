@@ -715,7 +715,7 @@ mob
 			Return+=passive_handler.Get("Godspeed")
 			Return+=passive_handler.Get("GodSpeed") // just in case man
 			if(passive_handler.Get("Super Kaioken"))
-				Return+=round(src.Kaioken/2)
+				Return+=(src.Kaioken/2)
 			var/t=src.HighestTrans()
 			if(t)
 				Return+=t/2
@@ -740,6 +740,8 @@ mob
 			Return+=src.SaiyanTransPower()
 			if(src.KamuiBuffLock)
 				Return += 2
+			if(src.passive_handler.Get("Super Kaioken"))
+				Return+=(src.Kaioken/2)
 			if(Target)
 				if(passive_handler.Get("HellRisen")  && isDominating(Target))
 					Return += clamp((passive_handler.Get("HellRisen")*2), 1, 2)
@@ -2517,6 +2519,8 @@ mob
 				return passive_handler.Get("Afterimages")
 			if(src.Afterimages)
 				return Afterimages
+			if(src.Kaioken>=4)
+				return src.Kaioken
 			return 0
 
 		KBFreeze()

@@ -673,9 +673,12 @@ mob/proc/Recover(var/blah,Amount=1)
 mob/proc/
 	Available_Power()
 //Kaiokek
-		if(src.Kaioken)
+		if(src.passive_handler.Get("Kaioken"))
 			if(src.passive_handler.Get("Super Kaioken"))
 				switch(src.Kaioken)
+					if(0)
+						src.PowerControl=100
+						src.KaiokenBP=1.1
 					if(1)
 						src.PowerControl=175
 						src.KaiokenBP=1.3
@@ -690,9 +693,12 @@ mob/proc/
 						src.KaiokenBP=1.7
 					if(5)
 						src.PowerControl=350
-						src.KaiokenBP=1.9
+						src.KaiokenBP=1.7
 			else
 				switch(src.Kaioken)
+					if(0)
+						src.PowerControl=100
+						src.KaiokenBP=1.1
 					if(1)
 						src.PowerControl=160
 						src.KaiokenBP=1.2
