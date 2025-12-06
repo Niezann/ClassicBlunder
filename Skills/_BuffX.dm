@@ -8358,15 +8358,6 @@ NEW VARIABLES
 			SwordClass="Wooden"
 			ActiveMessage="condenses their bravery!"
 			var/saved_icon = 'GaoGaoFists.dmi'
-			verb/Modify_Armament()
-				set category="Skills"
-				src.SwordIcon=input(usr, "What icon will your Will Knife use?", "Will Knife Icon") as icon|null
-				src.SwordX=input(usr, "Pixel X offset.", "Will Knife Icon") as num
-				src.SwordY=input(usr, "Pixel Y offset.", "Will Knife Icon") as num
-				src.SwordClass=input(usr, "What class will your Will Knife be?", "Will Knife Icon") in list("Heavy", "Medium", "Light", "Wooden")
-				saved_icon = input(usr, "What do you want your unarmed variant icon to be?") as icon|null
-				LockX = input(usr, "Pixel X offset.", "Unarmed Variant Icon") as num
-				LockY = input(usr, "Pixel Y offset.", "Unarmed Variant Icon") as num
 			adjust(mob/p)
 				if(p.usingStyle("UnarmedStyle"))
 					MakesSword = 0
@@ -8376,9 +8367,19 @@ NEW VARIABLES
 					passives = list("SwordAscension" = clamp(usr.SagaLevel - 1,1,6), "SpiritSword" = 0.2 * (usr.SagaLevel), "BladeFisting" = 1)
 					MakesSword = 1
 					IconLock = null
+			verb/Modify_Armament()
+				set category="Skills"
+				src.SwordIcon=input(usr, "What icon will your Will Knife use?", "Will Knife Icon") as icon|null
+				src.SwordX=input(usr, "Pixel X offset.", "Will Knife Icon") as num
+				src.SwordY=input(usr, "Pixel Y offset.", "Will Knife Icon") as num
+				src.SwordClass=input(usr, "What class will your Will Knife be?", "Will Knife Icon") in list("Heavy", "Medium", "Light", "Wooden")
+				saved_icon = input(usr, "What do you want your unarmed variant icon to be?") as icon|null
+				LockX = input(usr, "Pixel X offset.", "Unarmed Variant Icon") as num
+				LockY = input(usr, "Pixel Y offset.", "Unarmed Variant Icon") as num
 			verb/Audacious_Bravery_Armament()
 				set category="Skills"
-				adjust(usr)
+				if(!usr.BuffOn(src))
+					adjust(usr)
 				src.Trigger(usr)
 
 		Protect_Shade
