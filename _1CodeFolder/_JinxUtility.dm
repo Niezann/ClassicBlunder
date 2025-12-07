@@ -858,6 +858,9 @@ mob
 				src.TotalCapacity=100
 		HealHealth(var/val)
 			if(src.Sheared)
+				if(src.HasShearImmunity())
+					val=val
+					src.Sheared=0
 				if(src.HasHellPower())
 					src.Sheared-=val/(2/src.GetHellPower())
 					if(src.Sheared<0)
@@ -907,6 +910,9 @@ mob
 			src.MaxMana()
 		HealWounds(var/val, var/StableHeal=0)
 			if(src.Sheared)
+				if(src.HasShearImmunity())
+					val=val
+					src.Sheared=0
 				src.Sheared-=val
 				if(src.Sheared<0)
 					val=(-1)*src.Sheared
