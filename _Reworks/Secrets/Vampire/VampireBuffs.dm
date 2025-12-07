@@ -84,7 +84,7 @@
 				TooMuchHealth = 100
 			LifeSteal = (10 + secretLevel + 5) * (1 + (p.secretDatum.secretVariable["BloodPower"] * 0.25))
 			Godspeed = secretLevel * (1 + (p.secretDatum.secretVariable["BloodPower"] * 0.25))
-			passives = list("LifeSteal" = LifeSteal, "Godspeed" = Godspeed)
+			passives = list("LifeSteal" = LifeSteal, "Godspeed" = Godspeed, "ShearImmunity" = 1)
 
 		Trigger(mob/User, Override = 0)
 			adjust(User, 0)

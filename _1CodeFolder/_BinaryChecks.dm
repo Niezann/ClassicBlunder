@@ -1562,6 +1562,10 @@ mob
 			if(passive_handler.Get("Maki"))
 				return 1
 			return 0
+		HasShearImmunity()
+			if(passive_handler.Get("ShearImmunity"))
+				return 1
+			return 0
 		HasTaxThreshold()
 			if(passive_handler.Get("TaxThreshold"))
 				return 1

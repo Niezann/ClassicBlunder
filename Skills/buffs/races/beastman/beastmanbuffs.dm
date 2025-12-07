@@ -69,7 +69,7 @@
 	adjust(mob/p)
 		TimerLimit = 10 + (glob.racials.UNDYINGRAGE_DURATION * (p.AscensionsAcquired))
 		var/wT = 1.5 - p.passive_handler["Wrathful Tenacity"]
-		passives = list("Undying Rage" = 1, "Fury" = 1 + p.AscensionsAcquired, "Godspeed" = 3, "Relentlessness" = 1, "Adrenaline" = 3, "LifeSteal" = 50 + (25 * p.AscensionsAcquired), \
+		passives = list("Undying Rage" = 1, "Fury" = 1 + p.AscensionsAcquired, "Godspeed" = 3, "Relentlessness" = 1, "ShearImmunity" = 1, "Adrenaline" = 3, "LifeSteal" = 50 + (25 * p.AscensionsAcquired), \
 						"Enrage" = p.AscensionsAcquired, "Rage" = p.AscensionsAcquired, "Wrathful Tenacity" = wT) // 150% of str as end
 	Trigger(mob/User, Override)
 		. = ..()
@@ -118,7 +118,7 @@
 
 /obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Spirit_Walker
 	TimerLimit = 30
-	Cooldown = 120
+	Cooldown = 90
 /obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Spirit_Walker/Pheonix_Form
 	endAdd = -0.25
 	defAdd = -0.25
@@ -126,7 +126,8 @@
 	adjust(mob/p)
 		var/asc = p.AscensionsAcquired
 		passives = list("SweepingStrikes" = 1, "Extend" = 1 + (asc/4), "Gum Gum" = 1 + (asc/4), "ComboMaster" = 1)
-		Cooldown = 120 - (10 *p.AscensionsAcquired)
+		Cooldown = 90 - (10 *p.AscensionsAcquired)
+		TimerLimit = 30 + (6 *p.AscensionsAcquired)
 	verb/Pheonix_Form()
 		set category = "Stances"
 		usr.preForm()
@@ -140,7 +141,8 @@
 	adjust(mob/p)
 		var/asc = p.AscensionsAcquired
 		passives = list("Godspeed" = 1 + (asc/2), "BlurringStrikes" = clamp(asc/4, 0.25, 1), "Brutalize" = 0.5 + (asc/2))
-		Cooldown = 120 - (10 *p.AscensionsAcquired)
+		Cooldown = 90 - (10 *p.AscensionsAcquired)
+		TimerLimit = 30 + (6 *p.AscensionsAcquired)
 	verb/Ram_Form()
 		set category = "Stances"
 		usr.preForm()
@@ -152,7 +154,8 @@
 	adjust(mob/p)
 		var/asc = p.AscensionsAcquired
 		passives = list("StunningStrike" = 2.5+asc, "ComboMaster" = 1,  "CheapShot" = asc/2, "Instinct" = asc)
-		Cooldown = 120 - (10 *p.AscensionsAcquired)
+		Cooldown = 90 - (10 *p.AscensionsAcquired)
+		TimerLimit = 30 + (6 *p.AscensionsAcquired)
 	verb/Bear_Form()
 		set category = "Stances"
 		usr.preForm()
@@ -163,7 +166,8 @@
 	adjust(mob/p)
 		var/asc = p.AscensionsAcquired
 		passives = list("Hardening" = 2 + asc/2,  "HardenedFrame" = 1, "DeathField" = 2+asc*2)
-		Cooldown = 120 - (10 *p.AscensionsAcquired)
+		Cooldown = 90 - (10 *p.AscensionsAcquired)
+		TimerLimit = 30 + (6 *p.AscensionsAcquired)
 	verb/Turtle_Form()
 		set category = "Stances"
 		usr.preForm()
@@ -215,7 +219,12 @@
 	IconChargeOverhead=1
 	IconLock = 'Elec Ball Blue.dmi'
 	Cooldown = 60
+	adjust(mob/p)
+		FoxFire = 2 + p.AscensionsAcquired
+		Blasts= 3 * (p.AscensionsAcquired)
+		DamageMult= 2.5 + (p.AscensionsAcquired * 0.25)
 
 	verb/Fox_Fire_Barrage()
 		set category = "Skills"
+		adjust(usr)
 		usr.UseProjectile(src)

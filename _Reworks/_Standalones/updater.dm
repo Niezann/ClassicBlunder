@@ -543,6 +543,13 @@ update
 				if(o.Class=="Monkey King")
 					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Monkey_Gourd)
 
+	version31
+		version = 31
+		updateMob(mob/o)
+			.=..()
+			if(o.isRace(BEASTMAN) && o.Class!="Undying Rage" && o.AscensionsAcquired == 3)
+				o.AngerMax+=0.4
+
 
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )

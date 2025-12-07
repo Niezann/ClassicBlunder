@@ -858,20 +858,23 @@ mob
 				src.TotalCapacity=100
 		HealHealth(var/val)
 			if(src.Sheared)
+				if(src.HasShearImmunity())
+					val=val
+					src.Sheared=0
 				if(src.HasHellPower())
 					src.Sheared-=val/(2/src.GetHellPower())
 					if(src.Sheared<0)
 						val+=(-1)*src.Sheared
 						src.Sheared=0
 					else
-						val=val/(2/src.GetHellPower())
+						val=val*0.75
 				else
 					src.Sheared-=val
 					if(src.Sheared<0)
 						val=(-1)*src.Sheared
 						src.Sheared=0
 					else
-						val=val/3
+						val=val/2
 			if(src.PotionCD)
 				val/=glob.HEALTH_POTION_NERF
 			if(icon_state == "Meditate")
@@ -907,12 +910,15 @@ mob
 			src.MaxMana()
 		HealWounds(var/val, var/StableHeal=0)
 			if(src.Sheared)
+				if(src.HasShearImmunity())
+					val=val
+					src.Sheared=0
 				src.Sheared-=val
 				if(src.Sheared<0)
 					val=(-1)*src.Sheared
 					src.Sheared=0
 				else
-					val=0
+					val=val/2
 			if(src.PotionCD)
 				val/=1.25
 			src.TotalInjury-=val

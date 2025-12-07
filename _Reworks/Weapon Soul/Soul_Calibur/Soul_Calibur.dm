@@ -8,7 +8,7 @@ obj/Items/Sword/Medium/Legendary/WeaponSoul/Blade_of_Order // SOUL CALIBUR
 	var/caliburLight = TRUE
 
 obj/Skills/Buffs/SlotlessBuffs/Defrost
-	passives = list("Unstoppable" = 1, "LifeGeneration" = 5, "LifeSteal" = 10, "Chilling" = 2)
+	passives = list("Unstoppable" = 1, "ShearImmunity" = 1, "LifeGeneration" = 5, "LifeSteal" = 10, "Chilling" = 2)
 	WoundCost = 10
 	TimerLimit = 60
 	Cooldown = 160
@@ -17,9 +17,9 @@ obj/Skills/Buffs/SlotlessBuffs/Defrost
 	adjust(mob/p)
 		TimerLimit = 60 + (p.SagaLevel * 5)
 		if(p.SpecialBuff&&p.SpecialBuff.name == "Heavenly Regalia: Frozen Crystal")
-			passives = list("Unstoppable" = 1, "LifeGeneration" = 5, "LifeSteal" = 20, "Chilling" = 4)
+			passives = list("Unstoppable" = 1, "ShearImmunity" = 1, "LifeGeneration" = 5, "LifeSteal" = 20, "Chilling" = 4)
 		else
-			passives = list("Unstoppable" = 1, "LifeGeneration" = 3, "LifeSteal" = 10, "Chilling" = 2)
+			passives = list("Unstoppable" = 1, "ShearImmunity" = 1, "LifeGeneration" = 3, "LifeSteal" = 10, "Chilling" = 2)
 
 	verb/Defrost()
 		set category = "Skills"
