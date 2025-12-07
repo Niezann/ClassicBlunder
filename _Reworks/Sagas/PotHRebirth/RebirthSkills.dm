@@ -1012,10 +1012,13 @@ obj/Skills/Buffs
 			OffMult=1.1
 			DefMult=1.1
 			EnergyHeal=1
-			passives = list("Flicker" = 1, "Pursuer"=1, "Instinct"=1, "ChaosQueen" = 1, "KiControl" = 1)
+			ManaGlow="Rainbow"
+			passives = list("Flicker" = 1, "Pursuer"=1, "Instinct"=1, "ChaosQueen" = 1, "Prismatic" =1, "KiControl" = 1)
 			ActiveMessage="casts aside certainty in the name of possibility, singing the <b>Song of the Chaos Queen!</b>"
 			OffMessage="normalizes their outcomes, putting aside the mantle of the Chaos Queen."
 			verb/Chaos_Queen()
+				set category="Skills"
+				adjust(usr)
 				src.Trigger(usr)
 		RemoveSOUL
 			MakesSword=1
