@@ -863,14 +863,15 @@ mob/proc/
 				Ratio*=src.PowerInvisible
 			if(src.PowerBoost)
 				Ratio*=src.PowerBoost
-
+			var/SSJBoost=1
 			if(isRace(SAIYAN)&&transActive&&ActiveBuff)
 				if(race.transformations[1].mastery==100)
-					Ratio *= 1 + (0.15)
+					SSJBoost= 1.15
 				if(race.transformations[2].mastery==100)
-					Ratio *= 1 + (0.30)
+					SSJBoost= 1.30
 				if(race.transformations[3].mastery==100)
-					Ratio *= 1 + (0.45)
+					SSJBoost= 1.45
+				Ratio*=SSJBoost
 
 			if(src.Target)
 				if(ismob(src.Target))

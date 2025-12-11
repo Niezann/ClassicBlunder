@@ -300,4 +300,4 @@
 	Dodgeable=0
 	StrRate=1
 	ForRate=1
-	IconLock='RainbowBeam.dmi'
+	IconLock='SuperDuperRainbowBeam.dmi'

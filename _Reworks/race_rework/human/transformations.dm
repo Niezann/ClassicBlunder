@@ -1,12 +1,12 @@
 transformation
 	human
 		high_tension
-			passives = list("HighTension"=0.75,"TensionPowered"=0.25,"TechniqueMastery"=2, "BuffMastery" = 2, "PureReduction"=2, "PureDamage"=2)
+			passives = list("HighTension"=0.75,"TensionPowered"=0.25,"TechniqueMastery"=1, "BuffMastery" = 2, "PureReduction"=2, "PureDamage"=2)
 			pot_trans = 2
 			transformation_message = "usrName raises their tension!"
 			mastery_boons(mob/user)
 				if(mastery >= 0)
-					passives = list("HighTension"=0.75,"TensionPowered"=0.25,"TechniqueMastery"=2, "BuffMastery" = 2, "PureReduction"=2, "PureDamage"=2)
+					passives = list("HighTension"=0.75,"TensionPowered"=0.25,"TechniqueMastery"=1, "BuffMastery" = 2, "PureReduction"=2, "PureDamage"=2)
 					pot_trans = 2
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)
@@ -20,7 +20,7 @@ transformation
 					KenShockwave(user, icon='KenShockwavePurple.dmi', Size=ShockSize, Blend=2, Time=8)
 					ShockSize/=2
 		high_tension_MAX
-			passives = list("HighTension"=0.25,"TensionPowered"=0.25, "StyleMastery" = 2, "BuffMastery" = 2,"TechniqueMastery"=2)
+			passives = list("HighTension"=0.25,"TensionPowered"=0.25, "StyleMastery" = 2, "BuffMastery" = 2,"TechniqueMastery"=1)
 			pot_trans = 3
 			form_aura_icon = 'AurasBig.dmi'
 			form_aura_icon_state = "HT2"
@@ -29,7 +29,7 @@ transformation
 			mastery_boons(mob/user)
 				if(mastery >= 0)
 					pot_trans=3
-					passives = list("HighTension"=0.25,"TensionPowered"=0.25, "StyleMastery" = 2, "BuffMastery" = 2,"TechniqueMastery"=2)
+					passives = list("HighTension"=0.25,"TensionPowered"=0.25, "StyleMastery" = 2, "BuffMastery" = 2,"TechniqueMastery"=1)
 				if(!locate(/obj/Skills/Buffs/SlotlessBuffs/Racial/Human/Activate_High_Tension, user))
 					var/obj/Skills/Buffs/SlotlessBuffs/Racial/Human/Activate_High_Tension/s=new/obj/Skills/Buffs/SlotlessBuffs/Racial/Human/Activate_High_Tension
 					user.AddSkill(s)
@@ -51,10 +51,11 @@ transformation
 			pot_trans = 3
 			form_aura_icon = 'SpiralAura.dmi'
 			form_aura_x = -32
-			passives = list("HighTension"=0.25,"TensionPowered"=0.25, "SuperHighTension" = 1, "StyleMastery" = 2, "BuffMastery" = 2,"TechniqueMastery"=3)
+			passives = list("HighTension"=0.25,"TensionPowered"=0.25, "SuperHighTension" = 1, "StyleMastery" = 2, "BuffMastery" = 2,"TechniqueMastery"=3, "PureReduction"=3, "PureDamage"=3)
 			transformation_message = "usrName pushes their tension beyond its limits, becoming everything they could ever be!"
 			mastery_boons(mob/user)
 				if(mastery >= 0)
+					pot_trans = 3
 					passives = list("HighTension"=0.25,"TensionPowered"=0.25, "SuperHighTension" = 1, "StyleMastery" = 2, "BuffMastery" = 2,"TechniqueMastery"=3, "PureReduction"=3, "PureDamage"=3)
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)

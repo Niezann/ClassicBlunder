@@ -5,7 +5,7 @@
 		NeedsSword=0
 		NoSword=1
 		StyleActive = "Mortal Instinct (Incomplete)"
-		passives = list("Deflection" = 0.5, "SoftStyle" = 1, "Flow" = 1, "Instinct" = 0.5, "CounterMaster" = 0.25)
+		passives = list("Deflection" = 0.5, "SoftStyle" = 1, "Flow" = 1, "Instinct" = 0.5, "CounterMaster" = 0.25,"UnarmedDamage"=2)
 		StyleSpd = 1.05
 		StyleOff = 1.1
 		StyleDef = 1.1
@@ -24,7 +24,7 @@
 		NeedsSword=0
 		NoSword=1
 		StyleActive="Mortal Ultra Instinct (In-Training)"
-		passives = list("Deflection" = 1, "SoftStyle" = 1, "Flow" = 3, "Instinct" = 1, "CounterMaster" = 1)
+		passives = list("Deflection" = 1, "SoftStyle" = 1, "Flow" = 3, "Instinct" = 1, "CounterMaster" = 1,"UnarmedDamage"=3)
 		StyleSpd=1.25
 		StyleOff=1.15
 		StyleDef=1.25
@@ -52,7 +52,7 @@
 		NeedsSword=0
 		NoSword=1
 		StyleActive = "Mortal Ultra Instinct"
-		passives = list("Deflection" = 1, "SoftStyle" = 1, "Flow" = 2, "Instinct" = 2, "CounterMaster" = 2, "Godspeed" = 1)
+		passives = list("Deflection" = 1, "SoftStyle" = 1, "Flow" = 2, "Instinct" = 2, "CounterMaster" = 2, "Godspeed" = 1,"UnarmedDamage"=4)
 		StyleSpd = 1.5
 		StyleOff = 1.5
 		StyleDef = 1.5
