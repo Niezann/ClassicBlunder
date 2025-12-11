@@ -29,7 +29,7 @@ globalTracker/var/list/IGNORE_POWER_CLAMP_PASSIVES = list("Wrathful", "LimitBrok
     var/godKi = GetGodKi()
     var/defenderGodKi = defender.GetGodKi()
     if(!defenderGodKi)
-        if(godKi )
+        if(godKi)
             return TRUE
     else
         if(godKi)

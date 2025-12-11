@@ -3574,8 +3574,9 @@ obj
 								LosesHoming=75
 								HyperHoming=1
 								Speed=1.25
+								EndRate=0.75
 								IconSize=randValue(0.8,1.5)
-								DamageMult = 9 + (asc)
+								DamageMult = 7 + (asc)
 								DamageMult/=Blasts
 							else
 								ManaCost=15

@@ -16,7 +16,7 @@ obj
 				HitStep=/obj/Skills/Queue/Unicorn_Combination2
 				ActiveMessage="takes a starting position!"
 				HitMessage="opens the opponent with a twisting frontal kick!"
-				verb/Celectial_Trot()
+				verb/Celestial_Trot()
 					set category="Skills"
 					usr.SetQueue(src)
 			Unicorn_Combination2

@@ -1689,6 +1689,7 @@ NEW VARIABLES
 			UnrestrictedBuff=1
 			EnergyMult=2
 			BurnAffected=2
+			HealthThreshold=5
 			passives = list("BurningShot" = 1, "NoWhiff" = 1, "SuperDash" = 1, "Pursuer" = 1)
 			IconLock='SSGAura.dmi'
 			IconLockBlend=4
@@ -1712,6 +1713,7 @@ NEW VARIABLES
 			SignatureTechnique=3
 			UnrestrictedBuff=1
 			EnergyMult=2
+			HealthThreshold=50
 			passives = list("MirrorStats" = 1, "Flow" = 1, "Instinct" = 1, "LikeWater" = 4, "FluidForm" = 1)
 			ActiveMessage="reflects their opponent's power like a still lake!"
 			OffMessage="returns to their own movements, unable to hold the simulacrum..."
@@ -1729,6 +1731,7 @@ NEW VARIABLES
 			SignatureTechnique=3
 			EnergyMult=2
 			UnrestrictedBuff=1
+			HealthThreshold=25
 			passives = list("Erosion" = 0.5, "SoulFire" = 1, "SoulFire" = 1, "WeaponBreaker" = 2, "DeathField" = 5, "VoidField" = 5)
 			SpdMult = 1.25
 			DefMult = 1.25
@@ -3724,6 +3727,8 @@ NEW VARIABLES
 			OffMult=1.3
 			DefMult=1.2
 			SpdMult=2
+			GodKi=0.25
+			passives=list("GodKi"=0.25)
 			Transform="Weapon"
 			Slotless = TRUE
 			SpecialSlot = FALSE
@@ -10987,7 +10992,7 @@ mob
 						src << "You can't trigger [B] without [B.StyleNeeded] active!"
 						return
 				if(B.ActiveSlot)
-					if(src.HasActiveBuffLock()||src.KamuiBuffLock)
+					if(src.HasActiveBuffLock())
 						src << "Your active buffs are locked out!"
 						return
 				if(B.SpecialSlot)
@@ -12839,7 +12844,7 @@ mob
 			if(B.VanishImage)
 				src.VanishPersonal=B.VanishImage
 
-			if(B.ManaGlow!="Rainbow")
+			if(B.ManaGlow&&!(B.ManaGlow=="Rainbow"))
 				filters = null
 				filters += filter(type="drop_shadow",x=0,y=0,size=B.ManaGlowSize, offset=B.ManaGlowSize/2, color=B.ManaGlow)
 				GlowFilter = filters[filters.len]

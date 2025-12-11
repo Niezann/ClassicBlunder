@@ -1269,7 +1269,7 @@ mob
 				strMult += KaiokenBP-0.8
 			Mod+=(strMult-1)
 			if(src.KamuiBuffLock)
-				Mod+=1
+				Mod+=0.75
 			if(src.Saga=="Eight Gates")
 				Mod+=0.01*GatesActive
 			if(src.passive_handler["LegendarySaiyan"]==1)
@@ -1533,7 +1533,7 @@ mob
 			var/Mod=1
 			Mod+=(src.EndMultTotal-1)
 			if(src.KamuiBuffLock)
-				Mod+=1
+				Mod+=0.75
 			// if(src.isRace(HUMAN))
 			// 	if(src.AscensionsAcquired)
 			// 		Mod+=(src.AscensionsAcquired/20)
@@ -1647,7 +1647,7 @@ mob
 			if(KaiokenBP > 1)
 				Mod += KaiokenBP-0.5
 			if(src.KamuiBuffLock)
-				Mod+=1
+				Mod+=0.75
 			if(Saga&&src.Saga=="Eight Gates")
 				Mod+=0.01*GatesActive
 			if(passive_handler["Determination(Red)"||passive_handler["Determination(Yellow)"]]||passive_handler.Get("Determination(White)"))

@@ -23,7 +23,10 @@
 				set category="Skills"
 				adjust(usr)
 				src.Trigger(usr)
-				usr << "Your vampiric blood awakens!"
+				if(!usr.BuffOn(src))
+					usr << "Your vampiric blood awakens!"
+				else
+					usr << "You let it slumber once more."
 
 		Wassail
 			Curse=1

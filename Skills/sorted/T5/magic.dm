@@ -9,7 +9,7 @@
 	Dodgeable=-1
 	AccMult = 1.175
 	Speed=2
-	EndRate = 0.75
+	EndRate = 1
 	ManaCost=60
 	Cooldown=150
 	IconLock='Boulder Normal.dmi'

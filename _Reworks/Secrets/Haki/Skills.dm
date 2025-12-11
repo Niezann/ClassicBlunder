@@ -87,9 +87,27 @@
     DamageMult = 1
     EnergyCost = 1.5
     FollowUp = "/obj/Skills/AutoHit/Haki/Kings_Infusion_Follow"
+    adjust(mob/p)
+        var/secretLevel = p.getSecretLevel()
+        if(secretLevel == 5)
+            DamageMult = 1 * secretLevel
+            InstantStrikes = 1 + secretLevel
+            Shocking = 5 * secretLevel
+            Shattering = 5 * secretLevel
+            Cooldown = 75
+            EnergyCost = 1.25 * secretLevel
+            HitMessage= "strikes their opponent with a Ryou-infused strike!"
+        else
+            DamageMult = 0.5 * secretLevel
+            InstantStrikes = 1 + (secretLevel/2)
+            Shocking = 5
+            EnergyCost = 0.5 * secretLevel
+            Cooldown = 20 + (5 * secretLevel)
+            HitMessage = "strikes their foe with a blow infused with their King's Will!"
     verb/Kings_Infusion()
         set category="Skills"
         set name = "Kings Infusion"
+        adjust(usr)
         usr.SetQueue(src)
 
 /obj/Skills/AutoHit/Haki/Kings_Infusion_Follow
@@ -100,6 +118,7 @@
     Area="Circle"
     Size = 1
     StrOffense = 1
+    EndDefense = 0.75
     Distance = 1
     Rounds = 2
     Knockback = 1
