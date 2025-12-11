@@ -22,7 +22,7 @@
 			verb/Vampire()
 				set category="Skills"
 				adjust(usr)
-				src.Trigger(usr
+				src.Trigger(usr)
 				if(!usr.BuffOn(src))
 					usr << "Your vampiric blood awakens!"
 				else
