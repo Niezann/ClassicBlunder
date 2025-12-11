@@ -30,21 +30,21 @@
 			if(usr.KamuiType=="Senketsu")
 				src.ABuffNeeded=list("Life Fiber Synchronize")
 				IconLock = 'senketsu_kisaragi.dmi'
-				LockX = 0
-				LockY = 0
+				LockX = -14
+				LockY = -14
 				TopOverlayLock = 'senketsu_kisaragi_headpiece.dmi'
-				TopOverlayX = 0
-				TopOverlayY = 0
+				TopOverlayX = -12
+				TopOverlayY = -12
 				ActiveMessage="feeds blood into their Kamui, taking up the mantle of a God with every drop of blood fed in for but a moment! <br><center><font color='red'>Life Fiber Synchronize: Senketsu Kisaragi!</font color></center>"
 
 			else if(usr.KamuiType == "Junketsu")
 				src.ABuffNeeded=list("Life Fiber Override")
 				IconLock = 'junketsu_shinzui.dmi'
-				LockX = 0
-				LockY = 0
+				LockX = -14
+				LockY = -14
 				TopOverlayLock = 'junketsu_shinzui_headpiece.dmi'
-				TopOverlayX = 0
-				TopOverlayY = 0
+				TopOverlayX = -12
+				TopOverlayY = -12
 				ActiveMessage="forces blood into their Kamui, permitting it to take up the mantle of a God with every drop of blood fed in for but a moment! <br><center><font color='cyan'>Life Fiber Override: Junketsu Shinzui!</font color></center>"
 
 			src.Trigger(usr)
