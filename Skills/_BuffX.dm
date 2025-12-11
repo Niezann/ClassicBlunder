@@ -1868,7 +1868,15 @@ NEW VARIABLES
 				OffMessage="violently rips off their mask as it shatters into fragments..."
 				proc/changeVariables(mob/p)
 					if(altered) return
-					AngerMult = 1.3 + (0.1 * Mastery)
+					var/SuperSaiyanBuff=1
+						if(p.race.transformations[1].mastery==100)
+							SuperSaiyanBuff=1.1
+						if(p.race.transformations[2].mastery==100)
+							SuperSaiyanBuff=1.2
+						if(p.race.transformations[3].mastery==100)
+							SuperSaiyanBuff=1.3
+						ActiveMessage="is taken over by a violent rage as a mask forms on their face, tainting their golden aura!"
+					AngerMult = 1.3 + (0.1 * Mastery*SuperSaiyanBuff)
 					var/toTen = (10/usr.Intimidation) * (10  * Mastery) // give them 100 per mastery
 					Intimidation = 1 + toTen
 					passives = list("Maki" = 1, "Curse" = 1, "AutoAnger" = 1, "VaizardHealth" = 1)
@@ -1879,23 +1887,23 @@ NEW VARIABLES
 							VaizardHealth=1
 							Intimidation *= 1.25
 							pDmgBoost = 1
-							StrMult = 1.3 + (0.1 * Mastery)
-							OffMult = 1.3 + (0.1 * Mastery)
+							StrMult = 1.3 + (0.1 * Mastery*SuperSaiyanBuff)
+							OffMult = 1.3 + (0.1 * Mastery*SuperSaiyanBuff)
 						if("Manipulator")
 							pDmgBoost = 1
-							StrMult = 1.1 + (0.1 * Mastery)
-							ForMult = 1.3 + (0.1 * Mastery)
-							OffMult = 1.2 + (0.1 * Mastery)
+							StrMult = 1.1 + (0.1 * Mastery*SuperSaiyanBuff)
+							ForMult = 1.3 + (0.1 * Mastery*SuperSaiyanBuff)
+							OffMult = 1.2 + (0.1 * Mastery*SuperSaiyanBuff)
 						if("Hellion")
 							pDmgBoost = 0.5
 							pRedBoost = 0.5
-							StrMult = 1.15 + (0.1 * Mastery)
-							ForMult = 1.15 + (0.1 * Mastery)
-							DefMult = 1.3 + (0.1 * Mastery)
+							StrMult = 1.15 + (0.1 * Mastery*SuperSaiyanBuff)
+							ForMult = 1.15 + (0.1 * Mastery*SuperSaiyanBuff)
+							DefMult = 1.3 + (0.1 * Mastery*SuperSaiyanBuff)
 						if("Phantasm")
 							pRedBoost = 2
-							EndMult = 1.3 + (0.1 * Mastery)
-							DefMult = 1.3 + (0.1 * Mastery)
+							EndMult = 1.3 + (0.1 * Mastery*SuperSaiyanBuff)
+							DefMult = 1.3 + (0.1 * Mastery*SuperSaiyanBuff)
 					passives = list("ManaLeak" = 4-Mastery, "PureReduction" = (Mastery * 0.5)+ pRedBoost, "PureDamage" = (Mastery * 0.5) + pDmgBoost, \
 					"Maki" = 1, "Curse" = 1,"Instinct" = 2, "Pursuer" = 2, "Flicker" = 2)
 					VaizardHealth = 5 + (2.5 * Mastery)
@@ -1929,6 +1937,14 @@ NEW VARIABLES
 			TopOverlayY=-32
 			ActiveMessage="consumes all light around them to form an orb of darkness!"
 			OffMessage="stops absorbing light..."
+			adjust(mob/p)
+				if(p.isRace(SAIYAN)&&p.transActive>=1||p.isRace(HALFSAIYAN)&&p.transActive>=1||p.passive_handler.Get("SuperSaiyanSignature"))
+					if(p.race.transformations[p.transActive].mastery==100)
+						passives = list("Siphon" = 10, "FluidForm" = 2, "PureReduction" = 2, "SpaceWalk" = 1, "StaticWalk" = 1, "Void" = 1,"SuperSaiyanSignature"=1)
+						ActiveMessage="condenses all light around them to form an orb of darkness around their Super Saiyan aura!"
+						StrMult=1.4
+						ForMult=1.4
+						EndMult=1.7
 			verb/Aphotic_Shield()
 				set category="Skills"
 				var/mob/M = usr
@@ -1946,6 +1962,7 @@ NEW VARIABLES
 					src.TopOverlayLock = 'AngelicGlow.dmi'
 				if(!altered)
 					passives = list("Siphon" = 5, "FluidForm" = 1, "PureReduction" = 1, "SpaceWalk" = 1, "StaticWalk" = 1, "Void" = 1)
+				adjust(usr)
 				src.Trigger(usr)
 		Titan_Form
 			SignatureTechnique=3
@@ -2018,7 +2035,7 @@ NEW VARIABLES
 			adjust(mob/p)
 				if(p.isRace(SAIYAN)&&p.transActive>=1||p.isRace(HALFSAIYAN)&&p.transActive>=1||p.passive_handler.Get("SuperSaiyanSignature"))
 					if(p.race.transformations[p.transActive].mastery==100)
-						passives = list("MovementMastery" = 4, "TechniqueMastery" = 5, "BuffMastery" = clamp(round(usr.Potential/20), 1, 5),"SuperSaiyanSignature"=1)
+						passives = list("MovementMastery" = 4, "TechniqueMastery" = 5, "BuffMastery" = clamp(round(usr.Potential/15), 1, 7),"SuperSaiyanSignature"=1)
 			verb/Unbound_Mode()
 				set category="Skills"
 				if(!usr.BuffOn(src))
@@ -6515,6 +6532,9 @@ NEW VARIABLES
 			Cooldown=-1
 			verb/Unbound_Mode()
 				set category="Skills"
+				usr<<"<b>Ask for the other Unbound Mode.</b>"
+				del src
+				return
 				src.Trigger(usr)
 		Sparking_Blast
 			SignatureTechnique=3
@@ -6551,6 +6571,7 @@ NEW VARIABLES
 						src.TimerLimit=30
 					if(!src.Using)
 						usr.Activate(new/obj/Skills/AutoHit/Knockoff_Wave)
+				adjust(usr)
 				src.Trigger(usr)
 
 		God_Ki
