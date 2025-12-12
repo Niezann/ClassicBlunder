@@ -1,5 +1,5 @@
 
-#define ROUND_DIVIDE(N,N2) round(N/N2,0.15)
+#define ROUND_DIVIDE(N,N2) round(N/N2,0.1)
 #define PURE_GRIM_SCALING FALSE
 obj/Skills/Buffs
 	Cooldown=1
