@@ -1620,6 +1620,8 @@ mob
 		HasHellPower()
 			if(CheckSlotless("Satsui no Hado") && SagaLevel>=6)
 				return 1
+			if(passive_handler.Get("ZenkaiPower")
+				return 0
 			if(passive_handler.Get("HellPower"))
 				if(isRace(DEMON)||oozaru_type=="Demonic")
 					return 2
@@ -1629,7 +1631,25 @@ mob
 			var/hellpower = passive_handler.Get("HellPower")
 			if(CheckSlotless("Satsui no Hado") && SagaLevel>=6)
 				hellpower++
+			if(passive_handler.Get("ZenkaiPower")
+				hellpower=0
 			return hellpower
+		HasZenkaiPower()
+			if(passive_handler.Get("ZenkaiPower"))
+				return 2
+			return 0
+		GetZenkaiPower()
+			var/ZenkaiPower = passive_handler.Get("ZenkaiPower")
+			return ZenkaiPower
+		GetZenkaiScaling()
+			var/Return=1
+			var/Mult=GetZenkaiPower() / glob.HELL_SCALING_MULT
+			if(HasHellPower() == 2)
+				Mult*=glob.HELL_SCALING_MULT
+				Mult+=round(src.Potential/100, 0.05)
+			var/HealthLost = abs(src.Health-100)
+			Return=1+(((glob.BASE_HELL_SCALING_RATIO * HealthLost) * Mult) ** (1/2))
+			return Return
 
 		HasPowerReplacement()
 			if(src.passive_handler.Get("PowerReplacement"))
@@ -1714,7 +1734,7 @@ mob
 		HasGodKi()
 			if(passive_handler["DisableGodKi"])
 				return 0
-			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique==3)
+			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=3)
 				return 1
 			if(passive_handler.Get("GodKi"))
 				return 1
@@ -1732,7 +1752,7 @@ mob
 		GetGodKi()
 
 			var/Total=passive_handler.Get("GodKi")
-			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique==3)
+			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=3)
 				Total+=glob.T3_STYLES_GODKI_VALUE
 			if(src.HasSpiritPower()>=1 && FightingSeriously(src, 0))
 				if(src.Health<=(30+src.TotalInjury)*src.GetSpiritPower())

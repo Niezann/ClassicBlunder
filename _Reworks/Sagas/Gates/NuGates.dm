@@ -85,19 +85,50 @@
 	spdAdd=0.25
 	endAdd=0.1
 	adjust(mob/p)
-		passives = list("BlurringStrikes"=1, "Momentum"=1, "Instinct"=1, "PUSpike" = 20)
+		passives = list("BlurringStrikes"=1, "Momentum"=1, "Instinct"=1, "PUSpike" = 20, "Deicide" = 5)
 	Trigger(mob/User, Override=FALSE)
 		adjust(User)
 		..()
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/GateSeven
 	GatesNeeded=7
 	BuffName = "Seventh Gate"
-	passives = list("TechniqueMastery"=3, "Pursuer"=4, "Flicker"=3, "PureDamage" = 2, "PureReduction"=2,"Godspeed"=4)
+	passives = list("TechniqueMastery"=3, "Pursuer"=4, "Flicker"=3, "PureDamage" = 2, "PureReduction"=2,"Godspeed"=4, "Deicide" = 15)
 	strAdd=0.4
 	spdAdd=0.75
 	endAdd=0.4
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/GateEight
 	BuffName = "Eight Inner Gates Released Formation"
 	GatesNeeded=8
+	adjust(mob/p)
+		passives = list("Sunyata"=3, "Seki"=100, "PUSpike" = 200, "Deicide" = 20)
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/GateJort
 	BuffName = "Jort Gate"
+/obj/Skills/AutoHit
+	Night_Guy
+		GatesNeeded=8
+		Area="Circle"
+		DamageMult=1.1
+		Rounds=10
+		Knockback = 1
+		ComboMaster=1
+		Stunner=3
+		Size=4
+		StrOffense=1
+		GuardBreak=1
+		Rush=5
+		PullIn=2
+		ControlledRush=20
+		Instinct=1
+		TurfStrike=4
+		TurfShift='Dirt1.dmi'
+		TurfShiftDuration=1
+		ObjIcon = 1
+		Icon='drill.dmi'
+		IconX = -8
+		IconY = -8
+		ChargeTech = 1
+		WindupMessage="crouches down..."
+		ActiveMessage="and kicks off with intense force, bending space around them!!!"
+		verb/Night_Guy()
+			set category="Skills"
+			usr.Activate(src)

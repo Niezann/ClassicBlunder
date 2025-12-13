@@ -104,6 +104,8 @@
 		Effective*=GetSPScaling(ShonenPower)
 	if(src.HasHellPower())
 		Effective*=src.GetHellScaling()
+	if(src.HasZenkaiPower())
+		Effective*=src.GetZenkaiScaling()
 	if(src.KaiokenBP>1)
 		Effective*=src.KaiokenBP
 	Effective+=src.getVampireIntim()

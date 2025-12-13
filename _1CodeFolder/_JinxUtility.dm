@@ -1257,6 +1257,11 @@ mob
 				Str += (hellPower/2) * Str
 			else
 				Str += (0.2 * hellPower) * Str
+			var/zenkaiPower=src.GetZenkaiPower()
+			if(zenkaiPower == 2)
+				Str += (zenkaiPower/2) * Str
+			else
+				Str += (0.2 * zenkaiPower) * Str
 			// get 25% bonus to strength for each hell power
 			var/Mod=1
 			var/strMult = StrMultTotal
@@ -1390,6 +1395,11 @@ mob
 				For += (hellPower/2) * For
 			else
 				For += (0.2 * hellPower) * For
+			var/zenkaiPower=src.GetZenkaiPower()
+			if(zenkaiPower == 2)
+				For += (zenkaiPower/2) * For
+			else
+				For += (0.2 * zenkaiPower) * For
 			if(passive_handler.Get("Piloting")&&findMecha())
 				For = getMechStat(findMecha(), For)
 			if(src.HasManaStats())
@@ -1919,7 +1929,7 @@ mob
 			Recov+=src.RecovAscension
 			if(src.RecovReplace)
 				Recov=src.RecovReplace
-			if(src.HasHellPower()||(src.Secret=="Werewolf"&&(!src.CheckSlotless("Half Moon Form"))))
+			if(src.HasHellPower()||(src.Secret=="Werewolf"&&(!src.CheckSlotless("Half Moon Form")))||src.HasZenkaiPower())
 				if(Recov<2)
 					Recov=2
 			if(src.isRace(MAJIN))
@@ -2893,6 +2903,10 @@ mob
 			if(src.Potential>=glob.progress.T2_STYLES[2]&&src.passive_handler.Get("True Inheritor"))
 				if(!locate(/obj/Skills/Buffs/NuStyle/Legendary/True_Fist_Of_The_Fabled_King, src))
 					src.AddSkill(new/obj/Skills/Buffs/NuStyle/Legendary/True_Fist_Of_The_Fabled_King)
+			if(src.Potential>=65&&src.passive_handler.Get("True Inheritor"))
+				if(!locate(/obj/Skills/Buffs/NuStyle/Legendary/True_Fist_Of_The_Fabled_King, src))
+					src.AddSkill(new/obj/Skills/Buffs/NuStyle/Legendary/Fist_Of_The_King_Of_Tomorrow)
+					src.AddSkill(new/obj/Skills/Buffs/NuStyle/Legendary/Apotheosis_Of_The_Fabled_King)
 
 			if(styles_available(1) && src.Potential>=glob.progress.T1_STYLES[1] && src.req_styles(0, 1))
 				DevelopSignature(src, 1, "Style")
@@ -2993,6 +3007,8 @@ mob
 			var/amount = 3
 			if(Secret == "Heavenly Restriction" && secretDatum?:hasRestriction("Zanzoken"))
 				amount = 0
+			if(passive_handler.Get("Sekizou"))
+				amount = 5
 			return amount
 
 		transcend(var/val)

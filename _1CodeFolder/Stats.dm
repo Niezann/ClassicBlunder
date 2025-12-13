@@ -785,6 +785,8 @@ mob/proc/
 			Ratio*=GetSPScaling(ShonenPower)
 		if(src.HasHellPower())
 			Ratio*=src.GetHellScaling()
+		if(src.HasZenkaiPower())
+			Ratio*=src.GetZenkaiScaling()
 		Ratio*=src.Base()
 		temp_potential_power(src)//get them potential powers
 		Ratio*=src.potential_power_mult
@@ -1321,6 +1323,8 @@ mob/proc/Get_Scouter_Reading(mob/B)
 		Ratio*= 1 + (2*B.HasMythical())
 	if(B.HasHellPower())
 		Ratio*=(B.GetHellScaling() * 1500)
+	if(B.HasZenkaiPower())
+		Ratio*=(B.GetZenkaiScaling() * 1500)
 	Ratio*=B.Base() * 100
 	temp_potential_power(B)//get them potential powers
 	Ratio*=B.potential_power_mult

@@ -98,7 +98,7 @@
 					VaizardHealth =25// 1 + (p.AscensionsAcquired/1.5)
 		if(p.Potential > OOZARU_POTENTIAL_TRANS&&p.oozaru_type!="Demonic")
 			passives["Transformation Power"] = p.AscensionsAcquired
-		if(length(p.race.transformations) >= 4 && p.race.transformations[4].type == /transformation/saiyan/super_saiyan_4 && p.transUnlocked >= 4||length(p.race.transformations) >= 2 && p.race.transformations[2].type == /transformation/saiyan/hellspawn_super_saiyan_2 && p.transUnlocked >= 2)
+		if(length(p.race.transformations) >= 4 && p.race.transformations[4].type == /transformation/saiyan/super_saiyan_4 && p.Potential>=55||length(p.race.transformations) >= 2 && p.race.transformations[2].type == /transformation/saiyan/hellspawn_super_saiyan_2 && p.Potential>=55)
 			IconTransform = 'SSJOozaru.dmi'
 			passives["Transformation Power"] = clamp(p.AscensionsAcquired * 5, 1, 40)
 			passives["Flow"] = 4
@@ -106,6 +106,7 @@
 			passives["Meaty Paws"] = 2 + (p.AscensionsAcquired /2)
 			passives["Juggernaut"] = 1 + (p.AscensionsAcquired / 2)
 			passives["BuffMastery"] = 5 + (p.AscensionsAcquired / 10)
+			AutoAnger = 1
 			StrMult = 1.5
 			ForMult = 1.5
 			EndMult = 1.5
