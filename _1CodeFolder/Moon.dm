@@ -33,6 +33,10 @@ mob
 					if(src.SlotlessBuffs.len>0)
 						for(var/obj/Skills/Buffs/b in src.SlotlessBuffs)
 							b.Trigger(src)
+					if(usr.CheckSlotless("Half Moon Form"))
+						for(var/obj/Skills/Buffs/SlotlessBuffs/Werewolf/Half_Moon_Form/hmf in usr)
+							if(usr.BuffOn(hmf))
+								hmf.Trigger(usr, 1)
 					for(var/obj/Skills/Buffs/SlotlessBuffs/Werewolf/Full_Moon_Form/F in src)
 						F.Trigger(src)
 			src<<"<font color=yellow>[global.MoonMessage]</font color>"
