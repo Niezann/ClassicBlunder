@@ -1402,6 +1402,7 @@ mob
 						for(var/obj/Skills/Buffs/SlotlessBuffs/Genesic_Brave/gb in src)
 							gb.TooMuchHealth=99
 							gb.GodKi=0.5
+							gb.passives["GodKi"] = 0.5
 						src << "You master using the power of Destruction and Protection simultaneously!"
 						src << "Your Heaven and Hell reaches its perfected form: <b>Genesic Heaven and Hell</b>!"
 

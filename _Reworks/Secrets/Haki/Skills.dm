@@ -175,6 +175,7 @@
 
 /obj/Skills/Projectile/Divine_Departure
     EnergyCost = 5
+    Cooldown = 30
     MultiHit = 5
     EndRate = 1
     FadeOut = 5
