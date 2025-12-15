@@ -1001,7 +1001,17 @@ obj/Skills/Buffs
 			ActiveMessage="casts aside their durability to call forth a miraculous turnaround. <b>All Hail the Comeback King</b>."
 			OffMessage="casts aside the burden of the Comeback King."
 			passives = list("Unstoppable" = -1, "HellPower"=0.1, "UnderDog"=1, "Rage" = 1, "KiControl" = 1)
+			adjust(mob/p)
+				if(p.isRace(MAKYO))
+					AngerMult = 2
+					passives = list("Unstoppable" = -1, "HellPower"=0.1, "UnderDog"=1, "Rage" = 1, "KiControl" = 1, "BleedHit" = 0,\
+					 "ManaLeak" = 0, "GiantForm" = round(p.AscensionsAcquired/2), "Godspeed" = p.AscensionsAcquired, "PUSpike" = 75, "Pursuer" = 2*p.AscensionsAcquired)
+				else
+					AngerMult = 1
+					passives = list("Unstoppable" = -1, "HellPower"=0.1, "UnderDog"=1, "Rage" = 1, "KiControl" = 1)
 			verb/Comeback_King()
+				set category="Skills"
+				adjust(usr)
 				src.Trigger(usr)
 		ChaosQueen
 			StrMult=1.1
