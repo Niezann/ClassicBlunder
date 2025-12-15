@@ -39,7 +39,7 @@ transformation
 						user << "You can strain past the limits of your Super Saiyan form! Grade 3 Unlocked!"
 
 			transform_animation(mob/user)
-				if(first_time)
+				if(first_time && mastery<25)
 					DarknessFlash(user)
 					sleep()
 					LightningStrike2(user, Offset=4)
@@ -364,8 +364,8 @@ transformation
 			force = 1.2
 			// at full mastery, give the saiyan beyond god buff, then remove ssjgod, and replace it with ssjgb
 			mastery_boons(mob/user)
-				passives = list("GodKi" = 0.5, "EnergyGeneration" = 5 * round(mastery/100, 0.1), "Godspeed" = 4, "Flow" = 1 + round(mastery/25, 1), \
-								 "BackTrack" = round(mastery/50, 1) , "StunningStrike" = 2.5 * round(mastery/100, 0.1), "Sunyata" = 5 * round(mastery/100,1),"GodlyCalm"=1)
+				passives = list("GodKi" = 0.5, "EnergyGeneration" = 5 * round(mastery/100, 0.1), "Godspeed" = 4, "Flow" = 4 + round(mastery/25, 1),"TechniqueMastery" = 3 + round(mastery/25, 1), \
+								 "BackTrack" = round(mastery/50, 1), "MovementMastery" = 5+round(mastery/25, 1), "StunningStrike" = 2.5 * round(mastery/100, 0.1), "Sunyata" = 5 * round(mastery/100,1),"GodlyCalm"=1)
 			adjust_transformation_visuals(mob/user)
 				if(user.Hair_Base && !form_hair_icon)
 					var/icon/x=new(user.Hair_Base)
@@ -374,7 +374,8 @@ transformation
 					form_hair_icon=x
 				..()
 			transform_animation(mob/user)
-				if(mastery < 25)
+				if(mastery < 20)
+					mastery=20
 					sleep(10)
 				//src.Transforming=1
 					user.Frozen=2
@@ -458,6 +459,7 @@ transformation
 		super_saiyan_blue
 			passives = list("GodKi" = 1, "Instinct" = 4, "Brutalize" = 1)
 			unlock_potential = 80
+			tier = 5
 			autoAnger = 1
 			form_aura_icon = 'SSBGlow.dmi'
 			form_aura_x = -32

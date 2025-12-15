@@ -1810,6 +1810,10 @@ mob
 				if(src.AscensionsAcquired==6 && Total<0.5)
 					Total=0.5//fully ascended dragon
 			return Total
+		HasEndlessNine()
+			if(passive_handler.Get("EndlessNine"))
+				return 1
+			return 0
 		GetEndlessNine()
 			var/Total=passive_handler.Get("EndlessNine")
 			return Total

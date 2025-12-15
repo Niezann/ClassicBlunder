@@ -535,7 +535,7 @@ obj/Skills/Utility
 							final += T
 		// SORTS THE TRANSFORMATION LIST SO THAT THE FIRST SUPER SAIYAN GOD/SSJ4 DOES NOT GO HELLSPAWN SUPER SAIYAN LMFAOOOOOOOOOOO
 					var/list/ordered = list()
-					for(var/i = 1, i <= 4, i++)
+					for(var/i = 1, i <= 5, i++)
 						for(var/transformation/saiyan/T in final)
 							if(T.tier == i)
 								ordered += T
@@ -2807,7 +2807,7 @@ obj/Skills/Utility
 				OMsg(usr, "[usr] decides not to tinker.")
 				src.Using=0
 				return
-			
+
 
 			if(M.EnhanceChips>=M.EnhanceChipsMax)
 				ModChoices.Remove("Enhanced Strength")
@@ -2950,11 +2950,11 @@ obj/Skills/Utility
 
 			if(M.isRace(ANDROID))
 				Cost*=2
-			
+
 			if(M!=usr)
 				if(("War Crimes" in usr.knowledgeTracker.learnedKnowledge)&&M.KO) Consent="Yes"//i hate this btw
 				else Consent=alert(M, "[ModDesc]\nDo you want to undergo the augmentation procedure?", "Cybernetic Augmentation", "No", "Yes")//hate hate hate
-				
+
 				if(Consent!="Yes")
 					OMsg(usr, "[usr] rejects the surgery.")
 					src.Using=0

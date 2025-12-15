@@ -1111,7 +1111,7 @@ mob/Admin3/verb
 			if(isRace(SAIYAN) && blah == 2 && M.oozaru_type=="Demonic")
 				for(var/transformation/saiyan/hellspawn/hellspawn_super_saiyan_2/ssj2 in M.race.transformations)
 					race.transformations += ssj2*/
-			if(isRace(SAIYAN) && blah == 4)
+			if(M.isRace(SAIYAN) && blah == 4)
 				var/godor4 = input("SSJ God or SSJ4?") in list("SSJ God", "SSJ4")
 				if(godor4 == "SSJ4")
 					for(var/transformation/saiyan/ssj in M.race.transformations)
@@ -1968,7 +1968,7 @@ atom/Topic(A,B[])/*
 mob/Topic(href,href_list[])
 	if(href_list["action"] == "GetInfo")
 		if(href_list["passe"] in PassiveInfo) usr.OutputPassiveInfo(href_list["passe"]);
-		
+
 	if(Admin)
 		switch(href_list["action"])
 			if("listview")

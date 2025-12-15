@@ -88,7 +88,7 @@ transformation
 			transform_animation(mob/user)
 				var/ShockSize=5
 				LightningStrike2(user, Offset=0)
-				spawn(30)
+				spawn(10)
 				for(var/wav=5, wav>0, wav--)
 					KenShockwave(user, icon='KenShockwaveLegend.dmi', Size=ShockSize, Blend=2, Time=8)
 		unlimited_high_tension

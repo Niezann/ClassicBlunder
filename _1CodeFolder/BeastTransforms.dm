@@ -105,9 +105,8 @@
 			passives["Instinct"] = 4
 			passives["Meaty Paws"] = 2 + (p.AscensionsAcquired /2)
 			passives["Juggernaut"] = 1 + (p.AscensionsAcquired / 2)
-			passives["BuffMastery"] = 5 + (p.AscensionsAcquired / 2)
+			passives["BuffMastery"] = 3 + (p.AscensionsAcquired / 2)
 			passives["Brutalize"] = 3
-			passives["PureReduction"] = p.AscensionsAcquired
 			passives["DisableGodKi"] = 1
 			passives["Unstoppable"] = 1
 			passives["Deicide"] = 5
@@ -119,7 +118,8 @@
 			EndMult = 1.5
 			SpdMult = 0.9
 			OffMult = 1.5
-			TimerLimit = 2400
+			EnergyHeal = 1
+			TimerLimit = 600
 			VaizardHealth = 10 + (p.AscensionsAcquired*2)
 			PowerMult = 1.6
 			if(p.oozaru_type=="Demonic")

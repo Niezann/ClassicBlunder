@@ -869,12 +869,13 @@ mob/proc/
 				Ratio*=src.PowerBoost
 			var/SSJBoost=1
 			if(isRace(SAIYAN)&&transActive&&ActiveBuff)
-				if(race.transformations[1].mastery==100)
-					SSJBoost= 1.15
-				if(race.transformations[2].mastery==100)
-					SSJBoost= 1.30
-				if(race.transformations[3].mastery==100)
-					SSJBoost= 1.45
+				if(!passive_handler.Get("GodlyCalm")&&!passive_handler.Get("InBlue"))
+					if(race.transformations[1].mastery==100)
+						SSJBoost= 1.15
+					if(race.transformations[2].mastery==100)
+						SSJBoost= 1.30
+					if(race.transformations[3].mastery==100)
+						SSJBoost= 1.45
 				if(passive_handler.Get("GodlyCalm")||passive_handler.Get("InBlue"))
 					SSJBoost= 1.60
 				Ratio*=SSJBoost

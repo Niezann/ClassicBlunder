@@ -891,7 +891,7 @@ obj
 						if(usr.AttackQueue)
 							return // prevent heavy strike from overriding
 
-						if(usr.passive_handler["Heavy Strike"])
+						if(usr.passive_handler["Heavy Strike"]&&!usr.ForceHeavyStrike)
 							switch(usr.passive_handler["Heavy Strike"])
 								if("Wrestling")
 									Grapple = 1

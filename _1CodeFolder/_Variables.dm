@@ -383,6 +383,7 @@ mob/var
 	Sight_Range=10
 	Spawn="True Spawn"
 	PureRPMode=0
+	ForceHeavyStrike=0
 
 	CyberizeMod = 0
 	tmp/IconClicked=0

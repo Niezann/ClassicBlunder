@@ -872,6 +872,19 @@ mob/Players/verb
 		if(!(world.time > usr.verb_delay)) return
 		usr.verb_delay=world.time+1
 		RPModeSwitch()
+	Force_Heavy_Strike()
+		set name="Force Heavy Strike"
+		set category= "Utility"
+		if(!(world.time > usr.verb_delay)) return
+		usr.verb_delay=world.time+1
+		if(src.ForceHeavyStrike)
+			src.ForceHeavyStrike=0
+			usr<< "You will now use your special Heavy Strike, if you have one."
+			return
+		if(!src.ForceHeavyStrike)
+			src.ForceHeavyStrike=1
+			usr<< "You will now use a normal Heavy Strike."
+			return
 
 
 mob/proc/RPModeSwitch()

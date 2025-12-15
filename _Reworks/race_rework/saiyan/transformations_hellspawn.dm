@@ -1,7 +1,7 @@
 transformation
 	saiyan
 		hellspawn_super_saiyan
-			tier = 5//full transparency this does functionally nothing for hellspawns, but it's a bandaid for our special regular saiyans hahaha
+			tier = 6//full transparency this does functionally nothing for hellspawns, but it's a bandaid for our special regular saiyans hahaha
 			form_aura_icon = 'AurasBig.dmi'
 			form_aura_icon_state = "Kaioken"
 			form_aura_x = -32
@@ -84,7 +84,7 @@ transformation
 				else
 					..()
 		hellspawn_super_saiyan_2 //it's super saiyan 4
-			tier = 6//full transparency this does functionally nothing for hellspawns, but it's a bandaid for our special regular saiyans hahaha
+			tier = 7//full transparency this does functionally nothing for hellspawns, but it's a bandaid for our special regular saiyans hahaha
 			unlock_potential = 80
 			autoAnger = 1
 			speed = 1.5

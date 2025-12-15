@@ -765,6 +765,31 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 					CanTransform()
 					return
 				if(passive_handler.Get("Piloting"))return
+				if(src.isRace(HUMAN)&&src.transActive==3&&src.transUnlocked>=4||src.isRace(CELESTIAL)&&src.transActive==3&&src.transUnlocked>=4)
+					src.race.transformations[4].transform(src, TRUE)
+					src.DoubleHelix=0
+					return
+				if(src.passive_handler.Get("DoubleHelix"))
+					if(src.passive_handler.Get("DoubleHelix"))
+						switch(src.DoubleHelix)
+							if(0)
+								src.DoubleHelix=1
+								OMsg(src,"<b>The dreams of those who have fallen...</b>")
+							if(1)
+								src.DoubleHelix=2
+								OMsg(src,"<b>...and the hopes of those who will follow...</b>")
+							if(2)
+								src.DoubleHelix=3
+								OMsg(src,"<b>...those two sets of dreams weave together...</b>")
+							if(3)
+								src.DoubleHelix=4
+								OMsg(src,"<b>...into a double helix, paving a path towards tomorrow!!!</b>")
+							if(4)
+								if(src.transUnlocked<5)
+									return
+								src.DoubleHelix=5
+								OMsg(src,"<b>In their hands, [src] holds the power to create the heavens!!!!</b>")
+					return
 				if(src.passive_handler.Get("Kaioken"))
 					var/Mastery
 					for(var/obj/Skills/Buffs/SpecialBuffs/Kaioken/KK in src)
@@ -878,7 +903,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 					return
 				if(passive_handler.Get("Piloting"))
 					return
-				if(src.Kaioken)
+				if(src.passive_handler.Get("Kaioken"))
 					switch(src.Kaioken)
 						if(1)
 							src.Kaioken=0
