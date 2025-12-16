@@ -1952,7 +1952,13 @@ turf
 			else
 				return ..()
 
-
+turf/Waterfall
+	Health=10000000000
+	icon='PurpleWaterfall.dmi'
+	PurpleWaterfall
+		density=1
+		Water=1
+		layer=MOB_LAYER+1
 turf/Waters
 	Health=10000000000
 	icon='Waters.dmi'
@@ -4365,4 +4371,6 @@ obj/Turfs/Surf
 		icon_state="9E"
 	Water99
 		icon_state="99"
+	Water99S
+		icon_state="99S"
 
