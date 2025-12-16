@@ -67,7 +67,7 @@
 		Decider = 3
 		Instinct = 3
 		Combo = 3
-		InstantStrikes = 3
+		InstantStrikes = 2
 		DamageMult = 2.5
 		KBAdd = 2
 		Shining = 2
@@ -108,8 +108,7 @@
 	Heavenly_Palm_Transcendence
 		name = "Heavenly Palm: Transcendence"
 		Warp = 3
-		Combo = 5
-		InstantStrikes = 3
+		InstantStrikes = 8
 		Stunner = 3
 		DamageMult = 2.6
 		Instinct = 3
