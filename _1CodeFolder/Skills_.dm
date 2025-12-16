@@ -768,6 +768,10 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 				if(src.isRace(HUMAN)&&src.transActive==3&&src.transUnlocked>=4||src.isRace(CELESTIAL)&&src.transActive==3&&src.transUnlocked>=4)
 					src.race.transformations[4].transform(src, TRUE)
 					src.DoubleHelix=0
+					for(var/obj/Skills/Buffs/ActiveBuffs/Ki_Control/KC in src)
+						if(!src.BuffOn(KC))
+							src.UseBuff(KC)
+							break
 					return
 				if(src.passive_handler.Get("DoubleHelix"))
 					if(src.passive_handler.Get("DoubleHelix"))

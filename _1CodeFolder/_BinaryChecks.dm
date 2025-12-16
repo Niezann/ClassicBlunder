@@ -1777,7 +1777,6 @@ mob
 				return 1
 			return 0
 		GetGodKi()
-
 			var/Total=passive_handler.Get("GodKi")
 			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=3)
 				Total+=glob.T3_STYLES_GODKI_VALUE
