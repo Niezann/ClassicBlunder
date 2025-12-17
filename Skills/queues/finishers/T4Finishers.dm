@@ -28,3 +28,14 @@
 		Explosive = 2
 		FollowUp = "/obj/Skills/AutoHit/Seiken_Gradalpha2"
 		HitMessage = "pierces their foe with converging light!"
+	Shining_V_Force
+		name = "Shining V Force"
+		Warp = 10
+		Combo = 5
+		InstantStrikes = 5
+		DamageMult = 0.5
+		Instinct = 5
+		Shining = 3
+		Explosive = 3
+		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Future_Mode"
+		HitMessage = "delivers countless strikes against their foe in the blink of an eye, then fires off a V-shaped beam of light!"
