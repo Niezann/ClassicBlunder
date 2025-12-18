@@ -462,6 +462,7 @@
 #include "_Reworks\race_rework\human\transformations.dm"
 #include "_Reworks\race_rework\majin\ascensions.dm"
 #include "_Reworks\race_rework\majin\race.dm"
+#include "_Reworks\race_rework\majin\transformations.dm"
 #include "_Reworks\race_rework\Makaioshins\ascension.dm"
 #include "_Reworks\race_rework\Makaioshins\MakaioshinRacials.dm"
 #include "_Reworks\race_rework\Makaioshins\race.dm"

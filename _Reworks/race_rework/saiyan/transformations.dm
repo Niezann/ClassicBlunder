@@ -295,8 +295,10 @@ transformation
 				..()
 
 			mastery_boons(mob/user)
-				passives = list("DisableGodKi" = 1, "GiantForm" = 1, "Juggernaut" = 1+(mastery/25), "BuffMastery" = 5 + (mastery/10), "SweepingStrike" = 1, "Brutalize" = 3, "Meaty Paws" = 2 + (mastery/50), "KiControlMastery" = 3 + (mastery/50), "PureReduction" = 5 + (mastery/10),\
-				"LifeGeneration" = 1 + (mastery/15), "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.1 + (mastery/200), "Flow" = 4, "Instinct" = 4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20), "Deicide" = 10)
+				passives = list("DisableGodKi" = 1, "GiantForm" = 1, "Juggernaut" = 1+(mastery/25), "BuffMastery" = 5 + (mastery/10), "SweepingStrike" = 1, "Brutalize" = 3,\
+				"Meaty Paws" = 2 + (mastery/50), "KiControlMastery" = 3 + (mastery/50), "PureReduction" = 5 + (mastery/10),\
+				"LifeGeneration" = 1 + (mastery/15), "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.1 + (mastery/200),\
+				"Flow" = 4, "Instinct" = 4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20), "Deicide" = 10)
 				speed = 1.5 + (mastery/200)
 				endurance = 1.5 + (mastery/200)
 				offense = 1.5 + (mastery/200)
@@ -364,8 +366,10 @@ transformation
 			force = 1.2
 			// at full mastery, give the saiyan beyond god buff, then remove ssjgod, and replace it with ssjgb
 			mastery_boons(mob/user)
-				passives = list("GodKi" = 0.5, "EnergyGeneration" = 5 * round(mastery/100, 0.1), "Godspeed" = 4, "Flow" = 4 + round(mastery/25, 1),"TechniqueMastery" = 3 + round(mastery/25, 1), \
-								 "BackTrack" = round(mastery/50, 1), "MovementMastery" = 5+round(mastery/25, 1), "StunningStrike" = 2.5 * round(mastery/100, 0.1), "Sunyata" = 5 * round(mastery/100,1),"GodlyCalm"=1)
+				autoAnger = TRUE
+				passives = list("GodKi" = 0.5, "EnergyGeneration" = 3 + round(mastery/25, 1), "Godspeed" = 4, "Flow" = 4 + round(mastery/25, 1),"TechniqueMastery" = 3 + round(mastery/25, 1), \
+								"Instinct" = 4 + round(mastery/25, 1),"Pursuer"= 4 + round(mastery/25, 1), "BackTrack" = 2 + round(mastery/50, 1), \
+								"MovementMastery" = 5+round(mastery/25, 1), "StunningStrike" = 1 + round(mastery/50, 0.1), "Sunyata" = 1 + round(mastery/20 ,1),"GodlyCalm"=1)
 			adjust_transformation_visuals(mob/user)
 				if(user.Hair_Base && !form_hair_icon)
 					var/icon/x=new(user.Hair_Base)
@@ -470,8 +474,8 @@ transformation
 			defense = 1.2
 			force = 1.3
 			mastery_boons(mob/user)
-				passives = list("GodKi" = 0.75, "Instinct" = 4, "Brutalize" = 1.5, "Steady" = 3,  "BuffMastery" = 6, "MovementMastery" = 5, \
-								"PureDamage" = 2, "PureReduction" = 1, "InBlue" = 1)
+				passives = list("GodKi" = 0.75, "Instinct" = 4, "Brutalize" = 3, "Steady" = 5,  "BuffMastery" = 6, "MovementMastery" = 5, \
+								"PureDamage" = 3, "PureReduction" = 1, "InBlue" = 1)
 
 				if(mastery >= 100)
 					// perfected

@@ -116,6 +116,7 @@
 			passives["PUSpike"] = 50
 			passives["KiControl"] = 1
 			AutoAnger = 1
+			VaizardShatter=0
 			StrMult = 1.5
 			ForMult = 1.5
 			EndMult = 1.5
