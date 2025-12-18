@@ -43,7 +43,7 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Soul_Edge
 	StrMult=1.3
 	OffMult=1.3
 	EndMult=1.3
-	passives = list("DemonicDurability" = 2, "Instinct" = 2, "EnhancedSmell" = 1, "EnhancedHearing" = 1, "Flicker" = 2)
+	passives = list("DemonicDurability" = 3, "Instinct" = 4, "Momentum" = 2, "EnhancedSmell" = 1, "EnhancedHearing" = 1)
 	IconLock='EyeFlameC.dmi'
 	ActiveMessage="'s chaotic treasures ring in resonance: Heavenly Regalia!"
 	OffMessage="'s treasures lose their chaotic luster..."
