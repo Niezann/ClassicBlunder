@@ -1453,7 +1453,6 @@ mob
 						Mod+=0.5*src.passive_handler.Get("BurningShot")
 					else
 						Mod+=0.25*src.passive_handler.Get("BurningShot")
-
 			if(src.CheckSlotless("Genesic Brave")||src.CheckSpecial("King of Braves"))
 				if(glob.KOB_GETS_STATS_LOW_LIFE)
 					if(src.Health<=25*(1-src.HealthCut))
