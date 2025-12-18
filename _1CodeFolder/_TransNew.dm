@@ -401,14 +401,15 @@ mob/proc/WeaponSoul() // OverSoul Mechanic
 				spawn(30)
 					del i
 			if("Kusanagi")
-				src.ElementalOffense="Wind"
+				src.ElementalOffense="Mirror"
+				src.ElementalDefense="Mirror"
 				passive_handler.Increase("Godspeed", 2)
 				passive_handler.Increase("Flicker", 2)
 				passive_handler.Increase("Pursuer", 2)
-				passive_handler.Increase("FluidForm")
+				passive_handler.Increase("Momentum", 4)
 				passive_handler.Increase("SweepingStrike")
-				passive_handler.Increase("DoubleStrike")
-				passive_handler.Increase("TripleStrike")
+				passive_handler.Increase("DoubleStrike", 3)
+				passive_handler.Increase("TripleStrike", 2)
 				var/i='Dark.dmi'
 				var/j='Rain.dmi'
 				var/image/w=image(icon=s.icon, pixel_x=s.pixel_x, pixel_y=s.pixel_y, loc=src, layer=EFFECTS_LAYER)
@@ -656,13 +657,14 @@ mob/proc/RevertWS()
 			passive_handler.Decrease("Siphon")
 		if("Kusanagi")
 			src.ElementalOffense=null
-			passive_handler.Decrease("Godspeed",2)
+			src.ElementalDefense=null
+			passive_handler.Decrease("Godspeed", 2)
 			passive_handler.Decrease("Flicker", 2)
 			passive_handler.Decrease("Pursuer", 2)
-			passive_handler.Decrease("FluidForm")
+			passive_handler.Decrease("Momentum", 4)
 			passive_handler.Decrease("SweepingStrike")
-			passive_handler.Decrease("DoubleStrike")
-			passive_handler.Decrease("TripleStrike")
+			passive_handler.Decrease("DoubleStrike", 3)
+			passive_handler.Decrease("TripleStrike", 2)
 			src.overlays-=image(icon='MurakumoMode.dmi', pixel_x=-16, pixel_y=-16)
 			src.overlays+=image(icon=s.icon, pixel_x=s.pixel_x, pixel_y=s.pixel_y, layer=placement)
 		if("Masamune")
