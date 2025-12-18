@@ -1734,7 +1734,7 @@ mob
 			if(src.CheckActive("Mobile Suit")||src.CheckSlotless("Battosai")||src.CheckSlotless("Susanoo"))
 				Effective+=1
 			if(src.Health<(1-src.HealthCut)&&src.HealthAnnounce10&&src.Saga=="King of Braves"&&src.SpecialBuff)
-				if(src.SlotlessBuffs["Genesic Brave"])
+				if(src.CheckSlotless("Genesic Brave"))
 					Effective*=2
 				else if(src.SpecialBuff.BuffName=="King of Braves")
 					Effective*=3

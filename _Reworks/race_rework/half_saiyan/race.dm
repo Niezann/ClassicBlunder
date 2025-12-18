@@ -49,3 +49,4 @@ race
 				user.race.transformations += new /transformation/saiyan/super_saiyan_2()
 				user.race.transformations += new /transformation/saiyan/super_saiyan_3()
 				user.race.transformations += new /transformation/saiyan/super_saiyan_4()
+				user.race.transformations += new /transformation/half_saiyan/saiyan/super_saiyan_rage()

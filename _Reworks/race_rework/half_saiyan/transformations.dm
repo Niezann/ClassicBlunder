@@ -91,4 +91,22 @@
 					"TechniqueMastery" = 5)
 		pot_trans = 90
 
+/transformation/half_saiyan/saiyan/super_saiyan_rage
+
+	form_aura_icon = 'SSBGlow.dmi'
+	form_aura_x = -32
+	form_aura_y = -32
+	passives = list("GodKi" = 0.5, "Instinct" = 4, "Brutalize" = 1.5, "Steady" = 3,  "BuffMastery" = 4, "MovementMastery" = 3, \
+					"PureDamage" = 2, "PureReduction" = 1, "EnergyLeak" = 3)
+	strength = 1.5
+	speed = 1.5
+	force = 1.5
+	mastery_boons(mob/user)
+		var/pot = user.Potential
+		passives = list("GodKi" = 0.5, "Instinct" = 4, "Brutalize" = 1.5 + (pot/50), "Steady" = 2 + round(pot/25),  "BuffMastery" = 5, "MovementMastery" = 3 + (pot/50), \
+					"PureDamage" = 4, "PureReduction" = 1.5, "EnergyLeak" = 3)
+		strength = 1.5
+		speed = 1.5
+		force = 1.5
+
 

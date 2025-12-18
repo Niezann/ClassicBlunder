@@ -1203,7 +1203,7 @@ mob/Player/AI
 			TotalFatigue = max(0, TotalFatigue - 0.1)
 			TotalInjury = max(0, TotalFatigue - 0.1)
 		if(src.Health < 25*(1-src.HealthCut) && !src.HealthAnnounce25)
-			if(src.SlotlessBuffs["Genesic Brave"])
+			if(src.CheckSlotless("Genesic Brave"))
 				src.OMessage(10, "<font color=#00FF55>[src] begins fighting fiercely and tenaciously with the power of Courage!", "[src]([src.key]) has 25% health left.</font>")
 			else if(src.SpecialBuff&&src.SpecialBuff.BuffName=="King of Braves")
 				src.OMessage(10, "<font color=#00FF55>[src] begins fighting tenaciously like a machine!", "[src]([src.key]) has 25% health left.</font>")
@@ -1224,7 +1224,7 @@ mob/Player/AI
 			src.HealthAnnounce25=1
 
 		if(src.Health < 10*(1-src.HealthCut) && !src.HealthAnnounce10)
-			if(src.SlotlessBuffs["Genesic Brave"])
+			if(src.CheckSlotless("Genesic Brave"))
 				src.OMessage(10, "<b><font color=#00FF55>[src] unites the powers of Destruction and Protection to defy the odds!", "[src]([src.key]) has 10% health left.</font></b>")
 				src.PowerControl+=25*src.SagaLevel
 				src.VaizardHealth+=5*src.SagaLevel
