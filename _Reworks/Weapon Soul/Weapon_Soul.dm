@@ -277,6 +277,8 @@ mob/tierUpSaga(Path)
 						for(var/obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Soul_Edge/SE in src.Buffs)
 							SE.passives["HellPower"] = 1
 							SE.passives["Burning"] = 2
+							SE.passives["BurningShot"] = 1
+							SE.passives["AngerAdaptiveForce"] = 0.15
 							SE.passives["GodKi"] = 0.25
 
 					if("Soul Calibur")
