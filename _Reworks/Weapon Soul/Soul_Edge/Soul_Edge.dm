@@ -3,6 +3,7 @@ obj/Items/Sword/Heavy/Legendary/WeaponSoul/Blade_of_Chaos
 	icon='SoulEdge.dmi'
 	ExtraClass=1
 	Ascended=3
+	passives = list("Extend" = 1)
 	Destructable=0
 	ShatterTier=0
 
