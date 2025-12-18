@@ -1203,7 +1203,7 @@ NEW VARIABLES
 									src.ActiveMessage="calls forth the true form of █████████████, the ███████ of ████████!"
 									src.OffMessage="conceals █████████████.."
 						if("Kusanagi")
-							passives = list("HolyMod" = usr.SagaLevel,"ManaGeneration" = usr.SagaLevel*5, "PULock" = 1)
+							passives = list("BlurringStrikes" = usr.SagaLevel/2, "SpiritFlow" = usr.SagaLevel/2, "ManaGeneration" = usr.SagaLevel*5, "SpiritSword" = max(1, usr.SagaLevel/4), "PULock" = 1)
 							if(!redacted)
 								src.SwordName="Kusanagi"
 								src.ActiveMessage="calls forth the true form of Kusanagi, the Sword of Faith!"
