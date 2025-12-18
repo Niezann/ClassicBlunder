@@ -582,8 +582,16 @@ update
 	version35
 		version = 35
 		updateMob(mob/o)
+			.=..()
 			if(o.isRace(MAKYO))
 				o.passive_handler.Increase("Rage",(0.2*o.AscensionsAcquired))
+
+	version36
+		version = 36
+		updateMob(mob/o)
+			.=..()
+			if(o.isRace(HALFSAIYAN) && o.Class=="Anger")
+				o.race.transformations += new /transformation/half_saiyan/saiyan/super_saiyan_rage()
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25
