@@ -3,7 +3,7 @@ obj/Items/Sword/Medium/Legendary/WeaponSoul/Sword_of_Faith // Kusanagi
 	icon='KusanagibutSharper.dmi'
 	pixel_x=-16
 	pixel_y=-16
-	passives = list("MagicSword" = 1, "ManaSteal" = 2, "WindRelease" = 1)
+	passives = list("MagicSword" = 1, "QuickCast" = 3, "MovingCharge" = 1)
 	ShatterTier=0
 	Destructable=0
 	Ascended=3
