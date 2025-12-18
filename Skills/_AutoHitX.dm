@@ -3151,7 +3151,7 @@ obj
 				Shockwaves=2
 				ActiveMessage="flickers behind their opponent for an instantaneous slash!"
 				Cooldown=75
-				EnergyCost=10
+				EnergyCost=3
 				verb/Disable_Innovate()
 					set category = "Other"
 					disableInnovation(usr)
