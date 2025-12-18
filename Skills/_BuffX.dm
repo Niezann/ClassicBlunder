@@ -7252,9 +7252,9 @@ NEW VARIABLES
 			FlashDraw=1
 			SwordName="Dimension Sword"
 			SwordIcon='Aether Blade.dmi'
-			passives = list("SpiritSword" = 1.5, "PridefulRage" = 1, "BulletKill" = 1, "Extend" = 1, "SwordAscension" = 6, "SwordAscensionSecond" = 6, "SwordAscensionThird" = 6)
+			passives = list("SpiritSword" = 1.5, "PridefulRage" = 2, "BulletKill" = 1, "Extend" = 1, "SwordAscension" = 6, "SwordAscensionSecond" = 6, "SwordAscensionThird" = 6)
 			SpiritSword=1.5
-			PridefulRage=1
+			PridefulRage=2
 			BulletKill=1
 			Extend=1
 			SwordAscension=6
