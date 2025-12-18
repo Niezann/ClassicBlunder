@@ -41,9 +41,9 @@ obj/Skills/AutoHit/Gale_Slash
 obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Kusanagi
 	name = "Heavenly Regalia: The Three Treasures"
 	StrMult=1.3
-	OffMult=1.3
-	DefMult=1.3
-	passives = list("WindRelease" = 1, "ManaSteal" = 3)
+	ForMult=1.3
+	SpdMult=1.3
+	passives = list("WindRelease" = 3, "Flicker" = 2, "Pursuer" = 2, "HybridStrike" = 1)
 	IconLock='EyeFlameC.dmi'
 	ActiveMessage="'s three divine treasures ring in resonance: Heavenly Regalia!"
 	OffMessage="'s treasures lose their imperial luster..."
