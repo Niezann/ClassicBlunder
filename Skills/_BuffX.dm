@@ -7252,12 +7252,14 @@ NEW VARIABLES
 			FlashDraw=1
 			SwordName="Dimension Sword"
 			SwordIcon='Aether Blade.dmi'
-			passives = list("SpiritSword" = 1.5, "PridefulRage" = 1, "BulletKill" = 1, "Extend" = 1, "SwordAscension" = 6)
-			SpiritSword=1
+			passives = list("SpiritSword" = 1.5, "PridefulRage" = 1, "BulletKill" = 1, "Extend" = 1, "SwordAscension" = 6, "SwordAscensionSecond" = 6, "SwordAscensionThird" = 6)
+			SpiritSword=1.5
 			PridefulRage=1
 			BulletKill=1
 			Extend=1
-			SwordAscension=4
+			SwordAscension=6
+			SwordAscensionSecond=6
+			SwordAscensionThird=6
 			ActiveMessage="draws spirit energy into their hand to form a spacetime-rending blade!"
 			OffMessage="dispels their Dimension Sword!"
 			verb/Transfigure_Dimension_Sword()
