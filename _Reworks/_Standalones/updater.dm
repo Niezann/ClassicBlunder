@@ -591,18 +591,22 @@ update
 			if(o.isRace(MAJIN))
 				o.race.transformations += new /transformation/majin/super_saiyan_3()
 				o<<"You have been given your new transformation! (this is not the same as unlocking it)"
-			if(o.isRace(HALFSAIYAN))
-				if(o.Class=="Anger")
-					o.race.transformations += new /transformation/half_saiyan/saiyan/super_saiyan_rage()
+			if(o.isRace(HALFSAIYAN)&&o.Class=="Anger")
+				o.race.transformations += new /transformation/half_saiyan/saiyan/super_saiyan_rage()
 			if(o.isRace(DEMON))
 				o.race.transformations += new /transformation/demon/devil_trigger()
 
 	version36
 		version = 36
 		updateMob(mob/o)
-			.=..()
-			if(o.isRace(HALFSAIYAN) && o.Class=="Anger")
-				o.race.transformations += new /transformation/half_saiyan/saiyan/super_saiyan_rage()
+			if(o.isRace(MAJIN))
+				o.race.transformations += new /transformation/majin/super_saiyan_3()
+				o<<"You have been given your new transformation! (this is not the same as unlocking it)"
+			if(o.isRace(HALFSAIYAN))
+				if(o.Class=="Anger")
+					o.race.transformations += new /transformation/half_saiyan/saiyan/super_saiyan_rage()
+			if(o.isRace(DEMON))
+				o.race.transformations += new /transformation/demon/devil_trigger()
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25
