@@ -4234,6 +4234,24 @@ NEW VARIABLES
 					usr.passive_handler.Set("Alter the Future", 0)
 					usr.passive_handler.Set("Alter the Future", 100)
 				src.Trigger(usr)
+		TheSeventhOne
+			BuffName = "The Seventh One"
+			SignatureTechnique=4
+			UnrestrictedBuff=1
+			StrMult=0.1
+			ForMult=3
+			EndMult=2
+			SpdMult=1.5
+			DefMult=1.5
+			OffMult=1.5
+			passives = list("GodKi" = 1, "Grippy" = 10, "IronGrip" = 10, "Scoop" = 5, "BuffMastery" = 5, "SpiritStrike" = 1, "SpiritFlow" = 6, \
+								"SpiritSword" = 2, "SpiritHand" = 8, "AmuletBeaming" = 1, "MovingCharge" = 1, "ManaStats" = 4, "QuickCast" = 8, "ManaGeneration" = 50, "Siphon" = 7)
+			DarkChange=1
+			ActiveMessage="calls upon the power of the forgotten Lord of the Seventh Circle."
+			OffMessage="releases the power of The Seventh One."
+			verb/The_Seventh_One()
+				set category="Skills"
+				src.Trigger(usr)
 		Digimental_of_Miracles
 			BuffName = "Digimental of Miracles"
 			SignatureTechnique=4
