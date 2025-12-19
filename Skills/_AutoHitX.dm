@@ -2205,6 +2205,38 @@ obj
 						src.ControlledRush=1
 					adjust(usr)
 					usr.Activate(src)
+			The_Seventh_Super_Explosive_Wave
+				SignatureTechnique=4
+				StrOffense=0
+				ForOffense=1
+				GrabMaster=1
+				Grapple=1
+				ComboMaster=1
+				DamageMult=36
+				Area="Circle"
+				Distance=20
+				TurfErupt=2
+				TurfEruptOffset=3
+				Slow=1
+				WindUp=1
+				WindupIcon='Ripple Radiance.dmi'
+				WindupIconUnder=1
+				WindupIconX=-32
+				WindupIconY=-32
+				WindupIconSize=1.3
+				Divide=1
+				PullIn=25
+				WindupMessage="prepares to seal their opponent's fate..."
+				ActiveMessage="unleashes an eruption of malevolence."
+				HitSparkIcon='BLANK.dmi'
+				HitSparkX=0
+				HitSparkY=0
+				Cooldown=300
+				Earthshaking=15
+				PreQuake=1
+				verb/The_Seventh_Super_Explosive_Wave()
+					set category="Skills"
+					usr.Activate(src)
 			Super_Explosive_Wave
 				SignatureTechnique=1
 				StrOffense=0
