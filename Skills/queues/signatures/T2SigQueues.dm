@@ -202,7 +202,7 @@ obj
 				Combo=12
 				Warp=3
 				Duration=5
-				Cooldown=-1 //once per fight
+				Cooldown=180 //once per fight
 				Decider=1
 				NeedsSword=1
 				Instinct=4
