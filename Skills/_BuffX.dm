@@ -1816,6 +1816,8 @@ NEW VARIABLES
 			Curse=1
 			PreRequisite=list("/obj/Skills/Utility/Summon_Absurdity")
 			Jagan_Eye
+				SpecialSlot=0
+				Slotless=1
 				// SignatureTechnique=3
 				FatigueThreshold=90
 				PowerMult = 1.25
