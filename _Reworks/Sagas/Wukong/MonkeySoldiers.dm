@@ -1,16 +1,12 @@
-SoldierTracker
-    var/totalSoldiers
+SoldierTracker// i don't think this object is even necessary. it can literally be a tmp list in the mob
     var/list/monkeySoldiers = list()
-    var/maxSoldiers = 1
-/mob/var/SoldierTracker/MonkeySoldiers = new()
+/mob/var/tmp/SoldierTracker/MonkeySoldiers = new()
 
 
 /mob/proc/summonMonkeySoldier(dmg, tier)
-    if(tier != MonkeySoldiers.maxSoldiers) MonkeySoldiers.maxSoldiers = tier
-    if(MonkeySoldiers.totalSoldiers < MonkeySoldiers.maxSoldiers)
+    if(length(MonkeySoldiers.monkeySoldiers) < tier)
         MonkeySoldiers.monkeySoldiers += new/mob/MonkeySoldier(src, dmg, tier * 75)
-        MonkeySoldiers.totalSoldiers += 1
-        blobLoop += MonkeySoldiers.monkeySoldiers[MonkeySoldiers.totalSoldiers]
+        blobLoop += MonkeySoldiers.monkeySoldiers[length(MonkeySoldiers.monkeySoldiers)]
 
 /mob/MonkeySoldier
     var/damageValue
@@ -19,9 +15,10 @@ SoldierTracker
     var/spawnTime
     var/lastAttack
     var/attackDelay = 15
-    var/owner_ref
+    var/tmp/mob/owner;
+    var/tmp/mob/target;
     New(mob/p, dmg, timer)
-        owner_ref = "\ref[p]"
+        owner = p
         damageValue = clamp(dmg / 2, 0.1,1)
         timeLimit = timer
         lastAttack = 0
@@ -35,26 +32,42 @@ SoldierTracker
         appearance = new/mutable_appearance(p)
         alpha = 155
     Update()
-        var/mob/owner = locate(owner_ref)
-        if(world.time > spawnTime + timeLimit)
-            owner.MonkeySoldiers.monkeySoldiers -= src
-            owner.MonkeySoldiers.totalSoldiers --
-            del(src)
+        if(src.owner)
+            src.setTargetToOwners();
         else
-            if(Target != owner.Target) Target = owner.Target
-            if(lastAttack + attackDelay < world.time)
-                lastAttack = world.time
-                if(Target && get_dist(Target,src) < distanceLimit)
-                    lastAttack = world.time
-                    flick("Attack", src)
-                    owner.HitEffect(Target, 0, 1)
-                    Target.LoseHealth(damageValue)
+            src.EndMonkey();//If there is no owner, instantly die
+        if(InstantKillCriteria())
+            src.EndMonkey(owner);
+        if(src && src.TimeToAttack())
+            src.FlickAttack();
 
-// /mob/verb/summonSoldier()
-//     set category = "Debug"
-//     if(!Target) return
-//     if(Target == src) return
-//     summonMonkeySoldier(min_max_scaling(25.43), 2)
+    proc
+        setTargetToOwners()
+            if(src.owner && src.owner.Target) src.target = src.owner.Target;// it should have an owner at this point, but we make sure
+
+        InstantKillCriteria()
+            . = 0;
+            if(!src.owner) return 1;// shouldn't ever be true at this point, but might as well
+            if(world.time > src.spawnTime + src.timeLimit) return 1; //if time is up, kill
+            if(!src.target) return 1; //if there is no target, kill (convenience)
+            if(get_dist(src.target, src) > src.distanceLimit) return 1; //if the target is too far away, kill
+    
+        TimeToAttack()
+            if(!src) return 0;//If it died in this iteration, ignore
+            if(src.lastAttack + src.attackDelay < world.time)
+                return 1;
+            return 0;
+
+        FlickAttack()
+            src.lastAttack = world.time
+            flick("Attack", src)
+            if(src.owner) src.owner.HitEffect(Target, 0, 1)//should definitely have an owner, but making sure
+            src.target.LoseHealth(src.damageValue)
+
+        EndMonkey(mob/m=null)
+            if(m) m.MonkeySoldiers.monkeySoldiers.Remove(src);
+            blobLoop.Remove(src);
+            del(src);
 
 
 /obj/Skills/Buffs/SlotlessBuffs

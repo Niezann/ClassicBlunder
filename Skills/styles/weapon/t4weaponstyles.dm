@@ -69,7 +69,7 @@
                         "SpiritSword" = 1.25, "SpiritFlow"=3)
         StyleSpd = 1.5
         StyleFor = 1.75
-        StylrStr = 1.75
+        StyleStr = 1.75
         ElementalOffense = "Wind"
         StyleActive="Nebula_Blade"
         Finisher="/obj/Skills/Queue/Finisher/Stellar_Formation"
@@ -81,21 +81,21 @@
         verb/Nebula_Blade()
             set hidden=1
             Trigger(usr)
-	Hearts_Beating_As_One
-		SignatureTechnique=3
-		StyleActive="Final Form!!!!"
-		StyleStr = 1.5
-		StyleFor = 1.75
-		StyleEnd = 1.75
+    Hearts_Beating_As_One
+        SignatureTechnique=3
+        StyleActive="Final Form!!!!"
+        StyleStr = 1.5
+        StyleFor = 1.75
+        StyleEnd = 1.75
         ElementalOffense = "Chaos"
-		passives = list("HybridStyle" = "MysticStyle", "Heavy Strike" = "ChaosBlaster", "CriticalChance" = 25, "CriticalDamage"= 0.15, "SpiritSword" = 0.5, "SpiritFlow"=2.5, \
-					"Secret Knives" = "GodSlayer", "MovingCharge"=1, "Tossing"=2, "BladeFisting"= 1, "Extend" = 1, "Gum Gum" = 1, "CallousedHands"=0.25)
-		Finisher="/obj/Skills/Queue/Finisher/Hyper_Goner_Two"
-		adjust(mob/p)
-			passives = list("HybridStyle" = "MysticStyle", "Heavy Strike" = "ChaosBlaster", "CriticalChance" = 25, "CriticalDamage"= 0.15, "SpiritSword" = 0.5, "SpiritFlow"=2.5, \
-					"Secret Knives" = "GodSlayer", "MovingCharge"=1, "Tossing"=2, "BladeFisting"= 1, "Extend" = 1, "Gum Gum" = 1, "CallousedHands"=0.25)
+        passives = list("HybridStyle" = "MysticStyle", "Heavy Strike" = "ChaosBlaster", "CriticalChance" = 25, "CriticalDamage"= 0.15, "SpiritSword" = 0.5, "SpiritFlow"=2.5, \
+                "Secret Knives" = "GodSlayer", "MovingCharge"=1, "Tossing"=2, "BladeFisting"= 1, "Extend" = 1, "Gum Gum" = 1, "CallousedHands"=0.25)
+        Finisher="/obj/Skills/Queue/Finisher/Hyper_Goner_Two"
+        adjust(mob/p)
+        passives = list("HybridStyle" = "MysticStyle", "Heavy Strike" = "ChaosBlaster", "CriticalChance" = 25, "CriticalDamage"= 0.15, "SpiritSword" = 0.5, "SpiritFlow"=2.5, \
+                "Secret Knives" = "GodSlayer", "MovingCharge"=1, "Tossing"=2, "BladeFisting"= 1, "Extend" = 1, "Gum Gum" = 1, "CallousedHands"=0.25)
 
-		verb/Hearts_Beating_As_One()
-			set hidden=1
-			adjust(usr)
-			Trigger(usr)
+        verb/Hearts_Beating_As_One()
+            set hidden=1
+            adjust(usr)
+            Trigger(usr)
