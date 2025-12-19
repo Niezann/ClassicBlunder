@@ -2704,7 +2704,7 @@ NEW VARIABLES
 				SignatureTechnique=3
 				TimerLimit=30
 				Cooldown=30
-				passives = list("Heavy Strike" = "GetsugaClad", "CriticalChance" = 25, "CriticalDamage" = 0.25, "Brutalize" = 2, "SwordAscension" = 1, "SpiritSword" = 0.5, "HybridStrike" = 1)
+				passives = list("Heavy Strike" = "GetsugaClad", "CriticalChance" = 25, "CriticalDamage" = 0.25, "Brutalize" = 2, "SwordAscension" = 1, "SpiritSword" = 0.5, "HybridStrike" = 1, "SpiritFlow" = 4)
 				StrMult=1.3
 				OffMult=1.3
 				ForMult=1.3
