@@ -7549,7 +7549,7 @@ NEW VARIABLES
 		Darkness_Dragon_Master
 			SpecialSlot=0
 			Slotless=1
-			SBuffNeeded="Jagan Eye"
+			UBuffNeeded="Jagan Eye"
 			Cooldown=-1
 			NeedsHealth=25
 			passives = list("FatigueLeak" = 1, "SpiritSword" = 0.25, "Flow" = 1, "Instinct" =1)
