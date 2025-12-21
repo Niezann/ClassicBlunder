@@ -89,11 +89,12 @@ var/list/PassiveInfo = list("Extend"="increases the range of armed autohits base
 "StunningStrike"= "gives your attacks a chance to stun",
 "BulletKill"= "When **directly** facing a Projectile, delete it instead of being struck",
 "EnergyGeneration"= "restore energy and fatigue on being hit",
-"Adaptation"= "When targeting someone,  gain some of their style's  Offense and Defense if it gives any over time",
+"Adaptation"= "When targeting someone,  gain some of their style's  Offense and Defense if it gives any, over time",
 "CriticalChance"= "chance to critically hit...",
 "FluidForm"= "Lowers opponents accuracy unless they have a counter",
 "Brutalize"= "ignore some of a Target's Endurance when dealing damage",
 "Deicide"= "bonus damage to people with god ki",
 "KillerInstinct"= "increases force when below 75% hp, increases str when below 50%",
-"BurningShot"= "burn yourself, the amount of burn stacks you have give you Boons",
-"Piloting"="Replaces your effective stats with the stats of your mech.");
+"BurningShot"= "burn yourself, the amount of burn stacks you have  inversely gives you Boons",
+"Piloting"="Replaces your effective stats with the stats of your mech.",
+"EndlessNine"=" Defensive version of Deicide, negate a percentage of the damage buff having higher God ki grants someone");

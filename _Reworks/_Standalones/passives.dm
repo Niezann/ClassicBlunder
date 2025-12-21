@@ -1,9 +1,9 @@
 mob
 	var
 		passive/passive_handler
-	verb
+/*	verb
 		GetAllPassives() //test verb, remove later
-			usr << passive_handler.getAll()
+			usr << passive_handler.getAll() */
 
 passive
 	var
@@ -16,7 +16,7 @@ passive
 	proc
 
 		Get(passive) // returns value of passive if it exists/has anything
-			
+
 			return passives[passive] ? passives[passive] : 0
 		operator[](passive)
 			return Get(passive)

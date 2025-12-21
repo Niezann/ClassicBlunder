@@ -93,7 +93,8 @@
             passives = list("HeavyHitter" = HeavyHitter, "HardStyle" = HardStyle, \
             "Steady" = Steady, "Shattering" = Shattering)
             TimerLimit = 30 + (totalPotRounded/10)
-    verb/Gorilla_Arms()
+    verb/GorillaArms()
         set category="Skills"
-        adjust(usr)
-        Trigger(usr)
+        if(!usr.BuffOn(src))
+            adjust(usr)
+            Trigger(usr)
