@@ -66,7 +66,7 @@
 		TrailSize=1
 		Variation=4
 		FlickBlast=0
-	Atlatl 
+	Atlatl
 		AdaptRate=1
 		Blasts=1
 		DamageMult=5
@@ -90,6 +90,31 @@
 		FlickBlast=0
 		Cooldown=8
 
+
+	Blade_Addition
+		AdaptRate=1
+		Blasts=1
+		DamageMult=5
+		AccMult=2
+		AttackReplace=1
+		ZoneAttack=1
+		Distance=60
+		Homing=1
+		HomingCharge=3
+		HomingDelay=1
+		HyperHoming=1
+		Striking=1
+		Instinct=2
+		Crippling = 50
+		ZoneAttackX=2
+		ZoneAttackY=2
+		FireFromEnemy=0
+		FireFromSelf=1
+		Hover=2
+		IconLock='SwordBlast2.dmi'
+		Variation=8
+		FlickBlast=0
+		Cooldown=8
 
 	Stake
 		AdaptRate=1
@@ -205,7 +230,7 @@
 		takeAppearance = TRUE
 		adjust(mob/p)
 
-	
+
 	Murder_Music
 		AttackReplace=1
 		ZoneAttack=1

@@ -7952,8 +7952,8 @@ NEW VARIABLES
 			// NoDodge=1
 			Instinct=3//never
 			// SureHitTimerLimit=5
-			passives = list("Instinct" = 3, "LifeStealTrue" = 1, "PureDamage" = -1)
-			PureDamage = -1
+			passives = list("Instinct" = 3, "LifeStealTrue" = 1, "PureDamage" = 1)
+			PureDamage = 1
 			TimerLimit=60
 			KenWave=5
 			KenWaveSize=4

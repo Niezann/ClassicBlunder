@@ -51,6 +51,8 @@
         Combo=10
         DamageMult=0.3
         FollowUp="/obj/Skills/Projectile/ThreeShot_Path"
+        BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Infinite_Blades"
+        BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Super_Shredded"
         HitMessage = "hurls skyward a cascade of blades!"
     Clear_Water //Two Heavens as One
         DamageMult=6
@@ -58,6 +60,7 @@
         HitSparkX=-32
         HitSparkY=-32
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Kensei"
+        BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Enten"
         HitMessage = "ushers in absolute serenity with a humble slash..."
     Divine_Wrath //Fierce Diety
         HarderTheyFall=4
@@ -66,6 +69,6 @@
         FollowUp="/obj/Skills/AutoHit/Divine_Cleave"
         DamageMult = 1
         Decider = 6
-        BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Indomitable_Will"
-        BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Fimbulwinter"
+        BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Judge_of_Heaven"
+        BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Justice_of_Hell"
         HitMessage= "unleashes the Fury of the Heavens!"

@@ -54,7 +54,7 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Dainsleif
 	name = "Heavenly Regalia: Ruined World"
 	StrMult=1.5
 	OffMult=1.5
-	passives = list("Instinct" = 3, "LifeStealTrue" = 1, "PureDamage" = -1)
+	passives = list("Instinct" = 3, "LifeStealTrue" = 1, "PureDamage" = -0.5, "ShearImmunity" = 1)
 	IconLock='EyeFlameC.dmi'
 	ActiveMessage="soaks the world in blood: Heavenly Regalia!"
 	OffMessage="'s treasure loses its ruinous luster..."
