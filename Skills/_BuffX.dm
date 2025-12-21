@@ -1363,6 +1363,11 @@ NEW VARIABLES
 					if(usr.KeychainAttached=="No Name")
 						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 2, "StealsStats" = 1)
 						src.StealsStats=0
+					if(usr.KeychainAttached=="X-Blade")
+						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 3, "GodKi" = 0.25)
+					if(usr.KeychainAttached=="Ultima Weapon")
+						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 3, "SlayerMod" = 1.5, "FavoredPrey" = "Beyond")
+
 					else
 						src.StealsStats=0
 					switch(usr.KeybladeType)
@@ -9852,6 +9857,30 @@ NEW VARIABLES
 						ManaGlow=rgb(255, 0, 255)
 						ManaGlowSize=2
 						passives = list("TensionLock" = 1,"SpiritHand" = 1, "SpiritSword" = 0.25, "Extend" = 1)
+					Call_Calamity
+						FlashChange=1
+						ManaGlow=rgb(153, 102, 51)
+						ManaGlowSize=2
+						ElementalOffense="Void"
+						passives = list("TensionLock" = 1,"DemonicDurability" = 1)
+						AngerMult=1.75
+						AutoAnger=1
+						TimerLimit=60
+					The_Fourteenth_One
+						FlashChange=1
+						ManaGlow=rgb(255, 0, 255)
+						ManaGlowSize=2
+						SpdMult = 1.25
+						ForMult = 1.25
+						ElementalOffense="Chaos"
+						passives = list("TensionLock" = 1,"Tossing" = 1, "SpiritSword" = 0.25, "Extend" = 1, "BlurringStrikes" = 2, "Warping" = 2)
+					Radiant_Brands
+						FlashChange=1
+						ManaGlow=rgb(153, 153, 153)
+						ManaGlowSize=2
+						ElementalOffense="Ultima"
+						passives = list("TensionLock" = 1,"Godspeed" = 3, "Flicker" = 4, "SuperDash" = 2, "Warping" = 3, "BlurringStrikes" = 3)
+						SpdMult = 1.5
 
 
 					Machine_Gun_Slash

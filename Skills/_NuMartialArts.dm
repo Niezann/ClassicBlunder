@@ -567,6 +567,63 @@ obj
 							verb/Blade_Charge_Style()
 								set hidden=1
 								src.Trigger(usr)
+						Ultimate_Form
+							StyleStr = 1.75
+							StyleSpd = 1.75
+							StyleFor = 1.75
+							StyleEnd = 1.75
+							StyleActive="Ultimate Form"
+							ElementalOffense = "Love"
+							passives = list("Extend" = 2, "SpiritSword" = 0.75, "SpiritHand" = 1, "Godspeed" = 1, "MovingCharge" = 1, "QuickCast" = 1, "BlurringStrikes" = 5, "Deicide" = 5)
+							Extend=1
+							Finisher="/obj/Skills/Queue/Finisher/Radiant_Brands"
+							adjust(mob/p)
+								StyleStr = 1 + (0.1 * p.SagaLevel)
+								StyleOff = 1 + (0.1 * p.SagaLevel)
+								StyleFor = 1 + (0.1 * p.SagaLevel)
+								StyleEnd = 1 + (0.1 * p.SagaLevel)
+							verb/Ultimate_Form_Style()
+								set hidden=1
+								adjust(usr)
+								src.Trigger(usr)
+						Forces_Of_Darkness
+							StyleStr=1.5
+							StyleEnd=1.5
+							IconLock='DarknessGlow.dmi'
+							IconUnder=1
+							passives = list("Momentum" = 1, "CallousedHands " = 0.5, "Tossing" = 3, "Secret Knives" = "FTG","HellPower"=0.5,"AbyssMod"=3)
+							LockX=-32
+							LockY=-32
+							StyleActive="Forces of Darkness"
+							ElementalOffense = "Dark"
+							ElementalDefense = "Dark"
+							Finisher="/obj/Skills/Queue/Finisher/Call_Calamity"
+							adjust(mob/p)
+								StyleStr = 1 + (0.15 * p.SagaLevel)
+								StyleEnd = 1 + (0.15 * p.SagaLevel)
+							verb/Forces_Of_Darkness_Style()
+								set hidden=1
+								adjust(usr)
+								src.Trigger(usr)
+						Vector_to_the_Heavens
+							StyleStr=1.25
+							StyleFor=1.25
+							StyleSpd=1.5
+							StyleActive="Vector to the Heavens"
+							passives = list("BlurringStrikes" = 4, "HolyMod" = 5,"Tossing" = 3, "Secret Knives" = "GodSlayer")
+							SweepingStrike=1
+							ElementalOffense = "Light"
+							ElementalDefense = "Light"
+							Finisher="/obj/Skills/Queue/Finisher/The_Fourteenth"
+							adjust(mob/p)
+								StyleSpd = 1 + (0.1 * p.SagaLevel)
+								StyleEnd = 1 + (0.1 * p.SagaLevel)
+								StyleStr = 1 + (0.1 * p.SagaLevel)
+							verb/Vector_to_the_Heavense_Style()
+								set hidden=1
+								adjust(usr)
+								src.Trigger(usr)
+
 
 				FreeStyle
 					NeedsSword=0

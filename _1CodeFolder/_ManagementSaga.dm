@@ -92,14 +92,19 @@ mob/var
 	ClothGold
 
 	chikaraWhitelist = FALSE
+	//JESSE BULLSHIT
+	Tier7SagaUnlocked=0
 
 
 mob/Admin3/verb
 	SagaManagement(mob/Players/P in players)
 		set category="Admin"
+		var/Level7=0
 		var/list/SagaList=list("Cancel","Ansatsuken","Eight Gates","Cosmo","Spiral","King of Courage", "Hero","Hiten Mitsurugi-Ryuu","Kamui","Keyblade","King of Braves","Path of a Hero: Rebirth","Sharingan","Weapon Soul", "Unlimited Blade Works","Force")
 		if(P.Saga)
-			if(P.SagaLevel>=6)
+			if(P.Saga=="Keyblade")
+				Level7=1
+			if(P.SagaLevel>=6+Level7)
 				src << "They've already fully mastered the power of their soul."
 				return
 			for(var/obj/Items/Enchantment/Crystal_of_Bilocation/CoD in world)
@@ -109,7 +114,7 @@ mob/Admin3/verb
 							return
 
 			var/list/choices=list("Cancel")
-			var/math=(7-P.SagaLevel)
+			var/math=(7-P.SagaLevel+Level7)
 			for(var/x=1, x<math, x++)
 				choices.Add(x)
 
@@ -551,11 +556,15 @@ proc
 				return "Medium"
 			if("No Name")
 				return "Medium"
+			if("Ultima Weapon")
+				return "Medium"
 			if("Earthshaker")
 				return "Heavy"
 			if("Fenrir")
 				return "Heavy"
 			if("Chaos Ripper")
+				return "Heavy"
+			if("X-Blade")
 				return "Heavy"
 	GetKeychainDamage(var/KC)
 		switch(KC)
@@ -581,6 +590,10 @@ proc
 				return 1.5
 			if("Chaos Ripper")
 				return 2
+			if("Ultima Weapon")
+				return 2
+			if("X-Blade")
+				return 3
 	GetKeychainAccuracy(var/KC)
 		switch(KC)
 			if("Kingdom Key")
@@ -605,6 +618,10 @@ proc
 				return -1
 			if("Chaos Ripper")
 				return 0
+			if("Ultima Weapon")
+				return 1.25
+			if("X-Blade")
+				return 1.5
 	GetKeychainDelay(var/KC)
 		switch(KC)
 			if("Kingdom Key")
@@ -628,6 +645,10 @@ proc
 			if("Way To Dawn")
 				return 0
 			if("Chaos Ripper")
+				return 0
+			if("Ultima Weapon")
+				return 1
+			if("X-Blade")
 				return 0
 	GetKeychainElement(var/KC)
 		switch(KC)
@@ -653,6 +674,10 @@ proc
 				return 0
 			if("Chaos Ripper")
 				return "Fire"
+			if("Ultima Weapon")
+				return "Love"
+			if("X-Blade")
+				return "Ultima"
 	GetKeychainIcon(var/KC)
 		switch(KC)
 			if("Kingdom Key")
@@ -677,6 +702,10 @@ proc
 				return 'WayToTheDawn.dmi'
 			if("Chaos Ripper")
 				return 'ChaosRipper.dmi'
+			if("Ultima Weapon")
+				return "Ultima Keyblade.dmi"
+			if("X-Blade")
+				return "X-Blade NEOBIG.dmi"
 	GetKeychainIconReversed(var/KC)
 		switch(KC)
 			if("Kingdom Key")
@@ -1734,6 +1763,29 @@ mob
 						src.AddSkill(new/obj/Skills/AutoHit/Magic/Holy)
 						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Magic/Curaga)
 						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Magic/Esunaga)
+					if(src.SagaLevel==7)
+						var/Choice
+						var/Confirm
+						while(Confirm!="Yes")
+							Choice=alert(src, "The greatest power in a heart is the sum of those connected to it. What do your connections mean to you?", "Final Keychain Ascension", "Unity", "Destiny")
+							switch(Choice)
+								if("Unity")
+									Confirm=alert(src, "Your friends are your power. They give you strength, and you, them.", "Final Keychain Ascension", "Yes", "No")
+								if("Destiny")
+									Confirm=alert(src, "Together you can change the world. Together, you can change fate.", "Final Keychain Ascension", "Yes", "No")
+								if("Future")//not in yet
+									Confirm=alert(src, "Whatever awaits you, you will challenge together.", "Final Keychain Ascension", "Yes", "No")
+						switch(Choice)
+							if("Unity")
+								src.Keychains.Add("Ultima Weapon")
+								src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Command/Ultimate_Form)
+							if("Destiny")
+								src.Keychains.Add("X-Blade")
+								src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Command/Forces_Of_Darkness)
+								src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Command/Vector_to_the_Heavens)
+							if("Future")
+								src.Keychains.Add("Nightwing")
+						//		src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Command/Nachtflugel)
 
 		getAriaCount(pathEffect = 0)
 			var/count = AriaCount

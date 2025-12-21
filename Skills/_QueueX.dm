@@ -804,6 +804,29 @@ obj
 					BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Blade_Charge"
 					FollowUp="/obj/Skills/AutoHit/BladeChargeRave"
 					HitMessage="hyper charges their keyblade with mana!"
+				Radiant_Brands
+					SpiritHand=1
+					SpiritStrike=1
+					Crippling=10
+					Warp=20
+					Combo=15
+					DamageMult=0.5
+					KBMult=5
+					BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Radiant_Brands"
+					HitMessage="calls forth dozens of lost Keyblades, striking flawlessly with each!"
+				Call_Calamity
+					Stunner=5
+					BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Call_Calamity"
+					FollowUp="/obj/Skills/Projectile/Magic/Call_Calamity"
+					HitMessage="calls down meteors!"
+				The_Fourteenth
+					Warp=20
+					Combo=14
+					DamageMult=0.2
+					SpiritStrike=2
+					PridefulRage=2
+					BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/The_Fourteenth_One"
+					HitMessage="unleashes a flurry of blows, calling forth beams of light from above!"
 
 
 

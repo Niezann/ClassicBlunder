@@ -848,9 +848,9 @@ mob
 				Return+=src.Kaioken/kkmast
 			if(src.DoubleHelix)
 				if(src.DoubleHelix==1)
-					Total+=0.25
+					Return +=0.25
 				if(src.DoubleHelix>=2)
-					Total+=src.DoubleHelix*0.5
+					Return +=src.DoubleHelix*0.5
 			if(src.HasHealthPU())
 				if(src.PowerControl>100)
 					Return*=(src.PowerControl/100)
@@ -2272,7 +2272,22 @@ mob
 				return 1
 			if(src.UsingBladeCharge())
 				return 1
+			if(src.UsingUltimateForm())
+				return 1
+			if(src.UsingForcesOfDarkness())
+				return 1
+			if(src.UsingVectorToTheHeavens())
+				return 1
 			return 0
+		UsingUltimateForm()
+			if(src.CheckKeybladeStyle("Ultimate Form"))
+				return 1
+		UsingForcesOfDarkness()
+			if(src.CheckKeybladeStyle("Forces Of Darkness"))
+				return 1
+		UsingVectorToTheHeavens()
+			if(src.CheckKeybladeStyle("Vector to the Heavens"))
+				return 1
 		UsingSpeedRave()
 			if(src.CheckKeybladeStyle("Speed Rave"))
 				return 1
