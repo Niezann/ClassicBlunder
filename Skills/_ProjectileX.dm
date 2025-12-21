@@ -598,6 +598,8 @@ obj
 				AttackReplace=1
 				AccMult=1
 				Blasts=5
+				Homing=10
+				HyperHoming=1
 				IconLock='Dancing.dmi'
 				Variation=6
 				Cooldown = 2

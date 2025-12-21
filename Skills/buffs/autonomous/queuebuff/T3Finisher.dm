@@ -20,10 +20,62 @@
         StyleNeeded="Two Heavens As One"
         ManaGlow=rgb(255, 255, 255)
         ManaGlowSize=2
-        passives = list("TensionLock" = 1,"CursedWounds" = 1, "PureDamage" = 5, "Instinct" = 4, "SpiritFlow" = 1)
+        passives = list("TensionLock" = 1,"CursedWounds" = 1, "PureDamage" = 5, "Instinct" = 4, "TechniqueMastery" = 3)
         HitSpark='Slash - Ragna.dmi'
         HitX=-32
         HitY=-32
         HitTurn=1
+        ActiveMessage="ascends to become a Peerless Blade!"
         OffMessage="represses their nature as a Swordmaster..."
 
+    Enten
+        IconLock='SweatDrop.dmi'
+        IconApart=1
+        passives= list("Silenced" = 1, "Disarmed" = 1, "Technique Mastery" = -3)
+        TimerLimit=15
+        ActiveMessage="has the core of their Techniques disrupted by the Peerless Blade's passing..."
+        OffMessage="finds themselves again..."
+
+    Judge_of_Heaven
+        StyleNeeded="Fierce Diety"
+        IconLock='EyesSage.dmi'
+        IconLayer=4
+        IconApart=1
+        passives = list("Duelist" = 3, "Half-Sword" = 1, "Zornhau" = 1, "EndlessNine" = 0.25, "LifeGeneration" = 2, \
+                       "KBRes" = 4, "Hardening" = 3, "Unnerve" = 2, "Pressure" = 1, "TensionLock" = 1, "PureDamage"=2)
+        StrMult=1.5
+        EndMult=1.5
+        VaizardHealth=2
+        ActiveMessage="ascends to tear down the seat of the Heavens!"
+        OffMessage="represses their nature as a Godslayer..."
+
+    Justice_of_Hell
+        IconLock='SweatDrop.dmi'
+        IconApart=1
+        passives = list("PureReduction" = -2, "Flow" = -2, "PureDamage" = -2, "GodSpeed" = -2)
+        CrippleAffected = 50
+        SlowAffected = 50
+
+    Infinite_Blades
+        StyleNeeded="Acrobat"
+        IconLock='Mist Veil.dmi'
+        IconApart=1
+        IconLayer=4
+        passives = list("Tossing" = 4, "Mortal Will" = 1, "MortalStacks" = 1, "BlockChance" = 33, "CriticalBlock" = 0.3 , "Secret Knives" = "Blade_Addition",  \
+        "TensionLock" = 1) // not sure
+        StyleOff = 1.5
+        StyleStr = 1.25
+        StyleSpd = 1.5
+        ActiveMessage="ascends to become a Whirlwind of Steel, Unending!"
+        OffMessage="represses their nature as a Cornicopia of Steel..."
+
+    Super_Shredded
+        IconLock='Bleed.dmi'
+        IconApart=1
+        IconState="1"
+        passives = list("PureReduction" = -2)
+        HealthDrain = 0.025
+        EndMult=0.75
+        DefMult=0.75
+        ActiveMessage="has been torn to shreds!"
+        OffMessage="shakes off their damage."

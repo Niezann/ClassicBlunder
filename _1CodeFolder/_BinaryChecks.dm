@@ -2758,10 +2758,10 @@ mob
 
 		UsingGladiator()
 			var/Found=0
-			if(src.StyleActive=="Sword Savant")
-				Found+=0.25 + (0.125 * SagaLevel)
 			if(passive_handler["Disarm"])
 				Found = passive_handler["Disarm"]
+			if(src.StyleActive=="Sword Savant")
+				Found+=0.25 + (0.125 * SagaLevel)
 			return Found
 		UsingHalfSword()
 			var/Found=0

@@ -851,12 +851,11 @@ mob
 
 			if(src.UsingFTG())
 				src.IaidoCounter++
-			if(UsingGladiator())
+			if(src.UsingGladiator())
 				GladiatorCounter++
-				if(passive_handler["Flying Thunder God"])
-					src.IaidoCounter += 1
-				if(UsingGladiator())
-					GladiatorCounter += 1
+			
+			if(src.disarm_timer)
+				src.DisarmTick();
 
 			if(src.BPPoisonTimer)
 				src.BPPoisonTimer--

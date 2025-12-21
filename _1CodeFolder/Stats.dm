@@ -4,6 +4,8 @@ mob/verb/Character_Sheet()
 
 mob/proc/GetAssess()
 	var/PowerDisplay
+	var/PotentialPowerDisplay
+	var/PowerMultiplierDisplay
 	var/IntimDisplay
 	var/BaseDisplay
 	var/GodKiDisplay
@@ -31,10 +33,17 @@ mob/proc/GetAssess()
 			EffectiveAnger-=(EffectiveAnger*src.PhylacteryNerf)
 
 	PowerDisplay=Get_Scouter_Reading(src)
+
 	if(src.HasPowerReplacement())
 		BaseDisplay=src.GetPowerReplacement()*src.PowerBoost*src.RPPower
 	else
 		BaseDisplay=src.potential_power_mult*src.PowerBoost*src.RPPower
+
+	PotentialPowerDisplay = src.GetPowerReplacement() ? src.GetPowerReplacement() : src.potential_power_mult;
+	PotentialPowerDisplay = round(PotentialPowerDisplay, 0.05);
+
+	PowerMultiplierDisplay=src.Power_Multiplier;
+
 	if(src.HasIntimidation())
 		IntimDisplay=src.GetIntimidation()
 	else
@@ -66,7 +75,9 @@ mob/proc/GetAssess()
 	[src.name]<br><br>
 	Current Anger:	[(EffectiveAnger+src.AngerAdd)*100]%<br>
 	<table cellspacing="6%" cellpadding="1%">
-	<tr><ts>Current Power:</td><td>[Power] / Power Mult: [round(src.potential_power_mult, 0.05)]</td></tr>
+	<tr><td>Current Power:</td><td>[Power]</td></tr>
+	<tr><td>Power From Potential:</td><td>[PotentialPowerDisplay]</td></tr>
+	<tr><td>Power From Buffs:</td> <td>x[PowerMultiplierDisplay]</td></tr>
 	<tr><td>Base:</td><td>[BaseDisplay]/([src.PowerBoost*src.RPPower*round(src.potential_power_mult, 0.05)])</td></tr>
 	<tr><td>Intimidation:</td><td>x[IntimDisplay]</td></tr>
 	<tr><td>Damage Boost:</td><td>x[PDam] ([PDam*100]%)</td></tr>

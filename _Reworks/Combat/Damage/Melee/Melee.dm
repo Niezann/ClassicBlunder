@@ -283,10 +283,10 @@
 
 		NextAttack += delay
 		var/Disarm = 0
-		if(UsingGladiator())
-			if(GladiatorCounter >= glob.GLADIATOR_DISARM_MAX * 6-UsingGladiator())
+		if(src.UsingGladiator())
+			if(src.GladiatorCounter >= glob.GLADIATOR_DISARM_MAX / src.UsingGladiator())
 				Disarm = 1
-				GladiatorCounter = 0
+				src.GladiatorCounter = 0
 		for(var/mob/enemy in enemies)
 			if(istype(enemy, /mob/irlNPC))
 				continue
@@ -295,11 +295,8 @@
 			if(enemy.Stasis)
 				continue
 			if(enemy != src)
-
-		// 				STYLE EFFECTS 			//
-				activateStyleEffects(forcewarp, FALSE, Disarm, enemy) // this proc is redundant for forewarp
-		// 				STYLE EFFECTS END		//
-
+				if(Disarm)
+					src.DisarmTarget(enemy);
 		// 				STATS 					//
 				#if DEBUG_MELEE
 				log2text("DamageMod", "old DmgMod", "damageDebugs.txt", "[ckey]/[name]")
@@ -1069,7 +1066,13 @@
 			return
 
 /mob/var/Momentum = 0
+
+//TODO BETWEEN WIPES: Rename this to FuryAccumulated, or something
+//It's got the same name as the passive
+//It's confusing
+//Also, move it to Combat/Passives/Fury.dm
 /mob/var/Fury = 0
+
 /mob/proc/handlePostDamage(mob/enemy, damage)
 	if(passive_handler["LeakCash"])
 		for(var/obj/Money/money in src.contents)
@@ -1111,8 +1114,5 @@
 				if(prob(glob.BASE_MOMENTUM_CHANCE * momentum))
 					Momentum = clamp( round(Momentum + (1 + momentum/glob.MOMENTUM_DIVISOR)), 0 , passive_handler["Relentlessness"] ? 100 : glob.MAX_MOMENTUM_STACKS)
 		if(passive_handler["Fury"])
-			if(acu && prob(acu * glob.ACUPUNCTURE_BASE_CHANCE))
-				Fury = clamp( Fury - acu/glob.ACUPUNCTURE_DIVISOR, 0 , passive_handler["Relentlessness"] ? 100 : glob.MAX_FURY_STACKS)
-			else
-				if(prob(glob.BASE_FURY_CHANCE * passive_handler["Fury"]))
-					Fury = clamp(Fury + 1 + passive_handler["Fury"]/glob.FURY_DIVISOR, 0, passive_handler["Relentlessness"] ? 100 : glob.MAX_FURY_STACKS)
+			src.FuryAccumulate(acu);
+			
