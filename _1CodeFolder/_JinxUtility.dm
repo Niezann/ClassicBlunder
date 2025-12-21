@@ -1633,7 +1633,7 @@ mob
 				End=0.1
 			return End
 
-		GetSpd(var/Mult=1)
+		GetSpd(Mult=1)
 			var/Spd=src.SpdMod
 			Spd+=src.SpdAscension
 			var/enhanced = getEnhanced("Speed")
@@ -1682,7 +1682,7 @@ mob
 			if(src.SpdStolen)
 				Mod+=src.SpdStolen*0.5
 			if(src.Fury)
-				Mod *= 1 + (src.Fury * (glob.FURY_BASE_BOON * clamp(src.passive_handler.Get("Fury"), 0.1, glob.FURY_MAX_BOON)))
+				Mod *= src.getFuryMult();
 			var/BM=src.HasBuffMastery()
 			if(passive_handler["Rebel Heart"])
 				var/h = (((missingHealth())/glob.REBELHEARTMOD) * passive_handler["Rebel Heart"])/10
