@@ -2944,7 +2944,7 @@ NEW VARIABLES
 					adjustments(mob/player)
 						..()
 						if(!altered)
-							passives = list("MovementMastery" =  player.SagaLevel * 1.25, "ArmorAscension" = 1, "Tenacity" = 0.4 + (player.SagaLevel * 0.3), "Persistence" = 0.4 + (player.SagaLevel * 0.3), "UnderDog" = 0.4 + (player.SagaLevel * 0.3), "Godspeed" = 1 + (player.SagaLevel * 0.4))
+							passives = list("MovementMastery" =  player.SagaLevel * 1.25, "ArmorAscension" = 1, "Tenacity" = 1, "Persistence" = 1, "UnderDog" = 1, "Godspeed" = 1)
 							StrMult = 1 + (player.SagaLevel * 0.1)
 							SpdMult = 1 + (player.SagaLevel * 0.1)
 					verb/Don_Cloth()
@@ -3083,11 +3083,10 @@ NEW VARIABLES
 					adjustments(mob/player)
 						..()
 						var/newLevel = clamp(player.SagaLevel - 2, 1,4)
-						passives = list("MovementMastery" = player.SagaLevel * 2, "ArmorAscension" = 2, "Tenacity" = 1 + (player.SagaLevel * 1), "Persistence" = 1 + (player.SagaLevel * 1), \
-									 "UnderDog" = 1 + (player.SagaLevel * 1), "Godspeed" = 1+ (player.SagaLevel*0.5) )
+						passives = list("MovementMastery" = player.SagaLevel * 2, "ArmorAscension" = 2, "Tenacity" = (player.SagaLevel * 1.5), "Persistence" = (player.SagaLevel * 1.5), \
+									 "UnderDog" = (player.SagaLevel * 2), "Godspeed" = (player.SagaLevel*0.5), "BlurringStrikes" = (player.SagaLevel/2))
 						StrMult = 1.3 + (newLevel * 0.1)
 						SpdMult = 1.3 + (newLevel * 0.1)
-						Desperation = 1 + (player.SagaLevel * 0.5)
 						Godspeed = 1 + (player.SagaLevel * 0.2)
 					verb/Don_Cloth()
 						set category="Skills"
@@ -3518,7 +3517,7 @@ NEW VARIABLES
 					adjustments(mob/player)
 						..()
 						passives = list("DebuffResistance" = 1, "SpaceWalk" = 1, "StaticWalk" = 1, "MovementMastery" = 8+player.SagaLevel, "ArmorAscension" = 3, "MovingCharge" = 1, \
-										"Godspeed" = 1+(player.SagaLevel*0.5), "BlurringStrikes" = player.SagaLevel*0.2, "Flow" = player.SagaLevel-3, "Skimming" = 1, "SpiritFlow" = player.SagaLevel-2)
+										"Godspeed" = 1+(player.SagaLevel*0.5), "BlurringStrikes" = round(player.SagaLevel*0.5,0), "Flow" = player.SagaLevel-3, "Skimming" = 1, "SpiritFlow" = player.SagaLevel-2)
 						SpdMult = 1.4 + ((player.SagaLevel-3) * 0.1)
 						StrMult = 1.1 + ((player.SagaLevel-3) * 0.1)
 						OffMult = 1.1 + ((player.SagaLevel-3) * 0.1)
