@@ -1911,7 +1911,7 @@ mob
 						//var/obj/Items/Enchantment/Magic_Crest/mc=src.EquippedCrest()
 						var/obj/Items/Sword/sord=src.EquippedSword()
 						if(passive_handler.Get("Disarmed")&& !src.HasLimitlessMagic() || !src.HasBladeFisting())
-							Z.DamageMult = (Z.DamageMult / 2)
+							Q.DamageMult = (Q.DamageMult / 2)
 						if(!st&&!(CrestSpell(Q))&&(!sord||sord&&!sord.MagicSword))
 							src << "You need a spell focus to use [Q]."
 							return
