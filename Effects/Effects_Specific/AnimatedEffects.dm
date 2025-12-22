@@ -420,7 +420,7 @@ proc
 			Target.Stasis=100
 			animate(Target, alpha=0, time=30)
 			spawn(30)
-				var/z=11
+				var/z=15
 				for(var/mob/m in view(10,Target))
 					m<<"[Target] was cast out to another dimension!"
 				Target.loc=locate(Target.x,Target.y,z)
@@ -471,7 +471,7 @@ proc
 			animate(Target, color=list(1,0,0, 0,1,0, 0,0,1, 1,1,1), time=3)
 			sleep(3)
 			animate(Target, alpha=0, time=2)
-			var/z=pick(2,3,5,6,11,12)
+			var/z=pick(2,3,5,6)
 			for(var/mob/m in view(10,Target))
 				m<<"[Target] was cast out to another dimension!"
 			Target.loc=locate(Target.x,Target.y,z)
@@ -538,18 +538,18 @@ proc
 			animate(C, transform=matrix()*Size, time=3)
 			spawn(rand(30,90))  // kill
 				animate(C, transform=matrix(), time = 1)
-				spawn(3)  // me 
+				spawn(3)  // me
 					del C
 		else
 			for(var/obj/Effects/Crater/B in A.loc)
 				animate(B, transform=matrix()*Size, time=3)
-				spawn(rand(30,90)) // kill 
+				spawn(rand(30,90)) // kill
 					animate(B, transform=matrix(), time = 1)
-					spawn(3) // me 
+					spawn(3) // me
 						del B
-		
-					
-			
+
+
+
 
 	Dust(turf/A, var/Size=1, var/Layer=EFFECTS_LAYER)
 		set waitfor=0
@@ -681,7 +681,7 @@ mob/proc
 		animate(src.client, color = list(1,0,0, 0,1,0, 0,0,1, 1,1,1), time=startup)
 		sleep(startup)
 		animate(src.client, color = null, time=duration)
-	
+
 	Darkness(duration=100, affect = 5)
 		animate(src.client, color = list(-1,-1,-1, -1,-1,-1, -1,-1,-1, -1,-1,-1), time=affect)
 		sleep(affect)
