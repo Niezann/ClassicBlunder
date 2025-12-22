@@ -1349,6 +1349,10 @@ mob
 			if(passive_handler.Get("BulletKill"))
 				return 1
 			return 0
+		HasAmuletBeaming()
+			if(passive_handler.Get("AmuletBeaming"))
+				return 1
+			return 0
 		HasMovingCharge()
 			if(passive_handler.Get("MovingCharge"))
 				return 1
