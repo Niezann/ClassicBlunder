@@ -24,8 +24,6 @@
 
     verb/Customize_Devil_Arm()
         var/options = list("Icon", "Name","ActiveMessage", "OffMessage","TextColor")
-        if(selection == "Unarmed")
-            options -= "Icon"
         var/thing = input(usr, "What do you want to customize?") in options
         if(thing == "Icon")
             var/selection = input(usr, "Sword, Staff, or Armor Icon?") in list("Sword","Armor","Staff")
