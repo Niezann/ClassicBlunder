@@ -351,7 +351,7 @@ mob
 							implodeDebuff(Attacker.passive_handler["Combustion"], "Burn")
 					else
 						if(Attacker.passive_handler["Combustion"] && Burn >= 80)
-							implodeDebuff(80, "Burn")
+							implodeDebuff(Attacker.passive_handler["Combustion"], "Burn")
 
 
 			if(src.Burn>100)
