@@ -115,7 +115,7 @@
 			passives["Deicide"] = 5
 			passives["PUSpike"] = 50
 			passives["KiControl"] = 1
-			AutoAnger = 1
+			AutoAnger = 0
 			VaizardShatter=0
 			StrMult = 1.5
 			ForMult = 1.5

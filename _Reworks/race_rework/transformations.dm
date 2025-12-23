@@ -96,6 +96,7 @@ transformation
 		form_icon_1_icon_state
 		form_icon_1_x
 		form_icon_1_y
+		form_icon_1_layer = 3
 
 		image/form_icon_2
 		form_icon_2_icon
@@ -131,7 +132,7 @@ transformation
 			form_aura = image(icon = form_aura_icon, icon_state = form_aura_icon_state, pixel_x = form_aura_x, pixel_y = form_aura_y)
 			form_aura_underlay = image(icon = form_aura_underlay_icon, icon_state = form_aura_underlay_icon_state, pixel_x = form_aura_underlay_x, pixel_y = form_aura_underlay_y)
 			form_hair = image(icon = form_hair_icon, pixel_x = form_hair_x, pixel_y = form_hair_y, layer = FLOAT_LAYER-2)
-			form_icon_1 = image(icon = form_icon_1_icon, icon_state = form_icon_1_icon_state, pixel_x = form_icon_1_x, pixel_y = form_icon_1_y)
+			form_icon_1 = image(icon = form_icon_1_icon, icon_state = form_icon_1_icon_state, pixel_x = form_icon_1_x, pixel_y = form_icon_1_y, layer = form_icon_1_layer)
 			form_icon_2 = image(icon = form_icon_2_icon, icon_state = form_icon_2_icon_state,pixel_x = form_icon_2_x, pixel_y = form_icon_2_y)
 
 		transform_animation(mob/user)

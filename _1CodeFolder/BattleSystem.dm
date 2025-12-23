@@ -223,6 +223,18 @@ mob/proc/Unconscious(mob/P,var/text)
 				src.VaizardHealth+=25
 				src.HealthAnnounce10+=1
 				return
+	if(src.passive_handler.Get("DoubleHelix")&&src.DoubleHelix>=3&&src.transActive==4&&src.transUnlocked>=5)
+		if(src.HealthAnnounce10<=5&&FightingSeriously(P,src))
+			src.KO=0
+			src.OMessage(15, "...<b>but [src] evolves one final time, pushing out every last bit of their potential!!!!</b>", "<font color=red>[src]([src.key]) activates Unlimited High Tension!!!")
+			src.Health=5
+			if(src.isRace(HUMAN))
+				src.VaizardHealth+=25
+			if(src.isRace(CELESTIAL))
+				src.VaizardHealth+=15
+			src.HealthAnnounce10=6
+			src.race.transformations[5].transform(src, TRUE)
+			return
 	if(passive_handler["Undying Rage"])
 		Health = 0.1
 		return

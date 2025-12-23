@@ -11,10 +11,6 @@ then, we want to make the format to write the said json, and then a html templat
 
 */
 obj/readPrayers // we hand this out to the dead instead of a typesof(verb) so that they can see them always.
-	verb/seePrayer()
-		set name = "Read Pray"
-		set category = "Roleplay"
-		usr.ReadPrayers(usr)
 	verb/ReadAllPlayerPrayers()
 		set name = "Read All Prayers"
 		set category = "Roleplay"
@@ -203,6 +199,12 @@ mob/proc/returnNames()
 		return
 
 	if(who in glob.prayerTargetNames)
+		for(var/mob/m in players)
+			if(!m.PrayerMute&&m.AscendedDivine)
+				if(who =="Other")
+					m << "A prayer reaches your eyes from [usr]...<br>[prayer]"
+				else
+					m << "A prayer reaches for [who] from [usr]...<br>[prayer]"
 		for(var/mob/m in admins)
 			if(!m.PrayerMute&&m.Admin>2)
 				if(who =="Other")

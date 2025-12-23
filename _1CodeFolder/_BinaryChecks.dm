@@ -1671,7 +1671,7 @@ mob
 				hellpower=2
 			return hellpower
 		HasZenkaiPower()
-			if(passive_handler.Get("ZenkaiPower"))
+			if(passive_handler.Get("ZenkaiPower")||passive_handler.Get("Honor")&&passive_handler.Get("InBlue"))
 				return 2
 			if(passive_handler.Get("Honor"))
 				return 1
@@ -1680,6 +1680,8 @@ mob
 			var/ZenkaiPower = (passive_handler.Get("ZenkaiPower")/2)
 			if(passive_handler.Get("Honor"))
 				ZenkaiPower+=0.5
+			if(passive_handler.Get("Honor")&&passive_handler.Get("InBlue"))
+				ZenkaiPower=2
 			return ZenkaiPower
 		GetZenkaiScaling()
 			var/Return=1
@@ -1817,11 +1819,11 @@ mob
 					Total+=src.Target.GetGodKi()/3
 			if(passive_handler.Get("CreateTheHeavens") && !HasGodKiBuff()&&isRace(HUMAN))
 				if(src.Target)
-					if(src.Target.HasGodKi())
+					if(src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens"))
 						if(Target.GetGodKi() > Total)
 							Total=Target.GetGodKi()
 					else
-						Total+=Potential/100
+						Total+=Potential/200
 			if(src.KamuiBuffLock)
 				Total+=0.75
 			if(src.isRace(DRAGON))

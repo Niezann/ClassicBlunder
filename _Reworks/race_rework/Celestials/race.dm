@@ -52,3 +52,6 @@ race
 				if("Demon")
 					p.TrueName=input(p, "What is the name of the Demon within?", "Get True Name") as text
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Devil_Arm2)
+					for(var/transformation/celestial/unlimited_high_tension/HT in p.race.transformations)
+						p.race.transformations -=HT
+						del HT

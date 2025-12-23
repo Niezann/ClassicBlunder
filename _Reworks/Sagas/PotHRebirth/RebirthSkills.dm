@@ -1106,8 +1106,8 @@ obj/Skills/Buffs
 			MakesSword=1
 			SwordName="White Pen of Hope"
 			SwordIcon='KATANA SILVER.dmi'
-			SwordX=-16
-			SwordY=-16
+			SwordX=-8
+			SwordY=-4
 			SwordClass="Light"
 			StrMult=1.85
 			SpdMult=1.5

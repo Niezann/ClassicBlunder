@@ -95,14 +95,16 @@ transformation
 			passives = list("HighTension"=0.75, "UnlimitedHighTension" = 1, "CreateTheHeavens" = 1, "GodKi"=1)
 			pot_trans = 15
 			transformation_message = "usrName shatters through heaven and earth, becoming equal to the Gods!!"
+			adjust_transformation_visuals(mob/user)
+				if(!form_hair_icon&&user.Hair_Base)
+					var/icon/x=new(user.Hair_Base)
+					form_hair_icon = x
+					form_icon_2_icon = x
+				..()
 			transform(mob/user)
-				if(user.CelestialAscension=="Demon")
-					user.race.transformations-=src
-					usr.race.transformations += new /transformation/celestial/demonic_high_tension()
-					del src
-					return
-				else
-					..()
+				user.Energy=user.EnergyMax
+				user.TotalFatigue=0
+				..()
 			transform_animation(mob/user)
 				var/ShockSize=5
 				LightningStrike2(user, Offset=0)
@@ -116,6 +118,16 @@ transformation
 			form_aura_icon = 'Amazing Super Demon Aura.dmi'
 			form_aura_x = -32
 			transformation_message = "usrName shatters through heaven and earth, declaring all the lights in the sky as their enemies!"
+			adjust_transformation_visuals(mob/user)
+				if(!form_hair_icon&&user.Hair_Base)
+					var/icon/x=new(user.Hair_Base)
+					form_hair_icon = x
+					form_icon_2_icon = x
+				..()
+			transform(mob/user)
+				user.Energy=user.EnergyMax
+				user.TotalFatigue=0
+				..()
 			transform_animation(mob/user)
 				var/ShockSize=5
 				LightningStrike2(user, Offset=0)

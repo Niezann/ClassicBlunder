@@ -1077,6 +1077,7 @@ mob/Admin3/verb
 		M.race.transformations += new /transformation/saiyan/super_saiyan_3()
 		M.race.transformations += new /transformation/saiyan/super_saiyan_4()
 		M.race.transformations += new /transformation/saiyan/super_full_power_saiyan_4_limit_breaker()
+		M<<"<b>Your transformations have been fixed!!! You'll have to ask an admin to remaster them.</b>"
 //		M.race.transformations += new /transformation/celestial/unlimited_high_tension()
 	UnMute()
 		set category="Admin"
@@ -1132,7 +1133,6 @@ mob/Admin3/verb
 							M.race.transformations -= ssj
 							del ssj
 					M.AddSkill(new/obj/Skills/False_Moon)
-					M.AddSkill(new/obj/Skills/Utility/GodTransformationToggle)
 				else
 					for(var/transformation/saiyan/ssj in M.race.transformations)
 						if(istype(ssj, /transformation/saiyan/super_saiyan_4))

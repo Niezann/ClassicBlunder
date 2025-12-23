@@ -15,7 +15,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 36
+	var/UPDATE_VERSION = 37
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -597,6 +597,15 @@ update
 				o.race.transformations += new /transformation/half_saiyan/saiyan/super_saiyan_rage()
 			if(o.isRace(DEMON))
 				o.race.transformations += new /transformation/demon/devil_trigger()
+	version37
+		version = 37
+		updateMob(mob/o)
+			.=..()
+			if(o.isRace(CELESTIAL)&&o.CelestialAscension=="Demon")
+				for(var/transformation/celestial/unlimited_high_tension/HT in o.race.transformations)
+					o.race.transformations -=HT
+					del HT
+				o.race.transformations += new /transformation/celestial/demonic_high_tension()
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25

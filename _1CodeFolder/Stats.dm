@@ -383,12 +383,13 @@ mob/Players/Stat()
 						stat("Health: ","[Target.Health]%")
 					stat("Energy: ","[(Target.Energy/Target.EnergyMax)*100]%")
 				else if(usr.Target.passive_handler.Get("Heart of Darkness"))
-					stat("Power: ", "<font color='red'>Boundless</font color>")
+					stat("Power: ", "<font color='red'><b>Boundless</b></font color>")
 				else
 					stat("Power: ", "Incomprehensible")
-					if(usr.HasClarity() || usr.passive_handler.Get("AdminVision") || usr.Saga=="Unlimited Blade Works" && usr.SagaLevel>=2)
+					if(usr.HasClarity() || usr.passive_handler.Get("AdminVision") || usr.Saga=="Unlimited Blade Works" && usr.SagaLevel>=2||usr.Potential>=65)
 						stat("Direction - [get_dist(usr, usr.Target)] tiles away","[CheckDirection(usr.Target)]")
 						stat("Health: ","[round(Target.Health)]%")
+						stat("Energy: ","[(Target.Energy/Target.EnergyMax)*100]%")
 
 				Restricted2
 

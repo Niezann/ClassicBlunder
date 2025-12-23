@@ -615,6 +615,7 @@ mob/Players/verb
 							transSelected.form_icon_1_icon_state = input(usr, "State?", "State", transSelected.form_icon_1_icon_state) as message|null
 							transSelected.form_icon_1_x = input(usr, "X offset?", "Aura Underlay X") as num|null
 							transSelected.form_icon_1_y = input(usr, "Y offset?", "Aura Underlay Y") as num|null
+							transSelected.form_icon_1_layer = input(usr, "Layer?", "Layer") as num|null
 					if("Icon 2")
 						transSelected.form_icon_2_icon = input(usr, "What extra overlay would you like to use in this form?", "Icon 2") as icon|null
 						if(transSelected.form_aura_underlay_icon)

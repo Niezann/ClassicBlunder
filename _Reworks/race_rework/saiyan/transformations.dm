@@ -287,6 +287,7 @@ transformation
 			var/tailUnderlayIcon = 'saiyantail_ssj4_under.dmi'
 			var/tailWrappedIcon = 'saiyantail-wrapped_ssj4.dmi'
 			form_icon_1_icon = 'GokentoMaleBase_SSJ4.dmi'
+			form_icon_1_layer = 1
 			passives = list("DisableGodKi" = 1,"GiantForm" = 1, "SweepingStrike" = 1, "Brutalize" = 3, "Meaty Paws" = 2, "KiControlMastery" = 3, "PureReduction" = 5, "LifeGeneration" = 5, "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.3)
 			adjust_transformation_visuals(mob/user)
 				if(user.Hair_Base && !form_hair_icon)
@@ -306,6 +307,8 @@ transformation
 				defense = 1.5 + (mastery/200)
 				strength = 1.5 + (mastery/200)
 				force = 1.5 + (mastery/200)
+				autoAnger = 1
+				angerPoint = 99 // funny fix for golden ooz stopping endless anger
 
 			transform(mob/user)
 				. = ..()
@@ -370,6 +373,7 @@ transformation
 			var/tailUnderlayIcon = 'saiyantail_ssj4_under.dmi'
 			var/tailWrappedIcon = 'saiyantail-wrapped_ssj4.dmi'
 			form_icon_1_icon = 'GokentoMaleBase_SSJ4.dmi'
+			form_icon_1_layer = 1
 			passives = list("DisableGodKi" = 1,"GiantForm" = 1, "SweepingStrike" = 1, "Brutalize" = 3, "Meaty Paws" = 2, "KiControlMastery" = 3, "PureReduction" = 5, "LifeGeneration" = 5, "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.3)
 			adjust_transformation_visuals(mob/user)
 				if(user.Hair_Base && !form_hair_icon)
@@ -560,20 +564,32 @@ transformation
 			force = 1.3
 			mastery_boons(mob/user)
 				passives = list("GodKi" = 0.75, "Instinct" = 4, "Brutalize" = 3, "Steady" = 5,  "BuffMastery" = 8, "MovementMastery" = 8, \
-								"PureDamage" = 5, "PureReduction" = 4, "InBlue" = 1, "Godspeed" = 4)
-
+								"PureDamage" = 5, "PureReduction" = 4, "InBlue" = 1, "Godspeed" = 4, "Pursuer" = 4, "LikeWater"=6,"Flicker"=4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20))
+				strength = 1.4
+				speed = 1.5
+				offense = 1.4
+				defense = 1.4
+				force = 1.4
+				endurance = 1.4
 				if(mastery >= 100)
 					// perfected
 					passives = list("GodKi" = 1, "Instinct" = 4, "Brutalize" = 3, "BuffMastery" = 8, "Steady" = 6, "MovementMastery" = 10, \
 									"EnergyGeneration" = 3,  "PureDamage" = 5, "PureReduction" = 4, "Godspeed" = 4, "LikeWater" = 8, \
-									"BackTrack" = 1 , "StunningStrike" = 2, "Sunyata" = 3, "InBlue" = 1)
+									"BackTrack" = 1 , "StunningStrike" = 2, "Sunyata" = 3, "InBlue" = 1, "Pursuer" = 4, "Flicker"=4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20))
+					strength = 1.4
+					speed = 1.6
+					offense = 1.6
+					defense = 1.6
+					force = 1.4
+					endurance = 1.4
 					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/pride) // ssgsse
 						passives = list("GodKi" = 1.25, "Brutalize" = 5, "BuffMastery" = 8, "MovementMastery" = 15, "EnergyLeak" = 3, \
 								 	"PureDamage" = 6, "PureReduction" = 2, "Godspeed" = 4, "LikeWater" = 10, \
-									"Sunyata" = 6, "InBlue" = 1)
+									"Sunyata" = 6, "InBlue" = 1, "Pursuer" = 6, "Flicker"=4, "Transformation Power" = clamp(user.AscensionsAcquired * 5, 1, 40) )
 						strength = 2
 						speed = 2
 						force = 2
+						endurance = 1
 
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)
@@ -591,53 +607,60 @@ transformation
 			transform(mob/user)
 				if(user.CheckSlotless("Beyond God")&&user.transUnlocked>=5)
 					..()
+				if(user.transActive==1&&user.transUnlocked>=5)
+					user.Revert()
+					user.transActive = 1
+					..()
 				else return 0
 
 			transform_animation(mob/user)
-				user.SlotlessBuffs["Beyond God"].Trigger(user, TRUE)
+				if(user.CheckSlotless("Beyond God"))
+					user.SlotlessBuffs["Beyond God"].Trigger(user, TRUE)
 				// disable
-				user.appearance_flags+=16
-				animate(user, color = list(1,0,0, 0,1,0, 0,0,1, 0.9,1,1), time=5)
-				user.icon_state=""
-				var/image/GG=image('SSBGlow.dmi',pixel_x=-32, pixel_y=-32)
-				GG.appearance_flags=KEEP_APART | NO_CLIENT_COLOR | RESET_ALPHA | RESET_COLOR
-				GG.blend_mode=BLEND_ADD
-				GG.color=list(1,0,0, 0,1,0, 0,0,1, 0,0,0)
-				GG.alpha=110
-				sleep(5)
-				user.filters+=filter(type = "blur", size = 0)
-				animate(user, color=list(-1.2,-1.2,-1, 1,1,1, -1.4,-1.4,-1.2,  1,1,1), time=3, flags=ANIMATION_END_NOW)
-				animate(user.filters[user.filters.len], size = 0.35, time = 3)
-				user.overlays+=GG
-				spawn()DarknessFlash(user, SetTime=60)
-				sleep()
-				var/image/GO=image('GodOrb.dmi',pixel_x=-16,pixel_y=-16, loc = user, layer=MOB_LAYER+0.5)
-				GO.appearance_flags=KEEP_APART | NO_CLIENT_COLOR | RESET_ALPHA | RESET_COLOR
-				GO.filters+=filter(type = "drop_shadow", x=0, y=0, color=rgb(0, 255, 0, 44), size = 3)
-				animate(GO, alpha=0, transform=matrix(), color=rgb(0, 255, 0, 134))
-				world << GO
-				animate(GO, alpha=210, time=1)
-				sleep(1)
-				animate(GO, transform=matrix()*3, time=60, easing=BOUNCE_EASING | EASE_IN | EASE_OUT, flags=ANIMATION_END_NOW)
-				user.Quake(20)
-				sleep(20)
-				user.Quake(40)
-				sleep(20)
-				user.Quake(60)
-				sleep(20)
+				if(!user.passive_handler.Get("GodlyCalm"))
+					if(mastery<25)
+						user.appearance_flags+=16
+						animate(user, color = list(1,0,0, 0,1,0, 0,0,1, 0.9,1,1), time=5)
+						user.icon_state=""
+						var/image/GG=image('SSBGlow.dmi',pixel_x=-32, pixel_y=-32)
+						GG.appearance_flags=KEEP_APART | NO_CLIENT_COLOR | RESET_ALPHA | RESET_COLOR
+						GG.blend_mode=BLEND_ADD
+						GG.color=list(1,0,0, 0,1,0, 0,0,1, 0,0,0)
+						GG.alpha=110
+						sleep(5)
+						user.filters+=filter(type = "blur", size = 0)
+						animate(user, color=list(-1.2,-1.2,-1, 1,1,1, -1.4,-1.4,-1.2,  1,1,1), time=3, flags=ANIMATION_END_NOW)
+						animate(user.filters[user.filters.len], size = 0.35, time = 3)
+						user.overlays+=GG
+						spawn()DarknessFlash(user, SetTime=60)
+						sleep()
+						var/image/GO=image('GodOrb.dmi',pixel_x=-16,pixel_y=-16, loc = user, layer=MOB_LAYER+0.5)
+						GO.appearance_flags=KEEP_APART | NO_CLIENT_COLOR | RESET_ALPHA | RESET_COLOR
+						GO.filters+=filter(type = "drop_shadow", x=0, y=0, color=rgb(0, 255, 0, 44), size = 3)
+						animate(GO, alpha=0, transform=matrix(), color=rgb(0, 255, 0, 134))
+						world << GO
+						animate(GO, alpha=210, time=1)
+						sleep(1)
+						animate(GO, transform=matrix()*3, time=60, easing=BOUNCE_EASING | EASE_IN | EASE_OUT, flags=ANIMATION_END_NOW)
+						user.Quake(20)
+						sleep(20)
+						user.Quake(40)
+						sleep(20)
+						user.Quake(60)
+						sleep(20)
 
-				sleep(10)
-				user.filters-=filter(type = "blur", ,size = 0.35)
-				animate(user, color=list(0,0,0, 0,0,0, 0,0,0, 0.5,0.95,1), time=5, easing=QUAD_EASING)
-				sleep(5)
-				animate(user, color=null, time=20, easing=CUBIC_EASING)
-				sleep(20)
-				animate(GO, alpha=0, time=5)
-				spawn(5)
-					user.overlays-=GG
-					GO.filters=null
-					del GO
-					user.appearance_flags-=16
+						sleep(10)
+						user.filters-=filter(type = "blur", ,size = 0.35)
+						animate(user, color=list(0,0,0, 0,0,0, 0,0,0, 0.5,0.95,1), time=5, easing=QUAD_EASING)
+						sleep(5)
+						animate(user, color=null, time=20, easing=CUBIC_EASING)
+						sleep(20)
+						animate(GO, alpha=0, time=5)
+						spawn(5)
+							user.overlays-=GG
+							GO.filters=null
+							del GO
+							user.appearance_flags-=16
 
 			revert(mob/user)
 				user.transActive = 1

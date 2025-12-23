@@ -530,6 +530,10 @@ mob
 						src.DoDamage(src, (rand(1,5)/30))
 			if(passive_handler["Grit"])
 				AdjustGrit("sub", glob.racials.GRITSUBTRACT)
+			if(isRace(HUMAN)||isRace(CELESTIAL))
+				if(Energy<=10&&Health<=30)
+					if(transActive==4&&transUnlocked>=5)
+						src.race.transformations[5].transform(src, TRUE)
 			if((isRace(SAIYAN) || isRace(HALFSAIYAN))&&transActive>0)
 				if(HellspawnBerserk)
 					HellspawnTimer-=1
@@ -853,7 +857,7 @@ mob
 				src.IaidoCounter++
 			if(src.UsingGladiator())
 				GladiatorCounter++
-			
+
 			if(src.disarm_timer)
 				src.DisarmTick();
 
