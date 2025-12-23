@@ -100,6 +100,7 @@ transformation
 					user.race.transformations-=src
 					usr.race.transformations += new /transformation/celestial/demonic_high_tension()
 					del src
+					return
 				else
 					..()
 			transform_animation(mob/user)

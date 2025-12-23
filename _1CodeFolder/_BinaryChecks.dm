@@ -847,10 +847,12 @@ mob
 					kkmast=kk.Mastery
 				Return+=src.Kaioken/kkmast
 			if(src.DoubleHelix)
-				if(src.DoubleHelix==1)
+				if(src.DoubleHelix==1&&src.transActive<5)
 					Return +=0.25
-				if(src.DoubleHelix>=2)
+				if(src.DoubleHelix>=2&&src.transActive<5)
 					Return +=src.DoubleHelix*0.5
+				if(src.DoubleHelix>=5)
+					Return +=src.DoubleHelix
 			if(src.HasHealthPU())
 				if(src.PowerControl>100)
 					Return*=(src.PowerControl/100)
@@ -888,10 +890,10 @@ mob
 				if(race.transformations[transActive].mastery>10&&race.transformations[transActive].mastery<75)
 					Total+=src.transActive()*0.25
 			if(src.DoubleHelix)
-				if(src.DoubleHelix==1)
-					Total+=0.25
-				if(src.DoubleHelix>=2)
-					Total+=src.DoubleHelix*0.5
+				if(src.DoubleHelix==1&&src.transActive<5)
+					Total +=0.25
+				if(src.DoubleHelix>=2&&src.transActive<5)
+					Total +=src.DoubleHelix*0.5
 			if(passive_handler.Get("Pride"))
 				PrideDrain=(100-Health)*0.01
 				if(PrideDrain>1)
@@ -925,10 +927,10 @@ mob
 			if(src.GatesActive && src.GatesActive < 8)
 				return Total +(4/src.SagaLevel)
 			if(src.DoubleHelix)
-				if(src.DoubleHelix==1)
-					Total+=0.25
-				if(src.DoubleHelix>=2)
-					Total+=src.DoubleHelix*0.5
+				if(src.DoubleHelix==1&&src.transActive<5)
+					Total +=0.25
+				if(src.DoubleHelix>=2&&src.transActive<5)
+					Total +=src.DoubleHelix*0.5
 			if(passive_handler.Get("Pride"))
 				PrideDrain=(100-Health)*0.01
 				if(PrideDrain>1)
