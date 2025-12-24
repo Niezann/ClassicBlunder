@@ -317,9 +317,9 @@ mob
 
 			if(passive_handler.Get("SoulFire")&&FightingSeriously(src, 0))
 				if(!(defender.CyberCancel || defender.Mechanized))
-					defender.LoseMana(val*(passive_handler.Get("SoulFire")*glob.SOUL_FIRE_MANA_RATIO),1)
-					defender.LoseCapacity(val*0.25*passive_handler.Get("SoulFire")*glob.SOUL_FIRE_MANA_RATIO)
-				defender.TotalFatigue+=val*0.25*passive_handler.Get("SoulFire")*glob.SOUL_FIRE_FATIGUE_RATIO
+					defender.LoseCapacity(val*passive_handler.Get("SoulFire")*glob.SOUL_FIRE_FATIGUE_RATIO)
+				defender.LoseMana(val*(passive_handler.Get("SoulFire")*glob.SOUL_FIRE_MANA_RATIO))
+				defender.TotalFatigue+=(val*passive_handler.Get("SoulFire")*glob.SOUL_FIRE_FATIGUE_RATIO)
 
 			if(defender.CheckSlotless("Protega"))
 				src.LoseHealth(val/10)
@@ -515,12 +515,12 @@ mob
 
 			if(src.Secret == "Eldritch")
 				var/SecretInfomation/Eldritch/s = src.secretDatum
-				s.addMadness(src,val)
+				s.addMadness(src,val*(s.getMadnessLimit()/100))
 				Update_Stat_Labels()
 
 			if(defender.Secret == "Eldritch")
 				var/SecretInfomation/Eldritch/s = defender.secretDatum
-				s.addMadness(defender,val)
+				s.addMadness(defender,val*(s.getMadnessLimit()/100))
 				defender.Update_Stat_Labels()
 
 			if(src.HasLifeSteal() || innateLifeSteal)
@@ -554,15 +554,8 @@ mob
 				if(src.HealthCut<=0)
 					src.HealthCut=0
 			if(src.HasEnergySteal())
-				var/Effectiveness=1
-				if(defender.CyberCancel>0)
-					Effectiveness-=(Effectiveness*defender.CyberCancel)
-				src.HealEnergy(val*(src.GetEnergySteal()*Effectiveness/100))
-				defender.LoseEnergy(val*(src.GetEnergySteal()*Effectiveness/100))
-			/*if(WeaponSoulType == "Kusanagi" && SagaLevel >= 3)
-				var/value = val/10
-				stealManaMagatama(value * SagaLevel)
-				defender.LoseMana(value)*/
+				src.HealEnergy(val*(src.GetEnergySteal() / 100))
+				defender.LoseEnergy(val*(src.GetEnergySteal() / 100))
 			if(HasManaSteal())
 				var/value = val * (GetManaSteal() / 100)
 				HealMana(value)

@@ -15,7 +15,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 37
+	var/UPDATE_VERSION = 38
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -606,6 +606,15 @@ update
 					o.race.transformations -=HT
 					del HT
 				o.race.transformations += new /transformation/celestial/demonic_high_tension()
+	version38
+		version = 38
+		updateMob(mob/o)
+			.=..()
+			if(o.isRace(ELDRITCH))
+				o.CheckRevert();
+				o << "Eldritch have new ascensions; your's have been reverted, so hopefully you can pick them normally now!"
+				o << "But do make sure all your passives subtracted properly."
+				o << "Otherwise..."
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25

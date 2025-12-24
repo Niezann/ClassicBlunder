@@ -9325,20 +9325,38 @@ NEW VARIABLES
 			True_Form
 				adjust(mob/p)
 					if(!altered)
-						passives = list("Curse" = 1, "Godspeed" =  1+p.AscensionsAcquired, \
-						 				"Pursuer" = 2,
-										"CallousedHands" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],250), \
+						passives = list("Void" = 1,\
+										"Curse" = 1,\
+										"DeathField" = (3 * p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+										"VoidField" = (3 * p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+										"SoulFire" = (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+										"Instinct" = (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+						 				"Godspeed" =  (1+(p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired)),\
+										"BuffMastery" =  (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+										"AngerThreshold" = 1.25 + (0.15 * (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired)),\
+						 				"Pursuer" = (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+										"CallousedHands" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],250),\
 						  				"Hardening" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],50), \
-										"Flicker" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25), \
-										"AngerThreshold" = 1.125 + (0.125 * p.AscensionsAcquired))
+										"Flicker" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25))
 						PowerMult=1+(0.05+(0.05*ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25)))
-						// passives["PureReduction"] = p.AscensionsAcquired
-						TimerLimit = 55 + (p.secretDatum.secretVariable["Madness"]/5)
+						TimerLimit = round(p.secretDatum.secretVariable["Madness"]*0.72);//3 minutes of heroism :)
+
+
+
 						if(p.isRace(ELDRITCH))
-							EndMult=1+(0.15*p.AscensionsAcquired)
-							StrMult=1+(0.15*p.AscensionsAcquired)
-							ForMult=1+(0.15*p.AscensionsAcquired)
-							PowerMult+=0.05*p.AscensionsAcquired
+							if(!src.passives.Find("PureReduction"))
+								src.passives.Add("PureReduction" = 0)
+							if(!src.passives.Find("PureDamage"))
+								src.passives.Add("PureDamage" = 0)
+							TimerLimit=0;
+							EndMult=1+(0.2*p.AscensionsAcquired)
+							StrMult=1+(0.2*p.AscensionsAcquired)
+							ForMult=1+(0.2*p.AscensionsAcquired)
+							PowerMult+=(0.05*(p.AscensionsAcquired*2))
+							src.passives["PureReduction"] = p.AscensionsAcquired;
+							src.passives["PureDamage"] = p.AscensionsAcquired;
+							
+							
 
 				HealthThreshold=0.1
 				KenWave=4

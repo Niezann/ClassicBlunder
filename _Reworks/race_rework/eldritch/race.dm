@@ -4,7 +4,7 @@ race
 		desc = "Distant thoughts, either a dream or a nightmare, made manifest within the soul of a living being. They are chaotic and unstable, only able to imitate mortal life and individuality."
 		visual = 'Eldritch.png'
 
-		passives = list("VenomResistance" = 0.25, "Void" = 1, "SoulFire" = 0.25, "DeathField" = 0.5, "VoidField" = 0.5)
+		passives = list("VenomResistance" = 2, "Void" = 1, "SoulFire" = 0.25, "DeathField" = 2.5, "VoidField" = 2.5)
 		locked = TRUE
 		strength = 1.5
 		endurance = 2.25
