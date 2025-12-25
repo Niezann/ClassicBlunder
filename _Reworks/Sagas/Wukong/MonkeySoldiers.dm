@@ -19,7 +19,7 @@ SoldierTracker// i don't think this object is even necessary. it can literally b
     var/tmp/mob/target;
     New(mob/p, dmg, timer)
         owner = p
-        damageValue = clamp(dmg / 2, 0.1,1)
+        damageValue = clamp(dmg / 2, 0.01,1)
         timeLimit = timer
         lastAttack = 0
         attackDelay = 10

@@ -110,9 +110,12 @@ mob/proc/MovementSpeed()
 	if(passive_handler.Get("Skimming") + is_dashing)
 		if(Spd<SpdMin)
 			Spd=SpdMin
-	var/SpdMult = 0
-	if(HasGodspeed())
-		SpdMult = max(0.1,glob.GOD_SPEED_MULT*sqrt(max(1,src.HasGodspeed())))
+	var/SpdMult = 0;
+	var/GodSpeed = src.HasGodspeed();
+	if(src.Crippled > 10)
+		var/CrippledGod=round(src.Crippled/10);
+		GodSpeed = min(0, GodSpeed-CrippledGod);
+	SpdMult = max(0.1,glob.GOD_SPEED_MULT*sqrt(max(1,GodSpeed)))
 	var/Delay=glob.SPEED_DELAY/(Spd*(1+SpdMult))
 	if(src.Flying)
 		Delay=0.25

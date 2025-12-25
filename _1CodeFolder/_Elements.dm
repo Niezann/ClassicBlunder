@@ -561,9 +561,6 @@ mob
 		AddCrippling(var/Value, var/mob/Attacker=null)
 			if(src.Stasis)
 				return
-			// if(src.isRace(MAJIN))
-			// 	if(!src.AscensionsAcquired||src.AscensionsAcquired>=3)
-			// 		Value=0
 			if(isRace(DRAGON) && Class == "Wind")
 				Value /= 2
 			if(src.HasMythical() > 0.75)
@@ -603,6 +600,8 @@ mob
 				return
 			src.Anger(Enraged=1)
 
+globalTracker/var/DEBUFF_STACK_MAX = 100;
+
 mob
 	proc
 		Debuffs()
@@ -614,46 +613,58 @@ mob
 				doDebuffDamage("Burn")
 
 			if(src.Shatter)
+				if(src.Shatter > glob.DEBUFF_STACK_MAX)
+					src.Shatter = glob.DEBUFF_STACK_MAX;
 				if(src.Sprayed)
 					src.Shatter-=(src.GetEnd(0.25)+src.GetDef(0.1))*2*(1+src.GetDebuffResistance())
 				else
 					src.Shatter-=(src.GetEnd(0.25)+src.GetDef(0.1))*(1+src.GetDebuffResistance())
-				if(src.Shatter<=0)
+				if(src.Shatter<0)
 					src.Shatter=0
 
 			if(src.Slow)
+				if(src.Slow > glob.DEBUFF_STACK_MAX)
+					src.Slow = glob.DEBUFF_STACK_MAX;
 				if(src.Cooled)
 					src.Slow-=(src.GetEnd(0.25)+src.GetSpd(0.1))*2*(1+src.GetDebuffResistance())
 				else
 					src.Slow-=(src.GetEnd(0.25)+src.GetSpd(0.1))*(1+src.GetDebuffResistance())
-				if(src.Slow<=0)
+				if(src.Slow<0)
 					src.Slow=0
 
 			if(src.Shock)
+				if(src.Shock > glob.DEBUFF_STACK_MAX)
+					src.Shock = glob.DEBUFF_STACK_MAX;
 				if(src.Stabilized)
 					src.Shock-=(src.GetEnd(0.25)+src.GetSpd(0.1))*2*(1+src.GetDebuffResistance())
 				else
 					src.Shock-=(src.GetEnd(0.25)+src.GetSpd(0.1))*(1+src.GetDebuffResistance())
-				if(src.Shock<=0)
+				if(src.Shock<0)
 					src.Shock=0
 
 			if(src.Crippled)
+				if(src.Crippled>100)
+					src.Crippled=100;
 				if(src.Sprayed)
 					src.Crippled-=(src.GetSpd(0.25)+src.GetDef(0.1))*2*(1+src.GetDebuffResistance())
 				else
 					src.Crippled-=(src.GetSpd(0.25)+src.GetDef(0.1))*(1+src.GetDebuffResistance())
-				if(src.Crippled<=0)
+				if(src.Crippled<0)
 					src.Crippled=0
 
 			if(src.Confused&&!src.Stunned)
+				if(src.Confused > glob.DEBUFF_STACK_MAX)
+					src.Confused = glob.DEBUFF_STACK_MAX;
 				if(src.Stabilized)
 					src.Confused-=5
 				else
 					src.Confused-=clamp(1 + (src.GetSpd(0.25)), 1, 3)
-				if(src.Confused<=0)
+				if(src.Confused<0)
 					src.Confused=0
 
 			if(src.Sheared)
+				if(src.Sheared > glob.DEBUFF_STACK_MAX)
+					src.Sheared = glob.DEBUFF_STACK_MAX;
 				if(src.Sprayed)
 					if(src.icon_state=="Meditate")
 						src.Sheared-=4
@@ -664,7 +675,7 @@ mob
 						src.Sheared-=2
 					else
 						src.Sheared-=0.25
-			if(src.Sheared<=0)
+			if(src.Sheared<0)
 				src.Sheared=0
 
 			if(src.Attracted&&!src.Confused&&!src.Stunned)

@@ -25,7 +25,9 @@ ArmamentEnchantment -> tome creation (articact manufactioning + ArmamentEnchantm
 #define MAX_SPACE_LEVEL 6
 #define MAX_TIME_LEVEL 6
 #define MAX_MAGIC_LEVEL 20
+#define MAX_ELDRITCH_MAGIC 10
 /mob/proc/getTotalMagicLevel()
+    var/actualMax = MAX_MAGIC_LEVEL + (src.Secret=="Eldritch" ? MAX_ELDRITCH_MAGIC : 0);
     var/total = 0.1
     total += SpaceMagicUnlocked
     total += TimeMagicUnlocked
@@ -33,14 +35,13 @@ ArmamentEnchantment -> tome creation (articact manufactioning + ArmamentEnchantm
     total += GeneralMagicKnowledgeUnlocked
     if(passive_handler.Get("Crimson Grimoire"))
         total = 20
-    if(total >= MAX_MAGIC_LEVEL)
-        total = MAX_MAGIC_LEVEL
+    if(total >= actualMax)
+        total = actualMax;
+    if(src.Secret == "Eldritch")
+        var/SecretInfomation/Eldritch/s = src.secretDatum
+        total += s.secretVariable["Power From Blood"];
     TotalMagicLevel = total
     return total
-	
-
-
-
 
 
 /knowledgePaths/magic
