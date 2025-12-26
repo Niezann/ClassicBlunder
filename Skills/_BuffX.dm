@@ -2497,6 +2497,22 @@ NEW VARIABLES
 					set category="Skills"
 					src.Trigger(usr)
 
+			Vollstandig
+				SignatureTechnique=4
+				ForMult=2
+				OffMult=1.5
+				DefMult=1.5
+				ActiveMessage= "ascends in a pillar of light, manifesting Wings of Pure, Spiritual Energy!"
+				OffMessage= "returns to the earth, their task done..."
+				passives= list("MovementMastery" = 10, "Siphon" = 10, "EnergyGeneration" = 10, "SpiritStrike" = 1, "LifeGeneration" = 10, "Skimming" = 1, "GodSpeed" = 5, "Tossing" = 4, "Secret Knives" = "Quincy")
+				IconLock='DA-Bellerophon.dmi'
+				IconUnder=1
+				LockX=-15
+				LockY=-15
+				verb/Vollstandig()
+					set category="Skills"
+					src.Trigger(usr)
+
 		Unarmed
 			NoSword=1
 			NoStaff=1
@@ -7550,8 +7566,8 @@ NEW VARIABLES
 			Slotless=1
 			UBuffNeeded="Jagan Eye"
 			Cooldown=-1
-			NeedsHealth=25
-			passives = list("FatigueLeak" = 1, "SpiritSword" = 0.25, "Flow" = 1, "Instinct" =1)
+			NeedsHealth=75
+			passives = list("FatigueLeak" = 1, "SpiritSword" = 0.25, "SpiritHand" = 1.25, "Flow" = 1, "Instinct" =1)
 			FatigueLeak=1
 			FatigueThreshold=95
 			KenWave=4
@@ -7570,7 +7586,7 @@ NEW VARIABLES
 			proc/init(mob/p)
 				if(altered) return
 				var/currentPot = p.Potential
-				passives = list("FatigueLeak" = 1, "SpiritSword" = 0.25  , "Flow" = 1 + currentPot/100, "Instinct" = 1 + currentPot/100)
+				passives = list("FatigueLeak" = 1, "SpiritSword" = 0.25, "SpiritHand" =1.25, "Flow" = 1 + currentPot/100, "Instinct" = 1 + currentPot/100)
 				ForMult = 1 + round(currentPot/150, 0.01)
 				StrMult = 1 + round(currentPot/150, 0.01)
 				EndMult = 1 + round(currentPot/200, 0.01)
@@ -9338,7 +9354,7 @@ NEW VARIABLES
 										"CallousedHands" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],250),\
 						  				"Hardening" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],50), \
 										"Flicker" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25));
-						
+
 						PowerMult=1+(0.05+(0.05*ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25)))
 						TimerLimit = round(p.secretDatum.secretVariable["Madness"]*0.72);//3 minutes of heroism :)
 
@@ -9356,8 +9372,8 @@ NEW VARIABLES
 							PowerMult+=(0.05*(p.AscensionsAcquired*2))
 							src.passives["PureReduction"] = p.AscensionsAcquired;
 							src.passives["PureDamage"] = p.AscensionsAcquired;
-							
-							
+
+
 
 				HealthThreshold=0.1
 				KenWave=4

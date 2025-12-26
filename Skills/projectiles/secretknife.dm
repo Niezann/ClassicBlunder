@@ -66,6 +66,28 @@
 		TrailSize=1
 		Variation=4
 		FlickBlast=0
+	Quincy
+		AttackReplace=1
+		Distance=30
+		AdaptRate=1
+		Crippling=1
+		Explode= 2
+		Blasts=1
+		DamageMult=2
+		HyperHoming=1
+		AccMult=2
+		Homing=1
+		HomingCharge=1
+		HomingDelay=1
+		Piercing=1
+		Striking=1
+		Instinct=3
+		IconLock='LightStrike.dmi'
+		IconSize=2
+		Trail='SparkleArcane.dmi'
+		TrailSize=1
+		Variation=1
+		FlickBlast=0
 	Atlatl
 		AdaptRate=1
 		Blasts=1
