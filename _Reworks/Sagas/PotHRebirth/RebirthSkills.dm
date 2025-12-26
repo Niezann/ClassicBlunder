@@ -1062,7 +1062,7 @@ obj/Skills/Buffs
 			ActiveMessage="materializes the Black Knife."
 			OffMessage="puts the black knight away."
 			adjust(mob/p)
-				passives = list("PUSpike"=50, "AbyssMod" = 3, "BlurringStrikes"=3, "HolyMod" = 3, "HellPower"=0.1, "Determination(Black)"=1, "KiControl" = 1)
+				passives = list("PUSpike"=50, "AbyssMod" = 3, "BlurringStrikes"=5, "HolyMod" = 3, "HellPower"=0.1, "Determination(Black)"=1, "KiControl" = 1)
 				PowerMult=1.25
 				StrMult=1.85
 				SpdMult=1.5
@@ -1090,7 +1090,7 @@ obj/Skills/Buffs
 			ActiveMessage="pulls out a small shard of glass that seems barely usable as a weapon."
 			OffMessage="puts the black shard away."
 			adjust(mob/p)
-				passives = list("PUSpike"=50, "HolyMod" = 3, "BlurringStrikes"=3, "KiControl"=1)
+				passives = list("PUSpike"=50, "HolyMod" = 3, "BlurringStrikes"=5, "KiControl"=1)
 				PowerMult=1.25
 				StrMult=1.85
 				SpdMult=1.5
@@ -1118,7 +1118,7 @@ obj/Skills/Buffs
 			ActiveMessage="manifests their will to change fate, every determination color melding into one: White!"
 			OffMessage="puts the pen away."
 			adjust(mob/p)
-				passives = list("PUSpike"=100, "HolyMod" = 5, "BlurringStrikes"=3, "KiControl"=1, "SpiritSword" = 0.5,"EndlessNine"=0.15)
+				passives = list("PUSpike"=100, "HolyMod" = 5, "BlurringStrikes"=5, "KiControl"=1, "SpiritSword" = 0.5,"EndlessNine"=0.15)
 				PowerMult=1.25
 				StrMult=1.5
 				ForMult=1.5
