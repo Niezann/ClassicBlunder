@@ -32,7 +32,7 @@
         IconLock='SweatDrop.dmi'
         IconApart=1
         passives= list("Silenced" = 1, "Disarmed" = 1, "Technique Mastery" = -3)
-        TimerLimit=15
+        TimerLimit=5
         ActiveMessage="has the core of their Techniques disrupted by the Peerless Blade's passing..."
         OffMessage="finds themselves again..."
 
