@@ -284,7 +284,7 @@ SecretInfomation
 
 	Eldritch
 		name = "Eldritch"
-		secretVariable = list("Madness" = 0, "Madness Active" = 0)
+		secretVariable = list("Madness" = 0, "Madness Active" = 0, "Power From Blood" = 0, "Blood Stock" = 0, "Resource Stock" = 0)
 		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/Eldritch/True_Form")
 		applySecret(mob/p)
 			switch(currentTier)

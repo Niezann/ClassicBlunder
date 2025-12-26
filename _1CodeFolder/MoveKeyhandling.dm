@@ -216,14 +216,23 @@ mob
 									if(afterimages)
 										coolerFlashImage(src, afterimages)
 								loop_delay = glob.BASE_LOOP_DELAY
-								if(HasGodspeed()>=glob.GODSPEED_NEEDED || GetSpd(1)>=glob.SPEED_NEEDED)
-									loop_delay = glob.GODSPEED_LOOP_DELAY
+								//TODO between wipes
+								//These effectively will never trigger, so I'm commenting it out for now
+								//Honestly it can probably be removed
+								//But I wouldn't remove variables from the globalTracker mid wipe.
+								//if(HasGodspeed()>=glob.GODSPEED_NEEDED || GetSpd(1)>=glob.SPEED_NEEDED)
+								//	loop_delay = glob.GODSPEED_LOOP_DELAY
 								if(dir==NORTHEAST||dir==NORTHWEST||dir==SOUTHEAST||dir==SOUTHWEST)
 									loop_delay *= glob.DIAG_LOOP_DELAY
 								move_speed = MovementSpeed()
 								var/delay = loop_delay + move_speed
 								if(src.Crippled)
-									delay*=glob.MAX_CRIPPLE_MULT*(Crippled/glob.CRIPPLE_DIVISOR)
+									var/crippleEffect = (1 + (glob.MAX_CRIPPLE_MULT*(Crippled/glob.CRIPPLE_DIVISOR)));
+									/*if(src.HasDebuffReversal())
+										delay /= crippleEffect;
+									else*/
+									//you've been spared from an awful fate
+									delay *= crippleEffect;
 								if(passive_handler["Don't Move"])
 									LoseHealth(glob.RUPTURED_MOVE_DMG * passive_handler["Don't Move"])
 									loop_delay/=2

@@ -1588,18 +1588,12 @@ window "mainwindow"
 		image-mode = center
 		macro = "macro"
 		menu = "menu"
-		outer-size = 976x809
-		outer-pos = 291,0
-		inner-size = 960x750
-		inner-pos = 8,51
-		screen-size = 1920x1032
 	elem "mainvsplit"
 		type = CHILD
 		pos = 0,0
 		size = 960x735
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -1671,10 +1665,11 @@ window "mainwindow"
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 291,0
+		pos = 281,0
 		size = 680x460
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1683,6 +1678,11 @@ window "mapwindow"
 		can-resize = false
 		is-pane = true
 		keep-aspect = true
+		outer-size = 686x466
+		outer-pos = 281,0
+		inner-size = 680x460
+		inner-pos = 3,3
+		screen-size = 1858x1080
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -1694,6 +1694,21 @@ window "mapwindow"
 		saved-params = "icon-size"
 		on-show = ".winset\"mainwindow.mainvsplit.left=mapwindow\""
 		on-hide = ".winset\"mainwindow.mainvsplit.left=\""
+	elem "BarCripple"
+		type = LABEL
+		pos = 172,413
+		size = 64x20
+		anchor1 = 50,100
+		anchor2 = -1,-1
+		font-family = "@Microsoft JhengHei Light"
+		font-size = 6
+		font-style = "bold"
+		text-color = #cc0066
+		background-color = #000000
+		is-visible = false
+		border = sunken
+		saved-params = ""
+		text = "Cripple"
 	elem "StorageLabel"
 		type = LABEL
 		pos = 560,371

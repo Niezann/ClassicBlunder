@@ -1659,7 +1659,7 @@ mob
 			if(passive_handler.Get("ZenkaiPower"))
 				return 0
 			if(passive_handler.Get("HellPower"))
-				if(isRace(DEMON)||oozaru_type=="Demonic"||passive_handler.Get("UnlimitedHighTension")&&isRace(CELESTIAL))
+				if(isRace(DEMON)||oozaru_type=="Demonic"||(passive_handler.Get("UnlimitedHighTension")&&isRace(CELESTIAL)))
 					return 2
 				return 1
 			return 0

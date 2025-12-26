@@ -1175,6 +1175,11 @@ mob/proc/Update_Stat_Labels()
 			src<<output("SHR: [round(Sheared, 1)]","BarPotion")
 		else
 			winshow(src, "BarPotion",0)
+		if(src.Crippled>0)
+			winshow(src, "BarCripple",1)
+			src<<output("CRP: [round(Crippled, 1)]","BarCripple")
+		else
+			winshow(src, "BarCripple",0)
 		if(src.PureRPMode==1)
 			winshow(src, "BarRP",1)
 			src<<output("RP MODE","BarRP")
