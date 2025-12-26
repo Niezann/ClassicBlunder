@@ -515,12 +515,12 @@ mob
 
 			if(src.Secret == "Eldritch")
 				var/SecretInfomation/Eldritch/s = src.secretDatum
-				s.addMadness(src,val*(s.getMadnessLimit()/100))
+				s.addMadness(src,val*(s.getMadnessLimit(src)/100))
 				Update_Stat_Labels()
 
 			if(defender.Secret == "Eldritch")
 				var/SecretInfomation/Eldritch/s = defender.secretDatum
-				s.addMadness(defender,val*(s.getMadnessLimit()/100))
+				s.addMadness(defender,val*(s.getMadnessLimit(defender)/100))
 				defender.Update_Stat_Labels()
 
 			if(src.HasLifeSteal() || innateLifeSteal)
@@ -1599,7 +1599,7 @@ mob
 			if(passive_handler.Get("TensionPowered")&&transActive>=4)
 				Mod+=passive_handler.Get("TensionPowered")/2
 			if(passive_handler.Get("Determination(Green)")||passive_handler.Get("Determination(White)"))
-				Mod+=(0.04*ManaAmount)
+				Mod+=(0.02*ManaAmount)
 
 			End*=Mod
 			End*=Mult
@@ -1654,10 +1654,8 @@ mob
 				Mod+=0.75
 			if(Saga&&src.Saga=="Eight Gates")
 				Mod+=0.01*GatesActive
-			if(passive_handler["Determination(Yellow)"]||passive_handler["Determination(Red)"]||passive_handler.Get("Determination(White)"))
+			if(passive_handler["Determination(Red)"||passive_handler["Determination(Yellow)"]]||passive_handler.Get("Determination(White)"))
 				Mod+=(0.025*ManaAmount)
-				if(passive_handler["Determination(Red)"]||passive_handler.Get("Determination(White)"))
-					Mod+=(0.025*ManaAmount)
 			if(Secret == "Heavenly Restriction")
 				if(secretDatum?:hasImprovement("Speed"))
 					Mod += round(clamp(1 + secretDatum?:getBoon(src, "Speed") / 8, 1, 8), 0.1)

@@ -9337,7 +9337,8 @@ NEW VARIABLES
 						 				"Pursuer" = (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
 										"CallousedHands" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],250),\
 						  				"Hardening" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],50), \
-										"Flicker" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25))
+										"Flicker" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25));
+						
 						PowerMult=1+(0.05+(0.05*ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25)))
 						TimerLimit = round(p.secretDatum.secretVariable["Madness"]*0.72);//3 minutes of heroism :)
 
