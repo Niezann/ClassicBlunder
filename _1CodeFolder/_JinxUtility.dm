@@ -3012,7 +3012,8 @@ mob
 				src.AddSkill(b)
 		SecretToss(var/obj/Skills/Grapple/Toss/Z)
 			if(src.HasRipple())
-				src.UseBuff(new/obj/Skills/Buffs/SlotlessBuffs/Ripple/Life_Magnetism_Overdrive)
+				for(var/obj/Skills/Buffs/SlotlessBuffs/Ripple/Life_Magnetism_Overdrive/H in src)
+					H.Trigger(src)
 				src.Oxygen+=(src.OxygenMax)*0.25
 				if(src.Oxygen>=(src.OxygenMax)*2)
 					src.Oxygen=(src.OxygenMax)*2
