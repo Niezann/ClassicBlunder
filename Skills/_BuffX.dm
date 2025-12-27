@@ -11143,9 +11143,17 @@ NEW VARIABLES
 				AlwaysOn=1
 				BuffName="Sparkling Ripple"
 				IconLock='Ripple Aura.dmi'
+				passives = list("BeyondPurity" = 1)
 				IconLockBlend=2
 				PoseEnhancement=1
 				TimerLimit=30
+				adjust(mob/p)
+					var/secretLevel = p.secretDatum.currentTier
+					TimerLimit= 30 * secretLevel
+					passives = list("BeyondPurity" = 1)
+				Trigger(usr, Overide = 0)
+					adjust(usr)
+					..()
 			Senjutsu_Imbued
 				AlwaysOn=1
 				BuffName="Senjutsu Focus"//Used to gain mana beyond 100 while medding
