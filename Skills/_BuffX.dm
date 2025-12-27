@@ -9207,8 +9207,15 @@ NEW VARIABLES
 				HitX=-32
 				HitY=-32
 				Ripple=1//SO NO CHI* NO SADAME...
+				adjust(mob/p)
+					var/secretLevel = p.secretDatum.currentTier
+					if(secretLevel >= 4)
+						passives = list("HolyMod" = 2 + secretLevel, "PUDrainReduction" = 2 + (secretLevel / 4), "Ripple" = 1 + (secretLevel / 4), "FavoredPrey" = "Evil", "SlayerMod" = (secretLevel / 2))
+					else
+						passives = list("HolyMod" = 2 + secretLevel, "PUDrainReduction" = 2 + (secretLevel / 4), "Ripple" = 1 + (secretLevel / 4))
 				verb/Ripple_Breathing()
 					set category="Skills"
+					adjust(usr)
 					src.Trigger(usr)
 			Life_Magnetism_Overdrive
 				VaizardHealth=2.5
@@ -9217,6 +9224,14 @@ NEW VARIABLES
 				IconLock='Ripple Barrier.dmi'
 				ActiveMessage="throws a handful of Ripple-conductive debris to form a barrier <b>Life Magnetism Overdrive</b>!"
 				OffMessage="stops channeling the Ripple through the debris..."
+				adjust(mob/p)
+					var/secretLevel = p.secretDatum.currentTier
+					VaizardHealth=2.5 * secretLevel
+					VaizardShatter=1 
+					TimerLimit=10 + (secretLevel * 4)
+				Trigger(mob/p, Overide = 0)
+					adjust(usr)
+					..()
 		Werewolf
 			New_Moon_Form
 				HairLock=1
