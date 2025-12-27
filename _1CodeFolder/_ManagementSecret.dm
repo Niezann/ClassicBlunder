@@ -204,7 +204,7 @@ SecretInfomation
 
 	Hamon
 		name = "Hamon"
-		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/Ripple/Ripple_Breathing", "/obj/Skills/Buffs/SlotlessBuffs/Ripple/Life_Magnetism_Overdrive")
+		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/Ripple/Ripple_Breathing", "/obj/Skills/Buffs/SlotlessBuffs/Ripple/Life_Magnetism_Overdrive", "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Ripple_Enhancement")
 		secretVariable = list("Ripple")
 		applySecret(mob/p)
 			switch(currentTier)
