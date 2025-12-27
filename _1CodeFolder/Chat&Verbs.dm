@@ -1006,7 +1006,8 @@ mob/Players/verb
 					if(src.PoseTime>=5&&(src.HasRipple()||src.Secret=="Vampire"||src.Secret=="Senjutsu"&&src.CheckSlotless("Senjutsu Focus"))||Secret=="Eldritch")
 						src.PoseTime=0
 						if(src.HasRipple())
-							src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Ripple_Enhancement)
+							for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Ripple_Enhancement/H in src)
+								H.Trigger(src)
 						if(src.Secret=="Vampire")
 							src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Restraint_Release)
 						if(src.Secret=="Senjutsu"&&src.CheckSlotless("Senjutsu Focus"))
