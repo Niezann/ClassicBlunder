@@ -22,6 +22,11 @@
 		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Nine_Sword_Style"
 		HitMessage="rushes forward, their aura manifesting six more blades, as they unleash a flurry of blows in the blink of an eye!"
 	Jinzen_Senkei
+		Stunner=1
+		DamageMult=5
+		HitSparkIcon='Slash_Multi.dmi'
+		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Jinzen_Enlightenment"
+		FollowUp="/obj/Skills/AutoHit/Jinzen_Strike"
 	The_Big_Bang_Punch
 		Stunner=1
 		DamageMult=5
@@ -32,10 +37,10 @@
 		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/The_Ultimate_Fist"
 		FollowUp="/obj/Skills/AutoHit/Big_Bang_Followup"
 	Hyakuretsu_Ken
-		Combo=20
-		DamageMult=0.8
+		Combo=10
+		DamageMult=1.6
 		Stunner=4
-		SpeedStrike=6
+		SpeedStrike=1
 		BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/Death_Mark"
 		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Lightning_Strikes_Twice"
 		HitMessage="unleashes a flurry of powerful blows, sealing their target's fate."
@@ -122,6 +127,31 @@
 		TurfShiftDuration=1
 		ChargeTech = 1
 		ActiveMessage="kicks off the ground, turning their feet into rockets, as they launch forward and release the mother of all punches: Forbidden Technique: The Big Bang Punch!!!!"
+	Jinzen_Strike
+		Copyable=5
+		NeedsSword=1
+		Area="Wide Wave"
+		StrOffense=1
+		ForOffense=1
+		Distance=10
+		PassThrough=1
+		PreShockwave=1
+		PostShockwave=0
+		Shockwave=2
+		Shockwaves=2
+		DamageMult=10
+		PullIn=2
+		ActiveMessage="becomes one with their blade, tearing through time and space in one fell swoop."
+		HitSparkIcon='Slash - Vampire.dmi'
+		HitSparkX=-32
+		HitSparkY=-32
+		HitSparkTurns=1
+		HitSparkSize=1
+		HitSparkDispersion=1
+		TurfStrike=1
+		TurfShift='StarPixel.dmi'
+		TurfShiftDuration=3
+		Instinct=1
 /obj/Skills/Projectile
 	Zone_Attacks
 		ZoneAttack=1

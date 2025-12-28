@@ -8,7 +8,7 @@
 		EndMult=1.75
 		VaizardHealth=3
 	Lightning_Strikes_Twice
-		passives = list("Relentlessness" = 1, "Fury" = 6, "Speed Force" = 3, "BuffMastery" = 3,\
+		passives = list("Relentlessness" = 1, "Fury" = 6, "Speed Force" = 3, \
 		                "StyleMastery" = 4, "Brutalize" = 2, "Interception" = 4, "CounterMaster" = 10,\
 		                "BlurringStrikes" = 5,  "TensionLock" = 1, "Flicker" = 5)
 		SpdMult=1.5
@@ -21,6 +21,16 @@
 		SpdMult=1.25
 		StrMult=1.75
 		OffMult=1.25
+	Jinzen_Enlightenment
+		IconLock='Mist Veil.dmi'
+		IconApart=1
+		IconLayer=4
+		passives = list("Tossing" = 4, "Mortal Will" = 1, "MortalStacks" = 1, "CriticalChance" = 30, "CriticalDamage"= 0.15, "Secret Knives" = "Blade_Addition",  \
+		"TensionLock" = 1)
+		StyleEnd = 1.5
+		StyleStr = 1.5
+		StyleSpd = 1.25
+		ActiveMessage="is naught but an extension of their blade, which swings with divine precision."
 	Ionization
 		passives = list("AfterImages" = 4, "Godspeed" = 4, "Speed Force" = 2, "Iaijutsu" = 1, "Rain" = 5,\
 		"CriticalChance" = 33, "TensionLock" = 1)

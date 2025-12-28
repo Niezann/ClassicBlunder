@@ -4214,7 +4214,7 @@ NEW VARIABLES
 			SpdMult=1.5
 			DefMult=1.5
 			AutoAnger=1
-			passives = list("GodKi" = 0.75, "EnergyGeneration" = 5, "LifeGeneration" = 5 , "Godspeed" = 4, "Flow" = 5,  "BuffMastery" = 5, "PureDamage" = 3, "PureReduction" = 3, \
+			passives = list("GodKi" = 0.75, "EnergyGeneration" = 5, "Godspeed" = 4, "Flow" = 5,  "BuffMastery" = 5, "PureDamage" = 3, "PureReduction" = 3, \
 								"BackTrack" = 2 , "StunningStrike" = 3, "Sunyata" = 5, "MovementMastery" = 10, "Flicker" = 5, "Pursuer" = 5,"GodlyCalm"=1)
 			PUSpeedModifier=2
 			FlashChange=1
@@ -9227,7 +9227,7 @@ NEW VARIABLES
 				adjust(mob/p)
 					var/secretLevel = p.secretDatum.currentTier
 					VaizardHealth=2.5 * secretLevel
-					VaizardShatter=1 
+					VaizardShatter=1
 					TimerLimit=10 + (secretLevel * 4)
 				Trigger(mob/p, Overide = 0)
 					adjust(usr)

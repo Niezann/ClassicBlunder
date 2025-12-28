@@ -300,7 +300,7 @@ transformation
 				"Meaty Paws" = 2 + (mastery/50), "KiControlMastery" = 3 + (mastery/50), "PureReduction" = 5 + (mastery/10),\
 				"LifeGeneration" = 1 + (round(mastery/15,0)), "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.1 + (mastery/200),\
 				"Flow" = 4, "Instinct" = 4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20), "Deicide" = 10,\
-				"Flicker" = 5, "Pursuer" = 5, "PureDamage"= 4 + (mastery/10),"SSJ4" = 1)
+				"Flicker" = 5, "Pursuer" = 5, "PureDamage"= 4 + (mastery/10),"SSJ4" = 1,"EndlessNine"=0.25)
 				speed = 1.5 + (mastery/200)
 				endurance = 1.5 + (mastery/200)
 				offense = 1.5 + (mastery/200)
