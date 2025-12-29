@@ -44,6 +44,8 @@
     if(RPPCurrent < getMaxPlayerRPP())
         RPPCurrent = getMaxPlayerRPP()
         RPPSpendable = glob.progress.RPPStarting
+        if(RPPSpendable<glob.progress.MinRPP)
+            RPPSpendable=glob.progress.MinRPP
         RPPSpent = 0
 
 /mob/proc/GiveRPP(amount)

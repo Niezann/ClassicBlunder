@@ -105,6 +105,7 @@ progressTracker
 //potential
 		PotentialDaily = 1
 		totalPotentialToDate = 31
+		MinPotential = 1
 
 
 // rpp
@@ -114,6 +115,7 @@ progressTracker
 		RPPStarting = 80
 		RPPStartingDays = 0
 		RPPBaseMult = 1
+		MinRPP = 0
 
 		STAT_DIMINISHING_RETURNS = TRUE
 		STAT_DIMINISHING_THRESHOLD = 1.25

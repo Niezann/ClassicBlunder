@@ -290,6 +290,19 @@ mob/Admin3/verb
 			Log("Admin", "[ExtractInfo(usr)] set the new dead spawn to ([glob.DEATH_LOCATION[1]], [glob.DEATH_LOCATION[2]], [glob.DEATH_LOCATION[3]])")
 		else
 			src << "That tile doesn't exist."
+	SetStartingProgressValues()
+		set category="Admin"
+		var/X=input(src, "Starting RPP", "Set spawn RPP") as num|null
+		var/Y=input(src, "Starting Potential", "Set spawn Potential") as num|null
+		if(X<0)
+			X=0
+		if(Y<0)
+			Y=0
+		if(!X||!Y)
+			return
+		glob.progress.MinRPP = X
+		glob.progress.MinPotential = Y
+		Log("Admin", "[ExtractInfo(usr)] set the new min RPP to ([glob.progress.MinRPP], and min Potential to [glob.progress.MinPotential]")
 
 	ForceResetMultis()
 		set category="Admin"

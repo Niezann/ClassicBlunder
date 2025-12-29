@@ -151,6 +151,8 @@ mob/Players
 
 		if(src.Potential<1)
 			src.Potential=1
+		if(src.Potential<glob.progress.MinPotential)
+			src.Potential=glob.progress.MinPotential
 		src.potential_max()
 
 		for(var/obj/Skills/Buffs/NuStyle/s in src)
