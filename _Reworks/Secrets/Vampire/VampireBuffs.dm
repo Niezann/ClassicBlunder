@@ -74,7 +74,7 @@
 		KenWaveSize = 5
 		KenWaveBlend = 2
 		KenWaveTime = 3
-		ActiveMessage = "has lost their composure and enetered Rötschreck!"
+		ActiveMessage = "has lost their composure and entered Rötschreck!"
 		OffMessage = "regains their composure..."
 		TextColor = rgb(153, 0, 0)
 		var/sunTriggered
