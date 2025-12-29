@@ -9222,7 +9222,7 @@ NEW VARIABLES
 					adjust(usr)
 					src.Trigger(usr)
 			Life_Magnetism_Overdrive
-				passives = list("Instinct" = 1, "WindRelease" = 0.5, "Blubber" = 1, "Deflection" = 1, "Reversal" = 0.2, "Steady" = 0.5)
+				passives = list("Instinct" = 1, "WindRelease" = 0.5, "Blubber" = 1, "Deflection" = 1, "Reversal" = 0.2, "KBRes" = 1, "Juggernaut" = 1)
 				VaizardHealth=2.5
 				VaizardShatter=1
 				TimerLimit=10//lasts for 10 seconds.
@@ -9231,7 +9231,7 @@ NEW VARIABLES
 				OffMessage="stops channeling the Ripple through the debris..."
 				adjust(mob/p)
 					var/secretLevel = p.secretDatum.currentTier
-					passives = list("Instinct" = 1 + secretLevel, "WindRelease" = 0.4 * secretLevel, "Blubber" = 1 + (secretLevel/2), "Deflection" = 1 + (secretLevel/2), "Reversal" = 0.2 * secretLevel, "Steady" = 0.5 * secretLevel)
+					passives = list("Instinct" = 1 + secretLevel, "WindRelease" = 0.4 * secretLevel, "Blubber" = 1 + (secretLevel/2), "Deflection" = 1 + (secretLevel/2), "Reversal" = 0.2 * secretLevel, "KBRes" = secretLevel, "Juggernaut" = secretLevel)
 					VaizardHealth=2.5 * secretLevel
 					VaizardShatter=1
 					TimerLimit=10 + (secretLevel * 4)
