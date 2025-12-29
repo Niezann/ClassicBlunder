@@ -90,11 +90,11 @@
             switch(input)
                 if("CriticalChance")
                     passives["[input]"] += theList[input][1]
-                    passives["CriticalDamage"] += 0.1
+                    passives["CriticalDamage"] += 0.15
                     return
                 if("BlockChance")
                     passives["[input]"] += theList[input][1]
-                    passives["CriticalBlock"] += 0.1
+                    passives["CriticalBlock"] += 0.15
                     return
             passives["[input]"] += theList[input][1]
         else
