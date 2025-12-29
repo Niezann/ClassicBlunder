@@ -21,12 +21,12 @@
 				SpdMult = 1.1 + (secretLevel * 0.1)
 			verb/Vampire()
 				set category="Skills"
-				adjust(usr)
-				src.Trigger(usr)
 				if(!usr.BuffOn(src))
 					usr << "Your vampiric blood awakens!"
 				else
 					usr << "You let it slumber once more."
+				adjust(usr)
+				src.Trigger(usr)
 
 		Wassail
 			Curse=1
