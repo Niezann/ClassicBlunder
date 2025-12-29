@@ -42,10 +42,10 @@
             return TRUE
         return FALSE
     adjust(mob/p)
-        if(passives["CriticalChance"]>30]
+        if(passives["CriticalChance"]>30)
             passives["CriticalChance"]=30
             passives["CriticalDamage"]=0.15
-        if(passives["BlockChance"]>30]
+        if(passives["BlockChance"]>30)
             passives["BlockChance"]=30
             passives["CriticalBlock"]=0.15
         switch(selection)
