@@ -1164,12 +1164,13 @@ obj/Skills/Buffs
 			ActiveMessage="faces fate with the Axe of Justice."
 			OffMessage="puts the Axe of Justice away."
 			adjust(mob/p)
-				passives = list("PUSpike"=50,"KiControl" = 1)
-				PowerMult=1.25
-				EnergyHeal=1
-				SwordUnbreakable=1
-				if(p.passive_handler["FutureRewritten"])
-					passives = list("PUSpike"=50, "SpiritSword" = 0.75, "ManaGeneration" = 1,"KiControl" = 1)
+				if(!altered)
+					passives = list("PUSpike"=50,"KiControl" = 1)
+					PowerMult=1.25
+					EnergyHeal=1
+					SwordUnbreakable=1
+					if(p.passive_handler["FutureRewritten"])
+						passives = list("PUSpike"=50, "SpiritSword" = 0.75, "ManaGeneration" = 1,"KiControl" = 1)
 			verb/JusticeAxe()
 				set category="Skills"
 				set name="Axe of Justice"
