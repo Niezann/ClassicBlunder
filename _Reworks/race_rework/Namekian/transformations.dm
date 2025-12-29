@@ -15,18 +15,42 @@ transformation
 						passives = list("Instinct" = round(max(user.AscensionsAcquired/3, 1)), "Flow" = round(max(user.AscensionsAcquired/3, 1)), "Flicker" = round(max(user.AscensionsAcquired, 2)), \
 						"Pursuer" = round(max(user.AscensionsAcquired/3, 1)),  "BuffMastery" = round(max(user.AscensionsAcquired*1.25, 1)),\
 						"PureDamage" = round(max(user.AscensionsAcquired/2, 1)), "PureReduction" = round(max(user.AscensionsAcquired/2, 1)))
+						speed = 1.3
+						offense = 1.2
+						defense = 1.2
+
 					if(25 to 49)
 						passives = list("Instinct" = round(max(user.AscensionsAcquired/2, 1)), "Flow" = round(max(user.AscensionsAcquired/2, 1)), "Flicker" = round(max(user.AscensionsAcquired, 2)), \
 						"Pursuer" = round(max(user.AscensionsAcquired/2, 1)),  "BuffMastery" = round(max(user.AscensionsAcquired*1.25, 1)),\
 						"PureDamage" = round(max(user.AscensionsAcquired/1.5, 1)), "PureReduction" = round(max(user.AscensionsAcquired/1.5, 1)))
+						speed = 1.4
+						offense = 1.3
+						defense = 1.3
+						strength = 1.15
+						force = 1.15
+						endurance = 1.15
 					if(50 to 74)
 						passives = list("Instinct" = round(max(user.AscensionsAcquired/1.5, 1)), "Flow" = round(max(user.AscensionsAcquired/1.5, 1)), "Flicker" = round(max(user.AscensionsAcquired*1.1, 2)), \
 						"Pursuer" = round(max(user.AscensionsAcquired/1.5, 1)),  "BuffMastery" = round(max(user.AscensionsAcquired*1.25, 1)),\
 						"PureDamage" = round(max(user.AscensionsAcquired/1.5, 1)), "PureReduction" = round(max(user.AscensionsAcquired/1.5, 1)),  "MovementMastery" = round(max(user.AscensionsAcquired, 1)))
+
+						speed = 1.5
+						offense = 1.35
+						defense = 1.35
+						strength = 1.2
+						force = 1.2
+						endurance = 1.2
 					if(75 to 99)
 						passives = list("Instinct" = round(max(user.AscensionsAcquired, 1)), "Flow" = round(max(user.AscensionsAcquired, 1)), "Flicker" = round(max(user.AscensionsAcquired*1.1, 2)), \
 						"Pursuer" = round(max(user.AscensionsAcquired, 1)),  "BuffMastery" = round(max(user.AscensionsAcquired*1.25, 1)),\
 						"PureDamage" = round(max(user.AscensionsAcquired, 1)), "PureReduction" = round(max(user.AscensionsAcquired, 1)),  "MovementMastery" = round(max(user.AscensionsAcquired*1.25, 1)))
+						speed = 1.5
+						offense = 1.4
+						defense = 1.4
+						strength = 1.25
+						force = 1.25
+						endurance = 1.25
+
 					if(100)
 						if(user.Potential<60)
 							passives = list("Instinct" = round(max(user.AscensionsAcquired, 1)), "Flow" = round(max(user.AscensionsAcquired, 1)), "Flicker" = round(max(user.AscensionsAcquired*1.5, 2)), \
@@ -36,7 +60,12 @@ transformation
 							passives = list("Instinct" = round(max(user.AscensionsAcquired, 1)), "Flow" = round(max(user.AscensionsAcquired, 1)), "Flicker" = round(max(user.AscensionsAcquired*1.5, 2)), \
 							"Pursuer" = round(max(user.AscensionsAcquired, 1)),  "BuffMastery" = round(max(user.AscensionsAcquired*1.25, 1)),\
 							"PureDamage" = round(max(user.AscensionsAcquired, 1)), "PureReduction" = round(max(user.AscensionsAcquired, 1)),  "MovementMastery" = round(max(user.AscensionsAcquired*1.5, 1)), "GodKi"=0.5)
-
+						speed = 1.5
+						offense = 1.5
+						defense = 1.5
+						strength = 1.35
+						force = 1.35
+						endurance = 1.35
 		//	autoAnger = 1
 			form_aura_icon = 'AurasBig.dmi'
 			form_aura_icon_state = "Heran"

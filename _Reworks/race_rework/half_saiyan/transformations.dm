@@ -53,7 +53,7 @@
 	mastery_boons(mob/user)
 		// apply scaling passives here
 		passives = list("Mystic" = 1,"PUSpike" = user.Potential + round(mastery/2, 10), "Godspeed" = 1.5, "Adaptation" = 4, \
-						"Brutalize" = 1.5, "LikeWater" = 6 + round(user.Potential/25, 1), "BuffMastery" = 2)
+						"Brutalize" = 1.5, "LikeWater" = 6 + round(user.Potential/25, 1), "BuffMastery" = 2,"DrainlessPUSpike"=1)
 		unlock_potential = 65// max(65, 65 + ((glob.progress.PotentialDaily * 10)- user.Potential))
 		pot_trans = 0
 	adjust_transformation_visuals(mob/user)

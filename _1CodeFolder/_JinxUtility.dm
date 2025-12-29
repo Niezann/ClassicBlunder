@@ -792,10 +792,19 @@ mob
 				val/=1+src.GetKiControlMastery()
 		//		val*=(src.Power_Multiplier
 				if(src.GetPowerUpRatio()>1)
+					var/PUSpike=1
+					if(passive_handler.Get("PUSpike"))
+						PUSpike=passive_handler.Get("PUSpike")/100
+
 					var/PowerUpPercent=GetPowerUpRatio()-1
 					if(src.HasMovementMastery()>=1) // this run timed a 0 somehow
 						PowerUpPercent/=1+(src.GetMovementMastery()/8)
+
+					PowerUpPercent/=PUSpike
+					if(passive_handler.Get("DrainlessPUSpike"))
+						PowerUpPercent=0
 					val*=(1+(PowerUpPercent/src.PUDrainReduction))
+
 			//	if(src.Kaioken)
 			//		if(src.Anger)
 			//			val*=src.Anger
@@ -820,7 +829,14 @@ mob
 				var/PowerUpPercent=GetPowerUpRatio()-1
 				if(src.HasMovementMastery())
 					PowerUpPercent/=1+(src.GetMovementMastery()/8)
+				var/PUSpike=1
+				if(passive_handler.Get("PUSpike"))
+					PUSpike=passive_handler.Get("PUSpike")/100
+				if(passive_handler.Get("DrainlessPUSpike"))
+					PowerUpPercent=0
+
 				val*=(1+(PowerUpPercent/src.PUDrainReduction))
+				val/=PUSpike
 	//		if(src.Kaioken)
 	//			if(src.Anger)
 	//				val*=src.Anger

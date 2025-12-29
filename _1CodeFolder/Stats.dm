@@ -1095,7 +1095,6 @@ mob/proc/
 				PowerDrain = 0
 			/*if(src.Race=="Changeling")
 				PowerDrain /= 7.5*/
-
 			if(!src.PUUnlimited)
 				if(passive_handler.Get("ManaPU"))
 					src.LoseMana(1*PowerDrain*glob.WorldPUDrain)

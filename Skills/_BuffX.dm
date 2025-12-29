@@ -1333,6 +1333,14 @@ NEW VARIABLES
 			swordHasHistory=1
 			passives = list("MagicSword" = 1)
 			Cooldown=30
+			verb/Delete_Bugged_Keyblade()
+				set category="Utility"
+				var/obj/Items/Sword/s
+				if(PassedSword)
+					s=PassedSword
+				else
+					s=usr.EquippedSword()
+				del s
 			verb/Summon_Keyblade()
 				set category="Skills"
 				if(!usr.BuffOn(src))
@@ -9217,7 +9225,7 @@ NEW VARIABLES
 					adjust(usr)
 					src.Trigger(usr)
 			Life_Magnetism_Overdrive
-				passives = list("Instinct" = 1, "WindRelease" = 1, "Blubber" = 1, "Deflection" = 1, "Reversal" = 0.2, "Steady" = 0.5)
+				passives = list("Instinct" = 1, "WindRelease" = 0.5, "Blubber" = 1, "Deflection" = 1, "Reversal" = 0.2, "Steady" = 0.5)
 				VaizardHealth=2.5
 				VaizardShatter=1
 				TimerLimit=10//lasts for 10 seconds.
@@ -9226,7 +9234,7 @@ NEW VARIABLES
 				OffMessage="stops channeling the Ripple through the debris..."
 				adjust(mob/p)
 					var/secretLevel = p.secretDatum.currentTier
-					passives = list("Instinct" = 1 + secretLevel, "WindRelease" = 1 + secretLevel, "Blubber" = 1 + (secretLevel/2), "Deflection" = 1 + (secretLevel/2), "Reversal" = 0.2 * secretLevel, "Steady" = 0.5 * secretLevel)
+					passives = list("Instinct" = 1 + secretLevel, "WindRelease" = 0.4 * secretLevel, "Blubber" = 1 + (secretLevel/2), "Deflection" = 1 + (secretLevel/2), "Reversal" = 0.2 * secretLevel, "Steady" = 0.5 * secretLevel)
 					VaizardHealth=2.5 * secretLevel
 					VaizardShatter=1
 					TimerLimit=10 + (secretLevel * 4)

@@ -1682,6 +1682,8 @@ mob
 			var/ZenkaiPower = (passive_handler.Get("ZenkaiPower")/2)
 			if(passive_handler.Get("Honor"))
 				ZenkaiPower+=0.5
+				if(passive_handler.Get("InBlue"))
+					ZenkaiPower+=0.5
 			return ZenkaiPower
 		GetZenkaiScaling()
 			var/Return=1
@@ -1811,9 +1813,9 @@ mob
 				if(src.SenseUnlocked>=7)
 					Total+=0.25
 				if(src.SenseUnlocked>=8)
-					Total+=0.25
+					Total+=0.75
 				if(SenseUnlocked >= 9)
-					Total += 0.5
+					Total += 0.75
 			if(src.CheckSlotless("Saiyan Soul")&&!src.HasGodKiBuff())
 				if(src.Target&&!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi())
 					Total+=src.Target.GetGodKi()/3

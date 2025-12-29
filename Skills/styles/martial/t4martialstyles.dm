@@ -16,14 +16,18 @@
 	Ten_Directions
 		SignatureTechnique = 4
 		StyleActive="Ten Directions"
-		passives = list("Flying Thunder God" = 1, "BlurringStrikes" = 10, "Fury" = 3, "Fa Jin" = 3, "Instinct" = 2, "Secret Knives" = "FTG", "Tossing" = 3, \
-		"BladeFisting" = 1, "NeedsSword" = 0, "NoSword" = 1, "Interception" = 3, "Sunyata" = 3, "LikeWater" = 5, "Soft Style" = 1)
+		passives = list("Flying Thunder God" = 1, "BlurringStrikes" = 3, "Fury" = 3, "Fa Jin" = 2, "Instinct" = 2, "Secret Knives" = "FTG", "Tossing" = 3, \
+		"BladeFisting" = 1, "NeedsSword" = 0, "NoSword" = 1, "Interception" = 3, "Sunyata" = 3, "LikeWater" = 5, "Soft Style" = 1,"Flow" = 4, "Godspeed" = 3, "Skimming" = 2)
 		Finisher="/obj/Skills/Queue/Finisher/Hyakuretsu_Ken"
 		StyleSpd = 2.25
 		StyleOff = 1.5
 		StyleStr = 1.25
+		adjust(mob/p)
+			passives = list("Flying Thunder God" = 1, "BlurringStrikes" = 3, "Fury" = 3, "Fa Jin" = 2, "Instinct" = 2, "Secret Knives" = "FTG", "Tossing" = 3, \
+			"BladeFisting" = 1, "NeedsSword" = 0, "NoSword" = 1, "Interception" = 3, "Sunyata" = 3, "LikeWater" = 5, "Soft Style" = 1,"Flow" = 4, "Godspeed" = 3, "Skimming" = 2)
 		verb/Ten_Directions()
 			set hidden=1
+			adjust(usr)
 			src.Trigger(usr)
 	Giga_Galaxy_Wrestling
 		SignatureTechnique = 4

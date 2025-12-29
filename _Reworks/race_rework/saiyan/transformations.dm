@@ -287,7 +287,7 @@ transformation
 			var/tailUnderlayIcon = 'saiyantail_ssj4_under.dmi'
 			var/tailWrappedIcon = 'saiyantail-wrapped_ssj4.dmi'
 			form_icon_1_icon = 'GokentoMaleBase_SSJ4.dmi'
-			form_icon_1_layer =FLOAT_LAYER-3
+			form_icon_1_layer = FLOAT_LAYER-3
 			passives = list("DisableGodKi" = 1,"GiantForm" = 1, "SweepingStrike" = 1, "Brutalize" = 3, "Meaty Paws" = 2, "KiControlMastery" = 3, "PureReduction" = 5, "LifeGeneration" = 5, "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.3)
 			adjust_transformation_visuals(mob/user)
 				if(user.Hair_Base && !form_hair_icon)
@@ -298,7 +298,7 @@ transformation
 			mastery_boons(mob/user)
 				passives = list("DisableGodKi" = 1, "GiantForm" = 1, "Juggernaut" = 1+(mastery/25), "BuffMastery" = 5 + (mastery/10), "SweepingStrike" = 1, "Brutalize" = 3,\
 				"Meaty Paws" = 2 + (mastery/50), "KiControlMastery" = 3 + (mastery/50), "PureReduction" = 5 + (mastery/10),\
-				"LifeGeneration" = 1 + (round(mastery/15,0)), "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.1 + (mastery/200),\
+				"LifeGeneration" = 1 + round(mastery/50,1), "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.1 + (mastery/200),\
 				"Flow" = 4, "Instinct" = 4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20), "Deicide" = 10,\
 				"Flicker" = 5, "Pursuer" = 5, "PureDamage"= 4 + (mastery/10),"SSJ4" = 1,"EndlessNine"=0.25)
 				speed = 1.5 + (mastery/200)
@@ -574,7 +574,7 @@ transformation
 				if(mastery >= 100)
 					// perfected
 					passives = list("GodKi" = 1, "Instinct" = 4, "Brutalize" = 3, "BuffMastery" = 8, "Steady" = 6, "MovementMastery" = 10, \
-									"EnergyGeneration" = 3,  "PureDamage" = 5, "PureReduction" = 4, "Godspeed" = 4, "LikeWater" = 8, \
+									"EnergyGeneration" = 3,  "PureDamage" = 8, "PureReduction" = 6, "Godspeed" = 4, "LikeWater" = 8, \
 									"BackTrack" = 1 , "StunningStrike" = 2, "Sunyata" = 3, "InBlue" = 1, "Pursuer" = 4, "Flicker"=4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20))
 					strength = 1.4
 					speed = 1.6
@@ -584,7 +584,7 @@ transformation
 					endurance = 1.4
 					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/pride) // ssgsse
 						passives = list("GodKi" = 1.25, "Brutalize" = 5, "BuffMastery" = 8, "MovementMastery" = 15, "EnergyLeak" = 3, \
-								 	"PureDamage" = 6, "PureReduction" = 2, "Godspeed" = 4, "LikeWater" = 10, \
+								 	"PureDamage" = 14, "PureReduction" = 2, "Godspeed" = 4, "LikeWater" = 10, \
 									"Sunyata" = 6, "InBlue" = 1, "Pursuer" = 6, "Flicker"=4, "Transformation Power" = clamp(user.AscensionsAcquired * 5, 1, 40) )
 						strength = 2
 						speed = 2

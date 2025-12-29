@@ -65,9 +65,7 @@
     },
     "ARMOR_PASSIVES_IV": {
         "VenomImmune": [1, 1],
-        "InjuryImmune": [1, 1],
-        "FatigueImmune": [1, 1],
-        "ShearImmunity": [1, 1]
+        "FatigueImmune": [1, 1]
     },
     "GENERIC_PASSIVES_I": {
         "Steady": [1, 10],

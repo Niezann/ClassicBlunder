@@ -83,7 +83,7 @@
 			set hidden=1
 			Trigger(usr)
 	Hearts_Beating_As_One
-		SignatureTechnique=3
+		SignatureTechnique=4
 		StyleActive="Final Form!!!!"
 		StyleStr = 1.5
 		StyleFor = 1.75
