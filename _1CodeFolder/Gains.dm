@@ -187,6 +187,12 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 			reduceErodeStolen()
 
 		if(MeditateTime == 15)
+			if(src.Lunacy)
+				src << "Your mind is your own, alone, once more. <font color='black'>...</font color>"
+				src.Lunacy=0;
+			if(src.LunacyDrank)
+				src << "You release the fragments of ████ you've gathered.<font color='black'>Back to Æther...</font color>"
+				src.LunacyDrank=0;
 			if(isRace(MAJIN))
 				majinPassive.resetVariables(src)
 			for(var/obj/Skills/s in Skills)
@@ -857,6 +863,9 @@ mob
 				src.IaidoCounter++
 			if(src.UsingGladiator())
 				GladiatorCounter++
+			
+			if(src.isLunaticMode())
+				src.LunaticModeTimer();
 
 			if(src.disarm_timer)
 				src.DisarmTick();

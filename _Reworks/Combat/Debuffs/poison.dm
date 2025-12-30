@@ -63,7 +63,8 @@ globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 		if("Poison")
 			if(glob.TRACKING_POISON)
 				currentPoi+=dmg
-	Health-=dmg
+	if(!src.HasDebuffReversal())
+		Health-=dmg
 	if(Health<=0 && !KO)
 		if(typeOfDebuff == "Poison")
 			Unconscious(null, "succumbing to Poison!")

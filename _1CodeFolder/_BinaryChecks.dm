@@ -697,6 +697,8 @@ mob
 			var/stp=src.SaiyanTransPower()
 			if(stp)
 				Return+=stp
+			if(src.isLunaticMode())
+				Return += (10 / 100 * src.get_potential())
 			return Return
 		HasPursuer()
 			var/Return=0
@@ -772,7 +774,9 @@ mob
 				GreenVal=round(ManaAmount/20,1)
 			if(src.isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman" && src.VaizardHealth>0)
 				HeartVal += 5
-			return passive_handler.Get("DeathField")+(src.KamuiBuffLock*5)+HeartVal + GreenVal
+			. = passive_handler.Get("DeathField")+(src.KamuiBuffLock*5)+HeartVal + GreenVal
+			if(src.isLunaticMode())
+				. *= (1 + (src.get_potential() / 100))
 		HasVoidField()
 			if(passive_handler.Get("VoidField"))
 				return 1
@@ -788,7 +792,9 @@ mob
 
 			if(src.CheckSlotless("Drunken Mastery") && src.Drunk)
 				Extra+=2
-			return passive_handler.Get("VoidField")+Extra
+			. = passive_handler.Get("VoidField")+Extra
+			if(src.isLunaticMode())
+				. *= (1 + (src.get_potential() / 100))
 		HasMaimStrike()
 			return 0
 			if(passive_handler.Get("MaimStrike"))
@@ -1087,6 +1093,8 @@ mob
 			if(passive_handler["Rebel Heart"])
 				var/h = ((missingHealth())/glob.REBELHEARTMOD) * passive_handler["Rebel Heart"]
 				Return += h
+			if(src.isLunaticMode())
+				Return += (5 / 100 * src.get_potential())
 			return Return
 		HasPureReduction()
 			var/Return=0
@@ -1937,7 +1945,7 @@ mob
 				return 1
 			return 0
 		GetHardening()
-			return passive_handler.Get("Hardening")
+			return min(passive_handler.Get("Hardening"), glob.HARDEN_MAX_BOON);
 		HasCrushing()
 			if(passive_handler.Get("Crushing"))
 				return 1
@@ -3132,6 +3140,9 @@ mob
 			if(src.HasDrainlessMana())
 				return 1
 			return 0
+		GetMineral()
+			for(var/obj/Items/mineral/m in src)
+				return m.value;
 		GetMoney()
 			for(var/obj/Money/m in src)
 				return m.Level

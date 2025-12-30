@@ -227,12 +227,14 @@ mob
 								move_speed = MovementSpeed()
 								var/delay = loop_delay + move_speed
 								if(src.Crippled)
-									var/crippleEffect = (1 + (glob.MAX_CRIPPLE_MULT*(Crippled/glob.CRIPPLE_DIVISOR)));
-									/*if(src.HasDebuffReversal())
-										delay /= crippleEffect;
-									else*/
-									//you've been spared from an awful fate
-									delay *= crippleEffect;
+									if(src.HasDebuffReversal())
+										//an awful fate has been invoked by Seraphite...
+										//when you run faster than light, all you can see is darkness...
+										var/fastCrippleEffect = (1 + (glob.MAX_CRIPPLE_MULT * (Crippled / glob.CRIPPLE_DIVISOR) / 2))//this value is smaller than the slow effect
+										delay /= fastCrippleEffect;
+									else
+										var/slowCrippleEffect = (1 + (glob.MAX_CRIPPLE_MULT*(Crippled/glob.CRIPPLE_DIVISOR)));
+										delay *= slowCrippleEffect;
 								if(passive_handler["Don't Move"])
 									LoseHealth(glob.RUPTURED_MOVE_DMG * passive_handler["Don't Move"])
 									loop_delay/=2

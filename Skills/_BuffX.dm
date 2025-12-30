@@ -2512,7 +2512,6 @@ NEW VARIABLES
 				verb/Vollstandig()
 					set category="Skills"
 					src.Trigger(usr)
-
 		Unarmed
 			NoSword=1
 			NoStaff=1
@@ -7566,8 +7565,8 @@ NEW VARIABLES
 			Slotless=1
 			UBuffNeeded="Jagan Eye"
 			Cooldown=-1
-			NeedsHealth=75
-			passives = list("FatigueLeak" = 1, "SpiritSword" = 0.25, "SpiritHand" = 1.25, "Flow" = 1, "Instinct" =1)
+			NeedsHealth=25
+			passives = list("FatigueLeak" = 1, "SpiritSword" = 0.25, "Flow" = 1, "Instinct" =1)
 			FatigueLeak=1
 			FatigueThreshold=95
 			KenWave=4
@@ -7586,7 +7585,7 @@ NEW VARIABLES
 			proc/init(mob/p)
 				if(altered) return
 				var/currentPot = p.Potential
-				passives = list("FatigueLeak" = 1, "SpiritSword" = 0.25, "SpiritHand" =1.25, "Flow" = 1 + currentPot/100, "Instinct" = 1 + currentPot/100)
+				passives = list("FatigueLeak" = 1, "SpiritSword" = 0.25  , "Flow" = 1 + currentPot/100, "Instinct" = 1 + currentPot/100)
 				ForMult = 1 + round(currentPot/150, 0.01)
 				StrMult = 1 + round(currentPot/150, 0.01)
 				EndMult = 1 + round(currentPot/200, 0.01)
@@ -9354,26 +9353,25 @@ NEW VARIABLES
 										"CallousedHands" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],250),\
 						  				"Hardening" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],50), \
 										"Flicker" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25));
-
+						
 						PowerMult=1+(0.05+(0.05*ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25)))
 						TimerLimit = round(p.secretDatum.secretVariable["Madness"]*0.72);//3 minutes of heroism :)
 
 
 
 						if(p.isRace(ELDRITCH))
-							if(!src.passives.Find("PureReduction"))
-								src.passives.Add("PureReduction" = 0)
-							if(!src.passives.Find("PureDamage"))
-								src.passives.Add("PureDamage" = 0)
 							TimerLimit=0;
 							EndMult=1+(0.2*p.AscensionsAcquired)
 							StrMult=1+(0.2*p.AscensionsAcquired)
 							ForMult=1+(0.2*p.AscensionsAcquired)
 							PowerMult+=(0.05*(p.AscensionsAcquired*2))
-							src.passives["PureReduction"] = p.AscensionsAcquired;
-							src.passives["PureDamage"] = p.AscensionsAcquired;
-
-
+							src.passives["PureDamage"]=p.AscensionsAcquired;
+							src.passives["PureReduction"]=p.AscensionsAcquired;
+						else
+							src.passives["PureDamage"]=0;
+							src.passives["PureReduction"]=0;
+							
+							
 
 				HealthThreshold=0.1
 				KenWave=4
@@ -9393,14 +9391,123 @@ NEW VARIABLES
 				ActiveMessage="unravels into a mind-rending series of shapes and textures!"
 				OffMessage="slowly becomes 3D once again..."
 				TextColor=rgb(153, 0, 0)
+				var/EldritchMinion=DEFAULT_ELDRITCH_MINION_ICON;
+				var/MinionX=0;
+				var/MinionY=0;
+
+				var/NightmareIcon=NIGHTMARE_FORM_DEFAULT;
+				var/NightmareX=0;
+				var/NightmareY=0;
+
+				verb/Unleash_Lunacy()
+					set category = "Secret"
+					if(!usr.isLunaticMode())
+						if(usr.canLunaticMode())
+							usr.LunaticModeOn();
+					else
+						usr.LunaticModeOff();
+
+				verb/Sacrifice()
+					set category = "Secret"
+					set name = "Ritual Sacrifice"
+
+					if(src.Using) return;
+					src.Using=1;
+					var/SecretInfomation/Eldritch/sInfo = usr.secretDatum;
+					var/limit = (usr.isRace(ELDRITCH) ? ELDRITCH_STOCK_RACIAL_LIMIT : ELDRITCH_STOCK_SECRET_LIMIT);
+					var/currentStock = sInfo.secretVariable["Resource Stock"] / limit * 100;
+					var/moneyMax = 100000;
+					var/mineralMax = 10000;
+
+					var/category = usr.prompt("What kind of sacrifice are you doing?", "Ritual Sacrifice", list("Money", "Mineral", "Nevermind"))
+					
+					if(category=="Nevermind")
+						src.Using=0;
+						return;
+					if(sInfo.secretVariable["Resource Stock"] >= limit)
+						usr << "You're capped out on resource sacrifices. There's nothing more to be gained right now.";
+						src.Using=0;
+						return;
+					
+					var/amtNeeded;
+					var/amt;
+
+					if(category == "Money")
+						amtNeeded = moneyMax - (currentStock / 100 * moneyMax);
+						amt = input(usr, "How much money are you going to sacrifice? You have [currentStock]% of your Resource Stock charged right now.") as num|null;
+						
+						if(!amt || amt <= 0)
+							src.Using=0;
+							return;
+						
+						if(amt > usr.GetMoney())
+							amt=usr.GetMoney();
+						if(amt > amtNeeded)
+							usr << "You'd only need [Commas(amtNeeded)] to cap out, so your sacrifice has been set to that amount."
+							usr << "Let's not be egregious about our outer entity worship, yeah?"
+							amt = amtNeeded;
+						
+						usr.TakeMoney(amt);
+						var/stock = amt / moneyMax * 100;
+						sInfo.addResourceStock(usr, stock);
+						usr << "You sacrifice [Commas(amt)] money to gain its worth in stockpiled eldritch power."
+
+					if(category == "Mineral")
+						amtNeeded = mineralMax - (currentStock / 100 * mineralMax);
+						amt = input(usr, "How many minerals are you going to sacrifice? You have [currentStock]% of your Resource Stock charged right now.") as num|null;
+						
+						if(!amt || amt <= 0)
+							src.Using=0;
+							return;
+						
+						if(amt > usr.GetMineral())
+							amt=usr.GetMineral();
+						if(amt > amtNeeded)
+							usr << "You'd only need [Commas(amtNeeded)] to cap out, so your sacrifice has been set to that amount."
+							usr << "Let's not be egregious about our outer entity worship, yeah?"
+							amt = amtNeeded;
+						
+						usr.TakeMineral(amt);
+						var/stock = amt / mineralMax * 100;
+						sInfo.addResourceStock(usr, stock);
+						usr << "You sacrifice [Commas(amt)] minerals to gain its worth in stockpiled eldritch power."
+
+					
+					usr << "You have [sInfo.secretVariable["Resource Stock"] / limit * 100]% Resource Stock cultivated.";
+					src.Using=0;
+
 				verb/Customize_True_Form()
-					set category = "Other"
+					set category = "Secret"
 					IconTransform=input(usr, "What icon will your True Form use?", "True Form Icon") as icon|null
 					if(IconTransform)
 						TransformX=input(usr, "Pixel X offset.", "True Form Icon") as num
 						TransformY=input(usr, "Pixel Y offset.", "True Form Icon") as num
 					NameFake = input(usr, "What will your name be while in True Form?", "True Form Icon") as text
 					HairLock = input(usr, "What will your hair look like while in True Form?", "True Form Icon") as icon|null
+				verb/Customize_Eldritch_Minion()
+					set category= "Secret"
+					
+					src.EldritchMinion = input(usr, "What icon will your eldritch minion use?", "Eldritch Minion Icon") as icon|null;
+					if(!src.EldritchMinion)
+						src.EldritchMinion=DEFAULT_ELDRITCH_MINION_ICON;
+						src.MinionX=0;
+						src.MinionY=0;
+						usr << "Eldritch Minion Icon reset to default."
+						return;
+					src.MinionX = input(usr, "What x offset does your eldritch minion use?", "Eldritch Minion Offset X") as num|null;
+					src.MinionY = input(usr, "What y offset does your eldritch minion use?", "Eldritch Minion Offset Y") as num|null;
+				verb/Customize_Nightmare_Form()
+					set category="Secret"
+					
+					src.NightmareIcon = input(usr, "What icon will your nightmare form use?", "Nightmare Form Icon") as icon|null;
+					if(!src.NightmareIcon)
+						src.NightmareIcon = NIGHTMARE_FORM_DEFAULT;
+						src.NightmareX = NIGHTMARE_FORM_DEFAULT_X;
+						src.NightmareY = NIGHTMARE_FORM_DEFAULT_Y;
+						usr << "Your Nightmare Form has been reset to the default."
+						return;
+					src.NightmareX = input(usr, "What x offset does your nightmare form use?", "Nightmare Form Offset X") as num|null;
+					src.NightmareY = input(usr, "What y offset does your nightmare form use?", "Nightmare Form Offset Y") as num|null;
 
 				Trigger(mob/User, Override = 0)
 					if(!User.BuffOn(src))
@@ -11341,6 +11448,9 @@ mob
 						if(istype(B, /obj/Skills/Buffs/SlotlessBuffs/Autonomous))
 							del B
 						return FALSE
+					if(src.HasMagicTaken())
+						src << "Your mana circuits are too damaged to use magic! ([(world.realtime - src.MagicTaken) / 1 HOURS] left)"
+						return;
 					if((B.Copyable>=3||!B.Copyable)&&!(istype(B, /obj/Skills/Buffs/SlotlessBuffs/Autonomous)))
 						if(!src.HasSpellFocus(B) && !B.MagicFocus)
 							src << "You need a spell focus to use [B]."

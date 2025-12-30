@@ -37,6 +37,8 @@
             applyDebuff(enemy, /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/Marked_Prey, FALSE, FALSE, FALSE)
         if(passive_handler["Heavy Strike"] == "Fox Fire")
             applyDebuff(enemy, /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/Soul_Drained, FALSE, FALSE, FALSE)
+    if(src.isLunaticMode())
+        src.InflictLunacy(1/(AttackQueue.MultiHit+AttackQueue.Combo), enemy);
     if(AttackQueue.Explosive)
         Bang(enemy.loc, AttackQueue.Explosive)
     if(AttackQueue.Shining)

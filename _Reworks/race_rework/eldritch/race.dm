@@ -1,3 +1,8 @@
+#define NIGHTMARE_FORM_DEFAULT 'Icons/Eldritch/EldritchNightmareForm.dmi'
+#define NIGHTMARE_FORM_DEFAULT_X -48
+#define NIGHTMARE_FORM_DEFAULT_Y -16
+
+
 race
 	eldritch
 		name = "Eldritch"

@@ -1907,6 +1907,9 @@ mob
 				if(src.HasMechanized()&&src.HasLimitlessMagic()!=1)
 					src << "You lack the ability to use magic!"
 					return
+				if(src.HasMagicTaken())
+					src << "Your mana circuits are too damaged to use magic! ([(world.realtime - src.MagicTaken) / 1 HOURS] left)"
+					return;
 				if(Q.Copyable>=3||!Q.Copyable)
 					if(src.Saga!="Persona"&&src.Saga!="Magic Knight"&&!src.is_arcane_beast)
 						var/obj/Items/Enchantment/Staff/st=src.EquippedStaff()

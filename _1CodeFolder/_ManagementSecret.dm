@@ -3,6 +3,9 @@
 
 #define MADNESS_MAX 100
 #define MADNESS_ADD_PER_TIER 25
+
+//todo between wipes: RENAME. THIS. TO. INFORMATION.
+//MOTHER FUCKER... 
 /mob/var/SecretInfomation/secretDatum = new()
 
 
@@ -284,12 +287,84 @@ SecretInfomation
 
 	Eldritch
 		name = "Eldritch"
-		secretVariable = list("Madness" = 0, "Madness Active" = 0, "Power From Blood" = 0, "Blood Stock" = 0, "Resource Stock" = 0)
+		secretVariable = list("Madness" = 0, "Madness Active" = 0, "Lunatic Mode" = 0, "Power From Blood" = 0, "Blood Stock" = 0, "Resource Stock" = 0)
 		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/Eldritch/True_Form")
 		applySecret(mob/p)
 			switch(currentTier)
 				if(1)
 					giveSkills(p)
+		proc/noMobCheck(mob/p, procName)
+			if(!p)
+				DEBUGMSG("Eldritch (Secret) [procName] does not have a mob argument.");
+				return 1;
+			return 0;
+
+		//todo this should hopefully be able to be removed between wipes
+		//should only trigger once
+		proc/updateSecretVariables(mob/p)
+			var/SecretInfomation/Eldritch/e = p.secretDatum;
+			e.secretVariable["Power From Blood"] = 0;
+			e.secretVariable["Lunatic Mode"] = 0;
+			e.secretVariable["Blood Stock"] = 0;
+			e.secretVariable["Resource Stock"] = 0;
+
+		proc/getPowerFromBlood(mob/p)
+			if(src.noMobCheck(p, "getPowerFromBlood")) return
+			addBloodStock(p, 100);
+			p.secretDatum.secretVariable["Power From Blood"]++;
+			p << "<font color='red'>You gain an unnatural level of proficiency in the magickal arts.</font color>";
+			p << "<font color='red'>Your Blood Stock is 100% charged by the atrocity you've inflicted.</font color>";
+		
+		#define ELDRITCH_STOCK_SECRET_LIMIT 50
+		#define ELDRITCH_STOCK_RACIAL_LIMIT 100
+		#define LUNATIC_MODE_MAX_TIMER 180
+		
+		proc/EndLunaticMode(mob/p)
+			if(src.noMobCheck(p, "EndLunaticMode")) return
+			p << "Your sacrificial stock has run its course; <b>Lunatic Mode is no longer active</b>."
+			src.secretVariable["Lunatic Mode"] = 0;
+
+		proc/useStock(mob/p)
+			if(src.noMobCheck(p, "useStock")) return
+			var/limit = ELDRITCH_STOCK_SECRET_LIMIT
+			if(p.isRace(ELDRITCH))
+				limit = ELDRITCH_STOCK_RACIAL_LIMIT;
+			var/stockUsing = p.secretDatum.secretVariable["Resource Stock"];
+			src.subResourceStock(p, p.secretDatum.secretVariable["Resource Stock"]);
+			if(stockUsing < limit)
+				stockUsing += p.secretDatum.secretVariable["Blood Stock"];
+				src.subBloodStock(p, p.secretDatum.secretVariable["Blood Stock"]);
+			if(stockUsing > limit)
+				src.addBloodStock(p, (stockUsing - limit));//add the remainder back
+				stockUsing = limit;//use only up to the limit
+			p.secretDatum.secretVariable["Lunatic Mode"] = (LUNATIC_MODE_MAX_TIMER * (stockUsing / 100));//Acts a timer for Lunatic Mode
+			p.LunaticModeEffect();
+
+		proc/addBloodStock(mob/p, val)
+			if(src.noMobCheck(p, "addBloodStock")) return
+			p.secretDatum.secretVariable["Blood Stock"] += val;
+			src.capBloodStock(p);
+		proc/subBloodStock(mob/p, val)
+			if(src.noMobCheck(p, "subBloodStock")) return
+			p.secretDatum.secretVariable["Blood Stock"] -= val;
+			src.capBloodStock(p);
+		proc/capBloodStock(mob/p)
+			if(src.noMobCheck(p, "capBloodStock")) return
+			var/limit = p.isRace(ELDRITCH) ? ELDRITCH_STOCK_RACIAL_LIMIT : ELDRITCH_STOCK_SECRET_LIMIT;
+			p.secretDatum.secretVariable["Blood Stock"] = clamp(p.secretDatum.secretVariable["Blood Stock"], 0, limit);
+		proc/addResourceStock(mob/p, val)
+			if(src.noMobCheck(p, "addResourceStock")) return
+			p.secretDatum.secretVariable["Resource Stock"] += val;
+			src.capResourceStock(p);
+		proc/subResourceStock(mob/p, val)
+			if(src.noMobCheck(p, "subResourceStock")) return
+			p.secretDatum.secretVariable["Resource Stock"] -= val
+			src.capResourceStock(p);
+		proc/capResourceStock(mob/p)
+			if(src.noMobCheck(p, "capResourceStock")) return
+			var/limit = p.isRace(ELDRITCH) ? ELDRITCH_STOCK_RACIAL_LIMIT : ELDRITCH_STOCK_SECRET_LIMIT;
+			p.secretDatum.secretVariable["Resource Stock"] = clamp(p.secretDatum.secretVariable["Resource Stock"], 0, limit);
+
 		proc/getMadnessLimit(mob/p)
 			. = MADNESS_MAX + (MADNESS_ADD_PER_TIER * (1+p.AscensionsAcquired))
 			if(. <0)

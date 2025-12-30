@@ -15,7 +15,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 38
+	var/UPDATE_VERSION = 39
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -615,6 +615,15 @@ update
 				o << "Eldritch have new ascensions; your's have been reverted, so hopefully you can pick them normally now!"
 				o << "But do make sure all your passives subtracted properly."
 				o << "Otherwise..."
+	version39
+		version = 39
+		updateMob(mob/o)
+			.=..()
+			if(o.Secret == "Eldritch")
+				var/SecretInfomation/Eldritch/e = o.secretDatum;
+				e.updateSecretVariables(o);
+				o << "Your eldritch secret variables have been updated."
+				o << "This should only ever happen ONCE! If it happens more times than that, contact Xoxo, something fucky."
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25

@@ -114,6 +114,9 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 		if(src.HasMechanized()&&src.HasLimitlessMagic()!=1)
 			src << "You lack the ability to use magic!"
 			return
+		if(src.HasMagicTaken())
+			src << "Your mana circuits are too damaged to use magic! ([(world.realtime - src.MagicTaken) / 1 HOURS] left)"
+			return;
 		if(Z.Copyable>=3||!Z.Copyable)
 			if(!src.HasSpellFocus(Z))
 				src << "You need a spell focus to use [Z]."
@@ -201,6 +204,9 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 
 			if("ReverseDash")
 				var/Modifier=1
+				if(src.Secret == "Eldritch")
+					if(src.secretDatum.secretVariable["Lunatic Mode"] > 0)
+						src.summonEldritchMinion();
 				if(src.Secret=="Haki")
 					if(src.secretDatum.secretVariable["HakiSpecialization"]=="Observation")
 						Modifier+=1
@@ -320,6 +326,11 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 						else
 							for(var/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Armor_Lite/H in src)
 								H.Trigger(src)
+
+				if(src.Secret == "Eldritch")
+					if(src.isLunaticMode())
+						src.Lunatic_Dash_Effect();
+						src.InflictLunacy(2, src.Target);
 
 				var/Distance=20
 				var/Delay=0.5

@@ -20,15 +20,7 @@
 /mob/proc/applySoftCC(mob/defender, val)
     if(defender.HasHardening())
         var/acu = passive_handler["Acupuncture"]
-        if(acu && prob(acu * glob.ACUPUNCTURE_BASE_CHANCE))
-            defender.Harden = clamp(defender.Harden - acu/glob.ACUPUNCTURE_DIVISOR, 0, glob.MAX_HARDEN_STACKS)
-        else
-            if(prob(glob.BASE_HARDENING_CHANCE * defender.GetHardening()))
-                defender.Harden = clamp(defender.Harden + defender.GetHardening()/glob.HARDEN_DIVISOR, 0, glob.MAX_HARDEN_STACKS)
-
-    // if(HasHardening())
-    //     if(prob(glob.BASE_HARDENING_CHANCE * GetHardening()))
-    //         Harden = clamp(Harden + GetHardening()/4, 0, 20)
+        defender.HardenAccumulate(acu);
     if(passive_handler["SoulTug"] && (defender.CyberCancel||defender.Mechanized))
         AddConfusing(passive_handler["SoulTug"]*glob.SOULTUGMULT)
     if(HasDisorienting())

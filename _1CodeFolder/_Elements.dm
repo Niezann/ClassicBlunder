@@ -561,13 +561,13 @@ mob
 		AddCrippling(var/Value, var/mob/Attacker=null)
 			if(src.Stasis)
 				return
-			if(isRace(DRAGON) && Class == "Wind")
-				Value /= 2
-			if(src.HasMythical() > 0.75)
-				Value = Value*(1-(src.Crippled/glob.DEBUFF_STACK_RESISTANCE))
-				src.Crippled+=Value
-			if(src.Crippled>100)
-				src.Crippled=100
+				
+			if(isRace(DRAGON) && Class == "Wind") Value /= 2
+			if(src.HasMythical() > 0.75) Value = Value*(1-(src.Crippled/glob.DEBUFF_STACK_RESISTANCE))
+
+			src.Crippled+=Value
+
+			if(src.Crippled>100) src.Crippled=100
 			for(var/obj/Items/Gear/Automated_Aid_Dispenser/AD in src)
 				if(AD.suffix&&AD.Uses)
 					AD.Uses--

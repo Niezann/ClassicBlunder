@@ -283,6 +283,14 @@ mob
 				src.WoundSelf(src.GetBleedHit()*0.15*leakVal)
 			if(src.HasBurnHit())
 				src.AddBurn(src.GetBurnHit()*0.15*leakVal, src)
+			
+			//If you are burned and have debuff reversal, smack fire into the other fighter
+			if(src.Burn && src.HasDebuffReversal())
+				defender.AddBurn(src.Burn/50, src);
+			//Same for poison
+			if(src.Poison && src.HasDebuffReversal())
+				defender.AddPoison(src.Poison/50, src);
+
 
 			var/mortalStrike = GetMortalStrike()
 			if(mortalStrike > 0  && FightingSeriously(src, 0))
@@ -752,10 +760,16 @@ mob
 						P.suffix="*Broken*"
 						del P
 			else
-				if(!defender.HasInjuryImmune())
-					defender.TotalInjury+=val
-				else
-					defender.TotalInjury+=val * (1 - defender.GetInjuryImmune())
+				var/woundTaken = val;
+				if(defender.HasInjuryImmune())
+					woundTaken *= (1 - defender.GetInjuryImmune());
+				defender.TotalInjury += woundTaken;
+
+				if(!src.isLunaticMode())
+					if(src.Secret == "Eldritch" && !FromSelf)//Attacker gains blood stock from wounds dealt
+						var/SecretInfomation/Eldritch/e = src.secretDatum;
+						e.addBloodStock(src, woundTaken);
+
 			if(defender.TotalInjury>=99)
 				defender.TotalInjury=99
 			defender.MaxHealth()
@@ -1580,12 +1594,7 @@ mob
 				var/h = (((missingHealth())/glob.REBELHEARTMOD) * passive_handler["Rebel Heart"])/10
 				Mod+=h
 			if(src.Harden)
-				var/max = glob.MAX_HARDEN_STACKS
-				if(passive_handler["IronMantle"])
-					max = 999
-				if(Harden>=max)
-					Harden = max
-				Mod *= 1 + (src.Harden * (glob.HARDENING_BASE * clamp(src.GetHardening(), 0.1, glob.MAX_HARDENING)))
+				Mod *= src.getHardenMult();
 			if(src.Shatter)
 				if(!src.HasDebuffResistance()>=1)
 					if(src.HasDebuffReversal())
@@ -2368,6 +2377,10 @@ mob
 			for(var/obj/Money/defender in src)
 				defender.Level-=Value
 				defender.name="[Commas(round(defender.Level))] [glob.progress.MoneyName]"
+		TakeMineral(val)
+			for(var/obj/Items/mineral/m in src)
+				m.Reduce(val)
+				m.name = "[Commas(round(m.value))] Mana Bits"
 		GiveMoney(var/Value)
 			for(var/obj/Money/defender in src)
 				defender.Level+=Value

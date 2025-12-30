@@ -4913,6 +4913,9 @@ mob
 				if(src.HasMechanized()&&src.HasLimitlessMagic()!=1)
 					src << "You lack the ability to use magic!"
 					return
+				if(src.HasMagicTaken())
+					src << "Your mana circuits are too damaged to use magic! ([(world.realtime - src.MagicTaken) / 1 HOURS] left)"
+					return;
 				if(Z.Copyable>=3||!Z.Copyable)
 					if(passive_handler.Get("Disarmed")&& !src.HasLimitlessMagic() || !src.HasBladeFisting())
 						Z.DamageMult = (Z.DamageMult / 2)

@@ -1,3 +1,4 @@
+//TODO between wipes: move this to the eldritch racial folder with the rest of eldritch stuff (i don't want to fuss with the game possibly thinking we're dealing with a new type)
 obj
 	Skills
 		Queue

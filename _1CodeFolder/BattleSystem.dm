@@ -2001,6 +2001,12 @@ mob/proc/Grab_Effects(var/mob/P)
 					P.SenseRobbed=0
 				if(P.KO)
 					P.Conscious()
+
+	if(src.Secret=="Eldritch" && P.KO && !P.HasMagicTaken())
+		var/confirm = src.prompt("You can feel the threads of [P]'s magic circuits. Are they your's, now?", "Take Magic", list("No", "Yes"));
+		if(confirm=="Yes")
+			src.EldritchMagicSteal(P);
+
 	if(src.Lethal>=1)
 		if(src.Secret=="Vampire")
 			if(P.KO&&istype(P, /mob/Players))
@@ -2043,3 +2049,4 @@ mob/proc/Grab_Effects(var/mob/P)
 							P.Death(null, "[src] ripping them apart!!", 1, NoRemains=1)
 							src.TotalInjury=0
 							src.HealHealth(50)
+
