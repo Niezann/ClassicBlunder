@@ -1012,7 +1012,7 @@ mob/proc/
 
 			if(src.HasKiControlMastery())
 				if(src.transActive())
-					if(src.race.transformations[transActive].mastery<50)
+					if(src.race.transformations[transActive].mastery<100)
 						PUGain*=1+(src.GetKiControlMastery())/2
 					else if(src.race.transformations[transActive].mastery>=100)
 						PUGain*=2+(src.GetKiControlMastery())
