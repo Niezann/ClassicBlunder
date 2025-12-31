@@ -51,8 +51,7 @@ var/knowledgePaths/magic/list/MagicTree = list()
 				if(GeneralMagicKnowledgeUnlocked<5)
 					buyList += knowledge
 			if(n == "Crest Legend")
-				if(CrestCreationUnlocked<7)
-					buyList += knowledge
+				buyList += knowledge//It's infinite now, OMNI
 			if(n == "Piloting Foundations")
 				if(PilotingProwess<7)
 					buyList += knowledge
