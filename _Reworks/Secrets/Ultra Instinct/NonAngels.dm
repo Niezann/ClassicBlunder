@@ -93,11 +93,11 @@
 		PUSpike = 25
 		adjust(mob/p)
 			if(p.isRace(CELESTIAL))
-				StyleStr=1.45
-				StyleFor=1.45
-				StyleSpd=2
-				StyleOff=2
-				StyleDef=2
+				StyleStr = 1.45
+				StyleFor = 1.45
+				StyleSpd = 2
+				StyleOff = 2
+				StyleDef = 2
 				passives = list("Deflection" = 1, "SoftStyle" = 1, "Flow" = 3, "Instinct" = 1, "CounterMaster" = 1,"UnarmedDamage"=5)
 		verb/Perfected_Mortal_Ultra_Instinct()
 			set hidden = 1
