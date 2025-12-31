@@ -701,6 +701,7 @@ obj/Skills/Utility
 			usr.passive_handler.Set("Determination(Yellow)", 0)
 			usr.passive_handler.Set("Determination(Green)", 0)
 			usr.passive_handler.Set("Determination(Purple)", 0)
+			usr.passive_handler.Set("Determination(Orange)", 0)
 			usr<<"You are now using the Red SOUL color."
 		verb/SoulYellow()
 			set category="Utility"
@@ -709,6 +710,7 @@ obj/Skills/Utility
 			usr.passive_handler.Set("Determination(Yellow)", 1)
 			usr.passive_handler.Set("Determination(Green)", 0)
 			usr.passive_handler.Set("Determination(Purple)", 0)
+			usr.passive_handler.Set("Determination(Orange)", 0)
 			usr<<"You are now using the Yellow SOUL color."
 	SoulShiftGreen
 		Copyable=0
@@ -719,6 +721,7 @@ obj/Skills/Utility
 			usr.passive_handler.Set("Determination(Yellow)", 0)
 			usr.passive_handler.Set("Determination(Green)", 1)
 			usr.passive_handler.Set("Determination(Purple)", 0)
+			usr.passive_handler.Set("Determination(Orange)", 0)
 			usr<<"You are now using the Green SOUL color."
 	SoulShiftPurple
 		Copyable=0
@@ -729,7 +732,19 @@ obj/Skills/Utility
 			usr.passive_handler.Set("Determination(Yellow)", 0)
 			usr.passive_handler.Set("Determination(Green)", 0)
 			usr.passive_handler.Set("Determination(Purple)", 1)
-			usr<<"You are now using the Green SOUL color."
+			usr.passive_handler.Set("Determination(Orange)", 0)
+			usr<<"You are now using the Purple SOUL color."
+	SoulShiftOrange
+		Copyable=0
+		verb/SoulOrange()
+			set category="Utility"
+			set name="SOUL Shift (Orange)"
+			usr.passive_handler.Set("Determination(Red)", 0)
+			usr.passive_handler.Set("Determination(Yellow)", 0)
+			usr.passive_handler.Set("Determination(Green)", 0)
+			usr.passive_handler.Set("Determination(Purple)", 0)
+			usr.passive_handler.Set("Determination(Orange)", 1)
+			usr<<"You are now using the Orange SOUL color."
 	UltimateHeal
 		ManaCost=100
 		Cooldown=-1
