@@ -602,6 +602,15 @@ mob
 
 globalTracker/var/DEBUFF_STACK_MAX = 100;
 
+/mob/proc/CleanseDebuff(amt)
+	var/list/debuff = list("Poison", "Burn", "Shatter", "Slow", "Shock", "Crippled", "Confused", "Stunned", "Sheared", "Attracted");
+	for(var/db in debuff)
+		src.vars["[db]"] -= amt;
+/mob/proc/shouldCleanse(mob/trg)
+	if(trg == src) return 1;
+	if(src.party && trg in src.party.members) return 1;
+	return 0;
+
 mob
 	proc
 		Debuffs()
@@ -681,12 +690,11 @@ mob
 
 			if(src.Attracted&&!src.Confused&&!src.Stunned)
 				src.Attracted--
-				if(src.Attracted<=0)
-					src.Attracted=0
-					src.AttractedTo=0
+			if(src.Attracted<=0)
+				src.Attracted=0
+				src.AttractedTo=0
 
 			if(!src.AttractedTo)
-				if(src.Attracted>0)
-					src.Attracted=0
+				src.Attracted=0
 
 

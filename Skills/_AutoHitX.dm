@@ -6332,28 +6332,8 @@ obj
 				if(Shearing)
 					m.AddShearing(Shearing, Owner)
 
-				if(Cleansing && m in src.Owner.party)
-					m.Slow -= Cleansing*10
-					if(m.Slow < 0)
-						m.Slow = 0
-					m.Crippled -= Cleansing*10
-					if(m.Crippled < 0)
-						m.Crippled = 0
-					m.Burn -= Cleansing*10
-					if(m.Burn < 0)
-						m.Burn = 0
-					m.Poison -= Cleansing*10
-					if(m.Poison < 0)
-						m.Poison = 0
-					m.Shatter -= Cleansing*10
-					if(m.Shatter < 0)
-						m.Shatter = 0
-					m.Shock -= Cleansing*10
-					if(m.Shock < 0)
-						m.Shock = 0
-					m.Sheared -= Cleansing*10
-					if(m.Sheared < 0)
-						m.Sheared = 0
+				if(Cleansing && src.Owner.shouldCleanse(m))
+					m.CleanseDebuff(Cleansing*10);
 
 				// if(src.CosmoPowered)
 				//  	if(!src.Owner.SpecialBuff)
@@ -6711,8 +6691,8 @@ obj
 								for(var/turf/t in Turf_Circle(src.TargetLoc, src.Distance))
 									sleep(-1)
 									for(var/mob/m in t)
-										if(!hitSelf&&src.Owner!=m)
-											src.Damage(m)
+										if(!hitSelf && src.Owner == m) continue
+										src.Damage(m)
 							else//If less than 3 distance...
 								if(src.TurfErupt)
 									for(var/turf/t in view(src.Distance, src.TargetLoc))
@@ -6745,8 +6725,8 @@ obj
 										sleep(-1)
 										TurfShift(src.TurfShift,t, src.TurfShiftDuration,src.Owner, src.TurfShiftLayer, src.TurfShiftDurationSpawn, src.TurfShiftDurationDespawn, TurfShiftState,TurfShiftX, TurfShiftY)
 								for(var/mob/m in view(src.Distance, src.TargetLoc))
-									if(!hitSelf&&src.Owner!=m)
-										src.Damage(m)
+									if(!hitSelf && src.Owner == m) continue
+									src.Damage(m)
 						goto Kill
 					else
 
@@ -6879,8 +6859,8 @@ obj
 								for(var/turf/t in Turf_Circle(src.Owner, src.Distance))
 									sleep(-1)
 									for(var/mob/m in t)
-										if(!hitSelf&&src.Owner!=m)
-											src.Damage(m)
+										if(!hitSelf && src.Owner == m) continue
+										src.Damage(m)
 							else//If less than 3 distance...
 								if(src.TurfErupt)
 									for(var/turf/t in view(src.Distance, src.Owner))
@@ -6913,8 +6893,8 @@ obj
 										sleep(-1)
 										TurfShift(src.TurfShift,t, src.TurfShiftDuration,src.Owner, src.TurfShiftLayer, src.TurfShiftDurationSpawn, src.TurfShiftDurationDespawn, TurfShiftState,TurfShiftX, TurfShiftY)
 								for(var/mob/m in view(src.Distance, src.Owner))
-									if(!hitSelf&&src.Owner!=m)
-										src.Damage(m)
+									if(!hitSelf&&src.Owner==m) continue
+									src.Damage(m)
 						goto Kill
 				if(src.Target)
 					if(src.Slow)
