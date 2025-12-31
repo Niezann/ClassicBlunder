@@ -35,7 +35,13 @@ obj
 				HitSparkIcon='Hit Effect Ripple.dmi'
 				HitSparkX=-32
 				HitSparkY=-32
-				HitSparkSize=1.3
+				HitSparkSize=1.5
 				Duration=5
 				ActiveMessage="unleashes the radiant beat of their heart, the Ripple of the Sun: <b><font color=#FFD700>Sunlight Yellow Overdrive!!!</font></b>"
+				adjust(mob/p)
+					var/secretlevel = p.getSecretLevel()
+					DamageMult= 1 * (secretlevel/2)
+					Combo=25 + (5 * secretlevel)
+					HolyMod=2.5 * secretlevel
+					Scorching= 5 * secretlevel
 				//set manually so no verb
