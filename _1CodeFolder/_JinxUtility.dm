@@ -59,6 +59,8 @@ mob
 				else
 					val=0
 			var/persistence = passive_handler["Persistence"]
+			if(passive_handler["Determination(Orange)"]||passive_handler["Determination(White)"])
+				persistence+=ManaAmount/20
 			if(prob(persistence * glob.PERSISTENCE_CHANCE_SELF)&&!HasInjuryImmune())
 				if(glob.PERSISTENCE_DIVIDES_DAMAGE)
 					var/clamped = clamp(persistence, glob.PRESISTENCE_DIVISOR_MIN, glob.PRESISTENCE_DIVISOR_MAX)
@@ -163,9 +165,11 @@ mob
 					defender.Anger()
 					val/=defender.AngerMax
 
-			if(defender.passive_handler.Get("Persistence")&&!defender.HasInjuryImmune())
+			if(defender.passive_handler.Get("Persistence")&&!defender.HasInjuryImmune()||defender.passive_handler.Get("Determination(Orange)")&&!defender.HasInjuryImmune()||defender.passive_handler.Get("Determination(Orange)")&&!defender.HasInjuryImmune())
 				if(FightingSeriously(src,defender))
 					var/desp = clamp(passive_handler.Get("Persistence"), 0.1, glob.MAX_PERSISTENCE_CALCULATED)
+					if(defender.passive_handler["Determination(Orange)"]||defender.passive_handler["Determination(White)"])
+						persistence+=ManaAmount/20
 					if(prob(desp)*glob.PERSISTENCE_CHANCE)
 						desp = clamp(desp, 1, glob.PRESISTENCE_DIVISOR_MAX)
 						if(glob.PERSISTENCE_NEGATES_DAMAGE)
