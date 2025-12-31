@@ -645,6 +645,7 @@ mob/var
 	ChosenFPS
 
 	AscendedDivine //for players who can read prayers
+	SenseReplacement
 
 /proc/reduceGodKi(mob/player, num)
 	player.GodKi -= num
