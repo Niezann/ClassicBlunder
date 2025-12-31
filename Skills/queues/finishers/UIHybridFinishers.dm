@@ -23,7 +23,7 @@
 		SweepStrike = 2
 		InstantStrikes = 4
 		Crushing = 20
-		DamageMult = 3
+		DamageMult = 1
 		GrabTrigger = "/obj/Skills/Grapple/Instinct_Reversal"
 		BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Flow_State"
 		BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Thrown_Off_Balance"
@@ -34,7 +34,7 @@
 		Warp = 4
 		Combo = 6
 		InstantStrikes = 3
-		DamageMult = 1.8
+		DamageMult = 0.5
 		Instinct = 2
 		Shining = 2
 		FollowUp = "/obj/Skills/AutoHit/Prismatic_Bloom"

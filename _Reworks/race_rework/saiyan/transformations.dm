@@ -382,10 +382,9 @@ transformation
 						x.Blend(rgb(150,-10,-10),ICON_ADD)
 
 			mastery_boons(mob/user)
-				passives = list("DisableGodKi" = 1, "GiantForm" = 1, "Juggernaut" = 1+(mastery/25), "BuffMastery" = 2, "SweepingStrike" = 1, "Brutalize" = 3,\
-				"Meaty Paws" = 2 + (mastery/50), "KiControlMastery" = 4, "PureReduction" = 3,\
-				"Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.1 + (mastery/200),\
-				"Flow" = 4, "Instinct" = 4, "Transformation Power" = clamp(user.AscensionsAcquired * 5, 1, 40), "Deicide" = 10,\
+				passives = list("Juggernaut" = 1+(mastery/25), "BuffMastery" = 2, "SweepingStrike" = 1, "Brutalize" = 3,\
+				"KiControlMastery" = 4, "PureReduction" = 3, "Reversal" = 0.1 + (mastery/200),\
+				"Flow" = 4, "Instinct" = 4, "Deicide" = 10,\
 				"Flicker" = 5, "Pursuer" = 5, "PureDamage"= 3,"EndlessNine"=0.25,"SSJ4LimitBreaker"=1)
 				speed = 1.25 + (mastery/400)
 				endurance = 1.25 + (mastery/400)
@@ -652,7 +651,7 @@ transformation
 			//UBuffNeeded
 		super_saiyan_blue_evolved
 			passives = list("GodKi" = 1, "Instinct" = 4, "Brutalize" = 1)
-			unlock_potential = 80
+			unlock_potential = 90
 			tier = 6
 			autoAnger = 1
 			form_aura_icon = 'SSBGlow.dmi'
@@ -672,7 +671,7 @@ transformation
 					endurance = 1.2
 				//evolved
 				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/pride)
-					passives = list("GodKi" = 0.5, "Brutalize" = 2, "MovementMastery" = 7, "EnergyLeak" = 3, "FatigueLeak"=1,\
+					passives = list("GodKi" = 0.5, "Brutalize" = 2, "MovementMastery" = 7, "EnergyLeak" = 3, "FatigueLeak"=3,\
 							 	"PureDamage" = 9, "PureReduction" = -2,"LikeWater" = 4, \
 								"Sunyata" = 6, "InBlueEvolved" = 1, "Pursuer" = 2)
 					strength = 1.35
@@ -687,6 +686,8 @@ transformation
 					endurance = 1.25
 					strength = 1.1
 					force = 1.1
+					defense = 1.25
+					speed = 1.1
 
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)

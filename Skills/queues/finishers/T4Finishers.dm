@@ -16,10 +16,10 @@
 		HitSparkIcon = 'Slash_Multi.dmi'
 		InstantStrikes=9
 		InstantStrikesDelay = 0.5
-		DamageMult=1.25
+		DamageMult=0.2
 		Stunner=4
 		SpeedStrike=1
-		FollowUp="/obj/Skills/AutoHit/Ashura Bakkei"
+		FollowUp="/obj/Skills/AutoHit/Ashura_Bakkei"
 		HitMessage="rushes forward, their aura manifesting six more blades, as they unleash a flurry of blows in the blink of an eye!"
 	Jinzen_Senkei
 		Stunner=1
@@ -40,7 +40,7 @@
 		Combo=9
 		InstantStrikes=3
 		InstantStrikesDelay=0.1
-		DamageMult=0.2
+		DamageMult=0.1
 		Stunner=4
 		SpeedStrike=1
 		FollowUp="/obj/Skills/AutoHit/The_Tenth_Strike"
@@ -50,7 +50,7 @@
 		KBMult=20
 		KBAdd = 20
 		Quaking=12
-		DamageMult=20
+		DamageMult=15
 		HitSparkIcon='fevExplosion.dmi'
 		HitSparkX=-32
 		HitSparkY=-32
@@ -110,7 +110,7 @@
 /obj/Skills/AutoHit
 	Big_Bang_Followup
 		Area="Circle"
-		DamageMult=15
+		DamageMult=8
 		Knockback = 1
 		ComboMaster=1
 		Stunner=3

@@ -4,7 +4,7 @@
 		FlickAttack=1
 		Area="Strike"
 		StrOffense=2
-		DamageMult=5
+		DamageMult=8
 		Stunner=3
 		Rush=3
 		RushDelay=0.1
@@ -26,7 +26,7 @@
 		FlickAttack=1
 		Area="Strike"
 		StrOffense=2
-		DamageMult=5
+		DamageMult=8
 		Stunner=3
 		Rush=3
 		RushDelay=0.1

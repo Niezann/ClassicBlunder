@@ -456,7 +456,7 @@ obj/Skills/Utility
 				if(M.z!=usr.z)
 					continue
 				if(!M.AdminInviso&&M.PowerControl>25)
-					if((usr.Saga=="Unlimited Blade Works" && usr.SagaLevel >= 2)||(!M.HasGodKi()&&!M.HasVoid()&&!M.HasMechanized()))
+					if((usr.Saga=="Unlimited Blade Works" && usr.SagaLevel >= 2))
 						if((!locate(M.EnergySignature) in usr.EnergySignaturesKnown)&&!usr.passive_handler.Get("SpiritPower"))
 							var/distancecalc=abs(M.x-usr.x)+abs(M.y-usr.y)
 							if(distancecalc<16)

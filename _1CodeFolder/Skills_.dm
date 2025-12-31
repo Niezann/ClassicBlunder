@@ -799,7 +799,13 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 									src.Kaioken=5
 									src <<"<b>Super Kaioken Times Twenty!</b>"
 								if(5)
-									src << "You're at your maximum level of Kaioken."
+									if(src.passive_handler.Get("Kaioken Blue"))
+										src.Kaioken=6
+										src <<"<b>Maximum Kaioken Blue!!!!!!</b>"
+									else
+										src << "You're at your maximum level of Kaioken."
+								if(6)
+									src<<"You cannot push your power any further."
 
 						else
 							switch(src.Kaioken)
@@ -880,6 +886,10 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 						if(5)
 							src.Kaioken=4
 							src << "<b>You relax your Kaioken to ten times!</b>"
+
+						if(6)
+							src.Kaioken=6
+							src << "<b>You relax your Kaioken to twenty times!</b>"
 					return
 					/*src << "You douse your Kaioken..."
 					src.SpecialBuff.Trigger(src)

@@ -52,8 +52,8 @@ obj/Skills/Utility/Mentor_System
 			Choice.Secret = "Ultra Instinct"
 		if(Choice.Secret=="Eldritch")
 			Mentor << "Deep within your student, something terrible stirs..."
-			Choice << "That thing within you stirs..."
-			//not yet
+			Choice << "You are, and have always been."
+			Choice.secretDatum.secretVariable["EldritchInstinct"]=1
 			return
 		switch(Choice.UILevel)
 			if(0)

@@ -865,7 +865,7 @@ mob
 				src.IaidoCounter++
 			if(src.UsingGladiator())
 				GladiatorCounter++
-			
+
 			if(src.isLunaticMode())
 				src.LunaticModeTimer();
 
@@ -1008,6 +1008,8 @@ mob
 					src<<"Your steroids wear off, leaving you feeling worn out and sore!"
 					src.OverClockNerf+=0.15
 					src.OverClockTime+=RawHours(1)
+			if(src.Kaioken>=6)
+				src.AddEndTax(0.005)
 
 			var/safety=0
 			while(src.ActiveBuff)

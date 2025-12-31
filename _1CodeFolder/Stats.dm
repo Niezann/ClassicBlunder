@@ -365,7 +365,7 @@ mob/Players/Stat()
 				if(usr.Target.MortallyWounded)
 					stat("<font color='red'>They are bleeding heavily.</font color>")
 
-				if(!usr.Target.HasGodKi()&&!usr.Target.passive_handler.Get("Heart of Darkness")&&!usr.Target.passive_handler.Get("Void")&&!usr.Target.HasMechanized()&&usr.Target.SenseUnlocked<7 || usr.Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Senses"))
+				if(!usr.Target.HasGodKi()&&!usr.Target.passive_handler.Get("Heart of Darkness")&&!usr.Target.passive_handler.Get("Sense Replacement")&&!usr.Target.passive_handler.Get("Void")&&!usr.Target.HasMechanized()&&usr.Target.SenseUnlocked<7 || usr.Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Senses"))
 					stat("Direction - [get_dist(usr, usr.Target)] tiles away","[CheckDirection(usr.Target)]")
 					stat("Power:","[Get_Sense_Reading(Target)]")
 					if(Target.BioArmor)
@@ -384,6 +384,10 @@ mob/Players/Stat()
 					stat("Energy: ","[(Target.Energy/Target.EnergyMax)*100]%")
 				else if(usr.Target.passive_handler.Get("Heart of Darkness"))
 					stat("Power: ", "<font color='red'><b>Boundless</b></font color>")
+				else if(usr.Target.passive_handler.Get("Sense Replacement"))
+					stat("Power: ", "<font color='red'>[Target.SenseReplacement]</font color>")
+					stat("Health: ","[Target.Health]%")
+					stat("Energy: ","[(Target.Energy/Target.EnergyMax)*100]%")
 				else
 					stat("Power: ", "Incomprehensible")
 					if(usr.HasClarity() || usr.passive_handler.Get("AdminVision") || usr.Saga=="Unlimited Blade Works" && usr.SagaLevel>=2||usr.Potential>=65)
@@ -740,6 +744,9 @@ mob/proc/
 					if(5)
 						src.PowerControl=350
 						src.KaiokenBP=1.7
+					if(6)
+						src.PowerControl=500
+						src.KaiokenBP=2
 			else
 				switch(src.Kaioken)
 					if(0)
@@ -760,6 +767,9 @@ mob/proc/
 					if(5)
 						src.PowerControl=300
 						src.KaiokenBP=1.7
+					if(6)
+						src.PowerControl=500
+						src.KaiokenBP=2
 		else
 			src.KaiokenBP=1
 //EPM modifications

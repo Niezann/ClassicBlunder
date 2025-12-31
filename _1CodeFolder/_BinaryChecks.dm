@@ -1189,7 +1189,7 @@ mob
 			return 0
 		GetUnarmedDamage()
 			var/UnarmedBuff=0
-			if(StyleBuff&&usingStyle("UnarmedStyle"))
+			if(StyleBuff&&usingStyle("UnarmedStyle")||secretDatum.secretVariable["EldritchInstinct"])
 				UnarmedBuff=StyleBuff.SignatureTechnique+1
 			return passive_handler.Get("UnarmedDamage") + UnarmedBuff
 		HasSpiritualDamage()
@@ -1786,11 +1786,13 @@ mob
 		HasGodKi()
 			if(passive_handler["CreateTheHeavens"])
 				return 1
+			if(passive_handler["Hidden Potential"])
+				return 1
 			if(passive_handler["DisableGodKi"])
 				return 0
 			if(passive_handler["EndlessNine"])
 				return 0
-			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=3)
+			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=3||secretDatum.secretVariable["EldritchInstinct"])
 				return 1
 			if(passive_handler.Get("GodKi"))
 				return 1
@@ -1807,10 +1809,12 @@ mob
 			return 0
 		GetGodKi()
 			var/Total=passive_handler.Get("GodKi")
-			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=3)
-				Total+=glob.T3_STYLES_GODKI_VALUE
-			if(glob.T4_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=4&&src.Potential>=70)
-				Total+=glob.T4_STYLES_GODKI_VALUE
+			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=3||secretDatum.secretVariable["EldritchInstinct"]==1&&src.Potential>=55)
+				if(src.SagaLevel<1)
+					Total+=glob.T3_STYLES_GODKI_VALUE
+			if(glob.T4_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=4&&src.Potential>=70||secretDatum.secretVariable["EldritchInstinct"]==1&&src.Potential>=70)
+				if(src.SagaLevel<1)
+					Total+=glob.T4_STYLES_GODKI_VALUE
 			if(src.HasSpiritPower()>=1 && FightingSeriously(src, 0))
 				if(src.Health<=(30+src.TotalInjury)*src.GetSpiritPower())
 					if(src.SenseUnlocked<7)//saintz
@@ -1819,21 +1823,27 @@ mob
 						Total+=(0.25*src.GetSpiritPower()*0.25)//halved rate for god ki saints
 			if(src.SenseUnlocked>6&&(src.SenseUnlocked>src.SenseRobbed))
 				if(src.SenseUnlocked>=7)
-					Total+=0.25
+					Total+=glob.SENSE7GODKI
 				if(src.SenseUnlocked>=8)
-					Total+=0.75
+					Total+=glob.SENSE8GODKI
 				if(SenseUnlocked >= 9)
-					Total += 1
+					Total += glob.SENSE9GODKI
 			if(src.CheckSlotless("Saiyan Soul")&&!src.HasGodKiBuff())
 				if(src.Target&&!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi())
 					Total+=src.Target.GetGodKi()/3
-			if(passive_handler.Get("CreateTheHeavens") && !HasGodKiBuff()&&isRace(HUMAN))
+			if(passive_handler.Get("CreateTheHeavens") && !HasGodKiBuff()&&isRace(HUMAN)||passive_handler.Get("Hidden Potential"))
 				if(src.Target)
-					if(src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens"))
+					if(src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential"))
 						if(Target.GetGodKi() > Total)
-							Total=Target.GetGodKi()
+							if(passive_handler.Get("DisableGodKi"))
+								Total=(Target.GetGodKi()/2)
+							else
+								Total=Target.GetGodKi()
 					else
-						Total+=Potential/200
+						if(passive_handler.Get("DisableGodKi"))
+							Total+=Potential/400
+						else
+							Total+=Potential/200
 			if(src.KamuiBuffLock)
 				Total+=0.75
 			if(src.isRace(DRAGON))
@@ -1843,9 +1853,11 @@ mob
 				Total += 1
 			if(passive_handler.Get("Kaioken Blue"))
 				if(src.Target)
-					if(src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens"))
+					if(src.Target.HasGodKi())
 						if(Target.GetGodKi() > Total)
 							Total+=src.Kaioken/2
+				if(src.Kaioken>=6)
+					Total+=3
 			return Total
 		HasEndlessNine()
 			if(passive_handler.Get("CreateTheHeavens"))
@@ -2745,7 +2757,7 @@ mob
 					return 1
 			return 0
 		UsingMasteredMartialStyle()
-			if(usingStyle("UnarmedStyle") && StyleBuff?.SignatureTechnique>=1)
+			if(usingStyle("UnarmedStyle") && StyleBuff?.SignatureTechnique>=1||secretDatum.secretVariable["EldritchInstinct"])
 				return 1
 			return 0
 		UsingMysticStyle()
@@ -2759,7 +2771,7 @@ mob
 			if(src.Saga=="Keyblade")
 				if(src.SagaLevel>=4)
 					return 1
-			if(usingStyle("MysticStyle") && StyleBuff?.SignatureTechnique>=1)
+			if(usingStyle("MysticStyle") && StyleBuff?.SignatureTechnique>=1||secretDatum.secretVariable["EldritchInstinct"])
 				return 1
 			if(src.isRace(DRAGON)&&src.AscensionsAcquired>=3)
 				return 1

@@ -1669,6 +1669,10 @@ NEW VARIABLES
 						p.passive_handler.Set("Super Kaioken", 1)
 				if(p.isRace(SAIYAN)&&p.transActive>=2||p.isRace(HALFSAIYAN)&&p.transActive>=2)
 					src.ActiveMessage="erupts with immense intensity, their golden aura overcome with a furious red!!"
+				if(p.passive_handler.Get("InBlue"))
+					p.passive_handler.Set("Kaioken Blue", 1)
+					p.passive_handler.Set("Super Kaioken", 1)
+					src.ActiveMessage="erupts with immense intensity, their blue and red auras coalescing into one!!!"
 				else
 					src.ActiveMessage="erupts with immense intensity!!"
 			verb/Kaioken()
@@ -1685,6 +1689,7 @@ NEW VARIABLES
 							usr.UseBuff(KC)
 				else
 					usr.passive_handler.Set("Kaioken", 0)
+					usr.passive_handler.Set("Kaioken Blue", 0)
 					usr.passive_handler.Set("Super Kaioken", 0)
 				usr.Auraz("Remove")
 				src.Trigger(usr)
@@ -9375,7 +9380,7 @@ NEW VARIABLES
 										"CallousedHands" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],250),\
 						  				"Hardening" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],50), \
 										"Flicker" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25));
-						
+
 						PowerMult=1+(0.05+(0.05*ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25)))
 						TimerLimit = round(p.secretDatum.secretVariable["Madness"]*0.72);//3 minutes of heroism :)
 
@@ -9392,8 +9397,8 @@ NEW VARIABLES
 						else
 							src.passives["PureDamage"]=0;
 							src.passives["PureReduction"]=0;
-							
-							
+
+
 
 				HealthThreshold=0.1
 				KenWave=4
@@ -9442,7 +9447,7 @@ NEW VARIABLES
 					var/mineralMax = 10000;
 
 					var/category = usr.prompt("What kind of sacrifice are you doing?", "Ritual Sacrifice", list("Money", "Mineral", "Nevermind"))
-					
+
 					if(category=="Nevermind")
 						src.Using=0;
 						return;
@@ -9450,25 +9455,25 @@ NEW VARIABLES
 						usr << "You're capped out on resource sacrifices. There's nothing more to be gained right now.";
 						src.Using=0;
 						return;
-					
+
 					var/amtNeeded;
 					var/amt;
 
 					if(category == "Money")
 						amtNeeded = moneyMax - (currentStock / 100 * moneyMax);
 						amt = input(usr, "How much money are you going to sacrifice? You have [currentStock]% of your Resource Stock charged right now.") as num|null;
-						
+
 						if(!amt || amt <= 0)
 							src.Using=0;
 							return;
-						
+
 						if(amt > usr.GetMoney())
 							amt=usr.GetMoney();
 						if(amt > amtNeeded)
 							usr << "You'd only need [Commas(amtNeeded)] to cap out, so your sacrifice has been set to that amount."
 							usr << "Let's not be egregious about our outer entity worship, yeah?"
 							amt = amtNeeded;
-						
+
 						usr.TakeMoney(amt);
 						var/stock = amt / moneyMax * 100;
 						sInfo.addResourceStock(usr, stock);
@@ -9477,24 +9482,24 @@ NEW VARIABLES
 					if(category == "Mineral")
 						amtNeeded = mineralMax - (currentStock / 100 * mineralMax);
 						amt = input(usr, "How many minerals are you going to sacrifice? You have [currentStock]% of your Resource Stock charged right now.") as num|null;
-						
+
 						if(!amt || amt <= 0)
 							src.Using=0;
 							return;
-						
+
 						if(amt > usr.GetMineral())
 							amt=usr.GetMineral();
 						if(amt > amtNeeded)
 							usr << "You'd only need [Commas(amtNeeded)] to cap out, so your sacrifice has been set to that amount."
 							usr << "Let's not be egregious about our outer entity worship, yeah?"
 							amt = amtNeeded;
-						
+
 						usr.TakeMineral(amt);
 						var/stock = amt / mineralMax * 100;
 						sInfo.addResourceStock(usr, stock);
 						usr << "You sacrifice [Commas(amt)] minerals to gain its worth in stockpiled eldritch power."
 
-					
+
 					usr << "You have [sInfo.secretVariable["Resource Stock"] / limit * 100]% Resource Stock cultivated.";
 					src.Using=0;
 
@@ -9508,7 +9513,7 @@ NEW VARIABLES
 					HairLock = input(usr, "What will your hair look like while in True Form?", "True Form Icon") as icon|null
 				verb/Customize_Eldritch_Minion()
 					set category= "Secret"
-					
+
 					src.EldritchMinion = input(usr, "What icon will your eldritch minion use?", "Eldritch Minion Icon") as icon|null;
 					if(!src.EldritchMinion)
 						src.EldritchMinion=DEFAULT_ELDRITCH_MINION_ICON;
@@ -9520,7 +9525,7 @@ NEW VARIABLES
 					src.MinionY = input(usr, "What y offset does your eldritch minion use?", "Eldritch Minion Offset Y") as num|null;
 				verb/Customize_Nightmare_Form()
 					set category="Secret"
-					
+
 					src.NightmareIcon = input(usr, "What icon will your nightmare form use?", "Nightmare Form Icon") as icon|null;
 					if(!src.NightmareIcon)
 						src.NightmareIcon = NIGHTMARE_FORM_DEFAULT;

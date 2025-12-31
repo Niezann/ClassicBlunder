@@ -459,6 +459,7 @@ obj/Items
 					usr.HealEnergy(100)
 					usr.HealMana(100)
 					usr.StrTax=0
+					usr.ForTax=0
 					usr.EndTax=0
 					usr.SpdTax=0
 					usr.OffTax=0

@@ -947,6 +947,14 @@ mob/Admin2/verb
 		A.BPPoisonTimer=0
 //		A.TotalCapacity=0
 		A.InjuryAnnounce=0
+		A.StrTax=0
+		A.ForTax=0
+		A.EndTax=0
+		A.SpdTax=0
+		A.OffTax=0
+		A.DefTax=0
+		A.GatesNerfPerc=0
+		A.GatesNerf=0
 		Log("Admin","<font color=aqua>[ExtractInfo(usr)] complete-admin-healed [ExtractInfo(A)].")
 	AdminHealCapacity(var/mob/m in players)
 		set category="Admin"
@@ -1091,7 +1099,21 @@ mob/Admin3/verb
 		M.race.transformations += new /transformation/saiyan/super_saiyan_4()
 		M.race.transformations += new /transformation/saiyan/super_full_power_saiyan_4_limit_breaker()
 		M<<"<b>Your transformations have been fixed!!! You'll have to ask an admin to remaster them.</b>"
-//		M.race.transformations += new /transformation/celestial/unlimited_high_tension()
+	FixSSJGTransformations(mob/M in players)
+		set category="Admin"
+		if(!M.client)
+			return
+		for(var/transformation/saiyan/ssj in M.race.transformations)
+			M.race.transformations -=ssj
+			del ssj
+		M.race.transformations += new /transformation/saiyan/super_saiyan()
+		M.race.transformations += new /transformation/saiyan/super_saiyan_2()
+		M.race.transformations += new /transformation/saiyan/super_saiyan_3()
+		M.race.transformations += new /transformation/saiyan/super_saiyan_god()
+		M.race.transformations += new /transformation/saiyan/super_saiyan_blue()
+		M.race.transformations += new /transformation/saiyan/super_saiyan_blue_evolved()
+		M<<"<b>Your transformations have been fixed!!! You'll have to ask an admin to remaster them.</b>"
+
 	UnMute()
 		set category="Admin"
 		var/list/people=list("Cancel")
