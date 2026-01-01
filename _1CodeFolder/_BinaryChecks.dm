@@ -855,8 +855,10 @@ mob
 					kkmast=kk.Mastery
 				Return+=src.Kaioken/kkmast
 			if(src.DoubleHelix)
-				if(src.DoubleHelix>=2&&src.transActive<5)
+				if(src.DoubleHelix==1&&src.transActive<5)
 					Return +=src.DoubleHelix*0.25
+				if(src.DoubleHelix>=2&&src.transActive<5)
+					Return +=src.DoubleHelix*0.5
 				if(src.DoubleHelix>=5)
 					Return +=src.DoubleHelix/2
 			if(src.HasHealthPU())
@@ -896,8 +898,10 @@ mob
 				if(race.transformations[transActive].mastery>10&&race.transformations[transActive].mastery<75)
 					Total+=src.transActive()*0.25
 			if(src.DoubleHelix)
+				if(src.DoubleHelix==1&&src.transActive<5)
+					Return +=src.DoubleHelix*0.25
 				if(src.DoubleHelix>=2&&src.transActive<5)
-					Total +=src.DoubleHelix*0.25
+					Total +=src.DoubleHelix*0.5
 			if(passive_handler.Get("Pride"))
 				PrideDrain=(100-Health)*0.01
 				if(PrideDrain>1)
@@ -976,7 +980,7 @@ mob
 		GetCyberStigma()
 			return passive_handler.Get("CyberStigma")
 		HasKiControl()
-			if(passive_handler.Get("KiControl"))
+			if(passive_handler.Get("KiControl")||passive_handler.Get("DoubleHelix"))
 				return 1
 			return 0
 		HasKiControlMastery()
