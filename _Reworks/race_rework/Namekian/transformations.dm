@@ -59,7 +59,7 @@ transformation
 						else
 							passives = list("Instinct" = round(max(user.AscensionsAcquired, 1)), "Flow" = round(max(user.AscensionsAcquired, 1)), "Flicker" = round(max(user.AscensionsAcquired*1.5, 2)), \
 							"Pursuer" = round(max(user.AscensionsAcquired, 1)),  "BuffMastery" = round(max(user.AscensionsAcquired*1.25, 1)),\
-							"PureDamage" = round(max(user.AscensionsAcquired, 1)), "PureReduction" = round(max(user.AscensionsAcquired, 1)),  "MovementMastery" = round(max(user.AscensionsAcquired*1.5, 1)), "GodKi"=0.5)
+							"PureDamage" = round(max(user.AscensionsAcquired, 1)), "PureReduction" = round(max(user.AscensionsAcquired, 1)),  "MovementMastery" = round(max(user.AscensionsAcquired*1.5, 1)), "Orange Namekian"=1)
 						speed = 1.5
 						offense = 1.5
 						defense = 1.5
