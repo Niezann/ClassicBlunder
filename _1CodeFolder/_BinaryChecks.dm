@@ -855,8 +855,10 @@ mob
 					kkmast=kk.Mastery
 				Return+=src.Kaioken/kkmast
 			if(src.DoubleHelix)
-				if(src.DoubleHelix>=2&&src.transActive<5)
+				if(src.DoubleHelix==1&&src.transActive<5)
 					Return +=src.DoubleHelix*0.25
+				if(src.DoubleHelix>=2&&src.transActive<5)
+					Return +=src.DoubleHelix*0.5
 				if(src.DoubleHelix>=5)
 					Return +=src.DoubleHelix/2
 			if(src.HasHealthPU())
@@ -896,8 +898,10 @@ mob
 				if(race.transformations[transActive].mastery>10&&race.transformations[transActive].mastery<75)
 					Total+=src.transActive()*0.25
 			if(src.DoubleHelix)
-				if(src.DoubleHelix>=2&&src.transActive<5)
+				if(src.DoubleHelix==1&&src.transActive<5)
 					Total +=src.DoubleHelix*0.25
+				if(src.DoubleHelix>=2&&src.transActive<5)
+					Total +=src.DoubleHelix*0.5
 			if(passive_handler.Get("Pride"))
 				PrideDrain=(100-Health)*0.01
 				if(PrideDrain>1)
@@ -976,7 +980,7 @@ mob
 		GetCyberStigma()
 			return passive_handler.Get("CyberStigma")
 		HasKiControl()
-			if(passive_handler.Get("KiControl"))
+			if(passive_handler.Get("KiControl")||passive_handler.Get("DoubleHelix"))
 				return 1
 			return 0
 		HasKiControlMastery()
@@ -1784,7 +1788,7 @@ mob
 		HasGodKi()
 			if(passive_handler["CreateTheHeavens"])
 				return 1
-			if(passive_handler["Hidden Potential"])
+			if(passive_handler["Hidden Potential"]||passive_handler["Orange Namekian"])
 				return 1
 			if(passive_handler["DisableGodKi"])
 				return 0
@@ -1829,19 +1833,20 @@ mob
 			if(src.CheckSlotless("Saiyan Soul")&&!src.HasGodKiBuff())
 				if(src.Target&&!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi())
 					Total+=src.Target.GetGodKi()/3
-			if(passive_handler.Get("CreateTheHeavens") && !HasGodKiBuff()&&isRace(HUMAN)||passive_handler.Get("Hidden Potential"))
+			if(passive_handler.Get("CreateTheHeavens") && !HasGodKiBuff()&&isRace(HUMAN)||passive_handler.Get("Hidden Potential")||passive_handler.Get("Orange Namekian"))
 				if(src.Target)
-					if(src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential"))
-						if(Target.GetGodKi() > Total)
-							if(passive_handler.Get("DisableGodKi"))
-								Total=(Target.GetGodKi()/4)
-							else
-								Total=Target.GetGodKi()
+					if(src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential")&&!src.Target.passive_handler.Get("Orange Namekian"))
+						if(Target.GetGodKi() > Total&&!passive_handler.Get("DisableGodKi")&&!passive_handler.Get("Orange Namekian"))
+							Total=Target.GetGodKi()
+						else if(Target.GetGodKi() > Total/1.25&&passive_handler.Get("Orange Namekian"))
+							Total=(Target.GetGodKi()/1.25)
+						else if(Target.GetGodKi() > Total/4&&passive_handler.Get("DisableGodKi"))
+							Total=(Target.GetGodKi()/4)
 					else
 						if(passive_handler.Get("DisableGodKi"))
 							Total+=Potential/400
 						else
-							Total+=Potential/200
+							Total+=Potential/100
 			if(src.KamuiBuffLock)
 				Total+=0.75
 			if(src.isRace(DRAGON))
