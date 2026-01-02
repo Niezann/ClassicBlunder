@@ -1348,7 +1348,7 @@ NEW VARIABLES
 					src.SwordX=-32
 					src.SwordY=-32
 					if(usr.KeychainAttached=="Way To Dawn")
-						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 2, "HolyMod" = 3, "AbyssMod" = 3, "SpiritPower" = 0.25 )
+						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 2, "HolyMod" = 3, "AbyssMod" = 3, "SpiritPower" = 0.75 )
 						src.HolyMod=3
 						src.AbyssMod=3
 					else
@@ -9369,8 +9369,8 @@ NEW VARIABLES
 					if(!altered)
 						passives = list("Void" = 1,\
 										"Curse" = 1,\
-										"DeathField" = (3 * p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
-										"VoidField" = (3 * p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+										"DeathField" = (1 * p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+										"VoidField" = (1 * p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
 										"SoulFire" = (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
 										"Instinct" = (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
 						 				"Godspeed" =  (1+(p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired)),\

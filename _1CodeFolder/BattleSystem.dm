@@ -214,7 +214,7 @@ mob/proc/Unconscious(mob/P,var/text)
 			src.HealthAnnounce10=3
 			return
 	if(src.passive_handler.Get("Alter The Future"))
-		if(src.HealthAnnounce10<=4&&FightingSeriously(P,src))
+		if(src.HealthAnnounce10<=4)
 			if(prob(src.passive_handler.Get("Alter The Future")))
 				src.KO=0
 				src.OMessage(15, "...but [src] rewrites the future to prevent their defeat!", "<font color=red>[src]([src.key]) rewrites the future!")
@@ -229,9 +229,9 @@ mob/proc/Unconscious(mob/P,var/text)
 			src.OMessage(15, "...<b>but [src] evolves one final time, pushing out every last bit of their potential!!!!</b>", "<font color=red>[src]([src.key]) activates Unlimited High Tension!!!")
 			src.Health=5
 			if(src.isRace(HUMAN))
-				src.VaizardHealth+=25
+				src.VaizardHealth+=20
 			if(src.isRace(CELESTIAL))
-				src.VaizardHealth+=15
+				src.VaizardHealth+=10
 			src.HealthAnnounce10=6
 			src.race.transformations[5].transform(src, TRUE)
 			return

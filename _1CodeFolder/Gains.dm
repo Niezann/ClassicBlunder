@@ -1009,7 +1009,7 @@ mob
 					src.OverClockNerf+=0.15
 					src.OverClockTime+=RawHours(1)
 			if(src.Kaioken>=6)
-				src.AddEndTax(0.005)
+				src.AddEndTax(0.001)
 
 			var/safety=0
 			while(src.ActiveBuff)

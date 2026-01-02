@@ -888,7 +888,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 							src << "<b>You relax your Kaioken to ten times!</b>"
 
 						if(6)
-							src.Kaioken=6
+							src.Kaioken=5
 							src << "<b>You relax your Kaioken to twenty times!</b>"
 					return
 					/*src << "You douse your Kaioken..."

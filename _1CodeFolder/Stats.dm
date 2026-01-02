@@ -722,7 +722,7 @@ mob/proc/
 				if(4)
 					src.PowerControl=550
 				if(5)
-					src.PowerControl=1000
+					src.PowerControl=700
 		if(src.passive_handler.Get("Kaioken"))
 			if(src.passive_handler.Get("Super Kaioken"))
 				switch(src.Kaioken)
