@@ -173,17 +173,18 @@
 
 
 /obj/Skills/Projectile/Divine_Departure
-    EnergyCost = 5
-    Cooldown = 30
+    EnergyCost = 15
+    Cooldown = 160
     MultiHit = 5
-    EndRate = 1
+    EndRate = 0.6
     FadeOut = 5
     Slashing = 1
     Knockback = 3
     AccMult = 2
     Dodgeable = 0
     Deflectable = 0
-    DamageMult = 2
+    DamageMult = 6
+    Piercing = 1
     MortalBlow = 0.5
     Radius = 3
     HyperHoming=1
@@ -191,8 +192,14 @@
     HomingCharge=1
     HomingDelay=1
     Devour = 1
-    StrRate = 1
-    ForRate = 1
+    StrRate = 1.5
+    ForRate = 1.25
+    Explode=3
+    ExplodeIcon='Black_Flash_Hitspark_1.dmi'
+    IconLock='BlackGetsuga.dmi'
+    LockX=-40
+    LockY=-40
+    ActiveMessage="cleaves space with their Black Blade, sending forth an explosion dyed the Colour of the King!"
     verb/Divine_Departure()
         set category="Skills"
         set name = "Divine Departure"
