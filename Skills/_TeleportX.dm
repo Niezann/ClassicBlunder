@@ -94,6 +94,7 @@ obj/Skills
 			WindUpIcon='Icons/Effects/BlackHoleEnter.dmi'
 			WindDown=0.7
 			WindDownIcon='Icons/Effects/BlackHoleExit.dmi'
+			Cooldown=-1
 			TeleportMessage="warps away on the wind of gods!"
 			ArriveMessage="arrives thanks to godly transmission!"
 			verb/Kai_Kai()
@@ -124,7 +125,8 @@ obj/Skills
 			NoPassengers=0
 			NoCoordinates=1
 			FocalPerson=1
-			Cooldown=10
+			Cooldown=300
+			CooldownStatic=1
 			TeleportMessage="focuses on a distant power before vanishing!"
 			ArriveMessage="appears instantly!"
 			var/ClickTeleportToggle=1
