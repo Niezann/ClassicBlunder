@@ -680,7 +680,7 @@ transformation
 					endurance = 0.75
 				//enraged
 				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/honor)
-					passives = list("GodKi" = 0.25, "Brutalize" = 2, "MovementMastery" = 5 \
+					passives = list("GodKi" = 0.25, "Brutalize" = 2, "MovementMastery" = 5, \
 							 	"PureDamage" = 2,"PureReduction" = 5, "LikeWater" = 4, "BleedHit"=0.75, \
 								"Persistence" = 3, "InBlueEvolved" = 1, "UnderDog" = 5, "Flicker" = 3)
 					endurance = 1.25
