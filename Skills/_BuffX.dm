@@ -9373,8 +9373,8 @@ NEW VARIABLES
 					if(!altered)
 						passives = list("Void" = 1,\
 										"Curse" = 1,\
-										"DeathField" = (1 * p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
-										"VoidField" = (1 * p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+										"DeathField" = 1 * (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
+										"VoidField" = 1 * (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
 										"SoulFire" = (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
 										"Instinct" = (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
 						 				"Godspeed" =  (1+(p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired)),\
