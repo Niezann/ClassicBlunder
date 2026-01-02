@@ -5,7 +5,7 @@
 #define MADNESS_ADD_PER_TIER 25
 
 //todo between wipes: RENAME. THIS. TO. INFORMATION.
-//MOTHER FUCKER... 
+//MOTHER FUCKER...
 /mob/var/SecretInfomation/secretDatum = new()
 
 
@@ -159,11 +159,11 @@ SecretInfomation
 			p << "You have awakened the power of Conqueror's Haki!"
 			secretVariable["ConquerorsHaki"] = 1
 			p.AddSkill(new/obj/Skills/AutoHit/Haki/Conquerors_Haki)
+			p.AddSkill(new/obj/Skills/Queue/Haki/Kings_Infusion)
+			p << "You can now infuse your Fist with the power of your Conquerer's Will!"
 		proc/conqPaths(mob/p)
 			if(secretVariable["ConquerorsHaki"] == 1)
 				switch(currentTier)
-					if(2)
-						p.AddSkill(new/obj/Skills/Queue/Haki/Kings_Infusion)
 					if(4)
 						var/path = input(p, "Which path of Conqueror's Haki do you wish to follow?", "Conqueror's Haki") in list("Unarmed", "Armed")
 						if(path == "Unarmed")
@@ -326,11 +326,11 @@ SecretInfomation
 			p.secretDatum.secretVariable["Power From Blood"]++;
 			p << "<font color='red'>You gain an unnatural level of proficiency in the magickal arts.</font color>";
 			p << "<font color='red'>Your Blood Stock is 100% charged by the atrocity you've inflicted.</font color>";
-		
+
 		#define ELDRITCH_STOCK_SECRET_LIMIT 50
 		#define ELDRITCH_STOCK_RACIAL_LIMIT 100
 		#define LUNATIC_MODE_MAX_TIMER 180
-		
+
 		proc/EndLunaticMode(mob/p)
 			if(src.noMobCheck(p, "EndLunaticMode")) return
 			p << "Your sacrificial stock has run its course; <b>Lunatic Mode is no longer active</b>."

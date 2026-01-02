@@ -1,6 +1,6 @@
 obj/Skills
 	Teleport
-		Cooldown=600
+		Cooldown=300
 		var
 			NoPassengers=1/*Doesn't allow for passengers*/
 			PassengerHeal=0/*heals people drawn by the transport*/
@@ -125,7 +125,7 @@ obj/Skills
 			NoPassengers=0
 			NoCoordinates=1
 			FocalPerson=1
-			Cooldown=300
+			Cooldown=60
 			CooldownStatic=1
 			TeleportMessage="focuses on a distant power before vanishing!"
 			ArriveMessage="appears instantly!"
