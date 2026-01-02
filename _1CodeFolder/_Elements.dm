@@ -610,6 +610,11 @@ globalTracker/var/DEBUFF_STACK_MAX = 100;
 	if(trg == src) return 1;
 	if(src.party && trg in src.party.members) return 1;
 	return 0;
+/mob/proc/RefreshBlow(refreshingBlow)
+	if(!src.party) return 0;
+	for(var/mob/m in oview(refreshingBlow * 2, src))
+		if(m in src.party.members)
+			m.CleanseDebuff(refreshingBlow);
 
 mob
 	proc
