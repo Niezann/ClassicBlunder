@@ -181,7 +181,7 @@
     Slashing = 1
     Knockback = 3
     AccMult = 2
-    Dodgeable = 0
+    Dodgeable = 1
     Deflectable = 0
     DamageMult = 6
     Piercing = 1
