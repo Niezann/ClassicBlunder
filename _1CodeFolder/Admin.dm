@@ -1601,6 +1601,7 @@ mob/Admin4/verb
 		var/z = input(usr, "Z for void?") as num|null
 		if(!x || !y || !z) return
 		glob.VOID_LOCATION = list(x,y,z)
+		glob.currentlyVoidingLoc=list(x,y,z)
 mob/Admin3/verb
 
 	SetGlobalDamage()
