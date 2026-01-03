@@ -130,11 +130,16 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/Shining_Star
 obj/Skills/Buffs/SlotlessBuffs/Autonomous/Unwavering_Soul
 	TooMuchHealth = 100
 	NeedsHealth=99
-	StrMult=1.1
+	StrMult=1.35
 	EndMult = 1.5
-	BioArmor=50
 	Cooldown = 1
 	passives = list("Unstoppable" =1)
+	adjust(mob/p)
+		BioArmor=0
+		VaizardHealth = (50 * (p.Potential/100))
+	Trigger(mob/User, Override=FALSE)
+		adjust(User)
+		..()
 obj/Skills/Buffs/SlotlessBuffs/Autonomous/Hero_Of_Chaos
 	TooMuchHealth = 100
 	NeedsHealth=99
@@ -1025,7 +1030,7 @@ obj/Skills/Buffs
 			EnergyHeal=1
 			ActiveMessage="casts aside their durability to call forth a miraculous turnaround. <b>All Hail the Comeback King</b>."
 			OffMessage="casts aside the burden of the Comeback King."
-			passives = list("Unstoppable" = -1, "HellPower"=0.1, "UnderDog"=1, "Rage" = 1, "KiControl" = 1)
+			passives = list("Unstoppable" = -1, "HellPower"=0.5, "UnderDog"=5, "Rage" = 1, "KiControl" = 1)
 			adjust(mob/p)
 				if(p.isRace(MAKYO))
 					AngerMult = 2
@@ -1033,7 +1038,7 @@ obj/Skills/Buffs
 					 "ManaLeak" = 0, "GiantForm" = round(p.AscensionsAcquired/2), "Godspeed" = p.AscensionsAcquired, "PUSpike" = 75, "Pursuer" = 2*p.AscensionsAcquired)
 				else
 					AngerMult = 1
-					passives = list("Unstoppable" = -1, "HellPower"=0.1, "UnderDog"=1, "Rage" = 1, "KiControl" = 1)
+					passives = list("Unstoppable" = -1, "HellPower"=0.5, "UnderDog"=5, "Rage" = 5, "KiControl" = 1)
 			verb/Comeback_King()
 				set category="Skills"
 				adjust(usr)
@@ -1085,7 +1090,7 @@ obj/Skills/Buffs
 			SwordAscension=6
 			passives = list("PUSpike"=50, "AbyssMod" = 3, "BlurringStrikes"=3, "HolyMod" = 3, "HellPower"=0.1, "Determination(Black)"=1, "KiControl" = 1)
 			ActiveMessage="materializes the Black Knife."
-			OffMessage="puts the black knight away."
+			OffMessage="puts the black knife away."
 			adjust(mob/p)
 				passives = list("PUSpike"=50, "AbyssMod" = 3, "BlurringStrikes"=5, "HolyMod" = 3, "HellPower"=0.1, "Determination(Black)"=1, "KiControl" = 1)
 				PowerMult=1.25

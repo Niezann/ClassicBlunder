@@ -365,7 +365,6 @@ transformation
 			defense = 1.5
 			strength = 1.3
 			force = 1.3
-			revertToTrans = 0
 			var/previousTailIcon
 			var/previousTailUnderlayIcon
 			var/previousTailWrappedIcon
@@ -406,7 +405,6 @@ transformation
 			revert(mob/user)
 				. = ..()
 				if(!is_active || !user.CanRevert()) return
-				user.transActive = 0
 				user.TailIcon = previousTailIcon
 				user.TailIconUnderlay = previousTailUnderlayIcon
 				user.TailIconWrapped = previousTailWrappedIcon
@@ -556,11 +554,11 @@ transformation
 			form_aura_icon = 'SSBGlow.dmi'
 			form_aura_x = -32
 			form_aura_y = -32
-			strength = 1.3
+			strength = 1.4
 			speed = 1.5
-			offense = 1.3
-			defense = 1.3
-			force = 1.3
+			offense = 1.4
+			defense = 1.4
+			force = 1.4
 			mastery_boons(mob/user)
 				passives = list("GodKi" = 0.75, "Instinct" = 4, "Brutalize" = 3, "Steady" = 5,  "BuffMastery" = 8, "MovementMastery" = 8, \
 								"PureDamage" = 5, "PureReduction" = 4, "InBlue" = 1, "Godspeed" = 4, "Pursuer" = 4, "LikeWater"=6,"Flicker"=4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20))
@@ -588,8 +586,6 @@ transformation
 
 
 			transform(mob/user)
-				if(user.CheckSlotless("Beyond God")&&user.transUnlocked>=5)
-					..()
 				if(user.transActive==1&&user.transUnlocked>=5)
 					user.Revert()
 					user.transActive = 1
@@ -646,8 +642,9 @@ transformation
 							user.appearance_flags-=16
 
 			revert(mob/user)
-				user.transActive = 1
+		//		user.transActive = 1
 				..()
+				user.transActive = 0
 			//UBuffNeeded
 		super_saiyan_blue_evolved
 			passives = list("GodKi" = 1, "Instinct" = 4, "Brutalize" = 1)

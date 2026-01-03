@@ -535,7 +535,7 @@ obj/Skills/Utility
 							final += T
 		// SORTS THE TRANSFORMATION LIST SO THAT THE FIRST SUPER SAIYAN GOD/SSJ4 DOES NOT GO HELLSPAWN SUPER SAIYAN LMFAOOOOOOOOOOO
 					var/list/ordered = list()
-					for(var/i = 1, i <= 5, i++)
+					for(var/i = 1, i <= 6, i++)
 						for(var/transformation/saiyan/T in final)
 							if(T.tier == i)
 								ordered += T

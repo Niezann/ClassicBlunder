@@ -68,7 +68,7 @@
 	var/endExtra = passive_handler.Get("CallousedHands")
 	var/greenExtra=0
 	if(passive_handler.Get("Determination(Green)")||passive_handler.Get("Determination(White)"))
-		greenExtra=(round(ManaAmount/100,1)*GetEnd(1))*0.2
+		greenExtra=GetEnd(round(ManaAmount/400,1))//(round(ManaAmount/100,1)*GetEnd(1))*0.2
 		if(passive_handler.Get("Determination(White)"))
 			greenExtra*=2.5
 		statDamage+=greenExtra

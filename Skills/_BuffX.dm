@@ -1526,9 +1526,9 @@ NEW VARIABLES
 					src.PowerMult=1.05
 				if(src.Mastery>=2)
 					src.PowerMult=1.1
-					SpdMult=1
+					src.SpdMult=1
 					passives = list("MovementMastery" = 3)
-					DefMult=0.8
+					src.DefMult=0.8
 			verb/Super_Saiyan_Grade2()
 				set category="Skills"
 				if(usr.ExpandBase)
@@ -1744,10 +1744,10 @@ NEW VARIABLES
 			adjust(mob/p)
 				if(src.Mastery<1)
 					src.Mastery=1
-				passives = list("BurningShot" = src.Mastery, "NoWhiff" = 1, "SuperDash" = 1 + p.Potential/30, "Pursuer" = 1 + p.Potential/30)
+				passives = list("BurningShot" = src.Mastery, "NoWhiff" = 1, "SuperDash" = 1 + p.Potential/30, "Pursuer" = 1 + p.Potential/30, "Rekkaken" = 1)
 				if(p.isRace(SAIYAN)&&p.transActive>=1||p.isRace(HALFSAIYAN)&&p.transActive>=1||p.passive_handler.Get("SuperSaiyanSignature"))
 					if(p.race.transformations[p.transActive].mastery==100)
-						passives = list("BurningShot" = 0.25+src.Mastery, "NoWhiff" = 1, "SuperDash" = 1 + p.Potential/25, "Pursuer" = 2 + p.Potential/30, "SuperSaiyanSignature" = 1)
+						passives = list("BurningShot" = 0.25+src.Mastery, "NoWhiff" = 1, "SuperDash" = 1 + p.Potential/25, "Pursuer" = 2 + p.Potential/30, "SuperSaiyanSignature" = 1, "Rekkaken" = 1)
 						src.ActiveMessage="funnels their life force into their Super Saiyan power, setting their golden aura ablaze!!!"
 			verb/Burning_Shot()
 				set name="Rekkaken"
@@ -2136,11 +2136,11 @@ NEW VARIABLES
 						if(p.race.transformations[p.transActive].mastery==100)
 							passives = list("MovementMastery" = 4, "TechniqueMastery" = 5, "BuffMastery" = clamp(round(usr.Potential/15), 1, 7),"SuperSaiyanSignature"=1)
 				if(src.Mastery==3)
-					StrMult=1.3
-					EndMult=1.3
-					SpdMult=1.3
-					ForMult=1.3
-					RecovMult=1.3
+					StrMult=1.35
+					EndMult=1.35
+					SpdMult=1.35
+					ForMult=1.35
+					RecovMult=1.35
 					passives = list("MovementMastery" = 4, "TechniqueMastery" = 5, "BuffMastery" = 3)
 					if(p.isRace(SAIYAN)&&p.transActive>=1||p.isRace(HALFSAIYAN)&&p.transActive>=1||p.passive_handler.Get("SuperSaiyanSignature"))
 						if(p.race.transformations[p.transActive].mastery==100)
@@ -2148,9 +2148,6 @@ NEW VARIABLES
 
 			verb/Unbound_Mode()
 				set category="Skills"
-				if(!usr.BuffOn(src))
-					if(!altered)
-						passives = list("MovementMastery" = 3, "TechniqueMastery" = 3, "BuffMastery" = clamp(round(usr.Potential/20), 1, 5))
 				adjust(usr)
 				src.Trigger(usr)
 		Sparking_Blast
@@ -4233,14 +4230,7 @@ NEW VARIABLES
 			OffMessage="releases their divine form..."
 			verb/Beyond_God()
 				set category="Skills"
-				if(!usr.BuffOn(src))
-					if(usr.transActive>0)
-						src << "You can't handle transforming while using divinity."
-						return
-					usr.transActive = 1
 				src.Trigger(usr)
-				if(!usr.BuffOn(src) && usr.transActive != 2)
-					usr.transActive = 0
 		TheAlmighty
 			BuffName = "A - The Almighty"
 			SignatureTechnique=4
@@ -9538,7 +9528,7 @@ NEW VARIABLES
 						return;
 					src.MinionX = input(usr, "What x offset does your eldritch minion use?", "Eldritch Minion Offset X") as num|null;
 					src.MinionY = input(usr, "What y offset does your eldritch minion use?", "Eldritch Minion Offset Y") as num|null;
-				
+
 				verb/Customize_Nightmare_Form()
 					set category="Secret"
 
@@ -9552,7 +9542,7 @@ NEW VARIABLES
 						return;
 					src.NightmareX = input(usr, "What x offset does your nightmare form use?", "Nightmare Form Offset X") as num|null;
 					src.NightmareY = input(usr, "What y offset does your nightmare form use?", "Nightmare Form Offset Y") as num|null;
-				
+
 				verb/Preview_Nightmare_Form()
 					set category="Secret"
 					src.NightmarePreview = !src.NightmarePreview;//toggle

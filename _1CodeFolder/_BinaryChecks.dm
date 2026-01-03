@@ -874,10 +874,17 @@ mob
 		HasBurnHit()
 			if(passive_handler.Get("BurnHit"))
 				return 1
+			if(passive_handler.Get("Rekkaken"))
+				return 1
 			return 0
 		GetBurnHit()
 			var/Return=0
+			var/rkmast=0
 			Return+=passive_handler.Get("BurnHit")
+			if(passive_handler.Get("Rekkaken"))
+				for(var/obj/Skills/Buffs/SpecialBuffs/Rekkaken/rk in src.Buffs)
+					rkmast=rk.Mastery
+				Return+=(1+passive_handler.Get("BurningShot"))-rkmast
 			return Return
 		HasEnergyLeak()
 			if(passive_handler.Get("Pride")&&Health>=90)
@@ -1311,13 +1318,13 @@ mob
 				Return += 1
 			return Return
 		HasDebuffResistance()
-			if(src.GetDebuffReversal()) return 0;
+			if(src.HasDebuffReversal()) return 0;
 			if(passive_handler.Get("DebuffResistance")||passive_handler.Get("Determination(Green")||passive_handler.Get("Determination(White)"))
 				return 1
 			return 0
 		GetDebuffResistance()
 			var/GreenVal=0
-			if(src.GetDebuffReversal()) return 0;
+			if(src.HasDebuffReversal()) return 0;
 			if(passive_handler.Get("Determination(Green")||passive_handler.Get("Determination(White)"))
 				GreenVal=round(ManaAmount/20,1)
 			return passive_handler.Get("DebuffResistance") + GreenVal
@@ -1577,19 +1584,25 @@ mob
 				extra += 5 + (secretLevel * 2) * (1 + (secretDatum.secretVariable["BloodPower"] * 0.25))
 			return passive_handler.Get("LifeSteal") + extra
 		HasEnergySteal()
-			if(passive_handler.Get("EnergySteal"))
+			if(passive_handler.Get("EnergySteal")||passive_handler.Get("Determination(Black)"))
 				return 1
 			return 0
 		GetEnergySteal()
-			return passive_handler.Get("EnergySteal")
+			var/DetBlack=0
+			if(passive_handler.Get("Determination(Black)"))
+				DetBlack=5
+			return passive_handler.Get("EnergySteal")+DetBlack
 
 		HasManaSteal()
-			if(passive_handler.Get("ManaSteal"))
+			if(passive_handler.Get("ManaSteal")||passive_handler.Get("Determination(Black)"))
 				return 1
 			return 0
 
 		GetManaSteal()
-			return passive_handler.Get("ManaSteal")
+			var/DetBlack=0
+			if(passive_handler.Get("Determination(Black)"))
+				DetBlack=25
+			return passive_handler.Get("ManaSteal")+DetBlack
 
 		HasLifeStealTrue()
 			if(passive_handler.Get("LifeStealTrue"))
@@ -1790,6 +1803,9 @@ mob
 				return 1
 			if(passive_handler["Hidden Potential"]||passive_handler["Orange Namekian"])
 				return 1
+			if(src.CheckSlotless("Saiyan Soul")&&Target&&!src.HasGodKiBuff())
+				if(!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi())
+					return 1
 			if(passive_handler["DisableGodKi"])
 				return 0
 			if(passive_handler["EndlessNine"])
@@ -1800,9 +1816,6 @@ mob
 				return 1
 			if(src.SenseUnlocked>6&&(src.SenseUnlocked>src.SenseRobbed))
 				return 1
-			if(src.CheckSlotless("Saiyan Soul")&&Target&&!src.HasGodKiBuff())
-				if(!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi())
-					return 1
 			if(src.HasSpiritPower()>=1 && FightingSeriously(src, 0))
 				if(src.Health<=max(15, (30+src.TotalInjury)*src.GetSpiritPower()) || src.InjuryAnnounce)
 					return 1
@@ -1831,11 +1844,13 @@ mob
 				if(SenseUnlocked >= 9)
 					Total += glob.SENSE9GODKI
 			if(src.CheckSlotless("Saiyan Soul")&&!src.HasGodKiBuff())
-				if(src.Target&&!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi())
+				if(passive_handler.Get("DisableGodKi") && src.Target&&!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential")&&!src.Target.passive_handler.Get("Orange Namekian"))
+					Total+=src.Target.GetGodKi()/4
+				else if(src.Target&&!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential")&&!src.Target.passive_handler.Get("Orange Namekian"))
 					Total+=src.Target.GetGodKi()/3
 			if(passive_handler.Get("CreateTheHeavens") && !HasGodKiBuff()&&isRace(HUMAN)||passive_handler.Get("Hidden Potential")||passive_handler.Get("Orange Namekian"))
 				if(src.Target)
-					if(src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential")&&!src.Target.passive_handler.Get("Orange Namekian"))
+					if(src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential")&&!src.Target.passive_handler.Get("Orange Namekian")&&!src.Target.CheckSlotless("Saiyan Soul"))
 						if(Target.GetGodKi() > Total&&!passive_handler.Get("DisableGodKi")&&!passive_handler.Get("Orange Namekian"))
 							Total=Target.GetGodKi()
 						else if(Target.GetGodKi() > Total/1.25&&passive_handler.Get("Orange Namekian"))
@@ -1858,7 +1873,7 @@ mob
 				if(src.Target)
 					if(src.Target.HasGodKi())
 						if(Target.GetGodKi() > Total)
-							Total+=src.Kaioken/2
+							Total+=src.Kaioken/4
 				if(src.Kaioken>=6)
 					Total+=3
 			return Total
@@ -2036,8 +2051,12 @@ mob
 			return 0
 		GetTripleStrike()
 			return passive_handler.Get("TripleStrike")
+		HasDebuffReversal()
+			if(passive_handler.Get("DebuffReversal"))
+				return 1
+			return 0
 		GetDebuffReversal()
-			return passive_handler.Get("DebuffReversal");
+			return passive_handler.Get("DebuffReversal")
 		HasDisorienting()
 			if(passive_handler.Get("Disorienting"))
 				return 1

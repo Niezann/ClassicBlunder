@@ -914,6 +914,8 @@ mob
 			// SURELY NO PROBLEMS HERE
 			if(src.AwakeningSkillUsed==1)
 				val = 0
+			if(src.VaizardHealth&&!src.passive_handler.Get("HealThroughTempHP"))
+				val = 0
 			src.Health+=val
 			src.MaxHealth()
 		HealEnergy(var/val, var/StableHeal=0)
@@ -2028,6 +2030,8 @@ mob
 					src.Activate(s)
 					spawn(100)
 						del s
+			if(src.passive_handler.Get("Determination(Black)"))
+				AngerTotal+=(50*src.SagaLevel)-src.Health
 			else
 				AngerTotal=0
 			src.AngerAdd=AngerTotal
