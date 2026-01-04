@@ -27,6 +27,7 @@ var/list/PassiveInfo = list("Extend"="increases the range of armed autohits base
 "EnergySteal"= "restores energy on hit and reduces target's energy",
 "DoubleStrike"= "gives a chance to hit again scaling with passive level",
 "TripleStrike"= "gives a chance to 3x hit scaling with passive level, need to be able to doublestrike for this to work",
+"AsuraStrike" ="gives a chance to hit 4x, scaling with passsive level, need to be able to TripleStrike for this to work.",
 "CallousedHands"= "adds end to damage rolls",
 "HardenedFrame"= "uses your end in place of str for damage rolls",
 "ComboMaster"= "ignores increased damage reduction on stunned targets",

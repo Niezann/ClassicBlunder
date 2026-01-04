@@ -21,7 +21,7 @@
 	return FALSE
 
 
-/mob/proc/Melee1(dmgmulti=1, spdmulti=1, iconoverlay, forcewarp, forcedTarget=null, ExtendoAttack=null, SecondStrike, ThirdStrike, accmulti=1, SureKB=0, NoKB=0, IgnoreCounter=0, BreakAttackRate=0, hitback = 0)
+/mob/proc/Melee1(dmgmulti=1, spdmulti=1, iconoverlay, forcewarp, forcedTarget=null, ExtendoAttack=null, SecondStrike, ThirdStrike, AsuraStrike, accmulti=1, SureKB=0, NoKB=0, IgnoreCounter=0, BreakAttackRate=0, hitback = 0)
 	if(glob.AURASPELLONATTACK && !AttackQueue)
 		for(var/a in SlotlessBuffs)
 			var/obj/Skills/Buffs/b = SlotlessBuffs[a]
@@ -46,7 +46,7 @@
 	// CHECKS
 	if(Stasis)
 		return
-	if(SecondStrike || ThirdStrike)
+	if(SecondStrike || ThirdStrike || AsuraStrike)
 		BreakAttackRate=1
 	if(!CanAttack() && !BreakAttackRate)
 		return
@@ -98,7 +98,8 @@
 	#endif
 	// 				EXTRA EFFECTS 			//
 
-
+	if(!AsuraStrike)
+		MultiStrike(SecondStrike, ThirdStrike, AsuraStrike)
 	if(!ThirdStrike)
 		MultiStrike(SecondStrike, ThirdStrike) // trigger double/triple strike if applicable
 	var/warpingStrike = getWarpingStrike() // get warping strike if applicable
@@ -134,7 +135,7 @@
 			unarmedAtk=1
 			swordAtk=0
 
-	var/list/itemMod = getItemDamage(list(s,s2,s3,st), delay, acc, SecondStrike, ThirdStrike, swordAtk, specialAtk)
+	var/list/itemMod = getItemDamage(list(s,s2,s3,st), delay, acc, SecondStrike, ThirdStrike, AsuraStrike, swordAtk, specialAtk)
 	delay = itemMod[1]
 	acc = itemMod[2]
 	#if DEBUG_MELEE
@@ -259,7 +260,7 @@
 
 		var/refresh = passive_handler.Get("RefreshingBlows");
 		if(refresh) src.RefreshBlow(refresh);
-					
+
 		NextAttack += delay
 		var/Disarm = 0
 		if(src.UsingGladiator())
@@ -494,7 +495,7 @@
 						damage *= clamp(glob.LIGHT_ATTACK_SPEED_DMG_LOWER,GetSpd()**glob.LIGHT_ATTACK_SPEED_DMG_EXPONENT,glob.LIGHT_ATTACK_SPEED_DMG_UPPER)
 					if(!adjust)
 						NoKB=1
-					if(SecondStrike || ThirdStrike)
+					if(SecondStrike || ThirdStrike || AsuraStrike)
 						damage *= 0.3
 
 					NextAttack = world.time + 1.25
@@ -544,7 +545,7 @@
 										disperseY=rand((-1)*AttackQueue.HitSparkDispersion, AttackQueue.HitSparkDispersion)
 								//		if(swordAtk && HasBladeFisting())
 								//			hitsparkSword = 0
-										HitEffect(enemy, unarmedAtk, hitsparkSword, SecondStrike, ThirdStrike, disperseX, disperseY)
+										HitEffect(enemy, unarmedAtk, hitsparkSword, SecondStrike, ThirdStrike, AsuraStrike, disperseX, disperseY)
 									if(enemy.CheckSpecial("Ultra Instinct"))
 										//TODO play the ultra instinct sound
 										StunClear(enemy)
@@ -570,7 +571,7 @@
 									var/hitsparkSword = swordAtk
 								//	if(swordAtk && HasBladeFisting())
 								//		hitsparkSword = 0
-									HitEffect(enemy, unarmedAtk, hitsparkSword, SecondStrike, ThirdStrike, disperseX, disperseY)
+									HitEffect(enemy, unarmedAtk, hitsparkSword, SecondStrike, ThirdStrike, AsuraStrike, disperseX, disperseY)
 								StunClear(enemy)
 								AfterImageStrike(enemy,src,1)
 								dodged = 1
@@ -600,7 +601,7 @@
 										var/hitsparkSword = swordAtk
 								//		if(swordAtk && HasBladeFisting())
 								//			hitsparkSword = 0
-										HitEffect(enemy, unarmedAtk, hitsparkSword, SecondStrike, ThirdStrike, disperseX, disperseY)
+										HitEffect(enemy, unarmedAtk, hitsparkSword, SecondStrike, ThirdStrike, AsuraStrike, disperseX, disperseY)
 									enemy.dir = get_dir(enemy,src)
 									StunClear(enemy)
 									enemy.NextAttack=0
@@ -777,7 +778,7 @@
 							if(enemy.passive_handler["Magmic"] && enemy.SlotlessBuffs["Magmic Shield"])
 								Stun(src, 3, TRUE)
 								enemy.SlotlessBuffs["Magmic Shield"].Trigger(enemy, TRUE)
-							var/dmgValue = DoDamage(enemy, damage, unarmedAtk, swordAtk, SecondStrike, ThirdStrike)
+							var/dmgValue = DoDamage(enemy, damage, unarmedAtk, swordAtk, SecondStrike, ThirdStrike, AsuraStrike)
 							. = dmgValue
 							if(!glob.MOMENTUM_PROCS_OFF_DAMAGE)
 								handlePostDamage(enemy) // it already proc'd
@@ -838,7 +839,7 @@
 							var/hitsparkSword = swordAtk
 						//	if(swordAtk && HasBladeFisting())
 						//		hitsparkSword = 0
-							HitEffect(enemy, unarmedAtk, hitsparkSword, SecondStrike, ThirdStrike, disperseX, disperseY)
+							HitEffect(enemy, unarmedAtk, hitsparkSword, SecondStrike, ThirdStrike, AsuraStrike, disperseX, disperseY)
 
 
 							if(passive_handler.Get("MonkeyKing"))
@@ -907,7 +908,7 @@
 								if(AttackQueue.HitSparkIcon)
 									disperseX=rand((-1)*AttackQueue.HitSparkDispersion, AttackQueue.HitSparkDispersion)
 									disperseY=rand((-1)*AttackQueue.HitSparkDispersion, AttackQueue.HitSparkDispersion)
-									HitEffect(enemy, unarmedAtk, swordAtk, SecondStrike, ThirdStrike, disperseX, disperseY)
+									HitEffect(enemy, unarmedAtk, swordAtk, SecondStrike, ThirdStrike, AsuraStrike, disperseX, disperseY)
 							UltraPrediction2(enemy, src)
 						else if(AttackQueue&&AttackQueue.NoWhiff)
 							enemy.dir=get_dir(enemy,src)
@@ -1094,4 +1095,3 @@
 					Momentum = clamp( round(Momentum + (1 + momentum/glob.MOMENTUM_DIVISOR)), 0 , passive_handler["Relentlessness"] ? 100 : glob.MAX_MOMENTUM_STACKS)
 		if(passive_handler["Fury"])
 			src.FuryAccumulate(acu);
-			

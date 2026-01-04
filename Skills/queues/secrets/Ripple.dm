@@ -38,12 +38,14 @@ obj
 				HitSparkIcon='Hit Effect Ripple.dmi'
 				HitSparkX=-32
 				HitSparkY=-32
-				HitSparkSize=1.5
+				HitSparkSize=2
 				Duration=5
-				ActiveMessage="unleashes the radiant beat of their heart, the Ripple of the Sun: <b><font color=#FFD700>Sunlight Yellow Overdrive!!!</font></b>"
+				ActiveMessage="settles their hands into a ready position, as they start to burn brightly with the Ripple...</font></b>"
+				ComboHitMessages=list(1= "says: How my heart resonates...", 2= "says: I'm pulsing with Heat and Life...", 3= "says: My very blood is a symphony within me...", 4= "yells:<b><font color=#FFD700>Sun...</font></b>",5= "<b><font color=#FFD700>...light...</font>", 6= "<b><font color=#FFD700>yells:Yell... </font>", 7= "yells:ooww...", 8= "<b><font color=#FFD700>Ov...", \
+									  9= "<b><font color=#FFD700>says:er....</font>", 10= "<b><font color=#FFD700>says:..dri...</font>", 11= "<b><font color=#FFD700>..ve!!!</font>")
 				adjust(mob/p)
 					var/secretlevel = p.getSecretLevel()
-					DamageMult= 2 * (secretlevel)
+					DamageMult= 1 * (secretlevel)
 					Combo=25 + (5 * secretlevel)
 					HolyMod=2.5 * secretlevel
 					Scorching= 5 * secretlevel

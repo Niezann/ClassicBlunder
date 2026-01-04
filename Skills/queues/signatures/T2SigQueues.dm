@@ -146,7 +146,7 @@ obj
 				EnergyCost=10
 				IconLock=1
 				ActiveMessage="begins to charge a powerful attack while opening their target up with crushing strikes!"
-				ComboHitMessages=alist(1="yells: KA... ME...", 2="yells: HA... ME...")
+				ComboHitMessages= list(1="yells: KA... ME...", 2="yells: HA... ME...")
 				verb/True_Kamehameha()
 					set category="Skills"
 					usr.SetQueue(src)

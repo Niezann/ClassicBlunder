@@ -356,6 +356,7 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 			src.Trigger(usr)
 
 	Honour
+		name = "Fundament: Honour"
 		StrMult=1.25
 		ForMult=1.25
 		EndMult=1.5
@@ -364,6 +365,7 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 			src.Trigger(usr)
 
 	Hatred
+		name = "Fundament: Hatred"
 		StrMult=1.25
 		SpdMult=1.25
 		OffMult=1.25
@@ -372,32 +374,38 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 			src.Trigger(usr)
 
 	Ocean
+		name = "Fundament: The Ocean"
 		verb/Fundament_Ocean()
 			set category="Skills"
 			src.Trigger(usr)
 
 	Life
+		name = "Fundament: Life"
 		passives = list("LifeGeneration" = 5)
 		verb/Fundament_Life()
 			set category="Skills"
 			src.Trigger(usr)
 
 	Entropy
+		name = "Fundament: Entropy"
 		verb/Fundament_Entropy()
 			set category="Skills"
 			src.Trigger(usr)
 
 	Oppression
+		name = "Fundament: Oppression"
 		verb/Fundament_Oppression()
 			set category="Skills"
 			src.Trigger(usr)
 
 	Freedom
+		name = "Fundament: Freedom"
 		verb/Fundament_Freedom()
 			set category="Skills"
 			src.Trigger(usr)
 
 	Scarcity
+		name = "Fundament: Scarcity"
 		verb/Fundament_Scarcity()
 			set category="Skills"
 			src.Trigger(usr)
