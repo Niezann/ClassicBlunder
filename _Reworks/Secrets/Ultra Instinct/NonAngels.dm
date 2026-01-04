@@ -80,7 +80,7 @@
 		NeedsSword=0
 		NoSword=1
 		StyleActive = "Perfected Ultra Instinct"
-		passives = list("LikeWater" = 3, "Flow" = 3, "Instinct" = 3, "CounterMaster" = 3, "Godspeed" = 1, "PUSpike" = 25,"UnarmedDamage"=5)
+		passives = list("LikeWater" = 3, "Flow" = 3, "Instinct" = 3, "CounterMaster" = 3, "Godspeed" = 1, "PUSpike" = 25,"UnarmedDamage"=5, "SoftStyle" = 1,"Deflection" = 1)
 		StyleSpd = 1.6
 		StyleOff = 1.55
 		StyleDef = 1.6

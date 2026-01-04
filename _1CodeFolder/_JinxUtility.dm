@@ -851,7 +851,7 @@ mob
 				var/PUSpike=1
 				if(passive_handler.Get("PUSpike"))
 					PUSpike=passive_handler.Get("PUSpike")/100
-				if(passive_handler.Get("DrainlessPUSpike"))
+				if(passive_handler.Get("DrainlessPUSpike")||passive_handler.Get("DoubleHelix"))
 					PowerUpPercent=0
 
 				val*=(1+(PowerUpPercent/src.PUDrainReduction))

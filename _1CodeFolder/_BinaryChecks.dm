@@ -942,7 +942,7 @@ mob
 			if(src.GatesActive && src.GatesActive < 8)
 				return Total +(4/src.SagaLevel)
 			if(src.DoubleHelix)
-				if(src.DoubleHelix>=2&&src.transActive<5)
+				if(src.DoubleHelix>=2)
 					Total +=src.DoubleHelix*0.25
 			if(passive_handler.Get("Pride"))
 				PrideDrain=(100-Health)*0.01
@@ -1825,10 +1825,10 @@ mob
 		GetGodKi()
 			var/Total=passive_handler.Get("GodKi")
 			if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=3||secretDatum.secretVariable["EldritchInstinct"]==1&&src.Potential>=55)
-				if(src.SagaLevel<1||glob.T3_SAGA_STLYE_GODKI)
+				if(src.SagaLevel<1&&!glob.T3_SAGA_STLYE_GODKI||src.Secret=="Ultra Instinct"||secretDatum.secretVariable["EldritchInstinct"]==1)
 					Total+=glob.T3_STYLES_GODKI_VALUE
 			if(glob.T4_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=4&&src.Potential>=70||secretDatum.secretVariable["EldritchInstinct"]==1&&src.Potential>=70)
-				if(src.SagaLevel<1||glob.T4_SAGA_STLYE_GODKI)
+				if(src.SagaLevel<1&&!glob.T4_SAGA_STLYE_GODKI||src.Secret=="Ultra Instinct"||secretDatum.secretVariable["EldritchInstinct"]==1)
 					Total+=glob.T4_STYLES_GODKI_VALUE
 			if(src.HasSpiritPower()>=1 && FightingSeriously(src, 0))
 				if(src.Health<=(30+src.TotalInjury)*src.GetSpiritPower())
