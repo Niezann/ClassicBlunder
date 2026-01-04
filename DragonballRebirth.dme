@@ -363,7 +363,6 @@
 #include "_Reworks\Combat\Damage\CritInfactuation.dm"
 #include "_Reworks\Combat\Damage\Desperation.dm"
 #include "_Reworks\Combat\Damage\dmgGodKi.dm"
-#include "_Reworks\Combat\Damage\Elements.dm"
 #include "_Reworks\Combat\Damage\extendedElements.dm"
 #include "_Reworks\Combat\Damage\LightvsDark.dm"
 #include "_Reworks\Combat\Damage\Modifiers.dm"

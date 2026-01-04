@@ -13553,9 +13553,9 @@ mob
 				src.invisibility=98
 				src.AdminInviso=1
 				src.Incorporeal=1
-			if(B.ElementalOffense)
+			if(B.ElementalOffense && !istype(B, /obj/Skills/Buffs/NuStyle))
 				src.ElementalOffense=B.ElementalOffense
-			if(B.ElementalDefense)
+			if(B.ElementalDefense && !istype(B, /obj/Skills/Buffs/NuStyle))
 				src.ElementalDefense=B.ElementalDefense
 			if(B.ElementalEnchantment)
 				var/obj/Items/Sword/s=src.EquippedSword()
@@ -14087,9 +14087,9 @@ mob
 				src.invisibility=0
 				src.AdminInviso=0
 				src.Incorporeal=0
-			if(B.ElementalOffense)
+			if(B.ElementalOffense && !istype(B, /obj/Skills/Buffs/NuStyle))
 				src.ElementalOffense=null
-			if(B.ElementalDefense)
+			if(B.ElementalDefense && !istype(B, /obj/Skills/Buffs/NuStyle))
 				src.ElementalDefense=null
 			if(B.ElementalEnchantment)
 				var/obj/Items/Sword/s=src.EquippedSword()

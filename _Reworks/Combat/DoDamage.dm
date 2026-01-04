@@ -162,40 +162,18 @@
 // END LIGHT VS DARK CALCULATIONS
 //move timestop + world dmg mult to after true mult is applied
 
-	var/oldEDefense = defender.getArmorEDefense()
-
 	trueMult+=ElementalCheck(src,defender)
 	#if DEBUG_DAMAGE
 	log2text("trueMult", "After ElementalCheck", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("trueMult", trueMult,"damageDebugs.txt", "[src.ckey]/[src.name]")
 	#endif
 
-	if(sword&&HasSword())
-		trueMult += doWeaponElements(secondhit, thirdhit, defender, list(EquippedSword(), EquippedSecondSword(), EquippedThirdSword()))
-		#if DEBUG_DAMAGE
-		log2text("trueMult", "After SwordElements", "damageDebugs.txt", "[src.ckey]/[src.name]")
-		log2text("trueMult", trueMult,"damageDebugs.txt", "[src.ckey]/[src.name]")
-		#endif
-	if((spiritAtk || UsingBattleMage()) && HasStaff())
-		trueMult += handleStaff(EquippedStaff(), defender, secondhit)
-		#if DEBUG_DAMAGE
-		log2text("trueMult", "After StaffElements", "damageDebugs.txt", "[src.ckey]/[src.name]")
-		log2text("trueMult", trueMult,"damageDebugs.txt", "[src.ckey]/[src.name]")
-		#endif
-
-	trueMult += ElementalCheck(src, defender, damageOnly = TRUE)
-	#if DEBUG_DAMAGE
-	log2text("trueMult", "After ElementPassives", "damageDebugs.txt", "[src.ckey]/[src.name]")
-	log2text("trueMult", trueMult,"damageDebugs.txt", "[src.ckey]/[src.name]")
-	#endif
 	applySoftCC(defender, val)
 	applyAdditonalDebuffs(defender, val)
 	#if DEBUG_DAMAGE
 	log2text("trueMult", "After Debuffs", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("trueMult", trueMult,"damageDebugs.txt", "[src.ckey]/[src.name]")
 	#endif
-	if(oldEDefense)
-		defender.ElementalDefense = oldEDefense
 	trueMult += styleModifiers(defender)
 	#if DEBUG_DAMAGE
 	log2text("trueMult", "After StyleModifiers", "damageDebugs.txt", "[src.ckey]/[src.name]")

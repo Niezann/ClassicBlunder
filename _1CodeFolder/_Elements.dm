@@ -8,9 +8,12 @@ proc
 		for(var/possible_extra_element in debuffVars)
 			if(Attacker.passive_handler.Get(possible_extra_element))
 				attackElements |= debuff2Element[possible_extra_element]
-		var/Defense=0
 		if(Attacker.ElementalOffense)
 			attackElements |= Attacker.ElementalOffense
+		if(Attacker.Infusion && Attacker.InfusionElement)
+			attackElements |= Attacker.InfusionElement;
+		if(Attacker.StyleBuff && Attacker.StyleBuff.ElementalOffense)
+			attackElements |= Attacker.StyleBuff.ElementalOffense;
 
 		var/obj/Items/Enchantment/Staff/staf=Attacker.EquippedStaff()
 		var/obj/Items/Sword/sord=Attacker.EquippedSword()
@@ -33,9 +36,12 @@ proc
 
 		if(onlyTheseElements)
 			attackElements = onlyTheseElements
+		if(Defender.StyleBuff && Defender.StyleBuff.ElementalDefense)
+			attackElements |= Defender.StyleBuff.ElementalDefense;
 		if(Defender.ElementalDefense)
 			defenseElements |= Defender.ElementalDefense
-
+		if(Defender.Infusion && Defender.InfusionElement)
+			defenseElements |= Defender.InfusionElement;
 		if(armr && armr.Element)
 			defenseElements |= armr.Element
 
@@ -43,7 +49,7 @@ proc
 			ForcedDebuff+=1
 		var/DamageMod=0
 		for(var/element in attackElements)
-			var/DebuffRate=GetDebuffRate(element, Defense, ForcedDebuff)
+			var/DebuffRate=GetDebuffRate(element, defenseElements, ForcedDebuff)
 			var/CelestialDebuffRate=1
 			if(Attacker.isRace(CELESTIAL, DEMON, MAKAIOSHIN))
 				CelestialDebuffRate=0.2*(Attacker.AscensionsAcquired+1)
@@ -64,30 +70,7 @@ proc
 					DebuffRate-=Effective/10
 			if(DebuffRate<0)
 				DebuffRate=0
-/*
-			if(!damageOnly&&!Defender.HasDebuffResistance())
-				switch(element)
-					if("Fire")
-						if(!Defender.Burn)
-							OMsg(Attacker, messages[element])
-					if("Water")
-						if(!Defender.Slow)
-							OMsg(Attacker, messages[element])
-					if("Earth")
-						if(!Defender.Shatter)
-							OMsg(Attacker, messages[element])
-					if("Wind")
-						if(!Defender.Shock)
-							OMsg(Attacker, messages[element])
-					if("Poison")
-						if(!Defender.Poison)
-							OMsg(Attacker, messages[element])
-					if("HellFire")
-						if(!Defender.Poison)
-							OMsg(Attacker, messages[element])
-						if(!Defender.Burn)
-							OMsg(Attacker, messages[element])
-*/
+
 			if(Attacker.passive_handler["Amplify"])
 				DebuffIntensity += Attacker.passive_handler["Amplify"] * glob.AMPLIFY_MODIFIER
 			if(Attacker.UsingHotnCold())
@@ -185,7 +168,7 @@ proc
 						Defender.AddSlow(4*DebuffIntensity*glob.SLOW_INTENSITY, Attacker)
 						Defender.AddShock(4*DebuffIntensity*glob.SHOCK_INTENSITY, Attacker)
 					if("Poison")
-						if(!Defender.HasVenomImmune()&&Defense!="Poison")
+						if(!Defender.HasVenomImmune() && !("Poison" in defenseElements))
 							Defender.AddPoison(2*DebuffIntensity*glob.POISON_INTENSITY, Attacker)
 					if("Fire")
 						if(!Defender.DemonicPower())
@@ -208,7 +191,7 @@ proc
 					DamageMod-=2
 		return DamageMod/10
 
-	GetDebuffRate(var/A, var/D, var/Forced=0)
+	GetDebuffRate(var/A, list/D, var/Forced=0)
 		var/Return=0
 		if(Forced)
 			Return=100
@@ -219,107 +202,97 @@ proc
 
 			if("HellFire")
 				Return=50
-				switch(D)
-					if("Mirror")
-						Return-=20
-					if("Fire")
-						Return+=20
-					if("Water")
-						Return-=35
-					if("Earth")
-						Return-=35
-					if("Wind")//Super effective
-						Return+=20
-					if("Ultima")
-						Return+=10
+				if("Mirror" in D)
+					Return-=20
+				if("Fire" in D)
+					Return+=20
+				if("Water" in D)
+					Return-=35
+				if("Earth" in D)
+					Return-=35
+				if("Wind" in D)//Super effective
+					Return+=20
+				if("Ultima" in D)
+					Return+=10
 
 			if("Fire")//Chance of burn
 				Return=30//Chance of burn on every hit.
-				switch(D)
-					if("Mirror")
-						Return-=20
-					if("Fire")
-						Return+=10
-					if("Water")
-						Return-=20
-					if("Earth")
-						Return-=10
-					if("Wind")//Super effective
-						Return+=20
-					if("Ultima")
-						Return+=50
+				if("Mirror" in D)
+					Return-=20
+				if("Fire" in D)
+					Return+=10
+				if("Water" in D)
+					Return-=20
+				if("Earth" in D)
+					Return-=10
+				if("Wind" in D)//Super effective
+					Return+=20
+				if("Ultima" in D)
+					Return+=50
 			if("Water")//Chance of freeze
 				Return=30
-				switch(D)
-					if("Mirror")
-						Return-=20
-					if("Fire")//Super Effective
-						Return+=20
-					if("Water")
-						Return+=10
-					if("Earth")
-						Return-=20
-					if("Wind")
-						Return-=10
-					if("Ultima")
-						Return+=50
+				if("Mirror" in D)
+					Return-=20
+				if("Fire" in D)//Super Effective
+					Return+=20
+				if("Water" in D)
+					Return+=10
+				if("Earth" in D)
+					Return-=20
+				if("Wind" in D)
+					Return-=10
+				if("Ultima" in D)
+					Return+=50
 			if("Earth")//Chance of break
 				Return=30
-				switch(D)
-					if("Mirror")
-						Return-=20
-					if("Fire")
-						Return-=10
-					if("Water")//Super Effective
-						Return+=20
-					if("Earth")
-						Return+=10
-					if("Wind")
-						Return-=20
-					if("Ultima")
-						Return+=50
+				if("Mirror" in D)
+					Return-=20
+				if("Fire" in D)
+					Return-=10
+				if("Water" in D)//Super Effective
+					Return+=20
+				if("Earth" in D)
+					Return+=10
+				if("Wind" in D)
+					Return-=20
+				if("Ultima" in D)
+					Return+=50
 			if("Wind")//Chance of off/def reduction
 				Return=30
-				switch(D)
-					if("Mirror")
-						Return-=20
-					if("Fire")
-						Return-=20
-					if("Water")
-						Return-=10
-					if("Earth")//Super Effective
-						Return+=20
-					if("Wind")
-						Return+=10
-					if("Ultima")
-						Return+=50
+				if("Mirror" in D)
+					Return-=20
+				if("Fire" in D)
+					Return-=20
+				if("Water" in D)
+					Return-=10
+				if("Earth" in D)//Super Effective
+					Return+=20
+				if("Wind" in D)
+					Return+=10
+				if("Ultima" in D)
+					Return+=50
 		if(A=="Poison")//Chance to poison.
 			Return=30
-			switch(D)
-				if("Mirror")
-					Return-=20
-				if("Ultima")
-					Return+=40
+			if("Mirror" in D)
+				Return-=20
+			if("Ultima" in D)
+				Return+=40
 		if(A=="Chaos")//Chance of EVERYTHING GOES TO HELL.
 			Return=30
-			switch(D)
-				if("Mirror")
-					Return-=20
-				if("Ultima")
-					Return+=40
+			if("Mirror" in D)
+				Return-=20
+			if("Ultima" in D)
+				Return+=40
 		if(A=="Ultima")//Chance of EVERYTHING GOES TO HELL.
 			Return=100
-			switch(D)
-				if("Mirror")
-					Return-=20
+			if("Mirror" in D)
+				Return-=20
 		return Return
 mob
 	proc
 		AddBurn(var/Value, var/mob/Attacker=null)
 			if(src.Stasis)
 				return
-			if(src.ElementalDefense=="Wind")
-				Value*=1.5//Super Effective
 			if(Attacker && (Attacker == src ? !src.passive_handler.Get("BurningShot") : 1))
 				if(Attacker.Attunement=="Fire")
 					Value*=1.5
@@ -369,18 +342,12 @@ mob
 		AddSlow(var/Value, var/mob/Attacker=null)
 			if(src.Stasis)
 				return
-			if(src.ElementalDefense=="Fire")
-				Value*=1.5//Super effective
-			if(Attacker)
-				if(Attacker.Attunement=="Water")
-					Value*=1.5
-			if(src.Attunement=="Fire")
+			if(Attacker && Attacker.Attunement == "Water")
 				Value*=1.5
-
+			if(Attunement=="Fire")
+				Value*=1.5
 			if(Attunement=="Water")
 				Value/=2
-
-
 			if(src.Infusion)
 				if(!src.InfusionElement)
 					src.InfusionElement="Water"
@@ -418,21 +385,16 @@ mob
 		AddShatter(var/Value, var/mob/Attacker=null)
 			if(src.Stasis)
 				return
-			if(src.ElementalDefense=="Water")
+			if(Attacker && Attacker.Attunement=="Earth")
 				Value*=1.5
-			if(Attacker)
-				if(Attacker.Attunement=="Earth")
-					Value*=1.5
-			if(src.Attunement=="Water")
+			if(Attunement=="Water")
 				Value*=1.5
+			if(Attunement=="Earth")
+				Value/=2
 			if(src.Infusion)
 				if(!src.InfusionElement)
 					src.InfusionElement="Earth"
 				Value/=2
-
-			if(Attunement=="Earth")
-				Value/=2
-
 			if(src.HasDebuffResistance())
 				Value/=1+src.GetDebuffResistance()
 			Value = Value*(1-(src.Shatter/glob.DEBUFF_STACK_RESISTANCE))
@@ -458,18 +420,15 @@ mob
 		AddShock(var/Value, var/mob/Attacker=null)
 			if(src.Stasis)
 				return
-			if(src.ElementalDefense=="Earth")
+			if(Attacker && Attacker.Attunement=="Wind")
 				Value*=1.5
-			if(Attacker)
-				if(Attacker.Attunement=="Wind")
-					Value*=1.5
 			if(src.Attunement=="Earth")
 				Value*=1.5
+			if(Attunement=="Wind")
+				Value/=2
 			if(src.Infusion)
 				if(!src.InfusionElement)
 					src.InfusionElement="Wind"
-				Value/=2
-			if(Attunement=="Wind")
 				Value/=2
 
 			if(src.HasDebuffResistance())
@@ -480,7 +439,6 @@ mob
 			if(Value >=1)
 				animate(src, color = "#fff757")
 				animate(src, color = src.MobColor, time=5)
-
 
 			if(src.Shock>100)
 				src.Shock=100
