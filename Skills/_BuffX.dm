@@ -29,6 +29,8 @@ NEW VARIABLES
 
 
 	var/PowerInvisible=1//multiplies stealth RPP
+	var/evolution_charges = 0
+	var/last_evo_gain = 0
 	var/PowerMult=1
 	var/PowerReplacement=0
 	var/StrReplace=0
@@ -4333,6 +4335,54 @@ NEW VARIABLES
 			OffMessage="has yet to find an answer to their question."
 			verb/Quis_ut_Deus()
 				set category="Skills"
+				src.Trigger(usr)
+		X_Evolution
+			BuffName = "X-Evolution"
+			SignatureTechnique=5
+			Mastery=-1
+			UnrestrictedBuff=1
+			StrMult=1.5
+			ForMult=1.5
+			EndMult=3
+			SpdMult=3
+			DefMult=3
+			OffMult=1.5
+			passives = list("GodKi" = 2, "BlockChance" = 50, "CriticalBlock" = 0.5, "Sunyata" = 10, "Deflection" = 10, "Reversal" = 1, "GiantForm" = 1, \
+								"Blubber" = 5, "KBRes" = 5, "Hardening" = 5, "CounterMaster" = 10, "Juggernaut" = 5, "LikeWater" = 10, "LifeGeneration" = 5, "X-Antibody" = 1)
+			FlashChange=1
+			ActiveMessage="taps into the power of the X-Antibody within them, achieving an evolution superior to any other."
+			OffMessage="releases the power of their evolution."
+			Trigger(mob/User, Override)
+				if(!locate(/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution, User))
+					usr.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution)
+					usr<<"You feel the potential for true despair stir inside of you."
+				..()
+			verb/X_Evolution()
+				set category="Skills"
+				src.Trigger(usr)
+		Death_Evolution
+			BuffName = "Death-X-Evolution"
+			SignatureTechnique=5
+			Mastery=-1
+			UnrestrictedBuff=1
+			evolution_charges = 1
+			last_evo_gain = 0
+			TimerLimit=600
+			PUSpeedModifier=3
+			PowerMult = 10
+			StrMult=3
+			ForMult=3
+			EndMult=0.01
+			SpdMult=3
+			DefMult=0.01
+			OffMult=3
+			passives = list("GodKi" = 2, "CriticalChance" = 50, "CriticalDamage" = 0.5, "Brutalize" = 9, "DoubleStrike" = 3, "TripleStrike" = 2, "Warping" = 4, \
+								"HotHundred" = 1, "SoulSteal" = 2, "KillerInstinct" = 0.5, "SpiritSword" = 2, "SpiritHand" = 8, "Instinct" = 10, "Extend" = 2, "Gum Gum" = 2, "SweepingStrike" = 1, "PridefulRage" = 2, "Death-X-Evolution" = 1)
+			DarkChange=1
+			ActiveMessage="overcomes the very concept of mortality itself."
+			OffMessage="relinquishes the Evolution of Darkness."
+			verb/Death_X()
+				set hidden=1
 				src.Trigger(usr)
 		Saiyan_Dominance
 			AutoAnger=1
