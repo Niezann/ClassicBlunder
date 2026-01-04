@@ -12,6 +12,8 @@ proc
 			attackElements |= Attacker.ElementalOffense
 		if(Attacker.Infusion && Attacker.InfusionElement)
 			attackElements |= Attacker.InfusionElement;
+		if(Attacker.StyleBuff && Attacker.StyleBuff.ElementalOffense)
+			attackElements |= Attacker.StyleBuff.ElementalOffense;
 
 		var/obj/Items/Enchantment/Staff/staf=Attacker.EquippedStaff()
 		var/obj/Items/Sword/sord=Attacker.EquippedSword()
@@ -34,6 +36,8 @@ proc
 
 		if(onlyTheseElements)
 			attackElements = onlyTheseElements
+		if(Defender.StyleBuff && Defender.StyleBuff.ElementalDefense)
+			attackElements |= Defender.StyleBuff.ElementalDefense;
 		if(Defender.ElementalDefense)
 			defenseElements |= Defender.ElementalDefense
 		if(Defender.Infusion && Defender.InfusionElement)
