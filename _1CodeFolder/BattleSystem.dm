@@ -232,8 +232,7 @@ mob/proc/Unconscious(mob/P,var/text)
 			sleep(30)
 			world<<"<font color=red><b>Death-X-Evolution...</b></font>"
 			B.Trigger(src)
-			B.evolution_charges = 0
-			src.RPModeSwitch()		
+			B.evolution_charges = 0	
 			return
 	if(src.passive_handler.Get("Alter The Future"))
 		if(src.HealthAnnounce10<=4)
