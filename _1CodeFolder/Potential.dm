@@ -141,6 +141,13 @@ mob
 					if(d.current_charges < AscensionsAcquired)
 						d.last_charge_gain = world.realtime
 						d.current_charges++
+			if(locate(/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution, src))
+				var/obj/Skills/Buffs/SlotlessBuffs/d = src.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution)
+				if(d.last_evo_gain == 0) d.last_evo_gain = world.realtime
+				if(d.last_evo_gain + 24 HOURS < world.realtime)
+					if(d.evolution_charges < 1)
+						d.last_evo_gain = world.realtime
+						d.evolution_charges++
 
 			if(Potential>=15)
 				if(SagaLevel < 2 && Saga)
