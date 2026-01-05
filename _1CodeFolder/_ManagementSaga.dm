@@ -102,7 +102,7 @@ mob/Admin3/verb
 		var/Level7=0
 		var/list/SagaList=list("Cancel","Ansatsuken","Eight Gates","Cosmo","Spiral","King of Courage", "Hero","Hiten Mitsurugi-Ryuu","Kamui","Keyblade","King of Braves","Path of a Hero: Rebirth","Sharingan","Weapon Soul", "Unlimited Blade Works","Force")
 		if(P.Saga)
-			if(P.Saga=="Keyblade")
+			if(P.Saga=="Keyblade"||P.Saga=="Weapon Soul")
 				Level7=1
 			if(P.SagaLevel>=6+Level7)
 				src << "They've already fully mastered the power of their soul."

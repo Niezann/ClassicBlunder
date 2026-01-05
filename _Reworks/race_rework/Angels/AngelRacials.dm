@@ -117,7 +117,7 @@ obj/Skills/Utility/Recall_Armaments
 	icon = 'shoes_mono.dmi'
 //ascension 3
 /obj/Items/Wearables/Guardian/Helmet_of_Salvation
-	passives = list("DebuffResistance" = 0.5, "VenomResistance" = 0.5, "Anaerobic" = 0.25)
+	passives = list("DebuffResistance" = 0.5, "VenomResistance" = 0.5, "Anaerobic" = 1.5)
 	Augmented = 1
 	Stealable = 0
 	Destructable = 0

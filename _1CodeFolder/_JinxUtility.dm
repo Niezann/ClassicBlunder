@@ -81,34 +81,28 @@ mob
 					src.Unconscious(null, "succumbing to poison!")
 				if(!src.Burn&&!src.Poison)
 					src.Unconscious()
-		DoDamage(var/mob/defender, var/val, var/UnarmedAttack=0, var/SwordAttack=0, var/SecondStrike, var/ThirdStrike, var/TrueMult=0, var/SpiritAttack=0, var/Destructive=0, Autohit = FALSE, innateLifeSteal = FALSE)
+		DoDamage(var/mob/defender, var/val, var/UnarmedAttack=0, var/SwordAttack=0, var/SecondStrike, var/ThirdStrike, var/AsuraStrike, var/TrueMult=0, var/SpiritAttack=0, var/Destructive=0, Autohit = FALSE, innateLifeSteal = FALSE)
 			#if DEBUG_DAMAGE
 			log2text("Damage", "Start DoDamage", "damageDebugs.txt", src.ckey)
 			log2text("Damage", val, "damageDebugs.txt", src.ckey)
 			#endif
-			val = newDoDamage(defender, val, UnarmedAttack, SwordAttack, SecondStrike, ThirdStrike, TrueMult, SpiritAttack, Destructive, Autohit)
+			val = newDoDamage(defender, val, UnarmedAttack, SwordAttack, SecondStrike, ThirdStrike, AsuraStrike, TrueMult, SpiritAttack, Destructive, Autohit)
 			DEBUGMSG("val after newDoDamage [val]")
 			if(src.HasPurity())//If damager is pure
 				var/found=0//Assume you haven't found a proper target
 				if(defender.IsEvil()||src.HasBeyondPurity())
+					DEBUGMSG("[defender] is evil or [src] has beyond purity")
 					found=1
 				if(!found)//If you don't find what you're supposed to hunt
-					return//Do not do damage
+					DEBUGMSG("[src] is attacking a pure target and so value is set to 0")
+					val = 0;
+			
+			if(val==0)
+				DEBUGMSG("val is 0 so we're ending dodamage now")
+				return 0;
 
 			fieldAndDefense(defender, UnarmedAttack, SwordAttack, SpiritAttack, val)
 
-			// if(defender.UsingVoidDefense())
-			// 	if(defender.TotalFatigue>0)
-			// 		defender.HealFatigue(val/2)
-			// 	else
-			// 		defender.HealWounds(val/2)
-			// 	defender.HealEnergy(val)
-			// 	defender.HealMana(val)
-
-			// if(defender.HasDeathField()&&(UnarmedAttack||SwordAttack))
-			// 	src.WoundSelf(defender.GetDeathField()*0.01*min((1/val),1))
-			// if(defender.HasVoidField()&&SpiritAttack)
-			// 	src.GainFatigue(defender.GetVoidField()*0.01*min((1/val),1))
 			if(defender.passive_handler["Determination(Purple)"||defender.passive_handler["Determination(White)"]])
 				defender.HealMana(defender.SagaLevel / 60, 1)
 				if(defender.ManaAmount>=100 && defender.RebirthHeroType=="Cyan"&&!defender.passive_handler["Determination(White)"])
@@ -124,9 +118,6 @@ mob
 				if(defender.CyberCancel||defender.Mechanized)
 					defender.LoseMana(val*max(defender.Mechanized,defender.CyberCancel)*src.GetCyberStigma())
 
-			// if(locate(/obj/Skills/Zanzoken, defender))
-			// 	if(defender.MovementCharges<1)
-			// 		defender.MovementChargeBuildUp(val)
 			if(defender.passive_handler["Dim Mak"]>0)
 				defender.passive_handler.Increase("Dim Mak", val)
 			handlePostDamage(defender)
@@ -205,27 +196,20 @@ mob
 
 			if(defender.CheckSlotless("Crystal Wall"))
 				src.LoseHealth(val)
-				return
-			var/tmpval = val
-
-			if(defender.key=="Vuffa" && defender.findVuffa())
-				if(defender.findVuffa().vuffaMoment)
-					tmpval*=1000000
-					if(defender.findVuffa().vuffaMessage)
-						OMsg(defender, "<font color='[rgb(255, 0, 0)]'>[defender.findVuffa().vuffaMessage]</font color>")
-					else
-						OMsg(src, "<font color='[rgb(255, 0, 0)]'>[defender] takes a critical hit! They take [val] damage!</font color>")
+				return 0;
+			
+			
 			if(getBackSide(src, defender, passive_handler["Fault Finder"]) && passive_handler["Backshot"])
-				tmpval *= 1 + (passive_handler["Backshot"]/10)
+				val *= 1 + (passive_handler["Backshot"]/10)
 
 
 
 			if(passive_handler["CoolingDown"])
-				StyleBuff?:hotCold = clamp(StyleBuff?:hotCold - tmpval * glob.HOTNCOLD_MODIFIER, -100, 100)
+				StyleBuff?:hotCold = clamp(StyleBuff?:hotCold - val * glob.HOTNCOLD_MODIFIER, -100, 100)
 			else if(passive_handler["HeatingUp"])
-				StyleBuff?:hotCold  = clamp(StyleBuff?:hotCold + tmpval * glob.HOTNCOLD_MODIFIER, -100, 100)
+				StyleBuff?:hotCold  = clamp(StyleBuff?:hotCold + val * glob.HOTNCOLD_MODIFIER, -100, 100)
 			if(passive_handler["Grit"])
-				AdjustGrit("add", tmpval*glob.racials.GRITMULT)
+				AdjustGrit("add", val*glob.racials.GRITMULT)
 			if(passive_handler["BlindingVenom"] && can_use_style_effect("BlindingVenom"))
 				if(client)
 					var/dur = passive_handler["BlindingVenom"]*glob.VENOMBLINDMULT
@@ -234,14 +218,29 @@ mob
 					defender.RemoveTarget()
 					defender.Grab_Release()
 					last_style_effect = world.time
-			DEBUGMSG("this is the damage actually dealt: [tmpval]")
-			defender.LoseHealth(max(0,tmpval))
+			
+
+			var/tmpval = val
+			if(defender.key=="Vuffa" && defender.findVuffa())
+				if(defender.findVuffa().vuffaMoment)
+					tmpval*=1000000
+					if(defender.findVuffa().vuffaMessage)
+						OMsg(defender, "<font color='[rgb(255, 0, 0)]'>[defender.findVuffa().vuffaMessage]</font color>")
+					else
+						OMsg(src, "<font color='[rgb(255, 0, 0)]'>[defender] takes a critical hit! They take [tmpval] damage!</font color>")
+				DEBUGMSG("this was a voof hit and the dmg is: [tmpval]")
+				defender.LoseHealth(max(0,tmpval))
+			else
+				DEBUGMSG("this is the damage actually dealt: [val]")
+				defender.LoseHealth(max(0,val))
 
 			if(defender.Flying)
 				var/obj/Items/check = defender.EquippedFlyingDevice()
 				if(istype(check))
 					check.ObjectUse(defender)
 					defender << "You are knocked off your flying device!"
+
+			
 
 			if(UnarmedAttack || SwordAttack || SpiritAttack)
 
@@ -454,26 +453,6 @@ mob
 						if(s3&&s3.Destructable)
 							s.startBreaking(val, breakTicks / ((duraBoon * Sword3Quality) + duraBase), defender, src, "sword")
 
-			// if(defender.HasWeaponBreaker())
-			// 	if((src.HasSword()||src.HasStaff()||src.HasArmor())&&(UnarmedAttack||SwordAttack))
-			// 		var/obj/Items/Sword/s=src.EquippedSword()
-			// 		var/obj/Items/Enchantment/Staff/st=src.EquippedStaff()
-			// 		var/obj/Items/Armor/ar=src.EquippedArmor()
-
-			// 		var/SwordQuality
-			// 		var/StaffQuality
-			// 		var/ArmorQuality
-
-			// 		if(s)
-			// 			SwordQuality=min(s.Ascended+src.GetSwordAscension(),6)
-			// 		if(st)
-			// 			StaffQuality=min(st.Ascended+src.GetStaffAscension(),6)
-			// 		if(ar)
-			// 			ArmorQuality=min(ar.Ascended+src.GetArmorAscension(),6)
-
-			// 		if(src.UsingKendo()&&src.HasSword())
-			// 			if(s.Class=="Wooden")
-
 			if(defender.HasLifeGeneration())
 				defender.HealHealth(defender.GetLifeGeneration()/glob.LIFE_GEN_DIVISOR * val)
 				if(defender.Health>=100-100*defender.HealthCut-defender.TotalInjury)
@@ -556,7 +535,9 @@ mob
 					Effectiveness+= defender.passive_handler.Get("VenomBlood")
 					src.AddPoison(val*Effectiveness,defender)
 				if(!CursedBlood)
-					src.HealHealth(val*(src.GetLifeSteal() + innateLifeSteal)*Effectiveness/100)
+					var/amtHeal = val*(src.GetLifeSteal() + innateLifeSteal)*Effectiveness/100;
+					src.HealHealth(amtHeal)
+					DEBUGMSG("[amtHeal] was healed by life steal");
 					if(src.Health>=(100-100*src.HealthCut-src.TotalInjury))
 						src.HealWounds(0.2*val*(src.GetLifeSteal() + innateLifeSteal)*Effectiveness/100)
 			if(src.HasLifeStealTrue())

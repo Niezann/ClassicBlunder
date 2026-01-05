@@ -17,14 +17,15 @@
 
 /mob/proc/newDoDamage(mob/defender, val, unarmed, sword, secondhit, thirdhit, trueMult, spiritAtk, destructive, autohit)
 	if(inStasis() || defender.inStasis())
-		return
+		return 0;
 	if(defender == src)
+		DEBUGMSG("Defender was src, and so newDoDamage stopped early")
 		DamageSelf(val)
-		return
+		return 0;
 	else if(defender == null)
-		return
+		return 0;
 	if(!handleAI(defender)) // handles ai
-		return
+		return 0; 
 	if(unarmed || sword)
 		triggerLimit("Physical")
 		triggerLimit("Sword")
@@ -52,7 +53,7 @@
 	log2text("Damage", "After BalanceDamage", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("Damage", val,"damageDebugs.txt", "[src.ckey]/[src.name]")
 	#endif
-	val /= getInfactuation(defender)
+	val /= getInfactuation(defender)//TODO between wipes: typo
 	#if DEBUG_DAMAGE
 	log2text("Damage", "After Infactuation", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("Damage", val,"damageDebugs.txt", "[src.ckey]/[src.name]")
@@ -226,6 +227,7 @@
 	log2text("Damage", val,"damageDebugs.txt", "[src.ckey]/[src.name]")
 	#endif
 	if(!checkPurity(defender))
+		DEBUGMSG("[defender] is too pure to hit at the end of newdodamage");
 		#if DEBUG_DAMAGE
 		log2text("Damage", "Purity moment", "damageDebugs.txt", "[src.ckey]/[src.name]")
 		log2text("Damage", val,"damageDebugs.txt", "[src.ckey]/[src.name]")

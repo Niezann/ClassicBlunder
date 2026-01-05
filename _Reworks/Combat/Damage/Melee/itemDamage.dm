@@ -1,4 +1,4 @@
-/mob/proc/getItemDamage(list/swords, delay, acc, secondStrike, thirdStrike, swordAtk, specialstrike) // i hate it here
+/mob/proc/getItemDamage(list/swords, delay, acc, secondStrike, thirdStrike, asuraStrike, swordAtk, specialstrike) // i hate it here
 	#if DEBUG_ITEM_DAMAGE
 	log2text("------", "----------------------------------------", "damageDebugs.txt", "[ckey]/[name]")
 	log2text("Damage", "Starting Item Damage Mod", "damageDebugs.txt", "[ckey]/[name]")
@@ -35,6 +35,15 @@
 			returnValues[2] *= GetStaffAccuracy(st)
 			swordAtk = 0
 	if(secondStrike && thirdStrike)
+		if(s3 && swordAtk)
+			returnValues[1] /= GetSwordDelay(s3)
+			returnValues[3] += GetSwordDamage(s3)
+			returnValues[2] *= GetSwordAccuracy(s3)
+		else if(s&&!s3&&swordAtk)
+			returnValues[1] /= GetSwordDelay(s)
+			returnValues[3] += GetSwordDamage(s)
+			returnValues[2] *= GetSwordAccuracy(s)
+	if(secondStrike && thirdStrike && asuraStrike)
 		if(s3 && swordAtk)
 			returnValues[1] /= GetSwordDelay(s3)
 			returnValues[3] += GetSwordDamage(s3)

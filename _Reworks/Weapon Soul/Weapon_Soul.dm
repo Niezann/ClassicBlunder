@@ -302,5 +302,110 @@ mob/tierUpSaga(Path)
 				if(!locate(/obj/Skills/Buffs/SpecialBuffs/OverSoul, src))
 					src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/OverSoul)
 					src << "You've learned to unseal the true form of your legendary weapon."
+			if(7)
+				switch(WeaponSoulType)
+					if("Kusanagi")
+						src << "The Fundament of Faith: Belief answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Belief)
+
+					if("Dainsleif")
+						src << "The Fundament of Ruin: Hatred answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Hatred)
+
+					if("Caledfwlch")
+						src << "The Fundament of Glory: Honour answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Honour)
+
+					if("Muramasa")
+						src << "The Fundament of Death: Entropy answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Entropy)
+
+					if("Masamune")
+						src << "The Fundament of Purity: Life answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Life)
+
+					if("Soul Edge")
+						src << "The Fundament of Chaos: Freedom answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Freedom)
+
+					if("Soul Calibur")
+						src << "The Fundament of Order: Oppression answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Oppression)
+
+					if("Ryui Jingu Bang")
+						src << "The Fundament of the Staff: the Ocean answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Ocean)
+
+					if("Green Dragon Crescent Blade")
+						src << "The Fundament of War: Scarcity answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Scarcity)
+
 obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 	NeedsSword = 1
+/obj/Skills/Buffs/SlotlessBuffs/Fundament
+	NeedsSword = 1
+
+	Belief
+		name = "Fundament: Belief"
+		StrMult=1.25
+		SpdMult=2
+		ForMult=1.25
+		passives= list("DoubleCast" = 1, "TripleCast" = 1, "AsuraStrike" = 1)
+		verb/Fundament_Belief()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Honour
+		name = "Fundament: Honour"
+		StrMult=1.25
+		ForMult=1.25
+		EndMult=1.5
+		verb/Fundament_Honour()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Hatred
+		name = "Fundament: Hatred"
+		StrMult=1.25
+		SpdMult=1.25
+		OffMult=1.25
+		verb/Fundament_Hatred()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Ocean
+		name = "Fundament: The Ocean"
+		verb/Fundament_Ocean()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Life
+		name = "Fundament: Life"
+		passives = list("LifeGeneration" = 5)
+		verb/Fundament_Life()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Entropy
+		name = "Fundament: Entropy"
+		verb/Fundament_Entropy()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Oppression
+		name = "Fundament: Oppression"
+		verb/Fundament_Oppression()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Freedom
+		name = "Fundament: Freedom"
+		verb/Fundament_Freedom()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Scarcity
+		name = "Fundament: Scarcity"
+		verb/Fundament_Scarcity()
+			set category="Skills"
+			src.Trigger(usr)

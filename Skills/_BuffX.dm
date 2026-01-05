@@ -4340,6 +4340,7 @@ NEW VARIABLES
 				src.Trigger(usr)
 		X_Evolution
 			BuffName = "X-Evolution"
+			CantHaveTheseBuffs = list("Death-X-Evolution")
 			SignatureTechnique=5
 			Mastery=-1
 			UnrestrictedBuff=1
@@ -4374,12 +4375,12 @@ NEW VARIABLES
 			PowerMult = 10
 			StrMult=3
 			ForMult=3
-			EndMult=0.01
+			EndMult=0.001
 			SpdMult=3
-			DefMult=0.01
+			DefMult=0.001
 			OffMult=3
-			passives = list("GodKi" = 2, "CriticalChance" = 50, "CriticalDamage" = 0.5, "Brutalize" = 9, "DoubleStrike" = 3, "TripleStrike" = 2, "Warping" = 4, \
-								"HotHundred" = 1, "SoulSteal" = 2, "KillerInstinct" = 0.5, "SpiritSword" = 2, "SpiritHand" = 8, "Instinct" = 10, "Extend" = 2, "Gum Gum" = 2, "SweepingStrike" = 1, "PridefulRage" = 2, "Death-X-Evolution" = 1)
+			passives = list("GodKi" = 2, "CriticalChance" = 50, "CriticalDamage" = 0.5, "Brutalize" = 9, "AsuraStrike" = 2, "DoubleStrike" = 3, "TripleStrike" = 2, "Warping" = 4, \
+								"HotHundred" = 1, "SoulSteal" = 3, "KillerInstinct" = 0.5, "SpiritSword" = 2, "SpiritHand" = 8, "Instinct" = 10, "Extend" = 2, "Gum Gum" = 2, "SweepingStrike" = 1, "PridefulRage" = 2, "Death-X-Evolution" = 1)
 			DarkChange=1
 			ActiveMessage="overcomes the very concept of mortality itself."
 			OffMessage="relinquishes the Evolution of Darkness."
@@ -12074,7 +12075,7 @@ mob
 						src <<"You do not breathe."
 						return
 					if(src.IsEvil()&&!src.isRace(MAKAIOSHIN))
-						if(!src.HasGodKi())
+						if(!src.passive_handler.Get("Scarlet-Overdriven"))
 							src.Death(null, "suicidal stupidity!", SuperDead=1)
 							return
 				if(B.WarpZone)

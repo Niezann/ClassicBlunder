@@ -2051,6 +2051,12 @@ mob
 			return 0
 		GetTripleStrike()
 			return passive_handler.Get("TripleStrike")
+		HasAsuraStrike()
+			if(passive_handler.Get("AsuraStrike"))
+				return 1
+			return 0
+		GetAsuraStrike()
+			return passive_handler.Get("AsuraStrike")
 		HasDebuffReversal()
 			if(passive_handler.Get("DebuffReversal"))
 				return 1

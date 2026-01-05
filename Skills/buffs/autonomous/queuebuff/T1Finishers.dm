@@ -66,7 +66,7 @@
         passives = list("TensionLock" = 1, "Deflection" = 0.5, "Disorienting" = 2,"Momentum" = 2, "MovementMastery" = 3, "TensionLock" = 1)
         ActiveMessage="achieves the peak of their breakthrough..."
         OffMessage="comes back down to mortal level..."
-    
+
 
     Nito_Ichi_Style
         IconLock='SweatDrop.dmi'
@@ -75,7 +75,7 @@
         StyleStr=1.25
         passives = list("TensionLock" = 1, "Momentum" = 1, "DoubleStrike" = 1,\
                         "Steady" = 2, "Instinct" = 2, "TensionLock" = 1)
-        
+
     Iai
         IconLock='SweatDrop.dmi'
         IconApart=1
@@ -83,7 +83,7 @@
         StyleStr = 0.75
         StyleOff = 1.25
         passives = list("AfterImages" = 4, "TensionLock" = 1, "Speed Force" = 1, "Iaijutsu" = 1, "Relentlessness" = 1, "Fury" = 3, "TensionLock" = 1)
-    
+
     Guard_Break
         IconLock='Stun.dmi'
         IconApart=1
@@ -94,7 +94,7 @@
     Crescent_Blessing
         IconLock='SweatDrop.dmi'
         IconApart=1
-        passives = list("Tossing" = 1.5, "SlayerMod" = 1, "FavoredPrey" = "Races", "Hit Scan" = 2 , "TensionLock" = 1) // not sure 
+        passives = list("Tossing" = 1.5, "SlayerMod" = 1, "FavoredPrey" = "Races", "Hit Scan" = 2 , "TensionLock" = 1) // not sure
         StyleOff = 1.2
         StyleStr = 1.2
         StyleSpd = 1.1
@@ -109,11 +109,11 @@
         SlowAffected = 2
     ScarletOverdriven
         TimerLimit = 60
-        IconLock = 'Stun.dmi'
+        IconLock = 'DarkShockD.dmi'
         IconApart = 1
-        passives = list("Maki" = 1)
-        ActiveMessage = "is set ablaze by Scarlet Overdrive!"
-        OffMessage = "feels the flames around them vanish."
+        passives = list("Maki" = 1, "Scarlet-Overdriven" = 1)
+        ActiveMessage = "is set ablaze by Scarlet Overdrive; their Sins come back to haunt them...!"
+        OffMessage = "...feels the flames around them vanish..."
 
     Zwercopter
         IconLock='Ice_Aura_2.dmi'
@@ -124,7 +124,7 @@
         OffMult=1.2
         DefMult=1.2
         SpdMult=0.8
-    
+
     Magma_Fist
         ForMult=1.3
         EndMult=1.2
@@ -146,7 +146,7 @@
         passives = list("SpiritHand" = 1, "Scorching" = 5, "Shocking" = 3, "Flicker" = 1, "Pursuer" = 1, "TensionLock" = 1)
         ForMult=1.3
         StrMult=1.2
-    
+
     Bloodsurge
         passives = list("LifeSteal" = 5, "Toxic" = 3, "TensionLock" = 1, "Godspeed" = 2, "TechniqueMastery" = 3, "Hustle" = 1)
         ForMult = 1.3
