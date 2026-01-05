@@ -1113,10 +1113,6 @@ mob/Admin3/verb
 		M.race.transformations += new /transformation/saiyan/super_saiyan_blue()
 		M.race.transformations += new /transformation/saiyan/super_saiyan_blue_evolved()
 		M<<"<b>Your transformations have been fixed!!! You'll have to ask an admin to remaster them.</b>"
-	GiveBlueEvolved(mob/M in players)
-		set category="Hidden"
-		M.race.transformations += new /transformation/saiyan/super_saiyan_blue_evolved()
-		M<<"<b>here's blue evolved</b>"
 
 	UnMute()
 		set category="Admin"

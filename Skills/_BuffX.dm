@@ -1374,6 +1374,8 @@ NEW VARIABLES
 						src.StealsStats=0
 					if(usr.KeychainAttached=="X-Blade")
 						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 3, "GodKi" = 0.25)
+					if(usr.KeychainAttached=="Nightwing")
+						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 3, "Tossing" = 3, "Secret Knives" = "GodSlayer")
 					if(usr.KeychainAttached=="Ultima Weapon")
 						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 3, "SlayerMod" = 1.5, "FavoredPrey" = "Beyond")
 						src.SwordX=-36

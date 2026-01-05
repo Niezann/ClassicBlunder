@@ -559,6 +559,8 @@ transformation
 			offense = 1.4
 			defense = 1.4
 			force = 1.4
+			revertToTrans = 0
+
 			mastery_boons(mob/user)
 				passives = list("GodKi" = 0.75, "Instinct" = 4, "Brutalize" = 3, "Steady" = 5,  "BuffMastery" = 8, "MovementMastery" = 8, \
 								"PureDamage" = 5, "PureReduction" = 4, "InBlue" = 1, "Godspeed" = 4, "Pursuer" = 4, "LikeWater"=6,"Flicker"=4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20))

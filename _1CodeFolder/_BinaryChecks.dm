@@ -1875,7 +1875,7 @@ mob
 						if(Target.GetGodKi() > Total)
 							Total+=src.Kaioken/4
 				if(src.Kaioken>=6)
-					Total+=3
+					Total+=1
 			return Total
 		HasEndlessNine()
 			if(passive_handler.Get("CreateTheHeavens"))

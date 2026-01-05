@@ -550,6 +550,8 @@ proc
 				return "Light"
 			if("Way To Dawn")
 				return "Light"
+			if("Nightwing")
+				return "Light"
 			if("Rainfell")
 				return "Medium"
 			if("Oblivion")
@@ -592,6 +594,8 @@ proc
 				return 2
 			if("Ultima Weapon")
 				return 2
+			if("Nightwing")
+				return 1.5
 			if("X-Blade")
 				return 3
 	GetKeychainAccuracy(var/KC)
@@ -622,6 +626,8 @@ proc
 				return 1.25
 			if("X-Blade")
 				return 1.5
+			if("Nightwing")
+				return 2
 	GetKeychainDelay(var/KC)
 		switch(KC)
 			if("Kingdom Key")
@@ -650,6 +656,8 @@ proc
 				return 1
 			if("X-Blade")
 				return 0
+			if("Nightwing")
+				return 2
 	GetKeychainElement(var/KC)
 		switch(KC)
 			if("Kingdom Key")
@@ -678,6 +686,8 @@ proc
 				return "Love"
 			if("X-Blade")
 				return "Ultima"
+			if("Nightwing")
+				return "Truth"
 	GetKeychainIcon(var/KC)
 		switch(KC)
 			if("Kingdom Key")
@@ -1793,7 +1803,7 @@ mob
 								src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Command/Vector_to_the_Heavens)
 							if("Future")
 								src.Keychains.Add("Nightwing")
-						//		src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Command/Nachtflugel)
+								src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Command/Nachtflugel)
 
 		getAriaCount(pathEffect = 0)
 			var/count = AriaCount

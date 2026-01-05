@@ -623,6 +623,24 @@ obj
 								set hidden=1
 								adjust(usr)
 								src.Trigger(usr)
+						Nachtflugel
+							StyleStr=1.25
+							StyleFor=1.25
+							StyleSpd=1.5
+							StyleActive="Nachtflugel"
+							passives = list("GodSpeed" = 4, "Warping" = 2,"Skimming" = 2, "Tossing" = 3, "Secret Knives" = "GodSlayer")
+							SweepingStrike=1
+							ElementalOffense = "Truth"
+							ElementalDefense = "Mirror"
+							Finisher="/obj/Skills/Queue/Finisher/Nachtflugel"
+							adjust(mob/p)
+								StyleSpd = 1 + (0.1 * p.SagaLevel)
+								StyleEnd = 1 + (0.1 * p.SagaLevel)
+								StyleStr = 1 + (0.1 * p.SagaLevel)
+							verb/Vector_to_the_Heavense_Style()
+								set hidden=1
+								adjust(usr)
+								src.Trigger(usr)
 
 
 				FreeStyle
