@@ -1872,7 +1872,7 @@ mob
 			if(passive_handler.Get("Kaioken Blue"))
 				if(src.Target)
 					if(src.Target.HasGodKi())
-						if(Target.GetGodKi() > Total)
+						if(Target.GetGodKi() >= 1.75)
 							Total+=src.Kaioken/4
 				if(src.Kaioken>=6)
 					Total+=1
