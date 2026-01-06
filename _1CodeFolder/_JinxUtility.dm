@@ -2287,8 +2287,11 @@ mob
 		HolyDamage(var/mob/P, var/Forced=0)//Stick this in the DoDamage proc.
 			//To get to this proc, you have to already have holy damage
 			var/HolyDamageValue=src.GetHolyMod()
-			/*if(P.CheckSlotless("Devil Arm"))
-				HolyDamageValue=1+(1.5*src.GetHolyMod())*/
+			if(P.CheckSlotless("Devil Arm") && !P.isRace(DEMON) && !P.isRace(MAKAIOSHIN))
+				if(!Forced)
+					return HolyDamageValue
+				else
+					return HolyDamageValue
 			if(P.UsingMuken())
 				if(!Forced)
 					return (-1)*src.GetHolyMod()
