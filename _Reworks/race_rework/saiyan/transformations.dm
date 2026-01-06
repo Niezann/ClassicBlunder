@@ -296,7 +296,7 @@ transformation
 				..()
 
 			mastery_boons(mob/user)
-				passives = list("DisableGodKi" = 1, "GiantForm" = 1, "Juggernaut" = 1+(mastery/25), "BuffMastery" = 5 + (mastery/10), "SweepingStrike" = 1, "Brutalize" = 3,\
+				passives = list("GiantForm" = 1, "Juggernaut" = 1+(mastery/25), "BuffMastery" = 5 + (mastery/10), "SweepingStrike" = 1, "Brutalize" = 3,\
 				"Meaty Paws" = 2 + (mastery/50), "KiControlMastery" = 3 + (mastery/50), "PureReduction" = 5 + (mastery/10),\
 				"LifeGeneration" = 1 + round(mastery/50,1), "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.1 + (mastery/200),\
 				"Flow" = 4, "Instinct" = 4, "Transformation Power" = clamp(user.AscensionsAcquired * 3, 1, 20), "Deicide" = 10,\
@@ -381,8 +381,8 @@ transformation
 						x.Blend(rgb(150,-10,-10),ICON_ADD)
 
 			mastery_boons(mob/user)
-				passives = list("Juggernaut" = 1+(mastery/25), "BuffMastery" = 2, "SweepingStrike" = 1, "Brutalize" = 3,\
-				"KiControlMastery" = 4, "PureReduction" = 3, "Reversal" = 0.1 + (mastery/200),\
+				passives = list("BuffMastery" = 2, "SweepingStrike" = 1, "Brutalize" = 3,\
+				"KiControlMastery" = 4, "PureReduction" = 3, "EnergyGeneration" = 5, \
 				"Flow" = 4, "Instinct" = 4, "Deicide" = 10,\
 				"Flicker" = 5, "Pursuer" = 5, "PureDamage"= 3,"EndlessNine"=0.25,"SSJ4LimitBreaker"=1)
 				speed = 1.25 + (mastery/400)
@@ -452,7 +452,7 @@ transformation
 			// at full mastery, give the saiyan beyond god buff, then remove ssjgod, and replace it with ssjgb
 			mastery_boons(mob/user)
 				autoAnger = TRUE
-				passives = list("GodKi" = 0.5, "EnergyGeneration" = 3 + round(mastery/25, 1), "Godspeed" = 4, "Flow" = 4 + round(mastery/25, 1),"TechniqueMastery" = 3 + round(mastery/25, 1), \
+				passives = list("GodKi" = 0.5, "EnergyGeneration" = 3 + round(mastery/10, 1), "Godspeed" = 4, "Flow" = 4 + round(mastery/25, 1),"TechniqueMastery" = 3 + round(mastery/15, 1), \
 								"Instinct" = 4,"Pursuer"= 4 , "BackTrack" = 2 + round(mastery/50, 1), \
 								"MovementMastery" = 4+round(mastery/25, 1), "StunningStrike" = 1 + round(mastery/50, 0.1), "Sunyata" = 1 + round(mastery/20 ,1),"GodlyCalm"=1,\
 								"Flicker" = 4, "PureDamage"=2, "BuffMastery" = 1 + (mastery/25))
@@ -657,30 +657,31 @@ transformation
 			form_aura_x = -32
 			form_aura_y = -32
 			mastery_boons(mob/user)
-				// perfected
+				mastery = 100 //true end stage for saiyans, mastery would be superfluous
+				// perfected: sustainable version of the form, strict upgrade over blue
 				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/zeal)
 					passives = list("GodKi" = 0.25, "Instinct" = 4, "Brutalize" = 3, "Steady" = 1, "MovementMastery" = 2, \
 									"EnergyGeneration" = 3,  "PureDamage" = 3, "PureReduction" = 2, "LikeWater" = 2, \
-									"BackTrack" = 1 , "StunningStrike" = 2, "Sunyata" = 3, "InBlueEvolved" = 1)
+									"BackTrack" = 1 , "StunningStrike" = 2, "Sunyata" = 3, "InBlueEvolved" = 1,"Flow"=4)
 					strength = 1.1
 					speed = 1.2
 					offense = 1.2
 					defense = 1.2
 					force = 1.1
 					endurance = 1.2
-				//evolved
+				//evolved: high risk high reward. glass cannon stage that drains heavily
 				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/pride)
-					passives = list("GodKi" = 0.5, "Brutalize" = 2, "MovementMastery" = 7, "EnergyLeak" = 3, "FatigueLeak"=3,\
+					passives = list("GodKi" = 0.5, "Brutalize" = 2, "MovementMastery" = 7, "EnergyLeak" = 3, "FatigueLeak"=1,\
 							 	"PureDamage" = 9, "PureReduction" = -2,"LikeWater" = 4, \
 								"Sunyata" = 6, "InBlueEvolved" = 1, "Pursuer" = 2)
 					strength = 1.35
 					speed = 1.25
 					force = 1.35
 					endurance = 0.75
-				//enraged
+				//enraged: draw out fights, anger makes user stronger but wounds put a limit on it
 				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/honor)
 					passives = list("GodKi" = 0.25, "Brutalize" = 2, "MovementMastery" = 5, \
-							 	"PureDamage" = 2,"PureReduction" = 5, "LikeWater" = 4, "BleedHit"=0.75, \
+							 	"PureDamage" = 2,"PureReduction" = 5, "LikeWater" = 4, "BleedHit"=0.25, \
 								"Persistence" = 3, "InBlueEvolved" = 1, "UnderDog" = 5, "Flicker" = 3)
 					endurance = 1.25
 					strength = 1.1
