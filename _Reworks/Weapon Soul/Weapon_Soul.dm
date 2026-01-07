@@ -350,7 +350,9 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 		StrMult=1.25
 		SpdMult=2
 		ForMult=1.25
-		passives= list("DoubleCast" = 1, "TripleCast" = 1, "AsuraStrike" = 1)
+		passives= list("DualCast" = 1, "QuickCast" = 2, "DoubleStrike"= 2 , "TripleStrike"= 2 , "AsuraStrike" = 1)
+		ActiveMessage= "invokes the Origin of Faith, embracing Primordial Belief!"
+		OffMessage= "casts aside the Origin of Faith..."
 		verb/Fundament_Belief()
 			set category="Skills"
 			src.Trigger(usr)
@@ -360,6 +362,9 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 		StrMult=1.25
 		ForMult=1.25
 		EndMult=1.5
+		passives= list("PureReduction"=2)
+		ActiveMessage= "invokes the Origin of Glory, embracing the Honour of a King!"
+		OffMessage= "casts aside the Origin of Glory..."
 		verb/Fundament_Honour()
 			set category="Skills"
 			src.Trigger(usr)
@@ -369,6 +374,9 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 		StrMult=1.25
 		SpdMult=1.25
 		OffMult=1.25
+		ActiveMessage= "invokes the Origin of Ruin, stewing in Primordial Hate!"
+		OffMessage= "casts aside the Origin of Ruin..."
+		passives= list("DeathField" = 5, "MaimStrike" = 1, "Duelist" = 3)
 		verb/Fundament_Hatred()
 			set category="Skills"
 			src.Trigger(usr)
@@ -381,13 +389,21 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 
 	Life
 		name = "Fundament: Life"
-		passives = list("LifeGeneration" = 5)
+		OffMult=1.5
+		DefMult=1.5
+		SpdMult=1.5
+		passives = list("HolyMod"= 4, "LifeGeneration" = 1)
+		ActiveMessage= "invokes the Origin of Purity, putting Life in their Embrace!"
+		OffMessage= "casts aside the Origin of Purity..."
 		verb/Fundament_Life()
 			set category="Skills"
 			src.Trigger(usr)
 
 	Entropy
 		name = "Fundament: Entropy"
+		passives = list("Erosion" = 0.5, "DeathField" = 5, "VoidField" = 5)
+		ActiveMessage= "invokes the Foundation of Death, bringing the End with their blade..:"
+		OffMessage="allows the Entropic energy to fade from their legendary weapon..."
 		verb/Fundament_Entropy()
 			set category="Skills"
 			src.Trigger(usr)

@@ -1557,8 +1557,8 @@ mob
 		src.MaxOxygen()
 
 		if(client&&src.MortallyWounded&&!src.PureRPMode)
-			if(!src.client.color)
-				animate(src.client, color=list(1,0,0, 0.25,0.75,0, 0.25,0,0.75, 0,0,0), time=3)
+		/*	if(!src.client.color)
+				animate(src.client, color=list(1,0,0, 0.25,0.75,0, 0.25,0,0.75, 0,0,0), time=3) */
 			if(src.KO||src.MortallyWounded>3)
 				if(prob(10*src.MortallyWounded/src.GetRecov()))
 					src.Health-=10/max(src.Health,10)
