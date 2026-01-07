@@ -647,7 +647,7 @@ mob
 									Grabee.Grab_Release()
 							dd.returnToOrg(src)*/
 				if(src.passive_handler.Get("The Roaring"))//The Roaring
-					for(var/mob/M in range(1,src))
+					for(var/mob/M in range(100,src))
 						M.ManaAmount=0
 				if(src.ManaSealed)
 					if(!src.HasMechanized())

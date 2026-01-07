@@ -1870,7 +1870,7 @@ mob
 			if(passive_handler.Get("CreateTheHeavens") && src.DoubleHelix>=5&&isRace(HUMAN))
 				Total += 1
 			if(passive_handler.Get("Kaioken Blue"))
-				if(src.Target)
+				if(src.Target&&Target!=src)
 					if(src.Target.HasGodKi())
 						if(Target.GetGodKi() >= 1.75)
 							Total+=src.Kaioken/4
