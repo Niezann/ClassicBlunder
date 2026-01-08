@@ -79,7 +79,7 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/Dont_Stop_Me_Now //first act
 	SpdMult=1.15
 	Cooldown = 1
 	AwakeningRequired=1
-	passives = list("BuffMastery" = 1,"KiControlMaster" =1, "TechniqueMastery"=1)
+	passives = list("BuffMastery" = 1,"KiControlMastery" =1, "TechniqueMastery"=1)
 //HE'S GOTTA BE STRONG AND HE'S GOTTA BE FAST AND HE'S GOTTA BE FRESH FROM THE NIGHT
 obj/Skills/Buffs/SlotlessBuffs/Autonomous/Temporary_Hero_Heart
 	ActiveMessage="awakens a heroic heart!"
@@ -126,7 +126,7 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/Shining_Star
 	StrMult=1.25
 	SpdMult=1.15
 	Cooldown = 1
-	passives = list("Pursuer" = 1,"KiControlMaster" =1)
+	passives = list("Pursuer" = 1,"KiControlMastery" =1)
 obj/Skills/Buffs/SlotlessBuffs/Autonomous/Unwavering_Soul
 	TooMuchHealth = 100
 	NeedsHealth=99
@@ -162,7 +162,7 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/We_Are_The_Champions //second act
 	SpdMult=1.15
 	Cooldown = 1
 	AwakeningRequired=1
-	passives = list("BuffMastery" = 1,"KiControlMaster" =1, "TechniqueMastery"=1)
+	passives = list("BuffMastery" = 1,"KiControlMastery" =1, "TechniqueMastery"=1)
 obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Blue_Experience //second act
 	ActiveMessage="burns brighter than they should."
 	SpdMult=1.5
@@ -179,7 +179,7 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/The_Show_Must_Go_On //third act
 	Cooldown = 1
 	AwakeningRequired=1
 	TimerLimit=300
-	passives = list("BuffMastery" = 1,"KiControlMaster" =1, "TechniqueMastery"=1)
+	passives = list("BuffMastery" = 1,"KiControlMastery" =1, "TechniqueMastery"=1)
 obj/Skills/Buffs/SlotlessBuffs/Autonomous/Burning_Soul
 	ActiveMessage="transforms their passion into fury, their desire to win surpassing all."
 	Cooldown = 1
