@@ -223,7 +223,7 @@
 	if(defender.passive_handler.Get("Field of Destruction"))
 		if(HasHybridStrike())
 			if(val)
-				val/=  1 + (GetStr(GetHybridStrike())/10)
+				val/=  1 + (GetFor(GetHybridStrike())/10)
 	if(HasEmptySeat())
 		passive_handler.Increase("AlphainForce", val)
 	#if DEBUG_DAMAGE

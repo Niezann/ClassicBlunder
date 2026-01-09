@@ -692,7 +692,7 @@
 									var/heal = damage //not actually a heal, i'm just lazy
 
 									if(HasSpiritSword())
-										heal *= GetSpiritSword()
+										heal = GetFor(GetSpiritSword())
 									//TODO TEST ENERGY SIPHON IT MIGHT BE WONKY
 									damage -= heal
 							//		enemy.HealEnergy(heal)
