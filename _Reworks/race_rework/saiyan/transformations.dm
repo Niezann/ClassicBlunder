@@ -439,6 +439,8 @@ transformation
 		super_saiyan_5
 			unlock_potential = 150
 			autoAnger = 1
+			form_hair_icon = 'Hair_SSJ5.dmi'
+			form_icon_1_icon = 'Hair_SSJ5.dmi'
 		super_saiyan_god
 			tier = 4
 			passives = list("GodKi" = 0.5, "EnergyGeneration" = 1, "Godspeed" = 4, "Flow" = 4, "BackTrack" = 2, "StunningStrike" = 1, "Sunyata" = 1 )
