@@ -1219,11 +1219,11 @@ obj/Skills/Grapple
 		StyleFor=1.25
 		StyleEnd=1.5
 		Finisher="/obj/Skills/Queue/Finisher/Your_Idea"
-		passives = list("Deicide" = 10, "Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "BladeFisting"=1)
+		passives = list("Deicide" = 10, "Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1)
 		adjust(mob/p)
-			passives = list("Deicide" = 10, "Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "EndlessNine"=0.25, "BladeFisting"=1,"PureDamage"=4,"PureRediction"=4)
+			passives = list("Deicide" = 10, "Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "EndlessNine"=0.25, "PureDamage"=4,"PureReduction"=4)
 			if(p.SagaLevel>=6)
-				passives = list("Deicide" = 10, "Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "EndlessNine"=0.5, "BladeFisting"=1,"PureDamage"=6,"PureRediction"=6)
+				passives = list("Deicide" = 10, "Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "EndlessNine"=0.5, "PureDamage"=6,"PureReduction"=6)
 		verb/Justice_Incarnate()
 			set hidden=1
 			adjust(usr)
@@ -1234,11 +1234,11 @@ obj/Skills/Grapple
 		StyleFor=1.25
 		StyleEnd=1.5
 		Finisher="/obj/Skills/Queue/Finisher/Your_Idea"
-		passives = list("Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "BladeFisting"=1,"PureDamage"=3,"PureRediction"=3)
+		passives = list("Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "PureDamage"=3,"PureReduction"=3)
 		adjust(mob/p)
-			passives = list("Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "BladeFisting"=1,"PureDamage"=2,"PureRediction"=2)
+			passives = list("Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "PureDamage"=2,"PureReduction"=2)
 			if(p.SagaLevel>=6)
-				passives = list("Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "BladeFisting"=1,"PureDamage"=3,"PureRediction"=3)
+				passives = list("Rage" = 5, "Momentum" = 1, "Determination(Green)" = 1, "MagicSword"=1, "PureDamage"=3,"PureReduction"=3)
 		verb/Fate_Incarnate()
 			set hidden=1
 			adjust(usr)

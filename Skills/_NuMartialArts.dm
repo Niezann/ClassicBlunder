@@ -349,7 +349,7 @@ obj
 						StyleStr=1 // ???
 						StyleSpd=1
 						StyleActive="Hiten Mitsurugi"
-						passives = list("Godspeed" = 1, "BlurringStrikes" = 0.25, "Flicker" = 1)
+						passives = list("Godspeed" = 1, "BlurringStrikes" = 3, "Flicker" = 1)
 						Flicker=1
 						Mastery=4
 						ClassNeeded = list("Light", "Wooden")

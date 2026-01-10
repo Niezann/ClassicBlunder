@@ -436,7 +436,9 @@ transformation
 					ShockSize/=2
 				spawn(10)
 					animate(user, color = user.MobColor, time=20)
-
+		super_saiyan_5
+			unlock_potential = 150
+			autoAnger = 1
 		super_saiyan_god
 			tier = 4
 			passives = list("GodKi" = 0.5, "EnergyGeneration" = 1, "Godspeed" = 4, "Flow" = 4, "BackTrack" = 2, "StunningStrike" = 1, "Sunyata" = 1 )
