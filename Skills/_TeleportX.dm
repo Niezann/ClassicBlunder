@@ -28,6 +28,7 @@ obj/Skills
 
 			UnderworldWarp=0//if 1, traverse underworld is option
 			DepthsWarp=0 //Travel to the Depths
+			DaatWarp=0//Travel to Da'at
 			FallThrough=0//go to this z plane around your coordinates if you arent on it
 
 			UseableDead=0//if 1, allows use in dead/neardead zones
@@ -107,7 +108,7 @@ obj/Skills
 			UseableDead=1
 			FocalPerson=1
 			NoCoordinates=0
-		//	ManaCost=100
+			ManaCost=100
 			WindUp=2
 			WindUpIcon='Icons/Effects/BlackHoleEnter.dmi'
 			WindDown=0.7
@@ -117,6 +118,7 @@ obj/Skills
 			verb/Traverse_Void()
 				set category="Utility"
 				src.Activate(usr)
+
 		Instant_Transmission
 			desc="Warp instantly to a known energy signature. You can take people with you!"
 			SignatureTechnique=3
@@ -215,6 +217,22 @@ obj/Skills
 			verb/Traverse_Underworld()
 				set category="Utility"
 				src.Activate(usr)
+		Traverse_Daat
+			desc="Warp to Da'at and back."
+			UseableDead=1
+			DaatWarp=1
+			NoCoordinates=1
+			NoPassengers=0
+			NoReturn=0
+			WindUp=2
+			WindUpIcon='Icons/Effects/BlackHoleEnter.dmi'
+			WindDown=0.7
+			WindDownIcon='Icons/Effects/BlackHoleExit.dmi'
+			TeleportMessage="rips open a portal to a realm of Light and Darkness."
+			ArriveMessage="arrives through a portal."
+			verb/Traverse_Daat()
+				set category="Utility"
+				src.Activate(usr)		
 		Traverse_Depths
 			desc="Warp to the Depths and back."
 			UseableDead=1
@@ -340,6 +358,8 @@ obj/Skills
 					Modes.Add("Traverse Underworld")
 				if(src.DepthsWarp)
 					Modes.Add("Traverse Depths")
+				if(src.DaatWarp)
+					Modes.Add("Traverse Da'at")
 				//	Modes.Add("Traverse Underworld")
 
 				if(Modes.len==2)
@@ -373,6 +393,12 @@ obj/Skills
 								tz=input(User, "Z coordinate of destination?", "[src]") as num|null
 								if(!tz || tz<0)
 									return
+								if(tz==17)
+									var/obj/Skills/Teleport/Traverse_Daat/d = new()
+									d = locate() in User
+									if(!d)
+										User << "You lack the authority to teleport this place at will."
+										return
 							t=locate(tx, ty, tz)
 							if(t)
 								Destination=t
@@ -435,6 +461,12 @@ obj/Skills
 									Destination=locate(nex.x, nex.y, nex.z)
 							else if(src.FocalPerson)
 								var/mob/m = Focals["[Focal]"]
+								if(m.z==17)
+									var/obj/Skills/Teleport/Traverse_Daat/d = new()
+									d = locate() in User
+									if(!d)
+										User << "You lack the authority to teleport this place at will."
+										return
 								Destination=locate(m.x,m.y,m.z)
 					if("Fall Through")
 						Destination=locate(User.x, User.y, src.FallThrough)
@@ -454,6 +486,11 @@ obj/Skills
 						src.ReturnY=User.y
 						src.ReturnZ=User.z
 						Destination=locate(198, 238, 8)
+					if("Traverse Da'at")
+						src.ReturnX=User.x
+						src.ReturnY=User.y
+						src.ReturnZ=User.z
+						Destination=locate(285, 29, 17)
 
 				if(src.WindUpIcon)
 					spawn()
