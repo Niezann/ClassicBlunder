@@ -5,7 +5,7 @@
         KBMult=0.001
         SweepStrike=2
         Crushing = 20
-        DamageMult = 4
+        DamageMult = T2_DMG_MULT / 2;
         UnarmedOnly=1
         GrabTrigger="/obj/Skills/Grapple/Heavenly_Potemkin_Buster"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Potemkin_Buster"
@@ -18,7 +18,7 @@
 		// make animation that makes a clone rapidly strike at from angles, not 2 hard
         InstantStrikes = 13
         InstantStrikesDelay = 0.5
-        DamageMult = 0.2
+        DamageMult = T2_DMG_MULT / 2 / 13;
         MortalBlow = 0.5
         FollowUp="/obj/Skills/AutoHit/Shitenketsu"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Cruel_Shadow"
@@ -26,7 +26,7 @@
     Teiga // damage
         InstantStrikes = 11
         InstantStrikesDelay = 1
-        DamageMult = 0.35
+        DamageMult = T2_DMG_MULT / 2 / 11;
         MortalBlow = 1
         Grapple=1
         GrabTrigger="/obj/Skills/Grapple/Ryukoha"
@@ -36,7 +36,7 @@
         KBMult=5
         KBAdd = 10
         Quaking=5
-        DamageMult=6.5
+        DamageMult = T2_DMG_MULT / 2;
         HitSparkIcon='fevExplosion.dmi'
         HitSparkX=-32
         HitSparkY=-32
@@ -51,19 +51,19 @@
         Quaking=5
         PushOut=1
         PushOutWaves=2
-        DamageMult=2
+        DamageMult= T2_DMG_MULT / 2;
         KBAdd=0.001
         FollowUp="/obj/Skills/AutoHit/Jarret_Jarret"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Feng_Shui_Engine"
     Mastery_of_Two_Layers
         InstantStrikes = 2
-        DamageMult = 1
-        HitMessage=""
+        DamageMult = T2_DMG_MULT / 2 / 2;
+        HitMessage="" 
         FollowUp="/obj/Skills/Queue/Finisher/Sanjou_no_Kiwami"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Ushin"
     Sanjou_no_Kiwami
         Combo=8
-        DamageMult = 1.5
+        DamageMult = T2_DMG_MULT / 2 / 8;
         HitMessage="unleashes a flurry of concurrent strikes, each blow hitting with the force of two!"
         BuffSelf=0
         HitSparkIcon = 'Slash_Multi.dmi'
@@ -77,21 +77,21 @@
         SweepStrike = 2
         Quaking=5
         PushOut=1
-        DamageMult = 2
+        DamageMult = T2_DMG_MULT / 2;
         FollowUp="/obj/Skills/Queue/Finisher/Kokujo_O_Tatsumaki"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Firefox_Style"
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Shredded"
         HitMessage = "breaks off into a relentless pursuit!"
     Kokujo_O_Tatsumaki
         Combo=25
-        DamageMult = 0.1
+        DamageMult = T2_DMG_MULT / 2 / 25;
         HitMessage="rips through their opponent with countless slashes!"
         BuffSelf=0
         HitSparkIcon = 'Slash_Multi.dmi'
 
     Gatotsu_Rokujin
         SpeedStrike=5
-        DamageMult=1
+        DamageMult= T2_DMG_MULT / 2 / 6;
         InstantStrikes=6
         PushOut=1
         Rapid=1
@@ -103,7 +103,7 @@
         Stunner=4
         KBMult = 0.0001
         FollowUp="/obj/Skills/AutoHit/Divide_Effect"
-        DamageMult = 3
+        DamageMult = T2_DMG_MULT / 2;
         Decider = 4
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Indomitable_Will"
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Fimbulwinter"
@@ -112,7 +112,7 @@
         Dominator = 1
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Righteous_Crusade"
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Staked"
-        DamageMult = 3
+        DamageMult = T2_DMG_MULT / 2;
         Stunner = 2
         KBMult = 3
         HitMessage = "prepares the hunt by pinning their prey to the ground!"
@@ -130,7 +130,7 @@
         PushOutWaves=4
         SweepStrike=2
         Decider=4
-        DamageMult=3
+        DamageMult= T2_DMG_MULT / 2;
         KBAdd = 0.01
         FollowUp="/obj/Skills/AutoHit/The_Heavenly_Demons_Fist_That_Cleaves_Through_Heaven_And_Divides_The_Sea"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Emergent_Demon_Breakthrough"
@@ -150,7 +150,7 @@
         Stunner=8
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Time_Skip"
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Time_Freeze"
-        DamageMult = 3
+        DamageMult = T2_DMG_MULT / 2;
         Explosive = 1
         KBMult = 0.0001
         HitMessage = "unleashes a barrage of punches so fast it is like they stopped time..."
@@ -160,7 +160,7 @@
         SweepStrike = 2
         Quaking=5
         PushOut=1
-        DamageMult = 2
+        DamageMult = T2_DMG_MULT / 2;
         FollowUp="/obj/Skills/Queue/Finisher/Wuju"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Alpha_Strike"
         HitMessage = "breaks off into a relentless pursuit!"
@@ -168,7 +168,7 @@
         Crippling=100
         Quaking=2
         PushOut=1
-        DamageMult=1
+        DamageMult= T2_DMG_MULT / 2;
         FollowUp="/obj/Skills/AutoHit/Rupture"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Bloodrage"
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Silence"
@@ -177,13 +177,13 @@
 
     Wuju
         Combo=10
-        DamageMult = 0.1
+        DamageMult = T2_DMG_MULT / 10;
         BuffSelf=0
         HitSparkIcon = 'Slash_Multi.dmi'
 
     Psycho_Barrage
         Combo=5
-        DamageMult = 0.5
+        DamageMult = T2_DMG_MULT / 5;
         Launcher=3
         Crippling=15
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Forced_Mechanize"
@@ -195,28 +195,28 @@
     Deal_with_the_Devil
         FollowUp = "/obj/Skills/AutoHit/Dantes_Inferno"
         BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/In_the_Details"
-        DamageMult = 1.1
+        DamageMult = T2_DMG_MULT / 2;
         AdaptRate = 1
     Mega_Arm
         FollowUp = "/obj/Skills/Projectile/Super_Mega_Buster"
         BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/X_Buster"
         BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Plasma_Burned" // pure red
-        DamageMult = 1.1
+        DamageMult = T2_DMG_MULT / 2;
         AdaptRate = 1
     Frostfist
         Freezing = 255
-        DamageMult = 2
+        DamageMult = T2_DMG_MULT / 2;
         FollowUp = "/obj/Skills/AutoHit/Ice_Ply"
         BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Frozen_Summit"
         AdaptRate = 1
     Phosphor
         FollowUp = "/obj/Skills/Projectile/Coldflame_Pale_Blade"
         BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Cooled_Down"
-        DamageMult = 1.1
+        DamageMult = T2_DMG_MULT / 2;
         AdaptRate = 1
     Jet_Kindling
         FollowUp = "/obj/Skills/AutoHit/Flashfire_Fist"
         BuffSelf = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Heated_Up"
-        DamageMult = 1.1
+        DamageMult = T2_DMG_MULT / 2;
         AdaptRate = 1
     //Soul Eater

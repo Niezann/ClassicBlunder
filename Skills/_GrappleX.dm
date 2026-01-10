@@ -142,7 +142,7 @@ obj/Skills/Grapple
 		TriggerMessage = "starts spinning"
 
 	Heavenly_Potemkin_Buster
-		DamageMult = 6
+		DamageMult = T2_DMG_MULT / 2;
 		StrRate=1
 		EndRate=0.75
 		OneAndDone = 1
@@ -151,7 +151,7 @@ obj/Skills/Grapple
 		Effect="PotemkinBuster"
 
 	Tombstone_Piledriver
-		DamageMult = 8
+		DamageMult = T3_DMG_MULT/2;
 		HarderTheyFall = 6
 		StrRate=1.5
 		EndRate=0.75
@@ -168,7 +168,7 @@ obj/Skills/Grapple
 		TriggerMessage = "aims and throws"
 
 	Ryukoha
-		DamageMult = 4
+		DamageMult = T2_DMG_MULT / 2;
 		HarderTheyFall = 1.5
 		EffectMult=1.5
 		Effect="Lotus"

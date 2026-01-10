@@ -15,7 +15,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 40
+	var/UPDATE_VERSION = 41
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -624,7 +624,7 @@ update
 				e.updateSecretVariables(o);
 				o << "Your eldritch secret variables have been updated."
 				o << "This should only ever happen ONCE! If it happens more times than that, contact Xoxo, something fucky."
-	version39
+	version40
 		version = 40
 		updateMob(mob/o)
 			.=..()
@@ -644,6 +644,15 @@ update
 				o << "Block Chance now has Critical Block to go along with it."
 				o << "If you have any discrepencies, contact Xoxo."
 				o << "By the way, y'all have an ascension 6 now. 🌺"
+	version41
+		version = 41
+		updateMob(mob/o)
+			.=..()
+			if(o.isRace(HUMAN) || o.isRace(CELESTIAL))
+				o.race.fixTransformations();
+				o << "Your transformations have been reset. Hopefully those weren't on when you logged off!"
+				o << "If they were, eh, tough beans. To be human is suffering."
+				o << "Except for you, Tena. 💛"
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25

@@ -7,7 +7,7 @@
 		StrOffense=1
 		Rush=3
 		Rounds=5
-		DamageMult=2
+		DamageMult = T2_DMG_MULT/2/5;
 		ControlledRush=3
 		Launcher=3
 		DelayedLauncher=1
@@ -24,7 +24,7 @@
 		RoundMovement=0
 		Distance=3
 		Instinct=4
-		DamageMult=1.5
+		DamageMult = T2_DMG_MULT/2/10;
 		Rounds=10
 		ComboMaster = 1
 		StrOffense=1
@@ -41,7 +41,7 @@
 	Ice_Ply
 		AdaptRate = 1
 		SpecialAttack=1
-		DamageMult=4
+		DamageMult = T2_DMG_MULT/2;
 		Stasis=5
 		TurfShift='IceGround.dmi'
 		Distance=5
@@ -54,7 +54,7 @@
 		Scorching = 15
 		Rounds = 5
 		SpecialAttack = 1
-		DamageMult = 0.33
+		DamageMult = T2_DMG_MULT / 2 / 5;
 		AdaptRate = 1
 		EndDefense = 0.75
 	Flashfire_Fist
@@ -63,7 +63,7 @@
 		Distance=5
 		SpecialAttack = 1
 		Size = 3
-		DamageMult = 4
+		DamageMult = T2_DMG_MULT / 2;
 		AdaptRate = 1
 		Rush = 3
 		EndDefense = 1
@@ -73,7 +73,7 @@
 		Area = "Target"
 		Snaring = 4
 		Distance = 4
-		DamageMult = 4
+		DamageMult = T2_DMG_MULT / 2;
 		AdaptRate = 1
 		Shattering = 25
 		HitSparkIcon='HitsparkStar.dmi'
@@ -83,7 +83,7 @@
 		NoLock=1
 		NoAttackLock=1
 		Distance=5
-		DamageMult=2
+		DamageMult = T2_DMG_MULT / 2;
 		StrOffense=1
 		ForOffense=1
 		EndDefense=1
@@ -107,7 +107,7 @@
 		NoLock=1
 		NoAttackLock=1
 		Distance=50
-		DamageMult=3
+		DamageMult= T2_DMG_MULT / 2;
 		StrOffense=1
 		ForOffense=1
 		EndDefense=1

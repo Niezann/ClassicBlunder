@@ -243,24 +243,11 @@ mob
 
 
 			if(UnarmedAttack || SwordAttack || SpiritAttack)
+				if(src.StyleBuff && !canGainTension())
+					src.gainTension(val);
+				if(defender && defender.StyleBuff && !defender.canGainTension())
+					defender.gainTension(val*glob.DEFENDER_TENSION_REDUCER);
 
-				if(src.StyleBuff) // devious movements enabled
-					var/maxTension = 100
-					if(passive_handler.Get("Conductor"))
-						maxTension = max(glob.MIN_TENSION, maxTension - passive_handler.Get("Conductor"))
-					if(src.Tension<maxTension && !src.HasTensionLock())
-						var/tensionGain = 0
-						if(passive_handler.Get("Antsy"))
-							tensionGain = passive_handler.Get("Antsy")/10
-						var/HTMult=1
-						if(passive_handler.Get("HighTension"))
-							HTMult=1+passive_handler.Get("HighTension")
-
-						src.Tension+=(val) * (glob.TENSION_MULTIPLIER + tensionGain) * HTMult
-
-				if(defender.StyleBuff&&defender.StyleBuff) //TODO finish this
-					if(defender.Tension<100 && !defender.HasTensionLock())
-						defender.Tension+=(val*0.75) * glob.TENSION_MULTIPLIER
 			var/leakVal = val/GLOBAL_LEAK_REDUCTION
 			if(passive_handler.Get("Corruption"))
 				gainCorruption(val * 1.5 * glob.CORRUPTION_GAIN)

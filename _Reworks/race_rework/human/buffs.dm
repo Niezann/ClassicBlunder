@@ -35,35 +35,28 @@
 	Double_Helix
 		TimerLimit=1
 		Cooldown=-1
-	//	ActiveMessage="Psyches themselves up! -- Tension Up!"
-	//	OffMessage="releases their tremendous focus..."
 		verb/Double_Helix()
 			set category="Skills"
 			if(usr.passive_handler.Get("DoubleHelix"))
-				if(usr.passive_handler.Get("DoubleHelix"))
-					switch(usr.DoubleHelix)
-						if(0)
-							usr.DoubleHelix=1
-							OMsg(usr,"<b>The dreams of those who have fallen...</b>")
-						if(1)
-							usr.DoubleHelix=2
-							OMsg(usr,"<b>...and the hopes of those who will follow...</b>")
-						if(2)
-							usr.DoubleHelix=3
-							OMsg(usr,"<b>...those two sets of dreams weave together...</b>")
-						if(3)
-							usr.DoubleHelix=4
-							OMsg(usr,"<b>...into a double helix, paving a path towards tomorrow!!!</b>")
-						if(4)
-							if(usr.transActive<5)
-								return
-							usr.DoubleHelix=5
-							OMsg(usr,"<b>In their hands, [usr] holds the power to create the heavens!!!!</b>")
+				switch(usr.DoubleHelix)
+					if(0)
+						usr.DoubleHelix=1
+						OMsg(usr,"<b>The dreams of those who have fallen...</b>")
+					if(1)
+						usr.DoubleHelix=2
+						OMsg(usr,"<b>...and the hopes of those who will follow...</b>")
+					if(2)
+						usr.DoubleHelix=3
+						OMsg(usr,"<b>...those two sets of dreams weave together...</b>")
+					if(3)
+						usr.DoubleHelix=4
+						OMsg(usr,"<b>...into a double helix, paving a path towards tomorrow!!!</b>")
+					if(4)
+						if(usr.transActive<5)
+							return
+						usr.DoubleHelix=5
+						OMsg(usr,"<b>In their hands, [usr] holds the power to create the heavens!!!!</b>")
 				return
-			if(usr.isRace(HUMAN)&&usr.transActive==3&&usr.transUnlocked>=4||usr.isRace(CELESTIAL)&&usr.transActive==3&&usr.transUnlocked>=4)
-				if(usr.passive_handler.Get("FullTensionLock")&&usr.isRace(CELESTIAL))
-					usr<<"You cannot use this until the Full Tension Lock from Activate High Tension subsites."
-					return
-				else
-					usr.race.transformations[4].transform(usr, TRUE)
-					usr.DoubleHelix=0
+			if(usr.canSHTM())
+				usr.race.transformations[4].transform(usr, TRUE)
+				usr.DoubleHelix=0

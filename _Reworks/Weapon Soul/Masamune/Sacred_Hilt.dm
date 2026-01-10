@@ -8,7 +8,7 @@ obj/Skills/Buffs/SlotlessBuffs/Blessed_Guard
 	adjust(mob/p)
 		TimerLimit = (20 + (p.SagaLevel * 5))
 		VaizardHealth = (3.5 * p.SagaLevel);
-		Cooldown = (160 - (20 * p.SagaLevel));
+		Cooldown = (160 - (10 * p.SagaLevel));
 		if(p.SpecialBuff&&p.SpecialBuff.name == "Heavenly Regalia: Blessed Blade")
 			passives = list("PureDamage"=-2, "SoulFire" = 5 + p.SagaLevel, "DebuffResistance" = 2)
 		else

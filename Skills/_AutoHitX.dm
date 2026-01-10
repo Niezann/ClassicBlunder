@@ -340,7 +340,7 @@ obj
 				NoLock=1
 				NoAttackLock=1
 				StrOffense=1
-				DamageMult=1
+				DamageMult = T2_DMG_MULT / 2 / 10;
 				AbyssMod=3
 				HolyMod=3
 				Distance=5
@@ -370,7 +370,7 @@ obj
 				StrOffense=2
 				Crushing=100
 				EnergySteal=15
-				DamageMult=4
+				DamageMult= T2_DMG_MULT / 2;
 				ComboMaster=1
 				TurfDirt=1
 				Distance=5
@@ -391,7 +391,7 @@ obj
 			Explosive_Finish
 				StrOffense=1
 				ForOffense=1
-				DamageMult=3
+				DamageMult = T2_DMG_MULT / 2;
 				Area="Circle"
 				Distance=4
 				TurfErupt=2
@@ -410,7 +410,7 @@ obj
 				NoLock=1
 				NoAttackLock=1
 				Distance=1
-				DamageMult=1
+				DamageMult = T2_DMG_MULT / 2 / 10;
 				StrOffense=1
 				EndDefense=1
 				Knockback=1
@@ -430,7 +430,7 @@ obj
 				NoLock=1
 				NoAttackLock=1
 				Distance=2
-				DamageMult=3
+				DamageMult= T2_DMG_MULT / 2;
 				StrOffense=1
 				EndDefense=1
 				Knockback=10
@@ -450,7 +450,7 @@ obj
 				Distance=2
 				Rounds=5
 				Instinct=1
-				DamageMult=1.5
+				DamageMult = T2_DMG_MULT / 2 / 5;
 				StrOffense=1
 				EndDefense=1
 				ActiveMessage="blossoms with a webwork of bladeplay!"
@@ -468,7 +468,7 @@ obj
 				NoAttackLock=1
 				Distance=5
 				DistanceAround=5
-				DamageMult=5
+				DamageMult = T2_DMG_MULT / 2;
 				StrOffense=1
 				EndDefense=1
 				Knockback=10
@@ -491,7 +491,7 @@ obj
 				Distance=7
 				DelayTime=7
 				Rounds=7
-				DamageMult=0.8
+				DamageMult = T2_DMG_MULT / 2 / 7;
 				PassThrough=1
 				GuardBreak=1
 				ActiveMessage="begins to stumble through the battlefield like a drunken hobo!"
@@ -512,7 +512,7 @@ obj
 				StrOffense=1
 				Distance=7
 				Rounds=7
-				DamageMult=0.8
+				DamageMult = T2_DMG_MULT / 2 / 7;
 				ChargeTech=1
 				ChargeTime=0.5
 				Knockback=1
@@ -534,7 +534,7 @@ obj
 				NoAttackLock=1
 				RoundMovement=1
 				Distance=2
-				DamageMult=0.6
+				DamageMult= T2_DMG_MULT / 2 / 10;
 				Rounds=10
 				StrOffense=0.5
 				ForOffense=0.5
@@ -554,7 +554,7 @@ obj
 				NoAttackLock=1
 				Distance=5
 				Instinct=1
-				DamageMult=3
+				DamageMult = T2_DMG_MULT / 2;
 				StrOffense=1
 				EndDefense=0.75
 				ActiveMessage="ruptures the ground with their mega-powerful slash!"
@@ -576,7 +576,7 @@ obj
 				RoundMovement=0
 				Distance=8
 				Instinct=4
-				DamageMult=2
+				DamageMult= T2_DMG_MULT / 2 / 2;
 				Rounds=2
 				StrOffense=1
 				EndDefense=0.75
@@ -603,7 +603,7 @@ obj
 				Distance=10
 				Instinct=4
 				Size=2
-				DamageMult=12
+				DamageMult= T2_DMG_MULT / 2;
 				StrOffense=1
 				EndDefense=1
 				ActiveMessage="lashes out with an elegant singular strike!"
@@ -625,7 +625,7 @@ obj
 				RoundMovement=0
 				Distance=1
 				Instinct=4
-				DamageMult=4.5
+				DamageMult = T2_DMG_MULT / 2 / 3;
 				Rounds=3
 				ComboMaster = 1
 				StrOffense=1
@@ -651,7 +651,7 @@ obj
 				NoAttackLock=1
 				Distance=10
 				Instinct=4
-				DamageMult=1.8
+				DamageMult = T2_DMG_MULT / 2 / 5;
 				Rounds=5
 				DelayTime=30
 				GuardBreak=1
@@ -674,7 +674,7 @@ obj
 				Distance=15
 				DistanceAround=5
 				Stunner=5
-				DamageMult=4
+				DamageMult= T2_DMG_MULT / 2;
 				StrOffense=0
 				ForOffense=1
 				GuardBreak=1
@@ -698,7 +698,7 @@ obj
 				Distance=5
 				DistanceAround=4
 				Knockback=15
-				DamageMult=3
+				DamageMult= T2_DMG_MULT / 2;
 				StrOffense=1
 				ForOffense=1
 				GuardBreak=1
@@ -718,7 +718,7 @@ obj
 				Distance=5
 				DistanceAround=4
 				Knockback=15
-				DamageMult=10
+				DamageMult = T2_DMG_MULT / 2;
 				StrOffense=1
 				ForOffense=1
 				GuardBreak=1
@@ -734,7 +734,7 @@ obj
 			Clothesline_Effect
 				Area="Circle"
 				StrOffense=1
-				DamageMult=0.5
+				DamageMult= T2_DMG_MULT / 2 / 10;
 				Rounds=10
 				ChargeTech=1
 				ChargeTime=1
@@ -745,7 +745,7 @@ obj
 			Dancing_Blade_Effect
 				Area="Circle"
 				StrOffense=1
-				DamageMult=0.5
+				DamageMult = T2_DMG_MULT / 2 / 15;
 				Rounds=15
 				RoundMovement=1
 				Size=2
@@ -771,7 +771,7 @@ obj
 				IconX=-32
 				IconY=-32
 				Size=1
-				DamageMult=0.5
+				DamageMult = T2_DMG_MULT / 2 / 10;
 				ManaCost=0
 				Rounds=10
 				ChargeTech=1
@@ -785,7 +785,7 @@ obj
 				GuardBreak=1
 				StrOffense=0.5
 				ForOffense=0.5
-				DamageMult=1
+				DamageMult = T2_DMG_MULT; 
 				Distance=2
 				Launcher=1
 				NoAttackLock=1
@@ -796,7 +796,7 @@ obj
 				Area="Arc"
 				NoLock=1
 				StrOffense=1
-				DamageMult=4
+				DamageMult = T2_DMG_MULT / 2;
 				Distance=5
 				Instinct=1
 				TurfStrike=1
@@ -812,7 +812,7 @@ obj
 			FatalMode
 				Area="Circle"
 				StrOffense=1
-				DamageMult=1
+				DamageMult= T2_DMG_MULT / 2 / 5;
 				Rounds=5
 				Distance=5
 				Slow=1
@@ -832,7 +832,7 @@ obj
 			MagicWish
 				Area="Circle"
 				ForOffense=1
-				DamageMult=0.4
+				DamageMult= T2_DMG_MULT / 2 / 15;
 				Rounds=15
 				RoundMovement=1
 				Size=2
@@ -853,7 +853,7 @@ obj
 			CycloneCharge
 				Area="Circle"
 				Distance=1
-				DamageMult=0.2
+				DamageMult = T2_DMG_MULT / 2 / 25;
 				Knockback=1
 				Rounds=25
 				StrOffense=1
@@ -875,7 +875,7 @@ obj
 				ForOffense=1
 				NoLock=1
 				NoAttackLock=1
-				DamageMult=5
+				DamageMult = T2_DMG_MULT / 2;
 				Distance=7
 				Instinct=2
 				Jump=2
@@ -894,7 +894,7 @@ obj
 				ForOffense=1
 				NoAttackLock=1
 				ComboMaster=1
-				DamageMult=10
+				DamageMult = T2_DMG_MULT / 2;
 				Distance=6
 				Flash=1
 				Rush=15
@@ -929,7 +929,7 @@ obj
 				StrOffense=1
 				ForOffense=1
 				EndDefense=0.5
-				DamageMult=2.5
+				DamageMult = T2_DMG_MULT / 2;
 				Jump=2
 				Knockback=5
 				Distance=4
@@ -956,7 +956,7 @@ obj
 				StrOffense=1
 				ForOffense=1
 				RoundMovement=1
-				DamageMult=0.2
+				DamageMult = T2_DMG_MULT / 2 / 20;
 				Rounds=20
 				WindUp=0.5
 				WindupMessage="engorges their energy blade with a massive amount of magic!"

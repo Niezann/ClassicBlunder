@@ -4,7 +4,7 @@
 		FlickAttack=1
 		Area="Strike"
 		StrOffense=2
-		DamageMult=3
+		DamageMult= T1_DMG_MULT / 2;
 		Stunner=3
 		Rush=3
 		RushDelay=0.1
@@ -26,7 +26,7 @@
 		NoLock=1
 		NoAttackLock=1
 		Distance=5
-		DamageMult=2
+		DamageMult = T1_DMG_MULT / 2;
 		StrOffense=0.5
 		ForOffense=0.5
 		EndDefense=1
@@ -50,7 +50,7 @@
 		RoundMovement=0
 		Distance=5
 		Instinct=4
-		DamageMult=1.5
+		DamageMult= T1_DMG_MULT / 2 / 2;
 		Rounds=2
 		StrOffense=1
 		EndDefense=0.5
@@ -78,7 +78,7 @@
 		Distance=4
 		Instinct=4
 		Size=2
-		DamageMult=4
+		DamageMult= T1_DMG_MULT / 2;
 		StrOffense=1
 		EndDefense=1
 		ActiveMessage="rushes past their enemy!"
@@ -98,7 +98,7 @@
 		NoLock=1
 		NoAttackLock=1
 		AdaptRate=1
-		DamageMult=0.15
+		DamageMult = T1_DMG_MULT / 2 / 20;
 		Distance=12
 		DistanceAround=4
 		Rounds=20
@@ -121,7 +121,7 @@
 		NoAttackLock=1
 		Distance=7
 		Instinct=1
-		DamageMult=2
+		DamageMult= T1_DMG_MULT / 2;
 		StrOffense=1
 		EndDefense=0.75
 		ActiveMessage="ruptures the ground with their mega-powerful slash!"
@@ -140,7 +140,7 @@
 	Orb_of_Storms
 		Area="Around Target"
 		AdaptRate = 1
-		DamageMult=0.1
+		DamageMult= T1_DMG_MULT / 2 / 20;
 		Rounds=20
 		Shattering=1
 		RoundMovement=1
@@ -153,7 +153,7 @@
 	Hemoplague
 		Area="Around Target"
 		AdaptRate = 1
-		DamageMult=3
+		DamageMult= T1_DMG_MULT / 2;
 		SpecialAttack=1
 		Crippling=5
 		TurfShift='BloodRain.dmi'

@@ -3,7 +3,7 @@
 /obj/Skills/Queue/Finisher
     Dark_Dragon_Commandment
         Combo=5
-        DamageMult=0.5
+        DamageMult=T1_DMG_MULT / 2 / 5 / 5;
         Instinct=2
         InstantStrikes = 5
         FollowUp="/obj/Skills/AutoHit/One_Inch_Finisher"
@@ -13,7 +13,7 @@
         BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/Death_Mark"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Contempt_for_the_Weak"
         //TODO: finisher this
-        DamageMult=2
+        DamageMult = T1_DMG_MULT; 
     Leg_Grab
         Instinct=2
         Grapple=1

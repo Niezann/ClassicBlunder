@@ -1,7 +1,7 @@
 /obj/Skills/Projectile
     Super_Mega_Buster
         IconLock='Blast12.dmi'
-        DamageMult=2
+        DamageMult = T2_DMG_MULT / 2 / 2; 
         MultiHit=2
         AccMult=2.5
         Knockback=5
@@ -18,7 +18,7 @@
         IconLock = 'Blast - 10.dmi'
         Freezing = 100
         Explode = 2
-        DamageMult=4
+        DamageMult= T2_DMG_MULT / 2;
         AccMult=3
         Distance=30
         Dodgeable=0

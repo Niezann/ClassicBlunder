@@ -9,6 +9,7 @@
         InstantStrikes=2
         DamageMult = 0.2
         Quaking=25
+        DamageMult = T3_DMG_MULT/2/20/2;
         FollowUp="/obj/Skills/AutoHit/True_One_Inch_Punch"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Intercepting_Fist"
         BuffAffected = "/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/Death_Mark"
@@ -21,7 +22,7 @@
         SweepStrike=6
         Crushing = 100
         Stunner = 2
-        DamageMult = 6
+        DamageMult = T3_DMG_MULT/2;
         UnarmedOnly=1
         GrabTrigger="/obj/Skills/Grapple/Tombstone_Piledriver"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/The_8th_Wonder_Of_The_World"
@@ -30,7 +31,7 @@
         KBMult=7
         KBAdd = 8
         Quaking=9
-        DamageMult=10
+        DamageMult=T3_DMG_MULT;
         HitSparkIcon='fevExplosion.dmi'
         HitSparkX=-32
         HitSparkY=-32
@@ -49,13 +50,13 @@
 
     Jumbled_Line_Up //Acrobat
         Combo=10
-        DamageMult=0.3
+        DamageMult=T3_DMG_MULT/2/10;
         FollowUp="/obj/Skills/Projectile/ThreeShot_Path"
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Infinite_Blades"
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Super_Shredded"
         HitMessage = "hurls skyward a cascade of blades!"
     Clear_Water //Two Heavens as One
-        DamageMult=6
+        DamageMult=T3_DMG_MULT;
         HitSparkIcon='Slash - Zan.dmi'
         HitSparkX=-32
         HitSparkY=-32
@@ -67,7 +68,7 @@
         Stunner=4
         KBMult = 0.0001
         FollowUp="/obj/Skills/AutoHit/Divine_Cleave"
-        DamageMult = 1
+        DamageMult = T3_DMG_MULT/10;
         Decider = 6
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Judge_of_Heaven"
         BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Justice_of_Hell"

@@ -3,7 +3,7 @@
 		HarderTheyFall=4
 		Stunner=4
 		Quaking=12
-		DamageMult=8
+		DamageMult=T4_DMG_MULT/2;
 		InstantStrikes=2
 		InstantStrikesDelay = 1
 		PushOut=1
@@ -16,20 +16,20 @@
 		HitSparkIcon = 'Slash_Multi.dmi'
 		InstantStrikes=9
 		InstantStrikesDelay = 0.5
-		DamageMult=0.2
+		DamageMult=T4_DMG_MULT/2/9;
 		Stunner=4
 		SpeedStrike=1
 		FollowUp="/obj/Skills/AutoHit/Ashura_Bakkei"
 		HitMessage="rushes forward, their aura manifesting six more blades, as they unleash a flurry of blows in the blink of an eye!"
 	Jinzen_Senkei
 		Stunner=1
-		DamageMult=5
+		DamageMult=T4_DMG_MULT/2;
 		HitSparkIcon='Slash_Multi.dmi'
 		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Jinzen_Enlightenment"
 		FollowUp="/obj/Skills/AutoHit/Jinzen_Strike"
 	The_Big_Bang_Punch
 		Stunner=1
-		DamageMult=5
+		DamageMult=T4_DMG_MULT/2;
 		HitSparkIcon='fevExplosion.dmi'
 		HitSparkX=-32
 		HitSparkY=-32
@@ -40,7 +40,7 @@
 		Combo=9
 		InstantStrikes=3
 		InstantStrikesDelay=0.1
-		DamageMult=0.1
+		DamageMult=T4_DMG_MULT/2/9/3;
 		Stunner=4
 		SpeedStrike=1
 		FollowUp="/obj/Skills/AutoHit/The_Tenth_Strike"
@@ -50,7 +50,7 @@
 		KBMult=20
 		KBAdd = 20
 		Quaking=12
-		DamageMult=15
+		DamageMult=T4_DMG_MULT;
 		HitSparkIcon='fevExplosion.dmi'
 		HitSparkX=-32
 		HitSparkY=-32
@@ -62,25 +62,25 @@
 		SweepStrike = 2
 		Quaking=5
 		PushOut=1
-		DamageMult = 5
+		DamageMult = T4_DMG_MULT/2;
 		FollowUp="/obj/Skills/Queue/Finisher/Stellar_Evolution"
 		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Ionization"
 		HitMessage = "breaks off into a relentless pursuit!"
 	Stellar_Evolution
 		Combo=10
-		DamageMult = 0.5
+		DamageMult = T4_DMG_MULT/2/10;
 		BuffSelf=0
 		HitSparkIcon = 'Slash_Multi.dmi'
 	Hyper_Goner_Two
 		FollowUp="/obj/Skills/Projectile/Zone_Attacks/Even_More_Super_Hyper_Goner_Attack"
-		DamageMult = 4
+		DamageMult = T4_DMG_MULT/2;
 		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Final_Boss_Form"
 	Jackpot
 		Combo=7
 		InstantStrikes=7
 		InstantStrikesDelay = 0.5
 		Warp=10
-		DamageMult=0.1
+		DamageMult=T4_DMG_MULT/2/7/7;
 		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Jackpot"
 		FollowUp="/obj/Skills/Projectile/Zone_Attacks/Seven_Lucky_Flames"
 		HitMessage = "hits the motherfuckin' jackpot!!!!"
@@ -90,7 +90,7 @@
 		Warp = 5
 		Combo = 3
 		InstantStrikes = 2
-		DamageMult = 3
+		DamageMult = T4_DMG_MULT/2/3/2;
 		Instinct = 3
 		Shining = 3
 		Explosive = 2
@@ -101,7 +101,7 @@
 		Warp = 10
 		Combo = 5
 		InstantStrikes = 5
-		DamageMult = 0.5
+		DamageMult = T4_DMG_MULT/5/5;
 		Instinct = 5
 		Shining = 3
 		Explosive = 3
@@ -110,7 +110,7 @@
 /obj/Skills/AutoHit
 	Big_Bang_Followup
 		Area="Circle"
-		DamageMult=8
+		DamageMult=T4_DMG_MULT/2;
 		Knockback = 1
 		ComboMaster=1
 		Stunner=3
@@ -140,7 +140,7 @@
 		PostShockwave=0
 		Shockwave=2
 		Shockwaves=2
-		DamageMult=10
+		DamageMult=T4_DMG_MULT/2;
 		PullIn=2
 		ActiveMessage="becomes one with their blade, tearing through time and space in one fell swoop."
 		HitSparkIcon='Slash - Vampire.dmi'
@@ -159,7 +159,7 @@
 		Even_More_Super_Hyper_Goner_Attack
 			Blasts=25
 			Charge=2
-			DamageMult=1.3
+			DamageMult=T4_DMG_MULT/2/25;
 			Instinct=1
 			AccMult=2
 			Explode=1
@@ -173,7 +173,7 @@
 		Seven_Lucky_Flames
 			Blasts=7
 			Charge=2
-			DamageMult=1
+			DamageMult=T4_DMG_MULT/2/7;
 			Instinct=1
 			AccMult=2
 			Explode=1

@@ -4,7 +4,7 @@
         FlickAttack=1
         Area="Strike"
         StrOffense=2
-        DamageMult=3
+        DamageMult=T3_DMG_MULT/2;
         Stunner=3
         Rush=3
         RushDelay=0.1
@@ -25,7 +25,7 @@
     Divine_Cleave
         Distance=15
         Gravity=5
-        DamageMult = 1
+        DamageMult = (T3_DMG_MULT*0.9);
         StrOffense=1
         ActiveMessage="cleaves through all protections in Defiance of the Gods!"
         Area="Target"

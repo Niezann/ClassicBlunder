@@ -878,24 +878,15 @@ obj
 					set category="Skills"
 					if(usr.Secret=="Heavenly Restriction" && usr.secretDatum?:hasRestriction("Heavy Strike"))
 						return
-					var/maxTension = 100
-					if(usr.passive_handler.Get("Conductor"))
-						maxTension = max(glob.MIN_TENSION, 100 - usr.passive_handler.Get("Conductor"))
-					if(usr.passive_handler.Get("SuperHighTension"))
-						maxTension = max(glob.MIN_TENSION, 100 - (15*usr.passive_handler.Get("SuperHighTension")))
-					if(usr.passive_handler.Get("CreateTheHeavens")&&usr.CelestialAscension=="Angel"&&usr.isRace(CELESTIAL))
-						maxTension = max(glob.MIN_TENSION, 100 - (20*usr.passive_handler.Get("CreateTheHeavens")))
+					var/maxTension = usr.getMaxTensionValue();
 					if(usr.Tension>=maxTension)
 						if(usr.HasTensionLock())
 							return
 						if(usr.AttackQueue)
 							return
 						usr.Tension=0
-						if(usr.isRace(HUMAN)&& usr.transActive==2 && usr.transUnlocked>=3||usr.isRace(CELESTIAL)&& usr.transActive==2 && usr.transUnlocked>=3)
-							usr.race.transformations[3].transform(usr, TRUE)
-						if(usr.isRace(HUMAN) && usr.transActive<1 && usr.Potential>=20||usr.isRace(CELESTIAL) && usr.transActive<1 && usr.transUnlocked>=1)
-							usr.race.transformations[1].transform(usr, TRUE)
-						if(usr.StyleBuff.Finisher)//if the style has a unique finisher
+						
+						if(usr.StyleBuff.Finisher && !usr.tryIncreaseTension())//if the style has a unique finisher and this is not a HT granting tension max
 							var/path = usr.StyleBuff.Finisher
 							if(!ispath(usr.StyleBuff.Finisher))
 								path=text2path(usr.StyleBuff.Finisher)
@@ -2347,6 +2338,10 @@ mob
 				src.LoseForce(src.AttackQueue.ForceCost)
 			if(src.AttackQueue.FatigueCost)
 				src.GainFatigue(src.AttackQueue.FatigueCost)
+			
+			if(istype(src.AttackQueue, /obj/Skills/Queue/Finisher))
+				DEBUGMSG("A queue was deployed, and tension lock should be set...")
+				src.setTempTensionLock();
 
 			if(src.AttackQueue.ManaGain)
 				src.HealMana(AttackQueue.ManaGain)
@@ -2405,6 +2400,7 @@ mob
 					src.AttackQueue=null//But this triggers either way so long as you didn't just run out of time.
 					src.SetQueue(S)
 					return
+				
 				src.AttackQueue=null
 
 

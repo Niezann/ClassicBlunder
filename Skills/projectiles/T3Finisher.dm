@@ -2,7 +2,7 @@
 	ThreeShot_Path
 		Blasts=3
 		Distance=50
-		DamageMult=8.5
+		DamageMult=T3_DMG_MULT/2/3;
 		Dodgeable=-1
 		AccMult = 2
 		Speed=4

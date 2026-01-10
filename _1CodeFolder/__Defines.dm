@@ -77,6 +77,10 @@ proc/log_func(x, a, b)
 #define DEBUG_GRAPPLE 0
 #define DEBUG_PROJECTILE 0
 
+#define T1_DMG_MULT 4
+#define T2_DMG_MULT 6
+#define T3_DMG_MULT 8
+#define T4_DMG_MULT 10
 
 //pacts in pacts.dm
 #define NO_PENALTY 0

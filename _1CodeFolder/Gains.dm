@@ -526,10 +526,9 @@ mob
 				src.ManaAmount+=0.5*(ManaRando/10)
 			if(passive_handler.Get("LunarAnger")&&ManaAmount>50)
 				src.Anger()
-			if(passive_handler["TensionPowered"] && src.Tension>=50)
-				if(src.isRace(HUMAN)&& src.transActive<2 && src.transUnlocked>=2||src.isRace(CELESTIAL)&& src.transActive<2 && src.transUnlocked>=2)
-					if(src.icon_state!="Meditate")
-						src.race.transformations[2].transform(src, TRUE)
+			if(passive_handler["TensionPowered"])
+				if(src.canHTM())
+					src.race.transformations[2].transform(src, TRUE)
 			if(passive_handler["LegendarySaiyan"]&&src.Tension<100&&src.transActive==src.transUnlocked||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["MovementMastery"]||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["GodKi"]||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["SSJ4"])
 				var/TensionRando=rand(6,15)
 				src.Tension+=0.7 * (glob.TENSION_MULTIPLIER)*(TensionRando/10)
@@ -866,15 +865,14 @@ mob
 
 			if(InDevaPath())
 				devaCounter++
-
 			if(src.UsingFTG())
 				src.IaidoCounter++
 			if(src.UsingGladiator())
 				GladiatorCounter++
-
+			if(tempTensionLock)
+				tempTensionLock = max(tempTensionLock-1, 0);
 			if(src.isLunaticMode())
 				src.LunaticModeTimer();
-
 			if(src.disarm_timer)
 				src.DisarmTick();
 

@@ -1223,16 +1223,15 @@ mob/proc/Update_Stat_Labels()
 				winshow(src, "TensionLabel",1)
 				winshow(src, "TensionBar",1)
 
-				var/maxTension = 100
-				if(passive_handler.Get("Conductor"))
-					maxTension = max(glob.MIN_TENSION, maxTension - passive_handler.Get("Conductor"))
-					winset(src, "TensionBar", "value=[(100-maxTension) + src.Tension]")
-				else
-					winset(src, "TensionBar", "value=[src.Tension]")
+				var/maxTension = getMaxTensionValue();
+				var/tensionPercent = round(Tension / maxTension * 100);
+				winset(src, "TensionBar", "value=[tensionPercent]")
 
-
-
-				if(src.Tension>=maxTension)
+				if(tempTensionLock)
+					winset(src, "TensionBar", "bar-color='#666'")
+					winset(src, "TensionLabel", "text-color='#666'")
+					src << output("*LOCKED*", "TensionLabel")
+				else if(tensionPercent >= 100)
 					winset(src, "TensionBar", "bar-color='#F00'")
 					winset(src, "TensionLabel", "text-color='#F00'")
 					src << output("FINISHER!!!", "TensionLabel")

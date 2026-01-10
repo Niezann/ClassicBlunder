@@ -199,8 +199,16 @@ race
 		fixAscensions()
 			var/name_typed = replacetext(type, "/race/", "")
 			var/list/ascpaths = subtypesof(text2path(replacetext("/ascension/[name_typed]"," ", "_")))
+			
 			for(var/i in ascpaths)
 				ascensions += new i
+		fixTransformations()
+			var/basePath = replacetext("/transformation/[lowertext(src.name)]", " ", "_");
+			DEBUGMSG("<font color='red'>looking at base path [basePath]</font color>")
+			var/list/transpaths = subtypesof(text2path(basePath))
+			transformations=list();
+			for(var/i in transpaths)
+				transformations += new i
 		getChoice(ascLevel)
 			return ascensions[ascLevel].choiceSelected
 		getClass()
