@@ -2169,13 +2169,11 @@ mob
 				return 0
 			if(passive_handler.Get("WeaponBreaker"))
 				return 1
-			if(src.HasAdaptation()&&src.AdaptationTarget&&istype(src.AdaptationTarget, /mob/Players)&&src.AdaptationTarget.HasSword())
-				return 1
 			return 0
 		GetWeaponBreaker()
 			var/Extra=0
-			if(src.HasAdaptation()&&src.AdaptationTarget&&istype(src.AdaptationTarget, /mob/Players)&&src.AdaptationTarget.HasSword())
-				Extra=1*src.AdaptationCounter
+			if(src.Saga=="Weapon Soul" && WeaponSoulType=="Muramasa")
+				Extra=1+src.SagaLevel
 			if(passive_handler.Get("WeaponBreakerQOL"))
 				return 0
 			return passive_handler.Get("WeaponBreaker")+Extra

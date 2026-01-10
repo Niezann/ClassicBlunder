@@ -438,6 +438,7 @@ obj/KatieObj/Furniture
 	Furniture_158
 		icon='Wooden Desk.png'
 obj/KatieObj/Misc
+	Savable=0
 	Misc_0
 		icon='Asorted Foods.png'
 	Misc_1

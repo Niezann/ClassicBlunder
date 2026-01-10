@@ -739,6 +739,7 @@
 #include "Skills\styles\hybrid\t1UIhybridstyles.dm"
 #include "Skills\styles\hybrid\t2hybridstyles.dm"
 #include "Skills\styles\hybrid\T3HybridStyles.dm"
+#include "Skills\styles\hybrid\T5HybridStyles.dm"
 #include "Skills\styles\hybrid\UIhybridstyles.dm"
 #include "Skills\styles\martial\t0martialstyles.dm"
 #include "Skills\styles\martial\t1martialstyles.dm"

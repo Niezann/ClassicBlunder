@@ -108,7 +108,7 @@ obj/Skills
 			UseableDead=1
 			FocalPerson=1
 			NoCoordinates=0
-			ManaCost=100
+			ManaCost=0
 			WindUp=2
 			WindUpIcon='Icons/Effects/BlackHoleEnter.dmi'
 			WindDown=0.7
@@ -232,7 +232,7 @@ obj/Skills
 			ArriveMessage="arrives through a portal."
 			verb/Traverse_Daat()
 				set category="Utility"
-				src.Activate(usr)		
+				src.Activate(usr)
 		Traverse_Depths
 			desc="Warp to the Depths and back."
 			UseableDead=1
