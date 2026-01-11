@@ -397,7 +397,7 @@ obj/Skills
 									var/obj/Skills/Teleport/Traverse_Daat/d = new()
 									d = locate() in User
 									if(!d)
-										User << "You lack the authority to teleport this place at will."
+										User << "You lack the authority to teleport to this place at will."
 										return
 							t=locate(tx, ty, tz)
 							if(t)
@@ -465,7 +465,7 @@ obj/Skills
 									var/obj/Skills/Teleport/Traverse_Daat/d = new()
 									d = locate() in User
 									if(!d)
-										User << "You lack the authority to teleport this place at will."
+										User << "You lack the authority to teleport to this place at will."
 										return
 								Destination=locate(m.x,m.y,m.z)
 					if("Fall Through")
