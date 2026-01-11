@@ -448,6 +448,8 @@ mob/proc/GetPowerUpRatio()
 	var/PowerUp=max(((PowerControl-100)/100),-0.5)
 	if(passive_handler.Get("PUSpike"))
 		PowerUp+=passive_handler.Get("PUSpike")/100
+	if(passive_handler.Get("RedPUSpike"))
+		PowerUp+=passive_handler.Get("RedPUSpike")/100
 	if(Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Power Control"))
 		PowerUp += secretDatum?:getBoon(src, "Power Control")/12
 	if(src.CheckSpecial("Overdrive"))

@@ -119,8 +119,6 @@ mob/proc/Unconscious(mob/P,var/text)
 	if(text)
 		if(!istype(src,/mob/Player/FevaSplits))
 			src.OMessage(15,"[src] is knocked out by [text]!","<font color=red>[src]([src.key]) is knocked out by [text]")
-	if(src.AwakeningSkillUsed)
-		src.AwakeningSkillUsed=0
 	if(src.passive_handler.Get("Herald of the End")&&src.transUnlocked<2)
 		src.passive_handler.Increase("The Clock Is Ticking", 1)
 		src<<"<font color=red><b>You really let someone get the better of you like that...? The clock is ticking.</font></b>"
@@ -291,6 +289,9 @@ mob/proc/Unconscious(mob/P,var/text)
 	if(passive_handler["Undying Rage"])
 		Health = 0.1
 		return
+	if(src.AwakeningSkillUsed)
+		src.AwakeningSkillUsed=0
+		src.passive_handler.Set("RedPUSpike", 0)
 	var/GetUpOdds=1
 	if(src.KOBrutal)
 		GetUpOdds=2

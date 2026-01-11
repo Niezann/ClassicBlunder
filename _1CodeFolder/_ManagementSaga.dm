@@ -958,7 +958,7 @@ mob
 							if(src.RebirthHeroType=="Blue")
 								src.AddSkill(new/obj/Skills/AutoHit/MakeItCount)
 							if(src.RebirthHeroType=="Red")
-								src.AddSkill(new/obj/Skills/Utility/Burning_Soul)
+								src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Burning_Soul)
 						if(5)
 							src.SagaLevel=5
 							if(src.RebirthHeroType=="Blue")
@@ -997,6 +997,9 @@ mob
 									src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Blanket_The_World_In_Darkness)
 							if(src.RebirthHeroType=="Purple")
 								src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Shatter_The_Glass_Of_Fate)
+							if(src.RebirthHeroType=="Red")
+								src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Glory_To_The_Comeback_King)
+								src<<"You are defiance incarnate; Hail the Comeback King."
 				if("Cosmo")
 					tierUpSaga("Cosmo")
 				if("Spiral")

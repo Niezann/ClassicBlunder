@@ -413,8 +413,7 @@ obj/Skills/AutoHit
 				RedPUSpike=pick(25, 50)
 				DamageMult=5
 				ActiveMessage="screams so fucking loud that you start to worry about their mental health. Are they okay?"
-				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Burning_Soul/s in p)
-					s.passives["PUSpike"] += RedPUSpike
+				p.passive_handler.Increase("RedPUSpike", RedPUSpike)
 				p.WeirdAngerStuff()
 			else
 				Cooldown=150
@@ -570,9 +569,20 @@ obj/Skills/Queue
 		PushOut=1
 		Cooldown=01
 		HitSparkIcon='BLANK.dmi'
+		adjust(mob/p)
+			if(altered) return
+			if(p.passive_handler.Get("Red Hot Rage"))
+				Cooldown=10
+				RedPUSpike=pick(25, 50)
+				p.passive_handler.Increase("RedPUSpike", RedPUSpike)
+				p.WeirdAngerStuff()
+			else
+				Cooldown=-1
+				RedPUSpike=0
 		verb/FistOfTheRedStar()
 			set category="Skills"
 			set name="Fist Of The Red Star (Act 2)"
+			adjust(usr)
 			usr.SetQueue(src)
 			usr.TriggerAwakeningSkill(ActNumber)
 
@@ -580,6 +590,7 @@ obj/Skills/Utility
 	var/RandomMult
 	NeverTooEarly
 		Copyable=0
+		Cooldown=-1
 		desc="End your awakening."
 		verb/NeverTooEarly()
 			set category="Utility"
@@ -588,7 +599,7 @@ obj/Skills/Utility
 				usr<<"No need."
 				return
 			if(usr.AwakeningSkillUsed)
-				usr.AwakeningSkillUsed=0
+				usr.Unconscious()
 				usr.Health=0
 	NeverTooLate
 		Copyable=0
@@ -878,8 +889,7 @@ obj/Skills/Projectile
 					Cooldown=10
 					RedPUSpike=pick(25, 50)
 					DamageMult=12
-					for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Burning_Soul/s in p)
-						s.passives["PUSpike"] += RedPUSpike
+					p.passive_handler.Increase("RedPUSpike", RedPUSpike)
 					p.WeirdAngerStuff()
 				else
 					Cooldown=30

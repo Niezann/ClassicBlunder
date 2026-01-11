@@ -30,7 +30,34 @@
 	All_Hail_The_Crownless_King
 		HealthCut=0.9
 	Glory_To_The_Comeback_King
+		Cooldown = -1
+		FINISHINGMOVE=1
+		StrTax=0.1
+		EndTax=0.1
+		ForTax=0.1
+		ActiveMessage="becomes the personification of defiance itself! <font color=red> <b>Nothing will stand between them and victory!!!</b></font>"
 		passives = list("The Comeback King" = 1)
 		verb/Glory_To_The_King()
 			set category="Skills"
+			set name= "Glory To The King (Final Act)"
+			src.Trigger(usr)
+obj/Skills/Buffs/SlotlessBuffs
+	Burning_Soul
+		ActiveMessage="transforms their passion into fury, their desire to win surpassing all."
+		Cooldown = -1
+		TimerLimit=300
+		StrTax=0.1
+		EndTax=0.1
+		ForTax=0.1
+		NeedsHealth=25
+		ActNumber=3
+		passives = list("Red Hot Rage" = 1, "Wrathful" = 1)
+		verb/Burning_Soul()
+			set category="Skills"
+			if(!src.Using)
+				usr.TriggerAwakeningSkill(ActNumber)
+				usr<<"Your unsurpassed passion has reset your cooldowns!"
+				for(var/obj/Skills/s in usr)
+					s.cooldown_remaining=0
+					s.cooldown_start=0
 			src.Trigger(usr)

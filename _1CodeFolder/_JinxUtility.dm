@@ -1337,6 +1337,8 @@ mob
 				Mod+=(passive_handler.Get("TensionPowered")/1.99)
 				if(isRace(HUMAN))
 					Mod+=(passive_handler.Get("TensionPowered")/1.99)
+			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
+				Mod *= 1+ (src.HealthAnnounce10/5)
 			Str*=Mod
 			Str*=Mult
 			if(src.HasMirrorStats())
@@ -1477,7 +1479,8 @@ mob
 				Mod+=(passive_handler.Get("TensionPowered")/1.99)
 				if(isRace(HUMAN))
 					Mod+=(passive_handler.Get("TensionPowered")/1.99)
-
+			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
+				Mod *= 1+ (src.HealthAnnounce10/5)
 			For*=Mod
 			For*=Mult
 			if(src.HasMirrorStats())
@@ -1609,7 +1612,8 @@ mob
 					Mod+=(passive_handler.Get("TensionPowered")/1.99)
 			if(passive_handler.Get("Determination(Green)")||passive_handler.Get("Determination(White)"))
 				Mod+=(0.02*ManaAmount)
-
+			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
+				Mod *= 1+ (src.HealthAnnounce10/5)
 			End*=Mod
 			End*=Mult
 			if(src.HasMirrorStats())
@@ -1717,7 +1721,8 @@ mob
 				Mod += 1 * (secretDatum?:getHungerBoon())
 			if(passive_handler.Get("TensionPowered"))
 				Mod+=((passive_handler.Get("TensionPowered")*2.01))
-
+			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
+				Mod *= 1+ (src.HealthAnnounce10/10)
 			Spd*=Mod
 			Spd*=Mult
 			if(src.HasMirrorStats())
