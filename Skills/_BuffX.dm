@@ -4386,7 +4386,7 @@ NEW VARIABLES
 								"HotHundred" = 1, "SoulSteal" = 3, "KillerInstinct" = 0.5, "SpiritSword" = 2, "SpiritHand" = 8, "Instinct" = 10, "Extend" = 2, "Gum Gum" = 2, "SweepingStrike" = 1, "PridefulRage" = 2, "Death-X-Evolution" = 1)
 			DarkChange=1
 			ActiveMessage="overcomes the very concept of mortality itself."
-			OffMessage="relinquishes the Evolution of Darkness."
+			OffMessage="relinquishes the Evolution of Death."
 			verb/Death_X()
 				set hidden=1
 				src.Trigger(usr)
