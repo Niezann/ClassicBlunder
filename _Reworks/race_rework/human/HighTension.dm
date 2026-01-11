@@ -8,8 +8,10 @@
         tempTensionLock=5;
 
     canGainTension()
-        if(src.HasTensionLock()) return 0;
-        if(tempTensionLock) return 0;
+        if(src.HasTensionLock())
+            return 0;
+        if(tempTensionLock)
+            return 0;
         return 1;
 
     gainTension(val)
@@ -40,7 +42,7 @@
     getHighTensionMult()
         return (1+passive_handler.Get("HighTension"));
     getMaxTensionValue()
-        var/conductor = src.passive_handler.Get("Conductor");
+        var/conductor = 0 + src.passive_handler.Get("Conductor");
         . = max(glob.MIN_TENSION, 100 - conductor);
     tryIncreaseTension()
         if(!isRace(HUMAN) && !isRace(CELESTIAL)) return 0;
@@ -51,6 +53,7 @@
         if(canSHT())
             race.transformations[3].transform(src, TRUE);
             return 1;
+        return 0;
     canHT()
         if(src.transActive >= 1) return 0;
         if(transUnlocked >= 1 || HumanHTException()) return 1;
