@@ -84,6 +84,7 @@ obj
 /obj/Skills/Buffs/NuStyle/SwordStyle
 	Seeker_of_Darkness
 		SignatureTechnique = 2
+		SagaSignature = 1
 		passives = list("BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2)
 		ElementalOffense = "Heartless"
 		ElementalDefense = "Dark"
@@ -127,6 +128,7 @@ obj
 			src.Trigger(usr)
 	Seeker_of_Darkness_Dual_Wield //"i did it for me"-ass update
 		SignatureTechnique = 2
+		SagaSignature = 1
 		passives = list("BladeFisting" = 1, "MagicSword" = 1, "LifeSteal" = 25, "AbyssMod" = 2)
 		ElementalOffense = "Heartless"
 		ElementalDefense = "Dark"

@@ -785,7 +785,7 @@ obj
 				GuardBreak=1
 				StrOffense=0.5
 				ForOffense=0.5
-				DamageMult = T2_DMG_MULT; 
+				DamageMult = T2_DMG_MULT;
 				Distance=2
 				Launcher=1
 				NoAttackLock=1
@@ -2050,8 +2050,8 @@ obj
 							for(var/obj/Skills/Buffs/SpecialBuffs/Sword/Final_Getsuga_Tenshou/FGT in usr)
 								usr.UseBuff(FGT)
 								del FGT
-					for(var/obj/Skills/AutoHit/Mugetsu/MGT in usr)
-						del MGT
+						for(var/obj/Skills/AutoHit/Mugetsu/MGT in usr)
+							del MGT
 
 			Imperial_Wrath
 				Area="Circle"
