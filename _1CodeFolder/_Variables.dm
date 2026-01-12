@@ -646,6 +646,7 @@ mob/var
 
 	AscendedDivine //for players who can read prayers
 	SenseReplacement
+	SSJ4FromBase
 
 /proc/reduceGodKi(mob/player, num)
 	player.GodKi -= num

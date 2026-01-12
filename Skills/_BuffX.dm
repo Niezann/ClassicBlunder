@@ -4341,6 +4341,88 @@ NEW VARIABLES
 			verb/Quis_ut_Deus()
 				set category="Skills"
 				src.Trigger(usr)
+		Super_Saiyan_Rose
+			BuffName = "Super Saiyan Rose"
+			SignatureTechnique=5
+			NeedsTrans=0
+			NeedsSSJ=0
+			var/TransformationSequence=1
+			StrMult=1.5
+			ForMult=1.5
+			SpdMult=1.5
+			EndMult=1.5
+			OffMult=1.5
+			DefMult=1.5
+			passives = list("GodKi" = 1.5, "EnergyGeneration" = 6, "Godspeed" = 4, "Flow" = 6,"TechniqueMastery" = 8, \
+								"Instinct" = 4, "Pursuer"= 4 , "BackTrack" = 4, \
+								"MovementMastery" = 15, "StunningStrike" = 3, "Sunyata" = 3,"SSJRose"=1,\
+								"Flicker" = 4, "PureDamage"=4, "PureReduction" = 4, "BuffMastery" = 10,"ZenkaiPower"=1)
+			ActiveMessage="awakens their latent Saiyan gifts, erupting with tremendous power! "
+			ActiveMessage="suppresses their Saiyan power."
+			verb/Toggle_Rose_Transfomation_Sequence()
+				set category="Utility"
+				if(src.TransformationSequence)
+					src.TransformationSequence=0
+					usr<<"You have turned the Super Saiyan Rose transformation sequence <b>OFF</b>"
+				else if(!src.TransformationSequence)
+					src.TransformationSequence=1
+					usr<<"You have turned the Super Saiyan Rose transformation sequence <b>ON</b>"
+			verb/Super_Saiyan_Rose()
+				set category="Skills"
+				if(!usr.BuffOn(src)&&src.TransformationSequence==1)
+					usr.appearance_flags+=16
+					animate(usr, color = list(1,0,0, 0,1,0, 0,0,1, 0.9,1,1), time=5)
+					usr.icon_state=""
+					var/image/GG=image('SSBGlow.dmi',pixel_x=-32, pixel_y=-32)
+					GG.appearance_flags=KEEP_APART | NO_CLIENT_COLOR | RESET_ALPHA | RESET_COLOR
+					GG.blend_mode=BLEND_ADD
+					GG.color=list(1,0,0, 0,1,0, 0,0,1, 0,0,0)
+					GG.alpha=110
+					sleep(5)
+					usr.filters+=filter(type = "blur", size = 0)
+					animate(usr, color=list(-1.2,-1.2,-1, 1,1,1, -1.4,-1.4,-1.2,  1,1,1), time=3, flags=ANIMATION_END_NOW)
+					animate(usr.filters[usr.filters.len], size = 0.35, time = 3)
+					usr.overlays+=GG
+					spawn()DarknessFlash(usr, SetTime=60)
+					sleep()
+					var/image/GO=image('GodOrb.dmi',pixel_x=-16,pixel_y=-16, loc = usr, layer=MOB_LAYER+0.5)
+					GO.appearance_flags=KEEP_APART | NO_CLIENT_COLOR | RESET_ALPHA | RESET_COLOR
+					GO.filters+=filter(type = "drop_shadow", x=0, y=0, color=rgb(255, 0, 0, 44), size = 3)
+					animate(GO, alpha=0, transform=matrix(), color=rgb(255, 0, 128, 134))
+					world << GO
+					animate(GO, alpha=210, time=1)
+					sleep(1)
+					animate(GO, transform=matrix()*3, time=60, easing=BOUNCE_EASING | EASE_IN | EASE_OUT, flags=ANIMATION_END_NOW)
+					usr.Quake(20)
+					sleep(20)
+					usr.Quake(40)
+					sleep(20)
+					usr.Quake(60)
+					sleep(20)
+					sleep(10)
+					usr.filters-=filter(type = "blur", ,size = 0.35)
+					animate(usr, color=list(0,0,0, 0,0,0, 0,0,0, 0.5,0.95,1), time=5, easing=QUAD_EASING)
+					sleep(5)
+					animate(usr, color=null, time=20, easing=CUBIC_EASING)
+					sleep(20)
+					animate(GO, alpha=0, time=5)
+					spawn(5)
+						usr.overlays-=GG
+						GO.filters=null
+						del GO
+						usr.appearance_flags-=16
+				src.Trigger(usr)
+		Song_of_Oblivion
+			BuffName = "Song of Oblivion"
+			SignatureTechnique=5
+			Mastery=-1
+			UnrestrictedBuff=1
+			passives = list("Song of Oblivion")
+			ActiveMessage="calls forth The Final Days, turning dreams into nightmares, and hope into despair."
+			OffMessage="no longer sings the song of the end."
+			verb/Song_of_Oblivion()
+				set category="Skills"
+				src.Trigger(usr)
 		X_Evolution
 			BuffName = "X-Evolution"
 			CantHaveTheseBuffs = list("Death-X-Evolution")

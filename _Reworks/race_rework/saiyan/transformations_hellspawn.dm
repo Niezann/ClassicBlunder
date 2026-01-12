@@ -189,9 +189,10 @@ transformation
 			var/tailWrappedIcon = 'saiyantail-wrapped_ssj4.dmi'
 			passives = list("GiantForm" = 1, "SweepingStrike" = 1, "Brutalize" = 3, "Meaty Paws" = 2, "KiControlMastery" = 3, "PureReduction" = 5, "LifeGeneration" = 5, "Unstoppable" = 1, "AllOutAttack" = 1, "Reversal" = 0.3)
 			adjust_transformation_visuals(mob/user)
-				if(user.Hair_Base && !form_hair_icon)
+				if(!form_hair_icon&&user.Hair_Base)
 					var/icon/x=new(user.Hair_Base)
-					form_hair_icon=x
+					if(x)
+						x.Blend(rgb(150,-10,-10),ICON_ADD)
 				..()
 
 			mastery_boons(mob/user)

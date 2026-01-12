@@ -1276,9 +1276,9 @@ mob
 			if(src.Saga=="Eight Gates")
 				Mod+=0.01*GatesActive
 			if(src.passive_handler["LegendarySaiyan"]==1)
-				if(src.Tension>=50&&src.Tension<100&&src.transActive==src.transUnlocked)
+				if(src.Tension>=50&&src.Tension<src.getMaxTensionValue())
 					Mod+=0.01*(src.Tension/10)
-				else if(src.Tension==100&&src.transActive==src.transUnlocked)
+				else if(src.Tension>=src.getMaxTensionValue())
 					Mod+=1
 			// if(src.isRace(HUMAN))
 			// 	if(src.AscensionsAcquired)
@@ -1418,10 +1418,10 @@ mob
 			if(KaiokenBP > 1)
 				forMult += KaiokenBP-0.8
 			Mod+=(forMult-1)
-			if(passive_handler["LegendarySaiyan"]==1)
-				if(Tension>=50&&src.Tension<100&&transActive==transUnlocked)
-					Mod+=0.01*(Tension/10)
-				else if(Tension==100&&transActive==transUnlocked)
+			if(src.passive_handler["LegendarySaiyan"]==1)
+				if(src.Tension>=50&&src.Tension<src.getMaxTensionValue())
+					Mod+=0.01*(src.Tension/10)
+				else if(src.Tension>=src.getMaxTensionValue())
 					Mod+=1
 			// if(src.isRace(HUMAN))
 			// 	if(src.AscensionsAcquired)
@@ -1566,10 +1566,10 @@ mob
 			// if((isRace(SAIYAN) || isRace(HALFSAIYAN))&&transActive&&!src.SpecialBuff)
 			// 	if(src.race.transformations[transActive].mastery==100)
 			// 		Mod+=0.1
-			if(passive_handler["LegendarySaiyan"]==1)
-				if(Tension>=50&&src.Tension<100&&transActive==transUnlocked)
-					Mod+=0.01*(Tension/10)
-				else if(Tension==100&&transActive==transUnlocked)
+			if(src.passive_handler["LegendarySaiyan"]==1)
+				if(src.Tension>=50&&src.Tension<src.getMaxTensionValue())
+					Mod+=0.01*(src.Tension/10)
+				else if(src.Tension>=src.getMaxTensionValue())
 					Mod+=1
 			if(glob.racials.DEVIL_ARM_STAT_MULTS)
 				if(src.CheckSlotless("Devil Arm")&&!src.SpecialBuff)

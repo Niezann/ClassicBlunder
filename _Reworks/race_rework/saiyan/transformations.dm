@@ -379,6 +379,7 @@ transformation
 					var/icon/x=new(user.Hair_Base)
 					if(x)
 						x.Blend(rgb(150,-10,-10),ICON_ADD)
+				..()
 
 			mastery_boons(mob/user)
 				passives = list("BuffMastery" = 2, "SweepingStrike" = 1, "Brutalize" = 3,\

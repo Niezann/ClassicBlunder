@@ -902,7 +902,7 @@ mob/proc/
 			if(src.PowerBoost)
 				Ratio*=src.PowerBoost
 			var/SSJBoost=1
-			if(isRace(SAIYAN)&&transActive&&ActiveBuff)
+			if(isRace(SAIYAN)&&transActive&&ActiveBuff&&!passive_handler.Get("SSJRose"))
 				if(!passive_handler.Get("GodlyCalm")&&!passive_handler.Get("InBlue")&&!passive_handler.Get("SSJ4"))
 					if(race.transformations[1].mastery==100)
 						SSJBoost= 1.15
@@ -913,6 +913,8 @@ mob/proc/
 				if(passive_handler.Get("GodlyCalm")||passive_handler.Get("InBlue")||passive_handler.Get("SSJ4"))
 					SSJBoost= 1.60
 				Ratio*=SSJBoost
+			if(passive_handler.Get("SSJRose"))
+				Ratio*=1.60
 
 			/*if(src.Target)
 				if(ismob(src.Target))
@@ -932,7 +934,7 @@ mob/proc/
 			IncompleteRatio=passive_handler["Holding Back"]
 			Ratio/=IncompleteRatio
 		if(passive_handler["LegendarySaiyan"])
-			if(Tension==100)
+			if(Tension>=getMaxTensionValue())
 				if(transActive==transUnlocked||passive_handler["MovementMastery"]||passive_handler["GodKi"])
 					Ratio*=1.5
 		Power=Ratio*GetPowerUpRatio()

@@ -4179,6 +4179,7 @@ obj/Special
 		Grabbable=0
 		FlyOverAble=0
 		layer=3
+		Savable=0
 		Health=6957830600000000000000000
 		Destructable=0
 

@@ -135,8 +135,9 @@ mob/proc/CanTransform()
 				src << "Your buff doesn't allow you to transform!"
 				return 0
 			if(sb.NeedsSSJ)
-				src<<"Your ascended super state uses too much power to enter another level!"
-				return 0
+				if(oozaru_type!="Demonic")
+					src<<"Your ascended super state uses too much power to enter another level!"
+					return 0
 			if(sb.NeedsTrans)
 				src<<"Your ascended transformation uses too much power to enter another level!"
 				return 0
@@ -159,6 +160,10 @@ mob/proc/CanTransform()
 				if(num_of_saiyans<4)
 					src << "You can't transform into this form like that."
 					return 0
+		if(length(race.transformations) >= 4 && race.transformations[4].type == /transformation/saiyan/super_saiyan_4 && transActive==0 && src.SSJ4FromBase)
+			src.transActive = 3
+			src.race.transformations[4].transform(src, TRUE)
+			return 0
 		if(length(race.transformations) >= 4 && race.transformations[4].type == /transformation/saiyan/super_saiyan_4 && transActive+1 == 4)
 			src << "You can't transform into this form like that."
 			return 0
