@@ -195,6 +195,8 @@ NEW VARIABLES
 	var/FlashDraw
 	var/NameTrue
 	var/NameFake
+	var/ProfileChange
+	var/ProfileBase
 	var/IconLock//If this has a value, it is used for the icon always.
 	var/IconLockBlend=1
 	var/IconLayer=2//customization eventually
@@ -13474,6 +13476,10 @@ mob
 				B.NameTrue=src.name
 				src.name=B.NameFake
 
+			if(B.ProfileChange)
+				B.ProfileBase=src.Profile
+				src.Profile=B.ProfileChange
+
 			if(B.FakeTextColor)
 				B.OldTextColor = src.Text_Color
 				Text_Color = B.FakeTextColor
@@ -14356,6 +14362,9 @@ mob
 
 			if(B.NameFake)
 				src.name=B.NameTrue
+
+			if(B.ProfileChange)
+				src.Profile=B.ProfileBase
 
 			if(B.FakeTextColor)
 				Text_Color = B.OldTextColor
