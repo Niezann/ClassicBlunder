@@ -215,7 +215,7 @@
 
 	if(passive_handler.Get("Undying Rage"))
 		val*=0.1
-	var/miraclechance = (100-defender.Health)*0.9
+	var/miraclechance = (100-defender.Health)*0.6
 	if(defender.passive_handler.Get("Miracle"))
 		if(defender.Health<30)
 			if( prob(miraclechance))
