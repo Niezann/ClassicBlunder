@@ -100,6 +100,9 @@ mob
 			if(val==0)
 				DEBUGMSG("val is 0 so we're ending dodamage now")
 				return 0;
+			
+			if(src.isLunaticMode())
+				src.InflictLunacy(val, defender);
 
 			fieldAndDefense(defender, UnarmedAttack, SwordAttack, SpiritAttack, val)
 

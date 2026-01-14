@@ -330,7 +330,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 				if(src.Secret == "Eldritch")
 					if(src.isLunaticMode())
 						src.Lunatic_Dash_Effect();
-						src.InflictLunacy(2, src.Target);
+						src.InflictLunacy(3, src.Target);
 
 				var/Distance=20
 				var/Delay=0.5

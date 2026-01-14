@@ -189,7 +189,7 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 		if(MeditateTime == 15)
 			if(src.Lunacy)
 				src << "Your mind is your own, alone, once more. <font color='black'>...</font color>"
-				src.Lunacy=0;
+				src.ClearLunacy();
 			if(src.LunacyDrank)
 				src << "You release the fragments of ████ you've gathered.<font color='black'>Back to Æther...</font color>"
 				src.LunacyDrank=0;
@@ -871,11 +871,13 @@ mob
 			if(src.UsingGladiator())
 				GladiatorCounter++
 			if(tempTensionLock)
-				tempTensionLock = max(tempTensionLock-1, 0);
+				tempTensionLock--;
 			if(src.isLunaticMode())
 				src.LunaticModeTimer();
 			if(src.disarm_timer)
 				src.DisarmTick();
+			if(src.distortions.len && prob(25))
+				src.RunDistortionTwitches()
 
 			if(src.BPPoisonTimer)
 				src.BPPoisonTimer--

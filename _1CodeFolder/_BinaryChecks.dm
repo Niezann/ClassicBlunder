@@ -2163,7 +2163,11 @@ mob
 				return 1
 			return 0
 		GetAngerThreshold()
-			return passive_handler.Get("AngerThreshold")
+			var/Extra=0;
+			if(src.Secret=="Eldritch")
+				if(src.isLunaticMode())
+					Extra += (src.LunacyDrank / 100)
+			return (passive_handler.Get("AngerThreshold") + Extra)
 		HasWeaponBreaker()
 			if(passive_handler.Get("WeaponBreakerQOL"))
 				return 0

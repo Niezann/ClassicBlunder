@@ -6,6 +6,7 @@
     if(src.Secret == "Eldritch")
         var/SecretInfomation/Eldritch/e = src.secretDatum;
         e.EndLunaticMode(src);
+        src.LunacyDrank=0;
 
 /mob/proc/LunaticModeEffect()
     var/image/img = image(icon='Novabolt.dmi', pixel_x=-15, pixel_y=-15);
@@ -92,13 +93,25 @@ mob/var/LunacyDrank=0;//variable that tracks how crazy you've made someone else
     luna *= mult;
     trg.Lunacy += luna;
     src.LunacyDrank += luna;
+    trg.LunacyEffects(src)
+    luna = max(1, round(luna));
+    var/l = rand(1, luna)
+    while(l)
+        trg.AddDistortion();
+        l--;
 
-/mob/proc/LunacyEffects()
-    if(src.Lunacy > 100)
-        src.BrainBreak();
-/mob/proc/BrainBreak()
+/mob/proc/ClearLunacy()
     src.Lunacy=0;
-    src.BrainBreakMinions();
+    src.ClearDistortion();
+
+/mob/proc/LunacyEffects(mob/owner)
+    if(src.Lunacy > 100)
+        src.BrainBreak(owner);
+/mob/proc/BrainBreak(mob/owner)
+    src << "<b>Y██r br██n c█n't h█ndl█ th█ str███!</b>"
+    AddConfusing(100);
+    ClearLunacy();
+    owner.BrainBreakMinions();
 
 
 					
