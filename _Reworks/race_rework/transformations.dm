@@ -166,6 +166,7 @@ transformation
 
 		transform(mob/user, forceTrans)
 			if(is_active) return
+			if(user.passive_handler.Get("SSJRose")) return
 			if(!forceTrans)
 				if(!user.CanTransform()) return
 

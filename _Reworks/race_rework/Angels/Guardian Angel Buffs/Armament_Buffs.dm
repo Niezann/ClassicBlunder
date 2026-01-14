@@ -43,11 +43,11 @@
 					return
 
 				var/hp_percent = (M.Health)
-				if(hp_percent > TooMuchHealth || hp_percent < NeedsHealth)
+				if(hp_percent > TooMuchHealth)
 					M << "<font color='#f7da1b'>Your current health prevents invoking the Ten Commandments. (Try again at 35%!)</font>"
 					return
 
-			VaizardHealth = 7.5 * max(M.AscensionsAcquired, 1)
+			M.VaizardHealth += 7.5 * max(M.AscensionsAcquired, 1)
 
 			src.Trigger(M)
 			src.ActiveState = !src.ActiveState
