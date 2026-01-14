@@ -10,11 +10,15 @@ mob/proc/summonEldritchMinion(dmg=0.01, tier=1)
         blobLoop += MonkeySoldiers.monkeySoldiers[length(MonkeySoldiers.monkeySoldiers)]
 
 mob/proc/BrainBreakMinions(dmg=0.01, tier=6)
+    DEBUGMSG("Trying to summon brain break minions")
     while(length(MonkeySoldiers.monkeySoldiers) < tier)
         var/mob/MonkeySoldier/EldritchMinion/em = new/mob/MonkeySoldier/EldritchMinion(src, dmg, src.getTotalMagicLevel() * 10)
-        em.loc = locate(src.Target.loc.x + rand(-3, 3), src.Target.loc.y + rand(-3,3), src.Target.loc.z);
+        var/newX = src.x + rand(-3,3);
+        var/newY = src.y + rand(-3,3);
+        em.loc = locate(newX, newY, src.z);
         blobLoop += em;
         MonkeySoldiers.monkeySoldiers += em;
+        DEBUGMSG ("Loaded minion [MonkeySoldiers.monkeySoldiers.len]");
 
 /mob/MonkeySoldier/EldritchMinion
     New(mob/p, dmg, timer)

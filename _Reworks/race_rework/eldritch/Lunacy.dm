@@ -93,7 +93,7 @@ mob/var/LunacyDrank=0;//variable that tracks how crazy you've made someone else
     luna *= mult;
     trg.Lunacy += luna;
     src.LunacyDrank += luna;
-    trg.LunacyEffects()
+    trg.LunacyEffects(src)
     luna = max(1, round(luna));
     var/l = rand(1, luna)
     while(l)
@@ -104,14 +104,14 @@ mob/var/LunacyDrank=0;//variable that tracks how crazy you've made someone else
     src.Lunacy=0;
     src.ClearDistortion();
 
-/mob/proc/LunacyEffects()
+/mob/proc/LunacyEffects(mob/owner)
     if(src.Lunacy > 100)
-        src.BrainBreak();
-/mob/proc/BrainBreak()
+        src.BrainBreak(owner);
+/mob/proc/BrainBreak(mob/owner)
     src << "<b>Y██r br██n c█n't h█ndl█ th█ str███!</b>"
     AddConfusing(100);
     ClearLunacy();
-    BrainBreakMinions();
+    owner.BrainBreakMinions();
 
 
 					
