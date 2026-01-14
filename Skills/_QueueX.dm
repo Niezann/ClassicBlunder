@@ -885,8 +885,8 @@ obj
 						if(usr.AttackQueue)
 							return
 						usr.Tension=0
-						
-						if(usr.StyleBuff.Finisher && !usr.tryIncreaseTension())//if the style has a unique finisher and this is not a HT granting tension max
+						usr.tryIncreaseTension();//2026.01.13 - reverting "only max HT lvl gets unique finisher"
+						if(usr.StyleBuff.Finisher)//there's probably a less clunky version way of ensuring finishers are only used once
 							var/path = usr.StyleBuff.Finisher
 							if(!ispath(usr.StyleBuff.Finisher))
 								path=text2path(usr.StyleBuff.Finisher)

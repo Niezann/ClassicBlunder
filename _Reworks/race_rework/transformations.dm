@@ -165,6 +165,7 @@ transformation
 				user.underlays -= form_aura_underlay
 
 		transform(mob/user, forceTrans)
+			if(user.passive_handler.Get("SSJRose") >= 1) return;
 			if(is_active) return
 			if(user.passive_handler.Get("SSJRose")) return
 			if(!forceTrans)

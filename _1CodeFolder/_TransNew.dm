@@ -114,6 +114,9 @@ mob/proc/isSaiyanHalfie()
 mob/proc/CanTransform()
 	if(src.CyberCancel&&!isRace(ANDROID)&&!isRace(HUMAN)&&!isRace(CELESTIAL)&&!HasKOB())
 		return 0
+	if(src.passive_handler.Get("SSJRose"))
+		src << "You're already in your SSJ Rose form!"
+		return 0;
 	if(src.TotalFatigue>=90)
 		src<<"You are too tired to transform!"
 		return 0

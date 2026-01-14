@@ -18,7 +18,7 @@
 		OffMessage="releases their tremendous focus..."
 		verb/Activate_High_Tension()
 			set category="Skills"
-			if(usr.transActive)
+			if(usr.transActive || usr.passive_handler.Get("SSJRose") >= 1)
 				usr<<"You can't use this while transformed!"
 				return
 			if(!usr.BuffOn(src))
