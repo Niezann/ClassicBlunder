@@ -3562,8 +3562,8 @@ NEW VARIABLES
 					adjustments(mob/player)
 						..()
 						passives = list("ArmorAscension" = 3,"UnderDog"=player.SagaLevel*2, "Tenacity" = player.SagaLevel*2, "SpaceWalk" = 1, "StaticWalk" = 1, "MovingCharge" = 1, \
-						"Godspeed" = 1 + (player.SagaLevel*0.5), "BlurringStrikes" = player.SagaLevel*0.5,"SpiritFlow" = player.SagaLevel-2, "Flow" = player.SagaLevel-3, "Skimming" = 2. \
-						"MovementMastery" = 10 + player.SagaLevel)
+						"Godspeed" = 1 + (player.SagaLevel*0.5), "BlurringStrikes" = player.SagaLevel*0.5,"SpiritFlow" = player.SagaLevel-2, "Flow" = player.SagaLevel-3, "Skimming" = 2, \
+						"MovementMastery" = 10 + (player.SagaLevel))
 						StrMult=1.5
 						ForMult=1.5
 						SpdMult=1.5
