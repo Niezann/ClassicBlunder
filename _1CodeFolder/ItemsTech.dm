@@ -791,7 +791,7 @@ obj/Items/Tech
 					Choice.MortallyWounded=0
 					Choice.TsukiyomiTime=1
 					usr<<"You stabilize [Choice]'s internal injuries."
-					Choice<<"[usr] has stabilized your internal internal."
+					Choice<<"[usr] has stabilized your internal injuries."
 				if(Choice.KO)
 					Choice.Conscious()
 				var/heal= 15 + (0.3 * Choice.TotalInjury)

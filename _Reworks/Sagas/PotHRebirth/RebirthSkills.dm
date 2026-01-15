@@ -958,6 +958,7 @@ obj/Skills/Buffs
 			OffMessage="casts aside the burden of the Crownless King."
 			passives = list("Godspeed" = 3, "AfterImages" = 2, "ShiningBrightly" = 1, "KiControl" = 1)
 			verb/Crownless_King()
+				set category= "Skills"
 				src.Trigger(usr)
 
 		ComebackKing
