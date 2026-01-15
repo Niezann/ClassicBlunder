@@ -876,8 +876,6 @@ mob
 				src.LunaticModeTimer();
 			if(src.disarm_timer)
 				src.DisarmTick();
-			if(src.distortions.len && prob(25))
-				src.RunDistortionTwitches()
 
 			if(src.BPPoisonTimer)
 				src.BPPoisonTimer--

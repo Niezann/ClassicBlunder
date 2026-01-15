@@ -445,7 +445,6 @@
 #include "_Reworks\race_rework\dragon\ascensions.dm"
 #include "_Reworks\race_rework\dragon\race.dm"
 #include "_Reworks\race_rework\eldritch\ascensions.dm"
-#include "_Reworks\race_rework\eldritch\Distortion.dm"
 #include "_Reworks\race_rework\eldritch\eldritchGrab.dm"
 #include "_Reworks\race_rework\eldritch\eldritchMinion.dm"
 #include "_Reworks\race_rework\eldritch\Lunacy.dm"

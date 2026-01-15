@@ -89,20 +89,14 @@ mob/var/LunacyDrank=0;//variable that tracks how crazy you've made someone else
 
 /mob/proc/InflictLunacy(mult, mob/trg)
     if(!src.isLunaticMode()) return
-    var/luna = src.getTotalMagicLevel() / 2;
+    var/luna = src.getTotalMagicLevel() / 4;
     luna *= mult;
     trg.Lunacy += luna;
     src.LunacyDrank += luna;
-    trg.LunacyEffects(src)
-    luna = max(1, round(luna));
-    var/l = rand(1, luna)
-    while(l)
-        trg.AddDistortion();
-        l--;
+    trg.LunacyEffects(src);
 
 /mob/proc/ClearLunacy()
     src.Lunacy=0;
-    src.ClearDistortion();
 
 /mob/proc/LunacyEffects(mob/owner)
     if(src.Lunacy > 100)
