@@ -64,18 +64,28 @@
 
 
 	transform_animation(mob/user)
-		Crater(user)
-		for(var/transformation/trans in user.race.transformations)
-			if(trans == src)
-				break
-			user.overlays -= trans.form_aura
-			user.underlays -= trans.form_aura_underlay
-		user.Auraz("Remove")
-		shockwaves(user)
-		rocks(user)
-		hair_anim(user)
-		KenShockwave2(user, icon='KenShockwaveGold.dmi', Size=70, Time = 45)
-		user.Earthquake(60,-8,8,-8,8,999)
+		if(mastery < 50)
+			Crater(user)
+			for(var/transformation/trans in user.race.transformations)
+				if(trans == src)
+					break
+				user.overlays -= trans.form_aura
+				user.underlays -= trans.form_aura_underlay
+			user.Auraz("Remove")
+			shockwaves(user)
+			rocks(user)
+			hair_anim(user)
+			KenShockwave2(user, icon='KenShockwaveGold.dmi', Size=70, Time = 45)
+			user.Earthquake(60,-8,8,-8,8,999)
+		else
+			KenShockwave2(user, icon='KenShockwaveGold.dmi', Size=70, Time = 45)
+			animate(user, color = list(1,0,0, 0,1,0, 0,0,1, 1.5,0.9,0.1), time=5)
+			spawn(5)
+				spawn(50)
+					if(!user.HasKiControl()&&!user.PoweringUp)
+						user.Auraz("Remove")
+				animate(user, color = null, time=5)
+
 
 /transformation/half_saiyan/human/beast_mode // XD
 
