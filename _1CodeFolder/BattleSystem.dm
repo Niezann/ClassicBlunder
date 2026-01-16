@@ -294,7 +294,7 @@ mob/proc/Unconscious(mob/P,var/text)
 		src.Health=10
 		src.DoubleHelix=5
 		if(src.isRace(CELESTIAL))
-			src.VaizardHealth+=20;
+			src.VaizardHealth+=5;
 		src.race.transformations[5].transform(src, TRUE)
 		return
 	if(passive_handler["Undying Rage"])
