@@ -28,7 +28,22 @@
 	Sing_Her_Blessed_Song
 		HealthCut=0.9
 	All_Hail_The_Crownless_King
-		HealthCut=0.9
+		FINISHINGMOVE=1
+		StrTax=0.25
+		ForTax=0.25
+		SpdTax=0.25
+		OffTax=0.25
+		DefTax=0.25
+		RecovTax=0.25
+		ManaDrain=0.25
+		FatigueDrain=0.1
+		Cooldown=-1
+		passives= list("The Crownless King" = 1, "FatigueLeak" = 1, "ManaLeak" = 1)
+		ActiveMessage="becomes a Legendary Fighter with no equal!<font color=#00FFFF> <b>You feel like you are in for a Bad Time...</b>"
+		verb/All_Hail_The_Crownless_King()
+			set category="Skills"
+			set name= "Hail to the King(Final Act)"
+			src.Trigger(usr)
 	Glory_To_The_Comeback_King
 		Cooldown = -1
 		FINISHINGMOVE=1

@@ -294,7 +294,7 @@ mob/proc/Unconscious(mob/P,var/text)
 		src.Health=10
 		src.DoubleHelix=5
 		if(src.isRace(CELESTIAL))
-			src.VaizardHealth+=20;
+			src.VaizardHealth+=10;
 		src.race.transformations[5].transform(src, TRUE)
 		return
 	if(passive_handler["Undying Rage"])
@@ -1473,6 +1473,8 @@ mob/var/minhitroll = 0
 	//LABEL: ACCURACY FORMULA
 proc/Accuracy_Formula(mob/Offender,mob/Defender,AccMult=1,BaseChance=glob.WorldDefaultAcc, Backfire=0, IgnoreNoDodge=0)
 	if(Offender&&Defender)
+		if(Defender.passive_handler.Get("The Crownless King") && Defender.ManaAmount !=0 && Defender.TotalFatigue !=99) //until you run out of mana and are fully fatigued, you can't be hit.
+			return MISS
 		if(Defender.Frozen==3)
 			return MISS
 		if(Offender.HasNoMiss())

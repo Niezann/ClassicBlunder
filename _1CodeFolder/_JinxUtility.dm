@@ -1336,11 +1336,11 @@ mob
 				var/h = (((missingHealth())/glob.REBELHEARTMOD) * passive_handler["Rebel Heart"])/10
 				Mod+=h
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
-				Mod+=(passive_handler.Get("TensionPowered")/1.99)
+				Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(passive_handler.Get("TensionPowered")&&transActive>=4)
-				Mod+=(passive_handler.Get("TensionPowered")/1.99)
+				Mod+=(passive_handler.Get("TensionPowered")/2)
 				if(isRace(HUMAN))
-					Mod+=(passive_handler.Get("TensionPowered")/1.99)
+					Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
 			Str*=Mod
@@ -1478,11 +1478,11 @@ mob
 					// lol
 					Mod += clamp(adaptive/2,0.05, 0.5)
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
-				Mod+=(passive_handler.Get("TensionPowered")/1.99)
+				Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(passive_handler.Get("TensionPowered")&&transActive>=4)
-				Mod+=(passive_handler.Get("TensionPowered")/1.99)
+				Mod+=(passive_handler.Get("TensionPowered")/2)
 				if(isRace(HUMAN))
-					Mod+=(passive_handler.Get("TensionPowered")/1.99)
+					Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
 			For*=Mod
@@ -1609,11 +1609,11 @@ mob
 			if(src.EndEroded)
 				Mod-=src.EndEroded
 			if(passive_handler.Get("TensionPowered")&&transActive>=3)
-				Mod+=passive_handler.Get("TensionPowered")/1.99
+				Mod+=passive_handler.Get("TensionPowered")/2
 			if(passive_handler.Get("TensionPowered")&&transActive>=4)
-				Mod+=passive_handler.Get("TensionPowered")/1.99
+				Mod+=passive_handler.Get("TensionPowered")/2
 				if(isRace(HUMAN))
-					Mod+=(passive_handler.Get("TensionPowered")/1.99)
+					Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(passive_handler.Get("Determination(Green)")||passive_handler.Get("Determination(White)"))
 				Mod+=(0.02*ManaAmount)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
@@ -1724,7 +1724,7 @@ mob
 			if(Secret && Secret == "Werewolf" && CheckSlotless("Full Moon Form"))
 				Mod += 1 * (secretDatum?:getHungerBoon())
 			if(passive_handler.Get("TensionPowered"))
-				Mod+=((passive_handler.Get("TensionPowered")*2.01))
+				Mod+=((passive_handler.Get("TensionPowered")*2))
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/10)
 			Spd*=Mod
@@ -1814,7 +1814,7 @@ mob
 			if(src.OffEroded)
 				Mod-=src.OffEroded
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
-				Mod+=passive_handler.Get("TensionPowered")*1.01
+				Mod+=passive_handler.Get("TensionPowered")
 			Off*=Mod
 			Off*=Mult
 			if(src.HasMirrorStats())
@@ -1908,7 +1908,7 @@ mob
 			if(src.DefEroded)
 				Mod-=src.DefEroded
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
-				Mod+=passive_handler.Get("TensionPowered")*1.01
+				Mod+=passive_handler.Get("TensionPowered")
 
 			Def*=Mod
 			Def*=Mult
