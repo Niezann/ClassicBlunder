@@ -15,7 +15,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 42
+	var/UPDATE_VERSION = 43
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -662,6 +662,14 @@ update
 					o.race.transformations -=HT
 					del HT
 				o << "Your transformations have been adjusted. Hopefully you weren't in final trans when logging off! "
+	version43
+		version = 43
+		updateMob(mob/o)
+			. = ..()
+			if(o.isRace(ELDRITCH))
+				o.race.ascensions[6].passives["Null"] = 1;
+				o << "<font color='#000'>Nothing to worry about.</font color>"
+			
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25

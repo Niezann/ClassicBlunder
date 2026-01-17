@@ -31,11 +31,13 @@ globalTracker/var/SYMBIOTE_DMG_TEST = 2
                 . += percent
         else
             . += forced
+        if(defender.HasNullTarget())
+            . = 0;
 
 
 
 /mob/proc/attackModifiers(mob/defender)
-    var/nerf = (defender.HasGodKi()) ? 1 - (0.3 * defender.GetGodKi()) : 0
+    var/nerf = (defender.HasGodKi()&&!defender.HasNullTarget()) ? 1 - (0.3 * defender.GetGodKi()) : 0
     if(nerf && nerf <= 0)
         nerf = 0.1
     if(passive_handler.Get("Enraged") && Anger)
@@ -52,3 +54,4 @@ globalTracker/var/SYMBIOTE_DMG_TEST = 2
     else
         if(nerf > 0)
             . *= nerf
+    

@@ -879,7 +879,7 @@
 							if(GetAttracting())
 								enemy.AddAttracting(GetAttracting(), src)
 								// 		OTHER DMG START 		//
-							var/otherDmg = (damage+(GetIntimidation()/100)*(1+(2*GetGodKi())))
+							var/otherDmg = (damage+(GetIntimidation()/100)*(1+(2*(HasNullTarget() ? GetGodKi() : 0))))
 
 							// if(UsingZornhau()&&HasSword())
 							// 	otherDmg *= 1 + (UsingZornhau()*glob.ZORNHAU_MULT)

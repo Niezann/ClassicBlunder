@@ -26,8 +26,8 @@ globalTracker/var/list/IGNORE_POWER_CLAMP_PASSIVES = list("Wrathful", "LimitBrok
         if(Health <= 15 + (AscensionsAcquired*5))
             if(CheckSlotless("True Form"))
                 return TRUE
-    var/godKi = GetGodKi()
-    var/defenderGodKi = defender.GetGodKi()
+    var/godKi = !HasNullTarget() ? GetGodKi() : 0;
+    var/defenderGodKi = !defender.HasNullTarget() ? defender.GetGodKi() : 0;
     if(!defenderGodKi)
         if(godKi)
             return TRUE

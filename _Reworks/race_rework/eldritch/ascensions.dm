@@ -150,8 +150,8 @@ ascension
 			offense = 0.25
 			defense = 0.75
 			speed = 0.75
-			passives = list("DebuffReversal" = 1, "PureDamage"=5, "BlockChance"=25, "CriticalBlock"=0.25, "BuffMastery"=5, "GiantSwings"=1, "Extend"=1, "Gum Gum"=1, "Pressure"=2, "Siphon"=2, "Brutalize"=2)
-			on_ascension_message = "...unfortunately. ᚾᛁᛖᛊ ᚾᛜ ᛖᚣⲔᛊ ᚾᚺᚣᚾ ᚣ ᚹᚱᛜᛒᚳᛊᛖ ᚪᛜᚱ ᛊꓦᛊᚱᛉᛜᚢᛊ ᛊᚳᛢᛊ᛫"
+			passives = list("DebuffReversal" = 1, "PureDamage"=5, "BlockChance"=25, "CriticalBlock"=0.25, "BuffMastery"=5, "GiantSwings"=1, "Extend"=1, "Gum Gum"=1, "Pressure"=2, "Siphon"=2, "Brutalize"=2, "Null"=2)
+			on_ascension_message = "...unfortunately. ᚾᛁᛖᛊ   ᚾᛜ   ᛖᚣⲔᛊ   ᚾᚺᚣᚾ   ᚣ   ᚹᚱᛜᛒᚳᛊᛖ   ᚪᛜᚱ   ᛊꓦᛊᚱᛉᛜᚢᛊ   ᛊᚳᛢᛊ ᛫"
 			postAscension(mob/owner)
 				owner.secretDatum.tierUp(7, owner)
 				..()
