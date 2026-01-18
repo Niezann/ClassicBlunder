@@ -448,20 +448,16 @@ mob
 						if(s3&&s3.Destructable)
 							s.startBreaking(val, breakTicks / ((duraBoon * Sword3Quality) + duraBase), defender, src, "sword")
 
-			if(defender.HasLifeGeneration())
-				defender.HealHealth(defender.GetLifeGeneration()/glob.LIFE_GEN_DIVISOR * val)
-				if(defender.Health>=100-100*defender.HealthCut-defender.TotalInjury)
-					defender.HealWounds(glob.LIFE_GEN_MULT*defender.GetLifeGeneration()/glob.LIFE_GEN_DIVISOR * val)
-			if(src.HasEnergyGeneration())
-				src.HealFatigue(glob.ENERGY_GEN_MULT*src.GetEnergyGeneration()/glob.ENERGY_GEN_DIVISOR * val)
-				src.HealEnergy(src.GetEnergyGeneration()/glob.ENERGY_GEN_DIVISOR* val)
-			if(defender.HasEnergyGeneration() * val)
-				defender.HealFatigue(glob.ENERGY_GEN_MULT*defender.GetEnergyGeneration()/glob.ENERGY_GEN_DIVISOR * val)
-				defender.HealEnergy(defender.GetEnergyGeneration()/glob.ENERGY_GEN_DIVISOR * val)
-			if(src.HasManaGeneration())
-				src.HealMana(src.GetManaGeneration()/10)
-			if(defender.HasManaGeneration())
-				defender.HealMana(defender.GetManaGeneration()/10)
+			if(HasLifeGeneration())
+				var/gen = GetLifeGeneration()/glob.LIFE_GEN_DIVISOR;
+				HealHealth(gen);
+				HealWounds(gen/2);
+			if(HasEnergyGeneration())
+				var/gen = GetEnergyGeneration()/glob.ENERGY_GEN_DIVISOR;
+				HealEnergy(gen);
+				HealFatigue(gen/2);
+			if(HasManaGeneration())
+				HealMana(src.GetManaGeneration()/glob.MANA_GEN_DIVISOR);
 			if(src.ActiveBuff&&src.CheckActive("Keyblade")&&!src.SpecialBuff)
 				src.ManaAmount+=(0.25*src.SagaLevel)
 			if(defender.ActiveBuff&&defender.CheckActive("Keyblade")&&!defender.SpecialBuff)

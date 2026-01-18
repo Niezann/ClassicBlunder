@@ -663,7 +663,7 @@ mob
 				return 1
 			if(src.SenseUnlocked>5&&src.SenseUnlocked>src.SenseRobbed)
 				return 1
-			if(src.GetGodKi()>=0.25)
+			if(src.GetGodKi()>=0.25 && !src.HasNullTarget())
 				return 1
 		HasClarity()
 			if(passive_handler.Get("Omnipotent")) // so admins can fucking see
@@ -673,7 +673,7 @@ mob
 					return 1
 			if(src.Secret=="Haki"&&src.secretDatum.secretVariable["HakiSpecialization"]=="Observation")
 				return 1
-			if(src.GetGodKi()>=0.25)
+			if(src.GetGodKi()>=0.25 && !src.HasNullTarget())
 				return 1
 			return 0
 		HasEnlightenment()
@@ -716,7 +716,7 @@ mob
 			return Return
 		HasGodspeed()
 			var/Return=0
-			var/gk=src.GetGodKi()
+			var/gk= !src.HasNullTarget() ? src.GetGodKi() : 0
 			if(gk>=0.25)
 				Return+=round(gk/0.25)
 			if(passive_handler.Get("Gravity"))
@@ -742,7 +742,7 @@ mob
 			return Return
 		HasFlicker()
 			var/Return=0
-			var/gk=src.GetGodKi()
+			var/gk= !src.HasNullTarget() ? src.GetGodKi() : 0;
 			if(gk>=0.5)
 				Return+=round(gk/0.5)
 			if(src.Secret=="Haki")
@@ -830,7 +830,15 @@ mob
 		HasVoid()
 			if(passive_handler.Get("Void"))
 				return 1
-			return 0
+			return 
+		HasNull()
+			if(passive_handler.Get("Null"))
+				if(src.isRace(ELDRITCH) && src.AscensionsAcquired==6 && src.Secret=="Eldritch")
+					return 1;
+			return 0;
+		HasNullTarget()
+			if(Target) if(Target.HasNull()) return 1;
+			return 0;
 		HasBleedHit()
 			if(passive_handler.Get("BleedHit"))
 				return 1
@@ -991,7 +999,7 @@ mob
 				return 1
 			return 0
 		HasKiControlMastery()
-			if(src.GetGodKi()>=0.25 && !isRace(SHINJIN))
+			if((!src.HasNullTarget() ? src.GetGodKi() : 0 >=0.25) && !isRace(SHINJIN))
 				return 1
 			if(Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Power Control"))
 				return 1
@@ -1017,7 +1025,7 @@ mob
 			if(Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Power Control"))
 				Total += secretDatum?:getBoon("Power Control") / 8
 			if(src.HasGodKi() && src.isRace(SHINJIN))
-				Total+=round(src.GetGodKi()/0.25)
+				Total+=(!src.HasNullTarget() ? round(src.GetGodKi()/0.25) : 0)
 			if(src.isRace(NAMEKIAN)&&src.transActive())
 				Total+=3
 			if(InfinityModule)
@@ -1736,12 +1744,12 @@ mob
 					Return-=100
 				if(m.isRace(MAKYO))
 					Return-=(5*m.AscensionsAcquired)
-				if(m.HasGodKi())
+				if(m.HasGodKi() && !m.HasNull())
 					if(src.HasMythical())
 						Return-=(m.GetGodKi())*(100-(src.HasMythical()*100))
 					else
 						Return-=m.GetGodKi()*100
-			if(src.HasGodKi())
+			if(src.HasGodKi() && !src.HasNullTarget())
 				Return+=src.GetGodKi()*100
 
 			if(src.Saga=="Ansatsuken")
@@ -1882,13 +1890,14 @@ mob
 					Total+=1
 			return Total
 		HasEndlessNine()
+			if(HasNullTarget()) return 0;
 			if(passive_handler.Get("CreateTheHeavens"))
 				return 0
 			if(passive_handler.Get("EndlessNine"))
 				return 1
 			return 0
 		GetEndlessNine()
-			var/Total=passive_handler.Get("EndlessNine")
+			var/Total=(!HasNullTarget() ? passive_handler.Get("EndlessNine") : 0)
 			if(passive_handler["Hidden Potential"]||passive_handler["CreateTheHeavens"])
 				Total/=2
 			return Total

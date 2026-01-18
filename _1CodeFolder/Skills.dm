@@ -628,7 +628,7 @@ obj/Skills
 					spawn()RecoverImage(Target)
 					spawn(2)RecoverImage(Target)
 					spawn(4)RecoverImage(Target)
-					if(usr.Power*(usr.GetGodKi()**3)>Target.Power*min(Target.GetGodKi()**3,1)||Target.KO)
+					if(usr.Power*((!usr.HasNullTarget() ? usr.GetGodKi()**3 : 0))>Target.Power*min((!Target.HasNullTarget() ? Target.GetGodKi()**3 : 0),1)||Target.KO)
 						Target.Savable=0
 						if(istype(Target, /mob/Players))
 							fdel("Saves/Players/[Target.ckey]")

@@ -1551,9 +1551,9 @@ proc/Accuracy_Formula(mob/Offender,mob/Defender,AccMult=1,BaseChance=glob.WorldD
 				if(AccMult<1)
 					AccMult=1
 		var/GodKiDif = 1
-		if(Offender.GetGodKi())
+		if(Offender.GetGodKi() && !Offender.HasNullTarget())
 			GodKiDif = 1 + Offender.GetGodKi()
-		if(Defender.GetGodKi())
+		if(Defender.GetGodKi() && !Defender.HasNullTarget())
 			GodKiDif /= (1 + Defender.GetGodKi())
 		AccMult *= GodKiDif
 
@@ -1581,8 +1581,8 @@ proc/Accuracy_Formula(mob/Offender,mob/Defender,AccMult=1,BaseChance=glob.WorldD
 
 
 			if(glob.OLD_ACCURACY)
-				Offense=(Offender.Power*(Offender.GetOff(glob.ACC_OFF)+Offender.GetSpd(glob.ACC_OFF_SPD)))*(1+Offender.GetGodKi())
-				Defense=(Defender.Power*(Defender.GetDef(glob.ACC_DEF)+Defender.GetSpd(glob.ACC_DEF_SPD)))*(1+Defender.GetGodKi())
+				Offense=(Offender.Power*(Offender.GetOff(glob.ACC_OFF)+Offender.GetSpd(glob.ACC_OFF_SPD)))*(1+(!Offender.HasNullTarget() ? Offender.GetGodKi() : 0))
+				Defense=(Defender.Power*(Defender.GetDef(glob.ACC_DEF)+Defender.GetSpd(glob.ACC_DEF_SPD)))*(1+(!Defender.HasNullTarget() ? Defender.GetGodKi() : 0))
 				mod = clamp(((Offense*AccMult)/max(Defense,0.01)), 0.5, 2)
 
 			var/roll = randValue((100-BaseChance) * mod, 100)
@@ -1689,9 +1689,9 @@ proc/Deflection_Formula(var/mob/Offender,var/mob/Defender,var/AccMult=1,var/Base
 
 
 		var/GodKiDif = 1
-		if(Offender.GetGodKi())
+		if(Offender.GetGodKi() && !Offender.HasNullTarget())
 			GodKiDif = 1 + Offender.GetGodKi()
-		if(Defender.GetGodKi())
+		if(Defender.GetGodKi() && !Defender.HasNullTarget())
 			GodKiDif /= (1 + Defender.GetGodKi())
 		AccMult *= GodKiDif
 

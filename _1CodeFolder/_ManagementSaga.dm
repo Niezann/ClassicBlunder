@@ -1000,6 +1000,9 @@ mob
 							if(src.RebirthHeroType=="Red")
 								src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Glory_To_The_Comeback_King)
 								src<<"You are defiance incarnate; Hail the Comeback King."
+							if(src.RebirthHeroType=="Blue")
+								src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/All_Hail_The_Crownless_King)
+								src<< "You have become a Fighter of Legend; Glory to the Crownless King."
 				if("Cosmo")
 					tierUpSaga("Cosmo")
 				if("Spiral")

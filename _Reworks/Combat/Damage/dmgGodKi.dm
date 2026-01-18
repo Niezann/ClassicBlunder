@@ -5,3 +5,5 @@
 		. -= defender.GetGodKi() * 10
 	if(HasGodKi() && defender.HasEndlessNine() && destructive < 2 )
 		. -= defender.GetEndlessNine() * 10
+	if(defender.HasNull())
+		. = 0;
