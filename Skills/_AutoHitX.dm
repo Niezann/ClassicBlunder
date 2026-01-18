@@ -6266,7 +6266,7 @@ obj
 								m << "You redirected the force of the attack back at [src.Owner]!"
 								return
 
-				if(src.CanBeBlocked||m.passive_handler.Get("YataNoKagami"))
+				if(src.CanBeBlocked||m.passive_handler.Get("YataNoKagami")||m.passive_handler.Get("The CrownlessKing"))
 					if(Accuracy_Formula(src.Owner, m, AccMult=Precision, BaseChance=glob.WorldDefaultAcc, IgnoreNoDodge=0) == WHIFF)
 						if(!src.Owner.NoWhiff())
 							var/obj/Items/Sword/s = Owner.EquippedSword()
