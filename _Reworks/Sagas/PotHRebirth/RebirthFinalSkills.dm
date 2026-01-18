@@ -37,8 +37,10 @@
 		RecovTax=0.25
 		ManaDrain=0.25
 		FatigueDrain=0.1
+		SpecialSlot=0
+		Slotless=1
 		Cooldown=-1
-		passives= list("The Crownless King" = 1, "FatigueLeak" = 1, "ManaLeak" = 1)
+		passives= list("The Crownless King" = 1, "FatigueLeak" = 2, "ManaLeak" = 2)
 		ActiveMessage="becomes a Legendary Fighter with no equal!<font color=#00FFFF> <b>You feel like you are in for a Bad Time...</b>"
 		verb/All_Hail_The_Crownless_King()
 			set category="Skills"
