@@ -1473,8 +1473,9 @@ mob/var/minhitroll = 0
 	//LABEL: ACCURACY FORMULA
 proc/Accuracy_Formula(mob/Offender,mob/Defender,AccMult=1,BaseChance=glob.WorldDefaultAcc, Backfire=0, IgnoreNoDodge=0)
 	if(Offender&&Defender)
-		if(Defender.passive_handler.Get("The Crownless King") && Defender.ManaAmount !=0 && Defender.TotalFatigue !=99) //until you run out of mana and are fully fatigued, you can't be hit.
-			return MISS
+		if(Defender.passive_handler.Get("The Crownless King") && Defender.TotalFatigue !=99)
+			if(Defender.passive_handler.Get("The Crownless King") && Defender.ManaAmount !=0) //until you run out of mana and are fully fatigued, you can't be hit.
+				return MISS
 		if(Defender.Frozen==3)
 			return MISS
 		if(Offender.HasNoMiss())
