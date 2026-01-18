@@ -14,6 +14,7 @@
 		SpdMult=1.5
 		StrMult=1.25
 		EndMult=1.25
+		TimerLimit=15
 	Nine_Sword_Style
 		passives = list("Relentlessness" = 1, "Fury" = 6, "Speed Force" = 2, "BuffMastery" = 3,\
 		                "StyleMastery" = 4, "Brutalize" = 4, "AsuraStrike" = 1,"TripleStrike" = 1, \
@@ -21,6 +22,7 @@
 		SpdMult=1.25
 		StrMult=1.75
 		OffMult=1.25
+		TimerLimit=15
 	Jinzen_Enlightenment
 		IconLock='Mist Veil.dmi'
 		IconApart=1

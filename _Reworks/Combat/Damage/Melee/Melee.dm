@@ -983,7 +983,7 @@
 				if(SagaLevel<4)
 					GetAndUseSkill(/obj/Skills/Projectile/SmallLemonThing, Projectiles, TRUE)
 				if(SagaLevel>=4)
-					if(prob(10))
+					if(prob(30))
 						GetAndUseSkill(/obj/Skills/Projectile/BIG_SHOT, Projectiles, TRUE)
 					else
 						GetAndUseSkill(/obj/Skills/Projectile/SmallLemonThing, Projectiles, TRUE)

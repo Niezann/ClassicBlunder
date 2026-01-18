@@ -1872,7 +1872,7 @@ mob
 				if(src.AscensionsAcquired==6 && Total<0.5)
 					Total=0.5//fully ascended dragon
 			if(passive_handler.Get("CreateTheHeavens") && src.DoubleHelix>=5&&isRace(HUMAN))
-				Total += 1
+				Total += 0.5
 			if(passive_handler.Get("Kaioken Blue"))
 				if(src.Target&&Target!=src)
 					if(src.Target.HasGodKi())

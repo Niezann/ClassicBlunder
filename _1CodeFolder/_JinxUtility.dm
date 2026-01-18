@@ -19,7 +19,7 @@ mob
 				if(!asc.checkAscensionUnlock(src,Potential)) continue
 				asc.onAscension(src)
 				while(asc.pickingChoice) sleep(world.tick_lag)//wait for the choice before continuing
-				
+
 		CheckRevert()
 			for(var/a in race.ascensions)
 				var/ascension/asc = a
@@ -102,7 +102,7 @@ mob
 			if(val==0)
 				DEBUGMSG("val is 0 so we're ending dodamage now")
 				return 0;
-			
+
 			if(src.isLunaticMode())
 				src.InflictLunacy(val, defender);
 
