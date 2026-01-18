@@ -458,6 +458,7 @@ mob
 				HealFatigue(gen/2);
 			if(HasManaGeneration())
 				HealMana(src.GetManaGeneration()/glob.MANA_GEN_DIVISOR);
+			
 			if(src.ActiveBuff&&src.CheckActive("Keyblade")&&!src.SpecialBuff)
 				src.ManaAmount+=(0.25*src.SagaLevel)
 			if(defender.ActiveBuff&&defender.CheckActive("Keyblade")&&!defender.SpecialBuff)

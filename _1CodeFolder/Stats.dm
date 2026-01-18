@@ -357,7 +357,6 @@ mob/Players/Stat()
 				stat("Injury Intent: ", WoundIntent)
 				stat("Killing Intent: ", KillingIntent)
 
-
 				if(usr.MedicineUnlocked+usr.ImprovedMedicalTechnologyUnlocked>=2&&!usr.Target.passive_handler.Get("Void")&&!usr.Target.HasMechanized() || usr.Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Senses"))
 					stat("Status:", Status)
 				if(usr.Target.Maimed)
@@ -365,41 +364,7 @@ mob/Players/Stat()
 				if(usr.Target.MortallyWounded)
 					stat("<font color='red'>They are bleeding heavily.</font color>")
 
-				if(!usr.Target.HasGodKi()&&!usr.Target.passive_handler.Get("Heart of Darkness")&&!usr.Target.passive_handler.Get("Sense Replacement")&&!usr.Target.passive_handler.Get("Void")&&!usr.Target.HasMechanized()&&usr.Target.SenseUnlocked<7 || usr.Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Senses"))
-					stat("Direction - [get_dist(usr, usr.Target)] tiles away","[CheckDirection(usr.Target)]")
-					stat("Power:","[Get_Sense_Reading(Target)]")
-					if(Target.BioArmor)
-						var/displayMarks = ""
-						if(Target.BioArmor >= 100)
-							displayMarks = "???"
-						else if(Target.BioArmor < 99 && Target.BioArmor >= 10)
-							displayMarks = "??"
-						else if(Target.BioArmor < 10)
-							displayMarks = "?"
-						stat("Health:", "[Target.Health]([displayMarks])%")
-					else if(Target.VaizardHealth)
-						stat("Health:", "[Target.Health]([Target.VaizardHealth])%")
-					else
-						stat("Health: ","[Target.Health]%")
-					stat("Energy: ","[(Target.Energy/Target.EnergyMax)*100]%")
-				else if(usr.Target.passive_handler.Get("Heart of Darkness"))
-					stat("Power: ", "<font color='red'><b>Boundless</b></font color>")
-					if(usr.passive_handler.Get("AdminVision"))
-						stat("Health: ","[round(Target.Health)]%")
-						stat("Energy: ","[(Target.Energy/Target.EnergyMax)*100]%")
-				else if(usr.Target.passive_handler.Get("Sense Replacement"))
-					stat("Power: ", "<font color='red'>[Target.SenseReplacement]</font color>")
-					stat("Health: ","[Target.Health]%")
-					stat("Energy: ","[(Target.Energy/Target.EnergyMax)*100]%")
-				else
-					stat("Power: ", "Incomprehensible")
-					if(usr.HasClarity() || usr.passive_handler.Get("AdminVision") || usr.Saga=="Unlimited Blade Works" && usr.SagaLevel>=2||usr.Potential>=65)
-						stat("Direction - [get_dist(usr, usr.Target)] tiles away","[CheckDirection(usr.Target)]")
-						if(Target.VaizardHealth)
-							stat("Health:", "[Target.Health]([Target.VaizardHealth])%")
-						else
-							stat("Health: ","[round(Target.Health)]%")
-						stat("Energy: ","[(Target.Energy/Target.EnergyMax)*100]%")
+				usr.outputVitals();
 
 				Restricted2
 
@@ -417,7 +382,42 @@ mob/Players/Stat()
 							if(!Z.AdminInviso)
 								stat(Z)
 
+/mob/proc/TrgIsBatshitCrazy()
+	if(src.Target.HasGodKi()) return 1;
+	if(src.Target.passive_handler.Get("Heart of Darkness")) return 1;
+	if(src.Target.passive_handler.Get("Sense Replacement")) return 1;
+	if(src.Target.passive_handler.Get("Void")) return 1;
+	if(src.Target.HasMechanized()) return 1;
+	if(usr.Secret == "Heavenly Restriction"&&secretDatum?:hasImprovement("Senses")) return 1;
+	return 0;
+/mob/proc/hasClearSight()
+	if(src.Potential >= 65) return 1;
+	if(src.HasClarity()) return 1;
+	if(src.passive_handler.Get("AdminVision")) return 1;
+	if(src.Saga=="Unlimited Blade Works" && src.SagaLevel >= 2) return 1;
+	return 0;
+/mob/proc/getBioArmorDisplay()
+	if(Target.BioArmor >= 100) return "???"
+	if(Target.BioArmor > 10 && Target.BioArmor < 99) return "??"
+	if(Target.BioArmor < 10) return "?"
 
+/mob/proc/outputVitals()
+	var/vaiHealth = hasClearSight()&&Target.VaizardHealth ? " ([Target.VaizardHealth])" : ""
+	var/healthDisplay = "[Target.Health][vaiHealth]%"
+	if(Target.BioArmor) healthDisplay = getBioArmorDisplay()
+	var/powReplace=Get_Sense_Reading(Target)
+	if(TrgIsBatshitCrazy() && !hasClearSight())
+		powReplace = "Incomprehensible" 
+	if(src.Target.passive_handler.Get("Heart of Darkness"))
+		powReplace = "<font color='red'><b>Boundless</b></font color>"
+	if(src.Target.passive_handler.Get("Sense Replacement"))
+		powReplace = "<font color='red'>[Target.SenseReplacement]</font color>"
+	if(src.Target.HasVoid())
+		powReplace = "..."
+	stat("Power:","[powReplace]");
+	stat("Direction - [get_dist(usr, usr.Target)] tiles away","[CheckDirection(usr.Target)]")
+	stat("Health:", "[healthDisplay]");
+	stat("Energy: ","[(Target.Energy/Target.EnergyMax)*100]%")
 
 atom/proc/CheckDirection(var/mob/M)
 	if(M.z != src.z) return "???"

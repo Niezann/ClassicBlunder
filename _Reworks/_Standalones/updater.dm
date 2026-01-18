@@ -667,7 +667,8 @@ update
 		updateMob(mob/o)
 			. = ..()
 			if(o.isRace(ELDRITCH))
-				o.race.ascensions[6].passives["Null"] = 1;
+				if(o.race.ascensions.len < 6)
+					o.race.ascensions |= new/ascension/eldritch/six()
 				o << "<font color='#000'>Nothing to worry about.</font color>"
 			
 
