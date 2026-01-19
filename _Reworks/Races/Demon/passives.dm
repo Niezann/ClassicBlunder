@@ -44,7 +44,7 @@ proc/getPassiveTier(mob/p, passivesObtained="NotSet", secondary=FALSE)//passives
         if(tier==4)
             return 10;
         if(tier==5)
-            return 15
+            return 15;
     else//secondary amts
         if(tier==1)
             return 0;
