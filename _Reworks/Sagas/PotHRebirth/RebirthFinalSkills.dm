@@ -31,16 +31,17 @@
 		FINISHINGMOVE=1
 		StrTax=0.25
 		ForTax=0.25
+		EndTax=0.25
 		SpdTax=0.25
 		OffTax=0.25
 		DefTax=0.25
 		RecovTax=0.25
 		ManaDrain=0.25
-		FatigueDrain=0.1
+		FatigueDrain=0.25
 		SpecialSlot=0
 		Slotless=1
 		Cooldown=-1
-		passives= list("The Crownless King" = 1, "FatigueLeak" = 2, "ManaLeak" = 2)
+		passives= list("The Crownless King" = 1, "FatigueLeak" = 3, "ManaLeak" = 3)
 		ActiveMessage="becomes a Legendary Fighter with no equal!<font color=#00FFFF> <b>You feel like you are in for a Bad Time...</b>"
 		verb/All_Hail_The_Crownless_King()
 			set category="Skills"

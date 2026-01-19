@@ -1348,7 +1348,8 @@ mob/Player/AI
 		DRAINS_ACTIVE//Label
 		if(src.ActiveBuff)
 			if(src.ActiveBuff.HealthDrain)
-				src.DoDamage(src, TrueDamage(src.ActiveBuff.HealthDrain))
+				if(src.passive_handler.Get("ShiningBrightly")&&src.Health>25||!src.passive_handler.Get("ShiningBrightly"))
+					src.DoDamage(src, TrueDamage(src.ActiveBuff.HealthDrain))
 			if(src.ActiveBuff.HealthThreshold&&!src.ActiveBuff.AllOutAttack)
 				if(src.Health<src.ActiveBuff.HealthThreshold*(1-src.HealthCut)||src.KO)
 					if(src.CheckActive("Eight Gates"))
@@ -1465,7 +1466,8 @@ mob/Player/AI
 		DRAINS_SPECIAL//Label
 		if(src.SpecialBuff)
 			if(src.SpecialBuff.HealthDrain)
-				src.DoDamage(src, TrueDamage(src.SpecialBuff.HealthDrain))
+				if(src.passive_handler.Get("ShiningBrightly")&&src.Health>25||!src.passive_handler.Get("ShiningBrightly"))
+					src.DoDamage(src, TrueDamage(src.SpecialBuff.HealthDrain))
 			if(src.SpecialBuff.HealthThreshold&&!src.SpecialBuff.AllOutAttack)
 				if(src.Health<src.SpecialBuff.HealthThreshold*(1-src.HealthCut)||src.KO)
 					src.SpecialBuff.Trigger(src)
@@ -1568,7 +1570,8 @@ mob/Player/AI
 					if(istype(b, /obj/Skills/Buffs/SlotlessBuffs/Autonomous))
 						continue
 					if(b.HealthDrain)
-						src.DoDamage(src, TrueDamage(b.HealthDrain))
+						if(src.passive_handler.Get("ShiningBrightly")&&src.Health>25||!src.passive_handler.Get("ShiningBrightly"))
+							src.DoDamage(src, TrueDamage(b.HealthDrain))
 					if(b.HealthThreshold&&!b.AllOutAttack)
 						if(src.Health<b.HealthThreshold*(1-src.HealthCut)||src.KO)
 							b.Trigger(src)
