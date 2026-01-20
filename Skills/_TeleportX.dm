@@ -267,6 +267,9 @@ obj/Skills
 					if(usr.Grab)
 						usr << "You can't use [src] while having someone grabbed!"
 						return
+				if(usr.Dead&&!usr.KeepBody)
+					usr<<"You cannot use a teleportation ability while dead."
+					return
 				if(usr.movementSealed)
 					usr << "You can't use [src] while your movement is sealed!"
 					return
