@@ -4497,6 +4497,7 @@ NEW VARIABLES
 			OffMessage="relinquishes the Evolution of Death."
 			verb/Death_X()
 				set hidden=1
+				return//it triggers when you DIE now
 				src.Trigger(usr)
 		Saiyan_Dominance
 			AutoAnger=1

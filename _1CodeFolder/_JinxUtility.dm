@@ -1012,151 +1012,123 @@ mob
 			src.AngerCD=5
 			if(src.oozaru_type=="Demonic")
 				src.AngerCD=0 //hopefully this won't affect anything other than their buff not reapplying anger when the last stage deactivates
-		AddHealthCut(var/Val)
-			src.HealthCut+=Val
-			if(src.HealthCut>=1)
-				src.Death(null, "exhausting their life force!", SuperDead=1, NoRemains=1)
-		AddEnergyCut(var/Val)
-			src.EnergyCut+=Val
-			if(src.EnergyCut>=1)
-				src.Death(null, "exhausting their life force!", SuperDead=1, NoRemains=1)
-		AddManaCut(var/Val)
-			src.ManaCut+=Val
-			if(src.ManaCut>=1)
-				src.ManaCut=1
-		AddStrTax(var/Val)
+		HealAllCutTax()
+			AddHealthCut(-1);
+			AddEnergyCut(-1);
+			AddManaCut(-1);
+			SubStrTax(100);
+			AddStrCut(-100);
+			SubEndTax(100);
+			AddEndCut(-100);
+			SubSpdTax(100);
+			AddSpdTax(-100);
+			SubForTax(100);
+			AddForCut(-100);
+			SubOffTax(100);
+			AddOffCut(-100)
+			SubDefTax(100);
+			AddDefCut(-100)
+			SubRecovTax(100);
+			AddRecovCut(-100);
+		AddHealthCut(Val)
+			HealthCut = clamp(HealthCut+Val, 0, 1);
+			if(HealthCut>=1) src.Death(null, "exhausting their life force!", SuperDead=1, NoRemains=1);
+		AddEnergyCut(Val)
+			EnergyCut = clamp(EnergyCut+Val, 0, 1);
+			if(EnergyCut>=1) src.Death(null, "exhausting their life force!", SuperDead=1, NoRemains=1);
+		AddManaCut(Val)
+			ManaCut = clamp(ManaCut+Val, 0, 1);//This one doesn't kill
+		AddStrTax(Val)
 			if(src.HasTaxThreshold())
 				if(src.StrTax>=src.GetTaxThreshold())
 					src.StrTax=src.GetTaxThreshold()
 					src.AddStrCut(0.1*Val)
 					return
-			src.StrTax+=Val
-			if(src.StrTax>=1)
-				src.StrTax=1
-		SubStrTax(var/Val, var/Forced=0)
+			StrTax = clamp(StrTax+Val, 0, 1);
+		SubStrTax(Val, Forced=0)
 			if(src.Satiated&&!Drunk||Forced)
 				Val*=4
-			src.StrTax-=Val
-			if(src.StrTax<=0)
-				src.StrTax=0
-		AddStrCut(var/Val)
-			src.StrCut+=Val
-			if(src.StrCut>=1)
-				src.StrCut=1
-		AddEndTax(var/Val)
+			StrTax = clamp(StrTax-Val, 0, 1);
+		AddStrCut(Val)
+			StrCut = clamp(StrCut+Val, 0, 1);
+		AddEndTax(Val)
 			if(src.HasTaxThreshold())
 				if(src.EndTax>=src.GetTaxThreshold())
 					src.EndTax=src.GetTaxThreshold()
 					src.AddEndCut(0.1*Val)
 					return
-			src.EndTax+=Val
-			if(src.EndTax>=1)
-				src.EndTax=1
-		SubEndTax(var/Val, var/Forced=0)
+			EndTax=clamp(EndTax+Val, 0, 1);
+		SubEndTax(Val, Forced=0)
 			if(src.Satiated&&!Drunk||Forced)
 				Val*=4
-			src.EndTax-=Val
-			if(src.EndTax<=0)
-				src.EndTax=0
-		AddEndCut(var/Val)
-			src.EndCut+=Val
-			if(src.EndCut>=1)
-				src.EndCut=1
-		AddSpdTax(var/Val)
+			EndTax=clamp(EndTax-Val, 0, 1);
+		AddEndCut(Val)
+			EndCut=clamp(EndCut+Val, 0, 1);
+		AddSpdTax(Val)
 			if(src.HasTaxThreshold())
 				if(src.SpdTax>=src.GetTaxThreshold())
 					src.SpdTax=src.GetTaxThreshold()
 					src.AddSpdCut(0.1*Val)
 					return
-			src.SpdTax+=Val
-			if(src.SpdTax>=1)
-				src.SpdTax=1
-		SubSpdTax(var/Val, var/Forced=0)
+			SpdTax=clamp(SpdTax+Val, 0, 1);
+		SubSpdTax(Val, Forced=0)
 			if(src.Satiated&&!Drunk||Forced)
 				Val*=4
-			src.SpdTax-=Val
-			if(src.SpdTax<=0)
-				src.SpdTax=0
-		AddSpdCut(var/Val)
-			src.SpdCut+=Val
-			if(src.SpdCut>=1)
-				src.SpdCut=1
-		AddForTax(var/Val)
+			SpdTax=clamp(SpdTax-Val, 0, 1)
+		AddSpdCut(Val)
+			SpdCut=clamp(SpdCut+Val, 0, 1);
+		AddForTax(Val)
 			if(src.HasTaxThreshold())
 				if(src.ForTax>=src.GetTaxThreshold())
 					src.ForTax=src.GetTaxThreshold()
 					src.AddForCut(0.1*Val)
 					return
-			src.ForTax+=Val
-			if(src.ForTax>=1)
-				src.ForTax=1
-		SubForTax(var/Val, var/Forced=0)
+			ForTax=clamp(ForTax+Val, 0, 1);
+		SubForTax(Val, Forced=0)
 			if(src.Satiated&&!Drunk||Forced)
 				Val*=4
-			src.ForTax-=Val
-			if(src.ForTax<=0)
-				src.ForTax=0
-		AddForCut(var/Val)
-			src.ForCut+=Val
-			if(src.ForCut>=1)
-				src.ForCut=1
-		AddOffTax(var/Val)
+			ForTax=clamp(ForTax-Val, 0, 1);
+		AddForCut(Val)
+			ForCut=clamp(ForCut+Val, 0, 1);
+		AddOffTax(Val)
 			if(src.HasTaxThreshold())
 				if(src.OffTax>=src.GetTaxThreshold())
 					src.OffTax=src.GetTaxThreshold()
 					src.AddOffCut(0.1*Val)
 					return
-			src.OffTax+=Val
-			if(src.OffTax>=1)
-				src.OffTax=1
-		SubOffTax(var/Val, var/Forced=0)
+			OffTax=clamp(OffTax+Val, 0, 1);
+		SubOffTax(Val, Forced=0)
 			if(src.Satiated&&!Drunk||Forced)
 				Val*=4
-			src.OffTax-=Val
-			if(src.OffTax<=0)
-				src.OffTax=0
-		AddOffCut(var/Val)
-			src.OffCut+=Val
-			if(src.OffCut>=1)
-				src.OffCut=1
-		AddDefTax(var/Val)
+			OffTax=clamp(OffTax-Val, 0, 1);
+		AddOffCut(Val)
+			OffCut=clamp(OffCut+Val, 0, 1);
+		AddDefTax(Val)
 			if(src.HasTaxThreshold())
 				if(src.DefTax>=src.GetTaxThreshold())
 					src.DefTax=src.GetTaxThreshold()
 					src.AddDefCut(0.1*Val)
 					return
-			src.DefTax+=Val
-			if(src.DefTax>=1)
-				src.DefTax=1
-		SubDefTax(var/Val, var/Forced=0)
+			DefTax=clamp(DefTax+Val, 0, 1);
+		SubDefTax(Val, Forced=0)
 			if(src.Satiated&&!Drunk||Forced)
 				Val*=4
-			src.DefTax-=Val
-			if(src.DefTax<=0)
-				src.DefTax=0
-		AddDefCut(var/Val)
-			src.DefCut+=Val
-			if(src.DefCut>=1)
-				src.DefCut=1
-		AddRecovTax(var/Val)
+			DefTax=clamp(DefTax+Val, 0, 1);
+		AddDefCut(Val)
+			DefCut=clamp(DefCut+Val, 0, 1);
+		AddRecovTax(Val)
 			if(src.HasTaxThreshold())
 				if(src.RecovTax>=src.GetTaxThreshold())
 					src.RecovTax=src.GetTaxThreshold()
 					src.AddRecovCut(0.1*Val)
 					return
-			src.RecovTax+=Val
-			if(src.RecovTax>=1)
-				src.RecovTax=1
+			RecovTax = clamp(RecovTax+Val, 0, 1);
 		SubRecovTax(var/Val, var/Forced=0)
 			if(src.Satiated&&!Drunk||Forced)
 				Val*=4
-			src.RecovTax-=Val
-			if(src.RecovTax<=0)
-				src.RecovTax=0
+			RecovTax = clamp(RecovTax-Val, 0, 1);
 		AddRecovCut(var/Val)
-			src.RecovCut+=Val
-			if(src.RecovCut>=1)
-				src.RecovCut=1
+			RecovCut=clamp(RecovCut+Val, 0, 1);
 		// forgive the sin below, im not replacing basestat() in all the codebase
 		getEnhanced(statName)
 			var/enhance = vars["Enhanced[statName]"] * 0.2

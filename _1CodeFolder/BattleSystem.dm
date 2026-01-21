@@ -222,29 +222,6 @@ mob/proc/Unconscious(mob/P,var/text)
 			src.VaizardHealth+=20
 			src.HealthAnnounce10+=3
 			return
-	if(src.passive_handler.Get("X-Antibody"))
-		var/obj/Skills/Buffs/SlotlessBuffs/B = src.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution)
-		if(B.evolution_charges>=1)
-			src.KO=0
-			src.RPModeSwitch()
-			sleep(30)
-			world<<"<font color=red><b>When gathering souls become one, a new despair will bring about the Absolute End.</b></font>"
-			sleep(30)
-			world<<"<font color=red><b>[src] becomes the path its darkness advances upon.</b></font>"
-			if(locate(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution, src))
-				var/obj/Skills/Buffs/SlotlessBuffs/A = src.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution)
-				A.Trigger(src,1)
-			sleep(30)
-			world<<"<font color=red><b>Shinka no Yami.</b></font>"
-			src.TotalInjury=0
-			src.TotalFatigue=0
-			src.Health=100
-			src.Energy=src.EnergyMax
-			sleep(30)
-			world<<"<font color=red><b>Death-X-Evolution...</b></font>"
-			B.Trigger(src)
-			B.evolution_charges = 0
-			return
 	if(src.passive_handler.Get("Alter The Future")&&src.passive_handler.Get("TheAlmighty"))
 		if(src.HealthAnnounce10<=4)
 			if(prob(src.passive_handler.Get("Alter The Future")))
@@ -571,6 +548,29 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 			else
 				src.OMessage(20,"[src]'s existence is purged from the world!","<font color=red>[src] was purified [P]([P.key])!")
 
+	if(hasDeathEvolution())
+		var/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution/de = locate(/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution, src);
+		RPModeSwitch()
+		sleep(30)
+		world<<"<font color=red><b>When gathering souls become one, a new despair will bring about the Absolute End.</b></font>"
+		sleep(30)
+		world<<"<font color=red><b>[src] becomes the path its darkness advances upon.</b></font>"
+		if(locate(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution, src))
+			var/obj/Skills/Buffs/SlotlessBuffs/A = src.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution)
+			if(A.Using) A.Trigger(src,1)
+		sleep(30)
+		world<<"<font color=red><b>Shinka no Yami.</b></font>"
+		HealAllCutTax();
+		src.FullRestore();
+		sleep(30)
+		DeathEvolutionEffects();//Unused currently, but this would be just for visuals
+		Conscious();
+		world<<"<font color=red><b>Death-X-Evolution...</b></font>"
+		de.Trigger(src)
+		de.evolution_charges--;
+		return;//no more dying
+		//not for you anyway
+
 	if(NoRemains!=2)
 		if(src.BloodPower>=2)
 			var/obj/Items/Sword/s=P.EquippedSword()
@@ -741,6 +741,8 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 			src.Secret=null
 			src.NoDeath=0
 			src.Timeless=0
+
+/mob/proc/DeathEvolutionEffects()//Proc that doesn't do anything. but maybe someone wants to do visuals at some point
 
 obj/Regenerate
 	var/X

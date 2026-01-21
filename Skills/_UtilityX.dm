@@ -5,6 +5,34 @@
 	else
 		src<<"[x] has no mastery variable!"
 
+/mob/proc/FullRestore()
+	if(KO)
+		Conscious()
+	Health=100
+	Energy=EnergyMax
+	ManaAmount=ManaMax*GetManaCapMult()
+	Burn=0
+	Poison=0
+	Slow=0
+	Shock=0
+	Shatter=0
+	HealthAnnounce25=0
+	HealthAnnounce10=0
+	seventhSenseTriggered = 0
+	TotalFatigue=0
+	TotalInjury=0
+	BPPoison=1
+	BPPoisonTimer=0
+	InjuryAnnounce=0
+	StrTax=0
+	ForTax=0
+	EndTax=0
+	SpdTax=0
+	OffTax=0
+	DefTax=0
+	GatesNerfPerc=0
+	GatesNerf=0
+
 obj/Skills/Utility
 //General
 

@@ -928,33 +928,7 @@ mob/Admin2/verb
 		Log("Admin","<font color=aqua>[ExtractInfo(usr)] admin-healed [ExtractInfo(A)].")
 	AdminHealComplete(mob/A in world)
 		set category="Admin"
-		if(A.KO)
-			A.Conscious()
-		A.Health=100
-		A.Energy=A.EnergyMax
-		A.ManaAmount=A.ManaMax*A.GetManaCapMult()
-		A.Burn=0
-		A.Poison=0
-		A.Slow=0
-		A.Shock=0
-		A.Shatter=0
-		A.HealthAnnounce25=0
-		A.HealthAnnounce10=0
-		A.seventhSenseTriggered = 0
-		A.TotalFatigue=0
-		A.TotalInjury=0
-		A.BPPoison=1
-		A.BPPoisonTimer=0
-//		A.TotalCapacity=0
-		A.InjuryAnnounce=0
-		A.StrTax=0
-		A.ForTax=0
-		A.EndTax=0
-		A.SpdTax=0
-		A.OffTax=0
-		A.DefTax=0
-		A.GatesNerfPerc=0
-		A.GatesNerf=0
+		A.FullRestore();
 		Log("Admin","<font color=aqua>[ExtractInfo(usr)] complete-admin-healed [ExtractInfo(A)].")
 	AdminHealCapacity(var/mob/m in players)
 		set category="Admin"

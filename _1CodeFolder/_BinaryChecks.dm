@@ -1684,6 +1684,13 @@ mob
 			var/Extra=0
 			Extra += passive_handler.Get("Mythical")
 			return 0
+		hasDeathEvolution()
+			if(passive_handler.Get("X-Antibody"))
+				var/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution/de = locate(/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution, src);
+				if(de)
+					if(de.evolution_charges)
+						return 1;
+			return 0;
 		HasHellPower()
 			if(CheckSlotless("Satsui no Hado") && SagaLevel>=6)
 				return 1
