@@ -550,14 +550,15 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 
 	if(hasDeathEvolution())
 		var/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution/de = locate(/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution, src);
+		if(locate(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution, src))
+			var/obj/Skills/Buffs/SlotlessBuffs/A = src.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution)
+			if(A.Using) A.Trigger(src,1)
 		RPModeSwitch()
 		sleep(30)
 		world<<"<font color=red><b>When gathering souls become one, a new despair will bring about the Absolute End.</b></font>"
 		sleep(30)
 		world<<"<font color=red><b>[src] becomes the path its darkness advances upon.</b></font>"
-		if(locate(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution, src))
-			var/obj/Skills/Buffs/SlotlessBuffs/A = src.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution)
-			if(A.Using) A.Trigger(src,1)
+		
 		sleep(30)
 		world<<"<font color=red><b>Shinka no Yami.</b></font>"
 		HealAllCutTax();
