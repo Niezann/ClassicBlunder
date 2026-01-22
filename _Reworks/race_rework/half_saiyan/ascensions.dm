@@ -116,6 +116,27 @@ ascension
 						offense = 0.5
 						speed = 0.5
 				..()
+		six
+			unlock_potential = ASCENSION_FIVE_POTENTIAL
+			intimidation = 10
+			passives = list("Brutalize" = 0.25, "Tenacity" = 0.5)
+			onAscension(mob/owner)
+				switch(owner.Class)
+					if("Compassion")
+						passives["Adrenaline"] = 0.5
+						passives["Tenacity"] = 0.5
+						strength = 0.5
+						defense = 0.5
+						offense = 0.5
+						force = 0.5
+					if("Anger")
+						passives["Brutalize"] = 0.5
+						passives["KillerInstinct"] = 0.05
+						strength = 0.5
+						force = 0.5
+						offense = 0.5
+						speed = 0.5
+				..()
 
 ascension
 	sub_ascension

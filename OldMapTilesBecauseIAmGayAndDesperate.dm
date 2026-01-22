@@ -244,6 +244,7 @@ area
 							icon=pick(WeathersNight)*/
 obj/Items/Tech
 	AutoDrill
+		Savable=0
 		New()
 			var/image/A=image(icon='ArtificalObj.dmi',icon_state="1",pixel_y=16,pixel_x=-16)
 			var/image/Z=image(icon='ArtificalObj.dmi',icon_state="2",pixel_y=16,pixel_x=16)
@@ -257,6 +258,7 @@ obj/Items/Tech
 		icon_state="Tube"
 		var/OverlayKiller=0
 		Pickable=0
+		Savable=0
 		New()
 			var/image/A=image(icon='Lab.dmi',icon_state="TubeTop",layer=5,pixel_y=32)
 			overlays-=A

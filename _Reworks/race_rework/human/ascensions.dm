@@ -104,13 +104,16 @@ ascension
 			onAscension(mob/owner)
 				if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/human/hero)
 					passives["UnderDog"] = 1
-					defense = 0.50
-					endurance = 0.50
-					strength = 0.50
-					force = 0.50
+					passives["Persistence"] = 5
+					offense = 1
+					strength = 1
+					force = 1
+					speed = 1
 				if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/human/innovative)
 					passives["Persistence"] = 1
-					defense = 0.50
-					endurance = 0.50
-					offense = 0.50
+					passives["UnderDog"] = 5
+					defense = 1
+					endurance = 1
+					offense = 1
+					speed = 1
 				..()

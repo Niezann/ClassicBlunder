@@ -73,9 +73,9 @@ ascension
 				if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/zeal)
 					passives += list("Adaptation" = 0.5, "LikeWater" = 0.5)
 				if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/honor)
-					passives += list("AngerAdaptiveForce" = 0.2, "Adrenaline" = 1)
+					passives += list("AngerAdaptiveForce" = 0.2, "Adrenaline" = 1, "PureReduction" = 2)
 				if(owner.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/pride)
-					passives += list("Steady" = 1, "PureDamage" = 0.5)
+					passives += list("Steady" = 1, "PureDamage" = 1)
 				..()
 
 ascension

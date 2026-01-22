@@ -666,8 +666,17 @@ update
 		version = 43
 		updateMob(mob/o)
 			. = ..()
+			if(o.isRace(HUMAN))
+				if(o.race.ascensions.len < 6)
+					o.race.ascensions |= new/ascension/human/six()
+			if(o.isRace(SAIYAN))
+				if(o.race.ascensions.len < 6)
+					o.race.ascensions |= new/ascension/saiyan/six()
+			if(o.isRace(HALFSAIYAN))
+				if(o.race.ascensions.len < 6)
+					o.race.ascensions |= new/ascension/half_saiyan/six()
 			if(o.isRace(ELDRITCH))
-				
+
 				if(o.race.ascensions.len < 6)
 					o.race.ascensions |= new/ascension/eldritch/six()
 				for(var/ascension/asc in o.race.ascensions)
@@ -676,7 +685,7 @@ update
 						asc.passives.Remove("EntergySteal");
 						o << "EntergySteal exchanged for EnergySteal on ascension [asc]. <font color='#000'>THIS IS WHY I HATE LOOSELY TYPED ASSOCIATIONS BEING THE FOUNDATION OF A PASSIVE SYSTEM GYAAAH</font color>"
 				o << "<font color='#444'>Nothing to worry about.</font color>"
-			
+
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25

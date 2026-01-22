@@ -2646,15 +2646,15 @@ obj
 					adjust(mob/p)
 						if(!altered)
 							if(p.isInnovative(ELF, "Any") && !isInnovationDisable(p))
-								Rounds = 3 + p.Potential/25
-								Distance = 4 + p.getTotalMagicLevel()/2 + p.Potential/25
+							//	Rounds = 3 + p.Potential/25
+								Distance = 7
 								Freezing = 6 + p.getTotalMagicLevel()
 								AdaptRate = 1
 								DamageMult = 5 + p.getTotalMagicLevel()/5 + p.Potential/25
 								ForOffense=0
 								NoLock=1
-								NoAttackLock=1
-								DamageMult/=Rounds
+							//	NoAttackLock=1
+							//	DamageMult/=Rounds
 								ManaCost = 10
 							else
 								Rounds=initial(Rounds)

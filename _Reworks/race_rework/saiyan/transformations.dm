@@ -449,6 +449,8 @@ transformation
 			defense = 4
 			strength = 4
 			force = 4
+			transform_animation(mob/user)
+				user.BeastAnimation()
 		super_saiyan_god
 			tier = 4
 			passives = list("GodKi" = 0.5, "EnergyGeneration" = 1, "Godspeed" = 4, "Flow" = 4, "BackTrack" = 2, "StunningStrike" = 1, "Sunyata" = 1 )
