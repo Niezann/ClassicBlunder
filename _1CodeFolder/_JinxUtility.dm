@@ -448,10 +448,10 @@ mob
 						if(s3&&s3.Destructable)
 							s.startBreaking(val, breakTicks / ((duraBoon * Sword3Quality) + duraBase), defender, src, "sword")
 
-			if(HasLifeGeneration())
-				var/gen = GetLifeGeneration()/glob.LIFE_GEN_DIVISOR;
-				HealHealth(gen);
-				HealWounds(gen/2);
+			if(defender.HasLifeGeneration())
+				defender.HealHealth(defender.GetLifeGeneration()/glob.LIFE_GEN_DIVISOR * val)
+				if(defender.Health>=100-100*defender.HealthCut-defender.TotalInjury)
+					defender.HealWounds(glob.LIFE_GEN_MULT*defender.GetLifeGeneration()/glob.LIFE_GEN_DIVISOR * val)
 			if(HasEnergyGeneration())
 				var/gen = GetEnergyGeneration()/glob.ENERGY_GEN_DIVISOR;
 				HealEnergy(gen);
