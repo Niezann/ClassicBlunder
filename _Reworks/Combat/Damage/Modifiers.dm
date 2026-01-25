@@ -38,8 +38,10 @@ globalTracker/var/SYMBIOTE_DMG_TEST = 2
 
 /mob/proc/attackModifiers(mob/defender)
     var/nerf = (defender.HasGodKi()&&!HasNull()) ? 1 - (0.3 * defender.GetGodKi()) : 0
+    if(passive_handler.Get("MaouKi"))
+        nerf = (defender.HasMaouKi()) ? 1 - (0.3 * defender.GetMaouKi()) : 0
     if(nerf && nerf <= 0)
-        nerf = 0.1
+        nerf = 0.1   
     if(passive_handler.Get("Enraged") && Anger)
         if(!defender.Anger || Anger > defender.Anger)
             . += passive_handler.Get("Enraged") / glob.ENRAGED_DAMAGE_DIVISOR
