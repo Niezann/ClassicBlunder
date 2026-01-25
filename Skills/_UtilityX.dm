@@ -10,7 +10,6 @@
 		Conscious()
 	Health=100
 	Energy=EnergyMax
-	TotalCapacity=0
 	ManaAmount=ManaMax*GetManaCapMult()
 	Burn=0
 	Poison=0
@@ -683,6 +682,8 @@ obj/Skills/Utility
 					if(W.PowerControl<=25)
 						who.Remove(W)
 				if(W.HasGodKi() && !usr.HasGodKi())
+					who.Remove(W)
+				if(W.HasMaouKi())
 					who.Remove(W)
 				if(W.invisibility)
 					who.Remove(W)
