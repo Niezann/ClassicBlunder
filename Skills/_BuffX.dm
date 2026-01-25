@@ -6814,7 +6814,7 @@ NEW VARIABLES
 					set category="Skills"
 					BuffTechniques = general_magic_database
 					src.Trigger(usr)
-			Pure_Grimoire
+/*			Pure_Grimoire
 				passives = list("BuffMastery" = 3, "StyleMastery" = 3)
 				StrMult = 1.15
 				SpdMult = 1.15
@@ -6862,7 +6862,7 @@ NEW VARIABLES
 						return
 					if(!usr.BuffOn(src))
 						adjust(usr)
-					src.Trigger(usr)
+					src.Trigger(usr) */
 			Blood_Grimoire
 				IconLock='Demon_Blood_Talismans Active.dmi'
 				LockX=0

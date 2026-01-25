@@ -136,6 +136,7 @@
     Launcher = 3
     DamageMult = 1
     EnergyCost = 15
+    AntiSunyata=1
     FollowUp = "/obj/Skills/AutoHit/Haki/Galaxy_Impact_Follow"
     HitSparkIcon = 'Icons/HitWind.dmi'
     HitSparkSize = 2

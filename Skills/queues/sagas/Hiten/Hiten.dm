@@ -110,6 +110,7 @@ obj
 				Rapid=1
 				Counter=1
 				NoWhiff=1
+				AntiSunyata=1
 				Cooldown=-1
 				HitSparkIcon='Slash - Power.dmi'
 				HitSparkX=-32
@@ -140,6 +141,7 @@ obj
 				Counter=1
 				NoWhiff=1
 				Determinator=1
+				AntiSunyata=1
 				Decider=1
 				Finisher=1
 				HitSparkIcon='Slash - Power.dmi'

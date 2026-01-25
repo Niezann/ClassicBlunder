@@ -10,6 +10,7 @@
 		Conscious()
 	Health=100
 	Energy=EnergyMax
+	TotalCapacity=0
 	ManaAmount=ManaMax*GetManaCapMult()
 	Burn=0
 	Poison=0

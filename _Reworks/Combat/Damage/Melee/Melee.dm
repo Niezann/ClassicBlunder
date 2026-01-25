@@ -614,11 +614,11 @@
 									StunClear(enemy)
 									AfterImageStrike(src,enemy,0)
 					// 				NO DODGE END		//
-						if(AttackQueue && enemy.passive_handler.Get("Sunyata"))
+						if(AttackQueue && enemy.passive_handler.Get("Sunyata") && !AttackQueue.AntiSunyata)
 							if( prob(enemy.passive_handler.Get("Sunyata") * glob.SUNYATA_BASE_CHANCE))
 								OMsg(enemy, "<b><font color=#ff0000>[enemy] has negated [src]'s attack!</font></b>")
 								dodged = 1
-						if((AttackQueue && enemy.passive_handler["Interception"]) && !AttackQueue.Finisher)
+						if((AttackQueue && enemy.passive_handler["Interception"]) && !AttackQueue.Finisher && !AttackQueue.AntiSunyata)
 							if(prob(enemy.passive_handler["Interception"] * glob.INTERCEPTION_BASE_CHANCE))
 								OMsg(enemy, "<b><font color=#ff0000>[enemy] reverses [src]'s attack!</font></b>")
 								if(glob.INTERCEPTION_NEGATES_DAMAGE)

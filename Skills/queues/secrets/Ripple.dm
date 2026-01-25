@@ -34,6 +34,7 @@ obj
 				Combo=25
 				Quaking=10
 				Instinct=4
+				AntiSunyata=1
 				IconLock='Ripple Arms.dmi'
 				HitSparkIcon='Hit Effect Ripple.dmi'
 				HitSparkX=-32
