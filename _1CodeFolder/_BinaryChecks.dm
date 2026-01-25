@@ -2308,6 +2308,8 @@ mob
 			return 0
 		GetSpiritFlow()
 			var/Return = passive_handler.Get("SpiritFlow")
+			if(src.TarotFate=="The Emperor")
+				Return += 4
 			if(InfinityModule)
 				Return += round(glob.progress.totalPotentialToDate,5) / 50
 			return Return
