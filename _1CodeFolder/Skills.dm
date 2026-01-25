@@ -600,7 +600,7 @@ obj/Skills
 			src.Using=1
 			switch(input(usr,"Force [Target] to pass on?") in list("No","Yes"))
 				if("Yes")
-					if(usr.HasGodKi()&&!Target.HasGodKi())
+					if(usr.HasGodKi()&&!Target.HasGodKi()&&!Target.HasMaouKi())
 						if(Target.Dead)
 							if(Target.Savable&&!Target.KeepBody)
 								if(Target.HasEnlightenment())

@@ -519,7 +519,7 @@ mob
 		AddCrippling(var/Value, var/mob/Attacker=null)
 			if(src.Stasis)
 				return
-				
+
 			if(isRace(DRAGON) && Class == "Wind") Value /= 2
 			if(src.HasMythical() > 0.75) Value = Value*(1-(src.Crippled/glob.DEBUFF_STACK_RESISTANCE))
 
@@ -620,7 +620,7 @@ mob
 			if(src.Crippled)
 				if(src.Crippled > glob.DEBUFF_STACK_MAX)
 					src.Crippled = glob.DEBUFF_STACK_MAX;
-				
+
 				var/cripReduction = max(0.1, (src.GetSpd(0.25)+src.GetDef(0.1))*(1+src.GetDebuffResistance()));
 				if(src.Sprayed) cripReduction *= 2;
 				src.Crippled-= cripReduction;
@@ -642,7 +642,7 @@ mob
 			if(src.Sheared)
 				if(src.Sheared > glob.DEBUFF_STACK_MAX)
 					src.Sheared = glob.DEBUFF_STACK_MAX;
-				
+
 				var/shearReduce = 0.25;
 				if(src.icon_state=="Meditate") shearReduce *= 8;
 				if(src.Sprayed) shearReduce *= 2;

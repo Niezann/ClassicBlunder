@@ -119,6 +119,9 @@ obj/Effects
 					if(M.HasGodKi())
 						view(20,src)<<"[M]'s body is rejected by the black hole!"
 						M.loc=locate(rand(25,250),rand(25,250),M.z)
+					if(M.HasMaouKi())
+						view(20,src)<<"[M]'s body is rejected by the black hole!"
+						M.loc=locate(rand(25,250),rand(25,250),M.z)
 					else
 						view(20,src)<<"[M] disappears into the flurry..!"
 						M.loc=locate(rand(25,250),rand(25,250),rand(1,8))

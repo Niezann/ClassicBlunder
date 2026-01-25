@@ -31,6 +31,7 @@ obj
 			var/SweepStrike/*Passive that multiplies damage by enemy's speed.  Reverse Speed Strike!*/
 			var/DrawIn/*Passive that draws people in.  DrawIn value = the amount of tiles drawn in.*/
 			var/PushOut//Passive that pushes people away. PushOut value = the amount of tiles pushed away.
+			var/AntiSunyata
 			var/PushOutWaves=1
 			var/PushOutIcon='fevKiai.dmi'
 			var/Punt
@@ -44,6 +45,7 @@ obj
 			var/InstantStrikesDelay//when fass is too fass
 			var/Warp//If this is ticked, it homes onto people.
 			var/NoWarp
+			var/AntiSuyata
 			var/SpecialEffect//shinies
 			var/SpecialEffectRange=3//shinies big or smol
 			var/RozanEffect//super launcher
@@ -1726,6 +1728,7 @@ obj
 				UnarmedOnly=1
 				Instinct=5
 				Stunner=5
+				AntiSunyata=1
 				Projectile="/obj/Skills/Projectile/Beams/Big/Super_Dragon_Beam"
 				ProjectileBeam=1
 				HitMessage="throws a crippling punch into the opponent's midsection!"
@@ -2338,7 +2341,7 @@ mob
 				src.LoseForce(src.AttackQueue.ForceCost)
 			if(src.AttackQueue.FatigueCost)
 				src.GainFatigue(src.AttackQueue.FatigueCost)
-			
+
 			if(istype(src.AttackQueue, /obj/Skills/Queue/Finisher))
 				DEBUGMSG("A queue was deployed, and tension lock should be set...")
 				src.setTempTensionLock();
@@ -2400,7 +2403,7 @@ mob
 					src.AttackQueue=null//But this triggers either way so long as you didn't just run out of time.
 					src.SetQueue(S)
 					return
-				
+
 				src.AttackQueue=null
 
 

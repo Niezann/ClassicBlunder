@@ -1554,12 +1554,14 @@ proc/Accuracy_Formula(mob/Offender,mob/Defender,AccMult=1,BaseChance=glob.WorldD
 					AccMult-=(Defender.HasFluidForm()*glob.FLUID_FORM_RATE)
 				if(AccMult<1)
 					AccMult=1
+		var/MaouKi = Offender.GetMaouKi()
 		var/GodKiDif = 1
-		if(Offender.GetGodKi() && !Offender.HasNullTarget())
+		if(Offender.GetGodKi() && !Offender.HasNullTarget() && !Offender.HasMaouKi())
 			GodKiDif = 1 + Offender.GetGodKi()
-		if(Defender.GetGodKi() && !Defender.HasNullTarget())
+		if(Defender.GetGodKi() && !Defender.HasNullTarget() && !Defender.HasMaouKi())
 			GodKiDif /= (1 + Defender.GetGodKi())
 		AccMult *= GodKiDif
+		AccMult *= MaouKi
 
 		// START OF REAL FUNCTION
 		var/OffenseModifier
@@ -1585,8 +1587,8 @@ proc/Accuracy_Formula(mob/Offender,mob/Defender,AccMult=1,BaseChance=glob.WorldD
 
 
 			if(glob.OLD_ACCURACY)
-				Offense=(Offender.Power*(Offender.GetOff(glob.ACC_OFF)+Offender.GetSpd(glob.ACC_OFF_SPD)))*(1+(!Offender.HasNullTarget() ? Offender.GetGodKi() : 0))
-				Defense=(Defender.Power*(Defender.GetDef(glob.ACC_DEF)+Defender.GetSpd(glob.ACC_DEF_SPD)))*(1+(!Defender.HasNullTarget() ? Defender.GetGodKi() : 0))
+				Offense=(Offender.Power*(Offender.GetOff(glob.ACC_OFF)+Offender.GetSpd(glob.ACC_OFF_SPD)))*(1+((Offender.GetMaouKi()) + !Offender.HasNullTarget()&&!Offender.HasMaouKi() ? Offender.GetGodKi() : 0))
+				Defense=(Defender.Power*(Defender.GetDef(glob.ACC_DEF)+Defender.GetSpd(glob.ACC_DEF_SPD)))*(1+((Defender.GetMaouKi()) + !Defender.HasNullTarget()&&!Offender.HasMaouKi() ? Defender.GetGodKi() : 0))
 				mod = clamp(((Offense*AccMult)/max(Defense,0.01)), 0.5, 2)
 
 			var/roll = randValue((100-BaseChance) * mod, 100)
@@ -1693,12 +1695,14 @@ proc/Deflection_Formula(var/mob/Offender,var/mob/Defender,var/AccMult=1,var/Base
 
 
 		var/GodKiDif = 1
-		if(Offender.GetGodKi() && !Offender.HasNullTarget())
+		var/MaouKi = Offender.GetMaouKi()
+		if(Offender.GetGodKi() && !Offender.HasNullTarget() && !Offender.HasMaouKi())
 			GodKiDif = 1 + Offender.GetGodKi()
-		if(Defender.GetGodKi() && !Defender.HasNullTarget())
+		if(Defender.GetGodKi() && !Defender.HasNullTarget() && !Defender.HasMaouKi())
 			GodKiDif /= (1 + Defender.GetGodKi())
 		AccMult *= GodKiDif
-
+		AccMult *= MaouKi
+		
 		var/OffenseModifier
 		var/DefenseModifier
 		var/OffenseAdvantage = Offender.Power / Defender.Power

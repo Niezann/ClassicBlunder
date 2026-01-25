@@ -2101,7 +2101,7 @@ obj/Items/Tech
 				if(usr.z==W.z)
 					usr << "<b><font color='red'>(DISTURBANCE)</font color></b> - ([W.x], [W.y], [W.z])"
 			for(var/mob/Players/M in players)
-				if(!M.AdminInviso&&!M.HasVoid()&&!M.HasMechanized()&&!M.HasGodKi())
+				if(!M.AdminInviso&&!M.HasVoid()&&!M.HasMechanized()&&!M.HasGodKi()&&!M.HasMaouKi())
 					if(M.z==usr.z)
 						var/D=abs(M.x-usr.x)+abs(M.y-usr.y)
 						if(D<=src.Range*60)

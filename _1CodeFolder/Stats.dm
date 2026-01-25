@@ -9,6 +9,7 @@ mob/proc/GetAssess()
 	var/IntimDisplay
 	var/BaseDisplay
 	var/GodKiDisplay
+	var/MaouKiDisplay
 	var/StatAverage=round((src.GetStr()+src.GetEnd()+src.GetSpd()+src.GetFor()+src.GetOff()+src.GetDef())/6, 0.05)
 	var/EffectiveAnger=Anger
 	var/PDam=1+((src.HasPureDamage()/10)*glob.PURE_MODIFIER)
@@ -52,6 +53,10 @@ mob/proc/GetAssess()
 		GodKiDisplay=src.GetGodKi()
 	else
 		GodKiDisplay=0
+	if(src.HasMaouKi())
+		MaouKiDisplay=src.GetMaouKi()
+	else
+		MaouKiDisplay=0
 	if(potential_power_tier < 1)
 		potential_power_tier = 1
 	if(power_display < 1 || power_display == null)
@@ -83,6 +88,7 @@ mob/proc/GetAssess()
 	<tr><td>Damage Boost:</td><td>x[PDam] ([PDam*100]%)</td></tr>
 	<tr><td>Damage Reduction:</td><td>x[PRed] ([PRed*100]%)</td></tr>
 	<tr><td>God Ki:</td><td>x[GodKiDisplay]</td></tr>
+	<tr><td>Maou Ki:</td><td>x[MaouKiDisplay]</td></tr>
 	<tr><td>Current BP:</td><td>[Commas(PowerDisplay)]</td></tr>
 	<tr><td>Real BP:</td><td>[Commas(src.potential_power_mult)]</td></tr>
 	<tr><td>Energy:</td><td>[Commas(round(src.EnergyMax))] (1)</td></tr>
@@ -384,6 +390,7 @@ mob/Players/Stat()
 
 /mob/proc/TrgIsBatshitCrazy()
 	if(src.Target.HasGodKi()) return 1;
+	if(src.Target.HasMaouKi()) return 1;
 	if(src.Target.passive_handler.Get("Heart of Darkness")) return 1;
 	if(src.Target.passive_handler.Get("Sense Replacement")) return 1;
 	if(src.Target.passive_handler.Get("Void")) return 1;
@@ -935,7 +942,7 @@ mob/proc/
 			Ratio/=IncompleteRatio
 		if(passive_handler["LegendarySaiyan"])
 			if(Tension>=getMaxTensionValue())
-				if(transActive==transUnlocked||passive_handler["MovementMastery"]||passive_handler["GodKi"])
+				if(transActive==transUnlocked||passive_handler["MovementMastery"]||passive_handler["GodKi"]||passive_handler["MaouKi"])
 					Ratio*=1.5
 		Power=Ratio*GetPowerUpRatio()
 

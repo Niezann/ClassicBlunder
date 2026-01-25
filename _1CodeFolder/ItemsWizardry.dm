@@ -43,14 +43,14 @@ proc/Add_Enchantment()
 				TimeMagic_List+=B
 
 obj/Items/Gear
-	Pure_Grimoire
+/*	Pure_Grimoire
 		NoSaga=1
 		PermEquip=1
 		InfiniteUses=1
 		Destructable=0
 		Cost=0//doesn't appear in tech list
 		icon='BLANK.dmi'
-		Techniques=list("/obj/Skills/Buffs/SlotlessBuffs/Grimoire/Pure_Grimoire")
+		Techniques=list("/obj/Skills/Buffs/SlotlessBuffs/Grimoire/Pure_Grimoire") */
 	Crimson_Grimoire
 		NoSaga=1
 		PermEquip=1

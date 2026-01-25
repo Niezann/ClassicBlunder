@@ -665,6 +665,8 @@ mob
 				return 1
 			if(src.GetGodKi()>=0.25 && !src.HasNullTarget())
 				return 1
+			if(src.HasMaouKi())
+				return 1
 		HasClarity()
 			if(passive_handler.Get("Omnipotent")) // so admins can fucking see
 				return 1
@@ -675,10 +677,14 @@ mob
 				return 1
 			if(src.GetGodKi()>=0.25 && !src.HasNullTarget())
 				return 1
+			if(src.HasMaouKi())
+				return 1
 			return 0
 		HasEnlightenment()
 			if(src.Dead)
 				if(src.HasGodKi())
+					return 1
+				if(src.HasMaouKi())
 					return 1
 				if(src.Saga=="Sharingan"&&src.SagaLevel==6)
 					return 1
@@ -717,6 +723,9 @@ mob
 		HasGodspeed()
 			var/Return=0
 			var/gk= !src.HasNullTarget() ? src.GetGodKi() : 0
+			var/mk= src.GetMaouKi()
+			if(mk>=0.25)
+				Return+=round(mk/0.25)
 			if(gk>=0.25)
 				Return+=round(gk/0.25)
 			if(passive_handler.Get("Gravity"))
@@ -743,6 +752,9 @@ mob
 		HasFlicker()
 			var/Return=0
 			var/gk= !src.HasNullTarget() ? src.GetGodKi() : 0;
+			var/mk= src.GetMaouKi()
+			if(mk>=0.5)
+				Return+=round(mk/0.5)
 			if(gk>=0.5)
 				Return+=round(gk/0.5)
 			if(src.Secret=="Haki")
@@ -837,7 +849,7 @@ mob
 					return 1;
 			return 0;
 		HasNullTarget()
-			if(Target) if(Target.HasNull()) return 1;
+			if(Target) if(Target.HasNull() &&!src.HasMaouKi()) return 1;
 			return 0;
 		HasBleedHit()
 			if(passive_handler.Get("BleedHit"))
@@ -1001,6 +1013,8 @@ mob
 		HasKiControlMastery()
 			if((!src.HasNullTarget() ? src.GetGodKi() : 0 >=0.25) && !isRace(SHINJIN))
 				return 1
+			if(src.GetMaouKi())
+				return 1
 			if(Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Power Control"))
 				return 1
 			if(src.AdaptationCounter&&src.AdaptationTarget)
@@ -1026,6 +1040,8 @@ mob
 				Total += secretDatum?:getBoon("Power Control") / 8
 			if(src.HasGodKi() && src.isRace(SHINJIN))
 				Total+=(!src.HasNullTarget() ? round(src.GetGodKi()/0.25) : 0)
+			if(src.HasMaouKi())
+				Total+=round(src.GetMaouKi()/0.25)
 			if(src.isRace(NAMEKIAN)&&src.transActive())
 				Total+=3
 			if(InfinityModule)
@@ -1076,7 +1092,7 @@ mob
 				return t*/
 			return 0
 		isUnderDog(mob/p)
-			if(p.Power > Power || p.passive_handler.Get("GodKi") > p.passive_handler.Get("GodKi"))
+			if(p.Power > Power || p.passive_handler.Get("GodKi") > passive_handler.Get("GodKi"))
 				return TRUE
 			return FALSE
 		missingHealth()
@@ -1758,6 +1774,8 @@ mob
 						Return-=m.GetGodKi()*100
 			if(src.HasGodKi() && !src.HasNullTarget())
 				Return+=src.GetGodKi()*100
+			if(src.HasMaouKi())
+				Return+=src.GetMaouKi()*100
 
 			if(src.Saga=="Ansatsuken")
 				if(src.AnsatsukenAscension=="Chikara")
@@ -1813,7 +1831,69 @@ mob
 			Return=1+(((glob.BASE_HELL_SCALING_RATIO * HealthLost) * Mult) ** (1/2))
 			return Return
 
+		HasMaouKi()
+			if(passive_handler["MaouKi"])
+				return 1
+			return 0
+		GetMaouKi()
+			if(passive_handler["MaouKi"])
+				var/Total=passive_handler.Get("GodKi")
+				if(glob.T3_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=3||secretDatum.secretVariable["EldritchInstinct"]==1&&src.Potential>=55)
+					if(src.SagaLevel<1&&!glob.T3_SAGA_STLYE_GODKI||src.Secret=="Ultra Instinct"||secretDatum.secretVariable["EldritchInstinct"]==1)
+						Total+=glob.T3_STYLES_GODKI_VALUE
+				if(glob.T4_STYLES_GODKI_VALUE>0 && StyleBuff?.SignatureTechnique>=4&&src.Potential>=70||secretDatum.secretVariable["EldritchInstinct"]==1&&src.Potential>=70)
+					if(src.SagaLevel<1&&!glob.T4_SAGA_STLYE_GODKI||src.Secret=="Ultra Instinct"||secretDatum.secretVariable["EldritchInstinct"]==1)
+						Total+=glob.T4_STYLES_GODKI_VALUE
+				if(src.HasSpiritPower()>=1 && FightingSeriously(src, 0))
+					if(src.Health<=(30+src.TotalInjury)*src.GetSpiritPower())
+						if(src.SenseUnlocked<7)//saintz
+							Total+=0.25*src.GetSpiritPower()
+						else
+							Total+=(0.25*src.GetSpiritPower()*0.25)//halved rate for god ki saints
+				if(src.SenseUnlocked>6&&(src.SenseUnlocked>src.SenseRobbed))
+					if(src.SenseUnlocked>=7)
+						Total+=glob.SENSE7GODKI
+					if(src.SenseUnlocked>=8)
+						Total+=glob.SENSE8GODKI
+						if(SagaLevel>=7)
+							Total+=glob.SENSE9GODKI
+					if(SenseUnlocked >= 9)
+						Total += glob.SENSE9GODKI
+						if(SagaLevel>=7)
+							Total+=glob.SENSE9GODKI
+		/*		if(src.CheckSlotless("Saiyan Soul")&&!src.HasGodKiBuff())
+					if(passive_handler.Get("DisableGodKi") && src.Target&&!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential")&&!src.Target.passive_handler.Get("Orange Namekian"))
+						Total+=src.Target.GetGodKi()/4
+					else if(src.Target&&!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential")&&!src.Target.passive_handler.Get("Orange Namekian"))
+						Total+=src.Target.GetGodKi()/3*/
+				if(HasGodKiCopy())
+					if(src.Target)
+						if(src.Target.HasGodKi()&&!src.Target.HasGodKiCopy())
+							if(Target.GetGodKi() > Total)
+								Total=Target.GetGodKi()*GodKiCopyValue()
+						else if(passive_handler.Get("Hidden Potential"))
+							Total+=Potential/100
+				if(passive_handler.Get("GodCloth"))
+					if(src.Target&&(Health+VaizardHealth)<(Target.Health+Target.VaizardHealth))
+						Total*=clamp((Target.Health+Target.VaizardHealth)/(Health+VaizardHealth),1, 3)
+				if(src.KamuiBuffLock)
+					Total+=0.75
+				if(src.isRace(DRAGON))
+					if(src.AscensionsAcquired==6 && Total<0.5)
+						Total=0.5//fully ascended dragon
+				if(passive_handler.Get("CreateTheHeavens") && src.DoubleHelix>=5&&isRace(HUMAN))
+					Total += 0.5
+				if(passive_handler.Get("Kaioken Blue"))
+					if(src.Target&&Target!=src)
+						if(src.Target.HasGodKi())
+							if(Target.GetGodKi() >= 1.75)
+								Total+=src.Kaioken/4
+					if(src.Kaioken>=6)
+						Total+=1
+				return Total
 		HasGodKi()
+			if(passive_handler["MaouKi"])
+				return 0
 			if(passive_handler["CreateTheHeavens"])
 				return 1
 			if(passive_handler["Hidden Potential"]||passive_handler["Orange Namekian"])
@@ -2308,6 +2388,8 @@ mob
 			return 0
 		GetSpiritFlow()
 			var/Return = passive_handler.Get("SpiritFlow")
+			if(src.TarotFate=="The Emperor")
+				Return += 4
 			if(InfinityModule)
 				Return += round(glob.progress.totalPotentialToDate,5) / 50
 			return Return

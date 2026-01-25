@@ -2212,7 +2212,8 @@ mob
 				return TRUE
 			if(evil)
 				return FALSE
-
+			if(src.HasMaouKi())
+				return FALSE
 			return 0
 		IsEvil()
 			var/list/EvilRaces=list(DEMON, DRAGON)
@@ -2259,6 +2260,8 @@ mob
 				return FALSE
 			if(evil)
 				return TRUE
+			if(src.HasMaouKi())
+				return FALSE
 			return 0
 
 		HolyDamage(var/mob/P, var/Forced=0)//Stick this in the DoDamage proc.
@@ -2294,6 +2297,8 @@ mob
 					return (-1)*src.GetAbyssMod()
 				else
 					return (-1)*Forced
+			if(HasMaouKi())
+				return 2*src.GetAbyssMod()
 			else if(P.IsGood())
 				if(!Forced)
 					return GetAbyssMod()

@@ -683,6 +683,8 @@ obj/Skills/Utility
 						who.Remove(W)
 				if(W.HasGodKi() && !usr.HasGodKi())
 					who.Remove(W)
+				if(W.HasMaouKi())
+					who.Remove(W)
 				if(W.invisibility)
 					who.Remove(W)
 				if(usr.Dead&&!usr.HasEnlightenment()&&(W.z!=usr.z))

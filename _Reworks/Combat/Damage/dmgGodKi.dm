@@ -1,4 +1,6 @@
 /mob/proc/godKiModifiers(mob/defender, destructive)
+	if(HasMaouKi())
+		. += GetMaouKi() * 10
 	if(HasGodKi())
 		. += GetGodKi() * 10
 	if(defender.HasGodKi() && destructive < 2 )
@@ -8,4 +10,6 @@
 	if(defender.passive_handler.Get("The Immovable Object")&&!defender.HasGodKi())
 		. = 0;
 	if(defender.HasNull())
+		. = 0;
+	if(defender.HasNull() && !HasMaouKi())
 		. = 0;
