@@ -614,11 +614,11 @@
 									StunClear(enemy)
 									AfterImageStrike(src,enemy,0)
 					// 				NO DODGE END		//
-						if(AttackQueue && enemy.passive_handler.Get("Sunyata") && !AttackQueue.AntiSunyata)
+						if(AttackQueue && enemy.passive_handler.Get("Sunyata"))
 							if( prob(enemy.passive_handler.Get("Sunyata") * glob.SUNYATA_BASE_CHANCE))
 								OMsg(enemy, "<b><font color=#ff0000>[enemy] has negated [src]'s attack!</font></b>")
 								dodged = 1
-						if((AttackQueue && enemy.passive_handler["Interception"]) && !AttackQueue.Finisher && !AttackQueue.AntiSunyata)
+						if((AttackQueue && enemy.passive_handler["Interception"]) && !AttackQueue.Finisher)
 							if(prob(enemy.passive_handler["Interception"] * glob.INTERCEPTION_BASE_CHANCE))
 								OMsg(enemy, "<b><font color=#ff0000>[enemy] reverses [src]'s attack!</font></b>")
 								if(glob.INTERCEPTION_NEGATES_DAMAGE)
@@ -863,7 +863,8 @@
 							if(GetAttracting())
 								enemy.AddAttracting(GetAttracting(), src)
 								// 		OTHER DMG START 		//
-							var/otherDmg = (damage+(GetIntimidation()/100)*(1+(2*(HasNullTarget() ? GetGodKi() : 0))))
+							var/otherDmg = (damage+(GetIntimidation()/100)*(1+(2*(GetMaouKi())+(HasNullTarget()&&!HasMaouKi() ? GetGodKi() : 0))))
+							
 
 							// if(UsingZornhau()&&HasSword())
 							// 	otherDmg *= 1 + (UsingZornhau()*glob.ZORNHAU_MULT)
