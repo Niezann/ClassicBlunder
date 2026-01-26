@@ -401,7 +401,10 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 
 	Entropy
 		name = "Fundament: Entropy"
-		passives = list("Erosion" = 0.5, "DeathField" = 5, "VoidField" = 5)
+		StrMult=1.5
+		EndMult=0.9
+		SpdMult=1.5
+		passives = list("Erosion" = 0.5, "DeathField" = 5, "AbyssMod" = 3)
 		ActiveMessage= "invokes the Foundation of Death, bringing the End with their blade..:"
 		OffMessage="allows the Entropic energy to fade from their legendary weapon..."
 		verb/Fundament_Entropy()
@@ -416,6 +419,11 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 
 	Freedom
 		name = "Fundament: Freedom"
+		StrMult=1.75
+		EndMult=0.8
+		SpdMult=1.5
+		passives = list("HardStyle" = 4, "GodSpeed" = 4, "Juggernaut" = 5)
+		ActiveMessage= "invokes the Origin of Chaos, attaining Freedom from all Constraint!"
 		verb/Fundament_Freedom()
 			set category="Skills"
 			src.Trigger(usr)
