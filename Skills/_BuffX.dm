@@ -4286,6 +4286,7 @@ NEW VARIABLES
 								"Extend" = 2, "Gum Gum" = 2)
 			PUSpeedModifier=2
 			FlashChange=1
+			SpecialSlot=1
 			ActiveMessage="now posesses eyes that can see everything."
 			OffMessage="seals their Almighty eyes."
 			verb/The_Almighty()
@@ -4304,6 +4305,7 @@ NEW VARIABLES
 			SpdMult=1.5
 			DefMult=1.5
 			OffMult=1.5
+			SpecialSlot=1
 			passives = list("GodKi" = 1, "Grippy" = 10, "IronGrip" = 10, "Scoop" = 5, "BuffMastery" = 5, "SpiritStrike" = 1, "SpiritFlow" = 6, \
 								"SpiritSword" = 2, "SpiritHand" = 8, "AmuletBeaming" = 1, "MovingCharge" = 1, "ManaStats" = 4, "QuickCast" = 8, "ManaGeneration" = 50, "Siphon" = 7)
 			DarkChange=1
@@ -4317,6 +4319,7 @@ NEW VARIABLES
 			SignatureTechnique=4
 			Mastery=-1
 			UnrestrictedBuff=1
+			SpecialSlot=1
 			passives = list("GodKi" = 1, "Miracle" = 1, "Sunyata" = 5, "Flow" = 10, "Instinct" = 10, "LifeSteal" = 30, "Deflection" = 5, "Reversal" = 2.5, "CounterMaster" = 5, \
 								"BlockChance" = 25, "CriticalBlock" = 0.25, "Unstoppable" = 1)
 			FlashChange=1
@@ -4335,6 +4338,7 @@ NEW VARIABLES
 			EndMult=1.2
 			SpdMult=1.2
 			DefMult=1.2
+			SpecialSlot=1
 			passives = list("GodKi" = 1, "DeathField" = 10, "VoidField" = 5, "Brutalize" = 5, "Deflection" = 5, "SlayerMod" = 1, "FavoredPrey" = "All", \
 								"Power of Destruction" = 1, "Field of Destruction" = 1, "CursedWounds"=1, "HardStyle"=1)
 			DarkChange=1
@@ -4354,6 +4358,7 @@ NEW VARIABLES
 			DarkChange=1
 			KenWave=5
 			KenWaveSize=1
+			SpecialSlot=1
 			KenWaveIcon='KenShockwavePurple.dmi'
 			ActiveMessage="causes a dreadful, suffocating power to bear down upon the world..."
 			OffMessage="has yet to find an answer to their question."
@@ -4371,6 +4376,7 @@ NEW VARIABLES
 			SignatureTechnique=4
 			Mastery=-1
 			UnrestrictedBuff=1
+			SpecialSlot=1
 			passives = list("DisableGodKi" = 1, "Deicide" = 10, "EndlessNine" = 1, "Heart of Darkness" = 1, "Speed Force" = 1,  "Disarm" = 3, "MovingCharge" = 1, \
 								"Secret Knives" = "GodSlayer", "Tossing" = 5, "Pressure" = 5, "Unnerve" = 5, "Relentlessness" = 1)
 			PUSpeedModifier=2
@@ -4387,7 +4393,7 @@ NEW VARIABLES
 			ActiveSlot=1
 			SpecialSlot=1
 			passives = list("Aspect of Death"=1,"PureDamage"=5,"PureReduction"=5, "StunningStrike" = 3, "HardStyle"=1, "SoftStyle"=1, "PUSpike"=400,\
-			"MaouKi"=1, "GodKi"=3, "SlayerMod" = 1.5, "FavoredPrey" = "All","Extend"=2, "Gum Gum"=2,"KiControlMastery"=20,"Shearing"=15)
+			"MaouKi"=1, "GodKi"=3, "SlayerMod" = 1.5, "FavoredPrey" = "All","Extend"=2, "Gum Gum"=2,"KiControlMastery"=20,"Shearing"=15,"KiControl"=1)
 			ElementalOffense="Death"
 			PUSpeedModifier=2
 			DarkChange=1
@@ -4500,6 +4506,25 @@ NEW VARIABLES
 			verb/Song_of_Oblivion()
 				set category="Skills"
 				src.Trigger(usr)
+		X_Antibody
+			BuffName = "X-Antibody"
+			SignatureTechnique=5
+			Mastery=-1
+			UnrestrictedBuff=1
+			StrMult=1.25
+			ForMult=1.25
+			EndMult=2
+			SpdMult=1.5
+			DefMult=2
+			OffMult=1.25
+			SpecialSlot=1
+			passives = list("TechniqueMastery" = 5, "BuffMastery" = 5, "MovementMastery" = 10, "X-Antibody" = 1)
+			FlashChange=1
+			ActiveMessage="taps into the power of the X-Antibody within them, drawing out their innermost potential."
+			OffMessage="releases the power of their evolution."
+			verb/Activate_X_Antibody()
+				set category="Skills"
+				src.Trigger(usr)
 		X_Evolution
 			BuffName = "X-Evolution"
 			CantHaveTheseBuffs = list("Death-X-Evolution")
@@ -4512,8 +4537,9 @@ NEW VARIABLES
 			SpdMult=1.5
 			DefMult=2
 			OffMult=1.25
+			SpecialSlot=1
 			passives = list("GodKi" = 2, "BlockChance" = 50, "CriticalBlock" = 0.5, "Sunyata" = 3, "Deflection" = 10, "Reversal" = 1, "GiantForm" = 1, \
-								"Blubber" = 5, "KBRes" = 5, "Hardening" = 5, "CounterMaster" = 10, "Juggernaut" = 5, "LikeWater" = 10, "LifeGeneration" = 5, "X-Antibody" = 1)
+								"Blubber" = 5, "KBRes" = 5, "Hardening" = 5, "CounterMaster" = 10, "Juggernaut" = 5, "LikeWater" = 10, "LifeGeneration" = 5, "Death X-Antibody" = 1)
 			FlashChange=1
 			ActiveMessage="taps into the power of the X-Antibody within them, achieving an evolution superior to any other."
 			OffMessage="releases the power of their evolution."

@@ -1705,7 +1705,7 @@ mob
 			Extra += passive_handler.Get("Mythical")
 			return 0
 		hasDeathEvolution()
-			if(passive_handler.Get("X-Antibody"))
+			if(passive_handler.Get("Death X-Antibody"))
 				var/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution/de = locate(/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution, src);
 				if(de)
 					if(de.evolution_charges)
