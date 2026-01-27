@@ -9437,7 +9437,7 @@ NEW VARIABLES
 					src.Trigger(usr)
 			Life_Magnetism_Overdrive
 				passives = list("Instinct" = 1, "WindRelease" = 0.5, "Blubber" = 1, "Deflection" = 1, "Reversal" = 0.2, "KBRes" = 1, "Juggernaut" = 1)
-				VaizardHealth=2.5
+				VaizardHealth=1.5
 				VaizardShatter=1
 				TimerLimit=10//lasts for 10 seconds.
 				IconLock='Ripple Barrier.dmi'
@@ -9446,9 +9446,9 @@ NEW VARIABLES
 				adjust(mob/p)
 					var/secretLevel = p.secretDatum.currentTier
 					passives = list("Instinct" = 1 + secretLevel, "WindRelease" = 0.4 * secretLevel, "Blubber" = 1 + (secretLevel/2), "Deflection" = 1 + (secretLevel/2), "Reversal" = 0.2 * secretLevel, "KBRes" = secretLevel, "Juggernaut" = secretLevel)
-					VaizardHealth=2.5 * secretLevel
+					VaizardHealth=1.5 * secretLevel
 					VaizardShatter=1
-					TimerLimit=10 + (secretLevel * 4)
+					TimerLimit=10 + (secretLevel * 2)
 				Trigger(mob/User, Override = FALSE)
 					if(!User.BuffOn(src))
 						adjust(User)
