@@ -532,11 +532,11 @@ mob
 					val/=defender.secretDatum.currentTier
 				if(!CursedBlood)
 					var/amtHeal = val*(src.GetLifeSteal() + innateLifeSteal)*Effectiveness/100;
-					src.LifeStolen+=amtHeal/2
-					if(src.LifeStolen>=90)
-						src.LifeStolen=90
 					amtHeal*=1*((100-src.LifeStolen)/100)
 					src.HealHealth(amtHeal)
+					src.LifeStolen+=amtHeal/2
+					if(src.LifeStolen>=95)
+						src.LifeStolen=95
 					DEBUGMSG("[amtHeal] was healed by life steal");
 					if(src.Health>=(100-100*src.HealthCut-src.TotalInjury))
 						src.HealWounds(0.2*val*(src.GetLifeSteal() + innateLifeSteal)*Effectiveness/100)

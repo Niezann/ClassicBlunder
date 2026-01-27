@@ -1102,6 +1102,8 @@ mob
 			if(!changelingIgnore&&isRace(CHANGELING)&&Anger)
 				return 0
 			Return+=passive_handler.Get("PureDamage")
+			if(src.LifeStolen>=10)
+				Return+=src.LifeStolen/20
 
 			if(passive_handler.Get("Shameful Display"))
 				var/viewCount = getSenketsuViewers()
@@ -1131,6 +1133,8 @@ mob
 			var/Return=0
 			Return += passive_handler.Get("PureReduction")
 			Return += passive_handler.Get("Mythical") * glob.MYTHICALPUREREDMULT
+			if(src.LifeStolen>=10)
+				Return+=src.LifeStolen/20
 			if(passive_handler["Determination(Green)"]||passive_handler.Get("Determination(White)"))
 				if(SagaLevel<4)
 					Return+=(ManaAmount/50)
@@ -1856,11 +1860,11 @@ mob
 					if(src.SenseUnlocked>=8)
 						Total+=glob.SENSE8GODKI
 						if(SagaLevel>=7)
-							Total+=glob.SENSE9GODKI
+							Total+=glob.SENSE8GODKI
 					if(SenseUnlocked >= 9)
 						Total += glob.SENSE9GODKI
 						if(SagaLevel>=7)
-							Total+=glob.SENSE9GODKI
+							Total+=glob.SENSE8GODKI
 		/*		if(src.CheckSlotless("Saiyan Soul")&&!src.HasGodKiBuff())
 					if(passive_handler.Get("DisableGodKi") && src.Target&&!src.Target.CheckSlotless("Saiyan Soul")&&src.Target.HasGodKi()&&!src.Target.passive_handler.Get("CreateTheHeavens")&&!src.Target.passive_handler.Get("Hidden Potential")&&!src.Target.passive_handler.Get("Orange Namekian"))
 						Total+=src.Target.GetGodKi()/4
@@ -1875,7 +1879,7 @@ mob
 							Total+=Potential/100
 				if(passive_handler.Get("GodCloth"))
 					if(src.Target&&(Health+VaizardHealth)<(Target.Health+Target.VaizardHealth))
-						Total*=clamp((Target.Health+Target.VaizardHealth)/(Health+VaizardHealth),1, 3)
+						Total*=clamp((Target.Health+Target.VaizardHealth)/(Health+VaizardHealth),1, 4)
 				if(src.KamuiBuffLock)
 					Total+=0.75
 				if(src.isRace(DRAGON))
