@@ -107,6 +107,12 @@ mob/proc/Unconscious(mob/P,var/text)
 			Health = 0.1
 			undying.Trigger(src ,TRUE)
 			return
+		if(src.passive_handler.Get("Color of Courage")&& src.Health>glob.TRIPLEHELIX_MAX_NEG_HP) //The Character will refuse to get downed until they reach (global) negative hp! (the global must be a negative variable, like -50)
+			if(!src.passive_handler.Get("Triple Helix"))
+				src.passive_handler.Set("Triple Helix", 1) // triple helix is just a flavor passive that tells the game to only play the message once
+				src.OMessage(15,"<font color=green><h2><big><b>... but just who the hell do you think they are?!</b></big></h2></font color>")
+				src.OMessage(15,"<font color=green>[src] <b>starts fighting past the limits of even mortality!!!</b></font color>")
+			return
 		if(!istype(src,/mob/Player/FevaSplits))
 			if(P.passive_handler["Undying Rage"])
 				P.Health += 2.5 + (glob.racials.UNDYINGRAGE_HEAL * P.AscensionsAcquired)
@@ -303,6 +309,9 @@ mob/proc/Unconscious(mob/P,var/text)
 	src.VaizardHealth=0
 	src.ForceCancelBeam()
 	src.ForceCancelBuster()
+	if(src.passive_handler.Get("Triple Helix"))
+		src.passive_handler.Set("Triple Helix", 0)
+
 	if(Secret == "Zombie")
 		if(HealthCut + 0.1 < 1 && zombieGetUps + 1 <= AscensionsAcquired)
 			Conscious()
@@ -558,7 +567,7 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 		world<<"<font color=red><b>When gathering souls become one, a new despair will bring about the Absolute End.</b></font>"
 		sleep(30)
 		world<<"<font color=red><b>[src] becomes the path its darkness advances upon.</b></font>"
-		
+
 		sleep(30)
 		world<<"<font color=red><b>Shinka no Yami.</b></font>"
 		HealAllCutTax();
@@ -1702,7 +1711,7 @@ proc/Deflection_Formula(var/mob/Offender,var/mob/Defender,var/AccMult=1,var/Base
 			GodKiDif /= (1 + Defender.GetGodKi())
 		AccMult *= GodKiDif
 		AccMult *= MaouKi
-		
+
 		var/OffenseModifier
 		var/DefenseModifier
 		var/OffenseAdvantage = Offender.Power / Defender.Power

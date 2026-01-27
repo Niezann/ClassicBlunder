@@ -215,6 +215,8 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 		if(Secret == "Zombie" && MeditateTime == 70)
 			zombieGetUps = 0
 			src << "Your get ups have been reset"
+		if(src.passive_handler.Get("Triple Helix"))
+			src.passive_handler.Set("Triple Helix", 0)
 
 		if(calmcounter<=0)
 			calmcounter=5
