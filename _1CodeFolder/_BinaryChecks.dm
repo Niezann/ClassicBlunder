@@ -1890,6 +1890,9 @@ mob
 								Total+=src.Kaioken/4
 					if(src.Kaioken>=6)
 						Total+=1
+				if(passive_handler.Get("SSJRose"))
+					if(src.Target&&(Health+VaizardHealth)<(Target.Health+Target.VaizardHealth))
+						Total*=clamp((Target.Health+Target.VaizardHealth)/(Health+VaizardHealth),1, 2)
 				if(src.DownToEarth>0)
 					Total*=1*((100-src.DownToEarth)/100)
 				return Total
