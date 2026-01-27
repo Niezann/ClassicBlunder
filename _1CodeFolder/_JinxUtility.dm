@@ -1310,7 +1310,7 @@ mob
 						var/base_max_bonus = 1.0
 						Mod += base_max_bonus * t1 //end of first stage
 
-						if(passive_handler.Get("Color of Courage") && src.Health < 0) //this only starts proccin' once you're under 0 hp and only with the "lmao i live past 0 hp" passive
+						if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //this only starts proccin' once you're under 0 hp and only with the "lmao i live past 0 hp" passive
 							var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP //yes it's a global variable for emergency nerfs when it's inevitably too strong and i get yelled at
 							if(minhp >= 0)
 								minhp = -1 // this is to make sure the minhp used in the formula is ALWAYS considered a negative number
@@ -1476,7 +1476,7 @@ mob
 						var/base_max_bonus = 1.0
 						Mod += base_max_bonus * t1 //end of first stage
 
-						if(passive_handler.Get("Color of Courage") && src.Health < 0) //this only starts proccin' once you're under 0 hp and only with the "lmao i live past 0 hp" passive
+						if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //this only starts proccin' once you're under 0 hp and only with the "lmao i live past 0 hp" passive
 							var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP //yes it's a global variable for emergency nerfs when it's inevitably too strong and i get yelled at
 							if(minhp >= 0)
 								minhp = -1 // this is to make sure the minhp used in the formula is ALWAYS considered a negative number
@@ -1627,7 +1627,7 @@ mob
 						var/base_max_bonus = 1.0
 						Mod += base_max_bonus * t1 //end of first stage
 
-						if(passive_handler.Get("Color of Courage") && src.Health < 0) //this only starts proccin' once you're under 0 hp and only with the "lmao i live past 0 hp" passive
+						if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //this only starts proccin' once you're under 0 hp and only with the "lmao i live past 0 hp" passive
 							var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP //yes it's a global variable for emergency nerfs when it's inevitably too strong and i get yelled at
 							if(minhp >= 0)
 								minhp = -1 // this is to make sure the minhp used in the formula is ALWAYS considered a negative number
