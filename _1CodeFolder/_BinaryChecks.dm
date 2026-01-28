@@ -1837,7 +1837,7 @@ mob
 
 		HasMaouKi()
 			if(passive_handler["MaouKi"])
-				return 1
+				return 0
 			return 0
 		GetMaouKi()
 			var/Total=passive_handler.Get("GodKi")
@@ -1895,8 +1895,8 @@ mob
 				Total*=1*((100-src.DownToEarth)/100)
 			return Total
 		HasGodKi()
-			if(passive_handler["MaouKi"])
-				return 0
+	//		if(passive_handler["MaouKi"])
+	//			return 0
 			if(passive_handler["CreateTheHeavens"])
 				return 1
 			if(passive_handler["Hidden Potential"]||passive_handler["Orange Namekian"])

@@ -198,7 +198,7 @@
 	if(glob.PURE_MOD_POST_CALC)
 		trueMult *= glob.PURE_MODIFIER
 	trueMult += godKiModifiers(defender)
-	trueMult += maouKiModifiers(defender)
+//	trueMult += maouKiModifiers(defender)
 	#if DEBUG_DAMAGE
 	log2text("trueMult", "After GodKiModifiers", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("trueMult", trueMult,"damageDebugs.txt", "[src.ckey]/[src.name]")
