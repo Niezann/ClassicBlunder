@@ -422,7 +422,7 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 		StrMult=1.75
 		EndMult=0.8
 		SpdMult=1.5
-		passives = list("HardStyle" = 4, "GodSpeed" = 4, "Juggernaut" = 5)
+		passives = list("HardStyle" = 4, "Godspeed" = 4, "Juggernaut" = 5)
 		ActiveMessage= "invokes the Origin of Chaos, attaining Freedom from all Constraint!"
 		verb/Fundament_Freedom()
 			set category="Skills"

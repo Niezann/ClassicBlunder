@@ -102,7 +102,7 @@ mob/Admin3/verb
 		var/Level7=0
 		var/list/SagaList=list("Cancel","Ansatsuken","Eight Gates","Cosmo","Spiral","King of Courage", "Hero","Hiten Mitsurugi-Ryuu","Kamui","Keyblade","King of Braves","Path of a Hero: Rebirth","Sharingan","Weapon Soul", "Unlimited Blade Works","Force")
 		if(P.Saga)
-			if(P.Saga=="Keyblade"||P.Saga=="Weapon Soul"||P.Saga=="Cosmo")
+			if(P.Saga=="Keyblade"||P.Saga=="Weapon Soul"||P.Saga=="Cosmo"||P.Saga=="King of Braves")
 				Level7=1
 			if(P.SagaLevel>=6+Level7)
 				src << "They've already fully mastered the power of their soul."
@@ -1458,6 +1458,12 @@ mob
 							gb.passives["GodKi"] = 0.5
 						src << "You master using the power of Destruction and Protection simultaneously!"
 						src << "Your Heaven and Hell reaches its perfected form: <b>Genesic Heaven and Hell</b>!"
+					if(src.SagaLevel==7)
+						for(var/obj/Skills/Buffs/SlotlessBuffs/Genesic_Brave/gb in src)
+							gb.passives["Color of Courage"] = 1
+							src << "True courage manifests, when everything is thought to be lost."
+							src << "You are now able to fight past your limits in Genesic!"
+
 
 
 				if("Kamui")

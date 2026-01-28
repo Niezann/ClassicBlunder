@@ -1297,30 +1297,26 @@ mob
 						Mod+=0.75*passive_handler.Get("BurningShot")
 			if(src.Momentum)
 				Mod *= 1 + (src.Momentum * (glob.MOMENTUM_BASE_BOON * clamp(src.passive_handler.Get("Momentum"), 0.1, glob.MOMENTUM_MAX_BOON)))
-			if(src.CheckSlotless("Genesic Brave")||src.CheckSpecial("King of Braves"))
+
+			if(src.CheckSlotless("Genesic Brave")||src.CheckSpecial("King of Braves")) //okay take two
 				if(glob.KOB_GETS_STATS_LOW_LIFE)
-					var/threshold = 25 * (1 - src.HealthCut) //hi, mil here i have Fucked Shit Up to make KoB low hp variable work if you go to negative HPs!!!
-					if(src.Health <= threshold) // tl;dr the low hp buff has two stages now, the second stage only procs with the Negative HP Passive
-						var/den1 = threshold
-						if(den1 <= 0) // literally just a safety check so you nevet get slapped with a division by zero  don't want no fucking -naneinf hp thanks
-							den1 = 1 // but basically it means that the "effective HP" tracked for the first stage is always at LEAST 1, so if you're in negative hp the first formula will stay at "its' best" and then you get more
+					var/threshold = 25 * (1 - src.HealthCut)
+					if(src.Health <= threshold)
+						var/hp_safe = max(src.Health, 0.001) //this takes either health, or 0.001 to avoid negative values for the first stage
+						var/base_bonus = min(10 / hp_safe, 1) //This is based on the old formula! This one was fine I was just being r[censored]. This means KoB get their full low hp buff at 10%.
+						Mod += base_bonus
 
-						var/t1 = (threshold - src.Health) / den1 //mostly just normalizing shit
-						t1 = max(0, min(t1, 1))
-						var/base_max_bonus = 1.0
-						Mod += base_max_bonus * t1 //end of first stage
-
-						if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //this only starts proccin' once you're under 0 hp and only with the "lmao i live past 0 hp" passive
-							var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP //yes it's a global variable for emergency nerfs when it's inevitably too strong and i get yelled at
-							if(minhp >= 0)
-								minhp = -1 // this is to make sure the minhp used in the formula is ALWAYS considered a negative number
-							var/den2 = 0 - minhp
-							if(den2 <= 0)
-								den2 = 1
-							var/t2 = (0 - src.Health) / den2
-							t2 = max(0, min(t2, 1))
-							var/extra_max_bonus = 1.0
-							Mod += extra_max_bonus * t2 //end of second stage
+					if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //This uses the NEW formula where the extra bonus caps at 1 at [TRIPLEHELIX_MAX_NEG_HP]
+						var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP
+						if(minhp >= 0)
+							minhp = -1 //Makes sure this can't be a Positive value so you don't get the opposite issue as the first stage
+						var/den2 = 0 - minhp //normalization of range
+						if(den2 <= 0)
+							den2 = 1
+						var/t2 = (0 - src.Health) / den2
+						t2 = max(0, min(t2, 1))
+						var/extra_max_bonus = 1.0
+						Mod += extra_max_bonus * t2 //No cap this time, you get the "full bonus" once you get your ass knocked down, which essentially means you keep getting stronger as you near knockdown
 
 			if(src.StrEroded)
 				Mod-=src.StrEroded
@@ -1463,30 +1459,25 @@ mob
 					else
 						Mod+=0.75*src.passive_handler.Get("BurningShot")
 
-			if(src.CheckSlotless("Genesic Brave")||src.CheckSpecial("King of Braves"))
+			if(src.CheckSlotless("Genesic Brave")||src.CheckSpecial("King of Braves")) //okay take two
 				if(glob.KOB_GETS_STATS_LOW_LIFE)
-					var/threshold = 25 * (1 - src.HealthCut) //hi, mil here i have Fucked Shit Up to make KoB low hp variable work if you go to negative HPs!!!
-					if(src.Health <= threshold) // tl;dr the low hp buff has two stages now, the second stage only procs with the Negative HP Passive
-						var/den1 = threshold
-						if(den1 <= 0) // literally just a safety check so you nevet get slapped with a division by zero  don't want no fucking -naneinf hp thanks
-							den1 = 1 // but basically it means that the "effective HP" tracked for the first stage is always at LEAST 1, so if you're in negative hp the first formula will stay at "its' best" and then you get more
+					var/threshold = 25 * (1 - src.HealthCut)
+					if(src.Health <= threshold)
+						var/hp_safe = max(src.Health, 0.001) //this takes either health, or 0.001 to avoid negative values for the first stage
+						var/base_bonus = min(10 / hp_safe, 1) //This is based on the old formula! This one was fine I was just being r[censored]. This means KoB get their full low hp buff at 10%.
+						Mod += base_bonus
 
-						var/t1 = (threshold - src.Health) / den1 //mostly just normalizing shit
-						t1 = max(0, min(t1, 1))
-						var/base_max_bonus = 1.0
-						Mod += base_max_bonus * t1 //end of first stage
-
-						if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //this only starts proccin' once you're under 0 hp and only with the "lmao i live past 0 hp" passive
-							var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP //yes it's a global variable for emergency nerfs when it's inevitably too strong and i get yelled at
-							if(minhp >= 0)
-								minhp = -1 // this is to make sure the minhp used in the formula is ALWAYS considered a negative number
-							var/den2 = 0 - minhp
-							if(den2 <= 0)
-								den2 = 1
-							var/t2 = (0 - src.Health) / den2
-							t2 = max(0, min(t2, 1))
-							var/extra_max_bonus = 1.0
-							Mod += extra_max_bonus * t2 //end of second stage
+					if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //This uses the NEW formula where the extra bonus caps at 1 at [TRIPLEHELIX_MAX_NEG_HP]
+						var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP
+						if(minhp >= 0)
+							minhp = -1 //Makes sure this can't be a Positive value so you don't get the opposite issue as the first stage
+						var/den2 = 0 - minhp //normalization of range
+						if(den2 <= 0)
+							den2 = 1
+						var/t2 = (0 - src.Health) / den2
+						t2 = max(0, min(t2, 1))
+						var/extra_max_bonus = 1.0
+						Mod += extra_max_bonus * t2 //No cap this time, you get the "full bonus" once you get your ass knocked down, which essentially means you keep getting stronger as you near knockdown
 
 			if(passive_handler["Rebel Heart"])
 				var/h = (((missingHealth())/glob.REBELHEARTMOD) * passive_handler["Rebel Heart"])/10
@@ -1614,30 +1605,25 @@ mob
 				else if(Mod>=glob.BUFF_MASTER_HIGHTHRESHOLD)
 					Mod*=(1+(BM*glob.BUFF_MASTERY_HIGHMULT))
 
-			if(src.CheckSlotless("Genesic Brave")||src.CheckSpecial("King of Braves"))
+			if(src.CheckSlotless("Genesic Brave")||src.CheckSpecial("King of Braves")) //okay take two
 				if(glob.KOB_GETS_STATS_LOW_LIFE)
-					var/threshold = 25 * (1 - src.HealthCut) //hi, mil here i have Fucked Shit Up to make KoB low hp variable work if you go to negative HPs!!!
-					if(src.Health <= threshold) // tl;dr the low hp buff has two stages now, the second stage only procs with the Negative HP Passive
-						var/den1 = threshold
-						if(den1 <= 0) // literally just a safety check so you nevet get slapped with a division by zero  don't want no fucking -naneinf hp thanks
-							den1 = 1 // but basically it means that the "effective HP" tracked for the first stage is always at LEAST 1, so if you're in negative hp the first formula will stay at "its' best" and then you get more
+					var/threshold = 25 * (1 - src.HealthCut)
+					if(src.Health <= threshold)
+						var/hp_safe = max(src.Health, 0.001) //this takes either health, or 0.001 to avoid negative values for the first stage
+						var/base_bonus = min(10 / hp_safe, 1) //This is based on the old formula! This one was fine I was just being r[censored]. This means KoB get their full low hp buff at 10%.
+						Mod += base_bonus
 
-						var/t1 = (threshold - src.Health) / den1 //mostly just normalizing shit
-						t1 = max(0, min(t1, 1))
-						var/base_max_bonus = 1.0
-						Mod += base_max_bonus * t1 //end of first stage
-
-						if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //this only starts proccin' once you're under 0 hp and only with the "lmao i live past 0 hp" passive
-							var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP //yes it's a global variable for emergency nerfs when it's inevitably too strong and i get yelled at
-							if(minhp >= 0)
-								minhp = -1 // this is to make sure the minhp used in the formula is ALWAYS considered a negative number
-							var/den2 = 0 - minhp
-							if(den2 <= 0)
-								den2 = 1
-							var/t2 = (0 - src.Health) / den2
-							t2 = max(0, min(t2, 1))
-							var/extra_max_bonus = 1.0
-							Mod += extra_max_bonus * t2 //end of second stage
+					if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //This uses the NEW formula where the extra bonus caps at 1 at [TRIPLEHELIX_MAX_NEG_HP]
+						var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP
+						if(minhp >= 0)
+							minhp = -1 //Makes sure this can't be a Positive value so you don't get the opposite issue as the first stage
+						var/den2 = 0 - minhp //normalization of range
+						if(den2 <= 0)
+							den2 = 1
+						var/t2 = (0 - src.Health) / den2
+						t2 = max(0, min(t2, 1))
+						var/extra_max_bonus = 1.0
+						Mod += extra_max_bonus * t2 //No cap this time, you get the "full bonus" once you get your ass knocked down, which essentially means you keep getting stronger as you near knockdown
 
 			if(passive_handler["Rebel Heart"])
 				var/h = (((missingHealth())/glob.REBELHEARTMOD) * passive_handler["Rebel Heart"])/10

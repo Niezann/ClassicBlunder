@@ -8918,12 +8918,14 @@ NEW VARIABLES
 				if(usr.SagaLevel<6 && usr.Health>50)
 					usr << "You aren't pressed enough to fuse the powers of Protection and Destruction!"
 					return
-				if(usr.SagaLevel==6)
+				if(usr.SagaLevel>=6)
 					StrMult= 1.05 + (0.05 * usr.SagaLevel)
 					ForMult= 1.05 + (0.05 * usr.SagaLevel)
 					EndMult= 1.05 + (0.05 * usr.SagaLevel)
 					passives= list("PureReduction" = usr.SagaLevel/2, "PureDamage" = usr.SagaLevel/2, "GodKi" = 0.5)
 					TooMuchHealth= null
+				if(usr.SagaLevel==7)
+					passives= list("Color of Courage" = 1)
 				src.Trigger(usr)
 		Will_Knife
 			MakesSword=1
