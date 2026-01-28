@@ -41,7 +41,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 					StyleSpd = 1.45
 					StyleOff = 1.35
 					StyleDef = 1.35
-			if(p.AscensionsAcquired==3)
+			if(p.AscensionsAcquired>=3)
 				if(p.isRace(ANGEL)||p.isRace(MAKAIOSHIN))
 					passives = list("Instinct" = 2, "Flow" = 2.5, "Parry" = 1.5, "Deflection" = 1, "Like Water" = 2.5, "Momentum" = 1, "PUSpike" = 10, "BlurringStrikes"=2, "Iaijutsu" = 1.5,)
 					StyleStr = 1.45
@@ -155,7 +155,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 					StyleDef = 1.15
 					StyleSpd = 1.15
 					StyleOff = 1.25
-			if(p.AscensionsAcquired==3)
+			if(p.AscensionsAcquired>=3)
 				if(p.isRace(ANGEL)||p.isRace(MAKAIOSHIN))
 					passives = list("Instinct" = 1, "LikeWater" = 1.5, "Muscle Power" = 3.5, "Grippy" = 3, "Scoop" = 2.5, "Iron Grip" = 2, "Momentum" = 2, "Flow" = 1.5, "Deflection" = 0.5, "Reversal" = 1,"UnarmedDamage"=2)
 					StyleStr = 1.65
@@ -219,7 +219,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 					StyleDef = 1.15
 					StyleSpd = 1.25
 					StyleEnd = 1.1
-			if(p.AscensionsAcquired==3)
+			if(p.AscensionsAcquired>=3)
 				if(p.isRace(ANGEL)||p.isRace(MAKAIOSHIN))
 					passives = list("Instinct" = 2.5, "SpiritFlow" = 2, "LikeWater" = 3, "Amplify" = 1, "Flow" = 1.5, "WaveDancer" = 1, "Rain" = 1, "Burning" = 1, "Freezing" = 1,\
 			                        "Shocking" = 1, "Shattering" = 1, "MartialMagic" = 1,"PUSpike" = 15)
@@ -280,7 +280,7 @@ obj/Skills/Buffs/NuStyle/MortalUIStyles// ~~ Angel-taught basic forms ~~  unlock
 					StyleDef = 1.25
 					StyleEnd = 1.25
 					StyleFor = 1.1
-			if(p.AscensionsAcquired==3)
+			if(p.AscensionsAcquired>=3)
 				if(p.isRace(ANGEL)||p.isRace(MAKAIOSHIN))
 					passives = list("Instinct" = 3, "LikeWater" = 2, "Momentum" = 2, "Flow" = 3.5, "Pressure" = 1, "Deflection" = 2, "CounterMaster" = 1.5, "Interception" = 2, "Reversal" = 1.5,"UnarmedDamage"=2)
 					StyleStr = 1.45
