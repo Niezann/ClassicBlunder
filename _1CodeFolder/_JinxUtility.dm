@@ -1306,7 +1306,7 @@ mob
 						var/base_bonus = min(10 / hp_safe, 1) //This is based on the old formula! This one was fine I was just being r[censored]. This means KoB get their full low hp buff at 10%.
 						Mod += base_bonus
 
-					if(passive_handler.Get("Color of Courage") && src.Health < 0) //This uses the NEW formula where the extra bonus caps at 1 at [TRIPLEHELIX_MAX_NEG_HP]
+					if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //This uses the NEW formula where the extra bonus caps at 1 at [TRIPLEHELIX_MAX_NEG_HP]
 						var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP
 						if(minhp >= 0)
 							minhp = -1 //Makes sure this can't be a Positive value so you don't get the opposite issue as the first stage
@@ -1467,7 +1467,7 @@ mob
 						var/base_bonus = min(10 / hp_safe, 1) //This is based on the old formula! This one was fine I was just being r[censored]. This means KoB get their full low hp buff at 10%.
 						Mod += base_bonus
 
-					if(passive_handler.Get("Color of Courage") && src.Health < 0) //This uses the NEW formula where the extra bonus caps at 1 at [TRIPLEHELIX_MAX_NEG_HP]
+					if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //This uses the NEW formula where the extra bonus caps at 1 at [TRIPLEHELIX_MAX_NEG_HP]
 						var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP
 						if(minhp >= 0)
 							minhp = -1 //Makes sure this can't be a Positive value so you don't get the opposite issue as the first stage
@@ -1613,7 +1613,7 @@ mob
 						var/base_bonus = min(10 / hp_safe, 1) //This is based on the old formula! This one was fine I was just being r[censored]. This means KoB get their full low hp buff at 10%.
 						Mod += base_bonus
 
-					if(passive_handler.Get("Color of Courage") && src.Health < 0) //This uses the NEW formula where the extra bonus caps at 1 at [TRIPLEHELIX_MAX_NEG_HP]
+					if(src.passive_handler.Get("Color of Courage") && src.Health < 0) //This uses the NEW formula where the extra bonus caps at 1 at [TRIPLEHELIX_MAX_NEG_HP]
 						var/minhp = glob.TRIPLEHELIX_MAX_NEG_HP
 						if(minhp >= 0)
 							minhp = -1 //Makes sure this can't be a Positive value so you don't get the opposite issue as the first stage
