@@ -591,6 +591,7 @@ mob/proc/PM2(var/mob/who)
 /mob/var/PingSound = TRUE
 /mob/var/PingVolume = 30
 
+
 mob/Admin3/verb
 	editRace(mob/Players/m in players)
 		set category = "Admin"

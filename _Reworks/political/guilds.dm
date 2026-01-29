@@ -42,6 +42,7 @@ mob/Players/var/list/inGuilds = list()
 				whatGuild.tiersCanGive += i
 		sleep(1)
 
+/* DISABLING THIS VIA CODE COMMENT SO WE DON'T SEE IT IN THE ADMIN VERB LIST
 /mob/Admin3/verb/forceJoinGuild(mob/player in world)
 	var/guild/whatGuild = input(usr, "What guild do you want to make [player.name] join?") as null|anything in glob.guilds
 	if(!whatGuild) return
@@ -53,7 +54,7 @@ mob/Players/var/list/inGuilds = list()
 	if(!whatGuild) return
 	whatGuild.removeMember(player)
 	usr << "[player] has been forced to leave [whatGuild]"
-
+*/
 /mob/Admin3/verb/changeGuildPayoutRate()
 	var/guild/whatGuild = input(usr, "What guild do you want to change the pay out rate of?") as null|anything in glob.guilds
 	if(!whatGuild) return
@@ -176,7 +177,7 @@ guild
 				guild.guildTransaction(howManyFragments)
 			else
 				usr << "You do not have the right to do deez"
-		
+
 		assignRankingTier()
 			set name = "Assign Ranking"
 			set category = "Guild"
@@ -187,7 +188,7 @@ guild
 			if(p.information.rankingNumber > maxNumberCanGive)
 				p.information.rankingNumber = 0
 				usr << "try again..."
-		
+
 guild
 	var
 		name
