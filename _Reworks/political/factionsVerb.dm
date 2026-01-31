@@ -5,6 +5,10 @@
             theplayers += p
     return theplayers
 
+// NOTE: WE CURRENTLY AREN'T DOING FACTIONS.
+//WHEN YOU WANT TO ADD FACTIONS BACK, REMOVE THE BLOCK COMMENT! THIS IS TO CLEAR OUT THE ADMIN VERBS!
+/*
+
 /mob/Admin3/verb/GiveRegisterVerb()
     set name = "Give Register Verb"
 
@@ -45,7 +49,7 @@
     if(!b.client)
         return
     b.information.setNationality(b)
-
+*/
 /mob/verb/customizePU()
     set name = "Customize: PU Charging"
     set category = "Other"

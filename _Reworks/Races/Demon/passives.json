@@ -48,7 +48,7 @@
         "Flow": [1, 5]
     },
     "STAFF_PASSIVES_I": {
-        "Soulfire": [1, 4],
+        "SoulFire": [1, 4],
         "SpiritHand": [4, 4],
         "MovingCharge": [1, 1],
         "QuickCast": [1, 3]

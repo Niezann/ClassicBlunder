@@ -75,6 +75,8 @@ mob
 			if(src.CursedWounds())
 				src.WoundSelf(val)
 			if(src.Health<=0&&!src.KO)
+				if(src.passive_handler.Get("Color of Courage")&& src.Health>glob.TRIPLEHELIX_MAX_NEG_HP)
+					return
 				if(src.Burn&&src.Poison)
 					src.Unconscious(null, "succumbing to terrible pain!")
 				if(src.Burn&&!src.Poison)

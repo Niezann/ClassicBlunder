@@ -66,6 +66,8 @@ globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 	if(!src.GetDebuffReversal())
 		Health-=dmg
 	if(Health<=0 && !KO)
+		if(src.passive_handler.Get("Color of Courage")&& src.Health>glob.TRIPLEHELIX_MAX_NEG_HP)
+			return
 		if(typeOfDebuff == "Poison")
 			Unconscious(null, "succumbing to Poison!")
 		if(typeOfDebuff == "Burn")

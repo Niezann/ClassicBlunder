@@ -8925,7 +8925,7 @@ NEW VARIABLES
 					passives= list("PureReduction" = usr.SagaLevel/2, "PureDamage" = usr.SagaLevel/2, "GodKi" = 0.5)
 					TooMuchHealth= null
 				if(usr.SagaLevel==7)
-					passives= list("Color of Courage" = 1)
+					passives= list("PureReduction" = usr.SagaLevel/2, "PureDamage" = usr.SagaLevel/2, "GodKi" = 0.5, "Color of Courage" = 1)
 				src.Trigger(usr)
 		Will_Knife
 			MakesSword=1

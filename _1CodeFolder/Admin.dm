@@ -1,5 +1,5 @@
 var/list
-	CodedAdmins=list("NWKY"=3, "Sunshine Jesse"=4, "Nightmare Zarkus"=4, "NeoGalaxyEyesPhotonDragon"=4, "Lanni.k"=4, "Shadeofwar"=4, "Antenora Luxuria"=4)
+	CodedAdmins=list("NWKY"=3, "Sunshine Jesse"=4, "Nightmare Zarkus"=4, "NeoGalaxyEyesPhotonDragon"=4, "Lanni.k"=4, "Shadeofwar"=4, "Antenora Luxuria"=4, "Admindred"=4)
 	Admins=new
 	Mappers=new
 	Punishments=new
@@ -590,6 +590,7 @@ mob/proc/PM2(var/mob/who)
 
 /mob/var/PingSound = TRUE
 /mob/var/PingVolume = 30
+
 
 mob/Admin3/verb
 	editRace(mob/Players/m in players)
