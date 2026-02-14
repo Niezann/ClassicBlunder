@@ -23,6 +23,7 @@ race
 				user.AddSkill(new /obj/Skills/AutoHit/Desperation/FatalEnding)
 			if(user.Class=="Dragon")
 				passives = list("MovingCharge" = 1, "QuickCast" = 1)
+				user.AddSkill(new /obj/Skills/Projectile/Zone_Attacks/Desperation/UltimaLasers)
 			if(user.Class=="Berserker")
 				user.ManaAmount=0
 				passives = list("LunarDurability" = 1, "LunarWrath" = 1,"RenameMana" = "WRATH","LunarAnger"=1)
