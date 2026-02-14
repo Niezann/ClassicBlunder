@@ -35,9 +35,8 @@ ascension
 					owner.passive_handler.Increase("StyleMastery",1)
 					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Incomplete_Ultra_Instinct, owner))
 						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Incomplete_Ultra_Instinct
-						owner.AddSkill(new /obj/Skills/Buffs/SlotlessBuffs/Autonomous/SlotlessUI/Instinct_Stage_Two)
 						owner.AddSkill(s)
-						owner << "Your game-designer wants to get this over with so she can feel like she did something substantial today but can't think of cool flavor text. Contact her about this later."
+						owner << "Your connection to the Heavens reinforce your own understanding of Instinct."
 						owner.UILevel=2
 				if(owner.AngelAscension == "Guardian")
 					owner.GrantGuardianItem(/obj/Items/Armor/Guardian/Breastplate_of_Righteousness)
@@ -56,9 +55,8 @@ ascension
 				if(owner.AngelAscension=="Mentor")
 					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Ultra_Instinct, owner))
 						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Ultra_Instinct
-						owner.AddSkill(new /obj/Skills/Buffs/SlotlessBuffs/Autonomous/SlotlessUI/Instinct_Stage_Three)
 						owner.AddSkill(s)
-						owner << "Jesse is gay and forgot to fill this out before the wipe launched. Everyone laugh at her (lovingly, or she'll get sad and AFK for the rest of the day)."
+						owner << "Your understanding of Instinct is close to completion."
 						owner.UILevel=3
 				if(owner.AngelAscension == "Guardian")
 					owner.GrantGuardianItem(/obj/Items/Wearables/Guardian/Helmet_of_Salvation)
@@ -74,10 +72,9 @@ ascension
 				//t4 style
 				if(owner.AngelAscension=="Mentor")
 					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Perfected_Ultra_Instinct, owner))
-						owner.AddSkill(new /obj/Skills/Buffs/SlotlessBuffs/Autonomous/SlotlessUI/Instinct_Divine_Stage)
 						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Perfected_Ultra_Instinct
 						owner.AddSkill(s)
-						owner << "Fourth flavor text is the charm, right?."
+						owner << "You have fully attuned yourself to your divine Instinct."
 						owner.UILevel=4
 				if(owner.AngelAscension == "Guardian")
 					owner.GrantGuardianItem(/obj/Items/Sword/Guardian/Sword_of_the_Spirit)

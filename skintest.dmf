@@ -1669,7 +1669,6 @@ window "mapwindow"
 		size = 680x460
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1678,11 +1677,6 @@ window "mapwindow"
 		can-resize = false
 		is-pane = true
 		keep-aspect = true
-		outer-size = 686x466
-		outer-pos = 281,0
-		inner-size = 680x460
-		inner-pos = 3,3
-		screen-size = 1858x1080
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -2380,7 +2374,7 @@ window "Grid2"
 window "Finalize_Screen"
 	elem "Finalize_Screen"
 		type = MAIN
-		pos = 384,0
+		pos = 1176,408
 		size = 1008x276
 		anchor1 = -1,-1
 		anchor2 = -1,-1
@@ -2393,6 +2387,11 @@ window "Finalize_Screen"
 		can-minimize = false
 		can-resize = false
 		image-mode = tile
+		outer-size = 1024x315
+		outer-pos = 1176,408
+		inner-size = 1008x276
+		inner-pos = 8,31
+		screen-size = 2560x1400
 	elem "button51"
 		type = BUTTON
 		pos = 322,212
@@ -2447,7 +2446,7 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "?"
-		command = ".ToggleHelp \"DefenseMod\""
+		command = ".ToggleHelp \"SpeedMod\""
 		is-flat = true
 	elem "button47"
 		type = BUTTON
@@ -2461,7 +2460,7 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "?"
-		command = ".ToggleHelp \"OffenseMod\""
+		command = ".ToggleHelp \"DefenseMod\""
 		is-flat = true
 	elem "button45"
 		type = BUTTON
@@ -2475,7 +2474,7 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "?"
-		command = ".ToggleHelp \"ForceMod\""
+		command = ".ToggleHelp \"EnduranceMod\""
 		is-flat = true
 	elem "button44"
 		type = BUTTON
@@ -2489,7 +2488,7 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "?"
-		command = ".ToggleHelp \"SpeedMod\""
+		command = ".ToggleHelp \"OffenseMod\""
 		is-flat = true
 	elem "button43"
 		type = BUTTON
@@ -2503,7 +2502,7 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "?"
-		command = ".ToggleHelp \"EnduranceMod\""
+		command = ".ToggleHelp \"ForceMod\""
 		is-flat = true
 	elem "button42"
 		type = BUTTON
@@ -2895,7 +2894,7 @@ window "Finalize_Screen"
 		saved-params = ""
 		text = "Regeneration"
 		image-mode = stretch
-	elem "Defense"
+	elem "Speed"
 		type = LABEL
 		pos = 906,182
 		size = 97x28
@@ -2910,7 +2909,7 @@ window "Finalize_Screen"
 		saved-params = ""
 		text = "0"
 		image-mode = stretch
-	elem "plusDEF"
+	elem "plusSPD"
 		type = BUTTON
 		pos = 866,182
 		size = 40x28
@@ -2924,9 +2923,9 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "+"
-		command = ".Skill_Points \"+\" \"Defense\""
+		command = ".Skill_Points \"+\" \"Speed\""
 		is-flat = true
-	elem "minusDEF"
+	elem "minusSPD"
 		type = BUTTON
 		pos = 674,182
 		size = 39x28
@@ -2940,9 +2939,9 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "-"
-		command = ".Skill_Points \"-\" \"Defense\""
+		command = ".Skill_Points \"-\" \"Speed\""
 		is-flat = true
-	elem "Offense"
+	elem "Defense"
 		type = LABEL
 		pos = 906,153
 		size = 97x29
@@ -2957,7 +2956,7 @@ window "Finalize_Screen"
 		saved-params = ""
 		text = "0"
 		image-mode = stretch
-	elem "plusOFF"
+	elem "plusDEF"
 		type = BUTTON
 		pos = 866,153
 		size = 40x29
@@ -2971,9 +2970,9 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "+"
-		command = ".Skill_Points \"+\" \"Offense\""
+		command = ".Skill_Points \"+\" \"Defense\""
 		is-flat = true
-	elem "minusOFF"
+	elem "minusDEF"
 		type = BUTTON
 		pos = 674,153
 		size = 39x29
@@ -2987,7 +2986,7 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "-"
-		command = ".Skill_Points \"-\" \"Offense\""
+		command = ".Skill_Points \"-\" \"Defense\""
 		is-flat = true
 	elem "DEF"
 		type = LABEL
@@ -3001,7 +3000,7 @@ window "Finalize_Screen"
 		background-color = #000000
 		border = line
 		saved-params = ""
-		text = "Defense"
+		text = "Speed"
 		image-mode = stretch
 	elem "OFF"
 		type = LABEL
@@ -3015,9 +3014,9 @@ window "Finalize_Screen"
 		background-color = #000000
 		border = line
 		saved-params = ""
-		text = "Offense"
+		text = "Defense"
 		image-mode = stretch
-	elem "Force"
+	elem "Endurance"
 		type = LABEL
 		pos = 906,67
 		size = 97x29
@@ -3032,7 +3031,7 @@ window "Finalize_Screen"
 		saved-params = ""
 		text = "0"
 		image-mode = stretch
-	elem "plusPOW"
+	elem "plusEND"
 		type = BUTTON
 		pos = 866,67
 		size = 40x29
@@ -3046,9 +3045,9 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "+"
-		command = ".Skill_Points \"+\" \"Force\""
+		command = ".Skill_Points \"+\" \"Endurance\""
 		is-flat = true
-	elem "Speed"
+	elem "Offense"
 		type = LABEL
 		pos = 906,124
 		size = 97x29
@@ -3063,7 +3062,7 @@ window "Finalize_Screen"
 		saved-params = ""
 		text = "0"
 		image-mode = stretch
-	elem "plusSPD"
+	elem "plusOFF"
 		type = BUTTON
 		pos = 866,124
 		size = 40x29
@@ -3077,9 +3076,9 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "+"
-		command = ".Skill_Points \"+\" \"Speed\""
+		command = ".Skill_Points \"+\" \"Offense\""
 		is-flat = true
-	elem "minusPOW"
+	elem "minusEND"
 		type = BUTTON
 		pos = 674,67
 		size = 39x29
@@ -3093,9 +3092,9 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "-"
-		command = ".Skill_Points \"-\" \"Force\""
+		command = ".Skill_Points \"-\" \"Endurance\""
 		is-flat = true
-	elem "minusSPD"
+	elem "minusOFF"
 		type = BUTTON
 		pos = 674,124
 		size = 39x29
@@ -3109,9 +3108,9 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "-"
-		command = ".Skill_Points \"-\" \"Speed\""
+		command = ".Skill_Points \"-\" \"Offense\""
 		is-flat = true
-	elem "plusEND"
+	elem "plusPOW"
 		type = BUTTON
 		pos = 866,96
 		size = 40x28
@@ -3125,9 +3124,9 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "+"
-		command = ".Skill_Points \"+\" \"Endurance\""
+		command = ".Skill_Points \"+\" \"Force\""
 		is-flat = true
-	elem "Endurance"
+	elem "Force"
 		type = LABEL
 		pos = 906,96
 		size = 97x28
@@ -3142,7 +3141,7 @@ window "Finalize_Screen"
 		saved-params = ""
 		text = "0"
 		image-mode = stretch
-	elem "minusEND"
+	elem "minusPOW"
 		type = BUTTON
 		pos = 674,96
 		size = 39x28
@@ -3156,7 +3155,7 @@ window "Finalize_Screen"
 		border = line
 		saved-params = "is-checked"
 		text = "-"
-		command = ".Skill_Points \"-\" \"Endurance\""
+		command = ".Skill_Points \"-\" \"Force\""
 		is-flat = true
 	elem "POW"
 		type = LABEL
@@ -3170,7 +3169,7 @@ window "Finalize_Screen"
 		background-color = #000000
 		border = line
 		saved-params = ""
-		text = "Force"
+		text = "Endurance"
 		image-mode = stretch
 	elem "SPD"
 		type = LABEL
@@ -3184,7 +3183,7 @@ window "Finalize_Screen"
 		background-color = #000000
 		border = line
 		saved-params = ""
-		text = "Speed"
+		text = "Offense"
 		image-mode = stretch
 	elem "END"
 		type = LABEL
@@ -3198,7 +3197,7 @@ window "Finalize_Screen"
 		background-color = #000000
 		border = line
 		saved-params = ""
-		text = "Durability"
+		text = "Force"
 		image-mode = stretch
 	elem "Strength"
 		type = LABEL
