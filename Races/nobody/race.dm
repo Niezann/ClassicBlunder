@@ -26,6 +26,7 @@ race
 				user.AddSkill(new /obj/Skills/Projectile/Zone_Attacks/Desperation/UltimaLasers)
 			if(user.Class=="Berserker")
 				user.ManaAmount=0
+				user.AddSkill(new /obj/Skills/Queue/Desperation/LunarRave)
 				passives = list("LunarDurability" = 1, "LunarWrath" = 1,"RenameMana" = "WRATH","LunarAnger"=1)
 			if(user.Class=="Imaginary")
 				user.ImaginaryKeyblade()

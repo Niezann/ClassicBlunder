@@ -31,7 +31,7 @@ obj/Skills/AutoHit/Desperation
 /obj/Skills/Projectile/Zone_Attacks/Desperation
 	UltimaLasers
 		EnergyCost=20
-		Speed = 2
+		Speed = 0.25
 		Distance=20
 		Blasts=30
 		Charge=1
@@ -40,6 +40,8 @@ obj/Skills/AutoHit/Desperation
 		Stunner= 3
 		Instinct=1
 		AccMult=2
+		HyperHoming=1
+		Deflectable=1
 		Homing=3
 		Explode=1
 		ZoneAttackX=5
@@ -60,3 +62,53 @@ obj/Skills/AutoHit/Desperation
 			DamageMult=0.8*(1+asc/2)
 			Cooldown=300-(10*(asc))
 			usr.UseProjectile(src)
+
+/obj/Skills/Queue/Desperation
+	LunarRave
+		name="Lunar Rave"
+		ActiveMessage="is imbued with pure Lunar Wrath!"
+		DamageMult=0.5
+		AccuracyMult = 1.25
+		KBMult=0.00001
+		KBAdd=2
+		Combo=12
+		Warp=3
+		Duration=5
+		Cooldown=380 //once per fight
+		Decider=1
+		Instinct=4
+		EnergyCost=5
+		HitSparkIcon='Slash - Power.dmi'
+		HitSparkX=-32
+		HitSparkY=-32
+		HitSparkTurns=1
+		HitSparkSize=1.1
+		HitStep=/obj/Skills/Queue/Desperation/LunarRave2
+		verb/Lunar_Rave()
+			set category="Skills"
+			var/asc = usr.AscensionsAcquired
+			DamageMult=0.5*(1+asc/2)
+			Cooldown=300-(10*(asc))
+			usr.SetQueue(src)
+	LunarRave2
+		ActiveMessage="goes for the finishing blow!"
+		DamageMult=12
+		AccuracyMult = 1.25
+		KBMult=10
+		Warp=5
+		Duration=5
+		Decider=1
+		Instinct=4
+		EnergyCost=10
+		NeedsHealth=30
+		IconLock='UltraInstinctSpark.dmi'
+		HitSparkIcon='Slash - Power.dmi'
+		HitSparkX=-32
+		HitSparkY=-32
+		HitSparkTurns=0
+		HitSparkSize=2
+		verb/Lunar_Rave()
+			set category="Skills"
+			var/asc = usr.AscensionsAcquired
+			DamageMult=12*(1+asc/2)
+			usr.SetQueue(src)
