@@ -10,7 +10,6 @@ mob/proc/GetAssess()
 	var/BaseDisplay
 	var/GodKiDisplay
 	var/MaouKiDisplay
-	var/enReplacement
 	var/StatAverage=round((src.GetStr()+src.GetEnd()+src.GetSpd()+src.GetFor()+src.GetOff()+src.GetDef())/6, 0.05)
 	var/EffectiveAnger=Anger
 	var/PDam=1+((src.HasPureDamage()/10)*glob.PURE_MODIFIER)

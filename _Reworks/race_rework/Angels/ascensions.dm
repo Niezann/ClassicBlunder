@@ -33,11 +33,8 @@ ascension
 				//t2 style
 				if(owner.AngelAscension=="Mentor")
 					owner.passive_handler.Increase("StyleMastery",1)
-					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Incomplete_Ultra_Instinct, owner))
-						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Incomplete_Ultra_Instinct
-						owner.AddSkill(s)
-						owner << "Your connection to the Heavens reinforce your own understanding of Instinct."
-						owner.UILevel=2
+					owner << "Your connection to the Heavens reinforce your own understanding of Instinct."
+					owner.UILevel=2
 				if(owner.AngelAscension == "Guardian")
 					owner.GrantGuardianItem(/obj/Items/Armor/Guardian/Breastplate_of_Righteousness)
 					owner.GrantGuardianItem(/obj/Items/Wearables/Guardian/Sandals_of_Peace)
@@ -53,11 +50,8 @@ ascension
 			postAscension(mob/owner)
 				//t3 style/armor, can now teach style
 				if(owner.AngelAscension=="Mentor")
-					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Ultra_Instinct, owner))
-						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Ultra_Instinct
-						owner.AddSkill(s)
-						owner << "Your understanding of Instinct is close to completion."
-						owner.UILevel=3
+					owner << "Your understanding of Instinct is close to completion."
+					owner.UILevel=3
 				if(owner.AngelAscension == "Guardian")
 					owner.GrantGuardianItem(/obj/Items/Wearables/Guardian/Helmet_of_Salvation)
 					owner.GrantGuardianItem(/obj/Items/Wearables/Guardian/Shield_of_Faith)
@@ -71,11 +65,8 @@ ascension
 			postAscension(mob/owner)
 				//t4 style
 				if(owner.AngelAscension=="Mentor")
-					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Perfected_Ultra_Instinct, owner))
-						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/UnarmedStyle/AngelStyles/Perfected_Ultra_Instinct
-						owner.AddSkill(s)
-						owner << "You have fully attuned yourself to your divine Instinct."
-						owner.UILevel=4
+					owner << "You have fully attuned yourself to your divine Instinct."
+					owner.UILevel=4
 				if(owner.AngelAscension == "Guardian")
 					owner.GrantGuardianItem(/obj/Items/Sword/Guardian/Sword_of_the_Spirit)
 					owner << "(Please re-equip your Heavenly Armaments to receive their boons.)"
