@@ -731,7 +731,73 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 					Z.BuffUsing=1
 					src.sight |= (SEE_SELF|SEE_TURFS|SEE_MOBS|SEE_OBJS)
 					src.OMessage(10,"[src]'s pupils begin to pulsate with a strange, golden energy.","<font color=red>[src]([src.key]) activated Clairvoyance.")
-
+			if("LimitOverForce")
+				if(Z.Using)
+					return
+				var/Select=input("Do you really want to end the wipe...?") in list ("Yes", "No")
+				switch(Select)
+					if("Yes")
+						src.OMessage(10,"<font color=red><b>[src] raises their hand up...</font color></b>","<font color=red>[src]([src.key]) activated complete obliteration.")
+						for(var/mob/Players/M)
+							M.CutsceneMode=1
+						sleep(10)
+					/*	world << "<font size=+4><font color=#FF00FF><b>Rank-Up-Magic...</b></font size>"
+						sleep(10)
+						world << "<font size=+4><b><font color=#FF00FF>LIMIT OVER FORCE!</b></font size>"
+						sleep(40)
+						world << "<font size=+2><b><font color=#FFFF00>The entire universe shifts.</b></font size>"
+						sleep(20)
+						world << "<font size=+2><b><font color=#FFFF00>The world itself, changes.</b></font size>"
+						sleep(20)
+						world << "<font size=+2><b><font color=#FFFF00>And as the story is shifted to a higher realm...</b></font size>"
+						sleep(20)
+						world << "<font size=+2><b><font color=#FFFF00>...the strings tying you to your vessel are torn.</b></font size>"
+						sleep(20)
+						world << "<font size=+2><b><font color=#FFFF00>And your vessel, which you took so much time to craft, and colored in with care...</b></font size>"
+						sleep(20)
+						world << "<center><font size=+2><b><font color=#FF0000>...has been discarded.</b></font size></center>"
+						sleep(30)
+						world<<"<font size=+4><b><font color=#FF0000>(CONNECTION: TERMINATED)</b></font size>"*/
+						glob.progress.FourthFateEndwipe=1
+						for(var/mob/Players/M in world)
+							if(M!=src)
+								M.passive_handler.Increase("Utterly Powerless")
+								M.passive_handler.Increase("Completely Obliterated")
+								M.passive_handler.Increase("Disconnected")
+								M.ObliteratedX=M.x
+								M.ObliteratedY=M.y
+								M.ObliteratedZ=M.z
+								M.loc=locate(0,0,0)
+								M.client.SaveChar()
+								del M
+					//		M.Health-=src.ForVsRes(M, 30)
+				//		Z.Cooldown()
+					if("No")
+						return
+			if("GiveFourthFate")
+				if(Z.Using)
+					return
+				var/Select=input("Do you really want to end the wipe...?") in list ("Yes", "No")
+				switch(Select)
+					if("Yes")
+						for(var/mob/Players/M)
+							if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/The_Fourth_Fate, M))
+								M.AddSkill(new/obj/Skills/Buffs/NuStyle/UnarmedStyle/The_Fourth_Fate)
+								M<<"<b><font color=#0099FF>You have unlocked The Fourth Fate!"
+					if("No")
+						return
+			if("EndWipe")
+				if(Z.Using)
+					return
+				var/Select=input("Do you really want to end the wipe...?") in list ("Yes", "No")
+				switch(Select)
+					if("Yes")
+						for(var/mob/Players/M)
+							if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/The_Fourth_Fate, M))
+								M.AddSkill(new/obj/Skills/Buffs/NuStyle/UnarmedStyle/The_Fourth_Fate)
+								M<<"<b><font color=#0099FF>You have unlocked The Fourth Fate!"
+					if("No")
+						return
 			if("Telepath")
 				var/list/who=list("Cancel")
 				for(var/mob/Players/A in players)

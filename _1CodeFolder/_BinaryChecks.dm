@@ -1978,9 +1978,11 @@ mob
 					Total+=1
 			if(src.DownToEarth>0)
 				Total*=1*((100-src.DownToEarth)/100)
+			if(src.passive_handler.Get("The Power of Stories"))
+				Total+=3
 			return Total
 		HasGodKiCopy()
-			if(passive_handler.Get("CreateTheHeavens"))
+			if(passive_handler.Get("CreateTheHeavens")&&isRace(HUMAN))
 				return 1
 			if(passive_handler.Get("Hidden Potential")||passive_handler.Get("Orange Namekian"))
 				return 1

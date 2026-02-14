@@ -655,6 +655,9 @@ mob/var
 	CutsceneMode
 	ForcedLethal
 	UnstoppableForceCounter
+	ObliteratedX
+	ObliteratedY
+	ObliteratedZ
 
 /proc/reduceGodKi(mob/player, num)
 	player.GodKi -= num

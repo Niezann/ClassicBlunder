@@ -536,6 +536,10 @@ mob
 					var/amtHeal = val*(src.GetLifeSteal() + innateLifeSteal)*Effectiveness/100;
 					amtHeal*=1*((100-src.LifeStolen)/100)
 					src.HealHealth(amtHeal)
+					if(defender.passive_handler.Get("The Inkstone") && src.LifeStolen>=50)
+						if(!src.passive_handler.Get("The Power of Stories"))
+							OMsg(src, "<b><font size=+3> [src] erupts with tremendous power, having stolen enough life from the Narrative to temporarily match it!")
+							src.passive_handler.Increase("The Power of Stories", 1)
 					src.LifeStolen+=amtHeal/2
 					if(src.LifeStolen>=95)
 						src.LifeStolen=95
@@ -721,7 +725,28 @@ mob
 					defender<<"Your soul has been irrevocably corrupted, a peaceful afterlife eternally torn from you."
 					defender.Damned=1
 				defender.Death(src, null)
-
+			if(src.passive_handler.Get("Certain Progress"))
+				if(val<0.1)
+					val=0.1
+			if(defender.passive_handler.Get("Certain Progress"))
+				if(val>1)
+					val=1
+			if(passive_handler.Get("Absolute Despair"))
+				if(val<0.1)
+					val=0.1
+			if(defender.passive_handler.Get("The Inkstone")&&defender.passive_handler.Get("Absolute Despair"))
+				if(prob(2)&& defender.BioArmor)
+					OMsg(src, "<b><font color='green'><font size=+1>[src] lands a decisive strike! A crack in [defender]'s armor appears!</font color></font size></b>")
+					defender.BioArmor*=0.995
+					defender.BioArmor-=5
+					if(defender.BioArmor<0)
+						defender.BioArmor=0
+			if(passive_handler.Get("Ultimate Desperation"))
+				val=0
+				defender.Health/=10
+			if(defender.passive_handler.Get("Ultimate Defense"))
+				if(prob(95))
+					val=0.05
 			return val
 
 		DealWounds(var/mob/defender, var/val, var/FromSelf=0)
@@ -898,7 +923,8 @@ mob
 			if(src.VaizardHealth&&!src.passive_handler.Get("HealThroughTempHP"))
 				val = 0
 			if(src.CelestialAscension=="Demon" && src.transActive>=5)
-				val = 0
+				if(src.transUnlocked<6)
+					val = 0
 			src.Health+=val
 			src.MaxHealth()
 		HealEnergy(var/val, var/StableHeal=0)

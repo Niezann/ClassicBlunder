@@ -49,18 +49,27 @@ mob/proc/GetAssess()
 		IntimDisplay=src.GetIntimidation()
 	else
 		IntimDisplay=1
-	if(src.HasGodKi())
+	if(src.HasGodKi()&&!src.passive_handler.Get("Utterly Powerless"))
 		GodKiDisplay=src.GetGodKi()
 	else
 		GodKiDisplay=0
-	if(src.HasMaouKi())
+	if(src.HasMaouKi()&&!src.passive_handler.Get("Utterly Powerless"))
 		MaouKiDisplay=src.GetMaouKi()
 	else
 		MaouKiDisplay=0
-	if(potential_power_tier < 1)
+	if(potential_power_tier < 1||src.passive_handler.Get("Utterly Powerless"))
 		potential_power_tier = 1
-	if(power_display < 1 || power_display == null)
+	if(power_display < 1 || power_display == null||src.passive_handler.Get("Utterly Powerless"))
 		power_display = 1
+	var/PotentialDisplay=src.Potential
+	if(passive_handler.Get("Utterly Powerless"))
+		PotentialDisplay=1
+		BaseDisplay=1
+		PowerDisplay=1
+		PowerMultiplierDisplay=1
+		GodKiDisplay=0
+		MaouKiDisplay=0
+		PotentialPowerDisplay=1
 	var/blahh={"
 
 			<html>
@@ -102,14 +111,33 @@ mob/proc/GetAssess()
 	<tr><td>Recovery:</td><td> [round(src.GetRecov(), 0.01)] ([src.BaseRecov()])</td></tr>
 	<tr><td>Anger:</td><td>[(src.AngerMax+src.AngerAdd)*100]%</td></tr>
 	<tr><td>Power Mult:</td><td>[round(src.potential_power_mult, 0.05) + src.PowerBoost]%</td></tr>
-	<tr><td>Potential:</td><td>[Potential]/150</td></tr>
+	<tr><td>Potential:</td><td>[PotentialDisplay]/150</td></tr>
 	<tr><td>Transformation Potential:</td><td>[src.potential_trans]/100</td></tr>
 	<tr><td>Average Stats: [StatAverage]</td></tr>
 	<tr><td>Magic Level: [getTotalMagicLevel()]</td></tr>
 			</table></html>"}
 /*	<tr><td>True Tier:</td><td>[POWER_TIERS[potential_power_tier]]</td></tr>
 	<tr><td>Display Tier:</td><td>[POWER_TIERS[power_display]]</td></tr>*/
+	if(src.passive_handler.Get("Utterly Powerless"))
+		blahh={"
 
+						<html>
+				<style type="text/css">
+				<!--
+				body {
+				     color:#449999;
+				     background-color:black;
+				     font-size:12;
+				 }
+				table {
+				     font-size:12;
+				 }
+				//-->
+				</style>
+				<body>
+				[src.name]<br><br>
+				<font color=#FF0000><b>YOU HAVE NOTHING.</b>
+						</table></html>"}
 	return blahh
 
 mob
@@ -590,6 +618,8 @@ mob/proc/Recover(var/blah,Amount=1)
 					src.RecovEroded=0
 			if(src.LifeStolen>0)
 				src.LifeStolen=0
+			if(src.passive_handler.Get("The Power of Stories"))
+				src.passive_handler.Set("The Power of Stories", 0)
 			if(Health>10*(1-src.HealthCut)&&src.HealthAnnounce10)
 				src.HealthAnnounce10=0
 			if(Health>25*(1-src.HealthCut)&&src.HealthAnnounce25)

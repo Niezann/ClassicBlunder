@@ -580,7 +580,7 @@ NEW VARIABLES
 	var/characterInformation/OldInformation
 	var/characterInformation/FakeInformation
 	var/FakeInformationEnabled
-
+	var/OurFuture
 	skillDescription()
 		..()
 		if(passives.len>0)
@@ -11704,6 +11704,11 @@ mob
 							src.StyleBuff.Trigger(src, Override=1)
 
 			if(!src.BuffOn(B))
+				if(src.passive_handler.Get("Utterly Powerless")&&!src.passive_handler.Get("Our Future"))
+					if(!B.OurFuture)
+						if(!B.Autonomous)
+							src<<"<b><font color='red'>You have no fight left to fight. No life left to live.</font color></b>"
+						return
 				if(B.AssociatedGear)
 					if(!B.AssociatedGear.InfiniteUses)
 						if(B.Integrated)
@@ -12516,7 +12521,10 @@ mob
 			src.AllSkillsAdd(src.StyleBuff)
 			if(isplayer(src))
 				src:move_speed = MovementSpeed()
-			OMsg(src, "[src] takes up the [src.StyleBuff]!")
+			if(src.StyleBuff.OurFuture)
+				OMsg(src, "[src] takes back what belongs to them, as they call upon [src.StyleBuff]!")
+			else
+				OMsg(src, "[src] takes up the [src.StyleBuff]!")
 
 		RemoveStyleBuff()
 

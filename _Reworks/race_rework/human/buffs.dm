@@ -31,6 +31,9 @@
 				if(usr.transUnlocked>=5)
 					usr.race.transformations[2].transform(usr, TRUE)
 					usr.race.transformations[3].transform(usr, TRUE)
+				if(usr.transUnlocked>=6)
+					usr.race.transformations[4].transform(usr, TRUE)
+					usr.race.transformations[5].transform(usr, TRUE)
 			src.Trigger(User=usr, Override=TRUE)
 	Double_Helix
 		TimerLimit=1

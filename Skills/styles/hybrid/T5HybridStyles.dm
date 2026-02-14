@@ -2,15 +2,16 @@
 	The_Fourth_Fate
 		SignatureTechnique = 4
 		SagaSignature = 1
-		StyleOff=1.5
-		StyleStr=1.5
-		StyleSpd=1.5
-		StyleDef=1.5
+		StyleOff=3
+		StyleStr=3
+		StyleSpd=3
+		StyleDef=3
+		OurFuture=1
 		NeedsSword=0
 		NoSword=0
-		Finisher="/obj/Skills/Queue/Finisher/Twisted_Heartbeat"
+		Finisher="/obj/Skills/Queue/Finisher/Grasp_Tomorrow"
 		passives = list("Determination(Black)" = 1, "Determination(White)" = 1, "BladeFisting" = 1, "MagicSword" = 1, "MartialMagic" = 1, "ManaGeneration" = 5 ,"EnergyGeneration" = 5, \
-		"MovementMastery" = 10, "PureDamage"=10, "PureReduction" = 10, "SweepingStrikes" = 1, "Extend" = 2, "Gum Gum" = 2, "SpiritFlow" = 4, "Skimming" = 3, "Godspeed" = 3, \
+		"MovementMastery" = 20, "PureDamage"=10, "PureReduction" = 10, "SweepingStrikes" = 1, "Extend" = 2, "Gum Gum" = 2, "SpiritFlow" = 4, "Skimming" = 3, "Godspeed" = 3, \
 		"Our Future" = 1, "The Legend of REBIRTH" = 1)
 		StyleActive="The Fourth Fate"
 		verb/The_Fourth_Fate()

@@ -1,4 +1,16 @@
 /obj/Skills/Queue/Finisher
+	Grasp_Tomorrow
+		Quaking=12
+		DamageMult=T4_DMG_MULT;
+		InstantStrikes=2
+		InstantStrikesDelay = 1
+		PushOut=1
+		PushOutWaves=2
+		HitSparkIcon='KenShockwaveGod.dmi'
+		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Promise_of_Tomorrow"
+		HitSparkX=-32
+		HitSparkY=-32
+		HitMessage="grasps tomorrow within their hands!"
 	The_Blade_of_Chaos
 		HarderTheyFall=4
 		Stunner=4

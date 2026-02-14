@@ -203,6 +203,8 @@ globalTracker
 		list/NO_SOUL_LOCATION = list(182, 288, 2)
 		HALF_DEMON_POTENTIAL_REQ = 50
 
+		DISABLE_ALL_TELEPORTS = FALSE
+
 // - races
 		list/LockedRaces = list()
 		list/CustomCommons = list("Majin","Half-Saiyan", "Android")

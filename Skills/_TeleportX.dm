@@ -260,6 +260,9 @@ obj/Skills
 
 		proc
 			Activate(var/mob/User)
+				if(glob.DISABLE_ALL_TELEPORTS&&!usr.passive_handler.Get("FreeTeleport"))
+					usr<<"The ability to teleport has been sealed off!"
+					return
 				if(src.type==/obj/Skills/Teleport/Traverse_Underworld&&User.Saga!="Cosmo")
 					src.TeleportMessage="bends their demonic energy to traverse mortality!"
 					src.ArriveMessage="arrives with a flux of demonic energy!"

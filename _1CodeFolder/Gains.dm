@@ -523,6 +523,8 @@ mob
 					scrollTicker=0
 			if(src.isRace(HUMAN) && src.transActive>=1&&src.icon_state=="Meditate"||src.isRace(CELESTIAL) && src.transActive>=1&&src.icon_state=="Meditate")
 				src.Revert()
+			if(src.passive_handler.Get("Utterly Powerless") && !src.passive_handler.Get("Our Future"))
+				src.Revert()
 			if(passive_handler.Get("LunarWrath")&&PowerControl>100)
 				var/ManaRando=rand(6,15)
 				src.ManaAmount+=0.5*(ManaRando/10)
@@ -1405,6 +1407,8 @@ mob
 				for(var/obj/Items/omni in src.contents)
 					if(omni.LocksOutAutonomous && omni.suffix=="*Equipped*")
 						AGLock=1
+				if(src.passive_handler.Get("Utterly Powerless") && !src.passive_handler.Get("Our Future"))
+					AGLock=1
 				if(!A.SlotlessOn)
 					if(A.NeedsPassword&&!AGLock)
 						if(!A.Password)

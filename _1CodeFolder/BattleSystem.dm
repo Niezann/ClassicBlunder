@@ -415,7 +415,15 @@ mob/proc/Conscious()
 			src.KOBrutal=0
 			src.Health=1
 			src.Energy=EnergyMax/100
-		if(src.passive_handler.Get("Neverending Hope"))
+		if(src.passive_handler.Get("Our Future"))
+			src.KOBrutal=0
+			src.Health=100
+			src.Energy=src.EnergyMax
+			src.TotalInjury/=2
+			src.TotalFatigue/=2
+			src.OMessage(15,"<font color='green'><b>[src] refuses to let fate get the better of them!!!</b></font color>","<font color=blue>[src]([src.key]) regains consciousness.")
+			src<<"<font color='green'><b>(You can get up and keep fighting every time this procs!)</b></font color>"
+		else if(src.passive_handler.Get("Neverending Hope"))
 			src.Health=30
 			src.Energy=EnergyMax/2
 			src.OMessage(15,"[src] is ready for another go.","<font color=blue>[src]([src.key]) regains consciousness.")
@@ -433,7 +441,9 @@ mob/proc/Conscious()
 mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extraChance, fakeDeath)
 	BreakViewers() //STOP LOOKING AT ME THE SHAME OF DEATH TOO MUCH
 	if(src.passive_handler.Get("The Legend of REBIRTH"))
-		src.OMessage(15,"[src] refuses to allow their story to end here!","<font color=blue>[src]([src.key]) denies death.")
+		src.OMessage(20,"[src] was just killed by [text]!","<font color=red>[src] was just killed by [text]!")
+		sleep(20)
+		src.OMessage(15,"<b><font color=[src.Text_Color]><font size=+1>...but [src] refuses to allow their story to end here!</b></font color></font size>","<font color=blue>[src]([src.key]) denies death.")
 		src.MortallyWounded=0
 		src.TsukiyomiTime=1
 		src.KOTimer=0

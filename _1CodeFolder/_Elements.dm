@@ -571,6 +571,17 @@ mob
 				return
 			src.Doomed+=Value
 			if(src.Doomed>=100)
+				if(src.passive_handler.Get("The Inkstone"))
+					src.Doomed=0
+					src.DownToEarth=100
+					OMsg(src, "<b><font color='purple'>The bell tolls for [src]...</font color></b>")
+					sleep(30)
+					OMsg(src, "<b><font color='purple'>...but they refuse.</font color></b>")
+					sleep(10)
+					OMsg(src, "<b><font color='purple'>And yet, one more crack in their armor shows.</font color></b>")
+					if(src.BioArmor)
+						src.BioArmor*=0.95
+					return
 				src.Health*=0.75
 				src.VaizardHealth/=2
 				src.Doomed=0

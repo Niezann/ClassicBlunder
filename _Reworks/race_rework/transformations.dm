@@ -165,6 +165,9 @@ transformation
 				user.underlays -= form_aura_underlay
 
 		transform(mob/user, forceTrans)
+			if(user.passive_handler.Get("Utterly Powerless") >= 1&&!user.passive_handler.Get("Our Future"))
+				src<<"<b><font color='red'>You have no fight left to fight. No life left to live.</font color></b>"
+				return;
 			if(user.passive_handler.Get("SSJRose") >= 1) return;
 			if(is_active) return
 			if(user.passive_handler.Get("SSJRose")) return

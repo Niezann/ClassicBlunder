@@ -357,7 +357,20 @@ obj/Skills
 		verb/Power_Down()
 			set category="Skills"
 			usr.SkillX("PowerDown",src)
-
+	Rank_Up_Magic_Limit_Over_Force
+		icon='Skillz.dmi'
+		icon_state="PC"
+		sicon='Glow.dmi'
+		pixel_x=-32
+		pixel_y=-32
+		desc="Allows you to highten or lower your energy level."
+		verb/Rank_Up_Magic_Limit_Over_Force()
+			set category="Utility"
+			set name="Rank Up Magic: Limit Over Force"
+			usr.SkillX("LimitOverForce",src)
+		verb/Give_The_Fourth_Fate()
+			set category="Utility"
+			usr.SkillX("GiveFourthFate",src)
 	Telekinesis
 		Cooldown=120
 		var/tmp/Choosing=0

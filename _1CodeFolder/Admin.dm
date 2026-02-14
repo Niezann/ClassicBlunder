@@ -909,6 +909,32 @@ mob/Admin2/verb
 	AdminKO(mob/A in world)
 		set category="Admin"
 		if(!A.KO)
+			if(A.passive_handler.Get("Our Future"))
+				A.OMessage(20,"[A] was just knocked out by ADMIN!","<font color=red>[A] was just knocked out by ADMIN!")
+				sleep(20)
+				usr<<"<b><font color='green'>...but [A] is no longer playing by your rules!</b></font color>"
+				A.OMessage(15,"<b><font color=[A.Text_Color]><font size=+1>...but [A] refuses to allow their story to end here!</b></font color></font size>","<font color=blue>[A]([A.key]) denies death.")
+				if(A.hasDeathEvolution())
+					var/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution/de = locate(/obj/Skills/Buffs/SlotlessBuffs/Death_Evolution, A);
+					if(locate(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution, A))
+						var/obj/Skills/Buffs/SlotlessBuffs/B = A.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/X_Evolution)
+						if(B.Using) B.Trigger(A,1)
+					A.RPModeSwitch()
+					usr<<"<b><font color='purple'>...and [A] never was to begin with.</b></font color>"
+					sleep(30)
+					world<<"<font color=red><b>When gathering souls become one, a new future will bring about a true Rebirth.</b></font>"
+					sleep(30)
+					world<<"<font color=red><b>[A] becomes the path its darkness advances upon.</b></font>"
+					sleep(30)
+					world<<"<font color=red><b>Shinka no Yami.</b></font>"
+					HealAllCutTax();
+					A.FullRestore();
+					sleep(30)
+					DeathEvolutionEffects()
+					Conscious();
+					world<<"<font color=red><b>Death-X-Evolution...</b></font>"
+					de.Trigger(src)
+				return
 			A.Unconscious(null,"ADMIN")
 			Log("Admin","<font color=red>[ExtractInfo(usr)] admin-KOed [ExtractInfo(A)].")
 

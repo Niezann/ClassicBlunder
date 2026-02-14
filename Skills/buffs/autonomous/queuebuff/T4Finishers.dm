@@ -23,6 +23,16 @@
 		StrMult=1.75
 		OffMult=1.25
 		TimerLimit=15
+	Promise_of_Tomorrow
+		passives = list("Relentlessness" = 1, "Fury" = 6, "Speed Force" = 2, "BuffMastery" = 3,\
+		                "StyleMastery" = 4, "Brutalize" = 4, "AsuraStrike" = 1,"TripleStrike" = 1, \
+		                "BlurringStrikes" = 3,  "TensionLock" = 1,"LifeGeneration" = 8,"ManaGeneration" = 8,"EnergyGeneration" = 8  )
+		SpdMult=2
+		StrMult=2
+		OffMult=2
+		TimerLimit=45
+		VaizardHealth=30
+		ActiveMessage="grasps their promised future!!!"
 	Jinzen_Enlightenment
 		IconLock='Mist Veil.dmi'
 		IconApart=1

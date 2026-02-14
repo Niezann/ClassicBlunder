@@ -3,6 +3,9 @@
 mob/proc/Controlz(mob/M)
 	if(src.Admin)
 		return "(<a href=?src=\ref[M];action=MasterControl>x</a href>)"
+mob/proc/Controlz2(mob/M)
+	if(src.Admin)
+		return "(<a href=?src=\ref[M];action=MasterControl>x</a href>)"
 
 var/Allow_OOC=1
 
