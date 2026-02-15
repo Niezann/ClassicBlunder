@@ -12,6 +12,7 @@ race
 		force = 1.75
 		offense = 1.25
 		defense = 1.25
+		anger = 2
 		regeneration = 2
 		recovery = 2
 		imagination = 2
@@ -43,5 +44,4 @@ race
 					passives["Blubber"] = 0.25
 				if("Poison")
 					skills = list(/obj/Skills/AutoHit/Dragon_Roar, /obj/Skills/AutoHit/Poison_Gas, /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Dragon_Rage/Melt_Down)
-			passives["Incomplete"] = 0.5
 			..()
