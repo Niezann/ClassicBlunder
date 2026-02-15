@@ -12,7 +12,7 @@ ascension
 						endurance=0.25
 						offense=0.5
 					if("Fire")
-						var/newpassives = list("SpiritHand" = 1, "AngerAdaptiveForce" = 0.25, "MeltyBlood" = 1)
+						var/newpassives = list("SpiritHand" = 0.5, "AngerAdaptiveForce" = 0.25, "MeltyBlood" = 1)
 						passives+= newpassives
 						strength= 0.5
 						force= 0.5
