@@ -81,7 +81,7 @@
 			if((HasSpiritHand() || spirithand)&&unarmed)
 				if(spirithand < GetSpiritHand())
 					spirithand = GetSpiritHand()
-				statDamage += GetStr(spirithand/4)
+				statDamage += GetStr(spirithand)
 			if((HasSpiritSword())&&sword)
 				statDamage += GetStr(GetSpiritSword())
 			if(HasHybridStrike())

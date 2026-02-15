@@ -10967,7 +10967,7 @@ NEW VARIABLES
 				NeedsHealth = 50
 				TooMuchHealth = 75
 				TextColor=rgb(95, 60, 95)
-				ActiveMessage="is consumed by a dragon's rage!!"
+				ActiveMessage="is consumed by a dragon's rage!"
 				OffMessage = "calms their draconic fury..."
 				adjust(mob/p)
 
@@ -10982,9 +10982,9 @@ NEW VARIABLES
 						var/asc = p.AscensionsAcquired
 						ElementalOffense = "Earth"
 						ElementalDefense = "Earth"
-						endAdd = 0.05 * asc
-						passives = list("DeathField" = asc+1, "PureReduction" = 0.25 + (0.25 * asc), "BlockChance" = 5 + ( 5 * asc ), "CriticalBlock" = 0.05 + (0.05 * asc) ,\
-										"CallousedHands" = 0.15 + (asc * 0.15), "Hardening" = 0.5 + (0.25 * asc), "LifeGeneration" = 0.5 * asc)
+						endAdd = 0.15 * asc
+						passives = list("PureReduction" = asc+1, "BlockChance" = (5*(asc+1)), "CriticalBlock" = (0.1*(asc+1)),\
+										"CallousedHands" = (0.15*(asc+1)), "Hardening" = 2 + (asc/2))
 					Trigger(mob/User, Override = FALSE)
 						if(!User.BuffOn(src))
 							adjust(User)
@@ -10995,18 +10995,17 @@ NEW VARIABLES
 					BurnAffected = 1
 					NeedsHealth = 50
 					TooMuchHealth = 75
-					ActiveMessage = "ignites themselves in a blaze of passion!!"
+					ActiveMessage = "ignites themselves in a blaze of passion!"
 					OffMessage = "calms their fiery passion..."
 					Cooldown = 120
 					adjust(mob/p)
 						if(altered) return
 						var/asc = p.AscensionsAcquired
-						AngerMult = 1.15 + (0.15 * asc)
+						strAdd = 0.15 * asc
 						ElementalOffense = "Fire"
 						ElementalDefense = "Fire"
-						passives = list("SpiritHand" = asc * 0.25, "Scorching" = 8 * asc,  "SoulFire" = asc * 0.75, "HybridStrike" = asc * 0.1, \
-										"Steady" = asc/2)
-						Intimidation = 1.25 + (0.25 * asc)
+						passives = list("Scorching" = (clamp(asc*0.5, 1, 3)) , "SoulFire" = asc, "HybridStrike" = asc/2, \
+										"Steady" = asc+1, "PureDamage" = asc+1)
 					Trigger(mob/User, Override = FALSE)
 						if(!User.BuffOn(src))
 							adjust(User)
@@ -11023,13 +11022,11 @@ NEW VARIABLES
 						if(altered) return
 						var/asc = p.AscensionsAcquired
 						spdAdd = 0.15 * asc
-						Shocking = 8 * asc
-						EnergySteal = 10 + (asc * 10)
 						ElementalOffense = "Wind"
 						ElementalDefense = "Wind"
-						passives = list("DoubleStrike" = asc/4, "Godspeed" = 1 + asc/1.5, \
-							"Pursuer" = 1 + asc/2, "Flicker" = 1+asc/2, "BlurringStrikes" = asc/4, "EnergySteal" = 5 * asc, \
-							"Shocking" = 8 * asc)
+						passives = list("DoubleStrike" = asc/2, "TripleStrike" = asc/3, \
+							"Pursuer" = 1 + (asc/2), "Flicker" = 1 + (asc/2), "EnergySteal" = asc*10, \
+							"Shocking" = (clamp(asc*0.5, 1, 3)))
 					Trigger(mob/User, Override = FALSE)
 						if(!User.BuffOn(src))
 							adjust(User)
