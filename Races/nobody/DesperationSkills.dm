@@ -1,4 +1,33 @@
 obj/Skills/AutoHit/Desperation
+	MagicHour
+		DamageMult=1
+		StrOffense=1
+		ForOffense=1
+		NeedsSword=1
+		Distance=10
+		WindupMessage="readies their Desperation Move...!"
+		FollowUp="/obj/Skills/Projectile/Zone_Attacks/MagicHourS" // this doesn't work for some reason. help
+		FollowUpDelay=0.5
+		Area="Target"
+		Icon='SweepingKick.dmi'
+		IconX=-32
+		IconY=-32
+		Cooldown=300
+		EnergyCost=15
+		Instinct=1
+		NeedsHealth=30
+		verb/MagicHour()
+			var/asc = usr.AscensionsAcquired
+			set category="Skills"
+			set name="Magic Hour"
+			if(usr.Health>=30)
+				usr << "You need to be under 30% HP to use your Desperation Move!"
+				return
+			DamageMult=1.25*(1+asc/2)
+			Cooldown=300-(10*(asc))
+			usr.Activate(src)
+
+
 	FatalEnding
 		NeedsSword=1
 		Distance=15
@@ -63,6 +92,32 @@ obj/Skills/AutoHit/Desperation
 			Cooldown=300-(10*(asc))
 			usr.UseProjectile(src)
 
+	MagicHourS
+		IconLock='Blast2.dmi'
+		Variation=4
+		Blasts=10
+		Speed = 0.5
+		Distance=20
+		HyperHoming=1
+		NeedsSword=1
+		Stunner=1.5
+		Deflectable = FALSE
+		DamageMult=1.25
+		ZoneAttackX=3
+		ZoneAttackY=3
+		FollowUp="/obj/Skills/Queue/Desperation/MagicFinale"
+		FollowUpDelay=0
+		Cooldown=300
+		EnergyCost=5
+		ActiveMessage="activates their Desperation Move, Magic Hour!"
+		adjust(mob/p)
+			if(!altered)
+				var/asc = usr.AscensionsAcquired
+				DamageMult=1.25*(1+asc/2)
+				Cooldown=300-(10*(asc))
+		verb/MagicHourS()
+			usr.UseProjectile(src)
+
 /obj/Skills/Queue/Desperation
 	LunarRave
 		name="Lunar Rave"
@@ -112,3 +167,28 @@ obj/Skills/AutoHit/Desperation
 			var/asc = usr.AscensionsAcquired
 			DamageMult=12*(1+asc/2)
 			usr.SetQueue(src)
+
+	MagicFinale
+		name="Magic Finale"
+		ActiveMessage="continues their assault!"
+		DamageMult=0.5
+		AccuracyMult = 1.25
+		KBMult=0.00001
+		KBAdd=2
+		Combo=12
+		Warp=50
+		Duration=5
+		Cooldown=-1 //once per fight
+		Decider=1
+		Instinct=4
+		EnergyCost=5
+		HitSparkIcon='Slash - Power.dmi'
+		HitSparkX=-32
+		HitSparkY=-32
+		HitSparkTurns=1
+		HitSparkSize=1.1
+		adjust(mob/p)
+			if(!altered)
+				var/asc = usr.AscensionsAcquired
+				DamageMult=0.5*(1+asc/2)
+				Cooldown=300-(10*(asc))

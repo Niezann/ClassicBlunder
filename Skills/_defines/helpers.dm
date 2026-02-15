@@ -13,7 +13,7 @@
         s:Activate(src)
 
 /mob/proc/findOrAddSkill(path) // find it, regardless
-    var/obj/Skills/s = null 
+    var/obj/Skills/s = null
     if(ispath(path) || istext(path))
         s = FindSkill(path)
         if(istext(path))
@@ -34,7 +34,7 @@
     var/obj/Skills/s = findOrAddSkill(path)
     s.adjust(src)
     throwSkill(s)
-    
+
 /mob/proc/cycleStackingBuffs(var/obj/Skills/S)
     if(istype(AttackQueue, /obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Samsara) || istype(AttackQueue?:type, /obj/Skills/Queue/Finisher/Cycle_of_Samsara))
         AttackQueue.Mastery++
@@ -76,7 +76,7 @@ mob/proc/UsingHotnCold()
 	if(!BuffOn(s))
 		s.adjust(src, limit, _icon) // regardless adjust it, no need to make it new, just add or find it
 		s.Trigger(src, TRUE)
-	
+
 	// this could be better i think?
 
 
