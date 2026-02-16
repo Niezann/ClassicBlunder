@@ -29,7 +29,7 @@ race
 				user.AddSkill(new /obj/Skills/Queue/Desperation/LunarRave)
 				passives = list("LunarDurability" = 1, "LunarWrath" = 1,"RenameMana" = "WRATH","LunarAnger"=1)
 			if(user.Class=="Imaginary")
-				user.AddSkill(new /obj/Skills/AutoHit/Desperation/MagicHour)
+				user.AddSkill(new /obj/Skills/Projectile/Zone_Attacks/Desperation/MagicHour)
 				user.ImaginaryKeyblade()
 			..()
 /mob/proc/ImaginaryKeyblade()

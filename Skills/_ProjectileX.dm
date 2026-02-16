@@ -154,6 +154,17 @@ obj
 				BusterSize//if the charge is max, this size is used instead
 				BusterStream//if the charge is max, this stream is used instead
 
+				ProjAuraOnCast
+				ProjAuraRed=0
+				ProjAuraBlue=0
+				ProjAuraGreen=0
+				ProjAuraX
+				ProjAuraY
+				ProjAuraZ
+				ProjAuraSize
+				ProjAuraUnder=0
+				ProjAuraTime=5
+
 				//these are used if theyre initialized
 				TempDamage
 				TempHits

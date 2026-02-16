@@ -1,33 +1,4 @@
 obj/Skills/AutoHit/Desperation
-	MagicHour
-		DamageMult=1
-		StrOffense=1
-		ForOffense=1
-		NeedsSword=1
-		Distance=10
-		WindupMessage="readies their Desperation Move...!"
-		FollowUp="/obj/Skills/Projectile/Zone_Attacks/MagicHourS" // this doesn't work for some reason. help
-		FollowUpDelay=0.5
-		Area="Target"
-		Icon='SweepingKick.dmi'
-		IconX=-32
-		IconY=-32
-		Cooldown=300
-		EnergyCost=15
-		Instinct=1
-		NeedsHealth=30
-		verb/MagicHour()
-			var/asc = usr.AscensionsAcquired
-			set category="Skills"
-			set name="Magic Hour"
-			if(usr.Health>=30)
-				usr << "You need to be under 30% HP to use your Desperation Move!"
-				return
-			DamageMult=1.25*(1+asc/2)
-			Cooldown=300-(10*(asc))
-			usr.Activate(src)
-
-
 	FatalEnding
 		NeedsSword=1
 		Distance=15
@@ -92,21 +63,28 @@ obj/Skills/AutoHit/Desperation
 			Cooldown=300-(10*(asc))
 			usr.UseProjectile(src)
 
-	MagicHourS
+	MagicHour
 		IconLock='Blast2.dmi'
 		Variation=4
-		Blasts=10
+		Blasts=20
 		Speed = 0.5
 		Distance=20
 		HyperHoming=1
+		Homing=3
 		NeedsSword=1
 		Stunner=1.5
+		ProjAuraOnCast='SweepingKick.dmi'
+		ProjAuraUnder=1
+		ProjAuraSize=1
+		ProjAuraX=-32
+		ProjAuraY=-32
+		ProjAuraTime=10
 		Deflectable = FALSE
 		DamageMult=1.25
 		ZoneAttackX=3
 		ZoneAttackY=3
 		FollowUp="/obj/Skills/Queue/Desperation/MagicFinale"
-		FollowUpDelay=0
+		FollowUpDelay=-1
 		Cooldown=300
 		EnergyCost=5
 		ActiveMessage="activates their Desperation Move, Magic Hour!"
@@ -115,8 +93,15 @@ obj/Skills/AutoHit/Desperation
 				var/asc = usr.AscensionsAcquired
 				DamageMult=1.25*(1+asc/2)
 				Cooldown=300-(10*(asc))
-		verb/MagicHourS()
+		verb/MagicHour()
+			set category="Skills"
+			if(usr.Health>=30)
+				usr << "You need to be under 30% HP to use your Desperation Move!"
+				return
+			spawn()LeaveImage(User=usr, Image='SweepingKick.dmi', PX=usr.pixel_x+ProjAuraX, PY=usr.pixel_y+ProjAuraY, PZ=usr.pixel_z+ProjAuraZ, Size=ProjAuraSize, Under=ProjAuraUnder, Time=(max(1,ProjAuraTime)), AltLoc=0)
 			usr.UseProjectile(src)
+
+
 
 /obj/Skills/Queue/Desperation
 	LunarRave
