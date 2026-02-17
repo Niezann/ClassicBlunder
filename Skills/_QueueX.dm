@@ -1,6 +1,7 @@
 obj
 	Skills
 		Queue//Queued skills like GET DUNKED and Axekick.
+			canBeShortcut=1;
 			var/Duration=5//This is how long the queue remains up for.
 			var/UnarmedOnly=0//Can't use this with a sword.
 			//var/ClassNeeded//Requires a sword class.
@@ -168,6 +169,7 @@ obj
 
 ////General
 			Finisher
+				canBeShortcut=0;
 				Duration=5
 				Instinct=4
 				DamageMult=1

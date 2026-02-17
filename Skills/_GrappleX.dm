@@ -1,4 +1,5 @@
 obj/Skills/Grapple
+	canBeShortcut = 1;
 	var
 		removeAfter = FALSE
 

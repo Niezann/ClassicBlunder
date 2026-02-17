@@ -735,6 +735,7 @@
 #include "Skills\queues\skill tree\T2SkillTreeQueues.dm"
 #include "Skills\queues\skill tree\T3SkillTreeQueues.dm"
 #include "Skills\queues\skill tree\T4SkillTreeQueues.dm"
+#include "Skills\shortcut\SkillShortcut.dm"
 #include "Skills\sorted\newT3s\samsara.dm"
 #include "Skills\sorted\T5\armed.dm"
 #include "Skills\sorted\T5\magic.dm"

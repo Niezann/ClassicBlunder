@@ -4,6 +4,7 @@ obj
 	Skills
 		var/NewCost // we will do this the hard way.
 		var/NewCopyable // sigh
+		canBeShortcut=1;
 		Projectile
 			proc
 				EdgeOfMapProjectile()

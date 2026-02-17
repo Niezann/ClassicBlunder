@@ -446,6 +446,8 @@ mob/Players
 			MakyoFade()
 		if(isRace(MAKYO)&&!StarPowered&&starActive)
 			MakyoTrigger()
+		
+		initShortcuts();
 		return
 	Logout()
 		players -= src

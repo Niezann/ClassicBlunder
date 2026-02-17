@@ -28,6 +28,7 @@ obj
 					return FALSE
 				var/aaa = p.Activate(src)
 				return aaa
+			canBeShortcut=1;
 			Distance=1//Unless otherwise stated, assume it's a one tile attack of varying style.
 			var/DistanceAround //this is only used for AroundTarget type techs.
 			var
