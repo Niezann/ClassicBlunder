@@ -17,21 +17,49 @@ race
 		classes = list("Samurai", "Dragon", "Berserker","Imaginary")
 		stats_per_class = list("Samurai" = list(1.75, 1, 1, 1.75, 1.5, 1.5),"Dragon" = list(1,2,1.75,1.5,1.5,1),"Berserker" = list(1.5,1.5,2,1,1,1),"Imaginary" = list(1.5, 1.5, 1, 1.25, 1.25, 1.25))
 		onFinalization(mob/user)
+			if(!islist(user.race.transformations))
+				user.race.transformations = list()
+
+			user.race.transformations.Cut()
 			if(user.Class=="Samurai")
 				passives = list("BlurringStrikes" = 1, "SwordAscension" = 1, "SwordAscensionSecond" = 1, "SwordAscensionThird" = 1, "Flicker"=1)
 				user.AddSkill(new /obj/Skills/Buffs/ActiveBuffs/Racial/Void_Blade)
 				user.AddSkill(new /obj/Skills/AutoHit/Desperation/FatalEnding)
+				user.NobodyOrigin()
 			if(user.Class=="Dragon")
 				passives = list("MovingCharge" = 1, "QuickCast" = 1)
 				user.AddSkill(new /obj/Skills/Projectile/Zone_Attacks/Desperation/UltimaLasers)
+				user.NobodyOrigin()
 			if(user.Class=="Berserker")
 				user.ManaAmount=0
 				user.AddSkill(new /obj/Skills/Queue/Desperation/LunarRave)
 				passives = list("LunarDurability" = 1, "LunarWrath" = 1,"RenameMana" = "WRATH","LunarAnger"=1)
+				user.NobodyOrigin()
 			if(user.Class=="Imaginary")
 				user.AddSkill(new /obj/Skills/Projectile/Zone_Attacks/Desperation/MagicHour)
 				user.ImaginaryKeyblade()
+				user.NobodyOrigin()
 			..()
+/mob/proc/NobodyOrigin()
+	var/list/Choices=list("Prideful Heart", "Spirited Heart", "Simple and Clean")
+	var/choice
+	var/confirm
+	while(confirm!="Yes")
+		choice=input(src, "Nobodies are born from those with a powerful Heart passing away. To whom did it belong?", "Nobody Origin") in Choices
+		switch(choice)
+			if("Prideful Heart")
+				confirm=alert(src, "Of a Saiyan, in spite of your lack of emotions, your body still resonates with your originator's Pride.", "You may, too, be able to call upon the legend...", "Yes", "No")
+			if("Spirited Heart")
+				confirm=alert(src, "Of a Human, in spite of your lack of emotions, your body remains driven with hands able to reach the heavens.", "You may, too, be able to raise your battle tension in dire straits...", "Yes", "No")
+			if("Simple and Clean")
+				confirm=alert(src, "You do not know, and it does not matter. Frivolous things such as Pride or Spirit do not matter to a Nobody.", "Simplicity will lead to a stronger base.", "Yes", "No")
+	switch(choice)
+		if("Prideful Heart")
+			src.NobodyOriginType="Pride"
+		if("Spirited Heart")
+			src.NobodyOriginType="Spirit"
+		if("Simple and Clean")
+			src.NobodyOriginType="Simple"
 /mob/proc/ImaginaryKeyblade()
 	var/list/Choices=list("A Sword of Courage", "A Staff of Spirit", "A Shield of Kindness")
 	var/choice
