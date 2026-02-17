@@ -31,9 +31,9 @@ obj/Skills/AutoHit/Desperation
 /obj/Skills/Projectile/Zone_Attacks/Desperation
 	UltimaLasers
 		EnergyCost=20
-		Speed = 0.25
+		Speed = 0.10
 		Distance=20
-		Blasts=30
+		Blasts=50
 		Charge=1
 		DamageMult=0.8
 		ComboMaster=1
@@ -59,7 +59,7 @@ obj/Skills/AutoHit/Desperation
 			if(usr.Health>=30)
 				usr << "You need to be under 30% HP to use your Desperation Move!"
 				return
-			DamageMult=0.8*(1+asc/2)
+			DamageMult=0.5*(1+asc/2)
 			Cooldown=300-(10*(asc))
 			usr.UseProjectile(src)
 

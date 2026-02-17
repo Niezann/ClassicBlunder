@@ -3,7 +3,13 @@ ascension
 		one
 			unlock_potential = ASCENSION_ONE_POTENTIAL
 			onAscension(mob/owner)
+				var/type = owner.NobodyOriginType
 				if(!applied)
+					switch(type)
+						if("Pride")
+							owner.race.transformations.Add(new/transformation/nobody/void_super_saiyan())
+						if("Spirit")
+							owner.race.transformations.Add(new/transformation/nobody/void_high_tension())
 					switch(owner.Class)
 						if("Samurai")
 							speed=0.5

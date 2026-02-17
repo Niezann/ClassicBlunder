@@ -78,6 +78,7 @@ mob/var
 	KeychainAttached
 	SyncAttached
 	LimitCounter=0//Add one each form use; used to determine when antiform happens.
+	NobodyOriginType //Used for Nobodies only
 	//REBIRTH
 	RebirthHeroType
 	RebirthHeroPath
