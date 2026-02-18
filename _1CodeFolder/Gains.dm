@@ -202,7 +202,7 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 							src << "One or more of your skills will be made available to you again when you stop meditating."
 				if(s.Cooldown<0 && s.Using)
 					src << "One or more of your skills will be made available to you again when you stop meditating."
-				for(var/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Monkey_Gourd/mg in src)
+				for(var/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Monkey_Gourd/mg in src)
 					mg.monkeyUsed = 0
 					src << "You have refilled your gourd."
 				break

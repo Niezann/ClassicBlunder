@@ -688,15 +688,15 @@ mob/Players/verb
 		set name="Reset Multipliers"
 		if(!(world.time > usr.verb_delay)) return
 		is_dashing = 0
-		if(isRace(BEASTMAN) && race?:Racial == "Feather Knife")
+		if(isRace(BEASTKIN) && race?:Racial == "Feather Knife")
 			passive_handler.passives["Secret Knives"] = "Feathers"
-		if(isRace(BEASTMAN) && race?:Racial == "Fox Fire")
+		if(isRace(BEASTKIN) && race?:Racial == "Fox Fire")
 			passive_handler.passives["Heavy Strike"] = "Fox Fire"
-		if(isRace(BEASTMAN) && race?:Racial == "Monkey King")
-			var/obj/Skills/Buffs/s = findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Never_Fall/)
+		if(isRace(BEASTKIN) && race?:Racial == "Monkey King")
+			var/obj/Skills/Buffs/s = findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Never_Fall/)
 			if(!s.Using)
 				s.Trigger(src, TRUE)
-		if(isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman")
+		if(isRace(BEASTKIN) && race?:Racial == "Heart of The Beastkin")
 			passive_handler.Set("Grit", 1)
 
 		usr.verb_delay=world.time+1

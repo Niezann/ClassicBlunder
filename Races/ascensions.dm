@@ -1,11 +1,29 @@
 
 
-#define ASCENSION_ONE_POTENTIAL 15
-#define ASCENSION_TWO_POTENTIAL 25
-#define ASCENSION_THREE_POTENTIAL 50
-#define ASCENSION_FOUR_POTENTIAL 75
-#define ASCENSION_FIVE_POTENTIAL 90
-#define ASCENSION_SIX_POTENTIAL 120
+//changed these to line up with ~10 potential after intended SSj Levels (recorded in saiyan/transformations.dm and below)
+#define ASCENSION_ONE_POTENTIAL 15 //Sub-SSj Level
+#define ASCENSION_TWO_POTENTIAL 30 //SSj1
+#define ASCENSION_THREE_POTENTIAL 40 //SSj2
+
+//This is kind of gonna be a lull period for Ascension races. Tough beans...
+
+#define ASCENSION_FOUR_POTENTIAL 60 //Balanced against SSjG / Golden Oozaru; we're skipping SSj3 specific tier
+#define ASCENSION_FIVE_POTENTIAL 75 //SSj4; ascension races catch up a bit quicker on this trans level because they had a slog for the previous ascension
+#define ASCENSION_SIX_POTENTIAL 90 //SSjG - Blue Evolved; and we're back to typical ascension race progression
+
+//If you want an ascension race to go beyond asc 6 or match SSj4LB, you're going to have to commit a bit of "Plot"
+
+/*word of Jesse on intended Potentials for SSj unlocks (distinct from auto unlocks!!) - as of 2026.02.08
+SSj1 - ~20
+SSj2 - ~35
+SSj3 - ~45
+SSjG / Golden Oozaru - ~60
+SSj4 / SSjB - ~70
+SSj4LB / BE - ~80
+These are idealized values and if your app is denied when the wipe is around the desired potential range, it does not mean the admin team hates you
+*/
+
+
 
 ascension
 	Read(F)

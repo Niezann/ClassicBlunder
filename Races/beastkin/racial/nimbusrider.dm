@@ -1,4 +1,4 @@
-/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman
+/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin
 	Nimbus_Rider
 		BuffName="Nimbus Rider"
 		IconLock='Flying Nimbus.dmi'

@@ -52,7 +52,7 @@ update
 		version = 2
 		updateMob(mob/p)
 			. = ..()
-			if(p.isRace(BEASTMAN))
+			if(p.isRace(BEASTKIN))
 				switch(p.race?:Racial)
 					if("Unseen Predator")
 						p.passive_handler.passives["Heavy Strike"] = "Unseen Predator"
@@ -81,7 +81,7 @@ update
 		version = 4
 		updateMob(mob/p)
 			. = ..()
-			if(p.isRace(BEASTMAN))
+			if(p.isRace(BEASTKIN))
 				switch(p.race?:Racial)
 					if("Unseen Predator")
 						p.passive_handler.passives["Heavy Strike"] = "Unseen Predator"
@@ -329,7 +329,7 @@ update
 		version = 18
 		updateMob(mob/o)
 			. = ..()
-			if(o.isRace(BEASTMAN))
+			if(o.isRace(BEASTKIN))
 				o.AngerMax+=0.15
 				if(o.Class=="Undying Rage")
 					o.AngerMax+=0.4
@@ -438,7 +438,7 @@ update
 		version = 24
 		updateMob(mob/o)
 			. = ..()
-			if(o.isRace(BEASTMAN))
+			if(o.isRace(BEASTKIN))
 				if(o.Class=="Monkey King" && o.AscensionsAcquired == 2)
 					o.passive_handler.Set("Hardening", 2)
 					o.passive_handler.Set("HybridStrike", 2)
@@ -505,7 +505,7 @@ update
 		version = 29
 		updateMob(mob/o)
 			.=..()
-			if(o.isRace(BEASTMAN))
+			if(o.isRace(BEASTKIN))
 				if(o.Class=="Fox Fire" && o.AscensionsAcquired == 2)
 					o.passive_handler.Set("SoulFire", 2)
 					o.passive_handler.Set("Soulfire", 0)
@@ -516,47 +516,47 @@ update
 		version = 30
 		updateMob(mob/o)
 			.=..()
-			if(o.isRace(BEASTMAN))
-				if(o.Class=="Heart of The Beastman" && o.AscensionsAcquired == 3)
+			if(o.isRace(BEASTKIN))
+				if(o.Class=="Heart of The Beastkin" && o.AscensionsAcquired == 3)
 					o.passive_handler.Set("Steady", 1)
 					o.passive_handler.Set("DoubleStrike",1)
 					o.passive_handler.Set("Hardening",3)
 					o.passive_handler.Set("CallousedHands",0.4)
 					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
-				else if(o.Class=="Heart of The Beastman" && o.AscensionsAcquired == 2)
+				else if(o.Class=="Heart of The Beastkin" && o.AscensionsAcquired == 2)
 					o.passive_handler.Set("Steady", 1)
 					o.passive_handler.Set("DoubleStrike",1)
 					o.passive_handler.Set("Hardening",2)
 					o.passive_handler.Set("CallousedHands",0.3)
 					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
-				else if(o.Class=="Heart of The Beastman" && o.AscensionsAcquired == 1)
+				else if(o.Class=="Heart of The Beastkin" && o.AscensionsAcquired == 1)
 					o.passive_handler.Set("Steady", 1)
 					o.passive_handler.Set("DoubleStrike",1)
 					o.passive_handler.Set("Hardening",1)
 					o.passive_handler.Set("CallousedHands",0.2)
 					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
-				else if(o.Class=="Heart of The Beastman" && o.AscensionsAcquired == 0)
+				else if(o.Class=="Heart of The Beastkin" && o.AscensionsAcquired == 0)
 					o.passive_handler.Set("Steady", 1)
 					o.passive_handler.Set("DoubleStrike",1)
 					o.passive_handler.Set("CallousedHands",0.1)
 					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
 				if(o.Class=="Monkey King")
-					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Monkey_Gourd)
+					o.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Monkey_Gourd)
 
 	version31
 		version = 31
 		updateMob(mob/o)
 			.=..()
-			if(o.isRace(BEASTMAN) && o.Class!="Undying Rage" && o.AscensionsAcquired == 3)
+			if(o.isRace(BEASTKIN) && o.Class!="Undying Rage" && o.AscensionsAcquired == 3)
 				o.AngerMax+=0.4
 
 	version32
 		version = 32
 		updateMob(mob/o)
 			.=..()
-			if(o.isRace(BEASTMAN) && o.Class!="Undying Rage" && o.AscensionsAcquired == 3 && o.AngerMax<2.05)
+			if(o.isRace(BEASTKIN) && o.Class!="Undying Rage" && o.AscensionsAcquired == 3 && o.AngerMax<2.05)
 				o.AngerMax=2.05
-			if(o.isRace(BEASTMAN) && o.Class=="Undying Rage" && o.AscensionsAcquired == 3 && o.AngerMax<2.5)
+			if(o.isRace(BEASTKIN) && o.Class=="Undying Rage" && o.AscensionsAcquired == 3 && o.AngerMax<2.5)
 				o.AngerMax=2.5
 			for(var/transformation/KMS in o.race.transformations)
 				o.Revert()

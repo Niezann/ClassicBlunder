@@ -1,7 +1,7 @@
 #define Swordsmanship list("Hiten Mitsurugi-Ryuu","Unlimited Blade Works", "Weapon Soul")
 #define SECRETS list("Spirits of The World","Jagan", "Hamon of the Sun", "Werewolf", "Vampire", "Sage Arts", "Haki", "Eldritch", "Heavenly Restriction")
 #define SAGAS list("Ansatsuken","Eight Gates","Cosmo","Spiral","Hero","Hiten Mitsurugi-Ryuu","Kamui","Keyblade","King of Braves","Sharingan","Weapon Soul", "Unlimited Blade Works")
-#define RACES list("Android", "Human", "Beastman", "Changeling", "Demon", "Dragon", "Eldritch","Chakardi","Half_Saiyan", "High_Faoroan","Majin","Makyo","Namekian","Saiyan","Shinjin","Yokai","Celestial","Makaioshin")
+#define RACES list("Android", "Human", "Beastkin", "Changeling", "Demon", "Dragon", "Eldritch","Chakardi","Half_Saiyan", "High_Faoroan","Majin","Makyo","Namekian","Saiyan","Shinjin","Yokai","Celestial","Makaioshin")
 
 mob
 	proc
@@ -742,7 +742,7 @@ mob
 			if(Secret == "Vampire")
 				var/secretLevel = getSecretLevel()
 				Return += 1 + (secretLevel / 4) * (1 + (secretDatum.secretVariable["BloodPower"] * 0.25))
-			if(src.isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman" && src.VaizardHealth>0)
+			if(src.isRace(BEASTKIN) && race?:Racial == "Heart of The Beastkin" && src.VaizardHealth>0)
 				Return += 2
 			if(src.passive_handler.Get("Determination(Yellow)")||src.passive_handler.Get("Determination(White)"))
 				Return += round(ManaAmount/25, 1)
@@ -768,7 +768,7 @@ mob
 			if(Target)
 				if(passive_handler.Get("HellRisen")  && isDominating(Target))
 					Return += clamp((passive_handler.Get("HellRisen")*2), 1, 2)
-			if(src.isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman" && src.VaizardHealth>0)
+			if(src.isRace(BEASTKIN) && race?:Racial == "Heart of The Beastkin" && src.VaizardHealth>0)
 				Return += 5
 			return Return
 		HasDeathField()
@@ -776,7 +776,7 @@ mob
 				return 1
 			if(src.KamuiBuffLock)
 				return 1
-			if(src.isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman" && src.VaizardHealth>0)
+			if(src.isRace(BEASTKIN) && race?:Racial == "Heart of The Beastkin" && src.VaizardHealth>0)
 				return 1
 			if(passive_handler.Get("Determination(Green)")||passive_handler.Get("Determination(White)"))
 				return 1
@@ -786,7 +786,7 @@ mob
 			var/GreenVal=0
 			if(passive_handler.Get("Determination(Green)")||passive_handler.Get("Determination(White)"))
 				GreenVal=round(ManaAmount/20,1)
-			if(src.isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman" && src.VaizardHealth>0)
+			if(src.isRace(BEASTKIN) && race?:Racial == "Heart of The Beast" && src.VaizardHealth>0)
 				HeartVal += 5
 			. = passive_handler.Get("DeathField")+(src.KamuiBuffLock*5)+HeartVal + GreenVal
 			if(src.isLunaticMode())
@@ -796,12 +796,12 @@ mob
 				return 1
 			if(src.CheckSlotless("Drunken Mastery") && src.Drunk)
 				return 1
-			if(src.isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman" && src.VaizardHealth>0)
+			if(src.isRace(BEASTKIN) && race?:Racial == "Heart of The Beastkin" && src.VaizardHealth>0)
 				return 1
 			return 0
 		GetVoidField()
 			var/Extra=0
-			if(src.isRace(BEASTMAN) && race?:Racial == "Heart of The Beastman" && src.VaizardHealth>0)
+			if(src.isRace(BEASTKIN) && race?:Racial == "Heart of The Beastkin" && src.VaizardHealth>0)
 				Extra += 5
 
 			if(src.CheckSlotless("Drunken Mastery") && src.Drunk)
@@ -2324,15 +2324,6 @@ mob
 					return ta
 			else
 				return 0
-		HasSteady()
-			if(passive_handler.Get("Steady"))
-				return 1
-			if(passive_handler.Get("Zornhau"))
-				return 1
-			return 0
-		GetSteady()
-			var/total = passive_handler.Get("Steady") * (glob.STEADY_MODIFIER)
-			return total
 		HasErosion()
 			if(passive_handler.Get("Erosion"))
 				return 1
@@ -2810,11 +2801,11 @@ mob
 				return 0
 			return 1
 		SteadyRace()
-			if(src.race.type in list(HUMAN, MAJIN, MAKYO, NAMEKIAN, BEASTMAN, YOKAI, ELDRITCH, ELF, DEMON, DRAGON, MAKAIOSHIN))
+			if(src.race.type in list(MAJIN, MAKYO, NAMEKIAN, BEASTKIN, YOKAI, ELDRITCH, ELF, DRAGON, MAKAIOSHIN))
 				return 1
 			return 0
 		TransRace()
-			if(isRace(SAIYAN))
+			if(isRace(HUMAN, SAIYAN, DEMON))
 				return 1
 			return 0
 		OtherRace()

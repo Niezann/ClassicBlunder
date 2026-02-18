@@ -1,9 +1,9 @@
 
 
 race
-	beastman
-		name = "Beastman"
-		desc = "Not to be confused with Saiyans."
+	beastkin
+		name = "Beastkin"
+		desc = "A loose collection of ex-humans, united only in that they were mutated from the remnants of the Lost Artifacts of the Rift."
 		visual = 'Monstrous.png'
 		strength = 1.25
 		endurance = 1.25
@@ -13,17 +13,16 @@ race
 		speed = 1.25
 		regeneration = 1.5
 		intellect = 0.5
-		recovery = 2
-		classes = list("Heart of The Beastman", "Monkey King", "Unseen Predator", "Undying Rage", \
+		classes = list("Heart of The Beastkin", "Monkey King", "Unseen Predator", "Undying Rage", \
 						"Feather Cowl", "Feather Knife", "Spirit Walker", "Trickster", \
 						"Fox Fire")
 		class_info = list("SETT", "WUKONG", "RENGAR", "TRYNDAMERE", "RAKAN", "XAYAH", "UDYR", "NIDALEE", "???", "AHRI")
 		// attaching this here cause lol
-		stats_per_class = list("Heart of The Beastman" = list(1.25, 1.5, 1, 1.25, 1, 1.5), "Monkey King" = list(1.25,1.25,1.25,1.25,1.25,1.25),\
-						"Unseen Predator" = list(1.5, 1, 1, 1.5, 1, 1.5), "Undying Rage" = list(1.5, 1, 1, 1, 1, 2), \
-						"Feather Cowl" = list(0.75, 2, 0.75, 1, 2, 1), "Feather Knife" = list(1.5, 0.75, 1, 1.5, 1, 1.75), \
-						"Spirit Walker" = list(1, 1, 1.5, 1.5, 1.5, 1), "Shapeshifter" = list(1,1,1,1,1,1), \
-						"Trickster" = list(1, 1, 2, 1, 1.5, 1), "Fox Fire" = list(1.5, 1, 2, 1.5, 0.75, 0.75 ))
+		stats_per_class = list("Heart of The Beastkin" = list(1.25, 2, 0.75, 1, 1, 1.5), "Monkey King" = list(1.25,1.25,1.25,1.25,1.25,1.25),\
+						"Unseen Predator" = list(1.75, 0.75, 1, 1.75, 0.75, 1.5), "Undying Rage" = list(1.75, 0.75, 1.75, 1, 0.75, 1.5), \
+						"Feather Cowl" = list(0.75, 2, 0.75, 1.25, 1.5, 1.25), "Feather Knife" = list(1.5, 0.75, 1, 1.75, 0.75, 1.75), \
+						"Spirit Walker" = list(1, 1.5, 1, 0.75, 0.75, 1), "Shapeshifter" = list(1.25,0.5,1.25,2,1,1.5), \
+						"Trickster" = list(1, 1, 2, 1, 1.5, 1), "Fox Fire" = list(0.75, 1, 2, 1.5, 1.5, 0.75 ))
 		imagination = 1
 		var/MaxGrit = 0
 		var/Grit = 0
@@ -37,35 +36,38 @@ race
 
 		proc/GiveRacial(mob/p)
 			switch(Racial)
-				if("Heart of The Beastman")
-					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/The_Grit)
+				if("Heart of The Beastkin")
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/The_Grit)
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
 					p.passive_handler.Set("Grit", 1)
+
 					p.passive_handler.Set("Steady", 1)
 					p.passive_handler.Set("DoubleStrike",1)
-					p.passive_handler.Set("CallousedHands",0.1)
+					//Unarmed Iaido passive, actually
 				if("Monkey King")
+					p.passive_handler.Increase("Nimbus", 1)
+					var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Never_Fall/nf = new(p)
+					p.AddSkill(nf)
+
 					p.passive_handler.Increase("Hardening", 1)
 					p.passive_handler.Increase("Instinct", 1)
-					p.passive_handler.Increase("Nimbus", 1)
-					var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Never_Fall/nf = new(p)
-					p.AddSkill(nf)
+					
 				if("Unseen Predator")
 					p.passive_handler.passives["Heavy Strike"] = "Unseen Predator"
-					p.AddSkill(new/obj/Skills/Queue/Racial/Beastman/Savagery)
+					p.AddSkill(new/obj/Skills/Queue/Racial/Beastkin/Savagery)
 				if("Undying Rage")
 					p.passive_handler.Increase("Fury", 1)
 					p.passive_handler.Increase("Wrathful Tenacity", 0.15)
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Undying_Rage)
 
 				if("Feather Cowl")
-					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Feather_Cowl)
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Feather_Cowl)
 					p.passive_handler.Increase("Hardening", 1)
 					p.passive_handler.Increase("Pressure", 1)
 					p.passive_handler.Increase("BladeFisting", 1)
 
 				if("Feather Knife")
-					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Clean_Cuts)
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Clean_Cuts)
 					p.passive_handler.passives["Secret Knives"] = "Feathers"
 					p.passive_handler.Increase("Tossing", 1)
 					p.passive_handler.Increase("Momentum", 1)
@@ -73,13 +75,13 @@ race
 
 
 				if("Spirit Walker")
-					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Spirit_Walker/Pheonix_Form)
-					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Spirit_Walker/Ram_Form)
-					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Spirit_Walker/Bear_Form)
-					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Spirit_Walker/Turtle_Form)
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Spirit_Walker/Pheonix_Form)
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Spirit_Walker/Ram_Form)
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Spirit_Walker/Bear_Form)
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Spirit_Walker/Turtle_Form)
 
 				if("Shapeshifter")
-					var/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Shapeshift/s = new()
+					var/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Shapeshift/s = new()
 					p.AddSkill(s)
 					s.init(p)
 					// set up the shapeshift buff

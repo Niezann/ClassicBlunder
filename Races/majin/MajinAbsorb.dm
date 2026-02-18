@@ -140,7 +140,7 @@ proc/removeDuplicates(list/list1)
 
 /mob/proc/getAllRacials()
     . = list()
-    for(var/x in list("Majin", "Half Saiyan", "Saiyan", "Human", "Makyo", "Namekian", "Monster", "Shinjin", "Demon", "Celestial", "Angel", "Makaioshin", "Popo", "Beastman", "Yokai", "Eldritch", "Dragon"))
+    for(var/x in list("Majin", "Half Saiyan", "Saiyan", "Human", "Makyo", "Namekian", "Monster", "Shinjin", "Demon", "Celestial", "Angel", "Makaioshin", "Popo", "Beastkin", "Yokai", "Eldritch", "Dragon"))
         . += getRacialPassives(x)
     return .
 
@@ -202,8 +202,8 @@ proc/removeDuplicates(list/list1)
                 . += "Pursuer"
                 . += "Tenacity"
                 . += "TechniqueMastery"
-        if(BEASTMAN)
-            if(Class=="Heart of The Beastman")
+        if(BEASTKIN)
+            if(Class=="Heart of The Beastkin")
                 . += "Grit"
             if(Class=="Unseen Predator")
                 . += "Steady"

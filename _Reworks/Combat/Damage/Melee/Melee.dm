@@ -201,11 +201,11 @@
 				msg = replacetext(msg, "target_name", "[src.Target]")
 				src.OMessage(10,"[msg]","<font color=red>[src]([src.key]) rides the Nimbus.")
 				last_nimbus = world.time
-				if(!locate(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider, src)) // TODO maybe change this so its better
-					AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider)
-				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider/nr in src)
+				if(!locate(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Nimbus_Rider, src)) // TODO maybe change this so its better
+					AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Nimbus_Rider)
+				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Nimbus_Rider/nr in src)
 					if(!nr.Using)
-						nr.passives = /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider::passives
+						nr.passives = /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Nimbus_Rider::passives
 						nr.Trigger(src)
 				// TODO: make hud later if we feel like it chat
 	if(warpingStrike)
@@ -336,8 +336,8 @@
 				damage *= damageMultiplier
 		// 				GIANT FORM 				//
 				if(enemy.HasGiantForm())
-					var/modifier = glob.upper_damage_roll / 6
-					dmgRoll = GetDamageMod(0, -modifier)
+					var/modifier = glob.max_damage_roll / 6
+					dmgRoll = clamp(dmgRoll - modifier, glob.min_damage_roll, glob.max_damage_roll);
 					#if DEBUG_MELEE
 					log2text("Damageroll", "After GiantForm", "damageDebugs.txt", "[ckey]/[name]")
 					log2text("Damageroll", dmgRoll, "damageDebugs.txt", "[ckey]/[name]")
@@ -865,12 +865,7 @@
 							if(GetAttracting())
 								enemy.AddAttracting(GetAttracting(), src)
 								// 		OTHER DMG START 		//
-						//	var/otherDmg = (damage+(GetIntimidation()/100)*(1+(2*(GetMaouKi())+(HasNullTarget()&&!HasMaouKi() ? GetGodKi() : 0))))
 							var/otherDmg = (damage+(GetIntimidation()/100)*(1+(2*(HasNullTarget() ? GetGodKi() : 0))))
-
-
-							// if(UsingZornhau()&&HasSword())
-							// 	otherDmg *= 1 + (UsingZornhau()*glob.ZORNHAU_MULT)
 
 							if(UsingKendo()&&HasSword()&&CountStyles(2))
 								if(s.Class == "Wooden")

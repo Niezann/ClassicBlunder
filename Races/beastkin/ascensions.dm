@@ -1,5 +1,5 @@
 ascension
-	beastman
+	beastkin
 		one
 			unlock_potential = ASCENSION_ONE_POTENTIAL
 			anger = 0.05
@@ -7,7 +7,7 @@ ascension
 				if(!applied)
 					var/choice = owner.race?:Racial
 					switch(choice)
-						if("Heart of The Beastman")
+						if("Heart of The Beastkin")
 							owner.passive_handler.Increase("Adrenaline", 1)
 							owner.passive_handler.Increase("Hardening", 1)
 							owner.passive_handler.Increase("CallousedHands", 0.1)
@@ -16,7 +16,7 @@ ascension
 						if("Monkey King")
 							owner.passive_handler.Increase("Nimbus", 1)
 							owner.passive_handler.Increase("HybridStrike", 1)
-							owner.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Monkey_Gourd)
+							owner.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Monkey_Gourd)
 							endurance = 0.15
 							strength = 0.15
 							offense = 0.15
@@ -75,7 +75,7 @@ ascension
 				..()
 				if(!applied)
 					if(owner.Class == "Shapeshifter")
-						var/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Shapeshift/s = owner.FindSkill(/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Shapeshift)
+						var/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Shapeshift/s = owner.FindSkill(/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Shapeshift)
 						s.c_buff.adjust_custom_buff(owner, s)
 		two
 			unlock_potential = ASCENSION_TWO_POTENTIAL
@@ -84,7 +84,7 @@ ascension
 				if(!applied)
 					var/choice = owner.race?:Racial
 					switch(choice)
-						if("Heart of The Beastman")
+						if("Heart of The Beastkin")
 							owner.passive_handler.Increase("Blubber", 0.25)
 							owner.passive_handler.Increase("Hardening", 1)
 							owner.passive_handler.Increase("CallousedHands", 0.1)
@@ -160,7 +160,7 @@ ascension
 				if(!applied)
 					var/choice = owner.race?:Racial
 					switch(choice)
-						if("Heart of The Beastman")
+						if("Heart of The Beastkin")
 							owner.passive_handler.Increase("Blubber", 0.25)
 							owner.passive_handler.Increase("Hardening", 1)
 							owner.passive_handler.Increase("CallousedHands", 0.1)
@@ -235,7 +235,7 @@ ascension
 				if(!applied)
 					var/choice = owner.race?:Racial
 					switch(choice)
-						if("Heart of The Beastman")
+						if("Heart of The Beastkin")
 							owner.passive_handler.Increase("Blubber", 0.25)
 							owner.passive_handler.Increase("Hardening", 1)
 							owner.passive_handler.Increase("CallousedHands", 0.1)
@@ -309,7 +309,7 @@ ascension
 				if(!applied)
 					var/choice = owner.race?:Racial
 					switch(choice)
-						if("Heart of The Beastman")
+						if("Heart of The Beastkin")
 							owner.passive_handler.Increase("Blubber", 0.25)
 							owner.passive_handler.Increase("Hardening", 1)
 							owner.passive_handler.Increase("CallousedHands", 0.1)
@@ -382,8 +382,8 @@ ascension
 				..()
 
 
-/ascension/sub_ascension/beastman/ferocious
+/ascension/sub_ascension/beastkin/ferocious
 
-/ascension/sub_ascension/beastman/nimble
+/ascension/sub_ascension/beastkin/nimble
 
-/ascension/sub_ascension/beastman/niche
+/ascension/sub_ascension/beastkin/niche

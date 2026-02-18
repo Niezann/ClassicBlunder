@@ -14,7 +14,7 @@
 	New(client/_client, o, _x, _y)
 		screen_loc = "1:[_x],1:[_y]"
 		client = _client
-	beastman
+	beastkin
 		icon = 'BLANK.dmi'
 		icon_state = "dot"
 		var/tmp/obj/Skills/obj_to_ref

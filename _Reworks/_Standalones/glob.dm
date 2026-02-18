@@ -148,7 +148,12 @@ globalTracker
 			progress = new()
 		if(!racials)
 			racials = new()
-
+	proc
+		outputVariableInfo(v)
+			if(!(v in vars))
+				admins << "Xoxo Error: parameter [v] was requested by outputVariableInfo (glob.dm). This is not a globally tracked variable.";
+				return;
+			return "<u>([vars[v]])</u>"
 	var
 
 		progressTracker/progress = new()
@@ -213,7 +218,7 @@ globalTracker
 		BASE_HELL_SCALING_RATIO = 0.01
 		HELL_SCALING_MULT = 1.5
 		UNDERDOG_DIVISOR = 4
-		CONQ_HAKI_RACES = list(HUMAN, YOKAI, DEMON, ELF, SAIYAN, NAMEKIAN, MAJIN, MAKYO, DRAGON, BEASTMAN, GAJALAKA, CHANGELING)
+		CONQ_HAKI_RACES = list(HUMAN, YOKAI, DEMON, ELF, SAIYAN, NAMEKIAN, MAJIN, MAKYO, DRAGON, BEASTKIN, GAJALAKA, CHANGELING)
 		EXTRA_CONQ_HAKI_POWER = 1.5
 		CONQ_HAKI_CHANCE = 3
 		MONEYORFRAGMENTS = 1 // 1 = fragments, 0 = cash
@@ -357,7 +362,6 @@ globalTracker
 		BASE_DEBUFF_REDUCTION_DIVISOR_UPPER = 1
 		IMPLODE_DIVISOR = 1000
 		IMPLODE_CD = 150
-		ZORNHAU_MULT = 0.15
 
 		STASIS_LENGTH_MODIFIER = 0.25
 //EXTRAS?? //
@@ -470,7 +474,6 @@ globalTracker
 		HELLSTORM_SNAREDURATION = 3
 		FIELD_MODIFIERS = 0.01
 		GLUTTONY_MODIFIER = 0.14
-		STEADY_MODIFIER = 0.05
 		UNARMED_DAMAGE_DIVISOR = 10
 		SKIMMING_DAMAGE_MULT=0.15
 
@@ -480,7 +483,7 @@ globalTracker
 
 // dmg rolls
 		min_damage_roll = 0.2
-		upper_damage_roll = 0.8
+		max_damage_roll = 0.8
 
 //SPEED COOLDOWN SHIT
 		SPEED_COOLDOWN_MODE = 0

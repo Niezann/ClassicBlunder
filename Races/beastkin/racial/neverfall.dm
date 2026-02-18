@@ -36,7 +36,7 @@
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous
     var/datum/BuffTrigger/Triggers = null
 
-/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman
+/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin
     Never_Fall
         AlwaysOn = 1
         doNotDelete = 1

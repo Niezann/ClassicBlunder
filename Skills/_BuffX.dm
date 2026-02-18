@@ -1535,7 +1535,6 @@ NEW VARIABLES
 					src.PowerMult=1.1
 					src.SpdMult=1
 					passives = list("MovementMastery" = 3)
-					src.DefMult=0.8
 			verb/Super_Saiyan_Grade2()
 				set category="Skills"
 				if(usr.ExpandBase)

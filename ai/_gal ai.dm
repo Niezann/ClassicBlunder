@@ -268,7 +268,7 @@ var/list/ai_database = list(
 			'Saibaman.dmi'=list("name"="Saibaman"),\
 			'WildHound.dmi'=list("name"="Fellhound"),\
 			'Phoenix.dmi'=list("name"="Avian"),\
-			'WolfBeast.dmi'=list("name"="Beastman"),\
+			'WolfBeast.dmi'=list("name"="Beast"),\
 			'Red Dragon.dmi'=list("name"="Red Dragon"),\
 			'Black Dragon.dmi'=list("name"="Black Dragon"),\
 			'Green Dragon.dmi'=list("name"="Green Dragon"),\

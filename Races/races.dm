@@ -4,6 +4,9 @@ races are stored as text macros; this serves two purposes.
 If a typo occurs, BYOND will throw errors.
 This is also done so we can easily check types.
 */
+//when you feel like inflicting pain on yourself:
+//normalize the order of stats being Strength, Force, Endurance, Speed, Offense, Defense
+//... everywhere
 #define STAT2INDEX list("strength" = 1, "endurance" = 2, "force" = 3, "offense" = 4, "defense" = 5, "speed" = 6)
 var/list/races = list()
 

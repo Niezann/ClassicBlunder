@@ -1188,9 +1188,9 @@ proc/getBackSide(mob/offender, mob/defender, diags = FALSE)
 		return
 	var/looplength = input(src, "How many attempts") as num
 	var/list/damageMatrix = list()
-	var/forcedmgrolls = input(src, "Force the dmg rolsl temp?") in list(1,0)
-	var/orgdmgrolls = list(glob.min_damage_roll, glob.upper_damage_roll)
-	var/dmgrolls = list(glob.min_damage_roll, glob.upper_damage_roll)
+	var/forcedmgrolls = input(src, "Force the dmg rolls temporarily?") in list(1,0)
+	var/orgdmgrolls = list(glob.min_damage_roll, glob.max_damage_roll)
+	var/dmgrolls = list(glob.min_damage_roll, glob.max_damage_roll)
 	var/_range = input(src, "Do you want to do a range?") in list(1,0)
 	var/min_range
 	var/max_range
@@ -1203,7 +1203,7 @@ proc/getBackSide(mob/offender, mob/defender, diags = FALSE)
 		dmgrolls[1] = input(src, "What is the min?") as num
 		dmgrolls[2] = input(src, "What is the upper?") as num
 		glob.min_damage_roll = dmgrolls[1]
-		glob.upper_damage_roll = dmgrolls[2]
+		glob.max_damage_roll = dmgrolls[2]
 	if(_range)
 		var/total_iteration = (max_range-min_range)/per_change
 		var/statInQuestion = input(src, "what stat") in list("Str", "End")
@@ -1288,7 +1288,7 @@ The average damage was [average] over [looplength] times.
 		src << msg
 	if(forcedmgrolls)
 		glob.min_damage_roll = orgdmgrolls[1]
-		glob.upper_damage_roll = orgdmgrolls[2]
+		glob.max_damage_roll = orgdmgrolls[2]
 		StrReplace = 0
 		Target.EndReplace = 0
 /mob/Admin3/verb/SimulateAccuracyNOSTATCHANGE()
