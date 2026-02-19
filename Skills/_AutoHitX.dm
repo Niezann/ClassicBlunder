@@ -185,6 +185,8 @@ obj
 				Rush//Drives the user forward before deploying autohit.
 				RushDelay=1
 				ControlledRush//as above but you actually know where you're going
+				RushAfterImages//Spawns coolerFlashImage afterimages each step during rush
+				RushNoFlight//Skips setting icon_state to Flight during rush
 				MortalBlow//Makes you deal a mortal wound in midcombat.
 				WarpAway//Toss them into a hole
 
@@ -5301,14 +5303,15 @@ mob
 				if(Z.NeedsSword&&src.HasSpiritSword())
 					Z.TempStrOff=1*src.GetSpiritSword()
 					Z.TempForOff=1*src.GetSpiritSword()
-				else if(src.HasHybridStrike())
-					if(Z.TempStrOff && !Z.TempForOff)
-						Z.TempForOff = GetHybridStrike() // get the value of hybrid strike
-					else if(!Z.TempStrOff && Z.TempForOff)
-						Z.TempStrOff = GetHybridStrike() // get the value of hybrid strike
-					else if(!Z.TempStrOff && !Z.TempForOff)
-						Z.TempForOff = 1
-						Z.TempStrOff = GetHybridStrike()
+			else if(src.HasHybridStrike() || src.HasPhysPleroma())
+				var/strikeVal = max(GetHybridStrike(), GetPhysPleroma())
+				if(Z.TempStrOff && !Z.TempForOff)
+					Z.TempForOff = strikeVal
+				else if(!Z.TempStrOff && Z.TempForOff)
+					Z.TempStrOff = strikeVal
+				else if(!Z.TempStrOff && !Z.TempForOff)
+					Z.TempForOff = 1
+					Z.TempStrOff = strikeVal
 
 				else
 					Z.TempStrOff=1
@@ -5373,7 +5376,8 @@ mob
 				src.is_dashing++
 				src.WindingUp=1
 				var/GO=Z.Rush
-				src.icon_state="Flight"
+				if(!Z.RushNoFlight)
+					src.icon_state="Flight"
 				if(Z.RushDelay<1)
 					VanishImage(src)
 				while(GO>0)
@@ -5384,6 +5388,8 @@ mob
 
 						//animate(src.filters[length(src.filters)], x=sin(travel_angle)*(6/Z.RushDelay), y=cos(travel_angle)*(6/Z.RushDelay), time=Z.RushDelay)
 						step_towards(src,src.Target)
+						if(Z.RushAfterImages)
+							coolerFlashImage(src, Z.RushAfterImages)
 						if(get_dist(src,src.Target)==1)
 							GO=0
 							src.dir=get_dir(src,src.Target)
@@ -5404,6 +5410,8 @@ mob
 							AppearanceOn()
 						//animate(src.filters[filters.len], x=sin(travel_angle)*(6/Z.RushDelay), y=cos(travel_angle)*(6/Z.RushDelay), time=Z.RushDelay)
 						step(src,src.dir)
+						if(Z.RushAfterImages)
+							coolerFlashImage(src, Z.RushAfterImages)
 						if(Z.Area=="Strike"||Z.Area=="Arc"||Z.Area=="Cone")
 							for(var/atom/a in get_step(src,dir))
 								if(a==src)
@@ -6112,9 +6120,9 @@ obj
 					atk = Owner.GetFor(ForDmg)
 				else if(StrDmg && !ForDmg)
 					atk = Owner.getStatDmg2() * StrDmg
-					if(m.passive_handler.Get("Field of Destruction")||m.passive_handler.Get("The Immovable Object"))
-						if(Owner.HasHybridStrike())
-							atk/=clamp(sqrt(1+Owner.GetFor(Owner.GetHybridStrike())/15),1,3)
+				if(m.passive_handler.Get("Field of Destruction")||m.passive_handler.Get("The Immovable Object"))
+					if(Owner.HasHybridStrike())
+						atk/=clamp(sqrt(1+Owner.GetFor(Owner.GetHybridStrike())/15),1,3)
 				else if(StrDmg && ForDmg)
 					if(glob.AUTOHIT_HYBRID_AS_MULT)
 						atk = Owner.GetStr(StrDmg) *1 + (Owner.GetFor(ForDmg)/10)

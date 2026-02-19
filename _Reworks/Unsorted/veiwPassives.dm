@@ -78,6 +78,7 @@ var/list/PassiveInfo = list("Extend"="increases the range of armed autohits base
 "Duelist"= "increase damage and lower damage taken against a Single Target, taking extra damage from enemies you don't have targeted.",
 "SweepingStrike"= "turns your Normal Attack, and Queue range from directly in front of you, to an arc around you.",
 "HybridStrike"= "adds a portion of force to damage rolls, multiplicative",
+"PhysPleroma"= "adds a portion of strength to damage rolls, multiplicative. Makes SpiritHand and SpiritSword scale with strength instead of force.",
 "Pressure"= "Negates opposing Technique Mastery",
 "WeaponBreaker"= "dealing damage also deals damage to a Weapon's Durability, potentially breaking it.",
 "HeavyHitter"= "increases KB",

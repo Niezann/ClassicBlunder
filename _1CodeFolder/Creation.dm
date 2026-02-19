@@ -403,6 +403,10 @@ mob/Players
 			for(var/obj/Skills/s in src)
 				s.cooldown_remaining=0
 				s.cooldown_start=0
+				s.Using=0
+			for(var/obj/Skills/AutoHit/Lunge/L in src)
+				L.Charges = L.MaxCharges
+				L.Recharging = 0
 			for(var/obj/Skills/Buffs/SlotlessBuffs/DemonMagic/dm in src)
 				if(dm.possible_skills)
 					for(var/path in dm.possible_skills)

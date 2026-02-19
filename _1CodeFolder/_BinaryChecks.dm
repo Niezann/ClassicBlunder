@@ -2417,6 +2417,12 @@ mob
 			if(InfinityModule)
 				Return += round(glob.progress.totalPotentialToDate,5) / 50
 			return Return
+		HasPhysPleroma()
+			if(passive_handler.Get("PhysPleroma"))
+				return 1
+			return 0
+		GetPhysPleroma()
+			return passive_handler.Get("PhysPleroma")
 		HasSpiritStrike()//For v.s. End
 			if(passive_handler.Get("SpiritStrike"))
 				return 1

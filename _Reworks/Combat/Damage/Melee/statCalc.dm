@@ -84,19 +84,32 @@
 				statDamage += GetStr(spirithand)
 			if((HasSpiritSword())&&sword)
 				statDamage += GetStr(GetSpiritSword())
-			if(HasHybridStrike())
-				statDamage *=  clamp(1+sqrt(GetStr(GetHybridStrike())/15),1,3)
-			return statDamage
+		if(HasHybridStrike())
+			statDamage *=  clamp(1+sqrt(GetStr(GetHybridStrike())/15),1,3)
+		if(HasPhysPleroma())
+			statDamage *= clamp(1+sqrt(GetStr(GetPhysPleroma())/15),1,3)
+		return statDamage
 	// otherwise there is no problem
 	if(HasSpiritHand()&&unarmed)
-		if(spirithand > GetSpiritHand())
-			statDamage += GetFor(spirithand/4) // this can b less lines
+		if(HasPhysPleroma())
+			if(spirithand > GetSpiritHand())
+				statDamage += GetStr(spirithand/4)
+			else
+				statDamage += GetStr(GetSpiritHand()/4)
 		else
-			statDamage += GetFor(GetSpiritHand()/4)
+			if(spirithand > GetSpiritHand())
+				statDamage += GetFor(spirithand/4)
+			else
+				statDamage += GetFor(GetSpiritHand()/4)
 	if(HasSpiritSword()&&sword)
-		statDamage += GetFor(GetSpiritSword())
+		if(HasPhysPleroma())
+			statDamage += GetStr(GetSpiritSword())
+		else
+			statDamage += GetFor(GetSpiritSword())
 	if(HasHybridStrike())
 		statDamage *=  clamp(sqrt(1+GetFor(GetHybridStrike())/15),1,3)
+	if(HasPhysPleroma())
+		statDamage *= clamp(sqrt(1+GetStr(GetPhysPleroma())/15),1,3)
 
 	return statDamage
 
