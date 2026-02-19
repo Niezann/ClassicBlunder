@@ -108,6 +108,7 @@ mob/var
 	DefAdded=0
 	SpdAdded=0
 	StrMultTotal=1
+	StrTransMult=1
 	StrChaos=1
 	StrAscension=0
 	StrReplace=0
@@ -116,6 +117,7 @@ mob/var
 	StrStolen=0
 	StrEroded=0
 	EndMultTotal=1
+	EndTransMult=1
 	EndChaos=1
 	EndAscension=0
 	EndReplace=0
@@ -124,6 +126,7 @@ mob/var
 	EndStolen=0
 	EndEroded=0
 	SpdMultTotal=1
+	SpdTransMult=1
 	SpdChaos=1
 	SpdAscension=0
 	SpdReplace=0
@@ -132,6 +135,7 @@ mob/var
 	SpdStolen=0
 	SpdEroded=0
 	ForMultTotal=1
+	ForTransMult=1
 	ForChaos=1
 	ForReplace=0
 	ForAscension=0
@@ -140,6 +144,7 @@ mob/var
 	ForStolen=0
 	ForEroded=0
 	OffMultTotal=1
+	OffTransMult=1
 	OffChaos=1
 	OffAscension=0
 	OffTax=0
@@ -147,6 +152,7 @@ mob/var
 	OffStolen=0
 	OffEroded=0
 	DefMultTotal=1
+	DefTransMult=1
 	DefChaos=1
 	DefAscension=0
 	DefTax=0

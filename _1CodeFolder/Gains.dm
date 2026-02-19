@@ -233,19 +233,9 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 /mob/proc/drainTransformations(trans, transMastery)
 	// TRANS / TRANSMASTERY FOR CHANGIE 4TH FORM
 	var/drain
-	var/PrideDrain
 
 	if(trans && transMastery <= 75||trans && passive_handler.Get("True Inheritor"))
 		drain = round(30 - ((transMastery - 5) * 30) / (75 - 5), 1)
-		if(passive_handler.Get("Pride"))
-			PrideDrain=(100-Health)*0.01
-			if(PrideDrain>1)
-				PrideDrain=1
-			if(PrideDrain<0.01)
-				PrideDrain=0.01
-			drain*=PrideDrain
-		if(passive_handler.Get("Pride")&&Health>=90)
-			drain = 0
 		if(passive_handler.Get("True Inheritor"))
 			drain/=3
 		if(drain < 0)

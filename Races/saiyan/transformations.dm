@@ -10,9 +10,15 @@ transformation
 			form_glow_x = -32
 			form_glow_y = -32
 			//Automatically unlocked at 40, intended to be unlocked around 20
-			unlock_potential = 40
-			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2,  "BuffMastery" = 3, "PureDamage" = 1, "PureReduction" = 1)
+			unlock_potential = 30
+			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2,  "PureDamage" = 1, "PureReduction" = 1, "SaiyanPower"=1, "SaiyanPower1"=0.4)
 			angerPoint = 75
+			speedadd = 0.3 //these are additive. base is 1, so 0.3=1.3x
+			enduranceadd = 0.3
+			offenseadd = 0.3
+			defenseadd = 0.3
+			strengthadd = 0.3
+			forceadd = 0.3
 
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)
@@ -38,6 +44,31 @@ transformation
 					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade3, user)&&user.isRace(SAIYAN))
 						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade3)
 						user << "You can strain past the limits of your Super Saiyan form! Grade 3 Unlocked!"
+			class_boons(mob/user)
+				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/zeal)
+					class_passives = list("EnergyGeneration" = 3, "Instinct" = 2, "Flow" = 2)
+					speedadd = 0.45
+					enduranceadd = 0.3
+					offenseadd = 0.45
+					defenseadd = 0.45
+					strengthadd = 0.3
+					forceadd = 0.3
+				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/pride)
+					class_passives = list("PureDamage" = 1, "Flicker" = 2, "Pursuer" = 1)
+					speedadd = 0.3
+					enduranceadd = 0.3
+					offenseadd = 0.45
+					defenseadd = 0.3
+					strengthadd = 0.4
+					forceadd = 0.4
+				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/honor)
+					class_passives = list("PureReduction" = 1, "Flow" = 2, "EnergyGeneration" = 3)
+					speedadd = 0.3
+					enduranceadd = 0.5
+					offenseadd = 0.3
+					defenseadd = 0.5
+					strengthadd = 0.3
+					forceadd = 0.3
 
 			transform_animation(mob/user)
 				if(first_time && mastery<25)
@@ -90,8 +121,14 @@ transformation
 			//Autounlocked at 55, intended to be unlocked around 35
 			unlock_potential = 55
 			autoAnger = TRUE
-			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2, "BuffMastery" = 1, "PureDamage" = 1, "PureReduction" = 1)
+			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2, "PureDamage" = 1, "PureReduction" = 1, "SaiyanPower2"=0.4)
 			PUSpeedModifier = 1.5
+			speedadd = 0.2
+			enduranceadd = 0.2
+			offenseadd = 0.2
+			defenseadd = 0.2
+			strengthadd = 0.2
+			forceadd = 0.2
 			adjust_transformation_visuals(mob/user)
 				if(user.Hair_Base && !form_hair_icon)
 					var/icon/x=new(user.Hair_Base)
@@ -142,9 +179,15 @@ transformation
 			form_icon_2_icon = 'SS3Sparks.dmi'
 			form_hair_icon = 'Hair_SSj3.dmi'
 			form_icon_1_icon = 'Hair_SSj3.dmi'
-			passives = list("Flicker" = 1, "Pursuer" = 1, "BuffMastery" = 2, "PureDamage" = 1, "PureReduction" = 1)
+			passives = list("Flicker" = 1, "Pursuer" = 1, "PureDamage" = 1, "PureReduction" = 1, "SaiyanPower3"=0.7)
 			//Autounlocked at 65, intended to be unlocked at 45
 			unlock_potential = 65
+			speedadd = 0.5 //these are additive. base is 1, so 0.3=1.3x
+			enduranceadd = 0.5
+			offenseadd = 0.5
+			defenseadd = 0.5
+			strengthadd = 0.5
+			forceadd = 0.5
 
 			adjust_transformation_visuals(mob/user)
 				..()
