@@ -46,6 +46,7 @@ mob/proc/Revert(type)
 transformation
 	var
 		list/passives
+		list/class_passives
 		strength = 1
 		endurance = 1
 		force = 1
@@ -140,6 +141,7 @@ transformation
 		revert_animation(mob/user)
 
 		mastery_boons(mob/user)
+		class_boons(mob/user)
 
 		apply_visuals(mob/user, aura = 1, hair = 1, extra = 1)
 			adjust_transformation_visuals(user)
@@ -179,18 +181,20 @@ transformation
 					if(unlock_potential >= user.Potential) return
 
 			mastery_boons(user)
+			class_boons(user)
 
 			adjust_transformation_visuals(user)
 
 			user.transActive++
 			user.passive_handler.increaseList(passives)
+			user.passive_handler.increaseList(class_passives)
 
-			user.StrMultTotal *= strength
-			user.EndMultTotal *= endurance
-			user.ForMultTotal *= force
-			user.SpdMultTotal *= speed
-			user.OffMultTotal *= offense
-			user.DefMultTotal *= defense
+			user.StrTransMult += strength
+			user.EndTransMult += endurance
+			user.ForTransMult += force
+			user.SpdTransMult += speed
+			user.OffTransMult += offense
+			user.DefTransMult += defense
 
 			user.BioArmorMax += BioArmorMax
 			if(user.BioArmor > user.BioArmorMax)
@@ -259,13 +263,14 @@ transformation
 			if(!isnull(revertToTrans))
 				user.transActive = revertToTrans
 			user.passive_handler.decreaseList(passives)
+			user.passive_handler.decreaseList(class_passives)
 
-			user.StrMultTotal /= strength
-			user.EndMultTotal /= endurance
-			user.ForMultTotal /= force
-			user.SpdMultTotal /= speed
-			user.OffMultTotal /= offense
-			user.DefMultTotal /= defense
+			user.StrTransMult -= strength
+			user.EndTransMult -= endurance
+			user.ForTransMult -= force
+			user.SpdTransMult -= speed
+			user.OffTransMult -= offense
+			user.DefTransMult -= defense
 
 			user.BioArmorMax -= BioArmorMax
 			if(user.BioArmor > user.BioArmorMax)
@@ -338,6 +343,25 @@ transformation
 
 		gainMastery(mob/user)
 			if(mastery >= 100) return
+			if(user.isRace(SAIYAN)||user.isRace(HALFSAIYAN))
+				if(user.transActive==1)
+					if(user.Potential>=22&&mastery<25)
+						mastery=25
+					if(user.Potential>=27&&mastery<50)
+						mastery=50
+					if(user.Potential>=30&&mastery<75)
+						mastery=75
+					if(user.Potential>=35&&mastery<75)
+						mastery=100
+				if(user.transActive==2)
+					if(user.Potential>=37&&mastery<25)
+						mastery=25
+					if(user.Potential>=39&&mastery<50)
+						mastery=50
+					if(user.Potential>=41&&mastery<75)
+						mastery=75
+					if(user.Potential>=43&&mastery<100)
+						mastery=100
 			mastery += randValue(glob.racials.SSJ_MIN_MASTERY_GAIN,glob.racials.SSJ_MAX_MASTERY_GAIN)
 			if(mastery > 100)
 				mastery=100
