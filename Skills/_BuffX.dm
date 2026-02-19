@@ -1514,12 +1514,7 @@ NEW VARIABLES
 			UnrestrictedBuff=1
 			NeedsSSJ=1
 			EnergyExpenditure=1.5
-			PowerMult=1.05
-			StrMult=1.2
-			ForMult=1.2
-			EndMult=1.2
-			SpdMult=0.8
-			DefMult=0.8
+			passives = list("MagnifiedStr" = 0.2, "MagnifiedEnd" = 0.2,"MagnifiedFor" = 0.2, "MagnifiedSSJ1" = 0.2, "EnergyLeak" = 1)
 			AuraLock=1
 			FlashChange=1
 			KenWave=3
@@ -1528,20 +1523,11 @@ NEW VARIABLES
 			ActiveMessage="bulks up greatly and erupts with power!"
 			OffMessage="tires out..."
 			adjust(mob/p)
-				if(src.Mastery<1)
-					src.Mastery=1
-					src.PowerMult=1.05
-				if(src.Mastery>=2)
-					src.PowerMult=1.1
-					src.SpdMult=1
-					passives = list("MovementMastery" = 3)
 			verb/Super_Saiyan_Grade2()
 				set category="Skills"
 				if(usr.ExpandBase)
 					IconReplace=1
 					icon=usr.ExpandBase
-				if(usr.transActive)
-					src.NeedsSSJ=usr.transActive
 				src.HairLock=usr.Hair_SSJ2
 				adjust(usr)
 				src.Trigger(usr)
@@ -1549,17 +1535,11 @@ NEW VARIABLES
 			SignatureTechnique=3
 			UnrestrictedBuff=1
 			NeedsSSJ=1
-			EnergyExpenditure=2
-			PowerMult=1.1
-			StrMult=1.2
-			ForMult=1.2
-			EndMult=1.5
-			SpdMult=0.8
-			OffMult=0.6
-			DefMult=0.4
 			IconLock='SS2Sparks.dmi'
 			AuraLock=1
 			FlashChange=1
+			passives = list("MagnifiedStr" = 0.4, "MagnifiedEnd" = 0.4,"MagnifiedFor" = 0.4, "MagnifiedSpd" = -0.4, "MagnifiedOff" = -0.4, "MagnifiedDef" = -0.4, "MagnifiedSSJ1" = 0.4, "EnergyLeak" = 2, "PowerStressed"=1)
+			EnergyExpenditure=1.5
 			ProportionShift=matrix(1.2, 0, 0, 0, 1, 0)
 			KenWave=5
 			KenWaveSize=0.5
@@ -1567,20 +1547,11 @@ NEW VARIABLES
 			ActiveMessage="bulks up enormously and explodes with power!"
 			OffMessage="loses steam..."
 			adjust(mob/p)
-				if(src.Mastery<1)
-					src.Mastery=1
-					src.PowerMult=1.1
-				if(src.Mastery>=2)
-					src.PowerMult=1.2
-					OffMult=0.8
-					DefMult=0.8
 			verb/Super_Saiyan_Grade3()
 				set category="Skills"
 				if(usr.ExpandBase)
 					IconReplace=1
 					icon=usr.ExpandBase
-				if(usr.transActive)
-					src.NeedsSSJ=usr.transActive
 				src.HairLock=usr.Hair_SSJ3
 				adjust(usr)
 				src.Trigger(usr)
