@@ -65,33 +65,64 @@
     var/obj/blankHolder = new()
     var/obj/dorkness/dorkness = new()
     var/obj/lightness/lightness = new()
-    var/obj/animationobj/lightness2 = new(i = 'lightcutin.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.85)
+
+
     var/obj/animationobj/background = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.5)
     background.icon_state = "Background"
+
+    var/obj/animationobj/ground = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.6)
+    ground.icon_state = "Ground"
+    var/obj/animationobj/bleh = new(s_loc = "CENTER+1,CENTER+1", appear_flags = PIXEL_SCALE | KEEP_TOGETHER, appear_take = appearance1, l = MOB_LAYER+0.7)
+    bleh.screen_loc = "CENTER+1,CENTER+1" // ????
+    bleh.dir = SOUTH
+    bleh.transform = matrix().Scale(10).Translate(-150, -150)
+
+
+    blankHolder.screen_loc = "LEFT,BOTTOM"
+    client.screen += blankHolder
+    blankHolder.vis_contents+=background
+    blankHolder.vis_contents+=ground
+    client.screen += bleh
+
+    sleep(30) // aura shows up
+
+    var/obj/animationobj/aura = new(i = 'SSJAura.dmi', _px = -32, _py = -16,  appear_flags = PIXEL_SCALE )
+    aura.icon_state = "."
+    bleh.overlays += aura
+    animate(bleh, transform = matrix().Scale(10).Translate(-150, -550), time = 20, easing =SINE_EASING|EASE_IN)
+    animate(ground, pixel_y=-550, time = 20, easing = SINE_EASING|EASE_IN)
+
+    sleep(30) // supposed to pan upwards and out
+    del bleh
+    del ground
+
+    var/obj/animationobj/overlook = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.9)
+    overlook.icon_state = "Overlook"
+    blankHolder.vis_contents += overlook
+
+    sleep(20)
+    blankHolder.vis_contents+=dorkness
+    blankHolder.vis_contents += lightness
+    animate(lightness, alpha = 255, time = 8)
+    sleep(10)
+
+    del overlook
+    animate(lightness, alpha = 0, time = 3)
+
+    var/obj/animationobj/lightness2 = new(i = 'lightcutin.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.85)
     var/obj/animationobj/i2 = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM",addto = blankHolder.vis_contents,_px = -10, _py = 0, l = MOB_LAYER+0.8)
     i2.icon_state = "HandBack"
     var/obj/animationobj/i3 = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM",addto = blankHolder.vis_contents, _py = 0, l = MOB_LAYER+0.9)
     i3.icon_state = "RockStandard"
 
-    blankHolder.screen_loc = "LEFT,BOTTOM"
-    client.screen += blankHolder
-    blankHolder.vis_contents+=background
-    blankHolder.vis_contents+=dorkness
-    blankHolder.vis_contents += lightness
 
-
-    var/obj/animationobj/bleh = new(s_loc = "CENTER+1,CENTER+1", appear_flags = PIXEL_SCALE | KEEP_TOGETHER, appear_take = appearance1, l = MOB_LAYER+0.7)
     var/obj/animationobj/bleh2 = new(s_loc = "CENTER+1,CENTER+1", appear_flags = PIXEL_SCALE | KEEP_TOGETHER, appear_take = appearance2, l = MOB_LAYER+0.7)
 
-    var/over = bleh.overlays
-    world << "overlay is [over]"
 
-
-    bleh.screen_loc = "CENTER+1,CENTER+1" // ????
     bleh2.screen_loc = "CENTER+1,CENTER+1" // ????
-    bleh.dir = SOUTH
+
     bleh2.dir = SOUTH
-    bleh.transform = matrix().Scale(20).Translate(50, -250)
+
     bleh2.transform = matrix().Scale(20).Translate(50, -250)
 
     client.screen += bleh2

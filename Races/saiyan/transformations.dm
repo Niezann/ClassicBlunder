@@ -380,20 +380,21 @@ transformation
 				user.Tail(1)
 
 			transform_animation(mob/user)
-				var/appearance1 = user.appearance
-				world << "app1 is [appearance1]"
-				user.overlays += form_icon_1
-				user.overlays += form_icon_2
-				user.overlays += form_glow
-				user.overlays += form_aura
-				user.underlays += form_aura_underlay
-				world << "[form_hair_icon]"
-				user.overlays += form_hair
-				world << "[user.Hair]"
-				var/appearance2 = user.appearance
-				world << "app2 is [appearance2]"
-				user.HellSSJ4Animation1(appearance1, appearance2)
-				user.overlays -= form_hair
+				if(first_time)
+					var/appearance1 = user.appearance
+					world << "app1 is [appearance1]"
+					user.overlays += form_icon_1
+					user.overlays += form_icon_2
+					user.overlays += form_glow
+					user.overlays += form_aura
+					user.underlays += form_aura_underlay
+					world << "[form_hair_icon]"
+					user.overlays += form_hair
+					world << "[user.Hair]"
+					var/appearance2 = user.appearance
+					world << "app2 is [appearance2]"
+					user.HellSSJ4Animation1(appearance1, appearance2)
+					user.overlays -= form_hair
 				/*user.Quake(40)
 				user.Frozen=1
 				KenShockwave2(user, icon='KenShockwaveGold.dmi', Size=10)
