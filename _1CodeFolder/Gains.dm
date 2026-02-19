@@ -202,7 +202,7 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 							src << "One or more of your skills will be made available to you again when you stop meditating."
 				if(s.Cooldown<0 && s.Using)
 					src << "One or more of your skills will be made available to you again when you stop meditating."
-				for(var/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman/Monkey_Gourd/mg in src)
+				for(var/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Monkey_Gourd/mg in src)
 					mg.monkeyUsed = 0
 					src << "You have refilled your gourd."
 				break
@@ -233,19 +233,9 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 /mob/proc/drainTransformations(trans, transMastery)
 	// TRANS / TRANSMASTERY FOR CHANGIE 4TH FORM
 	var/drain
-	var/PrideDrain
 
 	if(trans && transMastery <= 75||trans && passive_handler.Get("True Inheritor"))
 		drain = round(30 - ((transMastery - 5) * 30) / (75 - 5), 1)
-		if(passive_handler.Get("Pride"))
-			PrideDrain=(100-Health)*0.01
-			if(PrideDrain>1)
-				PrideDrain=1
-			if(PrideDrain<0.01)
-				PrideDrain=0.01
-			drain*=PrideDrain
-		if(passive_handler.Get("Pride")&&Health>=90)
-			drain = 0
 		if(passive_handler.Get("True Inheritor"))
 			drain/=3
 		if(drain < 0)
@@ -510,12 +500,12 @@ mob
 
 
 
-				if(passive_handler["Flying Thunder God"])
-					if(client&&hudIsLive("FTG", /obj/hud/ftg))
-						client.hud_ids["FTG"]?:Update()
+				if(passive_handler["Iaido"])
+					if(client&&hudIsLive("Iaido", /obj/hud/iaido))
+						client.hud_ids["Iaido"]?:Update()
 				else
-					if(client&&client.hud_ids["FTG"])
-						client.remove_hud("FTG")
+					if(client&&client.hud_ids["Iaido"])
+						client.remove_hud("Iaido")
 
 			if(scrollTicker)
 				scrollTicker--

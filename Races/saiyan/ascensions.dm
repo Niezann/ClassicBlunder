@@ -5,7 +5,6 @@ ascension
 			choices = list("Pride" = /ascension/sub_ascension/saiyan/pride, "Honor" =  /ascension/sub_ascension/saiyan/honor, "Zeal" = /ascension/sub_ascension/saiyan/zeal)
 			intimidation = 4
 			passives = list("Brutalize" = 0.25)
-			// GIVE MY NIGGAS SOMETHING TO EAT WITH
 			strength = 0.25
 			endurance = 0.25
 

@@ -59,7 +59,7 @@ proc/log_func(x, a, b)
 #define ELF /race/high_faoroan
 #define YOKAI /race/yokai
 #define ELDRITCH /race/eldritch
-#define BEASTMAN /race/beastman
+#define BEASTKIN /race/beastkin
 #define GAJALAKA /race/gajalaka
 #define CHANGELING /race/changeling
 #define ANDROID /race/android

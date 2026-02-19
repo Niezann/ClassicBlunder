@@ -313,7 +313,7 @@ mob/Players/Stat()
 				stat("Projectile Effectiveness", "[glob.PROJECTILE_EFFECTIVNESS]x")
 				stat("Grapple Effectiveness", "[glob.GRAPPLE_EFFECTIVNESS]x")
 				stat("AutoHit Effectiveness", "[glob.AUTOHIT_EFFECTIVNESS]x")
-				stat("Damage Rolls", "[glob.min_damage_roll],[glob.upper_damage_roll]")
+				stat("Damage Rolls", "[glob.min_damage_roll],[glob.max_damage_roll]")
 				stat("Intim Ratio", "[glob.INTIMRATIO]x")
 				stat("RPP Routine", "[Commas(glob.progress.RPPDaily)]")
 				stat("RPP Starting / RPP Starting Days", "[Commas(glob.progress.RPPStarting)] / [Commas(glob.progress.RPPStartingDays)]")
@@ -952,23 +952,12 @@ mob/proc/
 				Ratio*=src.PowerInvisible
 			if(src.PowerBoost)
 				Ratio*=src.PowerBoost
-			var/SSJBoost=1
-			if(isRace(SAIYAN)&&transActive&&ActiveBuff&&!passive_handler.Get("SSJRose"))
-				if(!passive_handler.Get("GodlyCalm")&&!passive_handler.Get("InBlue")&&!passive_handler.Get("SSJ4"))
-					if(race.transformations[1].mastery==100)
-						SSJBoost= 1.15
-					if(race.transformations[2].mastery==100)
-						SSJBoost= 1.30
-					if(race.transformations[3].mastery==100)
-						SSJBoost= 1.45
-				if(passive_handler.Get("GodlyCalm")||passive_handler.Get("InBlue")||passive_handler.Get("SSJ4"))
-					if(passive_handler.Get("SSJ4LimitBreaker")||passive_handler.Get("InBlueEvolved"))
-						SSJBoost = 1.85
-					else
-						SSJBoost = 1.60
-				Ratio*=SSJBoost
+			var/SSJBoost=1//i see you, unused-as-of-yet variable. don't think i don't
+			if(isRace(SAIYAN)&&transActive&&ActiveBuff)
+				if(passive_handler.Get("SaiyanPower"))
+					Ratio*=src.GetSaiyanPower()
 			if(passive_handler.Get("SSJRose"))
-				Ratio*=1.60
+				Ratio*=1.60 //this will be Different but i'm leaving it like this now
 
 			/*if(src.Target)
 				if(ismob(src.Target))

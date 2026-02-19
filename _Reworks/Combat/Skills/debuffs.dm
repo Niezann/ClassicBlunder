@@ -75,7 +75,7 @@
 	max_stacks = 4
 	ActiveMessage = "has been marked!"
 	do_effect(mob/defender, mob/attacker)
-		var/obj/Skills/s = attacker.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Thrill_of_the_Hunt)
+		var/obj/Skills/s = attacker.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Thrill_of_the_Hunt)
 		s.adjust(attacker)
 		s.Password = attacker.name
 		OMsg(defender, "[attacker] starts to hunt [defender].")

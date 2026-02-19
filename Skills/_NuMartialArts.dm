@@ -374,7 +374,7 @@ obj
 							StyleOff = 1.1
 							StyleDef = 1.1
 							StyleActive="Speed Rave"
-							passives = list("BlurringStrikes" = 1, "AfterImages" = 1, "Steady" = 1)
+							passives = list("AttackSpeed" = 1, "BlurringStrikes" = 1, "AfterImages" = 1, "Steady" = 1)
 							Finisher="/obj/Skills/Queue/Finisher/Fever_Pitch"
 							adjust(mob/p)
 								StyleStr = 1.2 + (0.05 * p.SagaLevel)
@@ -389,7 +389,7 @@ obj
 							StyleEnd = 1
 							StyleOff = 1
 							StyleActive="Critical Impact"
-							passives = list("CriticalChance" = 15, "CriticalDamage" = 0.1, "HeavyHitter" = 1, "CallousedHands" = 0.15)
+							passives = list("AttackSpeed" = -2, "CriticalChance" = 15, "CriticalDamage" = 0.1, "HeavyHitter" = 1, "CallousedHands" = 0.15)
 							Finisher="/obj/Skills/Queue/Finisher/Fatal_Mode"
 							adjust(mob/p)
 								StyleStr = 1.2 + (0.1 * p.SagaLevel)

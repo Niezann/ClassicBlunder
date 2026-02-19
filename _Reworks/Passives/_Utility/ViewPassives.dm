@@ -10,12 +10,11 @@
     html += "</body></html>"
     src<<browse(html,"window=[src]'s Passives;size=450x600")
 
-
-mob/proc/OutputPassiveInfo(var/passive)
+mob/proc/OutputPassiveInfo(passive)
     var/info="<html><body bgcolor=#000000 text=#339999><br>"
-    info += "<b>[passive]</b><br> [PassiveInfo[passive]]";
+    info += "<b><h3>[passive]</h3></b><hr><br> [PassiveInfo[passive]]";
     info += "</body></html>"
-    src<<browse(info,"window=PassiveInfo;size=300x200")
+    src<<browse(info,"window=PassiveInfo;size=400x600")
 
 var/list/PassiveInfo = list("Extend"="increases the range of armed autohits based on passive level",
 "GumGum"="increases the range of unarmed autohits based on passive level",
@@ -54,7 +53,6 @@ var/list/PassiveInfo = list("Extend"="increases the range of armed autohits base
 "Unstoppable"= "allows you to heal/regen through injury/fatigue",
 "Pursuer"= "lowers dragon dash cd",
 "Flicker"= "restore zanzo charges faster",
-"Steady"= "flattens damage rolls so there's less variance with your damage (makes your damage more consistent), directly countered by unnerve",
 "Deflection"= "chance to deflect attacks that are able to be deflected",
 "DebuffReversal"= "debuffs (Slow, Shock, Shatter) that lower stat mods instead increase those mods for you. Also you don't take damage from burns or poison, and instead inflict those on your opponent. Cripple makes you faster too. Zoom zoom!",
 "Tenacity"= "gives a scaling chance to refuse being KOed and provides a small shield of Vai HP",

@@ -4,12 +4,18 @@ transformation
 		void_super_saiyan //temp
 			tier = 1
 			form_aura_icon = 'AurasBig.dmi'
-			form_aura_icon_state = "SSJ"
+			form_aura_icon_state = "Demi"
 			form_aura_x = -32
 			form_glow_icon = 'Ripple Radiance.dmi'
 			form_glow_x = -32
 			form_glow_y = -32
 			unlock_potential = 40
+			speed = 1.0
+			endurance = 1.0
+			offense = 1.0
+			defense = 1.0
+			strength = 1.0
+			force = 1.0
 			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2,  "BuffMastery" = 3, "PureDamage" = 1, "PureReduction" = 1)
 			angerPoint = 75
 
@@ -39,7 +45,7 @@ transformation
 					defense = 1.0 + (mdivS)
 					strength = 1.0 + (mdivS)
 					force = 1.0 + (mdivS)
-					passives = list("Instinct" = 1+(mdivP*2), "BuffMastery" = 3+(mdivP*2))
+					passives = list("Instinct" = 1+(mdivP*12), "Flow" = 1+(mdivP*10), "Flicker" = 1+(mdivP*10), "Pursuer" = 2+(mdivP*10), "BuffMastery" = 3+(mdivP*12), "PureDamage" = 1+(mdivP*12), "PureReduction" = 1+(mdivP*12))
 
 			transform_animation(mob/user)
 				if(first_time && mastery<25)
@@ -85,13 +91,15 @@ transformation
 
 
 		spectral_tension // temp
-			passives = list("Conductor" = 10, "HighTension"=1,"TensionPowered"=0.25,"TechniqueMastery"=1, "BuffMastery" = 2, "PureReduction"=2, "PureDamage"=2)
+			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2,  "BuffMastery" = 3, "PureDamage" = 1, "PureReduction" = 1)
+			speed = 1.0
+			endurance = 1.0
+			offense = 1.0
+			defense = 1.0
+			strength = 1.0
+			force = 1.0
 			pot_trans = 2
 			transformation_message = "usrName manifests the true nature of their body!"
-			mastery_boons(mob/user)
-				if(mastery >= 0)
-					passives = list("Conductor" = 10,"TensionPowered"=0.25,"TechniqueMastery"=1, "BuffMastery" = 2, "PureReduction"=2, "PureDamage"=2,"UnderDog"=0.3,"Tenacity"=2)
-					pot_trans = 2
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)
 					var/icon/x=new(user.Hair_Base)
@@ -103,14 +111,14 @@ transformation
 				var/asc = usr.AscensionsAcquired
 				var/mdivS = mastery/200
 				var/mdivP = mastery/100
-				if(mastery >= 50 && asc > 2)
+				if(mastery >= 25 && asc > 2)
 					speed = 1.0 + (mdivS)
 					endurance = 1.0 + (mdivS)
 					offense = 1.0 + (mdivS)
 					defense = 1.0 + (mdivS)
 					strength = 1.0 + (mdivS)
 					force = 1.0 + (mdivS)
-					passives = list("Instinct" = 1+(mdivP*2), "BuffMastery" = 3+(mdivP*2))
+					passives = list("Instinct" = 1+(mdivP*12), "Flow" = 1+(mdivP*10), "Flicker" = 1+(mdivP*10), "Pursuer" = 2+(mdivP*10), "BuffMastery" = 3+(mdivP*12), "PureDamage" = 1+(mdivP*12), "PureReduction" = 1+(mdivP*12))
 
 			transform_animation(mob/user)
 				var/ShockSize=5

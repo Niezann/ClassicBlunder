@@ -1068,7 +1068,7 @@ mob/proc
 		setStartingRPP()
 		DEBUGMSG("or setting starting rpp. did that kill us?")
 		if(!Warped)
-			if(isRace(BEASTMAN)||isRace(YOKAI))
+			if(isRace(BEASTKIN)||isRace(YOKAI))
 				var/Choice=input(src, "Do you want to possess animal characteristics?  These options will give you tails and ears.", "Choose your animal traits.") in list("None", "Cat", "Fox", "Racoon", "Wolf", "Lizard", "Crow", "Bull")
 				switch(Choice)
 					if("Cat")
@@ -1093,8 +1093,7 @@ mob/proc
 					src.Hairz("Add")
 
 			if(!src.Timeless)
-				if(!(src.race in list(YOKAI,BEASTMAN,ELDRITCH,SAIYAN)))//these bois spawn in with deathtimers if theyre elder...
-					//beastman monsters as elders would spawn in with death timers; yokai would be more powerful; eldritch dont even get this choice
+				if(!(src.race in list(YOKAI,BEASTKIN,ELDRITCH,SAIYAN)))//these bois spawn in with deathtimers if theyre elder...
 					var/Age = "Youth"
 					//=alert(src, "Do you want to start as a youth or an elder?  Youths have not yet reached their full potential as fighters. Elders have already passed it, and may teach younger folks.", "Age", "Youth", "Elder")
 					src.EraBody=Age
@@ -1121,7 +1120,6 @@ mob/proc
 			DEBUGMSG("ok we're going to try to set to spawn");
 			src.ChooseSpawn()
 
-			//spawns can kill beastmens ability to learn anything so this is here now.
 			if(src.Intelligence<=0.25)
 				src.Intelligence=0.25
 			if(src.Imagination<=0.25)

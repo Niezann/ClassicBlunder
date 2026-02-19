@@ -9,7 +9,7 @@
     "Alien" = list("Musk", "Incense", "Exotic"), \
     "YOKAI" = list("Incense", "Alcohol "), \
     "ELDRITCH" = list("Ocean", "Alien", "Exotic", "Overwhelming"), \
-    "BEASTMAN" = list("Musk", "Animalistic", "Sweaty", "Unbathed"), \
+    "BEASTKIN" = list("Musk", "Animalistic", "Sweaty", "Unbathed"), \
     "DEMON" = list("Brimstone", "Nothingness", "Blood", "Death", "Overwhelming"), \
     "MAJIN" = list("Gum", "Sweets"), \
     "DRAGON" = list("Ozone", "Animalistic", "Overwhelming"), \
@@ -43,7 +43,7 @@ mob/proc/setUpScent()
             custom_scent=pick("Incense", "Alcohol", "Iron", "Thrill")
         if(ELDRITCH)
             custom_scent=pick("Ocean", "Alien", "Exotic", "Nothingness")
-        if(BEASTMAN)
+        if(BEASTKIN)
             custom_scent=pick("Musk", "Animalistic", "Sweaty", "Unbathed")
         if(DEMON)
             custom_scent=pick("Brimstone", "Nothingness", "Blood", "Death")

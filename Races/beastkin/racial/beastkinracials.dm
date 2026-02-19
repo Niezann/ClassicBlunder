@@ -2,7 +2,7 @@
 
 pick a main path
 Ferocious-
-    Heart of The Beastman - Gain a guage, the more damage that is dealt or taken, the bar goes up, it will burn down.
+    Heart of The Beastkin - Gain a guage, the more damage that is dealt or taken, the bar goes up, it will burn down.
         When on low life, you gain passive regeneration based on the guage's level, gain The Grit, upon use consume the guage and convert it to a vai health shield (only usable below 50)
 
     Monkey King - Passively gain hardening, instinct. Gain Nimbus passive, a passive that will dash you to your enemy on normal attack every 10 - tick seconds. (within a range)

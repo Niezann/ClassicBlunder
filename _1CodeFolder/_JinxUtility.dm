@@ -837,6 +837,16 @@ mob
 			//			val*=src.Anger
 				if(src.PotionCD)
 					val*=1.25
+			var/PrideDrain
+			if(passive_handler.Get("Pride"))
+				PrideDrain=(100-Health)*0.01
+				if(PrideDrain>1)
+					PrideDrain=1
+				if(PrideDrain<0.01)
+					PrideDrain=0.01
+				val*=PrideDrain
+				if(src.Health>=85&!passive_handler.Get("PowerStressed"))
+					val*=0
 			src.Energy-=val
 			if(src.Energy<0)
 				src.Energy=0
@@ -1210,6 +1220,25 @@ mob
 			return src.DefMultTotal
 		GetRecovMult()
 			return src.RecovMultTotal
+		GetStrTransMult()
+			var/STM=src.StrTransMult+src.passive_handler.Get("MagnifiedStr")
+			return STM
+		GetForTransMult()
+			var/FTM=src.ForTransMult+src.passive_handler.Get("MagnifiedFor")
+			return FTM
+		GetEndTransMult()
+			var/ETM=src.EndTransMult+src.passive_handler.Get("MagnifiedEnd")
+			return ETM
+		GetSpdTransMult()
+			var/SpTM=src.SpdTransMult+src.passive_handler.Get("MagnifiedSpd")
+			return SpTM
+		GetOffTransMult()
+			var/OTM=src.OffTransMult+src.passive_handler.Get("MagnifiedOff")
+			return OTM
+		GetDefTransMult()
+			var/DTM=src.DefTransMult+src.passive_handler.Get("MagnifiedDef")
+			return DTM
+
 
 		GetMA(stat)
 			if(StyleBuff)
@@ -1369,6 +1398,8 @@ mob
 					Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
+			var/STM=GetStrTransMult()
+			Str*=STM
 			Str*=Mod
 			Str*=Mult
 			if(src.HasMirrorStats())
@@ -1528,6 +1559,8 @@ mob
 					Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
+			var/FTM=GetForTransMult()
+			For*=FTM
 			For*=Mod
 			For*=Mult
 			if(src.HasMirrorStats())
@@ -1677,6 +1710,8 @@ mob
 				Mod+=(0.02*ManaAmount)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
+			var/ETM=GetEndTransMult()
+			End*=ETM
 			End*=Mod
 			End*=Mult
 			if(src.HasMirrorStats())
@@ -1786,6 +1821,8 @@ mob
 				Mod+=((passive_handler.Get("TensionPowered")*2))
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/10)
+			var/SpTM=GetSpdTransMult()
+			Spd*=SpTM
 			Spd*=Mod
 			Spd*=Mult
 			if(src.HasMirrorStats())
@@ -1874,6 +1911,8 @@ mob
 				Mod-=src.OffEroded
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
 				Mod+=passive_handler.Get("TensionPowered")
+			var/OTM=GetOffTransMult()
+			Off*=OTM
 			Off*=Mod
 			Off*=Mult
 			if(src.HasMirrorStats())
@@ -1968,7 +2007,8 @@ mob
 				Mod-=src.DefEroded
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
 				Mod+=passive_handler.Get("TensionPowered")
-
+			var/DTM=GetDefTransMult()
+			Def*=DTM
 			Def*=Mod
 			Def*=Mult
 			if(src.HasMirrorStats())

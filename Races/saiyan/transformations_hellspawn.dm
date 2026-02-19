@@ -8,6 +8,8 @@ transformation
 			form_glow_icon = 'Ripple Radiance.dmi'
 			form_glow_x = -32
 			form_glow_y = -32
+			//... i guess, intend for them around 35 potential... ??? 
+			//i ain't even gonna try to make sense of these guys
 			unlock_potential = 55
 			passives = list("Instinct" = 3, "Flicker" = 4, "Pursuer" = 5,  "BuffMastery" = 4, "PureDamage" = 3, "BleedHit"=0.75, "PureReduction"=-2)
 			PUSpeedModifier = 1.5
@@ -85,6 +87,8 @@ transformation
 					..()
 		hellspawn_super_saiyan_2 //it's super saiyan 4
 			tier = 7//full transparency this does functionally nothing for hellspawns, but it's a bandaid for our special regular saiyans hahaha
+			//lmao
+			//lol
 			unlock_potential = 80
 			autoAnger = 1
 			speed = 1.5

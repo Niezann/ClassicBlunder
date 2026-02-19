@@ -103,10 +103,8 @@
 	if(!ThirdStrike)
 		MultiStrike(SecondStrike, ThirdStrike) // trigger double/triple strike if applicable
 	var/warpingStrike = getWarpingStrike() // get warping strike if applicable
-	var/reqCounter = 99//counterWarp(s,s2,s3)
-	if(passive_handler["Flying Thunder God"])
-		reqCounter = 15 - passive_handler["Flying Thunder God"]
-	if(IaidoCounter>=reqCounter)
+	var/iaidoGaugeMax = 100;
+	if(IaidoCounter>=iaidoGaugeMax)
 		warpingStrike = 100
 	if(Warping || passive_handler.Get("Warping"))
 		var/warp = Warping
@@ -201,18 +199,18 @@
 				msg = replacetext(msg, "target_name", "[src.Target]")
 				src.OMessage(10,"[msg]","<font color=red>[src]([src.key]) rides the Nimbus.")
 				last_nimbus = world.time
-				if(!locate(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider, src)) // TODO maybe change this so its better
-					AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider)
-				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider/nr in src)
+				if(!locate(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Nimbus_Rider, src)) // TODO maybe change this so its better
+					AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Nimbus_Rider)
+				for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Nimbus_Rider/nr in src)
 					if(!nr.Using)
-						nr.passives = /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastman/Nimbus_Rider::passives
+						nr.passives = /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Nimbus_Rider::passives
 						nr.Trigger(src)
 				// TODO: make hud later if we feel like it chat
 	if(warpingStrike)
 		if(Target && Target.loc && Target != src && Target && get_dist(Target, src) < warpingStrike)
 			forcewarp = Target
 	if((forcewarp && Target.z == z))
-		if(passive_handler["Flying Thunder God"] && IaidoCounter>=reqCounter)
+		if(passive_handler["Flying Thunder God"] && IaidoCounter>=iaidoGaugeMax)
 			new/obj/tracker/FTG_seeker(locate(x,y,z), Target, src) //TODO: make this a normal projectile maybe? does no damage, but throws this, idk that way it can be used as a follow up
 			if(IaidoCounter)
 				IaidoCounter = 0
@@ -336,8 +334,8 @@
 				damage *= damageMultiplier
 		// 				GIANT FORM 				//
 				if(enemy.HasGiantForm())
-					var/modifier = glob.upper_damage_roll / 6
-					dmgRoll = GetDamageMod(0, -modifier)
+					var/modifier = glob.max_damage_roll / 6
+					dmgRoll = clamp(dmgRoll - modifier, glob.min_damage_roll, glob.max_damage_roll);
 					#if DEBUG_MELEE
 					log2text("Damageroll", "After GiantForm", "damageDebugs.txt", "[ckey]/[name]")
 					log2text("Damageroll", dmgRoll, "damageDebugs.txt", "[ckey]/[name]")
@@ -865,12 +863,7 @@
 							if(GetAttracting())
 								enemy.AddAttracting(GetAttracting(), src)
 								// 		OTHER DMG START 		//
-						//	var/otherDmg = (damage+(GetIntimidation()/100)*(1+(2*(GetMaouKi())+(HasNullTarget()&&!HasMaouKi() ? GetGodKi() : 0))))
 							var/otherDmg = (damage+(GetIntimidation()/100)*(1+(2*(HasNullTarget() ? GetGodKi() : 0))))
-
-
-							// if(UsingZornhau()&&HasSword())
-							// 	otherDmg *= 1 + (UsingZornhau()*glob.ZORNHAU_MULT)
 
 							if(UsingKendo()&&HasSword()&&CountStyles(2))
 								if(s.Class == "Wooden")

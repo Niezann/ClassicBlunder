@@ -1,4 +1,4 @@
-/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastman
+/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin
 	Monkey_Gourd
 		BuffName="Monkey Gourd"
 		UnrestrictedBuff=1

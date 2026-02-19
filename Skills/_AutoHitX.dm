@@ -6145,8 +6145,8 @@ obj
 				Owner.log2text("dmg roll - Auto Hit", dmgRoll, "damageDebugs.txt", "[Owner.ckey]/[Owner.name]")
 				#endif
 				if(m.HasGiantForm())
-					var/mod = glob.upper_damage_roll / 6
-					dmgRoll = Owner.GetDamageMod(0, -mod)
+					var/mod = glob.max_damage_roll / 6
+					dmgRoll = clamp(dmgRoll - mod, glob.min_damage_roll, glob.max_damage_roll);
 					#if DEBUG_AUTOHIT
 					Owner.log2text("dmg roll - Auto Hit", "After GiantForm", "damageDebugs.txt", "[Owner.ckey]/[Owner.name]")
 					Owner.log2text("dmg roll - Auto Hit", dmgRoll, "damageDebugs.txt", "[Owner.ckey]/[Owner.name]")

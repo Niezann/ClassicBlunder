@@ -7,7 +7,7 @@
 		StyleSpd=1.5
 		StyleDef=1.5
 		Finisher="/obj/Skills/Queue/Finisher/Jinzen_Senkei"
-		passives = list("Kensei" = 1, "The Way" = 1, "Sword Master" = 1, "LikeWater" = 6, "SweepingStrike" = 1, "DoubleStrike" = 3, "BlurringStrikes" = 1.5, \
+		passives = list("Iaido" = 8, "Kensei" = 1, "The Way" = 1, "Sword Master" = 1, "LikeWater" = 6, "SweepingStrike" = 1, "DoubleStrike" = 3, "BlurringStrikes" = 1.5, \
 			"Zornhau" = 3, "Half-Sword" = 2, "Rage" = 1, "TripleStrike" = 1, "Iaijutsu" = 5, "Musoken" = 1, "Fury" = 3, "Momentum" = 3, "Hardening" = 3, \
 			"Parry" = 3, "Disarm" = 2, "Deflection" = 2, "Pressure" = 4)
 		StyleActive="Way of the Kensei"
@@ -20,7 +20,7 @@
 		StyleSpd=2.25
 		StyleStr=1.75
 		Finisher="/obj/Skills/Queue/Finisher/Demonic_Nine_Flashes"
-		passives = list("AsuraStrike" = 1, "TripleStrike" = 2, "DoubleStrike" = 3, "Iaijutsu" = 3, \
+		passives = list("Iaido" = 8, "AsuraStrike" = 1, "TripleStrike" = 2, "DoubleStrike" = 3, "Iaijutsu" = 3, \
 			"Fury" = 5, "NeedsSecondSword" = 1, "NeedsThirdSword" = 1, "BlurringStrikes" = 2, "SweepingStrikes" = 1, \
 			"Iaijutsu" = 3, "Disarm" = 3, "Parry" = 3, "Fury" = 5, "Unnerve" = 2, "Pressure" = 2 )
 		verb/Kyutoryu()
@@ -70,7 +70,7 @@
 			src.Trigger(usr)
 	Nebula_Blade
 		SignatureTechnique=4
-		passives = list("HybridStyle" = "MysticStyle", "Wuju" = 1, "CriticalChance" = 40, "CriticalDamage"= 0.05, "Shocking" = 4, "ThunderHerald" = 1, \
+		passives = list("Iaido" = 8, "HybridStyle" = "MysticStyle", "Wuju" = 1, "CriticalChance" = 40, "CriticalDamage"= 0.05, "Shocking" = 4, "ThunderHerald" = 1, \
 			"Instinct" = 1, "Flicker" = 1, "Fury" = 2.5, "Iaijutsu" = 2, "BlurringStrikes" = 1.5, "Rain" = 3, "Combustion" = 40, "Scorching" = 5,\
 			"SpiritSword" = 1.25, "SpiritFlow"=3)
 		StyleSpd = 1.5
