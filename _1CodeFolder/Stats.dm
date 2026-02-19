@@ -953,22 +953,11 @@ mob/proc/
 			if(src.PowerBoost)
 				Ratio*=src.PowerBoost
 			var/SSJBoost=1
-			if(isRace(SAIYAN)&&transActive&&ActiveBuff&&!passive_handler.Get("SSJRose"))
-				if(!passive_handler.Get("GodlyCalm")&&!passive_handler.Get("InBlue")&&!passive_handler.Get("SSJ4"))
-					if(race.transformations[1].mastery==100)
-						SSJBoost= 1.15
-					if(race.transformations[2].mastery==100)
-						SSJBoost= 1.30
-					if(race.transformations[3].mastery==100)
-						SSJBoost= 1.45
-				if(passive_handler.Get("GodlyCalm")||passive_handler.Get("InBlue")||passive_handler.Get("SSJ4"))
-					if(passive_handler.Get("SSJ4LimitBreaker")||passive_handler.Get("InBlueEvolved"))
-						SSJBoost = 1.85
-					else
-						SSJBoost = 1.60
-				Ratio*=SSJBoost
+			if(isRace(SAIYAN)&&transActive&&ActiveBuff)
+				if(passive_handler.Get("SaiyanPower")
+					Ratio*=src.GetSaiyanPower()
 			if(passive_handler.Get("SSJRose"))
-				Ratio*=1.60
+				Ratio*=1.60 //this will be Different but i'm leaving it like this now
 
 			/*if(src.Target)
 				if(ismob(src.Target))
