@@ -7,9 +7,11 @@
 
     adjust(mob/p)
 
-/obj/Skills/Buffs/ActiveBuffs/Racial
+/obj/Skills/Buffs/SlotlessBuffs/Racial
 	Void_Blade
 		MakesSword=1
+		SpecialSlot=0
+		Slotless=1
 		SwordName="Void Blade"
 		SwordIcon='KATANA SILVER.dmi'
 		SwordX=-8

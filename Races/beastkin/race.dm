@@ -16,7 +16,12 @@ race
 		classes = list("Heart of The Beastkin", "Monkey King", "Unseen Predator", "Undying Rage", \
 						"Feather Cowl", "Feather Knife", "Spirit Walker", "Trickster", \
 						"Fox Fire")
-		class_info = list("SETT", "WUKONG", "RENGAR", "TRYNDAMERE", "RAKAN", "XAYAH", "UDYR", "NIDALEE", "???", "AHRI")
+		class_info = list("{Beasthearts gain The Grit, a triggered buff which grants you a shield depending on how much damage you've taken and dished out.\
+They have increased tenacity when pushed to their breaking point (below 10% health).\
+They gain steady and doublestrike passives.\
+Inspiration taken from Sett (League of Legends)}",\
+\
+"WUKONG", "RENGAR", "TRYNDAMERE", "RAKAN", "XAYAH", "UDYR", "NIDALEE", "???", "AHRI")
 		// attaching this here cause lol
 		stats_per_class = list("Heart of The Beastkin" = list(1.25, 2, 0.75, 1, 1, 1.5), "Monkey King" = list(1.25,1.25,1.25,1.25,1.25,1.25),\
 						"Unseen Predator" = list(1.75, 0.75, 1, 1.75, 0.75, 1.5), "Undying Rage" = list(1.75, 0.75, 1.75, 1, 0.75, 1.5), \
@@ -40,10 +45,8 @@ race
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/The_Grit)
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast)
 					p.passive_handler.Set("Grit", 1)
-
 					p.passive_handler.Set("Steady", 1)
 					p.passive_handler.Set("DoubleStrike",1)
-					//Unarmed Iaido passive, actually
 				if("Monkey King")
 					p.passive_handler.Increase("Nimbus", 1)
 					var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Never_Fall/nf = new(p)

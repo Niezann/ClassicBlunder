@@ -1,9 +1,31 @@
 transformation
 	namekian
+		Potential_Unleashed
+			form_aura_icon = 'AurasBig.dmi'
+			form_aura_icon_state = "Heran"
+			form_aura_x = -32
+			form_glow_icon = 'Ripple Radiance.dmi'
+			form_glow_x = -32
+			form_glow_y = -32
+			passives = list("Instinct" = 2, "Flow" = 2, "Flicker" = 2, "Pursuer" = 3,  "PureDamage" = 2, "PureReduction" = 2)
+			speedadd = 0.2
+			enduranceadd = 0.2
+			offenseadd = 0.2
+			defenseadd = 0.2
+			strengthadd = 0.2
+			forceadd = 0.2
+			mastery_boons(mob/user)
+				user.transUnlocked=2
+				if(user.Potential>=20)
+					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperNamekian, user))
+						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperNamekian)
+						user << "You have ascended past the limits of a normal Namekian, unlocking Super Namekian!"
 		Orange_Namekian//you can thank piccolo for this one, I'm very sorry. LMFAO.
 			transform(mob/user, forceTrans)
 				if(is_active) return
 				if(!user) return
+				if(user.Potential<45)
+					if(user.Health>=(20+user.Potential/4) return
 				passives = list("Instinct" = round(max(user.AscensionsAcquired/3, 1)), "Flow" = round(max(user.AscensionsAcquired/3, 1)), "Flicker" = round(max(user.AscensionsAcquired, 2)), "Pursuer" = round(max(user.AscensionsAcquired/3, 1)),  "BuffMastery" = round(max(user.AscensionsAcquired*1.25, 1)), "PureDamage" = round(max(user.AscensionsAcquired/2, 1)), "PureReduction" = round(max(user.AscensionsAcquired/2, 1)))
 				speed = 1.2
 				offense = 1.15

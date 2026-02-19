@@ -63,16 +63,16 @@
 			mysticTicker()
 
 
-	ftg
+	iaido
 		icon = 'kunai.dmi'
 		dir = EAST
 		layer = FLY_LAYER
 		alpha = 0
 		Update()
-			var/ftg = client.mob.passive_handler["Flying Thunder God"]
+			var/iaido = client.mob.passive_handler["Iaido"];
 			var/counter = client.mob.IaidoCounter
-			if(ftg)
-				if(counter >= (15 - ftg))
+			if(iaido)
+				if(counter >= 100)
 					if(alpha != 255)
 						animate(src, alpha = 255, time = 5, easing = SINE_EASING)
 						filters = filter(type="outline", size=1, color=rgb(255, 255, 255))
@@ -194,8 +194,8 @@ client/proc/remove_hud(id)
 			animate(barbg, alpha = 0, time = 2)
 
 
-#define BAR_X_LOCS list("Fury" = 1, "Momentum" = 1, "Harden" = 1, "FTG" = 1, "MysticT0" = 1, "MysticT1" = 32, "SuperCharge" = 32, "HotnCold" = 128, "Grit" = 192)
-#define BAR_Y_LOCS list("Fury" = 86, "Momentum" = 118, "Harden" = 150, "FTG" = 32, "MysticT0" = 64, "MysticT1" = 64, "SuperCharge" = 32, "HotnCold" = 1, "Grit" = 1)
+#define BAR_X_LOCS list("Fury" = 1, "Momentum" = 1, "Harden" = 1, "Iaido" = 1, "MysticT0" = 1, "MysticT1" = 32, "SuperCharge" = 32, "HotnCold" = 128, "Grit" = 192)
+#define BAR_Y_LOCS list("Fury" = 86, "Momentum" = 118, "Harden" = 150, "Iaido" = 32, "MysticT0" = 64, "MysticT1" = 64, "SuperCharge" = 32, "HotnCold" = 1, "Grit" = 1)
 
 /mob/proc/hudIsLive(option, path, toss_obj,var_callback)
 	if(client.hud_ids[option])

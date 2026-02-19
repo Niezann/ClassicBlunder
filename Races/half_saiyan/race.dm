@@ -18,9 +18,9 @@ race
 		intellect = 1.5
 		skills = list(/obj/Skills/Buffs/SlotlessBuffs/Oozaru)
 		passives = list("Tenacity" = 0.5, "Brutalize" = 0.25, "Adrenaline" = 0.5)
-		class_info = list("Channeling humanity to pave a path forward in a murky future", "Using their brutal heritage to channel the innate anger that comes with.")
+		class_info = list("Channeling humanity to pave a path forward in a murky future.", "Fight for your own justice.")
 		stats_per_class = list("Compassion" = list(1.25, 1.25, 1.25, 1.25, 1.25, 1.25),"Anger" = list(1.5,1.5,1.5,1,1,1))
-		classes = list("Compassion", "Anger")
+		classes = list("Compassion", "Justice")
 
 		onFinalization(mob/user)
 			..()
@@ -42,9 +42,7 @@ race
 			if(user.Class == "Compassion")
 				user.race.transformations += new /transformation/saiyan/super_saiyan()
 				user.race.transformations += new /transformation/saiyan/super_saiyan_2()
-			else if(user.Class == "Anger")
+			else if(user.Class == "Justice")
 				user.race.transformations += new /transformation/saiyan/super_saiyan()
 				user.race.transformations += new /transformation/saiyan/super_saiyan_2()
-				user.race.transformations += new /transformation/saiyan/super_saiyan_3()
-				user.race.transformations += new /transformation/saiyan/super_saiyan_4()
 				user.race.transformations += new /transformation/half_saiyan/saiyan/super_saiyan_rage()

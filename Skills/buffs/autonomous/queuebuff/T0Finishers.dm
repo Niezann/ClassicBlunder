@@ -16,7 +16,7 @@
         passives = list("Iron Grip" = 1, "Scoop" = 1, "Muscle Power" = 2,"TensionLock" = 1)
         ActiveMessage = "awakens the Anger of The Beast!"
         OffMessage="'s inner beast calms down..."
-    
+
     Shaolin_Step
         IconLock='SweatDrop.dmi'
         IconApart=1
@@ -27,7 +27,7 @@
         EndMult=1.1
         ForMult=1.1
         passives = list("BuffMastery" = 1, "StyleMastery" = 1, "DebuffResistance" = 1,"TensionLock" = 1)// not sure what 2 do w/ it
-    
+
     Unlocked_Potential
         StyleNeeded="Turtle"
         IconLock='SweatDrop.dmi'
@@ -51,8 +51,8 @@
         StrMult=1.25
         DefMult=1.1
         passives = list("Steady" = 1, "Instinct" = 1)
-    
-    // the debuff 
+
+    // the debuff
     Shredded
         IconLock='Stun.dmi'
         IconApart=1
@@ -60,7 +60,7 @@
         DefMult=0.8
         ActiveMessage="has been ripped apart!"
         OffMessage="shakes off their damage."
-    
+
 
     Tyrfing
         IconLock='SweatDrop.dmi'
@@ -71,7 +71,7 @@
         OffMult=1.2
         DefMult=1.2
         SpdMult=0.8
-    
+
     Ragnarok
         IconLock='Stun.dmi'
         IconApart=1
@@ -79,7 +79,7 @@
         passives = list("ArmorAscension" = -1)
         EndMult = 0.7
         // total tank death
-    
+
 
     Champion_Pride
         IconLock='SweatDrop.dmi'
@@ -89,7 +89,7 @@
         StrMult = 1.3
         ActiveMessage="is filled with a champion's pride!"
         OffMessage="loses his fighting high."
-    
+
     Marked
         IconLock='Stun.dmi'
         IconApart=1

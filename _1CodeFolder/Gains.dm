@@ -233,19 +233,9 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 /mob/proc/drainTransformations(trans, transMastery)
 	// TRANS / TRANSMASTERY FOR CHANGIE 4TH FORM
 	var/drain
-	var/PrideDrain
 
 	if(trans && transMastery <= 75||trans && passive_handler.Get("True Inheritor"))
 		drain = round(30 - ((transMastery - 5) * 30) / (75 - 5), 1)
-		if(passive_handler.Get("Pride"))
-			PrideDrain=(100-Health)*0.01
-			if(PrideDrain>1)
-				PrideDrain=1
-			if(PrideDrain<0.01)
-				PrideDrain=0.01
-			drain*=PrideDrain
-		if(passive_handler.Get("Pride")&&Health>=90)
-			drain = 0
 		if(passive_handler.Get("True Inheritor"))
 			drain/=3
 		if(drain < 0)
@@ -510,12 +500,12 @@ mob
 
 
 
-				if(passive_handler["Flying Thunder God"])
-					if(client&&hudIsLive("FTG", /obj/hud/ftg))
-						client.hud_ids["FTG"]?:Update()
+				if(passive_handler["Iaido"])
+					if(client&&hudIsLive("Iaido", /obj/hud/iaido))
+						client.hud_ids["Iaido"]?:Update()
 				else
-					if(client&&client.hud_ids["FTG"])
-						client.remove_hud("FTG")
+					if(client&&client.hud_ids["Iaido"])
+						client.remove_hud("Iaido")
 
 			if(scrollTicker)
 				scrollTicker--
@@ -532,6 +522,9 @@ mob
 				src.Anger()
 			if(passive_handler["TensionPowered"])
 				if(src.canHTM())
+					src.race.transformations[2].transform(src, TRUE)
+			if(src.transActive==1&&src.isRace(NAMEKIAN))
+				if(src.Health<=(20+user.Potential/4))
 					src.race.transformations[2].transform(src, TRUE)
 			if(passive_handler["LegendarySaiyan"]&&src.transActive==src.transUnlocked||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["MovementMastery"]||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["GodKi"]||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["SSJ4"])
 				if(src.Tension<src.getMaxTensionValue())

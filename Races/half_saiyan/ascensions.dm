@@ -9,6 +9,7 @@ ascension
 					switch(owner.Class)
 						if("Compassion")
 							passives["UnderDog"] = 0.5
+							passives["Compassion"] = 1
 							speed=0.25
 							strength=0.25
 							defense=0.25
@@ -19,10 +20,11 @@ ascension
 								del ssj3
 							owner.race.transformations.Add(new/transformation/half_saiyan/human/ultimate_mode())
 							owner.race.transformations.Add(new/transformation/half_saiyan/human/beast_mode())
-						if("Anger")
+						if("Justice")
 							passives["Enrage"]=1
 							passives["CheapShot"]=0.5
 							passives["Brutalize"]=0.25
+							passives["Justice"] = 1
 							offense = 0.25
 							strength = 0.5
 							force = 0.25
@@ -42,7 +44,7 @@ ascension
 						strength=0.25
 						defense=0.25
 						endurance=0.25
-					if("Anger")
+					if("Justice")
 						passives["Enrage"]=1
 						passives["CheapShot"]=0.5
 						passives["Brutalize"]=0.25
@@ -64,7 +66,7 @@ ascension
 						strength = 0.25
 						offense = 0.25
 						force = 0.25
-					if("Anger")
+					if("Justice")
 						passives["Brutalize"] = 0.5
 						passives["KillerInstinct"] = 0.05
 						endurance = 0.25
@@ -86,7 +88,7 @@ ascension
 						defense = 0.25
 						offense = 0.5
 						force = 0.25
-					if("Anger")
+					if("Justice")
 						passives["Brutalize"] = 0.5
 						passives["KillerInstinct"] = 0.05
 						strength = 0.25
@@ -108,7 +110,7 @@ ascension
 						defense = 0.25
 						offense = 0.5
 						force = 0.25
-					if("Anger")
+					if("Justice")
 						passives["Brutalize"] = 0.5
 						passives["KillerInstinct"] = 0.05
 						strength = 0.25
@@ -129,7 +131,7 @@ ascension
 						defense = 0.5
 						offense = 0.5
 						force = 0.5
-					if("Anger")
+					if("Justice")
 						passives["Brutalize"] = 0.5
 						passives["KillerInstinct"] = 0.05
 						strength = 0.5

@@ -1481,6 +1481,24 @@ NEW VARIABLES
 			Cooldown=600
 			ActiveMessage="grows and transforms parts of their armor!"
 			OffMessage="tires out..."
+		SuperNamekian
+			SignatureTechnique=3
+			SagaSignature=1
+			passives = list("MagnifiedStr" = 0.2, "MagnifiedEnd" = 0.2,"MagnifiedFor" = 0.2)
+			FlashChange=1
+			KenWave=3
+			KenWaveSize=0.5
+			KenWaveIcon='KenShockwaveLegendary.dmi'
+			ActiveMessage="unleashes the might of a Super Namekian!"
+			OffMessage="tires out..."
+			adjust(mob/p)
+				passives = list("MagnifiedStr" = 0.2*min(round(p.Potential/10, 1),1), "MagnifiedEnd" = 0.2*min(round(p.Potential/10, 1),1),"MagnifiedFor" = 0.2*min(round(p.Potential/10, 1),1),\
+					"MagnifiedOff" = 0.2*min(round(p.Potential/10, 1),1),"MagnifiedDef" = 0.2*min(round(p.Potential/10, 1),1))
+			verb/Super_Namekian()
+				set category="Skills"
+				if(!usr.BuffOn(src))
+					adjust(usr)
+				src.Trigger(usr)
 		Wrathful
 			SignatureTechnique=3
 			UnrestrictedBuff=1
@@ -1514,12 +1532,7 @@ NEW VARIABLES
 			UnrestrictedBuff=1
 			NeedsSSJ=1
 			EnergyExpenditure=1.5
-			PowerMult=1.05
-			StrMult=1.2
-			ForMult=1.2
-			EndMult=1.2
-			SpdMult=0.8
-			DefMult=0.8
+			passives = list("MagnifiedStr" = 0.2, "MagnifiedEnd" = 0.2,"MagnifiedFor" = 0.2, "MagnifiedSSJ1" = 0.2, "EnergyLeak" = 1)
 			AuraLock=1
 			FlashChange=1
 			KenWave=3
@@ -1528,20 +1541,11 @@ NEW VARIABLES
 			ActiveMessage="bulks up greatly and erupts with power!"
 			OffMessage="tires out..."
 			adjust(mob/p)
-				if(src.Mastery<1)
-					src.Mastery=1
-					src.PowerMult=1.05
-				if(src.Mastery>=2)
-					src.PowerMult=1.1
-					src.SpdMult=1
-					passives = list("MovementMastery" = 3)
 			verb/Super_Saiyan_Grade2()
 				set category="Skills"
 				if(usr.ExpandBase)
 					IconReplace=1
 					icon=usr.ExpandBase
-				if(usr.transActive)
-					src.NeedsSSJ=usr.transActive
 				src.HairLock=usr.Hair_SSJ2
 				adjust(usr)
 				src.Trigger(usr)
@@ -1549,17 +1553,11 @@ NEW VARIABLES
 			SignatureTechnique=3
 			UnrestrictedBuff=1
 			NeedsSSJ=1
-			EnergyExpenditure=2
-			PowerMult=1.1
-			StrMult=1.2
-			ForMult=1.2
-			EndMult=1.5
-			SpdMult=0.8
-			OffMult=0.6
-			DefMult=0.4
 			IconLock='SS2Sparks.dmi'
 			AuraLock=1
 			FlashChange=1
+			passives = list("MagnifiedStr" = 0.4, "MagnifiedEnd" = 0.4,"MagnifiedFor" = 0.4, "MagnifiedSpd" = -0.4, "MagnifiedOff" = -0.4, "MagnifiedDef" = -0.4, "MagnifiedSSJ1" = 0.4, "EnergyLeak" = 2, "PowerStressed"=1)
+			EnergyExpenditure=1.5
 			ProportionShift=matrix(1.2, 0, 0, 0, 1, 0)
 			KenWave=5
 			KenWaveSize=0.5
@@ -1567,22 +1565,56 @@ NEW VARIABLES
 			ActiveMessage="bulks up enormously and explodes with power!"
 			OffMessage="loses steam..."
 			adjust(mob/p)
-				if(src.Mastery<1)
-					src.Mastery=1
-					src.PowerMult=1.1
-				if(src.Mastery>=2)
-					src.PowerMult=1.2
-					OffMult=0.8
-					DefMult=0.8
 			verb/Super_Saiyan_Grade3()
 				set category="Skills"
 				if(usr.ExpandBase)
 					IconReplace=1
 					icon=usr.ExpandBase
-				if(usr.transActive)
-					src.NeedsSSJ=usr.transActive
 				src.HairLock=usr.Hair_SSJ3
 				adjust(usr)
+				src.Trigger(usr)
+		SaiyanRoar
+			SignatureTechnique=3
+			Mastery=1
+			UnrestrictedBuff=1
+			StrMult=1.2
+			ForMult=1.2
+			EndMult=1.3
+			DefMult=1.3
+			AngerMult=1.1
+			KenWave=5
+			KenWaveSize=0.5
+			KenWaveIcon='KenShockwaveGold.dmi'
+			ActiveMessage="lets loose a furious Saiyan roar!"
+			OffMessage="loses steam..."
+			passives = list("UnderDog" = 5, "Perseverance" = 2, "CallousedHands" = 0.3)
+			verb/Saiyan_Roar()
+				src.Trigger(usr)
+		RoyalLineage
+			SignatureTechnique=3
+			Mastery=1
+			UnrestrictedBuff=1
+			StrMult=1.3
+			ForMult=1.3
+			OffMult=1.25
+			passives = list("PhysPleroma" = 1, "Steady" = 1)
+			ActiveMessage="unleashes the pride of their warrior race, commanding strength absolute!"
+			OffMessage="contains their superiority."
+			verb/Royal_Lineage()
+				src.Trigger(usr)
+		SaiyanFervor
+			SignatureTechnique=3
+			Mastery=1
+			UnrestrictedBuff=1
+			OffMult=1.4
+			DefMult=1.4
+			SpdMult=1.25
+			StrMult=1.1
+			ForMult=1.1
+			ActiveMessage="grows eager to test the strength of their opponent!"
+			OffMessage="contains their excitement."
+			passives = list("MovementMastery" = 2, "TechniqueMastery" = 2)
+			verb/Saiyan_Fervor()
 				src.Trigger(usr)
 		SuperSaiyanPerfected
 			SignatureTechnique=3
