@@ -572,6 +572,7 @@
 #include "Races\Popo\ascensions.dm"
 #include "Races\Popo\race.dm"
 #include "Races\saiyan\ascensions.dm"
+#include "Races\saiyan\hellssj4animation.dm"
 #include "Races\saiyan\race.dm"
 #include "Races\saiyan\racials.dm"
 #include "Races\saiyan\transformations.dm"
