@@ -12,7 +12,7 @@ ascension
 						if("Spirit")
 							owner.race.transformations.Add(new/transformation/nobody/spectral_tension())
 						if("Simple")
-							SMod = 2
+							SMod = 2.5
 					switch(owner.Class)
 						if("Samurai")
 							speed=0.5 * SMod
@@ -47,7 +47,7 @@ ascension
 						if("Spirit")
 							//
 						if("Simple")
-							SMod = 2
+							SMod = 2.5
 					switch(owner.Class)
 						if("Samurai")
 							speed=0.5 * SMod
@@ -82,7 +82,7 @@ ascension
 						if("Spirit")
 							//
 						if("Simple")
-							SMod = 2
+							SMod = 2.5
 					switch(owner.Class)
 						if("Samurai")
 							speed=0.5 * SMod
@@ -117,7 +117,7 @@ ascension
 						if("Spirit")
 							//
 						if("Simple")
-							SMod = 2
+							SMod = 2.5
 					switch(owner.Class)
 						if("Samurai")
 							speed=0.5 * SMod
@@ -152,7 +152,7 @@ ascension
 						if("Spirit")
 							//
 						if("Simple")
-							SMod = 2
+							SMod = 2.5
 					switch(owner.Class)
 						if("Samurai")
 							speed=0.5 * SMod
@@ -187,7 +187,7 @@ ascension
 						if("Spirit")
 							//
 						if("Simple")
-							SMod = 2
+							SMod = 2.5
 					switch(owner.Class)
 						if("Samurai")
 							speed=1 * SMod
