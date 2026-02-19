@@ -1221,22 +1221,22 @@ mob
 		GetRecovMult()
 			return src.RecovMultTotal
 		GetStrTransMult()
-			var/STM=src.StrTransMult
+			var/STM=src.StrTransMult+src.passive_handler.Get("MagnifiedStr")
 			return STM
 		GetForTransMult()
-			var/FTM=src.ForTransMult
+			var/FTM=src.ForTransMult+src.passive_handler.Get("MagnifiedFor")
 			return FTM
 		GetEndTransMult()
-			var/ETM=src.EndTransMult
+			var/ETM=src.EndTransMult+src.passive_handler.Get("MagnifiedEnd")
 			return ETM
 		GetSpdTransMult()
-			var/SpTM=src.SpdTransMult
+			var/SpTM=src.SpdTransMult+src.passive_handler.Get("MagnifiedSpd")
 			return SpTM
 		GetOffTransMult()
-			var/OTM=src.OffTransMult
+			var/OTM=src.OffTransMult+src.passive_handler.Get("MagnifiedOff")
 			return OTM
 		GetDefTransMult()
-			var/DTM=src.DefTransMult
+			var/DTM=src.DefTransMult+src.passive_handler.Get("MagnifiedDef")
 			return OTM
 
 
