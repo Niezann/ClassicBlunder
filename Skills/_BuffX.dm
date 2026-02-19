@@ -1481,6 +1481,24 @@ NEW VARIABLES
 			Cooldown=600
 			ActiveMessage="grows and transforms parts of their armor!"
 			OffMessage="tires out..."
+		SuperNamekian
+			SignatureTechnique=3
+			SagaSignature=1
+			passives = list("MagnifiedStr" = 0.2, "MagnifiedEnd" = 0.2,"MagnifiedFor" = 0.2)
+			FlashChange=1
+			KenWave=3
+			KenWaveSize=0.5
+			KenWaveIcon='KenShockwaveLegendary.dmi'
+			ActiveMessage="unleashes the might of a Super Namekian!"
+			OffMessage="tires out..."
+			adjust(mob/p)
+				passives = list("MagnifiedStr" = 0.2*min(round(p.Potential/10, 1),1), "MagnifiedEnd" = 0.2*min(round(p.Potential/10, 1),1),"MagnifiedFor" = 0.2*min(round(p.Potential/10, 1),1),\
+					"MagnifiedOff" = 0.2*min(round(p.Potential/10, 1),1),"MagnifiedDef" = 0.2*min(round(p.Potential/10, 1),1))
+			verb/Super_Namekian()
+				set category="Skills"
+				if(!usr.BuffOn(src))
+					adjust(usr)
+				src.Trigger(usr)
 		Wrathful
 			SignatureTechnique=3
 			UnrestrictedBuff=1
