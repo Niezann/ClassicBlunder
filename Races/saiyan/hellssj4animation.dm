@@ -66,11 +66,11 @@
     var/obj/dorkness/dorkness = new()
     var/obj/lightness/lightness = new()
     var/obj/animationobj/lightness2 = new(i = 'lightcutin.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.85)
-    var/obj/animationobj/background = new(i = 'lightcutin.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.5)
+    var/obj/animationobj/background = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.5)
     background.icon_state = "Background"
-    var/obj/animationobj/i2 = new(i = 'lightcutin.dmi', s_loc = "LEFT,BOTTOM",addto = blankHolder.vis_contents,_px = -10, _py = 0, l = MOB_LAYER+0.8)
+    var/obj/animationobj/i2 = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM",addto = blankHolder.vis_contents,_px = -10, _py = 0, l = MOB_LAYER+0.8)
     i2.icon_state = "HandBack"
-    var/obj/animationobj/i3 = new(i = 'lightcutin.dmi', s_loc = "LEFT,BOTTOM",addto = blankHolder.vis_contents, _py = 0, l = MOB_LAYER+0.9)
+    var/obj/animationobj/i3 = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM",addto = blankHolder.vis_contents, _py = 0, l = MOB_LAYER+0.9)
     i3.icon_state = "RockStandard"
 
     blankHolder.screen_loc = "LEFT,BOTTOM"
