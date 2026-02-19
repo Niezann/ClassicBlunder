@@ -11,7 +11,7 @@ transformation
 			form_glow_y = -32
 			//Automatically unlocked at 40, intended to be unlocked around 20
 			unlock_potential = 30
-			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2,  "PureDamage" = 1, "PureReduction" = 1, "SaiyanPower"=0.3)
+			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2,  "PureDamage" = 1, "PureReduction" = 1, "SaiyanPower"=1, "SaiyanPower1"=0.4)
 			angerPoint = 75
 			speed = 0.3 //these are additive. base is 1, so 0.3=1.3x
 			endurance = 0.3
@@ -121,7 +121,7 @@ transformation
 			//Autounlocked at 55, intended to be unlocked around 35
 			unlock_potential = 55
 			autoAnger = TRUE
-			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2, "PureDamage" = 1, "PureReduction" = 1, "SaiyanPower"=0.2)
+			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2, "PureDamage" = 1, "PureReduction" = 1, "SaiyanPower2"=0.4)
 			PUSpeedModifier = 1.5
 			speed = 0.2
 			endurance = 0.2
@@ -179,7 +179,7 @@ transformation
 			form_icon_2_icon = 'SS3Sparks.dmi'
 			form_hair_icon = 'Hair_SSj3.dmi'
 			form_icon_1_icon = 'Hair_SSj3.dmi'
-			passives = list("Flicker" = 1, "Pursuer" = 1, "PureDamage" = 1, "PureReduction" = 1, "SaiyanPower"=0.5)
+			passives = list("Flicker" = 1, "Pursuer" = 1, "PureDamage" = 1, "PureReduction" = 1, "SaiyanPower3"=0.6)
 			//Autounlocked at 65, intended to be unlocked at 45
 			unlock_potential = 65
 			speed = 0.5 //these are additive. base is 1, so 0.3=1.3x
