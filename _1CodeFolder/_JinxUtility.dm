@@ -1210,6 +1210,25 @@ mob
 			return src.DefMultTotal
 		GetRecovMult()
 			return src.RecovMultTotal
+		GetStrTransMult()
+			var/STM=src.StrTransMult
+			return STM
+		GetForTransMult()
+			var/FTM=src.ForTransMult
+			return FTM
+		GetEndTransMult()
+			var/ETM=src.EndTransMult
+			return ETM
+		GetSpdTransMult()
+			var/SpTM=src.SpdTransMult
+			return SpTM
+		GetOffTransMult()
+			var/OTM=src.OffTransMult
+			return OTM
+		GetDefTransMult()
+			var/DTM=src.DefTransMult
+			return OTM
+
 
 		GetMA(stat)
 			if(StyleBuff)
@@ -1369,6 +1388,8 @@ mob
 					Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
+			var/STM=GetStrTransMult()
+			Str*=STM
 			Str*=Mod
 			Str*=Mult
 			if(src.HasMirrorStats())
@@ -1528,6 +1549,8 @@ mob
 					Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
+			var/FTM=GetForTransMult()
+			For*=FTM
 			For*=Mod
 			For*=Mult
 			if(src.HasMirrorStats())
@@ -1677,6 +1700,8 @@ mob
 				Mod+=(0.02*ManaAmount)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
+			var/ETM=GetEndTransMult()
+			End*=ETM
 			End*=Mod
 			End*=Mult
 			if(src.HasMirrorStats())
@@ -1786,6 +1811,8 @@ mob
 				Mod+=((passive_handler.Get("TensionPowered")*2))
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/10)
+			var/SpTM=GetSpdTransMult()
+			Spd*=SpTM
 			Spd*=Mod
 			Spd*=Mult
 			if(src.HasMirrorStats())
@@ -1874,6 +1901,8 @@ mob
 				Mod-=src.OffEroded
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
 				Mod+=passive_handler.Get("TensionPowered")
+			var/OTM=GetOffTransMult()
+			Off*=OTM
 			Off*=Mod
 			Off*=Mult
 			if(src.HasMirrorStats())
@@ -1968,7 +1997,8 @@ mob
 				Mod-=src.DefEroded
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
 				Mod+=passive_handler.Get("TensionPowered")
-
+			var/DTM=GetDefTransMult()
+			Def*=DTM
 			Def*=Mod
 			Def*=Mult
 			if(src.HasMirrorStats())
