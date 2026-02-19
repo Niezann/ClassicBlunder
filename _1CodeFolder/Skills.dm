@@ -353,10 +353,10 @@ obj/Skills
 		desc="Allows you to highten or lower your energy level."
 		verb/Power_Up()
 			set category="Skills"
-			usr.SkillX("PowerUp",src)
+			usr.PowerUp() // This proc is in Skills\basics\PowerControl.dm
 		verb/Power_Down()
 			set category="Skills"
-			usr.SkillX("PowerDown",src)
+			usr.PowerDown() // This proc is in Skills\basics\PowerControl.dm
 	Rank_Up_Magic_Limit_Over_Force
 		icon='Skillz.dmi'
 		icon_state="PC"
