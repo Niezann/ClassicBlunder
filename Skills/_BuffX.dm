@@ -1555,6 +1555,49 @@ NEW VARIABLES
 				src.HairLock=usr.Hair_SSJ3
 				adjust(usr)
 				src.Trigger(usr)
+		SaiyanRoar
+			SignatureTechnique=3
+			Mastery=1
+			UnrestrictedBuff=1
+			StrMult=1.2
+			ForMult=1.2
+			EndMult=1.3
+			DefMult=1.3
+			AngerMult=1.1
+			KenWave=5
+			KenWaveSize=0.5
+			KenWaveIcon='KenShockwaveGold.dmi'
+			ActiveMessage="lets loose a furious Saiyan roar!"
+			OffMessage="loses steam..."
+			passives = list("UnderDog" = 5, "Perseverance" = 2, "CallousedHands" = 0.3)
+			verb/Saiyan_Roar()
+				src.Trigger(usr)
+		RoyalLineage
+			SignatureTechnique=3
+			Mastery=1
+			UnrestrictedBuff=1
+			StrMult=1.3
+			ForMult=1.3
+			OffMult=1.25
+			passives = list("PhysPleroma" = 1, "Steady" = 1)
+			ActiveMessage="unleashes the pride of their warrior race, commanding strength absolute!"
+			OffMessage="contains their superiority."
+			verb/Royal_Lineage()
+				src.Trigger(usr)
+		SaiyanFervor
+			SignatureTechnique=3
+			Mastery=1
+			UnrestrictedBuff=1
+			OffMult=1.4
+			DefMult=1.4
+			SpdMult=1.25
+			StrMult=1.1
+			ForMult=1.1
+			ActiveMessage="grows eager to test the strength of their opponent!"
+			OffMessage="contains their excitement."
+			passives = list("MovementMastery" = 2, "TechniqueMastery" = 2)
+			verb/Saiyan_Fervor()
+				src.Trigger(usr)
 		SuperSaiyanPerfected
 			SignatureTechnique=3
 			Mastery=1
