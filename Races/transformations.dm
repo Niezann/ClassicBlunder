@@ -48,11 +48,17 @@ transformation
 		list/passives
 		list/class_passives
 		strength = 1
+		strengthadd = 0
 		endurance = 1
+		enduranceadd = 0
 		force = 1
+		forceadd = 0
 		offense = 1
+		offenseadd = 0
 		defense = 1
+		defenseadd = 0
 		speed = 1
+		speedadd=0
 		regeneration
 		anger
 		unlock_potential = -1
@@ -189,12 +195,18 @@ transformation
 			user.passive_handler.increaseList(passives)
 			user.passive_handler.increaseList(class_passives)
 
-			user.StrTransMult += strength
-			user.EndTransMult += endurance
-			user.ForTransMult += force
-			user.SpdTransMult += speed
-			user.OffTransMult += offense
-			user.DefTransMult += defense
+			user.StrMultTotal *= strength
+			user.EndMultTotal *= endurance
+			user.ForMultTotal *= force
+			user.SpdMultTotal *= speed
+			user.OffMultTotal *= offense
+			user.DefMultTotal *= defense
+			user.StrTransMult += strengthadd
+			user.EndTransMult += enduranceadd
+			user.ForTransMult += forceadd
+			user.SpdTransMult += speedadd
+			user.OffTransMult += offenseadd
+			user.DefTransMult += defenseadd
 
 			user.BioArmorMax += BioArmorMax
 			if(user.BioArmor > user.BioArmorMax)
@@ -265,12 +277,18 @@ transformation
 			user.passive_handler.decreaseList(passives)
 			user.passive_handler.decreaseList(class_passives)
 
-			user.StrTransMult -= strength
-			user.EndTransMult -= endurance
-			user.ForTransMult -= force
-			user.SpdTransMult -= speed
-			user.OffTransMult -= offense
-			user.DefTransMult -= defense
+			user.StrMultTotal /= strength
+			user.EndMultTotal /= endurance
+			user.ForMultTotal /= force
+			user.SpdMultTotal /= speed
+			user.OffMultTotal /= offense
+			user.DefMultTotal /= defense
+			user.StrTransMult -= strengthadd
+			user.EndTransMult -= enduranceadd
+			user.ForTransMult -= forceadd
+			user.SpdTransMult -= speedadd
+			user.OffTransMult -= offenseadd
+			user.DefTransMult -= defenseadd
 
 			user.BioArmorMax -= BioArmorMax
 			if(user.BioArmor > user.BioArmorMax)
