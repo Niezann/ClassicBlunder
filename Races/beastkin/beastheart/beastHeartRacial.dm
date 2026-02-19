@@ -11,8 +11,6 @@
             passive_handler["Grit"] = 1
 
 /obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/The_Grit
-	// since grit won't b used elsewhere i could just make it consume the grit on active, but that is sloppy
-	// otherwise i can replace the usesX vars and make it 1 variable BUT I AM LAZY AS HELL
 	BuffName = "The Grit"
 	Cooldown = -1
 	NeedsHealth = 50
@@ -22,10 +20,9 @@
 		var/currentGrit = p.passive_handler["Grit"]
 		currentGrit/=10
 		VaizardHealth = 10+ currentGrit
-		BuffName = "The Grit"
 	verb/The_Grit()
 		set category = "Skills"
-		adjust(usr)
+		if(!usr.BuffOn(src)) adjust(usr)
 		Trigger(usr)
 
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Heart_of_the_Half_Beast
@@ -40,12 +37,10 @@
     TimerLimit = 10
     ActiveMessage="'s heart begins to pump into overdrive!"
     OffMessage="'s heart can't keep up..."
-    //At max asc, and lowest health bracket, heals 1% for 20 seconds
-    //Ascs lower the threshold for brackets
     proc/getRegenRate(mob/p)
-        var/amt = clamp(p.AscensionsAcquired*10, 10, 25);
-        var/timer = p.AscensionsAcquired >= 3 ? clamp(10 - (p.AscensionsAcquired-1), 5, 10) : 10;
-        HealthHeal = amt/timer;
+        var/amt = clamp(10+(p.AscensionsAcquired*5), 10, 25);//ranges from 10 to 25
+        var/timer = clamp(10-max(0, p.AscensionsAcquired-1), 5, 10);//Ranges from 10 to 5
+        HealthHeal = amt / timer;
         WoundHeal = HealthHeal / 2;
         if(p.AscensionsAcquired>=6) timer *= 2;
     Trigger(mob/User, Override)

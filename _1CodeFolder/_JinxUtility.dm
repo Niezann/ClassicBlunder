@@ -1237,7 +1237,7 @@ mob
 			return OTM
 		GetDefTransMult()
 			var/DTM=src.DefTransMult+src.passive_handler.Get("MagnifiedDef")
-			return OTM
+			return DTM
 
 
 		GetMA(stat)

@@ -500,12 +500,12 @@ mob
 
 
 
-				if(passive_handler["Flying Thunder God"])
-					if(client&&hudIsLive("FTG", /obj/hud/ftg))
-						client.hud_ids["FTG"]?:Update()
+				if(passive_handler["Iaido"])
+					if(client&&hudIsLive("Iaido", /obj/hud/iaido))
+						client.hud_ids["Iaido"]?:Update()
 				else
-					if(client&&client.hud_ids["FTG"])
-						client.remove_hud("FTG")
+					if(client&&client.hud_ids["Iaido"])
+						client.remove_hud("Iaido")
 
 			if(scrollTicker)
 				scrollTicker--

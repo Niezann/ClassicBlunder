@@ -1759,7 +1759,7 @@ mob
 			var/SaiyanPower2=passive_handler.Get("SaiyanPower2")*MasteryDivisor2
 			var/SaiyanPower3= passive_handler.Get("SaiyanPower3") //it's always at full power
 			var/SaiyanPower4= passive_handler.Get("SaiyanPower4")
-			var/SayianPower=1+(SaiyanPower1+SaiyanPower2+SaiyanPower3+SaiyanPower4) //It's like this because I intend on having Saiyan Unique buffs interact with this specifically. you'll see what i mean when i get to the grades
+			var/SaiyanPower=1+(SaiyanPower1+SaiyanPower2+SaiyanPower3+SaiyanPower4) //It's like this because I intend on having Saiyan Unique buffs interact with this specifically. you'll see what i mean when i get to the grades
 			return SaiyanPower
 
 		HasPowerReplacement()
