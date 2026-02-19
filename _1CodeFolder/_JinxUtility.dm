@@ -837,6 +837,16 @@ mob
 			//			val*=src.Anger
 				if(src.PotionCD)
 					val*=1.25
+			var/PrideDrain
+			if(passive_handler.Get("Pride"))
+				PrideDrain=(100-Health)*0.01
+				if(PrideDrain>1)
+					PrideDrain=1
+				if(PrideDrain<0.01)
+					PrideDrain=0.01
+				val*=PrideDrain
+				if(src.Health>=85)
+					val*=0
 			src.Energy-=val
 			if(src.Energy<0)
 				src.Energy=0
