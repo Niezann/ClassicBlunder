@@ -845,7 +845,7 @@ mob
 				if(PrideDrain<0.01)
 					PrideDrain=0.01
 				val*=PrideDrain
-				if(src.Health>=85)
+				if(src.Health>=85&!passive_handler.Get("PowerStressed"))
 					val*=0
 			src.Energy-=val
 			if(src.Energy<0)
