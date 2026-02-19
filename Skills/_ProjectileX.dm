@@ -4137,7 +4137,7 @@ obj
 					Cooldown=150
 					EnergyCost=5
 					ExcludeFacingDir=1
-					InstantKOChance=1
+					InstantKOChance=.001
 					ChargeMessage="begins channeling Divine Atonement..."
 					ActiveMessage="unleashes Divine Atonement!"
 					verb/Divine_Atonement()

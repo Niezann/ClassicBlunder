@@ -92,6 +92,7 @@ var/list/PassiveInfo = list("Extend"="increases the range of armed autohits base
 "Adaptation"= "When targeting someone,  gain some of their style's  Offense and Defense if it gives any, over time",
 "CriticalChance"= "chance to critically hit...",
 "FluidForm"= "Lowers opponents accuracy unless they have a counter",
+"PhysPleroma" = "adds a portion of strength to damage rolls, multiplicative. Makes SpiritHand and SpiritSword scale with strength instead of force.",
 "Brutalize"= "ignore some of a Target's Endurance when dealing damage",
 "Deicide"= "bonus damage to people with god ki",
 "KillerInstinct"= "increases force when below 75% hp, increases str when below 50%",
