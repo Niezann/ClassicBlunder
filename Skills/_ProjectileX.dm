@@ -139,7 +139,12 @@ obj
 				ClusterCount//BEING
 				ClusterAdjust=1//[slightly]
 				ClusterDelay//CRAY
+				SurroundBurst//skill to spawn in 8 directions around impact point
+				SurroundBurstRange=4//how many tiles away the burst projectiles spawn
 				RandomPath//yolo directions
+				list/FixedDirections//list of fixed directions to fire beams in simultaneously
+				ExcludeFacingDir//fire in all directions EXCEPT the user's facing direction
+				InstantKOChance//percent chance per damage tick to instantly KO the target
 				Devour//eat other shit
 				Stasis//icicle
 				Feint//zoom!
@@ -602,6 +607,29 @@ obj
 				LosesHoming=3
 				Variation=0
 				Toxic=1
+			Raijin_Surge
+				ClusterBit=1
+				Distance=5
+				DamageMult=0
+				Speed=1
+				Piercing=1
+				Dodgeable=0
+				IconLock='Blast - Basic.dmi'
+				Variation=0
+				Cluster=new/obj/Skills/Projectile/Raijin_Surge_Return
+				ClusterCount=1
+				ClusterAdjust=1
+			Raijin_Surge_Return
+				ClusterBit=1
+				Distance=30
+				DamageMult=3
+				Homing=5
+				HyperHoming=1
+				Hover=30
+				Dodgeable=0
+				Explode=1
+				IconLock='Blast - Basic.dmi'
+				Variation=0
 
 ////Keyblade
 			Wisdom_Form_Blast
@@ -1665,6 +1693,23 @@ obj
 				Cluster=new/obj/Skills/Projectile/Cluster_Bits
 				ClusterCount=5
 				verb/Cluster_Bomb()
+					set category="Skills"
+					usr.UseProjectile(src)
+			Raijin
+				Distance=30
+				DamageMult=5
+				AccMult=1
+				Homing=5
+				HyperHoming=1
+				Dodgeable=0
+				Explode=1
+				IconLock='Blast - Basic.dmi'
+				Cooldown=120
+				EnergyCost=3
+				SurroundBurst=new/obj/Skills/Projectile/Raijin_Surge
+				ChargeMessage="channels the wrath of Raijin..."
+				ActiveMessage="unleashes a bolt of divine thunder!"
+				verb/Raijin()
 					set category="Skills"
 					usr.UseProjectile(src)
 			Buster_Barrage
@@ -4081,6 +4126,23 @@ obj
 //T4 is above and also in Autohits.
 
 //T5 has damage mult 5, usually.
+				Divine_Atonement
+					DamageMult=5
+					ChargeRate=2
+					Dodgeable=0
+					Distance=30
+					BeamTime=30
+					Knockback=1
+					IconLock='BeamDodon.dmi'
+					Cooldown=150
+					EnergyCost=5
+					ExcludeFacingDir=1
+					InstantKOChance=1
+					ChargeMessage="begins channeling Divine Atonement..."
+					ActiveMessage="unleashes Divine Atonement!"
+					verb/Divine_Atonement()
+						set category="Skills"
+						usr.UseProjectile(src)
 				The_Original_Kamehameha
 					AdaptRate = 1
 					DamageMult=2
@@ -5041,13 +5103,22 @@ mob
 							OMsg(src, "<b><font color='[Z.ActiveColor]'>[src] [Z.ActiveMessage]</font color></b>")
 					if(Z.FlickBlast)
 						src.icon_state="Blast"
+					var/list/fire_directions
+					if(Z.ExcludeFacingDir)
+						fire_directions = list(NORTH, NORTHEAST, NORTHWEST, EAST, WEST, SOUTHEAST, SOUTHWEST, SOUTH) - list(src.dir)
+					else if(Z.FixedDirections && Z.FixedDirections.len)
+						fire_directions = Z.FixedDirections
 					while(src.Beaming==2)
-						src.Blast(Z, Origin)
-						var/StreamEffective=Z.Stream
-						if(Z.TempStream)
-							StreamEffective=Z.TempStream
-						for(var/s=StreamEffective-1, s>0, s--)
-							src.Blast(Z, Origin)//Higher levels of stream shoot more blasts.
+						if(fire_directions && fire_directions.len)
+							for(var/d in fire_directions)
+								src.Blast(Z, Origin, DirOverride=d)
+						else
+							src.Blast(Z, Origin)
+							var/StreamEffective=Z.Stream
+							if(Z.TempStream)
+								StreamEffective=Z.TempStream
+							for(var/s=StreamEffective-1, s>0, s--)
+								src.Blast(Z, Origin)//Higher levels of stream shoot more blasts.
 						sleep(Z.Speed)
 						if(Z.BeamTime)
 							Z.BeamTimeUsed++
@@ -5255,8 +5326,8 @@ mob
 									if(Z.AssociatedGear.Uses<=0)
 										src << "[Z] is out of power!"
 
-		Blast(var/obj/Skills/Projectile/Z, var/atom/Origin, var/GivesMessage, var/IconUsed)
-			new/obj/Skills/Projectile/_Projectile(src, Z, Origin, src.BeamCharging, GivesMessage, IconUsed)
+		Blast(var/obj/Skills/Projectile/Z, var/atom/Origin, var/GivesMessage, var/IconUsed, var/DirOverride=0)
+			new/obj/Skills/Projectile/_Projectile(src, Z, Origin, src.BeamCharging, GivesMessage, IconUsed, DirOverride)
 
 
 mob/var/tmp/list/active_projectiles = list()
@@ -5274,19 +5345,21 @@ obj
 					list/AlreadyHit
 					BeamCharge
 					BreathCost
+					DirOverride
 				Savable=0
 				density=1
 				Grabbable=0
 				Health=1#INF
 				MultiTrail = 0
-				New(var/mob/m, var/obj/Skills/Projectile/Z, var/atom/Origin, var/BeamCharging=0.5, var/GivesMessage, var/IconUsed=0)
+				New(var/mob/m, var/obj/Skills/Projectile/Z, var/atom/Origin, var/BeamCharging=0.5, var/GivesMessage, var/IconUsed=0, var/DirOverride=0)
 					if(m==null||Origin==null)
 						endLife()
 					AlreadyHit = list()
 					animate_movement=SLIDE_STEPS
-					if(BeamCharging<0.5)
+					if(BeamCharging<0.9999)
 						BeamCharging=0.5
 					src.Owner=m
+					src.DirOverride=DirOverride
 					if(Owner)
 						Owner.active_projectiles |= src
 					if(istype(Origin, /turf))
@@ -5372,6 +5445,8 @@ obj
 					src.ClusterCount=Z.ClusterCount
 					src.ClusterAdjust=Z.ClusterAdjust
 					src.ClusterDelay=Z.ClusterDelay
+					src.SurroundBurst=Z.SurroundBurst
+					src.SurroundBurstRange=Z.SurroundBurstRange
 					src.Stream=Z.Stream
 					src.Burning=Z.Burning
 					src.Scorching=Z.Scorching
@@ -5393,6 +5468,7 @@ obj
 					src.Excruciating=Z.Excruciating
 					src.MaimStrike=Z.MaimStrike
 					src.MortalBlow=Z.MortalBlow
+					src.InstantKOChance=Z.InstantKOChance
 					src.Destructive=Z.Destructive
 					src.FollowUp=Z.FollowUp
 					src.FollowUpDelay=Z.FollowUpDelay
@@ -5482,7 +5558,9 @@ obj
 						if(Z.Variation)
 							animate(src, pixel_x=src.pixel_x+src.VariationX, pixel_y=src.pixel_y+src.VariationY, time=3)
 						walk(src,0)
-						if(Z.RandomPath)
+						if(src.DirOverride)
+							src.dir=src.DirOverride
+						else if(Z.RandomPath)
 							src.RandomPath=Z.RandomPath
 							src.dir=pick(NORTH, NORTHEAST, NORTHWEST, EAST, WEST, SOUTHEAST, SOUTHWEST, SOUTH)
 						else if(Z.StormFall)
@@ -5979,6 +6057,14 @@ obj
 
 							if(src.Area=="Beam")
 								src.Owner.DoDamage(a, (EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR), SpiritAttack=1, Destructive=src.Destructive)
+								if(src.InstantKOChance && m && !m.KO)
+									if(prob(src.InstantKOChance))
+										spawn()
+											LightningBolt(m)
+										spawn()
+											m.Earthquake(100, -8, 8, -8, 8)
+										m.Unconscious(src.Owner)
+										OMsg(m, "<b><font color=#FFD700>[m] has been struck down by divine judgment!</font></b>")
 								if(src.Owner.UsingAnsatsuken())
 									src.Owner.HealMana(src.Owner.SagaLevel/8)
 								if(src.Owner.SagaLevel>1&&src.Owner.Saga=="Path of a Hero: Rebirth")
@@ -6175,6 +6261,12 @@ obj
 								else
 									src.Owner.Blast(src.Cluster, src.loc, 0)
 								sleep(src.ClusterDelay)
+						if(src.SurroundBurst)
+							var/list/burst_dirs = list(NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST)
+							for(var/d in burst_dirs)
+								var/turf/T = get_step(src, d)
+								if(T)
+									src.Owner.Blast(src.SurroundBurst, T, 0, 0, d)
 						if(!src.MaxMultiHit&&!src.Piercing&&!src.Striking&&!src.Slashing&&!src.Explode&&!src.Cluster&&src.Area!="Beam")
 							if(!src.Trail)
 								Bang(src.loc, Size=0.5, Offset=0, PX=src.VariationX, PY=src.VariationY)
