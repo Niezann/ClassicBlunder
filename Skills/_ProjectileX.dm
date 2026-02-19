@@ -144,7 +144,7 @@ obj
 				RandomPath//yolo directions
 				list/FixedDirections//list of fixed directions to fire beams in simultaneously
 				ExcludeFacingDir//fire in all directions EXCEPT the user's facing direction
-				InstantKOChance//percent chance per damage tick to instantly KO the target
+				InstantDamageChance//percent chance per damage tick to deal flat 10% health damage
 				Devour//eat other shit
 				Stasis//icicle
 				Feint//zoom!
@@ -4137,7 +4137,7 @@ obj
 					Cooldown=150
 					EnergyCost=5
 					ExcludeFacingDir=1
-					InstantKOChance=0.001
+					InstantDamageChance=1
 					ChargeMessage="begins channeling Divine Atonement..."
 					ActiveMessage="unleashes Divine Atonement!"
 					verb/Divine_Atonement()
@@ -5369,7 +5369,10 @@ obj
 						else
 							src.loc=Origin
 					else
-						src.loc=get_step(Origin, Origin.dir)
+						if(DirOverride)
+							src.loc=get_step(Origin, DirOverride)
+						else
+							src.loc=get_step(Origin, Origin.dir)
 					src.density=Z.density
 					src.Area=Z.Area
 					src.DistanceMax=Z.Distance
@@ -5468,7 +5471,7 @@ obj
 					src.Excruciating=Z.Excruciating
 					src.MaimStrike=Z.MaimStrike
 					src.MortalBlow=Z.MortalBlow
-					src.InstantKOChance=Z.InstantKOChance
+					src.InstantDamageChance=Z.InstantDamageChance
 					src.Destructive=Z.Destructive
 					src.FollowUp=Z.FollowUp
 					src.FollowUpDelay=Z.FollowUpDelay
@@ -6057,14 +6060,15 @@ obj
 
 							if(src.Area=="Beam")
 								src.Owner.DoDamage(a, (EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR), SpiritAttack=1, Destructive=src.Destructive)
-								if(src.InstantKOChance && m && !m.KO)
-									if(prob(src.InstantKOChance))
+								if(src.InstantDamageChance && m && !m.KO)
+									if(prob(src.InstantDamageChance))
+										var/divine_dmg = m.Health * 0.1
+										m.LoseHealth(divine_dmg)
 										spawn()
 											LightningBolt(m)
 										spawn()
 											m.Earthquake(100, -8, 8, -8, 8)
-										m.Unconscious(src.Owner)
-										OMsg(m, "<b><font color=#FFD700>[m] has been struck down by divine judgment!</font></b>")
+										OMsg(m, "<b><font color=#FFD700>[m] is seared by divine judgment for [round(divine_dmg)] damage!</font></b>")
 								if(src.Owner.UsingAnsatsuken())
 									src.Owner.HealMana(src.Owner.SagaLevel/8)
 								if(src.Owner.SagaLevel>1&&src.Owner.Saga=="Path of a Hero: Rebirth")
@@ -6400,7 +6404,8 @@ obj
 					src.animate_movement=NO_STEPS
 					if(src.Stream)
 						return
-					if(src.Owner in view(1, src))//Haven't stepped yet.
+					var/turf/behind = get_step(src, turn(src.dir, 180))
+					if(behind == src.Owner?.loc || src.loc == src.Owner?.loc)
 						src.icon_state="origin"
 						src.layer=5
 					else
