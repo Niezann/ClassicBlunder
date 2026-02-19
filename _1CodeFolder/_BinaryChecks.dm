@@ -1754,10 +1754,11 @@ mob
 			return Return
 		GetSaiyanPower()
 			var/MasteryDivisor1=(src.race.transformations[1].mastery/100)
-			var/MasteryDivisor2=(src.race.transformations[2].mastery/100)
 			var/SaiyanPower1=passive_handler.Get("SaiyanPower1")*MasteryDivisor1
-			var/SaiyanPower2=passive_handler.Get("SaiyanPower2")*MasteryDivisor2
-			var/SaiyanPower3= passive_handler.Get("SaiyanPower3") //it's always at full power
+			if(passive_handler.Get("MagnifiedSSJ1"))
+				SaiyanPower1+=passive_handler.Get("MagnifiedSSJ1")
+			var/SaiyanPower2=passive_handler.Get("SaiyanPower2") //it's always at full power
+			var/SaiyanPower3= passive_handler.Get("SaiyanPower3") 
 			var/SaiyanPower4= passive_handler.Get("SaiyanPower4")
 			var/SayianPower=1+(SaiyanPower1+SaiyanPower2+SaiyanPower3+SaiyanPower4) //It's like this because I intend on having Saiyan Unique buffs interact with this specifically. you'll see what i mean when i get to the grades
 			return SaiyanPower
