@@ -25,7 +25,7 @@ transformation
 				if(is_active) return
 				if(!user) return
 				if(user.Potential<45)
-					if(user.Health>=(20+user.Potential/4) return
+					if(user.Health>=(20+user.Potential/4)) return
 				passives = list("Instinct" = round(max(user.AscensionsAcquired/3, 1)), "Flow" = round(max(user.AscensionsAcquired/3, 1)), "Flicker" = round(max(user.AscensionsAcquired, 2)), "Pursuer" = round(max(user.AscensionsAcquired/3, 1)),  "BuffMastery" = round(max(user.AscensionsAcquired*1.25, 1)), "PureDamage" = round(max(user.AscensionsAcquired/2, 1)), "PureReduction" = round(max(user.AscensionsAcquired/2, 1)))
 				speed = 1.2
 				offense = 1.15

@@ -1488,7 +1488,7 @@ NEW VARIABLES
 			FlashChange=1
 			KenWave=3
 			KenWaveSize=0.5
-			KenWaveIcon='KenShockwaveLegendary.dmi'
+			KenWaveIcon='KenShockwave.dmi'
 			ActiveMessage="unleashes the might of a Super Namekian!"
 			OffMessage="tires out..."
 			adjust(mob/p)

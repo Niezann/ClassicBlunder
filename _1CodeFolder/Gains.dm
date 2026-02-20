@@ -524,7 +524,7 @@ mob
 				if(src.canHTM())
 					src.race.transformations[2].transform(src, TRUE)
 			if(src.transActive==1&&src.isRace(NAMEKIAN))
-				if(src.Health<=(20+user.Potential/4))
+				if(src.Health<=(20+src.Potential/4))
 					src.race.transformations[2].transform(src, TRUE)
 			if(passive_handler["LegendarySaiyan"]&&src.transActive==src.transUnlocked||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["MovementMastery"]||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["GodKi"]||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["SSJ4"])
 				if(src.Tension<src.getMaxTensionValue())
