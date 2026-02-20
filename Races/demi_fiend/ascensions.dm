@@ -14,7 +14,7 @@ ascension
 			unlock_potential = ASCENSION_ONE_POTENTIAL
 			choices = list("Reason of Musubi" = /ascension/sub_ascension/demi_fiend/musubi, "Reason of Shijima" = /ascension/sub_ascension/demi_fiend/shijima, "Reason of Yosuga" = /ascension/sub_ascension/demi_fiend/yosuga)
 			choiceTitle = "Choose Your Reason"
-			choiceMessage = "Your conviction takes shape. Which Reason will guide your path?\n\nMusubi: Freedom from constraint—swap Magatama at will and craft without escalating cost.\nShijima: Unity through diversity—equip multiple Magatama, gaining an extra slot each ascension (scaling halved).\nYosuga: Strength unchained—amplify Magatama passive scaling (1.25x at ascension 1, +0.25x per ascension)."
+			choiceMessage = "Your conviction takes shape. Which Reason will guide your path?\n\nMusubi: Freedom from constraint—swap Magatama at will and craft without escalating cost. You gain only passives from Magatama, never their skills.\nShijima: Unity through diversity—equip multiple Magatama, gaining an extra slot each ascension (scaling halved).\nYosuga: Strength unchained—amplify Magatama passive scaling (1.25x at ascension 1, +0.25x per ascension)."
 			on_ascension_message = "Your demonic power awakens further. What Reason drives you?"
 			passives = list()
 			strength = 0.25

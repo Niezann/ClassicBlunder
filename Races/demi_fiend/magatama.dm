@@ -1,6 +1,5 @@
 #define MAGATAMA_SWAP_COOLDOWN 36000 // 1 hour in deciseconds
 #define MAGATAMA_COST_ESCALATION 0.25 // +25% base cost per magatama crafted
-#define MAGATAMA_DEFAULT_SCALING 0.05 // default additive gain per point of potential per passive
 
 mob/var
 	magatama_last_swap = 0
@@ -8,6 +7,7 @@ mob/var
 	magatama_crafted = 0
 	magatama_cooldown_until = 0
 	list/magatama_allowed_set = list()
+	list/magatama_equip_times = list()
 
 mob/proc/getMagatamaEquippedTypes()
 	var/list/types = list()
@@ -45,7 +45,8 @@ obj/Items/Magatama
 		return
 
 	proc
-		potentialBonus(mob/user, rate = MAGATAMA_DEFAULT_SCALING)
+		potentialBonus(mob/user, rate)
+			if(!rate) return 0
 			var/effective_rate = rate
 			if(user.passive_handler?.Get("Shijima"))
 				effective_rate *= 0.5
@@ -54,17 +55,13 @@ obj/Items/Magatama
 		getScaledPassives(mob/user)
 			var/list/result = list()
 			for(var/p in base_passives)
-				var/rate = MAGATAMA_DEFAULT_SCALING
-				if(p in passive_scaling)
-					rate = passive_scaling[p]
+				var/rate = (p in passive_scaling) ? passive_scaling[p] : 0
 				result[p] = base_passives[p] + potentialBonus(user, rate)
 			for(var/level_str in ascension_passives)
 				if(user.AscensionsAcquired >= text2num(level_str))
 					var/list/asc_list = ascension_passives[level_str]
 					for(var/p in asc_list)
-						var/rate = MAGATAMA_DEFAULT_SCALING
-						if(p in passive_scaling)
-							rate = passive_scaling[p]
+						var/rate = (p in passive_scaling) ? passive_scaling[p] : 0
 						if(p in result)
 							result[p] += asc_list[p] + potentialBonus(user, rate)
 						else
@@ -102,17 +99,21 @@ obj/Items/Magatama
 			suffix = "*Equipped*"
 			scaled_passives = getScaledPassives(user)
 			user.passive_handler.increaseList(scaled_passives)
-			grantSkills(user)
+			if(!user.passive_handler?.Get("Musubi"))
+				grantSkills(user)
 			if(!user.passive_handler?.Get("Shijima"))
-				user.magatama_last_swap = world.realtime
+				user.magatama_last_swap = world.time
 				user.magatama_last_type = type
+			else
+				if(!user.magatama_equip_times) user.magatama_equip_times = list()
+				user.magatama_equip_times[type] = world.time
 			user << "You ingest [src]. Its power courses through your veins."
 
 		unequipMagatama(mob/user)
 			if(user.passive_handler?.Get("Shijima"))
 				if(!user.magatama_allowed_set) user.magatama_allowed_set = list()
 				user.magatama_allowed_set = user.getMagatamaEquippedTypes()
-				user.magatama_cooldown_until = world.realtime + MAGATAMA_SWAP_COOLDOWN
+				user.magatama_cooldown_until = world.time + MAGATAMA_SWAP_COOLDOWN
 			if(scaled_passives)
 				user.passive_handler.decreaseList(scaled_passives)
 				scaled_passives = null
@@ -127,7 +128,8 @@ obj/Items/Magatama
 			scaled_passives = getScaledPassives(user)
 			user.passive_handler.increaseList(scaled_passives)
 			revokeSkills(user)
-			grantSkills(user)
+			if(!user.passive_handler?.Get("Musubi"))
+				grantSkills(user)
 
 	ObjectUse(mob/Players/User = usr)
 		if(!(src in User))
@@ -138,6 +140,31 @@ obj/Items/Magatama
 			return
 
 		if(suffix == "*Equipped*")
+			if(!User.passive_handler?.Get("Musubi"))
+				var/can_unequip = 0
+				if(User.passive_handler?.Get("Shijima"))
+					if(!User.magatama_equip_times) User.magatama_equip_times = list()
+					var/equip_time = User.magatama_equip_times[type]
+					if(!equip_time)
+						can_unequip = 1
+					else if(world.time >= equip_time + MAGATAMA_SWAP_COOLDOWN)
+						can_unequip = 1
+					else if(world.time < equip_time)
+						can_unequip = 1
+				else if(!User.magatama_last_swap || world.time >= User.magatama_last_swap + MAGATAMA_SWAP_COOLDOWN)
+					can_unequip = 1
+				else if(world.time < User.magatama_last_swap)
+					can_unequip = 1
+				if(!can_unequip)
+					var/remaining = 0
+					if(User.passive_handler?.Get("Shijima") && User.magatama_equip_times && User.magatama_equip_times[type])
+						remaining = (User.magatama_equip_times[type] + MAGATAMA_SWAP_COOLDOWN - world.time) / 10
+					else
+						remaining = (User.magatama_last_swap + MAGATAMA_SWAP_COOLDOWN - world.time) / 10
+					var/mins = max(0, round(remaining / 60))
+					var/secs = max(0, round(remaining % 60))
+					User << "Your body is still bonded to [src]. You must wait [mins]m [secs]s before you can release it."
+					return
 			unequipMagatama(User)
 			return
 
@@ -151,20 +178,25 @@ obj/Items/Magatama
 			if(User.passive_handler?.Get("Shijima"))
 				if(!User.magatama_allowed_set) User.magatama_allowed_set = list()
 				if(!(type in User.magatama_allowed_set))
-					if(world.realtime < User.magatama_cooldown_until)
-						var/remaining = (User.magatama_cooldown_until - world.realtime) / 10
-						var/mins = round(remaining / 60)
-						var/secs = round(remaining % 60)
+					if(!User.magatama_cooldown_until || world.time >= User.magatama_cooldown_until || world.time < User.magatama_cooldown_until - MAGATAMA_SWAP_COOLDOWN)
+						skip_cooldown = 1
+					if(!skip_cooldown && world.time < User.magatama_cooldown_until)
+						var/remaining = (User.magatama_cooldown_until - world.time) / 10
+						var/mins = max(0, round(remaining / 60))
+						var/secs = max(0, round(remaining % 60))
 						User << "Your body is still adjusting to your current Magatama. You must wait [mins]m [secs]s before ingesting a different one."
 						return
 			else if(type != User.magatama_last_type && User.magatama_last_swap)
-				var/elapsed = world.realtime - User.magatama_last_swap
-				if(elapsed < MAGATAMA_SWAP_COOLDOWN)
-					var/remaining = (MAGATAMA_SWAP_COOLDOWN - elapsed) / 10
-					var/mins = round(remaining / 60)
-					var/secs = round(remaining % 60)
-					User << "Your body is still adjusting. You must wait [mins]m [secs]s before ingesting a different Magatama."
-					return
+				if(world.time < User.magatama_last_swap)
+					skip_cooldown = 1
+				else
+					var/elapsed = world.time - User.magatama_last_swap
+					if(elapsed < MAGATAMA_SWAP_COOLDOWN)
+						var/remaining = (MAGATAMA_SWAP_COOLDOWN - elapsed) / 10
+						var/mins = round(remaining / 60)
+						var/secs = round(remaining % 60)
+						User << "Your body is still adjusting. You must wait [mins]m [secs]s before ingesting a different Magatama."
+						return
 
 		equipMagatama(User)
 
