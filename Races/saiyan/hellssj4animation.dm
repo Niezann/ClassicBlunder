@@ -13,7 +13,7 @@
     mouse_opacity = 1
     layer = BACKGROUND_LAYER
 
-
+//i'm ngl i don't know what it does above but probably best to keep it
 
 /obj/dorkness
     icon = 'blackcutin.dmi'
@@ -52,11 +52,8 @@
             addto += src
 // prob shouldn't make more objs, but w/e
 
-/mob/verb/testHellSSJ4()
-    set category = "Debug"
-    HellSSJ4Animation1()
 
-/mob/proc/HellSSJ4Animation1(appearance1, appearance2)
+/mob/proc/HellSSJ4Animation1(appearance1, appearance2) // the anim take the appearance before and after the transformation. necessary to make everything show up as it should
     var/oldview = client.view
     client.eye = locate(99,99,1)
     Quake(30, z)
@@ -72,7 +69,8 @@
 
     var/obj/animationobj/ground = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.6)
     ground.icon_state = "Ground"
-    var/obj/animationobj/bleh = new(s_loc = "CENTER+1,CENTER+1", appear_flags = PIXEL_SCALE | KEEP_TOGETHER, appear_take = appearance1, l = MOB_LAYER+0.7)
+    var/obj/animationobj/bleh = new(s_loc = "CENTER+1,CENTER+1", appear_flags = PIXEL_SCALE | KEEP_TOGETHER, appear_take = appearance1, l = MOB_LAYER+0.7) // THIS IS THE PLAYER CHARACTER (first appearance), that's what appear_take is for
+    //NOTE THAT THE ANIMATIONOBJ IS *NOT* A PLAYER CHARACTER. IT CANNOT HANDLE HAIR AND EYES THE NORMAL WAY, YOU HAVE TO MAKE THEM OVERLAYS.
     bleh.screen_loc = "CENTER+1,CENTER+1" // ????
     bleh.dir = SOUTH
     bleh.transform = matrix().Scale(10).Translate(-150, -150)
@@ -84,23 +82,24 @@
     blankHolder.vis_contents+=ground
     client.screen += bleh
 
-    sleep(30) // aura shows up
+    sleep(20) // aura shows up
 
     var/obj/animationobj/aura = new(i = 'SSJAura.dmi', _px = -32, _py = -16,  appear_flags = PIXEL_SCALE )
     aura.icon_state = "."
     bleh.overlays += aura
-    animate(bleh, transform = matrix().Scale(10).Translate(-150, -550), time = 20, easing =SINE_EASING|EASE_IN)
+    sleep(10)// begin pan up
+    animate(bleh, transform = matrix().Scale(10).Translate(-150, -750), time = 20, easing =SINE_EASING|EASE_IN)
     animate(ground, pixel_y=-550, time = 20, easing = SINE_EASING|EASE_IN)
 
     sleep(30) // supposed to pan upwards and out
-    del bleh
+    del bleh //Overlook scene
     del ground
 
     var/obj/animationobj/overlook = new(i = 'HellSSJ4AnimationRock.dmi', s_loc = "LEFT,BOTTOM", addto = blankHolder.vis_contents, l = MOB_LAYER+0.9)
     overlook.icon_state = "Overlook"
     blankHolder.vis_contents += overlook
 
-    sleep(20)
+    sleep(24)
     blankHolder.vis_contents+=dorkness
     blankHolder.vis_contents += lightness
     animate(lightness, alpha = 255, time = 8)

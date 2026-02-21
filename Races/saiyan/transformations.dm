@@ -380,7 +380,7 @@ transformation
 				user.Tail(1)
 
 			transform_animation(mob/user)
-				if(first_time)
+				if(first_time) // store the pre-form appearance and then the post-form appearance before calling the animation. also remove the hair set on overlay afterwards since it's not supposed to be an overlay
 					var/appearance1 = user.appearance
 					world << "app1 is [appearance1]"
 					user.overlays += form_icon_1
