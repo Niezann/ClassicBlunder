@@ -279,5 +279,38 @@ obj/Items/Magatama/Wadatsumi
 	base_passives = list("IceAge" = 50, "Chilling" = 2, "Familiar" = 1, "WaveDance" = 1)
 	passive_scaling = list("IceAge" = 0.5, "Chilling" = 0.2, "Familiar" = 0.05)
 	ascension_passives = list("1" = list("BlizzardBringer" = 1))
-	magatama_skills = list(/obj/Skills/AutoHit/Magic/Blizzard)
+	magatama_skills = list(/obj/Skills/AutoHit/Ice_Breath)
+	ascension_skills = list("1" = list(/obj/Skills/AutoHit/Fog_Breath))
+	craft_cost = 5000
+
+obj/Items/Magatama/Ankh
+	name = "Ankh"
+	desc = "A Magatama awaiting its power."
+	craft_cost = 5000
+
+obj/Items/Magatama/Iyomante
+	name = "Iyomante"
+	desc = "A Magatama awaiting its power."
+	magatama_skills = list(/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Tarunda)
+	ascension_skills = list("1" = list(/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Sukunda), "2" = list(/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Rakunda))
+	craft_cost = 5000
+
+obj/Items/Magatama/Shiranui
+	name = "Shiranui"
+	desc = "A Magatama awaiting its power."
+	craft_cost = 5000
+
+obj/Items/Magatama/Hifumi
+	name = "Hifumi"
+	desc = "A Magatama awaiting its power."
+	craft_cost = 5000
+
+obj/Items/Magatama/Kamudo
+	name = "Kamudo"
+	desc = "A Magatama awaiting its power."
+	craft_cost = 5000
+
+obj/Items/Magatama/Narukami
+	name = "Narukami"
+	desc = "A Magatama awaiting its power."
 	craft_cost = 5000
