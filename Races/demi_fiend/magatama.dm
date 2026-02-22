@@ -39,12 +39,32 @@ obj/Items/Magatama
 	var/list/scaled_passives
 	var/craft_cost = 0
 	var/craft_ascension = 0
+	var/mastery = 0
+	var/mastery_required_type
+	var/mastery_required_amount = 0
 
 	Drop()
 		usr << "Magatama are bound to your soul and cannot be dropped."
 		return
 
+	verb/Check_Mastery()
+		set category = "Demi-fiend"
+		set src in usr
+		usr << "[name] Mastery: [round(mastery, 0.1)] / 100"
+
 	proc
+		gainMastery(amount)
+			if(mastery >= 100) return
+			var/was_below = mastery < 100
+			mastery = min(100, mastery + amount)
+			if(was_below && mastery >= 100)
+				var/mob/user = loc
+				if(user)
+					user << "<font color='#FFD700'><b>You have achieved full Mastery over [name]. New possibilities await...</b></font>"
+
+		getMasteryProgress()
+			return mastery
+
 		potentialBonus(mob/user, rate)
 			if(!rate) return 0
 			var/effective_rate = rate
@@ -227,6 +247,11 @@ mob/proc/CraftMagatama()
 		if(locate(T) in src)
 			del template
 			continue
+		if(template.mastery_required_type)
+			var/obj/Items/Magatama/req = locate(template.mastery_required_type) in src
+			if(!req || req.mastery < template.mastery_required_amount)
+				del template
+				continue
 		var/actual_cost = template.craft_cost
 		if(!passive_handler?.Get("Musubi"))
 			actual_cost = round(template.craft_cost * (1 + magatama_crafted * MAGATAMA_COST_ESCALATION))
@@ -270,7 +295,7 @@ obj/Items/Magatama/Marogareh
 	base_passives = list("UnarmedDamage" = 1, "PhysPleroma" = 0.25, "Momentum" = 1)
 	passive_scaling = list("UnarmedDamage" = 0.1, "PhysPleroma" = 0.075, "Momentum" = 0.075, "Fa Jin" = 0.05)
 	ascension_passives = list("1" = list("Fa Jin" = 1))
-	magatama_skills = list(/obj/Skills/AutoHit/Lunge)
+	magatama_skills = list(/obj/Skills/AutoHit/DemiFiend/Lunge)
 	ascension_skills = list("1" = list(/obj/Skills/Queue/Curbstomp))
 
 obj/Items/Magatama/Wadatsumi
@@ -279,13 +304,15 @@ obj/Items/Magatama/Wadatsumi
 	base_passives = list("IceAge" = 50, "Chilling" = 2, "Familiar" = 1, "WaveDance" = 1)
 	passive_scaling = list("IceAge" = 0.5, "Chilling" = 0.2, "Familiar" = 0.05)
 	ascension_passives = list("1" = list("BlizzardBringer" = 1))
-	magatama_skills = list(/obj/Skills/AutoHit/Ice_Breath)
-	ascension_skills = list("1" = list(/obj/Skills/AutoHit/Fog_Breath))
+	magatama_skills = list(/obj/Skills/AutoHit/DemiFiend/Ice_Breath)
+	ascension_skills = list("1" = list(/obj/Skills/AutoHit/DemiFiend/Fog_Breath))
 	craft_cost = 5000
 
 obj/Items/Magatama/Ankh
 	name = "Ankh"
 	desc = "A Magatama awaiting its power."
+	magatama_skills = list(/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Dia)
+	ascension_skills = list("2" = list(/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Media))
 	craft_cost = 5000
 
 obj/Items/Magatama/Iyomante
@@ -298,17 +325,21 @@ obj/Items/Magatama/Iyomante
 obj/Items/Magatama/Shiranui
 	name = "Shiranui"
 	desc = "A Magatama awaiting its power."
+	magatama_skills = list(/obj/Skills/AutoHit/DemiFiend/Flame_Breath)
 	craft_cost = 5000
 
 obj/Items/Magatama/Hifumi
 	name = "Hifumi"
 	desc = "A Magatama awaiting its power."
+	magatama_skills = list(/obj/Skills/Projectile/DemiFiend/Tornado)
 	craft_cost = 5000
 
 obj/Items/Magatama/Kamudo
 	name = "Kamudo"
 	desc = "A Magatama awaiting its power."
 	craft_cost = 5000
+	mastery_required_type = /obj/Items/Magatama/Marogareh
+	mastery_required_amount = 100
 
 obj/Items/Magatama/Narukami
 	name = "Narukami"

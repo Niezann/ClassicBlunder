@@ -317,7 +317,10 @@ mob
 				defender.TotalFatigue+=amount/2
 				Update_Stat_Labels()
 
-			//HERE !!
+			if(FightingSeriously(src, defender) && src.isRace(/race/demi_fiend))
+				for(var/obj/Items/Magatama/M in src)
+					if(M.suffix == "*Equipped*" && M.mastery < 100)
+						M.gainMastery(val * 0.002)
 
 			if(passive_handler.Get("CorruptAffected"))
 				if(demon)
