@@ -389,7 +389,7 @@
 
 		// 				QUEUE	 				//
 				var/knockDistance = 0
-				var/speedStrike = passive_handler.Get("BlurringStrikes")
+				var/speedStrike = GetBlurringStrikes() //This is in the _Reworks/Passives folder
 				if(UsingFencing() || speedStrike)
 					speedStrike += UsingFencing()
 					damage *= clamp(sqrt( 1  + ( (GetSpd()) * (speedStrike/15) ) ),1,3)

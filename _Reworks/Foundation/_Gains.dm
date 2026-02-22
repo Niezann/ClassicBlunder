@@ -52,7 +52,7 @@ z/mob/proc/checkHealthAlert()
 			Corruption -= (5 * tick_second) - (AscensionsAcquired/2)
 			Corruption = max(MinCorruption, Corruption)
 		if(Secret == "Eldritch")
-			var/SecretInfomation/Eldritch/s = secretDatum
+			var/SecretInformation/Eldritch/s = secretDatum
 			s.releaseMadness(src)
 
 		if(Health>=75*(1-HealthCut) && Anger!=0)

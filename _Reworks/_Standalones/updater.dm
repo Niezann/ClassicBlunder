@@ -620,7 +620,7 @@ update
 		updateMob(mob/o)
 			.=..()
 			if(o.Secret == "Eldritch")
-				var/SecretInfomation/Eldritch/e = o.secretDatum;
+				var/SecretInformation/Eldritch/e = o.secretDatum;
 				e.updateSecretVariables(o);
 				o << "Your eldritch secret variables have been updated."
 				o << "This should only ever happen ONCE! If it happens more times than that, contact Xoxo, something fucky."

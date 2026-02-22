@@ -42,7 +42,7 @@ ArmamentEnchantment -> tome creation (articact manufactioning + ArmamentEnchantm
         if(!src.isRace(ELDRITCH)) lunaTome /= 2;
         total = max(total, lunaTome);
     if(src.Secret == "Eldritch")
-        var/SecretInfomation/Eldritch/s = src.secretDatum
+        var/SecretInformation/Eldritch/s = src.secretDatum
         total += s.secretVariable["Power From Blood"];
     TotalMagicLevel = total
     return total

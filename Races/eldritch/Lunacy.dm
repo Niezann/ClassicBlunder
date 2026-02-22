@@ -1,10 +1,10 @@
 /mob/proc/LunaticModeOn()
     if(src.Secret == "Eldritch")
-        var/SecretInfomation/Eldritch/e = src.secretDatum;
+        var/SecretInformation/Eldritch/e = src.secretDatum;
         e.useStock(src);
 /mob/proc/LunaticModeOff()
     if(src.Secret == "Eldritch")
-        var/SecretInfomation/Eldritch/e = src.secretDatum;
+        var/SecretInformation/Eldritch/e = src.secretDatum;
         e.EndLunaticMode(src);
         src.LunacyDrank=0;
 

@@ -9720,7 +9720,7 @@ NEW VARIABLES
 
 					if(src.Using) return;
 					src.Using=1;
-					var/SecretInfomation/Eldritch/sInfo = usr.secretDatum;
+					var/SecretInformation/Eldritch/sInfo = usr.secretDatum;
 					var/limit = (usr.isRace(ELDRITCH) ? ELDRITCH_STOCK_RACIAL_LIMIT : ELDRITCH_STOCK_SECRET_LIMIT);
 					var/currentStock = sInfo.secretVariable["Resource Stock"] / limit * 100;
 					var/moneyMax = 100000;
@@ -9830,10 +9830,10 @@ NEW VARIABLES
 						adjust(User)
 					if(User.Secret == "Eldritch")
 						if(!User.BuffOn(src))
-							var/SecretInfomation/Eldritch/s = User.secretDatum
+							var/SecretInformation/Eldritch/s = User.secretDatum
 							s.secretVariable["Madness Active"] = TRUE
 						else
-							var/SecretInfomation/Eldritch/s = User.secretDatum
+							var/SecretInformation/Eldritch/s = User.secretDatum
 							s.secretVariable["Madness Active"] = FALSE
 					..()
 //Self Triggering Buffs

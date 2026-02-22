@@ -32,6 +32,7 @@ globalTracker/var
         . = 0;
         . += passive_handler.Get("Steady");
         . += getZornhau()
+        . += getMangSteady()
         . -= getUnnerve();
     getZornhau()
         if(!equippedSword) return 0;
@@ -43,3 +44,7 @@ globalTracker/var
     getUnnerve()
         . = Target ? Target.passive_handler.Get("Unnerve") : 0;
         if(.) . += (HasMythical() * glob.MYTHICAL_UNNERVE_INNATE)
+    getMangSteady()
+        if(Secret != "Shin" || !CheckSlotless("Mang Resonance")) return 0
+        var/SecretInformation/Shin/ShinSecret = secretDatum
+        . = ShinSecret.Mang

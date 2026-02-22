@@ -6,7 +6,7 @@
 
 //todo between wipes: RENAME. THIS. TO. INFORMATION.
 //MOTHER FUCKER...
-/mob/var/SecretInfomation/secretDatum = new()
+/mob/var/SecretInformation/secretDatum = new()
 
 
 
@@ -40,7 +40,7 @@
 	return 0
 
 
-SecretInfomation
+SecretInformation
 	var
 		name
 		lastCheckedTier = 1
@@ -314,7 +314,7 @@ SecretInfomation
 		//todo this should hopefully be able to be removed between wipes
 		//should only trigger once
 		proc/updateSecretVariables(mob/p)
-			var/SecretInfomation/Eldritch/e = p.secretDatum;
+			var/SecretInformation/Eldritch/e = p.secretDatum;
 			e.secretVariable["Power From Blood"] = 0;
 			e.secretVariable["Lunatic Mode"] = 0;
 			e.secretVariable["Blood Stock"] = 0;
@@ -534,6 +534,40 @@ SecretInfomation
 				if(5)
 					nextTierUp=999
 					p << "You have mastered the art of Senjutsu!"
+	
+	Shin
+		name = "Shin" 
+		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/Shin_Radiance")
+		maxTier = 6;
+		var/Mang = 0; // The current amount of mang used
+		var/MangMastery = 0; // The maximum amount of mang you can use
+		applySecret(mob/p)
+		// This code checks for the maximum Mang you can have, wheras var/Mang checks for your current mang :3
+			if(currentTier >= 2)
+				MangMastery = (currentTier-1)
+			else 
+				MangMastery = 0
+		// This code switches your Secret Tier
+			switch(currentTier)
+				if(1) //Unlocks Shin
+					p << "You let go of all things... except for your most intense memories. You have awakened the power of Shin."
+					giveSkills(p) // This only adds Shin_Radiance, Mang is on the next tier
+					giveVariables(p)
+				if(2) //Unlocks 1 Mang Ring
+					p << "You fill your empty self with the emotions born from intense of Memories. You have awakened the power of Mang."
+					nextTierUp = 2
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Mang_Resonance)
+				if(3) // 2 Mang Rings
+					p << "Your mastery over Shin and Mang improves."
+					nextTierUp = 2
+				if(4) // 3 Mang Rings
+					p << "You further refine your mastery over Shin and Mang"
+					nextTierUp = 4
+				if(5) // 4 Mang Rings
+					p << "You're at the cusp of perfecting the arts of Shin and Mang, your very presence begins to weigh upon others."
+					nextTierUp = 4
+				if(6) // 5 Mang Rings
+					p << "You have refined both Shin and Mang to perfection, leveraging perfect control over your sense of self to invoke that intense emotion."
 
 mob
 	var
@@ -550,8 +584,8 @@ mob
 
 	proc
 		giveSecret(path)
-			path = text2path("/SecretInfomation/[path]")
-			var/SecretInfomation/secret = new path
+			path = text2path("/SecretInformation/[path]")
+			var/SecretInformation/secret = new path
 			secretDatum = secret
 			secret.init(src)
 
@@ -559,7 +593,7 @@ mob/Admin3/verb
 	SecretManagement(var/mob/P in players)
 		set category="Admin"
 		if(!P.client) return
-		var/list/Secrets=list("Spirits of The World","Jagan", "Hamon of the Sun", "Werewolf", "Vampire", "Sage Arts", "Haki", "Eldritch", "Heavenly Restriction")
+		var/list/Secrets=list("Spirits of The World","Jagan", "Hamon of the Sun", "Werewolf", "Vampire", "Sage Arts", "Haki", "Eldritch", "Heavenly Restriction", "Shin")
 		var/Selection=input(src, "Which aspect of power does [P] awaken to?", "Secret Management") in Secrets
 		if(P.Secret)
 			src << "They already have a secret."
@@ -611,6 +645,9 @@ mob/Admin3/verb
 				if("Vampire")
 					P.Secret="Vampire"
 					P.giveSecret("Vampire")
+				if("Shin")
+					P.Secret="Shin"
+					P.giveSecret("Shin")
 mob
 	proc
 		AddHaki(var/Type)

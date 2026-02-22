@@ -494,18 +494,18 @@ mob
 
 			// WEREWOLF HUNGER MECHANIC
 			if(src.Secret == "Werewolf" && CheckSlotless("New Moon Form"))
-				var/SecretInfomation/Werewolf/s = src.secretDatum
+				var/SecretInformation/Werewolf/s = src.secretDatum
 				s.addHunger(val)
 				Update_Stat_Labels()
 			//END WEREWOLF HUNGER MECHANIC
 
 			if(src.Secret == "Eldritch")
-				var/SecretInfomation/Eldritch/s = src.secretDatum
+				var/SecretInformation/Eldritch/s = src.secretDatum
 				s.addMadness(src,val*(s.getMadnessLimit(src)/100))
 				Update_Stat_Labels()
 
 			if(defender.Secret == "Eldritch")
-				var/SecretInfomation/Eldritch/s = defender.secretDatum
+				var/SecretInformation/Eldritch/s = defender.secretDatum
 				s.addMadness(defender,val*(s.getMadnessLimit(defender)/100))
 				defender.Update_Stat_Labels()
 
@@ -780,7 +780,7 @@ mob
 
 				if(!src.isLunaticMode())
 					if(src.Secret == "Eldritch" && !FromSelf)//Attacker gains blood stock from wounds dealt
-						var/SecretInfomation/Eldritch/e = src.secretDatum;
+						var/SecretInformation/Eldritch/e = src.secretDatum;
 						e.addBloodStock(src, woundTaken);
 
 			if(defender.TotalInjury>=99)
@@ -1321,7 +1321,7 @@ mob
 				if(src.Tension>=50&&src.Tension<src.getMaxTensionValue())
 					Mod+=0.01*(src.Tension/10)
 				else if(src.Tension>=src.getMaxTensionValue())
-					Mod+=1
+					Mod+=1		
 			// if(src.isRace(HUMAN))
 			// 	if(src.AscensionsAcquired)
 			// 		Mod+=(src.AscensionsAcquired/20)
@@ -1398,6 +1398,8 @@ mob
 					Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
+			if(Secret == "Shin" && CheckSlotless("Mang Resonance"))
+				Mod += GetMangStats() // you can find this proc in Secrets\Shin\buff.dm
 			var/STM=GetStrTransMult()
 			Str*=STM
 			Str*=Mod
@@ -1559,6 +1561,8 @@ mob
 					Mod+=(passive_handler.Get("TensionPowered")/2)
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/5)
+			if(Secret == "Shin" && CheckSlotless("Mang Resonance"))
+				Mod += GetMangStats() // you can find this proc in Secrets\Shin\buff.dm
 			var/FTM=GetForTransMult()
 			For*=FTM
 			For*=Mod
@@ -1821,6 +1825,8 @@ mob
 				Mod+=((passive_handler.Get("TensionPowered")*2))
 			if(src.RebirthHeroPath=="Red" && src.SagaLevel>=3)
 				Mod *= 1+ (src.HealthAnnounce10/10)
+			if(Secret == "Shin" && CheckSlotless("Mang Resonance"))
+				Mod += GetMangStats() // you can find this proc in Secrets\Shin\buff.dm
 			var/SpTM=GetSpdTransMult()
 			Spd*=SpTM
 			Spd*=Mod
@@ -1911,6 +1917,8 @@ mob
 				Mod-=src.OffEroded
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
 				Mod+=passive_handler.Get("TensionPowered")
+			if(Secret == "Shin" && CheckSlotless("Mang Resonance"))
+				Mod += GetMangStats() // you can find this proc in Secrets\Shin\buff.dm
 			var/OTM=GetOffTransMult()
 			Off*=OTM
 			Off*=Mod

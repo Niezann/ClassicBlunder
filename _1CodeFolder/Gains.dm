@@ -161,7 +161,7 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 			Corruption -= 5 - (AscensionsAcquired/2)
 			Corruption = max(MinCorruption, Corruption)
 		if(Secret == "Eldritch")
-			var/SecretInfomation/Eldritch/s = secretDatum
+			var/SecretInformation/Eldritch/s = secretDatum
 			s.releaseMadness(src)
 
 		if(Health>=75*(1-HealthCut) && Anger!=0)
@@ -682,7 +682,7 @@ mob
 						if(CheckSlotless("Rotschreck"))
 							R = GetSlotless("Rotschreck")
 							R:adjust(src)
-						var/SecretInfomation/Vampire/vampire = secretDatum
+						var/SecretInformation/Vampire/vampire = secretDatum
 						if(vampire.secretVariable["LastBloodGain"] + 450 < world.time && vampire.secretVariable["BloodPower"] > 0)
 							if(!PureRPMode)
 								vampire.drainBlood()
@@ -694,7 +694,7 @@ mob
 
 					if(Secret=="Werewolf")
 						if(secretDatum.secretVariable["Hunger Active"] == 1)
-							var/SecretInfomation/Werewolf/s = secretDatum
+							var/SecretInformation/Werewolf/s = secretDatum
 							if(!PureRPMode)
 								s.releaseHunger()
 								if(secretDatum.secretVariable["Hunger Satiation"] <=0 && CheckSlotless("Full Moon Form"))
@@ -704,7 +704,7 @@ mob
 
 					if(Secret=="Eldritch")
 						if(secretDatum.secretVariable["Madness Active"] == 1)
-							var/SecretInfomation/Eldritch/s = secretDatum
+							var/SecretInformation/Eldritch/s = secretDatum
 							if(!PureRPMode)
 								s.releaseMadness(src)
 								if(secretDatum.secretVariable["Madness"] <=0 && CheckSlotless("True Form"))

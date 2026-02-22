@@ -705,6 +705,7 @@ mob
 				Return+=stp
 			if(src.isLunaticMode())
 				Return += (10 / 100 * src.get_potential())
+			Return += GetMangLevel()
 			return Return
 		HasPursuer()
 			var/Return=0
@@ -746,6 +747,7 @@ mob
 				Return += 2
 			if(src.passive_handler.Get("Determination(Yellow)")||src.passive_handler.Get("Determination(White)"))
 				Return += round(ManaAmount/25, 1)
+			Return += GetMangLevel()
 			Return=round(Return)
 			Return=min(8,Return)
 			return Return
@@ -1075,8 +1077,6 @@ mob
 			if(passive_handler.Get("PUSpike"))
 				return 1
 			return 0
-		GetPUSpike()
-			return passive_handler.Get("PUSpike")
 		HasUnstoppable()
 			if(Secret == "Zombie")
 				return 1
@@ -1128,6 +1128,7 @@ mob
 				Return += h
 			if(src.isLunaticMode())
 				Return += (5 / 100 * src.get_potential())
+			Return += GetMangLevel()
 			return Return
 		HasPureReduction()
 			var/Return=0
@@ -1271,6 +1272,8 @@ mob
 				Total += SagaLevel * 2.5
 			if(InfinityModule)
 				Total += round(glob.progress.totalPotentialToDate,5) / 10
+			if(Secret=="Shin")
+				Total += secretDatum.currentTier
 			return Total
 		HasPhysicalHitsLimit()
 			if(passive_handler.Get("PhysicalHitsLimit"))

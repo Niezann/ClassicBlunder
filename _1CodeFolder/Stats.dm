@@ -493,8 +493,7 @@ globalTracker/var/MOVEMENT_MASTERY_DIVISOR = 10
 mob/proc/GetPowerUpRatio()
 	var/Ratio=1
 	var/PowerUp=max(((PowerControl-100)/100),-0.5)
-	if(passive_handler.Get("PUSpike"))
-		PowerUp+=passive_handler.Get("PUSpike")/100
+	PowerUp += GetPUSpike()
 	if(passive_handler.Get("RedPUSpike"))
 		PowerUp+=passive_handler.Get("RedPUSpike")/100
 	if(Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Power Control"))
@@ -532,8 +531,7 @@ mob/proc/GetPowerUpRatio()
 mob/proc/GetPowerUpRatioVisble()
 	var/Ratio=1
 	var/PowerUp=(PowerControl-100)/100
-	if(passive_handler.Get("PUSpike"))
-		PowerUp+=(passive_handler.Get("PUSpike")/100)
+	PowerUp += GetPUSpike()
 	if(src.CheckSpecial("Overdrive"))
 		PowerUp+=1
 	/*if(src.CyberCancel)
@@ -1185,10 +1183,11 @@ mob/proc/Update_Stat_Labels()
 			src<<output("Energy: [round((Energy/EnergyMax)*100)]%","BarEnergy")
 		if(round(TotalCapacity))
 			ManaMessage=" (Capacity:[100-round(TotalCapacity)]%)"
-
-		if(Saga && Saga=="Ansatsuken"&&src.UsingAnsatsuken())
+		if(src.CheckSlotless("Mang Resonance") || src.CheckSlotless("Shin Radiance"))
+			src<<output("Shin: [round(ManaAmount/ManaMax*100)][ManaMessage]","BarMana")
+		else if(Saga && Saga=="Ansatsuken"&&src.UsingAnsatsuken())
 			src<<output("SUPER: [round(ManaAmount/ManaMax*100)]","BarMana")
-		if(SagaLevel>1&&Saga=="Path of a Hero: Rebirth")
+		else if(SagaLevel>1&&Saga=="Path of a Hero: Rebirth")
 			src<<output("ACT: [round(ManaAmount/ManaMax*100)]","BarMana")
 		else if(src.HasMechanized())
 			src<<output("Battery: [round(ManaAmount/ManaMax*100)]","BarMana")
@@ -1322,7 +1321,7 @@ mob/proc/Update_Stat_Labels()
 		switch(Secret)
 			if("Werewolf")
 				if(CheckSlotless("New Moon Form"))
-					var/SecretInfomation/Werewolf/s = secretDatum
+					var/SecretInformation/Werewolf/s = secretDatum
 					var/maxHunger = s:getHungerLimit()
 					var/currentHunger = secretDatum.secretVariable["Hunger Satiation"]
 					if(currentHunger > 0)
@@ -1331,7 +1330,7 @@ mob/proc/Update_Stat_Labels()
 					else
 						winshow(src, "Hunger", 0)
 			if("Eldritch")
-				var/SecretInfomation/Eldritch/s = secretDatum
+				var/SecretInformation/Eldritch/s = secretDatum
 				var/maxMadness = s:getMadnessLimit(src)
 				var/currentMadness = secretDatum.secretVariable["Madness"]
 				if(currentMadness > 0)

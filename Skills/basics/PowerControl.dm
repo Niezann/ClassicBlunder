@@ -10,6 +10,8 @@ mob/proc/PowerUp() // Handles Normal (read: Not Kaioken/Shin) power up related c
         if(src.passive_handler.Get("Kaioken"))
             KaiokenPowerUp() // This proc is at line 101
             return
+        if(Secret == "Shin" && ((usingShinBuff() && !MangOnCD())|| usingMangBuff()) && ActiveBuff)
+            MangPowerUp() // This proc is at line 189
         if(src.CheckActive("Ki Control")||(src.CheckSpecial("One Hundred Percent Power")&&src.transUnlocked<4)||(src.CheckSpecial("Fifth Form")&&src.transUnlocked<4))
             if(src.transActive()<src.transUnlocked)
                 if(src.isRace(HUMAN)||src.isRace(CELESTIAL))
@@ -56,6 +58,11 @@ mob/proc/PowerDown()
         if(src.passive_handler.Get("Kaioken"))
             KaiokenPowerDown() // This Proc is at line 156
             return
+        if(Secret == "Shin" && usingMangBuff())
+            MangPowerDown() // This proc is at line 202
+            if(GetMangLevel()==0)
+                MangToShin()
+            return 
         if(src.HasPULock()||src.HasGatesPULock())
             return
         if(src.PoweringUp)
@@ -182,9 +189,29 @@ mob/proc/KaiokenPowerDown()
             src.UseBuff(KC)
     return*/
     
-/* (A surprise tool for later)
+
 // Handles Mang Power Up related code 
-mob/proc/ShinPowerUp()
+mob/proc/MangPowerUp()
+    if(MangManaCost())
+        if(ShinActive() || MangActive()) // First we check if they are using one of the right buffs
+            if(GetMangMastery() >= GetMangLevel()+1) // Then we check if they have enough mastery to go higher
+                src.AddMangLevel() // Then we add! Yay!
+        if(GetMangLevel())
+            startMangBuff()
+        if(ShinActive())
+            endShinBuff()
+
 
 // Handles Mang Power Down related code
-mob/proc/ShinPowerDown() */
+mob/proc/MangPowerDown()
+    if(!GetMangLevel()) // Checks what level your mang is at.
+        src <<"<b>You have not manifested any Mang!</b>"
+    if(MangActive()) // Reduces your active mang level
+        ReduceMangLevel()
+    if(!GetMangLevel()) // Turns Mang off if it hits 0?
+        endMangBuff()
+        startShinBuff()
+
+
+
+
