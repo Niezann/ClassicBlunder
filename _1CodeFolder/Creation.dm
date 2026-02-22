@@ -98,6 +98,9 @@ mob/Players
 				da.name="Devil Arm ([src.TrueName])"
 
 		checkVerbs()
+		if(src.isRace(/race/demi_fiend))
+			if(!(/mob/proc/CraftMagatama in src.verbs))
+				src.verbs += /mob/proc/CraftMagatama
 
 		addMissingSkills()
 		if(glob.TESTER_MODE)
@@ -404,7 +407,7 @@ mob/Players
 				s.cooldown_remaining=0
 				s.cooldown_start=0
 				s.Using=0
-			for(var/obj/Skills/AutoHit/Lunge/L in src)
+			for(var/obj/Skills/AutoHit/DemiFiend/Lunge/L in src)
 				L.Charges = L.MaxCharges
 				L.Recharging = 0
 			for(var/obj/Skills/Buffs/SlotlessBuffs/DemonMagic/dm in src)
@@ -450,7 +453,7 @@ mob/Players
 			MakyoFade()
 		if(isRace(MAKYO)&&!StarPowered&&starActive)
 			MakyoTrigger()
-		
+
 		initShortcuts();
 		return
 	Logout()
@@ -1134,7 +1137,7 @@ mob/proc
 				src.PotentialLastDailyGain=glob.progress.WipeStart
 				if(src.Potential==DaysOfWipe())//if its a bad boi who gets free potential
 					src.PotentialLastDailyGain=glob.progress.DaysOfWipe-1
-				
+
 				//set these to wipe start so that the login code will give them their rewards and allow them to grind potentialz
 			information.setPronouns(TRUE)
 			killed_AI = list()

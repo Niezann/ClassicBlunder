@@ -1,4 +1,4 @@
-/obj/Skills/AutoHit/Lunge
+/obj/Skills/AutoHit/DemiFiend/Lunge
 	Area="Wave"
 	Distance=5
 	DamageMult=3
@@ -78,7 +78,7 @@
 			else
 				Recharging = 0
 
-/obj/Skills/AutoHit/Ice_Breath
+/obj/Skills/AutoHit/DemiFiend/Ice_Breath
 	ElementalClass="Water"
 	StrOffense=0
 	ForOffense=2
@@ -105,7 +105,32 @@
 			ForOffense = 2 + (0.25 * usr.AscensionsAcquired)
 		usr.Activate(src)
 
-/obj/Skills/AutoHit/Fog_Breath
+/obj/Skills/AutoHit/DemiFiend/Flame_Breath
+	ElementalClass="Fire"
+	StrOffense=1
+	ForOffense=1
+	SpecialAttack=1
+	GuardBreak=0
+	DamageMult=10
+	Scorching=30
+	TurfErupt=1
+	WindUp=0.5
+	WindupMessage="breathes deeply..."
+	ActiveMessage="lets loose an enormous breath infused with flame!"
+	Cooldown=60
+	Distance=40
+	Slow=1
+	Area="Arc"
+	verb/Flame_Breath()
+		set category="Skills"
+		if(!altered)
+			DamageMult = 5 + (1.5 * usr.AscensionsAcquired)
+			Distance = 10 + (3 * usr.AscensionsAcquired)
+			ForOffense = 1 + (0.25 * usr.AscensionsAcquired)
+			StrOffense = 1 + (0.25 * usr.AscensionsAcquired)
+		usr.Activate(src)
+
+/obj/Skills/AutoHit/DemiFiend/Fog_Breath
 	ElementalClass="Water"
 	StrOffense=0
 	ForOffense=1
@@ -207,3 +232,97 @@ obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Rakunda
 			adjust(usr)
 			applyToTarget?:adjust(usr)
 		src.Trigger(usr)
+
+// Healing skills
+obj/Skills/Buffs/SlotlessBuffs/DemiFiend/DiaApply
+	StableHeal=1
+	HealthHeal=10
+	TimerLimit=10
+	ActiveMessage="is healed by restorative energy!"
+	OffMessage="releases the healing energy."
+
+obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Dia
+	ElementalClass="Light"
+	applyToTarget = new/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/DiaApply
+	AffectTarget=1
+	EndYourself=1
+	Range=12
+	Cooldown=150
+	KenWave=1
+	KenWaveIcon='SparkleYellow.dmi'
+	KenWaveSize=3
+	KenWaveX=105
+	KenWaveY=105
+	ActiveMessage="invokes restorative energy upon their target!"
+	OffMessage="finishes casting Dia."
+	verb/Dia()
+		set category="Skills"
+		if(!usr.Target || usr.Target==usr)
+			usr << "You can't use Dia on yourself!"
+			return
+		if(!altered)
+			adjust(usr)
+			applyToTarget?:adjust(usr)
+		src.Trigger(usr)
+
+obj/Skills/Buffs/SlotlessBuffs/DemiFiend/MediaApply
+	StableHeal=1
+	HealthHeal=10
+	TimerLimit=10
+	ActiveMessage="is healed by powerful restorative energy!"
+	OffMessage="the healing energy fades..."
+	MagicNeeded=0
+
+obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Media
+	ElementalClass="Light"
+	EndYourself=1
+	Cooldown=300
+	KenWave=1
+	KenWaveIcon='SparkleYellow.dmi'
+	KenWaveSize=4
+	KenWaveX=105
+	KenWaveY=105
+	ActiveMessage="invokes restorative magic upon their party!"
+	OffMessage="finishes casting Media."
+	verb/Media()
+		set category="Skills"
+		var/mob/User = usr
+		if(!User.party || !User.party.members || User.party.members.len == 0)
+			User << "You need to be in a party to use Media."
+			return
+		if(src.cooldown_remaining > 0)
+			User << "[src] is on cooldown."
+			return
+		if(!altered)
+			adjust(User)
+		var/baseHeal = 15
+		for(var/mob/m in User.party.members)
+			if(!m || !ismob(m)) continue
+			var/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/MediaApply/applyBuff = new
+			applyBuff.HealthHeal = (m == User ? baseHeal / 2 : baseHeal)
+			applyBuff.StableHeal = 1
+			applyBuff.TimerLimit = 10
+			applyBuff.Trigger(m, 1)
+		User.OMessage(1, null, "[User] invokes restorative energy upon [User.party.members.len == 1 ? "themselves" : "their party"]!")
+		src.Cooldown(1, null, User)
+
+obj/Skills/Projectile/DemiFiend/Tornado
+	name = "Tornado"
+	IconLock = 'Tornado.dmi'
+	IconSize = 2
+	LockX = -32
+	LockY = -32
+	Speed = 0.4
+	Distance = 25
+	DamageMult = 3
+	StrRate = 0.5
+	ForRate = 0.5
+	HyperHoming = 1
+	Homing = 1
+	Launcher = 3
+	LingeringTornado = 1
+	Piercing = 1
+	Cooldown = 60
+	verb/Tornado()
+		set category = "Skills"
+		usr.UseProjectile(src)

@@ -198,6 +198,7 @@ obj
 
 				GoldScatter
 				Snaring
+				LingeringTornado//spawn obj/leftOver/LingeringTornado on hit
 			skillDescription()
 				..()
 				if(MaimCost)
@@ -5346,6 +5347,7 @@ obj
 					BeamCharge
 					BreathCost
 					DirOverride
+					LingeringTornadoSpawned=0
 				Savable=0
 				density=1
 				Grabbable=0
@@ -5476,6 +5478,7 @@ obj
 					src.FollowUp=Z.FollowUp
 					src.FollowUpDelay=Z.FollowUpDelay
 					src.WarpUser=Z.WarpUser
+					src.LingeringTornado=Z.LingeringTornado
 					src.Backfire=0
 					src.FadeOut=Z.FadeOut
 					src.GoldScatter = Z.GoldScatter
@@ -6151,6 +6154,12 @@ obj
 						if(FollowUp)
 							if(FollowUpDelay == -1)
 								Owner.throwFollowUp(FollowUp)
+						if(src.LingeringTornado && src.Owner && !src.LingeringTornadoSpawned)
+							src.LingeringTornadoSpawned = 1
+							var/turf/T = get_turf(src)
+							if(T)
+								var/obj/leftOver/LingeringTornado/lt = new(T, src.Owner, a)
+								lt.init(src.Owner)
 
 						if(src.Knockback)
 							if(src.Area=="Beam")
@@ -6183,7 +6192,7 @@ obj
 									ProjectileFinish()
 								return
 						else
-							if(src.Homing)
+							if(src.Homing && !src.LingeringTornado)
 								var/list/Dirs=list(NORTH, NORTHEAST, NORTHWEST, EAST, WEST, SOUTHEAST, SOUTHWEST, SOUTH)
 								Dirs.Remove(turn(src.dir, 135))
 								Dirs.Remove(turn(src.dir, 180))
