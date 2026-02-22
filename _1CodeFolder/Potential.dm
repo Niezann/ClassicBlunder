@@ -58,6 +58,8 @@ mob
 				if(val>0)
 					if(isRace(ANDROID))
 						src.HealthCut+=(val/100)
+					if(isRace(/race/demi_fiend))
+						src.refreshMagatama()
 
 				if(src.Potential>src.PotentialCap && src.PotentialRate>0)
 					src.Potential=src.PotentialCap

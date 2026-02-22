@@ -1,11 +1,32 @@
 #define MAGATAMA_SWAP_COOLDOWN 36000 // 1 hour in deciseconds
 #define MAGATAMA_COST_ESCALATION 0.25 // +25% base cost per magatama crafted
-#define MAGATAMA_DEFAULT_SCALING 0.05 // default additive gain per point of potential per passive
 
 mob/var
 	magatama_last_swap = 0
 	magatama_last_type
 	magatama_crafted = 0
+	magatama_cooldown_until = 0
+	list/magatama_allowed_set = list()
+	list/magatama_equip_times = list()
+
+mob/proc/getMagatamaEquippedTypes()
+	var/list/types = list()
+	for(var/obj/Items/Magatama/M in src)
+		if(M.suffix == "*Equipped*")
+			types[M.type] = 1
+	return types
+
+mob/proc/getMagatamaMaxSlots()
+	if(passive_handler?.Get("Shijima"))
+		return 1 + AscensionsAcquired
+	return 1
+
+mob/proc/getMagatamaEquippedCount()
+	var/count = 0
+	for(var/obj/Items/Magatama/M in src)
+		if(M.suffix == "*Equipped*")
+			count++
+	return count
 
 obj/Items/Magatama
 	Stealable = 0
@@ -24,27 +45,31 @@ obj/Items/Magatama
 		return
 
 	proc
-		potentialBonus(mob/user, rate = MAGATAMA_DEFAULT_SCALING)
-			return max(0, (user.Potential - 1) * rate)
+		potentialBonus(mob/user, rate)
+			if(!rate) return 0
+			var/effective_rate = rate
+			if(user.passive_handler?.Get("Shijima"))
+				effective_rate *= 0.5
+			return max(0, user.Potential * effective_rate)
 
 		getScaledPassives(mob/user)
 			var/list/result = list()
 			for(var/p in base_passives)
-				var/rate = MAGATAMA_DEFAULT_SCALING
-				if(p in passive_scaling)
-					rate = passive_scaling[p]
+				var/rate = (p in passive_scaling) ? passive_scaling[p] : 0
 				result[p] = base_passives[p] + potentialBonus(user, rate)
 			for(var/level_str in ascension_passives)
 				if(user.AscensionsAcquired >= text2num(level_str))
 					var/list/asc_list = ascension_passives[level_str]
 					for(var/p in asc_list)
-						var/rate = MAGATAMA_DEFAULT_SCALING
-						if(p in passive_scaling)
-							rate = passive_scaling[p]
+						var/rate = (p in passive_scaling) ? passive_scaling[p] : 0
 						if(p in result)
 							result[p] += asc_list[p] + potentialBonus(user, rate)
 						else
 							result[p] = asc_list[p] + potentialBonus(user, rate)
+			if(user.passive_handler?.Get("Yosuga"))
+				var/yosuga_mult = 1 + (0.25 * user.AscensionsAcquired)
+				for(var/p in result)
+					result[p] *= yosuga_mult
 			return result
 
 		grantSkills(mob/user)
@@ -74,12 +99,21 @@ obj/Items/Magatama
 			suffix = "*Equipped*"
 			scaled_passives = getScaledPassives(user)
 			user.passive_handler.increaseList(scaled_passives)
-			grantSkills(user)
-			user.magatama_last_swap = world.realtime
-			user.magatama_last_type = type
+			if(!user.passive_handler?.Get("Musubi"))
+				grantSkills(user)
+			if(!user.passive_handler?.Get("Shijima"))
+				user.magatama_last_swap = world.time
+				user.magatama_last_type = type
+			else
+				if(!user.magatama_equip_times) user.magatama_equip_times = list()
+				user.magatama_equip_times[type] = world.time
 			user << "You ingest [src]. Its power courses through your veins."
 
 		unequipMagatama(mob/user)
+			if(user.passive_handler?.Get("Shijima"))
+				if(!user.magatama_allowed_set) user.magatama_allowed_set = list()
+				user.magatama_allowed_set = user.getMagatamaEquippedTypes()
+				user.magatama_cooldown_until = world.time + MAGATAMA_SWAP_COOLDOWN
 			if(scaled_passives)
 				user.passive_handler.decreaseList(scaled_passives)
 				scaled_passives = null
@@ -94,7 +128,8 @@ obj/Items/Magatama
 			scaled_passives = getScaledPassives(user)
 			user.passive_handler.increaseList(scaled_passives)
 			revokeSkills(user)
-			grantSkills(user)
+			if(!user.passive_handler?.Get("Musubi"))
+				grantSkills(user)
 
 	ObjectUse(mob/Players/User = usr)
 		if(!(src in User))
@@ -105,22 +140,63 @@ obj/Items/Magatama
 			return
 
 		if(suffix == "*Equipped*")
+			if(!User.passive_handler?.Get("Musubi"))
+				var/can_unequip = 0
+				if(User.passive_handler?.Get("Shijima"))
+					if(!User.magatama_equip_times) User.magatama_equip_times = list()
+					var/equip_time = User.magatama_equip_times[type]
+					if(!equip_time)
+						can_unequip = 1
+					else if(world.time >= equip_time + MAGATAMA_SWAP_COOLDOWN)
+						can_unequip = 1
+					else if(world.time < equip_time)
+						can_unequip = 1
+				else if(!User.magatama_last_swap || world.time >= User.magatama_last_swap + MAGATAMA_SWAP_COOLDOWN)
+					can_unequip = 1
+				else if(world.time < User.magatama_last_swap)
+					can_unequip = 1
+				if(!can_unequip)
+					var/remaining = 0
+					if(User.passive_handler?.Get("Shijima") && User.magatama_equip_times && User.magatama_equip_times[type])
+						remaining = (User.magatama_equip_times[type] + MAGATAMA_SWAP_COOLDOWN - world.time) / 10
+					else
+						remaining = (User.magatama_last_swap + MAGATAMA_SWAP_COOLDOWN - world.time) / 10
+					var/mins = max(0, round(remaining / 60))
+					var/secs = max(0, round(remaining % 60))
+					User << "Your body is still bonded to [src]. You must wait [mins]m [secs]s before you can release it."
+					return
 			unequipMagatama(User)
 			return
 
-		for(var/obj/Items/Magatama/M in User)
-			if(M != src && M.suffix == "*Equipped*")
-				User << "You already have [M.name] equipped. Unequip it first."
-				return
+		var/max_slots = User.getMagatamaMaxSlots()
+		if(User.getMagatamaEquippedCount() >= max_slots)
+			User << "All your Magatama slots are full ([max_slots]). Unequip one first."
+			return
 
-		if(type != User.magatama_last_type && User.magatama_last_swap)
-			var/elapsed = world.realtime - User.magatama_last_swap
-			if(elapsed < MAGATAMA_SWAP_COOLDOWN)
-				var/remaining = (MAGATAMA_SWAP_COOLDOWN - elapsed) / 10
-				var/mins = round(remaining / 60)
-				var/secs = round(remaining % 60)
-				User << "Your body is still adjusting. You must wait [mins]m [secs]s before ingesting a different Magatama."
-				return
+		var/skip_cooldown = User.passive_handler?.Get("Musubi")
+		if(!skip_cooldown)
+			if(User.passive_handler?.Get("Shijima"))
+				if(!User.magatama_allowed_set) User.magatama_allowed_set = list()
+				if(!(type in User.magatama_allowed_set))
+					if(!User.magatama_cooldown_until || world.time >= User.magatama_cooldown_until || world.time < User.magatama_cooldown_until - MAGATAMA_SWAP_COOLDOWN)
+						skip_cooldown = 1
+					if(!skip_cooldown && world.time < User.magatama_cooldown_until)
+						var/remaining = (User.magatama_cooldown_until - world.time) / 10
+						var/mins = max(0, round(remaining / 60))
+						var/secs = max(0, round(remaining % 60))
+						User << "Your body is still adjusting to your current Magatama. You must wait [mins]m [secs]s before ingesting a different one."
+						return
+			else if(type != User.magatama_last_type && User.magatama_last_swap)
+				if(world.time < User.magatama_last_swap)
+					skip_cooldown = 1
+				else
+					var/elapsed = world.time - User.magatama_last_swap
+					if(elapsed < MAGATAMA_SWAP_COOLDOWN)
+						var/remaining = (MAGATAMA_SWAP_COOLDOWN - elapsed) / 10
+						var/mins = round(remaining / 60)
+						var/secs = round(remaining % 60)
+						User << "Your body is still adjusting. You must wait [mins]m [secs]s before ingesting a different Magatama."
+						return
 
 		equipMagatama(User)
 
@@ -128,7 +204,6 @@ mob/proc/refreshMagatama()
 	for(var/obj/Items/Magatama/M in src)
 		if(M.suffix == "*Equipped*")
 			M.refreshPassives(src)
-			return
 
 mob/proc/CraftMagatama()
 	set name = "Craft Magatama"
@@ -152,7 +227,9 @@ mob/proc/CraftMagatama()
 		if(locate(T) in src)
 			del template
 			continue
-		var/actual_cost = round(template.craft_cost * (1 + magatama_crafted * MAGATAMA_COST_ESCALATION))
+		var/actual_cost = template.craft_cost
+		if(!passive_handler?.Get("Musubi"))
+			actual_cost = round(template.craft_cost * (1 + magatama_crafted * MAGATAMA_COST_ESCALATION))
 		craft_names += template.name
 		craft_paths += T
 		craft_costs += actual_cost
@@ -190,17 +267,50 @@ mob/proc/CraftMagatama()
 obj/Items/Magatama/Marogareh
 	name = "Marogareh"
 	desc = "The first Magatama. A writhing, parasitic organism that awakens the demonic potential within its host."
-	base_passives = list("UnarmedDamage" = 1, "BlockChance" = 10, "CriticalBlock" = 0.05, "Momentum" = 1)
-	passive_scaling = list("BlockChance" = 0.125, "CriticalBlock" = 0.075, "Fa Jin" = 0.5)
+	base_passives = list("UnarmedDamage" = 1, "PhysPleroma" = 0.25, "Momentum" = 1)
+	passive_scaling = list("UnarmedDamage" = 0.1, "PhysPleroma" = 0.075, "Momentum" = 0.075, "Fa Jin" = 0.05)
 	ascension_passives = list("1" = list("Fa Jin" = 1))
-	magatama_skills = list(/obj/Skills/Queue/Kinshasa)
+	magatama_skills = list(/obj/Skills/AutoHit/Lunge)
 	ascension_skills = list("1" = list(/obj/Skills/Queue/Curbstomp))
 
 obj/Items/Magatama/Wadatsumi
 	name = "Wadatsumi"
 	desc = "A Magatama of frozen seas. Those who ingest it command the bitter cold and the rhythmic power of ocean waves."
-	base_passives = list("IceAge" = 30, "Chilling" = 2, "Familiar" = 1, "WaveDance" = 1)
-	passive_scaling = list("IceAge" = 0.5, "Chilling" = 0.125, "Familiar" = 0.075)
+	base_passives = list("IceAge" = 50, "Chilling" = 2, "Familiar" = 1, "WaveDance" = 1)
+	passive_scaling = list("IceAge" = 0.5, "Chilling" = 0.2, "Familiar" = 0.05)
 	ascension_passives = list("1" = list("BlizzardBringer" = 1))
-	magatama_skills = list(/obj/Skills/AutoHit/Magic/Blizzard)
+	magatama_skills = list(/obj/Skills/AutoHit/Ice_Breath)
+	ascension_skills = list("1" = list(/obj/Skills/AutoHit/Fog_Breath))
+	craft_cost = 5000
+
+obj/Items/Magatama/Ankh
+	name = "Ankh"
+	desc = "A Magatama awaiting its power."
+	craft_cost = 5000
+
+obj/Items/Magatama/Iyomante
+	name = "Iyomante"
+	desc = "A Magatama awaiting its power."
+	magatama_skills = list(/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Tarunda)
+	ascension_skills = list("1" = list(/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Sukunda), "2" = list(/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/Rakunda))
+	craft_cost = 5000
+
+obj/Items/Magatama/Shiranui
+	name = "Shiranui"
+	desc = "A Magatama awaiting its power."
+	craft_cost = 5000
+
+obj/Items/Magatama/Hifumi
+	name = "Hifumi"
+	desc = "A Magatama awaiting its power."
+	craft_cost = 5000
+
+obj/Items/Magatama/Kamudo
+	name = "Kamudo"
+	desc = "A Magatama awaiting its power."
+	craft_cost = 5000
+
+obj/Items/Magatama/Narukami
+	name = "Narukami"
+	desc = "A Magatama awaiting its power."
 	craft_cost = 5000

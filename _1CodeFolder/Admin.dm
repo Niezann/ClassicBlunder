@@ -265,6 +265,8 @@ mob/Admin3/verb
 		if(val&&m)
 			m.Potential+=val
 			m.PotentialCap+=val
+			if(m.isRace(/race/demi_fiend))
+				m.refreshMagatama()
 			Log("Admin", "[ExtractInfo(src)] boosted [ExtractInfo(m)]'s potential by [val].")
 			m << "You feel yourself grow more experienced!"
 
@@ -1005,6 +1007,8 @@ mob/Admin2/verb
 		M.RPPSpendable=getMaxPlayerRPP()
 		M.PotentialRate=0
 		M.Potential=input(src, "What potential do you want to set [M] to?", "Set Potential") as num
+		if(M.isRace(/race/demi_fiend))
+			M.refreshMagatama()
 		M.ECCHARACTER=TRUE
 		Log("Admin", "[ExtractInfo(src)] triggered [ExtractInfo(M)]'s event character setup!")
 
