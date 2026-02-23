@@ -1352,7 +1352,7 @@ NEW VARIABLES
 					src.SwordIcon=GetKeychainIcon(usr.KeychainAttached)
 					src.SwordX=-32
 					src.SwordY=-32
-					src.passives=GetKeybladePassives(usr.KeychainAttached)
+					src.passives=GetKeybladePassives(usr.KeychainAttached, usr.SagaLevel)
 					if(usr.KeychainAttached=="Ultima Weapon")
 						src.SwordX=-36
 						src.SwordY=-36
