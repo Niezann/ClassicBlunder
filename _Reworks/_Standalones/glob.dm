@@ -608,7 +608,10 @@ globalTracker
 		list/BronzeConstellation = list("Pegasus" = FALSE, "Dragon" = FALSE, "Cygnus" = FALSE, "Andromeda" = FALSE, "Phoenix" = FALSE, "Unicorn" = FALSE)
 		list/GoldConstellation = list("Aries" = FALSE,"Gemini" = FALSE,"Cancer" = FALSE,"Leo" = FALSE,"Virgo" = FALSE,"Libra" = FALSE,\
 "Scorpio" = FALSE,"Capricorn" = FALSE,"Aquarius" = FALSE,"Pisces" = FALSE, "Sagittarius" = FALSE)
-
+		list/Keychains=list("Kingdom Key", "Kingdom Key D", "Flame Liberator", "Wayward Wind", "Rainfell", "Oathkeeper", "Way To Dawn", "Bond of Flame", "Sweetstack", "Two Become One",\
+		"Oblivion", "Fenrir", "No Name", "Lionheart", "Spellbinder", "Star Seeker", "Lost Memory",\
+		"Earthshaker", "Chaos Ripper", "One Winged Angel", "Moogle O Glory")
+		list/FinalKeychains=list("Ultima Weapon", "X-Blade", "Ebony Slumber", "Prismatic Dreams")
 		CHIKARA_WHITELIST = FALSE
 
 		STAT_DMG_EXPONENT = 0.75

@@ -1,0 +1,514 @@
+proc/
+	GetKeychainClass(var/KC)
+		switch(KC)
+//small
+			if("Kingdom Key")
+				return "Light"
+			if("Kingdom Key D")
+				return "Light"
+			if("Flame Liberator")
+				return "Light"
+			if("Wayward Wind")
+				return "Light"
+			if("Rainfell")
+				return "Light"
+			if("Oathkeeper")
+				return "Light"
+			if("Way To Dawn")
+				return "Light"
+			if("Bond of Flame")
+				return "Light"
+			if("Sweetstack")
+				return "Light"
+			if("Two Become One")
+				return "Light"
+//medium
+			if("Oblivion")
+				return "Medium"
+			if("Fenrir")
+				return "Medium"
+			if("No Name")
+				return "Medium"
+			if("Lionheart")
+				return "Medium"
+			if("Spellbinder")
+				return "Medium"
+			if("Star Seeker")
+				return "Medium"
+			if("Lost Memory")
+				return "Medium"
+			if("Ultima Weapon")
+				return "Medium"
+//heavy
+			if("Earthshaker")
+				return "Heavy"
+			if("Chaos Ripper")
+				return "Heavy"
+			if("One Winged Angel")
+				return "Heavy"
+			if("Moogle O Glory")
+				return "Heavy"
+			if("X-Blade")
+				return "Heavy"
+			if("Ebony Slumber")
+				return "Heavy"
+			if("Prismatic Dreams")
+				return "Heavy"
+	GetKeychainDamage(var/KC)
+		switch(KC)
+//small
+			if("Kingdom Key")
+				return 1
+			if("Kingdom Key D")
+				return 1
+			if("Flame Liberator")
+				return 1
+			if("Wayward Wind")
+				return 1
+			if("Rainfell")
+				return 1
+			if("Oathkeeper")
+				return 1
+			if("Way To Dawn")
+				return 1
+			if("Bond of Flame")
+				return 1
+			if("Sweetstack")
+				return 1
+			if("Two Become One")
+				return 1
+//medium
+			if("Oblivion")
+				return 1.5
+			if("Fenrir")
+				return 1.5
+			if("No Name")
+				return 1.5
+			if("Lionheart")
+				return 1.5
+			if("Spellbinder")
+				return 1.5
+			if("Star Seeker")
+				return 1.5
+			if("Lost Memory")
+				return 1.5
+			if("Ultima Weapon")
+				return 2.5
+//heavy
+			if("Earthshaker")
+				return 2
+			if("Chaos Ripper")
+				return 2
+			if("One Winged Angel")
+				return 2
+			if("Moogle O Glory")
+				return 2
+			if("X-Blade")
+				return 3
+			if("Ebony Slumber")
+				return 2.5
+			if("Prismatic Dreams")
+				return 2.5
+	GetKeychainAccuracy(var/KC)
+		switch(KC)
+//small
+			if("Kingdom Key")
+				return 2
+			if("Kingdom Key D")
+				return 2
+			if("Flame Liberator")
+				return 2
+			if("Wayward Wind")
+				return 2
+			if("Rainfell")
+				return 2
+			if("Oathkeeper")
+				return 2
+			if("Way To Dawn")
+				return 2
+			if("Bond of Flame")
+				return 2
+			if("Sweetstack")
+				return 2
+			if("Two Become One")
+				return 2
+//medium
+			if("Oblivion")
+				return 1.5
+			if("Fenrir")
+				return 1.5
+			if("No Name")
+				return 1.5
+			if("Lionheart")
+				return 1.5
+			if("Spellbinder")
+				return 1.5
+			if("Star Seeker")
+				return 1.5
+			if("Lost Memory")
+				return 1.5
+			if("Ultima Weapon")
+				return 1.5
+//heavy
+			if("Earthshaker")
+				return 1
+			if("Chaos Ripper")
+				return 1
+			if("One Winged Angel")
+				return 1
+			if("Moogle O Glory")
+				return 1
+			if("X-Blade")
+				return 1
+			if("Ebony Slumber")
+				return 1.25
+			if("Prismatic Dreams")
+				return 1.25
+	GetKeychainDelay(var/KC)
+		switch(KC)
+//small
+			if("Kingdom Key")
+				return 2.5
+			if("Kingdom Key D")
+				return 2.5
+			if("Flame Liberator")
+				return 2.5
+			if("Wayward Wind")
+				return 2.5
+			if("Rainfell")
+				return 2.5
+			if("Oathkeeper")
+				return 2.5
+			if("Way To Dawn")
+				return 2.5
+			if("Bond of Flame")
+				return 2.5
+			if("Sweetstack")
+				return 2.5
+			if("Two Become One")
+				return 2.5
+//medium
+			if("Oblivion")
+				return 1.5
+			if("Fenrir")
+				return 1.5
+			if("No Name")
+				return 1.5
+			if("Lionheart")
+				return 1.5
+			if("Spellbinder")
+				return 1.5
+			if("Star Seeker")
+				return 1.5
+			if("Lost Memory")
+				return 1.5
+			if("Ultima Weapon")
+				return 1.5
+//heavy
+			if("Earthshaker")
+				return 1
+			if("Chaos Ripper")
+				return 1
+			if("One Winged Angel")
+				return 1
+			if("Moogle O Glory")
+				return 1
+			if("X-Blade")
+				return 1
+			if("Ebony Slumber")
+				return 1
+			if("Prismatic Dreams")
+				return 1
+	GetKeychainElement(var/KC)
+		switch(KC)
+//small
+			if("Kingdom Key")
+				return 0
+			if("Kingdom Key D")
+				return 0
+			if("Flame Liberator")
+				return "Fire"
+			if("Wayward Wind")
+				return "Wind"
+			if("Rainfell")
+				return "Water"
+			if("Oathkeeper")
+				return "Light"
+			if("Way To Dawn")
+				return "Dark"
+			if("Bond of Flame")
+				return "Fire"
+			if("Sweetstack")
+				return "Love"
+			if("Two Become One")
+				if(prob(50))
+					return "Light"
+				else
+					return "Dark"
+//medium
+			if("Oblivion")
+				return "Dark"
+			if("Fenrir")
+				return "Wind"
+			if("No Name")
+				return "Void"
+			if("Lionheart")
+				return "Earth"
+			if("Spellbinder")
+				return "Water"
+			if("Star Seeker")
+				return "Truth"
+			if("Lost Memory")
+				return "Wind"
+			if("Ultima Weapon")
+				return "Ultima"
+//heavy
+			if("Earthshaker")
+				return "Earth"
+			if("Chaos Ripper")
+				return "Dark"
+			if("One Winged Angel")
+				return "Fire"
+			if("Moogle O Glory")
+				return "Water"
+			if("X-Blade")
+				return "Ultima"
+			if("Ebony Slumber")
+				return "Dark"
+			if("Prismatic Dreams")
+				return "Light"
+	GetKeychainIcon(var/KC)
+		switch(KC)
+//small
+			if("Kingdom Key")
+				return 'KingdomKey.dmi'
+			if("Kingdom Key D")
+				return 'KingdomKeyD.dmi'
+			if("Flame Liberator")
+				return 'Flame Liberator.dmi'
+			if("Wayward Wind")
+				return 'WaywardWind.dmi'
+			if("Rainfell")
+				return 'Rainfell.dmi'
+			if("Oathkeeper")
+				return 'Oathkeeper.dmi'
+			if("Way To Dawn")
+				return 'WayToTheDawn.dmi'
+			if("Bond of Flame")
+				return 'Bond of Flame.dmi'
+			if("Sweetstack")
+				return 'Sweetstack.dmi'
+			if("Two Become One")
+				return 'Two Become One.dmi'
+//medium
+			if("Oblivion")
+				return 'Oblivion.dmi'
+			if("Fenrir")
+				return 'Fenrir.dmi'
+			if("No Name")
+				return 'NoName.dmi'
+			if("Lionheart")
+				return 'Lionheart.dmi'
+			if("Spellbinder")
+				return 'Spellbinder.dmi'
+			if("Star Seeker")
+				return 'Star Seeker.dmi'
+			if("Lost Memory")
+				return 'Lost Memory.dmi'
+			if("Ultima Weapon")
+				return 'Ultima Keyblade.dmi'
+//heavy
+			if("Earthshaker")
+				return 'Earthshaker.dmi'
+			if("Chaos Ripper")
+				return 'ChaosRipper.dmi'
+			if("One Winged Angel")
+				return 'One Winged Angel.dmi'
+			if("Moogle O Glory")
+				return 'Moogle O Glory.dmi'
+			if("X-Blade")
+				return 'X-Blade NEOBIG.dmi'
+			if("Ebony Slumber")
+				return 'Fusion Keyblade - Dark.dmi'
+			if("Prismatic Dreams")
+				return 'Fusion Keyblade - Light.dmi'
+	GetKeychainIconReversed(var/KC)
+		switch(KC)
+//small
+			if("Kingdom Key")
+				return 'KingdomKeySync.dmi'
+			if("Kingdom Key D")
+				return 'KingdomKeyDSync.dmi'
+			if("Flame Liberator")
+				return 'Flame Liberator - Sync.dmi'
+			if("Wayward Wind")
+				return 'WaywardWindSync.dmi'
+			if("Rainfell")
+				return 'RainfellSync.dmi'
+			if("Oathkeeper")
+				return 'OathkeeperSync.dmi'
+			if("Way To Dawn")
+				return 'WayToTheDawnSync.dmi'
+			if("Bond of Flame")
+				return 'Bond of Flame - Sync.dmi'
+			if("Sweetstack")
+				return 'Sweetstack - Sync.dmi'
+			if("Two Become One")
+				return 'Two Become One - Sync.dmi'
+//medium
+			if("Oblivion")
+				return 'OblivionSync.dmi'
+			if("Fenrir")
+				return 'FenrirSync.dmi'
+			if("No Name")
+				return 'NoNameSync.dmi'
+			if("Lionheart")
+				return 'Lionheart - Sync.dmi'
+			if("Spellbinder")
+				return 'Spellbinder - Sync.dmi'
+			if("Star Seeker")
+				return 'Starseeker - Sync.dmi'
+			if("Lost Memory")
+				return 'Lost Memory - Sync.dmi'
+			if("Ultima Weapon")
+				return 'Ultima Keyblade.dmi'
+//heavy
+			if("Earthshaker")
+				return 'EarthshakerSync.dmi'
+			if("Chaos Ripper")
+				return 'ChaosRipperSync.dmi'
+			if("One Winged Angel")
+				return 'One Winged Angel - Sync.dmi'
+			if("Moogle O Glory")
+				return 'Moogle O Glory - Sync.dmi'
+			if("X-Blade")
+				return 'X-Blade NEOBIG.dmi'
+			if("Ebony Slumber")
+				return 'Fusion Keyblade - Dark Sync.dmi'
+			if("Prismatic Dreams")
+				return 'Fusion Keyblade - Light Sync.dmi'
+
+
+	GetKeybladePassives(var/KC)
+		var/KeybladePassives=list()
+		switch(KC)
+//small
+			if("Kingdom Key")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Kingdom Key D")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Flame Liberator")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Wayward Wind")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Rainfell")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Oathkeeper")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Way To Dawn")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Bond of Flame")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Sweetstack")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Two Become One")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+//medium
+			if("Oblivion")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Fenrir")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("No Name")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Lionheart")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Spellbinder")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Star Seeker")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Lost Memory")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Ultima Weapon")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+//heavy
+			if("Earthshaker")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Chaos Ripper")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("One Winged Angel")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Moogle O' Glory")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("X-Blade")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Ebony Slumber")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("Prismatic Dreams")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+			if("X-Blade")
+				KeybladePassives=list("PULock" = 1)
+				return KeybladePassives
+/*
+		switch(KC)
+//small
+			if("Kingdom Key")
+			if("Kingdom Key D")
+			if("Flame Liberator")
+			if("Wayward Wind")
+			if("Rainfell")
+			if("Oathkeeper")
+			if("Way To Dawn")
+			if("Bond of Flame")
+			if("Sweetstack")
+			if("Two Become One")
+//medium
+			if("Oblivion")
+			if("Fenrir")
+			if("No Name")
+			if("Lionheart")
+			if("Spellbinder")
+			if("Star Seeker")
+			if("Lost Memory")
+			if("Ultima Weapon")
+//heavy
+			if("Earthshaker")
+			if("Chaos Ripper")
+			if("One Winged Angel")
+			if("Moogle O' Glory")
+			if("X-Blade")
+			if("Ebony Slumber")
+			if("Prismatic Dreams")
+*/
+/mob/proc/PickKeychain()
+	var/list/Options=glob.Keychains
+	for(var/o in src.Keychains)
+		Options.Remove(o)
+	var/Choice=input(usr, "What keychain do you want?", "Heart Share") in Options
+	if(Choice=="Cancel")
+		return
+	src.Keychains.Add(Choice)

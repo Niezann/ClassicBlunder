@@ -453,7 +453,7 @@ mob/Admin3/verb
 
 	Keychain_Add(mob/Players/m in players)
 		set category="Admin"
-		var/list/Options=list("Cancel","Kingdom Key","Kingdom Key D","Wayward Wind","Oathkeeper","Way To Dawn","Rainfell","Oblivion","No Name","Earthshaker","Fenrir","Chaos Ripper")
+		var/list/Options=glob.Keychains
 		for(var/o in m.Keychains)
 			Options.Remove(o)
 		var/Choice=input(usr, "What keychain do you wish to grant to [m]?", "Heart Share") in Options
@@ -538,7 +538,7 @@ mob
 				ShinjiTaken=1
 			if(src.VaizardIcon=='Showlong.dmi')
 				ShowlongTaken=1
-proc
+/*proc
 	GetKeychainClass(var/KC)
 		switch(KC)
 			if("Kingdom Key")
@@ -741,6 +741,7 @@ proc
 				return 'WayToTheDawnSync.dmi'
 			if("Chaos Ripper")
 				return 'ChaosRipperSync.dmi'
+*/
 mob
 	proc
 		GetPersonaPoints()

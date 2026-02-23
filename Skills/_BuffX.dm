@@ -1352,40 +1352,14 @@ NEW VARIABLES
 					src.SwordIcon=GetKeychainIcon(usr.KeychainAttached)
 					src.SwordX=-32
 					src.SwordY=-32
-					if(usr.KeychainAttached=="Way To Dawn")
-						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 2, "HolyMod" = 3, "AbyssMod" = 3, "SpiritPower" = 0.75 )
-						src.HolyMod=3
-						src.AbyssMod=3
-					else
-						src.HolyMod=0
-						src.AbyssMod=0
-					if(usr.KeychainAttached=="Fenrir")
-						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 2, "SlayerMod" = 1.5, "FavoredPrey" = "Races")
-					else
-						src.Steady=0
-					if(usr.KeychainAttached=="Chaos Ripper")
-						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 2, "Burning" = 3, "Scorching" = 3, "DarknessFlame" = 2)
-						src.Burning=1
-						src.Scorching=1
-						src.DarknessFlame=1
-					else
-						src.Burning=0
-						src.Scorching=0
-						src.DarknessFlame=0
-					if(usr.KeychainAttached=="No Name")
-						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 2, "StealsStats" = 1)
-						src.StealsStats=0
-					if(usr.KeychainAttached=="X-Blade")
-						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 3, "GodKi" = 0.25)
-					if(usr.KeychainAttached=="Nightwing")
-						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 3, "Tossing" = 3, "Secret Knives" = "GodSlayer")
+					src.passives=GetKeybladePassives(usr.KeychainAttached)
 					if(usr.KeychainAttached=="Ultima Weapon")
-						passives = list("PULock" = 1, "MagicSword" = 1, "SwordAscension" = 3, "SlayerMod" = 1.5, "FavoredPrey" = "Beyond")
 						src.SwordX=-36
 						src.SwordY=-36
 
-					else
-						src.StealsStats=0
+					if(usr.KeychainAttached=="Moogle O Glory"||usr.KeychainAttached=="Prismatic Dreams"||usr.KeychainAttached=="Ebony Slumber")
+						src.SwordX=-64
+						src.SwordY=-64
 					switch(usr.KeybladeType)
 						if("Sword")
 							src.StrMult=1.2
@@ -1403,9 +1377,9 @@ NEW VARIABLES
 							// passives["SpiritFlow"] = 0.15 * usr.SagaLevel
 					passives["SpiritSword"] = 0.2 * usr.SagaLevel
 					passives["PULock"] = 1
-					passives["SwordDamage"] = GetKeychainDamage(usr.KeychainAttached)
-					passives["SwordAccuracy"] = GetKeychainAccuracy(usr.KeychainAttached)
-					passives["SwordDelay"] = GetKeychainDelay(usr.KeychainAttached)
+					passives["SwordDamage"] = GetKeychainDamage(usr.KeychainAttached) + usr.SagaLevel
+					passives["SwordAccuracy"] = GetKeychainAccuracy(usr.KeychainAttached) + usr.SagaLevel
+					passives["SwordDelay"] = GetKeychainDelay(usr.KeychainAttached) + usr.SagaLevel
 				src.Trigger(usr)
 
 
@@ -3658,21 +3632,7 @@ NEW VARIABLES
 							src.SwordElementSecond=GetKeychainElement(usr.SyncAttached)
 							src.SwordIconSecond=GetKeychainIconReversed(usr.SyncAttached)
 							passives = list("ManaLeak" = 2, "Pursuer" = 1, "Flicker" = 1, "StunningStrike" = 1, "DoubleStrike" = 1 + usr.SagaLevel/3, "MasterfulCasting" = 1)
-							if(usr.SyncAttached=="Way To Dawn")
-								passives["HolyMod"] = 3 + (usr.SagaLevel/2)
-								passives["AbyssMod"] = 3 + (usr.SagaLevel/2)
-
-							if(usr.SyncAttached=="Fenrir")
-								passives["SlayerMod"] = 3 + (usr.SagaLevel/2)
-								passives["FavoredPrey"] = "Races"
-
-							if(usr.SyncAttached=="Chaos Ripper")
-								passives["Burning"] = 3
-								passives["Scorching"] = 3
-								passives["DarknessFlame"] = 3
-
-							if(usr.SyncAttached=="No Name")
-								passives["StealsStats"] = 1
+							passives+=GetKeybladePassives(usr.SyncAttached)
 
 							usr.LimitCounter+=1
 				src.Trigger(usr)
@@ -3750,36 +3710,7 @@ NEW VARIABLES
 							src.SwordElementSecond=GetKeychainElement(usr.SyncAttached)
 							src.SwordIconSecond=GetKeychainIconReversed(usr.SyncAttached)
 							passives = list("ManaLeak" = 2, "SwordAscensionSecond" = 2, "TechniqueMastery" = 5, "Pursuer" = 1, "QuickCast" = 4, "Flicker" = 1, "DoubleStrike" = 3, "DualCast" = 1, "MovementMastery" = 8, "MovingCharge" = 1, "MasterfulCasting" = 2)
-							if(usr.SyncAttached=="Way To Dawn")
-								passives["HolyMod"] = 3
-								passives["AbyssMod"] = 3
-								src.HolyMod=3
-								src.AbyssMod=3
-							else
-								src.HolyMod=0
-								src.AbyssMod=0
-							if(usr.SyncAttached=="Fenrir")
-								passives["SlayerMod"] = 1.5
-								passives["FavoredPrey"] = "Races"
-								src.Steady=8
-							else
-								src.Steady=0
-							if(usr.SyncAttached=="Chaos Ripper")
-								passives["Burning"] = 1
-								passives["Scorching"] = 1
-								passives["DarknessFlame"] = 1
-								src.Burning=1
-								src.Scorching=1
-								src.DarknessFlame=1
-							else
-								src.Burning=0
-								src.Scorching=0
-								src.DarknessFlame=0
-							if(usr.SyncAttached=="No Name")
-								passives["StealsStats"] = 1
-								src.StealsStats=0
-							else
-								src.StealsStats=0
+							passives += GetKeybladePassives(usr.SyncAttached)
 							usr.LimitCounter+=2
 				src.Trigger(usr)
 
@@ -3831,36 +3762,7 @@ NEW VARIABLES
 							src.SwordElementSecond=GetKeychainElement(usr.SyncAttached)
 							src.SwordIconSecond=GetKeychainIconReversed(usr.SyncAttached)
 							passives = list("ManaLeak" = 0.5, "SwordAscensionSecond" = 2, "TechniqueMastery" = 10, "Pursuer" = 1, "QuickCast" = 2, "Flicker" = 1, "DualCast" = 1, "DoubleStrike" = 3, "MovingCharge" = 1, "TripleStrike" = 1, "CalmAnger" = 1, "GodKi" = 0.5, "MasterfulCasting" = 5)
-							if(usr.SyncAttached=="Way To Dawn")
-								passives["HolyMod"] = 3
-								passives["AbyssMod"] = 3
-								src.HolyMod=3
-								src.AbyssMod=3
-							else
-								src.HolyMod=0
-								src.AbyssMod=0
-							if(usr.SyncAttached=="Fenrir")
-								passives["SlayerMod"] = 1.5
-								passives["FavoredPrey"] = "Races"
-								src.Steady=8
-							else
-								src.Steady=0
-							if(usr.SyncAttached=="Chaos Ripper")
-								passives["Burning"] = 1
-								passives["Scorching"] = 1
-								passives["DarknessFlame"] = 1
-								src.Burning=1
-								src.Scorching=1
-								src.DarknessFlame=1
-							else
-								src.Burning=0
-								src.Scorching=0
-								src.DarknessFlame=0
-							if(usr.SyncAttached=="No Name")
-								passives["StealsStats"] = 1
-								src.StealsStats=0
-							else
-								src.StealsStats=0
+							passives+=GetKeybladePassives(usr.SyncAttached)
 							usr.LimitCounter+=3
 				src.Trigger(usr)
 		Denjin_Renki
