@@ -2638,7 +2638,7 @@ NEW VARIABLES
 				EndMult=1.25
 				OffMult=1.25
 				DefMult=1.25
-				passives = list("GodKi" = 1)
+				passives = list("GodKi" = 0.25)
 				GodKi=1
 				ActiveMessage="ascends into martial and spiritual perfection!"
 				OffMessage="releases their unearthly focus..."
@@ -2652,7 +2652,7 @@ NEW VARIABLES
 					set category="Skills"
 					set name="Sacred Energy Armor: Offense"
 					if(!usr.BuffOn(src))
-						passives = list("GodKi" = 1, "Instinct" = 2, "NoWhiff" = 1, "Flicker" = 2, "Pursuer" = 2, "Steady" = 9)
+						passives = list("GodKi" = 0.5, "Instinct" = 2, "NoWhiff" = 1, "Flicker" = 2, "Pursuer" = 2, "Steady" = 9)
 						src.Instinct=2
 						src.NoWhiff=1
 						src.Flicker=2
@@ -2701,7 +2701,7 @@ NEW VARIABLES
 				SignatureTechnique=5
 				ForMult=5
 				NoSword=0
-				passives = list("MaouKi" = 1, "GodKi" = 2, "MovingCharge" = 1, "QuickCast" = 6, "DualCast" = 3, "SpiritStrike" = 1, "ThunderHerald", "IceHerald", "AbyssMod" = 5, \
+				passives = list("MaouKi" = 1, "GodKi" = 0.5, "MovingCharge" = 1, "QuickCast" = 6, "DualCast" = 3, "SpiritStrike" = 1, "ThunderHerald", "IceHerald", "AbyssMod" = 5, \
 									"AmuletBeaming" = 1, "MartialMagic" = 1, "Atomizer" = 1, "SuperCharge" = 2, "BetterAim" = 5, "DemonicInfusion" = 1, "CriticalChance" = 35, "CriticalDamage" = 0.15)
 				ElementalDefense = "Void"
 				ElementalOffense = "Void"
@@ -4132,7 +4132,7 @@ NEW VARIABLES
 				src.Trigger(usr)
 		Godly_Aura
 			Mastery=-1
-			passives = list("GodKi" = 0.5)
+			passives = list("GodKi" = 0.25)
 			FlashChange=1
 			ActiveMessage="enshrouds themselves in a godly aura, obtaining divine power."
 			OffMessage="dispels their godly aura."
@@ -4253,7 +4253,7 @@ NEW VARIABLES
 			DefMult=1.5
 			OffMult=1.5
 			SpecialSlot=1
-			passives = list("GodKi" = 1, "Grippy" = 10, "IronGrip" = 10, "Scoop" = 5, "BuffMastery" = 5, "SpiritStrike" = 1, "SpiritFlow" = 6, \
+			passives = list("GodKi" = 0.5, "Grippy" = 10, "IronGrip" = 10, "Scoop" = 5, "BuffMastery" = 5, "SpiritStrike" = 1, "SpiritFlow" = 6, \
 								"SpiritSword" = 2, "SpiritHand" = 8, "AmuletBeaming" = 1, "MovingCharge" = 1, "ManaStats" = 4, "QuickCast" = 8, "ManaGeneration" = 50, "Siphon" = 7)
 			DarkChange=1
 			ActiveMessage="calls upon the power of the forgotten Lord of the Seventh Circle."
@@ -4267,7 +4267,7 @@ NEW VARIABLES
 			Mastery=-1
 			UnrestrictedBuff=1
 			SpecialSlot=1
-			passives = list("GodKi" = 1, "Miracle" = 1, "Sunyata" = 5, "Flow" = 10, "Instinct" = 10, "LifeSteal" = 30, "Deflection" = 5, "Reversal" = 2.5, "CounterMaster" = 5, \
+			passives = list("GodKi" = 0.5, "Miracle" = 1, "Sunyata" = 5, "Flow" = 10, "Instinct" = 10, "LifeSteal" = 30, "Deflection" = 5, "Reversal" = 2.5, "CounterMaster" = 5, \
 								"BlockChance" = 25, "CriticalBlock" = 0.25, "Unstoppable" = 1)
 			FlashChange=1
 			ActiveMessage="radiates with a miraculous power that can overcome any predicament!"
@@ -4286,7 +4286,7 @@ NEW VARIABLES
 			SpdMult=1.2
 			DefMult=1.2
 			SpecialSlot=1
-			passives = list("GodKi" = 1, "DeathField" = 10, "VoidField" = 5, "Brutalize" = 5, "Deflection" = 5, "SlayerMod" = 1, "FavoredPrey" = "All", \
+			passives = list("GodKi" = 0.25, "DeathField" = 10, "VoidField" = 5, "Brutalize" = 5, "Deflection" = 5, "SlayerMod" = 1, "FavoredPrey" = "All", \
 								"Power of Destruction" = 1, "Field of Destruction" = 1, "CursedWounds"=1, "HardStyle"=1)
 			DarkChange=1
 			ActiveMessage="taps into the power of a Destroyer."
@@ -4312,7 +4312,7 @@ NEW VARIABLES
 			adjust(mob/p)
 				if(Mastery==2)
 					BuffName = "Heart of Darkness (True)"
-					passives = list("GodKi"=1, "Heart of Darkness" = 1, "Speed Force" = 1, "MovingCharge" = 1, \
+					passives = list("GodKi"=0.5, "Heart of Darkness" = 1, "Speed Force" = 1, "MovingCharge" = 1, \
 									"Secret Knives" = "GodSlayer", "Tossing" = 5, "Pressure" = 5, "Unnerve" = 5, "Relentlessness" = 1)
 			verb/Heart_of_Darkness()
 				set category="Skills"
@@ -4485,7 +4485,7 @@ NEW VARIABLES
 			DefMult=2.5
 			OffMult=1.5
 			SpecialSlot=1
-			passives = list("GodKi" = 3, "BlockChance" = 50, "CriticalBlock" = 0.5, "Sunyata" = 3, "Deflection" = 10, "Reversal" = 1, "GiantForm" = 1, \
+			passives = list("GodKi" = 0.25, "BlockChance" = 50, "CriticalBlock" = 0.5, "Sunyata" = 3, "Deflection" = 10, "Reversal" = 1, "GiantForm" = 1, \
 								"Blubber" = 5, "KBRes" = 5, "Hardening" = 5, "CounterMaster" = 10, "Juggernaut" = 5, "LikeWater" = 10, "LifeGeneration" = 5, "Death X-Antibody" = 1)
 			FlashChange=1
 			ActiveMessage="taps into the power of the X-Antibody within them, achieving an evolution superior to any other."
@@ -4514,7 +4514,7 @@ NEW VARIABLES
 			SpdMult=2
 			DefMult=0.25
 			OffMult=2
-			passives = list("GodKi" = 4, "CriticalChance" = 50, "CriticalDamage" = 0.5, "AsuraStrike" = 2, "DoubleStrike" = 3, "TripleStrike" = 2, "Warping" = 4, \
+			passives = list("GodKi" = 1.5, "CriticalChance" = 50, "CriticalDamage" = 0.5, "AsuraStrike" = 2, "DoubleStrike" = 3, "TripleStrike" = 2, "Warping" = 4, \
 								"HotHundred" = 1, "SoulSteal" = 3, "KillerInstinct" = 0.5, "SpiritSword" = 2, "SpiritHand" = 8, "Instinct" = 10, "Extend" = 2, "Gum Gum" = 2, "SweepingStrike" = 1, "PridefulRage" = 1, "Death-X-Evolution" = 1)
 			DarkChange=1
 			ActiveMessage="overcomes the very concept of mortality itself."
@@ -9147,7 +9147,7 @@ NEW VARIABLES
 				src.Trigger(usr)
 		Rinnegan2
 			SBuffNeeded="Sharingan"
-			passives = list("GodKi" = 0.5, "Siphon" = 10, "MonkeyKing" = 4)
+			passives = list("GodKi" = 0.25, "Siphon" = 10, "MonkeyKing" = 4)
 			GodKi=0.5
 			Cooldown=-1
 			IconLock='RinneganEyes.dmi'
@@ -9156,7 +9156,7 @@ NEW VARIABLES
 			verb/Rinnegan()
 				set category="Skills"
 				if(!usr.BuffOn(src))
-					passives = list("Siphon" = 10, "GodKi" = 0.5, "MonkeyKing" = 4) //Limbo Clones
+					passives = list("Siphon" = 10, "GodKi" = 0.25, "MonkeyKing" = 4) //Limbo Clones
 				src.Trigger(usr)
 		// Rinnegan
 		// 	SBuffNeeded="Sharingan"
