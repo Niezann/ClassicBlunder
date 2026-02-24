@@ -54,7 +54,7 @@ transformation
 					strengthadd = 0.3
 					forceadd = 0.3
 				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/pride)
-					class_passives = list("PureDamage" = 1, "Flicker" = 2, "Pursuer" = 1)
+					class_passives = list("PureDamage" = 1.5, "Flicker" = 2, "Pursuer" = 1)
 					speedadd = 0.3
 					enduranceadd = 0.3
 					offenseadd = 0.45
@@ -62,13 +62,29 @@ transformation
 					strengthadd = 0.4
 					forceadd = 0.4
 				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/honor)
-					class_passives = list("PureReduction" = 1, "Flow" = 2, "EnergyGeneration" = 3)
+					class_passives = list("PureReduction" = 1.5, "Flow" = 2, "EnergyGeneration" = 3)
 					speedadd = 0.3
 					enduranceadd = 0.5
 					offenseadd = 0.3
 					defenseadd = 0.5
 					strengthadd = 0.3
 					forceadd = 0.3
+				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/half_saiyan/adaptive)
+					class_passives = list("PureReduction" = 1, "KiControlMastery" = 1, "Instinct" = 1, "Flow" = 1)
+					speedadd = 0.4
+					enduranceadd = 0.35
+					offenseadd = 0.4
+					defenseadd = 0.4
+					strengthadd = 0.3
+					forceadd = 0.3
+				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/half_saiyan/dominating)
+					class_passives = list("PureDamage" = 1, "Flicker" = 2, "Pursuer" = 1)
+					speedadd = 0.3
+					enduranceadd = 0.3
+					offenseadd = 0.3
+					defenseadd = 0.3
+					strengthadd = 0.45
+					forceadd = 0.45
 
 			transform_animation(mob/user)
 				if(first_time && mastery<25)
@@ -129,6 +145,12 @@ transformation
 			defenseadd = 0.2
 			strengthadd = 0.2
 			forceadd = 0.2
+			mastery_boons(mob/user)
+				if(mastery >= 100 && user.Class == "Justice"))
+					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/half_saiyan/adaptive)
+						if(mastery >= 100)
+							user.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/SuperSaiyan2Enhanced)
+							user << "You have pushed your Super Saiyian Two form to its absolute limits!"
 			adjust_transformation_visuals(mob/user)
 				if(user.Hair_Base && !form_hair_icon)
 					var/icon/x=new(user.Hair_Base)
