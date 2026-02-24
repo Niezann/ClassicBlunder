@@ -4184,6 +4184,20 @@ NEW VARIABLES
 			verb/Time_Power_Unleashed()
 				set category="Skills"
 				src.Trigger(usr)
+		SuperSaiyan2Enhanced
+			BuffName = "Super Saiyan2 Enhanced"
+			NeedsSSJ=2
+			SignatureTechnique=3
+			SagaSignature=1
+			Mastery=-1
+			UnrestrictedBuff=1
+			passives = list("MagnifiedStr" = 0.35, "MagnifiedEnd" = 0.35,"MagnifiedFor" = 0.35, "MovementMastery" = 4, "SaiyanPower2"=0.5,\
+				"Flicker" = 2, "Pursuer" = 2, "PureDamage" = 1, "PureReduction" = 1)
+			ActiveMessage="magnifies their Super Saiyan 2 power!"
+			OffMessage="releases their magnified power..."
+			verb/Super_Saiyan_2_Enhanced()
+				set category="Skills"
+				src.Trigger(usr)
 		SaiyanBeyondGod
 			BuffName = "Beyond God"
 			SignatureTechnique=3
