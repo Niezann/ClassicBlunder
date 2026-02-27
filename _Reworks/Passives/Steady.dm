@@ -7,7 +7,8 @@ globalTracker/var
     setLines()
         lines = list("Adds a flat value to your damage roll. Each tick is worth <u>([glob.outputVariableInfo("STEADY_EPT")])</u> damage value currently.",\
         "Countered directly by Unnerve, which reduces one tick of Steady per tick of Unnerve.",\
-        "Zornhau also contributes to Steady passive, counting as 2 ticks if your target has armor equipped.");
+        "Zornhau also contributes to Steady passive, counting as 2 ticks if your target has armor equipped.",\
+        "Shin (a Secret), has a state called Mang. Mang Level is also added directly to your overall Steady value.");
     setBalanceNote()
         balanceNote="Steady does not allow a character to break the upper and lower limits of damage rolls. Currently they are [glob.outputVariableInfo("min_damage_roll")] to [glob.outputVariableInfo("max_damage_roll")].";
 /passiveInfo/Unnerve
@@ -31,8 +32,8 @@ globalTracker/var
     getSteady()
         . = 0;
         . += passive_handler.Get("Steady");
-        . += getZornhau()
-        . += getMangSteady()
+        . += getZornhau();
+        . += getMangSteady();
         . -= getUnnerve();
     getZornhau()
         if(!equippedSword) return 0;
@@ -45,6 +46,7 @@ globalTracker/var
         . = Target ? Target.passive_handler.Get("Unnerve") : 0;
         if(.) . += (HasMythical() * glob.MYTHICAL_UNNERVE_INNATE)
     getMangSteady()
-        if(Secret != "Shin" || !CheckSlotless("Mang Resonance")) return 0
-        var/SecretInformation/Shin/ShinSecret = secretDatum
-        . = ShinSecret.Mang
+        if(hasSecret("Shin")) return 0;
+        if(!CheckSlotless("Mang Resonance")) return 0;
+        . = GetMangLevel();
+    //mayb add shin radiance to unnerve

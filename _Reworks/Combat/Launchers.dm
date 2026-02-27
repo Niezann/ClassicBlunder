@@ -20,7 +20,7 @@
 	else
 		target.Frozen=1
 		target.startOfLaunch = world.time
-		target.Launched = 10 * time // 1 second per time
+		target.Launched = 10 * time * target.getControlResistValue()// 1 second per time
 	target.Grounded = 0
 	target.ForceCancelBeam()
 	target.ForceCancelBuster()
