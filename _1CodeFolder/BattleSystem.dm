@@ -2031,7 +2031,7 @@ mob/proc/Grab_Mob(var/mob/P, var/Forced=0)
 		return
 	if(P.Frozen==2)
 		return
-	if(isai(P))
+	if(isAI(P))
 		var/mob/Player/AI/aa = P
 		if(!istype(src, /mob/Player/AI))
 			if(aa.ai_hostility >= 1)
@@ -2080,7 +2080,7 @@ mob/proc/Grab_Update()
 	if(src.Grab)
 		Grab.grabbed = src
 		src.Grab.loc=src.loc
-		if(isai(Grab)&&!Grab.KO)
+		if(isAI(Grab)&&!Grab.KO)
 			var/grabbing = Grab
 			spawn(60)
 				if(grabbing==Grab)
@@ -2111,7 +2111,7 @@ mob/proc/Grab_Effects(var/mob/P)
 				if(P.KO)
 					P.Conscious()
 
-	if(src.Secret=="Eldritch" && P.KO && !P.HasMagicTaken() && !isai(P) && src.Lethal)
+	if(src.Secret=="Eldritch" && P.KO && !P.HasMagicTaken() && !isAI(P) && src.Lethal)
 		var/confirm = src.prompt("You can feel the threads of [P]'s magic circuits. Are they your's, now?", "Take Magic", list("Yes", "No"));
 		if(confirm=="Yes")
 			src.EldritchMagicSteal(P);

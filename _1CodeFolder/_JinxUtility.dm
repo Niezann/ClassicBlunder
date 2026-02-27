@@ -456,7 +456,7 @@ mob
 			if(defender.HasLifeGeneration())
 				defender.HealHealth(defender.GetLifeGeneration()/glob.LIFE_GEN_DIVISOR * val)
 				if(defender.Health>=100-100*defender.HealthCut-defender.TotalInjury)
-					defender.HealWounds((glob.LIFE_GEN_MULT*defender.GetLifeGeneration()/glob.LIFE_GEN_DIVISOR * val))
+					defender.HealWounds((defender.GetLifeGeneration() / glob.LIFE_GEN_DIVISOR * glob.WOUND_RECOVERY_REDUCTION * val))
 			if(HasEnergyGeneration())
 				var/gen = GetEnergyGeneration()/glob.ENERGY_GEN_DIVISOR;
 				HealEnergy(gen);
@@ -548,7 +548,7 @@ mob
 						src.LifeStolen=95
 					DEBUGMSG("[amtHeal] was healed by life steal");
 					if(src.Health>=(100-100*src.HealthCut-src.TotalInjury))
-						src.HealWounds(0.2*val*(src.GetLifeSteal() + innateLifeSteal)*Effectiveness/100)
+						src.HealWounds(val*(src.GetLifeSteal() + innateLifeSteal)*Effectiveness / 100 * glob.WOUND_RECOVERY_REDUCTION)
 			if(src.HasLifeStealTrue())
 				defender.AddHealthCut(val/200)
 				if(defender.HealthCut>=0.15)
@@ -1793,7 +1793,7 @@ mob
 
 			if(src.SpdStolen)
 				Mod+=src.SpdStolen*0.5
-			if(src.Fury)
+			if(FuryAccumulated)
 				Mod *= src.getFuryMult();
 			var/BM=src.HasBuffMastery()
 			if(passive_handler["Rebel Heart"])

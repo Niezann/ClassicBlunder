@@ -388,10 +388,9 @@ globalTracker
 		ATTACK_DELAY_MIN = 2
 		CYBERIZESAGAS = list("King of Braves")
 		ENERGY_GEN_DIVISOR = 10
-		ENERGY_GEN_MULT = 0.2//TODO between wipes: ignore this
 		LIFE_GEN_DIVISOR = 10
-		LIFE_GEN_MULT = 0.2//TODO between wipes: ignore this
 		MANA_GEN_DIVISOR = 10
+		WOUND_RECOVERY_REDUCTION = 0.5
 
 		OXYGEN_DRAIN = 3
 		OXYGEN_DRAIN_DIVISOR = 2

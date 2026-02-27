@@ -834,15 +834,15 @@ mob
 					client.hud_ids["Momentum"]?:Update()
 				if(Momentum <0)
 					Momentum=0
-			if(Fury)
+			if(FuryAccumulated)
 				if(passive_handler["Relentlessness"])
-					Fury = round(Fury - (glob.BASE_STACK_REDUCTION + Fury/50))
+					FuryAccumulated = round(FuryAccumulated - (glob.BASE_STACK_REDUCTION + FuryAccumulated/50))
 				else
-					Fury -= glob.BASE_STACK_REDUCTION
+					FuryAccumulated -= glob.BASE_STACK_REDUCTION
 				if(client&&hudIsLive("Fury", /obj/bar))
 					client.hud_ids["Fury"]?:Update()
-				if(Fury<0)
-					Fury=0
+				if(FuryAccumulated<0)
+					FuryAccumulated=0
 
 			if(src.SureHitTimerLimit)
 				if(!src.SureHit)

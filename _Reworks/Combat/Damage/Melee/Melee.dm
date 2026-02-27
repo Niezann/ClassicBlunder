@@ -1046,12 +1046,6 @@
 
 /mob/var/Momentum = 0
 
-//TODO BETWEEN WIPES: Rename this to FuryAccumulated, or something
-//It's got the same name as the passive
-//It's confusing
-//Also, move it to Combat/Passives/Fury.dm
-/mob/var/Fury = 0
-
 /mob/proc/handlePostDamage(mob/enemy, damage)
 	if(passive_handler["LeakCash"])
 		for(var/obj/Money/money in src.contents)

@@ -20,8 +20,15 @@ race
 They have increased tenacity when pushed to their breaking point (below 10% health).\
 They gain steady and doublestrike passives.\
 Inspiration taken from Sett (League of Legends)}",\
-\
-"WUKONG", "RENGAR", "TRYNDAMERE", "RAKAN", "XAYAH", "UDYR", "NIDALEE", "???", "AHRI")
+"WUKONG",\
+"RENGAR",\
+"TRYNDAMERE",\
+"RAKAN",\
+"XAYAH",\
+"UDYR",\
+"NIDALEE",\
+"???",\
+"AHRI")
 		// attaching this here cause lol
 		stats_per_class = list("Heart of The Beastkin" = list(1.25, 2, 0.75, 1, 1, 1.5), "Monkey King" = list(1.25,1.25,1.25,1.25,1.25,1.25),\
 						"Unseen Predator" = list(1.75, 0.75, 1, 1.75, 0.75, 1.5), "Undying Rage" = list(1.75, 0.75, 1.75, 1, 0.75, 1.5), \
