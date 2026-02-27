@@ -52,7 +52,7 @@
 	defAdd = -0.5
 	adjust(mob/p)
 		var/asc = p.AscensionsAcquired
-		passives = list("Hardening" = 2 + asc/2,  "HardenedFrame" = 1, "DeathField" = 2+asc*2)
+		passives = list("Harden" = 2 + asc/2,  "HardenedFrame" = 1, "DeathField" = 2+asc*2)
 		Cooldown = 90 - (10 *p.AscensionsAcquired)
 		TimerLimit = 30 + (6 *p.AscensionsAcquired)
 	verb/Turtle_Form()

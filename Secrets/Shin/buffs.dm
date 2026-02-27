@@ -3,7 +3,7 @@
 #define MANG_MANA_COST 10 // Determines the cost of activating a Mang Ring/Level
 
 /obj/Skills/Buffs/SlotlessBuffs/Shin_Radiance
-    passives = list("GiantForm" = 1, "Hardening" = 1, "PureReduction" = 1, "Godspeed" = 1, "Deflection" = 1, "ManaGeneration" = 1) // SOME OF THESE GET CHANGED IN THE ADJUST
+    passives = list("GiantForm" = 1, "Harden" = 1, "PureReduction" = 1, "Godspeed" = 1, "Deflection" = 1, "ManaGeneration" = 1) // SOME OF THESE GET CHANGED IN THE ADJUST
     ActiveMessage="radiates a soft, warding glow of Light."
     OffMessage="suppresses the glow of the Light, letting their emotions flow on."
     TextColor=rgb(203, 198, 47)
@@ -19,7 +19,7 @@
         EndMult = 1.2 + (0.05 * secretLevel) 
         DefMult = 1.2 + (0.05 * secretLevel)
         // Tier Adjusted Passives
-        passives["Hardening"] = clamp(secretLevel*2, 1, 5) // starts at 1, adds 2 per tier, caps at 5 (tier 3)
+        passives["Harden"] = clamp(secretLevel*2, 1, 5) // starts at 1, adds 2 per tier, caps at 5 (tier 3)
         passives["PureReduction"] = clamp(secretLevel >= 3 ? (secretLevel+mod) : 0, 0, 5); //Scales from tier 3 (1) to tier 5 (5)
         passives["Godspeed"] = secretLevel
         passives["Deflection"] = (0.5 * secretLevel) //Goes from 1 to 3

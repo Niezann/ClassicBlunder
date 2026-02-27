@@ -8,7 +8,7 @@
 		StyleDef=1.5
 		Finisher="/obj/Skills/Queue/Finisher/Jinzen_Senkei"
 		passives = list("Iaido" = 8, "Kensei" = 1, "The Way" = 1, "Sword Master" = 1, "LikeWater" = 6, "SweepingStrike" = 1, "DoubleStrike" = 3, "BlurringStrikes" = 1.5, \
-			"Zornhau" = 3, "Half-Sword" = 2, "Rage" = 1, "TripleStrike" = 1, "Iaijutsu" = 5, "Musoken" = 1, "Fury" = 3, "Momentum" = 3, "Hardening" = 3, \
+			"Zornhau" = 3, "Half-Sword" = 2, "Rage" = 1, "TripleStrike" = 1, "Iaijutsu" = 5, "Musoken" = 1, "Fury" = 3, "Momentum" = 3, "Harden" = 3, \
 			"Parry" = 3, "Disarm" = 2, "Deflection" = 2, "Pressure" = 4)
 		StyleActive="Way of the Kensei"
 		verb/Way_of_the_Kensei()

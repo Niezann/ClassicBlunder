@@ -563,7 +563,7 @@ obj/Items/Enchantment
 				if(src.Hard)
 					FoundHard=1
 
-					PP.passives["Hardening"] = clamp((src.Hard / 10) * usr.AlchemyUnlocked, 0.1, 5)
+					PP.passives["Harden"] = clamp((src.Hard / 10) * usr.AlchemyUnlocked, 0.1, 5)
 					CD+=(src.Hard*MEDIUM_EFFECT_CD)
 				if(src.Hallucinogen)
 					FoundHallucinogen=1

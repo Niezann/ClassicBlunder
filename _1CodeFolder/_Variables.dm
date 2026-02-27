@@ -472,7 +472,6 @@ mob/var
 	StanceActive
 	Style
 	StyleActive
-	Hardening=0
 	Confused//The amount of time you have reversed movement for.
 	AngerMult//allows anger multipliers to stack. oh my god
 	AngerThreshold//if you're not angry enough, this will make you angry enough

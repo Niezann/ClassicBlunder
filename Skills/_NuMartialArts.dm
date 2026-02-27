@@ -509,7 +509,7 @@ obj
 							StyleActive="Rock Breaker"
 							ElementalOffense="Earth"
 							ElementalDefense="Earth"
-							passives = list("Hardening" = 1, "Crushing" = 1, "ArmorPeeling" = 1, "CallousedHands" = 0.15)
+							passives = list("Harden" = 1, "Crushing" = 1, "ArmorPeeling" = 1, "CallousedHands" = 0.15)
 							Crushing=1
 							Finisher="/obj/Skills/Queue/Finisher/Rock_Breaker"
 							adjust(mob/p)

@@ -59,7 +59,7 @@ Inspiration taken from Sett (League of Legends)}",\
 					var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Never_Fall/nf = new(p)
 					p.AddSkill(nf)
 
-					p.passive_handler.Increase("Hardening", 1)
+					p.passive_handler.Increase("Harden", 1)
 					p.passive_handler.Increase("Instinct", 1)
 					
 				if("Unseen Predator")
@@ -72,7 +72,7 @@ Inspiration taken from Sett (League of Legends)}",\
 
 				if("Feather Cowl")
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Feather_Cowl)
-					p.passive_handler.Increase("Hardening", 1)
+					p.passive_handler.Increase("Harden", 1)
 					p.passive_handler.Increase("Pressure", 1)
 					p.passive_handler.Increase("BladeFisting", 1)
 

@@ -16,7 +16,7 @@
 		StyleStr=1.15
 		StyleEnd=1.15
 		StyleDef=1.15
-		passives = list("Hardening" = 1.5, "Deflection" = 0.5, "Momentum" = 1.5, "Pressure" = 1)
+		passives = list("Harden" = 1.5, "Deflection" = 0.5, "Momentum" = 1.5, "Pressure" = 1)
 		StyleActive="Heavenly Dragon Stance"
 		Finisher="/obj/Skills/Queue/Finisher/Heavenly_Dragons_Omniscient_Surge"
 		verb/Wushu_Style()
@@ -32,7 +32,7 @@
 		StyleComboUnlock=list("/obj/Skills/Buffs/NuStyle/UnarmedStyle/Wushu_Style"="/obj/Skills/Buffs/NuStyle/UnarmedStyle/Mantis_And_Crane_Style", \
 		"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Circuit_Breaker"= "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Psycho_Boxing", \
 		"/obj/Skills/Buffs/NuStyle/MysticStyle/Magma_Walker"= "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Ifrit_Jambe")
-		passives = list("Hardening" = 1, "SpiritHand" = 1, "Instinct" = 1, "Flow" = 1)
+		passives = list("Harden" = 1, "SpiritHand" = 1, "Instinct" = 1, "Flow" = 1)
 		Finisher="/obj/Skills/Queue/Finisher/Mouton_Shot"
 		verb/Black_Leg_Style()
 			set hidden=1

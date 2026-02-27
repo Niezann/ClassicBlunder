@@ -5,7 +5,7 @@ Ferocious-
     Heart of The Beastkin - Gain a guage, the more damage that is dealt or taken, the bar goes up, it will burn down.
         When on low life, you gain passive regeneration based on the guage's level, gain The Grit, upon use consume the guage and convert it to a vai health shield (only usable below 50)
 
-    Monkey King - Passively gain hardening, instinct. Gain Nimbus passive, a passive that will dash you to your enemy on normal attack every 10 - tick seconds. (within a range)
+    Monkey King - Passively gain harden, instinct. Gain Nimbus passive, a passive that will dash you to your enemy on normal attack every 10 - tick seconds. (within a range)
         Gain Never Fall, a buff that will store damage taken into a passive, upon reaching its limit, it will automatically release a large cirular aoe.
 
     Unseen Predator - Change heavy strike into a stacking debuff that reduces the enemy's pure reduction (mayb just end) and applies crippling every time it lands, can only b applied every x seconds
@@ -13,12 +13,12 @@ Ferocious-
 
     Undying Rage - gains an ability that triggers when you reach 0.1% health that prevents your health from falling below 0.1%, time based on asc level
         (potential idea: if you manage to ko an enemy during this buff, instantly heal 2.5-5% per asc health. this would make this a good path for antags(?) or chain verbers, or 2v2s)
-        Gain "Fury" passive that is momentum/hardening but for spd
+        Gain "Fury" passive that is momentum/harden but for spd
 Nimble-
     Feather Maker-
         Pick between Feather Cloak or Feather Knife
             Cloak - After meditating for x seconds, gain a shield of vai health -- scratch this, won't work I think
-            Gain an buff that gives you a vai health shield based on your ascension for a few seconds, while the buff is up gain hardening, deflection and reversal
+            Gain an buff that gives you a vai health shield based on your ascension for a few seconds, while the buff is up gain harden, deflection and reversal
 
             Knife - Gain innate secret knife style ability and sword punching, where randomly you will summon blades that strike into your enemy, this scales with ascension
                 gain an ability that empowers this ability, as well as giving you momentum
@@ -46,7 +46,7 @@ Niche/Spirtual-
                 -0.5 Def
                 +0.25 For
             
-            Turtle - gain hardening, hardenedframe, deathfield
+            Turtle - gain harden, hardenedframe, deathfield
                 +0.5 end
                 -0.5 def
 

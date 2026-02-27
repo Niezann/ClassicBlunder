@@ -1,4 +1,4 @@
-/globalTracker/var/BASE_HARDENING_CHANCE = 50
+
 /globalTracker/var/BASE_MOMENTUM_CHANCE = 50
 /globalTracker/var/MAX_HARDEN_STACKS = 32
 /globalTracker/var/MAX_GRIT_STACKS = 100
@@ -12,7 +12,7 @@
 /globalTracker/var/MOMENTUM_MAX_BOON = 4
 
 /mob/proc/applySoftCC(mob/defender, val)
-    if(defender.HasHardening())
+    if(defender.getHarden())
         var/acu = passive_handler["Acupuncture"]
         defender.HardenAccumulate(acu);
     if(passive_handler["SoulTug"] && (defender.CyberCancel||defender.Mechanized))

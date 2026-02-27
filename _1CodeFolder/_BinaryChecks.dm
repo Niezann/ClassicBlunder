@@ -2107,12 +2107,6 @@ mob
 			return 0
 		GetFreezing()
 			return passive_handler.Get("Freezing")
-		HasHardening()
-			if(passive_handler.Get("Hardening"))
-				return 1
-			return 0
-		GetHardening()
-			return min(passive_handler.Get("Hardening"), glob.HARDEN_MAX_BOON);
 		HasCrushing()
 			if(passive_handler.Get("Crushing"))
 				return 1

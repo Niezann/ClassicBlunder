@@ -450,7 +450,7 @@ proc/
 				return KeybladePassives
 //heavy
 			if("Earthshaker")
-				KeybladePassives=list("PULock" = 1, "Hardening" = 3, "CallousedHands" = Boost/10)
+				KeybladePassives=list("PULock" = 1, "Harden" = 3, "CallousedHands" = Boost/10)
 				return KeybladePassives
 			if("Chaos Ripper")
 				KeybladePassives=list("PULock" = 1, "Extend" = 2, "Half-Sword" = 5, "Zornhau" = 5, "HardStyle" = 1)
