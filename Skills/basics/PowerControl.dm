@@ -6,7 +6,7 @@ mob/proc/PowerUp() // Handles Normal (read: Not Kaioken/Shin) power up related c
         if(CheckSlotless("Great Ape"))
             CanTransform()
             return
-        if(passive_handler.Get("Piloting"))return 
+        if(passive_handler.Get("Piloting"))return
         if(src.passive_handler.Get("Kaioken"))
             KaiokenPowerUp() // This proc is at line 101
             return
@@ -14,7 +14,7 @@ mob/proc/PowerUp() // Handles Normal (read: Not Kaioken/Shin) power up related c
             MangPowerUp() // This proc is at line 189
         if(src.CheckActive("Ki Control")||(src.CheckSpecial("One Hundred Percent Power")&&src.transUnlocked<4)||(src.CheckSpecial("Fifth Form")&&src.transUnlocked<4))
             if(src.transActive()<src.transUnlocked)
-                if(src.isRace(HUMAN)||src.isRace(CELESTIAL))
+                if(src.isRace(HUMAN))
                     return
                 src.Transform()
             return
@@ -22,7 +22,7 @@ mob/proc/PowerUp() // Handles Normal (read: Not Kaioken/Shin) power up related c
             return
         if(src.PoweringUp==1)
             if(src.transActive()<src.transUnlocked)
-                if(src.isRace(HUMAN)||src.isRace(CELESTIAL))
+                if(src.isRace(HUMAN))
                     return
                 src.PoweringUp=0
                 src.Transform()
@@ -46,7 +46,7 @@ mob/proc/PowerUp() // Handles Normal (read: Not Kaioken/Shin) power up related c
                 src.PoweringUp=0
 
 // Handles Normal Power Down related code
-mob/proc/PowerDown() 
+mob/proc/PowerDown()
     if("PowerDown")
         if(src.KO)
             return
@@ -62,7 +62,7 @@ mob/proc/PowerDown()
             MangPowerDown() // This proc is at line 202
             if(GetMangLevel()==0)
                 MangToShin()
-            return 
+            return
         if(src.HasPULock()||src.HasGatesPULock())
             return
         if(src.PoweringUp)
@@ -102,9 +102,9 @@ mob/proc/PowerDown()
                     src << "You restrain your power..."
                     src.Auraz("Remove")
                     return
-                    
+
 // Handles Kaioken Power Up related code
-mob/proc/KaiokenPowerUp() 
+mob/proc/KaiokenPowerUp()
     if(src.passive_handler.Get("Kaioken"))
         var/Mastery
         for(var/obj/Skills/Buffs/SpecialBuffs/Kaioken/KK in src)
@@ -159,7 +159,7 @@ mob/proc/KaiokenPowerUp()
             src << "You don't have enough mastery of Kaioken to push it further."
 
 // Handles Kaioken Power Down related code
-mob/proc/KaiokenPowerDown() 
+mob/proc/KaiokenPowerDown()
     if(src.passive_handler.Get("Kaioken"))
         switch(src.Kaioken)
             if(1)
@@ -188,9 +188,9 @@ mob/proc/KaiokenPowerDown()
         for(var/obj/Skills/Buffs/ActiveBuffs/Ki_Control/KC in src)
             src.UseBuff(KC)
     return*/
-    
 
-// Handles Mang Power Up related code 
+
+// Handles Mang Power Up related code
 mob/proc/MangPowerUp()
     if(MangManaCost())
         if(ShinActive() || MangActive()) // First we check if they are using one of the right buffs

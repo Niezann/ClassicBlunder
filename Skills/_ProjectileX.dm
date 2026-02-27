@@ -108,6 +108,7 @@ obj
 				IconSize=1//Makes icons larger.
 				IconSizeGrowTo=0//Icon size will slowly grow to this value
 				IconVariance//modfies how the icon appears on generation of projectile
+				ProjectileSpin=0//degrees to rotate per tick while moving (e.g. spinning weapon throw)
 				Variation=8//pixelx/y offsets randomly
 				Deviation//unlike variation, this actually affects where the projectile generates
 
@@ -150,6 +151,8 @@ obj
 				Feint//zoom!
 				MortalBlow
 				WarpUser//distinct from feint because this only warps if the projectile connects @___@
+				WarpUserBehind//when set with WarpUser, teleports user behind target instead of random adjacent tile
+				WarpUserFlashChange//when set with WarpUser, applies FlashChange (white silhouette) before and after teleport
 				CounterShot//if you're bopped when charging, this will make the technique fire first
 
 				Buster=0//if its a buster type technique, this determines the charge rate
@@ -5348,6 +5351,7 @@ obj
 					BreathCost
 					DirOverride
 					LingeringTornadoSpawned=0
+					SkillPath//type path of the skill that created this projectile (for Warp Strike weapon hide)
 				Savable=0
 				density=1
 				Grabbable=0
@@ -5361,6 +5365,7 @@ obj
 					if(BeamCharging<0.9999)
 						BeamCharging=0.5
 					src.Owner=m
+					src.SkillPath=Z.type
 					src.DirOverride=DirOverride
 					if(Owner)
 						Owner.active_projectiles |= src
@@ -5478,6 +5483,8 @@ obj
 					src.FollowUp=Z.FollowUp
 					src.FollowUpDelay=Z.FollowUpDelay
 					src.WarpUser=Z.WarpUser
+					src.WarpUserBehind=Z.WarpUserBehind
+					src.WarpUserFlashChange=Z.WarpUserFlashChange
 					src.LingeringTornado=Z.LingeringTornado
 					src.Backfire=0
 					src.FadeOut=Z.FadeOut
@@ -5520,6 +5527,7 @@ obj
 							src.transform*=Z.TempSize
 						else
 							src.transform*=Z.IconSize
+					src.ProjectileSpin=Z.ProjectileSpin
 
 					if(src.Owner.HasRipple())
 						BreathCost=1*src.DamageMult
@@ -5599,6 +5607,10 @@ obj
 						if(Homing)
 							Homing = null
 						if(Owner)
+							if(SkillPath == /obj/Skills/Projectile/Warp_Strike_MasterOfArms)
+								Owner.WarpStrikeHidingWeapon = 0
+								Owner.AppearanceOff()
+								Owner.AppearanceOn()
 							Owner.active_projectiles -= src
 							Owner = null
 						loc = null
@@ -6044,7 +6056,15 @@ obj
 						if(src.SlayerMod)
 							EffectiveDamage*=1+src.Owner.SlayerDamage(a, Forced=src.SlayerMod)/glob.SLAYER_DAMAGE_DIVISOR
 						if(src.WarpUser)
-							src.Owner.Comboz(a)
+							if(src.WarpUserFlashChange && src.Owner)
+								animate(src.Owner, color=list(1,0,0, 0,1,0, 0,0,1, 1,1,1), time=2)
+								sleep(2)
+							if(src.WarpUserBehind)
+								src.Owner.Comboz(a, FALSE, TRUE, TRUE)
+							else
+								src.Owner.Comboz(a)
+							if(src.WarpUserFlashChange && src.Owner)
+								src.Owner.warp_strike_restore_color()
 						if(istype(src.Owner, /mob/Player/AI))
 							if(istype(a, /mob/Player/AI))
 								for(var/x in src.Owner:ai_alliances)
@@ -6355,6 +6375,10 @@ obj
 									if(p==src)
 										continue
 									src.Bump(p)
+							if(src.ProjectileSpin)
+								if(!src.transform)
+									src.transform = matrix()
+								src.transform = src.transform.Turn(src.ProjectileSpin)
 							sleep(src.Speed)
 							if(FadeOut && FadeOut>=Distance)
 								animate(src, alpha=0, time=max(1,FadeOut*Speed), flags=ANIMATION_PARALLEL)

@@ -46,6 +46,7 @@ update
 		p << "You have been updated to version [version]"
 		p.updateVersion = src
 
+<<<<<<< HEAD
 	version1
 
 	version2
@@ -685,6 +686,8 @@ update
 						asc.passives.Remove("EntergySteal");
 						o << "EntergySteal exchanged for EnergySteal on ascension [asc]. <font color='#000'>THIS IS WHY I HATE LOOSELY TYPED ASSOCIATIONS BEING THE FOUNDATION OF A PASSIVE SYSTEM GYAAAH</font color>"
 				o << "<font color='#444'>Nothing to worry about.</font color>"
+=======
+>>>>>>> 731f8718e799c6ebdf5abc23789ea5ea495bafde
 
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )

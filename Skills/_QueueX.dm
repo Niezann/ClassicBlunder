@@ -929,6 +929,36 @@ obj
 									FollowUp = "/obj/Skills/AutoHit/ChaosBlaster"
 								if("GetsugaClad")
 									FollowUp = "/obj/Skills/AutoHit/Getsuga_Followthrough"
+								if("Warp Strike")
+									var/obj/Skills/Projectile/Warp_Strike_MasterOfArms/P = usr.FindSkill(/obj/Skills/Projectile/Warp_Strike_MasterOfArms)
+									if(!P)
+										usr << "You need to be in Master of Arms to use Warp Strike!"
+										return
+									if(P.Using || P.cooldown_remaining)
+										return
+									if(!usr.Target || usr.Target == usr)
+										usr << "You need a target to use Warp Strike!"
+										return
+									var/obj/Items/Sword/sword = usr.EquippedSword()
+									var/obj/Items/Enchantment/Staff/staff = usr.EquippedStaff()
+									if(!sword && !staff)
+										usr << "You need a weapon equipped to use Warp Strike!"
+										return
+									// FlashChange: weapon "disappears" as it's thrown
+									animate(usr, color=list(1,0,0, 0,1,0, 0,0,1, 1,1,1), time=1)
+									spawn(1)
+										if(usr)
+											animate(usr, color=list(1,0,0, 0,1,0, 0,0,1, 0,0,0), time=1)
+									P.IconLock = sword ? sword.icon : staff.icon
+									P.adjust(usr)
+									usr.WarpStrikeHidingWeapon = 1
+									usr.AppearanceOff()
+									usr.AppearanceOn()
+									if(!usr.UseProjectile(P))
+										usr.WarpStrikeHidingWeapon = 0
+										usr.AppearanceOff()
+										usr.AppearanceOn()
+									return
 
 						else
 							// reset all
@@ -1892,6 +1922,35 @@ mob
 				return 0
 			if(Q.Using)
 				return//Can't use if on cooldown
+			if(istype(Q, /obj/Skills/Queue/Heavy_Strike) && src.passive_handler["Heavy Strike"] == "Warp Strike")
+				var/obj/Skills/Projectile/Warp_Strike_MasterOfArms/P = src.FindSkill(/obj/Skills/Projectile/Warp_Strike_MasterOfArms)
+				if(!P)
+					src << "You need to be in Master of Arms to use Warp Strike!"
+					return
+				if(P.Using || P.cooldown_remaining)
+					return
+				if(!src.Target || src.Target == src)
+					src << "You need a target to use Warp Strike!"
+					return
+				var/obj/Items/Sword/sword = src.EquippedSword()
+				var/obj/Items/Enchantment/Staff/staff = src.EquippedStaff()
+				if(!sword && !staff)
+					src << "You need a weapon equipped to use Warp Strike!"
+					return
+				animate(src, color=list(1,0,0, 0,1,0, 0,0,1, 1,1,1), time=1)
+				spawn(1)
+					if(src)
+						animate(src, color=list(1,0,0, 0,1,0, 0,0,1, 0,0,0), time=1)
+				P.IconLock = sword ? sword.icon : staff.icon
+				P.adjust(src)
+				src.WarpStrikeHidingWeapon = 1
+				src.AppearanceOff()
+				src.AppearanceOn()
+				if(!src.UseProjectile(P))
+					src.WarpStrikeHidingWeapon = 0
+					src.AppearanceOff()
+					src.AppearanceOn()
+				return
 			if(!Q.heavenlyRestrictionIgnore&&Secret=="Heavenly Restriction" && secretDatum?:hasRestriction("Queues"))
 				return
 			if(!Q.heavenlyRestrictionIgnore&&Secret=="Heavenly Restriction" && secretDatum?:hasRestriction("All Skills"))

@@ -1173,6 +1173,9 @@ mob/Admin3/verb
 			if(isRace(SAIYAN) && blah == 2 && M.oozaru_type=="Demonic")
 				for(var/transformation/saiyan/hellspawn/hellspawn_super_saiyan_2/ssj2 in M.race.transformations)
 					race.transformations += ssj2*/
+			if(M.isRace(CELESTIAL) && M.CelestialAscension == "Angel" && blah == 1)
+				if(!locate(/transformation/celestial/Master_of_Arms) in M.race.transformations)
+					M.race.transformations += new/transformation/celestial/Master_of_Arms
 			if(M.isRace(SAIYAN) && blah == 4)
 				var/godor4 = input("SSJ God or SSJ4?") in list("SSJ God", "SSJ4")
 				if(godor4 == "SSJ4")

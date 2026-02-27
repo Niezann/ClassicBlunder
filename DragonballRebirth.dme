@@ -500,6 +500,7 @@
 #include "Races\beastkin\skills\buffs\beastkinbuffs.dm"
 #include "Races\beastkin\spiritwalker\spiritWalkerRacial.dm"
 #include "Races\Celestials\ascensions.dm"
+#include "Races\Celestials\CelestialRacials.dm"
 #include "Races\Celestials\race.dm"
 #include "Races\Celestials\transformations.dm"
 #include "Races\changeling\ascensions.dm"

@@ -395,6 +395,7 @@ mob/var
 	tmp/IconClicked=0
 	tmp/NextAttack		//As world.time
 	tmp/ContinuousAttacking
+	tmp/WarpStrikeHidingWeapon=0
 	tmp/mob/Grab
 	Power_Multiplier=1 //This changes temporarily with the use of power altering abilities.
 	PowerEroded=0
