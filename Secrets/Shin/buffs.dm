@@ -3,7 +3,7 @@
 #define MANG_MANA_COST 10 // Determines the cost of activating a Mang Ring/Level
 
 /obj/Skills/Buffs/SlotlessBuffs/Shin_Radiance
-    passives = list("GiantForm" = 1, "Hardening" = 1, "PureReduction" = 1, "Godspeed" = 1, "Deflection" = 1, "ManaGeneration" = 1) // SOME OF THESE GET CHANGED IN THE ADJUST
+    passives = list("GiantForm" = 1, "Hardening" = 1, "PureReduction" = 1, "Godspeed" = 1, "Deflection" = 1, "ManaGeneration" = 1, "Unnerve" = 1) // SOME OF THESE GET CHANGED IN THE ADJUST
     ActiveMessage="radiates a soft, warding glow of Light."
     OffMessage="suppresses the glow of the Light, letting their emotions flow on."
     TextColor=rgb(203, 198, 47)
@@ -24,6 +24,7 @@
         passives["Godspeed"] = secretLevel
         passives["Deflection"] = (0.5 * secretLevel) //Goes from 1 to 3
         passives["ManaGeneration"] = secretLevel
+        passives["Unnerve"] = secretLevel // Aura Farming as a passive.
         // It also replaces your mana name to Shin but REPLACEMANA IS A STUPID FUCKING PASSIVE SO I DID IT IN THE UPDATE_STAT_LABELS PROC FUCK FUCK FUCK
 
 
@@ -38,7 +39,6 @@
         ManaGlow = colour
 
 /obj/Skills/Buffs/SlotlessBuffs/Mang_Resonance // FAIL TO READ BELOW THIS UNDER PENALTY OF DEATH
-    passives =  list("RenameMana" = "Shin")
     ActiveMessage="fills the emptiness with their most intense emotion, creating rings that hum with power."
     OffMessage="'s Mang begin to fade as the moment passes."
     TextColor=rgb(203, 198, 167)
@@ -118,6 +118,11 @@ mob/proc/MangOnCD()
         if(mr.Using)
             return 1
     return 0
+
+mob/proc/ShinSecretLevel() // This is pretty 
+        var/secretLevel = src.secretDatum.currentTier
+        return secretLevel
+
 //Can you tell I'm losing it yet?
 
 
@@ -147,8 +152,3 @@ mob/proc/endMangBuff() // Turns Mang off (Oops)
 mob/proc/MangCDSwap(obj/Skills/Buffs/SlotlessBuffs/Mang_Resonance/mr) // This also transitions mang but it's only used for when it goes on cooldown and not when it's actually active.
     if(istype(mr, /obj/Skills/Buffs/SlotlessBuffs/Mang_Resonance))
         startShinBuff()
-
-
-/*        if(Secret != "Shin" || !CheckSlotless("Mang Resonance")) return 0
-        var/SecretInformation/Shin/ShinSecret = secretDatum
-        . = ShinSecret.Mang */

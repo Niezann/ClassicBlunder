@@ -870,7 +870,7 @@ obj
 				HitSparkY=-32
 				ActiveMessage="smashes their fist into their opponents face!" //WA TA
 ////Keyblade
-
+			//(2026.25.02 I need to refactor or remake all the variants of Heavy Strike code for readability - Hadoje)
 			Heavy_Strike
 				Duration=5
 				DamageMult=2
@@ -935,7 +935,7 @@ obj
 							Grapple = 0
 							FollowUp = null
 
-						if(!usr.Secret && !usr.HasWitchCraft()||usr.isRace(ANGEL) || usr.Secret == "Goetic Virtue"||usr.Secret == "Ultra Instinct" || usr.Secret == "Stellar Constellation" || usr.Secret == "Elven Sanctuary" || usr.Secret == "Eldritch" && !usr.CheckSlotless("True Form") || usr.Secret == "Jagan" ||usr.Secret=="Necromancy"||usr.Secret=="Ripple"&&!usr.HasRipple()||usr.Secret=="Senjutsu"&&!usr.CheckSlotless("Senjutsu Focus") || usr.Secret =="Heavenly Restriction" && !usr.secretDatum?:hasImprovement("Heavy Strike"))//Just default Heavy Strike
+						if(!usr.Secret && !usr.HasWitchCraft()||usr.isRace(ANGEL) || usr.Secret == "Goetic Virtue"||usr.Secret == "Ultra Instinct" || usr.Secret == "Stellar Constellation" || usr.Secret == "Elven Sanctuary" || usr.Secret == "Eldritch" && !usr.CheckSlotless("True Form") || usr.Secret == "Jagan" ||usr.Secret=="Necromancy"||usr.Secret=="Ripple"&&!usr.HasRipple()||usr.Secret=="Senjutsu"&&!usr.CheckSlotless("Senjutsu Focus") || usr.Secret =="Heavenly Restriction" && !usr.secretDatum?:hasImprovement("Heavy Strike") || usr.Secret=="Shin")//Just default Heavy Strike
 							src.name="Heavy Strike"
 							src.DamageMult=2
 							src.AccuracyMult=1
@@ -969,6 +969,7 @@ obj
 							src.HitSparkY=0
 							src.HitSparkTurns=0
 							src.HitSparkSize=1
+							src.ManaGain=0
 							usr.SetQueue(src)
 							return//and that's the end
 						if(usr.Secret=="Heavenly Restriction" && usr.secretDatum?:hasImprovement("Heavy Strike"))
@@ -1002,6 +1003,7 @@ obj
 							src.HitSparkY=0
 							src.HitSparkTurns=0
 							src.HitSparkSize=1
+							src.ManaGain=0
 							Dunker = 0
 							Launcher = 0
 							if(usr.Target.Launched)
@@ -1038,6 +1040,7 @@ obj
 							src.HitSparkY=0
 							src.HitSparkTurns=0
 							src.HitSparkSize=1
+							src.ManaGain=0
 							usr.SetQueue(src)
 						if(usr.Secret=="Senjutsu"&&usr.CheckSlotless("Senjutsu Focus"))
 							src.name="Sage Energy Strike"
@@ -1068,6 +1071,7 @@ obj
 							src.HitSparkY=0
 							src.HitSparkTurns=0
 							src.HitSparkSize=1
+							src.ManaGain=0
 							usr.SetQueue(src)
 						if(usr.Secret=="Haki")
 							usr.AddHaki("Armament")
@@ -1104,6 +1108,7 @@ obj
 								src.HitSparkY=0
 								src.HitSparkTurns=0
 								src.HitSparkSize=2
+								src.ManaGain=0
 								src.IconLock='BusoKoka.dmi'
 								usr.SetQueue(src)
 								return
@@ -1134,6 +1139,7 @@ obj
 								src.HitSparkY=0
 								src.HitSparkTurns=0
 								src.HitSparkSize=1
+								src.ManaGain=0
 								src.IconLock='BLANK.dmi'
 								usr.SetQueue(src)
 								return
@@ -1166,6 +1172,7 @@ obj
 								src.HitSparkY=0
 								src.HitSparkTurns=0
 								src.HitSparkSize=1
+								src.ManaGain=0
 								usr.SetQueue(src)
 								return
 							if(usr.secretDatum.currentTier == 5)
@@ -1197,6 +1204,7 @@ obj
 								src.HitSparkY=0
 								src.HitSparkTurns=0
 								src.HitSparkSize=1
+								src.ManaGain=0
 								usr.SetQueue(src)
 								return
 							if(prob(20))//always check for the barrage
@@ -1227,6 +1235,7 @@ obj
 								src.HitSparkY=0
 								src.HitSparkTurns=0
 								src.HitSparkSize=1
+								src.ManaGain=0
 								usr.SetQueue(src)
 								return
 							if(usr.ElementalOffense=="Water"||usr.Slow)
@@ -1256,6 +1265,7 @@ obj
 								src.HitSparkY=0
 								src.HitSparkTurns=0
 								src.HitSparkSize=1
+								src.ManaGain=0
 								usr.SetQueue(src)
 								return
 							if(usr.ElementalOffense=="Fire"||usr.Burn)
@@ -1286,6 +1296,7 @@ obj
 								src.HitSparkY=0
 								src.HitSparkTurns=0
 								src.HitSparkSize=1
+								src.ManaGain=0
 								usr.SetQueue(src)
 								return
 							if(usr.ElementalOffense=="Wind"||usr.Shock)
@@ -1315,6 +1326,7 @@ obj
 								src.HitSparkY=0
 								src.HitSparkTurns=0
 								src.HitSparkSize=1
+								src.ManaGain=0
 								usr.SetQueue(src)
 								return
 							if(usr.ElementalOffense=="Earth"||usr.Shatter)
@@ -1345,6 +1357,7 @@ obj
 								src.HitSparkY=0
 								src.HitSparkTurns=0
 								src.HitSparkSize=1
+								src.ManaGain=0
 								usr.SetQueue(src)
 								return
 							//But if all those fail, use this
@@ -1374,6 +1387,7 @@ obj
 							src.HitSparkY=0
 							src.HitSparkTurns=0
 							src.HitSparkSize=1
+							src.ManaGain=0
 							usr.SetQueue(src)
 							return
 						if(usr.Secret=="Vampire")
@@ -1404,6 +1418,7 @@ obj
 								src.HitSparkY=-32
 								src.HitSparkTurns=0
 								src.HitSparkSize=1
+								src.ManaGain=0
 								usr.SetQueue(src)
 								return
 							else
@@ -1433,6 +1448,7 @@ obj
 								src.HitSparkY=-32
 								src.HitSparkTurns=1
 								src.HitSparkSize=2
+								src.ManaGain=0
 								usr.SetQueue(src)
 						if(usr.Secret=="Werewolf")
 							src.name="Rip and Tear"
@@ -1461,6 +1477,7 @@ obj
 							src.HitSparkY=0
 							src.HitSparkTurns=1
 							src.HitSparkSize=2
+							src.ManaGain=0
 							usr.SetQueue(src)
 							return
 						if(usr.StyleActive == "Witch" && usr.HasWitchCraft())
@@ -1488,6 +1505,7 @@ obj
 							src.HitSparkY=-32
 							src.HitSparkTurns=1
 							src.HitSparkSize=1
+							src.ManaGain=0
 							usr.SetQueue(src)
 							return
 						if(usr.Secret=="Zombie")
@@ -1519,9 +1537,15 @@ obj
 							src.HitSparkY=-32
 							src.HitSparkTurns=1
 							src.HitSparkSize=1
+							src.ManaGain=0
 							usr.SetQueue(src)
 							return
-
+						if(usr.Secret=="Shin" && usr.CheckSlotless("Shin Radiance")) //You'll find this under Shin/skills.dm
+							ShinHeavyStrike()
+							return
+						if(usr.Secret=="Shin" && usr.CheckSlotless("Shin Radiance"))
+							MangHeavyStrike()
+							return
 			Meteor_Mash
 				name="Meteor Mash"
 				DamageMult=1
