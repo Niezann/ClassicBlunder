@@ -4,12 +4,20 @@
 #define MADNESS_MAX 100
 #define MADNESS_ADD_PER_TIER 25
 
-//todo between wipes: RENAME. THIS. TO. INFORMATION.
-//MOTHER FUCKER...
+#define VALID_SECRET_LIST list("Jagan Eye", "Haki", "Hamon", "Vampire", "Eldritch", "Werewolf", "Heavenly Restriction", "Senjutsu", "Shin",\
+"Ultra Instinct")
+
+//thank you hadoje
 /mob/var/SecretInformation/secretDatum = new()
 
-
-
+/mob/proc/
+	hasSecret(secretName)
+		if(!(secretName in VALID_SECRET_LIST))
+			admins << "<font size=+1><b>DEBUG:</b></font size> [src] called hasSecret proc with the argument [secretName]. That's not a valid secret!";
+			src << "[secretName] is not a valid secret name for the hasSecret proc. Admins have been notified of the error, but you can throw it in the Discord bug channel too.";
+			return 0;
+		if(secretName != Secret) return 0;//if secretName (argument) does not match Secret (mob variable) then say Nope.
+		return 1;
 
 
 /mob/Admin4/verb/editSecretDatum(mob/p in players)
@@ -593,7 +601,7 @@ mob/Admin3/verb
 	SecretManagement(var/mob/P in players)
 		set category="Admin"
 		if(!P.client) return
-		var/list/Secrets=list("Spirits of The World","Jagan", "Hamon of the Sun", "Werewolf", "Vampire", "Sage Arts", "Haki", "Eldritch", "Heavenly Restriction", "Shin")
+		var/list/Secrets=list("Spirits of The World","Jagan Eye", "Hamon of the Sun", "Werewolf", "Vampire", "Sage Arts", "Haki", "Eldritch", "Heavenly Restriction", "Shin")
 		var/Selection=input(src, "Which aspect of power does [P] awaken to?", "Secret Management") in Secrets
 		if(P.Secret)
 			src << "They already have a secret."

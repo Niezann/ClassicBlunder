@@ -9,8 +9,7 @@ proc/log_func(x, a, b)
 #define DIRSX list(EAST, WEST)
 #define DIRS list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 
-//TODO between wipes: make this capitalized AI please ; _ ;
-#define isai(a) istype(a, /mob/Player/AI)
+#define isAI(a) istype(a, /mob/Player/AI)
 #define isNPC(a) istype(a, /mob/)
 #define TICK_USAGE world.tick_usage
 

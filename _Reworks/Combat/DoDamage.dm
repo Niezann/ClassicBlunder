@@ -53,9 +53,9 @@
 	log2text("Damage", "After BalanceDamage", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("Damage", val,"damageDebugs.txt", "[src.ckey]/[src.name]")
 	#endif
-	val /= getInfactuation(defender)//TODO between wipes: typo
+	val /= getInfatuation(defender)
 	#if DEBUG_DAMAGE
-	log2text("Damage", "After Infactuation", "damageDebugs.txt", "[src.ckey]/[src.name]")
+	log2text("Damage", "After Infatuation", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("Damage", val,"damageDebugs.txt", "[src.ckey]/[src.name]")
 	#endif
 	var/preCrit = val
@@ -197,8 +197,9 @@
 			#endif
 	if(glob.PURE_MOD_POST_CALC)
 		trueMult *= glob.PURE_MODIFIER
-	trueMult += godKiModifiers(defender)
-//	trueMult += maouKiModifiers(defender)
+	if(glob.GOD_KI_AFFECTS_DAMAGE)
+		trueMult += godKiModifiers(defender)
+//		trueMult += maouKiModifiers(defender)
 	#if DEBUG_DAMAGE
 	log2text("trueMult", "After GodKiModifiers", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("trueMult", trueMult,"damageDebugs.txt", "[src.ckey]/[src.name]")

@@ -233,13 +233,13 @@ globalTracker
 		celestialObjectTicks
 		NoSagaRaces = list(DEMON, DRAGON, ELF, SAIYAN, ANGEL, MAKAIOSHIN)
 		WILL_NOT_TARP_LIST = list("JustLat", "TheUltimateHope")
-		T3_STYLES_GODKI_VALUE = 0.25
+		T3_STYLES_GODKI_VALUE = 0.15
 		T3_SAGA_STLYE_GODKI = 0
-		T4_STYLES_GODKI_VALUE = 0.25
+		T4_STYLES_GODKI_VALUE = 0.1
 		T4_SAGA_STLYE_GODKI = 0
 		SENSE7GODKI=0.25
-		SENSE8GODKI=0.75
-		SENSE9GODKI=0.5
+		SENSE8GODKI=0.25
+		SENSE9GODKI=0.25
 		DOUBLESTRIKECHANCE = 10
 		TRIPLESTRIKECHANCE = 20
 		ASURASTRIKECHANCE = 15
@@ -288,6 +288,9 @@ globalTracker
 
 		UNDERDOG_DMG_MULTIPLER = 1
 		UNDERDOG_RED_MULTIPLER = 1
+
+		GOD_KI_AFFECTS_DAMAGE = TRUE
+		GOD_KI_CAP = 1.5
 
 		KOB_GETS_STATS_LOW_LIFE = 1
 
@@ -385,10 +388,9 @@ globalTracker
 		ATTACK_DELAY_MIN = 2
 		CYBERIZESAGAS = list("King of Braves")
 		ENERGY_GEN_DIVISOR = 10
-		ENERGY_GEN_MULT = 0.2//TODO between wipes: ignore this
 		LIFE_GEN_DIVISOR = 10
-		LIFE_GEN_MULT = 0.2//TODO between wipes: ignore this
 		MANA_GEN_DIVISOR = 10
+		WOUND_RECOVERY_REDUCTION = 0.5
 
 		OXYGEN_DRAIN = 3
 		OXYGEN_DRAIN_DIVISOR = 2
@@ -404,7 +406,7 @@ globalTracker
 		GLOBAL_QUEUE_DAMAGE = 0.85
 		GLOBAL_MELEE_MULT = 0.9
 		GLOBAL_POWER_MULT = 1
-		GLOBAL_ITEM_DAMAGE_MULT = 0.75
+		GLOBAL_ITEM_DAMAGE_MULT = 1
 		EXPONENTIAL_PROJ_DAMAGE = FALSE
 		PROJ_DAMAGE_MULT = 1
 		AUTOHIT_GLOBAL_DAMAGE = 0.8
@@ -608,7 +610,10 @@ globalTracker
 		list/BronzeConstellation = list("Pegasus" = FALSE, "Dragon" = FALSE, "Cygnus" = FALSE, "Andromeda" = FALSE, "Phoenix" = FALSE, "Unicorn" = FALSE)
 		list/GoldConstellation = list("Aries" = FALSE,"Gemini" = FALSE,"Cancer" = FALSE,"Leo" = FALSE,"Virgo" = FALSE,"Libra" = FALSE,\
 "Scorpio" = FALSE,"Capricorn" = FALSE,"Aquarius" = FALSE,"Pisces" = FALSE, "Sagittarius" = FALSE)
-
+		list/Keychains=list("Kingdom Key", "Kingdom Key D", "Flame Liberator", "Wayward Wind", "Rainfell", "Oathkeeper", "Way To Dawn", "Bond of Flame", "Sweetstack", "Two Become One",\
+		"Oblivion", "Fenrir", "No Name", "Lionheart", "Spellbinder", "Star Seeker", "Lost Memory",\
+		"Earthshaker", "Chaos Ripper", "One Winged Angel", "Moogle O Glory")
+		list/FinalKeychains=list("Ultima Weapon", "X-Blade", "Ebony Slumber", "Prismatic Dreams")
 		CHIKARA_WHITELIST = FALSE
 
 		STAT_DMG_EXPONENT = 0.75

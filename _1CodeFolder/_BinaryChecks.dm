@@ -1888,19 +1888,14 @@ mob
 				if(src.Target&&(Health+VaizardHealth)<(Target.Health+Target.VaizardHealth))
 					Total*=clamp((Target.Health+Target.VaizardHealth)/(Health+VaizardHealth),1, 4)
 			if(src.KamuiBuffLock)
-				Total+=0.75
+				Total+=0.25
 			if(src.isRace(DRAGON))
 				if(src.AscensionsAcquired==6 && Total<0.5)
-					Total=0.5//fully ascended dragon
+					Total=0.25//fully ascended dragon
 			if(passive_handler.Get("CreateTheHeavens") && src.DoubleHelix>=5&&isRace(HUMAN))
-				Total += 0.5
-			if(passive_handler.Get("Kaioken Blue"))
-				if(src.Target&&Target!=src)
-					if(src.Target.HasGodKi())
-						if(Target.GetGodKi() >= 1.75)
-							Total+=src.Kaioken/4
-				if(src.Kaioken>=6)
-					Total+=1
+				Total += 0.25
+			if(Total>=glob.GOD_KI_CAP)
+				Total=glob.GOD_KI_CAP
 			if(passive_handler.Get("SSJRose"))
 				if(src.Target&&(Health+VaizardHealth)<(Target.Health+Target.VaizardHealth))
 					Total*=clamp((Target.Health+Target.VaizardHealth)/(Health+VaizardHealth),1, 2)
@@ -1976,19 +1971,14 @@ mob
 				if(src.Target&&(Health+VaizardHealth)<(Target.Health+Target.VaizardHealth))
 					Total*=clamp((Target.Health+Target.VaizardHealth)/(Health+VaizardHealth),1, 3)
 			if(src.KamuiBuffLock)
-				Total+=0.75
+				Total+=0.25
 			if(src.isRace(DRAGON))
 				if(src.AscensionsAcquired==6 && Total<0.5)
-					Total=0.5//fully ascended dragon
+					Total=0.25//fully ascended dragon
 			if(passive_handler.Get("CreateTheHeavens") && src.DoubleHelix>=5&&isRace(HUMAN))
-				Total += 0.5
-			if(passive_handler.Get("Kaioken Blue"))
-				if(src.Target&&Target!=src)
-					if(src.Target.HasGodKi())
-						if(Target.GetGodKi() >= 1.75)
-							Total+=src.Kaioken/4
-				if(src.Kaioken>=6)
-					Total+=1
+				Total += 0.25
+			if(Total>=glob.GOD_KI_CAP)
+				Total=glob.GOD_KI_CAP
 			if(src.DownToEarth>0)
 				Total*=1*((100-src.DownToEarth)/100)
 			if(src.passive_handler.Get("The Power of Stories"))

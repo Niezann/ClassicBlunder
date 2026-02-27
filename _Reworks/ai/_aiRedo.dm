@@ -116,7 +116,7 @@ mob/Player/AI/proc/Chase()
 	if(isCrowdControlled())
 		return
 	ai_state = "Chase"
-	if(isai(Target))
+	if(isAI(Target))
 		RemoveTarget()
 		Idle()
 		return
