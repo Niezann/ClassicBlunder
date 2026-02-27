@@ -361,6 +361,7 @@
 #include "_Reworks\Combat\PotentialRework.dm"
 #include "_Reworks\Combat\Voiding.dm"
 #include "_Reworks\Combat\Damage\Calculations.dm"
+#include "_Reworks\Combat\Damage\CritInfactuation.dm"
 #include "_Reworks\Combat\Damage\Desperation.dm"
 #include "_Reworks\Combat\Damage\dmgGodKi.dm"
 #include "_Reworks\Combat\Damage\extendedElements.dm"
