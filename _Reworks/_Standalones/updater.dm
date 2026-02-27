@@ -46,7 +46,6 @@ update
 		p << "You have been updated to version [version]"
 		p.updateVersion = src
 
-<<<<<<< HEAD
 	version1
 
 	version2
@@ -497,11 +496,6 @@ update
 					o.race.transformations -=HT
 					del HT
 				o<< "Your old High Tension Forms have been removed due to getting your own unique variations. Please restore your customizations."
-				o.race.transformations += new /transformation/celestial/high_tension()
-				o.race.transformations += new /transformation/celestial/high_tension_MAX()
-				o.race.transformations += new /transformation/celestial/super_high_tension()
-				o.race.transformations += new /transformation/celestial/super_high_tension_MAX()
-				o.race.transformations += new /transformation/celestial/unlimited_high_tension()
 	version29
 		version = 29
 		updateMob(mob/o)
@@ -602,11 +596,6 @@ update
 		version = 37
 		updateMob(mob/o)
 			.=..()
-			if(o.isRace(CELESTIAL)&&o.CelestialAscension=="Demon")
-				for(var/transformation/celestial/unlimited_high_tension/HT in o.race.transformations)
-					o.race.transformations -=HT
-					del HT
-				o.race.transformations += new /transformation/celestial/demonic_high_tension()
 	version38
 		version = 38
 		updateMob(mob/o)
@@ -686,9 +675,6 @@ update
 						asc.passives.Remove("EntergySteal");
 						o << "EntergySteal exchanged for EnergySteal on ascension [asc]. <font color='#000'>THIS IS WHY I HATE LOOSELY TYPED ASSOCIATIONS BEING THE FOUNDATION OF A PASSIVE SYSTEM GYAAAH</font color>"
 				o << "<font color='#444'>Nothing to worry about.</font color>"
-=======
->>>>>>> 731f8718e799c6ebdf5abc23789ea5ea495bafde
-
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25
