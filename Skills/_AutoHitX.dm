@@ -6120,9 +6120,6 @@ obj
 					atk = Owner.GetFor(ForDmg)
 				else if(StrDmg && !ForDmg)
 					atk = Owner.getStatDmg2() * StrDmg
-				if(m.passive_handler.Get("Field of Destruction")||m.passive_handler.Get("The Immovable Object"))
-					if(Owner.HasHybridStrike())
-						atk/=clamp(sqrt(1+Owner.GetFor(Owner.GetHybridStrike())/15),1,3)
 				else if(StrDmg && ForDmg)
 					if(glob.AUTOHIT_HYBRID_AS_MULT)
 						atk = Owner.GetStr(StrDmg) *1 + (Owner.GetFor(ForDmg)/10)
@@ -6130,6 +6127,9 @@ obj
 						atk = Owner.GetStr(StrDmg) + (Owner.GetFor(ForDmg))
 				else
 					Owner << "Your auto hit could not calculate the damage it just did!! Report this !!"
+				if(m.passive_handler.Get("Field of Destruction")||m.passive_handler.Get("The Immovable Object"))
+					if(Owner.HasHybridStrike())
+						atk/=clamp(sqrt(1+Owner.GetFor(Owner.GetHybridStrike())/15),1,3)
 				DEBUGMSG("atk final is: [atk]")
 				var/dmgMulti = Damage
 				if(Owner.HasSpiritFlow())

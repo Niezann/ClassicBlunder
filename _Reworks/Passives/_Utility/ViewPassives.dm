@@ -44,7 +44,7 @@ var/list/PassiveInfo = list("Extend"="increases the range of armed autohits base
 "DualCast"= "spells hit again if you have the mana necessary to cast it again",
 "Juggernaut"= "increased knockbacks/launch resistance",
 "DebuffResistance"= "reduces the amount of debuff stacks you get",
-"Hardening"= "increases your end (up to a cap) upon getting hit",
+"Harden"= "increases your end (up to a cap) upon getting hit",
 "GiantForm"= "increases your KB against others, increased KB resistance, lowers damage of melee/autohits against you",
 "Reversal"= "chance to deal damage back to someone when hit with an autohit",
 "CounterMaster"= "turns any Queue into a CounterQueue.. amount of passive also determines cooldown of the effect.",

@@ -128,13 +128,13 @@
     Magma_Fist
         ForMult=1.3
         EndMult=1.2
-        passives = list("Hardening" = 2, "BlockChance" = 25, "CriticalBlock" = 0.15, "Burning" = 3, "Crushing" = 5, "TensionLock" = 1)
+        passives = list("Harden" = 2, "BlockChance" = 25, "CriticalBlock" = 0.15, "Burning" = 3, "Crushing" = 5, "TensionLock" = 1)
 
     Cool_Guy
         OffMult=1.15
         ForMult=1.15
         EndMult=1.2
-        passives = list("Freezing" = 5, "Shattering" = 3, "Hardening" = 2, "Steady" = 2, "TensionLock" = 1)
+        passives = list("Freezing" = 5, "Shattering" = 3, "Harden" = 2, "Steady" = 2, "TensionLock" = 1)
 
     Conduit
         SpdMult=1.2

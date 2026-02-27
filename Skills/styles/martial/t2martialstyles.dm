@@ -60,7 +60,7 @@
 			src.Trigger(usr)
 	Long_Fist_Style
 		passives = list("Fa Jin" = 2, "Gum Gum" = 1, "Acupuncture" = 1.5, "Flow" = 1, \
-						"Momentum" = 1.5, "Hardening" = 1.5, "Pressure" = 1)
+						"Momentum" = 1.5, "Harden" = 1.5, "Pressure" = 1)
 		StyleEnd=1.3
 		StyleOff=1.15
 		StyleDef=1.15

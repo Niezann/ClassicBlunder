@@ -1,4 +1,4 @@
-/mob/proc/getInfactuation(mob/defender)
+/mob/proc/getInfatuation(mob/defender)
 	for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/buff in src)
 		if(buff.passives["Infatuated"]&&buff.Password == defender?:UniqueID)
 			return 1+buff.passives["Infatuated"]

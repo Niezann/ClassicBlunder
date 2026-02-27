@@ -35,8 +35,15 @@
 
 //asc 3,4,5,6 choices
 /ascension/sub_ascension/beastkin/frostchain
-/ascension/sub_ascension/beastkin/bloodmail
+/ascension/sub_ascension/beastkin/kingsblood
 /ascension/sub_ascension/beastkin/overreach
 /ascension/sub_ascension/beastkin/matchless
 /ascension/sub_ascension/beastkin/wargob
-
+/ascension/sub_ascension/beastkin/triad
+/ascension/sub_ascension/beastkin/firstlight
+/ascension/sub_ascension/beastkin/felglass
+/ascension/sub_ascension/beastkin/phantomflicker
+/ascension/sub_ascension/beastkin/deadlight
+/ascension/sub_ascension/beastkin/demonsong
+/ascension/sub_ascension/beastkin/worldwhisper
+/ascension/sub_ascension/beastkin/godword

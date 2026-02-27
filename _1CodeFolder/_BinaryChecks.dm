@@ -2107,12 +2107,6 @@ mob
 			return 0
 		GetFreezing()
 			return passive_handler.Get("Freezing")
-		HasHardening()
-			if(passive_handler.Get("Hardening"))
-				return 1
-			return 0
-		GetHardening()
-			return min(passive_handler.Get("Hardening"), glob.HARDEN_MAX_BOON);
 		HasCrushing()
 			if(passive_handler.Get("Crushing"))
 				return 1
@@ -2598,21 +2592,6 @@ mob
 				Total+=1
 			if(src.MeditateModule)
 				Total+=3
-			return Total
-		HasEnhancementChips()
-			var/Total=0
-			if(src.EnhancedStrength)
-				Total+=src.EnhancedStrength
-			if(src.EnhancedForce)
-				Total+=src.EnhancedForce
-			if(src.EnhancedEndurance)
-				Total+=src.EnhancedEndurance
-			if(src.EnhancedAggression)
-				Total+=src.EnhancedAggression
-			if(src.EnhancedReflexes)
-				Total+=src.EnhancedReflexes
-			if(src.EnhancedSpeed)
-				Total+=src.EnhancedSpeed
 			return Total
 
 

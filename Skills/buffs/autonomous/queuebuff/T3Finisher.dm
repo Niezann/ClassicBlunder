@@ -41,7 +41,7 @@
         IconLayer=4
         IconApart=1
         passives = list("Duelist" = 3, "Half-Sword" = 1, "Zornhau" = 1, "EndlessNine" = 0.25, "LifeGeneration" = 2, \
-                       "KBRes" = 4, "Hardening" = 3, "Unnerve" = 2, "Pressure" = 1, "TensionLock" = 1, "PureDamage"=2)
+                       "KBRes" = 4, "Harden" = 3, "Unnerve" = 2, "Pressure" = 1, "TensionLock" = 1, "PureDamage"=2)
         StrMult=1.5
         EndMult=1.5
         VaizardHealth=2

@@ -161,8 +161,6 @@ mob/Players
 			key4=0
 
 globalTracker/var/BASE_LOOP_DELAY = 1.25
-globalTracker/var/GODSPEED_NEEDED = 999
-globalTracker/var/SPEED_NEEDED = 999
 globalTracker/var/DIAG_LOOP_DELAY = 1.15
 globalTracker/var/GODSPEED_LOOP_DELAY = 0.8
 
@@ -216,12 +214,6 @@ mob
 									if(afterimages)
 										coolerFlashImage(src, afterimages)
 								loop_delay = glob.BASE_LOOP_DELAY
-								//TODO between wipes
-								//These effectively will never trigger, so I'm commenting it out for now
-								//Honestly it can probably be removed
-								//But I wouldn't remove variables from the globalTracker mid wipe.
-								//if(HasGodspeed()>=glob.GODSPEED_NEEDED || GetSpd(1)>=glob.SPEED_NEEDED)
-								//	loop_delay = glob.GODSPEED_LOOP_DELAY
 								if(dir==NORTHEAST||dir==NORTHWEST||dir==SOUTHEAST||dir==SOUTHWEST)
 									loop_delay *= glob.DIAG_LOOP_DELAY
 								move_speed = MovementSpeed()

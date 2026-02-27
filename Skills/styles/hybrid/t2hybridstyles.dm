@@ -2,7 +2,7 @@
 	Divine_Arts_of_The_Heavenly_Demon // unarmed+armed
 		SignatureTechnique=2
 		Copyable=0
-		passives = list("HybridStyle" = "SwordStyle", "Hardening" = 2, "Deflection" = 1, "Momentum" = 2, "Pressure" = 2, "BladeFisting" = 1,\
+		passives = list("HybridStyle" = "SwordStyle", "Harden" = 2, "Deflection" = 1, "Momentum" = 2, "Pressure" = 2, "BladeFisting" = 1,\
 					"NeedsSword" = 0, "NoSword" = 1)
 		NeedsSword=0
 		NoSword=1
@@ -22,7 +22,7 @@
 		StyleFor=1.25
 		StyleEnd=1.1
 		StyleActive="Ifrit Jambe"
-		passives = list("HybridStyle" = "MysticStyle","Fury" = 2, "Momentum" = 2,  "Hardening" = 2, "SpiritHand" = 1.5, "Instinct" = 2, \
+		passives = list("HybridStyle" = "MysticStyle","Fury" = 2, "Momentum" = 2,  "Harden" = 2, "SpiritHand" = 1.5, "Instinct" = 2, \
 						"Flow" = 2, "SpiritFlow" = 1.5, "Combustion" = 40, "Scorching" = 5, "Shattering" = 5)
 		Finisher="/obj/Skills/Queue/Finisher/Bauf_Burst"
 		verb/Ifrit_Jambe()
@@ -32,7 +32,7 @@
 	Psycho_Boxing // mystic+unarmed (anti cyborg)
 		SignatureTechnique=2
 		passives = list("HybridStyle" = "MysticStyle", "Rusting" = 2, "SoulTug" = 1, "SpiritHand" = 1.5, "SpiritFlow" = 1.5, "CyberStigma" = 4, \
-			"Toxic" = 4, "Instinct" = 1, "Flow" = 1, "Hardening" = 1)
+			"Toxic" = 4, "Instinct" = 1, "Flow" = 1, "Harden" = 1)
 		StyleStr=1.3
 		StyleFor=1.3
 		StyleActive="Psycho Boxing"

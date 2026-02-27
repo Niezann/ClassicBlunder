@@ -24,7 +24,7 @@ race
 			var/obj/Skills/Buffs/SlotlessBuffs/True_Form/Demon/d = new()
 			d = locate() in p
 			if(!d)
-				world.log << "There was an error finding [p]'s ture form, please fix as their ascension is likely bugged"
+				world.log << "There was an error finding [p]'s true form, please fix as their ascension is likely bugged"
 				p << "Please report to the admin or discord that your true form is bugged on asc"
 			return d
 

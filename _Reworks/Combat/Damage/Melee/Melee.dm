@@ -778,6 +778,7 @@
 							if(enemy.passive_handler["Magmic"] && enemy.SlotlessBuffs["Magmic Shield"])
 								Stun(src, 3, TRUE)
 								enemy.SlotlessBuffs["Magmic Shield"].Trigger(enemy, TRUE)
+							damage *= enemy.getMeleeResistValue();//this is 1 if there is no melee resistance passive on the enemy
 							var/dmgValue = DoDamage(enemy, damage, unarmedAtk, swordAtk, SecondStrike, ThirdStrike, AsuraStrike)
 							. = dmgValue
 							if(!glob.MOMENTUM_PROCS_OFF_DAMAGE)
@@ -1045,12 +1046,6 @@
 			return
 
 /mob/var/Momentum = 0
-
-//TODO BETWEEN WIPES: Rename this to FuryAccumulated, or something
-//It's got the same name as the passive
-//It's confusing
-//Also, move it to Combat/Passives/Fury.dm
-/mob/var/Fury = 0
 
 /mob/proc/handlePostDamage(mob/enemy, damage)
 	if(passive_handler["LeakCash"])

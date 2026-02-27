@@ -23,7 +23,7 @@
         passives = list("Muscle Power" = 2, "TechniqueMastery" = 3, "DeathField" = 7, "Juggernaut"= 5, "KBRes"= 5, "TensionLock" = 1)
     Emergent_Demon_Breakthrough
         StyleNeeded="Divine Arts of The Heavenly Demon"
-        passives = list("Hardening" = 1.5, "Deflection" = 2, "UnarmedDamage" = 2, "Momentum" = 2, "Unnerve" = 2, "TensionLock" = 1)  //TODO come back 2 this perhaps
+        passives = list("Harden" = 1.5, "Deflection" = 2, "UnarmedDamage" = 2, "Momentum" = 2, "Unnerve" = 2, "TensionLock" = 1)  //TODO come back 2 this perhaps
         StrMult=1.3
         SpdMult=1.2
         ActiveMessage="presses on the cusp of the Ultimate Heavenly Demon Realm!"
@@ -44,7 +44,7 @@
         SpdMult = 0.75
         ForMult = 1.25
         passives = list("CallousedHands" = 0.15, "Freezing" = 10, "Juggernaut" = 2.5, "KBRes" = 2.5, \
-                        "Shattering" = 10, "Steady" = 4, "Hardening" = 2, "TensionLock" = 1)
+                        "Shattering" = 10, "Steady" = 4, "Harden" = 2, "TensionLock" = 1)
     Heated_Up
         ForMult = 1.5
         EndMult = 0.75
@@ -131,7 +131,7 @@
         IconLock='SweatDrop.dmi'
         IconApart=1
         passives = list("Duelist" = 2, "Half-Sword" = 1, "Zornhau" = 1, "NoDodge" = 1, "LifeGeneration" = 1, \
-                        "KBRes" = 4, "Hardening" = 3, "Unnerve" = 2, "Pressure" = 1, "TensionLock" = 1)
+                        "KBRes" = 4, "Harden" = 3, "Unnerve" = 2, "Pressure" = 1, "TensionLock" = 1)
         StrMult=1.35
         EndMult=1.35
         SpdMult=0.75

@@ -260,10 +260,9 @@ obj/Skills/Buffs/SlotlessBuffs/Arcane_Surge
 
 	Arcane_Empowerment
 		name = "Arcane Empowerment"
-		passives = list("PureReduction" = 1, "Juggernaut" = 1, "Hardening" = 2, "ManaStats" = 0.5, "SpiritHand" = 2)
+		passives = list("PureReduction" = 1, "Juggernaut" = 1, "Harden" = 2, "ManaStats" = 0.5, "SpiritHand" = 2)
 		PureReduction=1
 		Juggernaut=1
-		Hardening=2
 
 		StrMult=1.2
 		ForMult=1.2

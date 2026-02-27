@@ -20,8 +20,15 @@ race
 They have increased tenacity when pushed to their breaking point (below 10% health).\
 They gain steady and doublestrike passives.\
 Inspiration taken from Sett (League of Legends)}",\
-\
-"WUKONG", "RENGAR", "TRYNDAMERE", "RAKAN", "XAYAH", "UDYR", "NIDALEE", "???", "AHRI")
+"WUKONG",\
+"RENGAR",\
+"TRYNDAMERE",\
+"RAKAN",\
+"XAYAH",\
+"UDYR",\
+"NIDALEE",\
+"???",\
+"AHRI")
 		// attaching this here cause lol
 		stats_per_class = list("Heart of The Beastkin" = list(1.25, 2, 0.75, 1, 1, 1.5), "Monkey King" = list(1.25,1.25,1.25,1.25,1.25,1.25),\
 						"Unseen Predator" = list(1.75, 0.75, 1, 1.75, 0.75, 1.5), "Undying Rage" = list(1.75, 0.75, 1.75, 1, 0.75, 1.5), \
@@ -52,7 +59,7 @@ Inspiration taken from Sett (League of Legends)}",\
 					var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Racial/Beastkin/Never_Fall/nf = new(p)
 					p.AddSkill(nf)
 
-					p.passive_handler.Increase("Hardening", 1)
+					p.passive_handler.Increase("Harden", 1)
 					p.passive_handler.Increase("Instinct", 1)
 					
 				if("Unseen Predator")
@@ -65,7 +72,7 @@ Inspiration taken from Sett (League of Legends)}",\
 
 				if("Feather Cowl")
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Beastkin/Feather_Cowl)
-					p.passive_handler.Increase("Hardening", 1)
+					p.passive_handler.Increase("Harden", 1)
 					p.passive_handler.Increase("Pressure", 1)
 					p.passive_handler.Increase("BladeFisting", 1)
 
@@ -91,6 +98,7 @@ Inspiration taken from Sett (League of Legends)}",\
 
 				if("Trickster")
 					imagination = 2
+					intellect = 1;
 					p.passive_handler.Increase("Spiritual Tactician", 1)
 					p.AddSkill(new/obj/Skills/Utility/Imitate)
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Blend_In)

@@ -209,14 +209,14 @@ proc/removeDuplicates(list/list1)
                 . += "Steady"
                 . += "Brutalize"
             if(Class=="Monkey King")
-                . += "Hardening"
+                . += "Harden"
                 . += "Instinct"
                 . += "Nimbus"
             if(Class=="Undying Rage")
                 . += "Fury"
                 . += "Wrathful Tenacity"
             if(Class=="Feather Cowl")
-                . += "Hardening"
+                . += "Harden"
                 . += "Pressure"
                 . += "BladeFisting"
             if(Class=="Feather Knife")
@@ -261,7 +261,7 @@ proc/removeDuplicates(list/list1)
                 . += "DemonicDurability"
                 . += "SpiritHand"
             if(Class=="Metal")
-                . += "Hardening"
+                . += "Harden"
                 . += "KBRes"
             if(Class=="Gold")
                 . += "Blubber"

@@ -19,6 +19,7 @@ proc
 
 		if(m.HasDebuffResistance())
 			amount/=(m.GetDebuffResistance()*0.75)
+		amount *= m.getControlResistValue();
 		if(m.ContinuousAttacking)
 			for(var/obj/Skills/Projectile/p in m.contents)
 				if(p.ContinuousOn && !p.StormFall)
@@ -26,7 +27,7 @@ proc
 				continue
 		var/Stun_Amount=world.time+(amount*10)
 		if(m.Stunned)
-			m.Stunned+=(amount*4)
+			m.Stunned+=(amount * 4);
 			if(m.Stunned > m.last_stunned + glob.MAX_STUN_ADDITION)
 				m.Stunned = m.last_stunned + glob.MAX_STUN_ADDITION
 		else

@@ -26,7 +26,7 @@
         StyleStr = 1.25
         StyleActive="Jeet Kune Do"
         passives = list("LikeWater" = 4, "Fa Jin" = 3, "Interception" = 3, "Sunyata" = 3 , "Gum Gum" = 1, "Acupuncture" = 2, \
-                        "Flow" = 2, "Instinct" = 2, "Momentum" = 1.5, "Hardening" = 1.5, "Pressure" = 2, "SoftStyle" = 1, \
+                        "Flow" = 2, "Instinct" = 2, "Momentum" = 1.5, "Harden" = 1.5, "Pressure" = 2, "SoftStyle" = 1, \
                         "FluidForm" = 1)
         Finisher="/obj/Skills/Queue/Finisher/Be_Water"
         verb/Jeet_Kune_Do()
@@ -37,7 +37,7 @@
         StyleEnd=1.5
         StyleStr=1.5
         passives = list("Heavy Strike" = "Wrestling", "Muscle Power" = 6, "Grippy" = 5, \
-                        "Scoop" = 3, "Iron Grip" = 1, "DeathField" = 5, "Gum Gum" = 2, "Hardening" = 2, \
+                        "Scoop" = 3, "Iron Grip" = 1, "DeathField" = 5, "Gum Gum" = 2, "Harden" = 2, \
                         "Momentum" = 2)
         StyleActive="All Star Wrestling"
         Finisher="/obj/Skills/Queue/Finisher/Big_Boot"

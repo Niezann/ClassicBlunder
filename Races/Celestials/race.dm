@@ -19,26 +19,19 @@ race
 		var/devil_arm_upgrades = 1
 		var/sub_devil_arm_upgrades = 0
 		proc/checkReward(mob/p)
-			p.checkDevilArmUpgrades();
+			if(p.CelestialAscension=="Demon")
+				p.checkDevilArmUpgrades();
 
 		onFinalization(mob/user)
 			var/Choice
 			..()
-			Choice=input(user, "Have you gained the powers of Angels (Ultra Instinct) or Demons (Devil Arms)?", "Celestial Type") in list("Angel", "Demon")
+			Choice=input(user, "Have you gained the powers of Angels (Master of Arms) or Demons (Devil Arms)?", "Celestial Type") in list("Angel", "Demon")
 			user.CelestialAscension = Choice
 			GiveRacial(user)
 		proc/GiveRacial(mob/p)
 			switch(p.CelestialAscension)
 				if("Angel")
-					p.passive_handler.Increase("TechniqueMastery", 1)
-					p.passive_handler.Increase("StyleMastery", 2)
-					if(!locate(/obj/Skills/Buffs/NuStyle/MortalUI/Mortal_Instinct_Style, p))
-						var/obj/Skills/Buffs/NuStyle/s=new/obj/Skills/Buffs/NuStyle/MortalUI/Mortal_Instinct_Style
-						p.AddSkill(s)
-					p << "You have embarked upon the path of true martial arts mastery: Ultra Instinct."
+					p << "You have embarked upon the path of the Master of Arms."
 				if("Demon")
 					p.TrueName=input(p, "What is the name of the Demon within?", "Get True Name") as text
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Devil_Arm2)
-					for(var/transformation/celestial/unlimited_high_tension/HT in p.race.transformations)
-						p.race.transformations -=HT
-						del HT

@@ -5,7 +5,7 @@
 		SignatureTechnique = 3
 		passives = list("DemonicInfusion" = 1, "IceHerald" = 1, "ThunderHerald" = 1, "Heavy Strike" = "HellfireInferno", \
 		            "Chaos" = 15, "Scorching" = 15, "Combustion" = 80, "IceAge" = 25, "SpiritFlow" = 4, "Familiar" = 3,\
-		            "CriticalChance" = 35, "CriticalDamage" = 0.25,"Hardening" = 2, "WaveDancer" = 2)
+		            "CriticalChance" = 35, "CriticalDamage" = 0.25,"Harden" = 2, "WaveDancer" = 2)
 		StyleFor = 1.6
 		StyleSpd = 1.2
 		StyleOff = 1.2
@@ -18,7 +18,7 @@
 		SignatureTechnique = 3
 		passives = list("Atomizer" = 1, "BetterAim" = 3, "SuperCharge" = 2, "Familiar" = 3, "SpiritFlow" = 4, \
 		            "ThunderHerald" = 1, "CriticalChance" = 25, "CriticalDamage" = 0.1, "Godspeed" = 3, "AirBend" = 2, \
-		            "Hardening" = 2, "Scorching" = 8, "Shattering" = 8, "Shocking" = 8, "Freezing" = 8)
+		            "Harden" = 2, "Scorching" = 8, "Shattering" = 8, "Shocking" = 8, "Freezing" = 8)
 		StyleFor = 1.5
 		StyleOff = 1.5
 		StyleActive = "Annihilation"
@@ -48,7 +48,7 @@
 					ElementalDefense = "Wind"
 					ElementalClass = list("Wind","Water")
 					BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Aura/Water"
-					passives = list("IceHerald" = 1,"Familiar" = 2, "ThunderHerald" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "SpiritFlow" = 4, "Hardening" = 2, \
+					passives = list("IceHerald" = 1,"Familiar" = 2, "ThunderHerald" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "SpiritFlow" = 4, "Harden" = 2, \
 					                "Freezing" = 5, "Shocking" = 5, "WaveDancer" = 1.5)
 					Finisher="/obj/Skills/Queue/Finisher/Frostfist"
 					StyleActive = "Blizzard"
@@ -73,7 +73,7 @@
 					StyleSpd = 1.3
 					BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Aura/Earth"
 					passives = list("SuperCharge" = 1,"Familiar" = 2, "SpiritFlow" = 4, "ThunderHerald" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.1, \
-					                "Godspeed" = 2, "AirBend" = 1.5, "Hardening" = 2, "Burning" = 2, "Shattering" = 5, "Shocking" = 2, "Chilling" = 2)
+					                "Godspeed" = 2, "AirBend" = 1.5, "Harden" = 2, "Burning" = 2, "Shattering" = 5, "Shocking" = 2, "Chilling" = 2)
 					Finisher="/obj/Skills/Queue/Finisher/Mega_Arm" // Super_mega_buster
 					StyleActive = "Plasma"
 				if("singularity")

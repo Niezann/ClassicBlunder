@@ -500,7 +500,6 @@ NEW VARIABLES
 	var/Duel //actually calls for 1v1 me faggot
 	var/Invisible//Makes u invisible.
 	var/SeeInvisible//makes u see the above
-	var/Hardening//Makes you trigger the Hardening buff when hit.
 	var/DebuffReversal//Makes you eat debuffs like mmm thats some tasty fuck
 	var/StunningStrike//This value * 2.5 chance of inflicting 1 second stun.
 	var/SpecialStrike//projectile attack triggers of normal when outta melee range
@@ -1163,7 +1162,7 @@ NEW VARIABLES
 							src.ActiveMessage="calls forth the true form of █████████████, the ███████ of ████████!"
 							src.OffMessage="conceals █████████████.."
 						if("Green Dragon Crescent Blade")
-							passives = list("Duelist" = max(1,usr.SagaLevel/2), "Hardening" = usr.SagaLevel/2, "Mythical" = usr.SagaLevel*0.16, "PULock" = 1)
+							passives = list("Duelist" = max(1,usr.SagaLevel/2), "Harden" = usr.SagaLevel/2, "Mythical" = usr.SagaLevel*0.16, "PULock" = 1)
 							src.ActiveMessage="calls forth the true form of the Green Dragon Crescent Blade, the Spear of War!"
 							src.OffMessage="restrains Guan Yu's fury..."
 
@@ -2880,7 +2879,7 @@ NEW VARIABLES
 				StrMult=1.2
 				EndMult=1.3
 				passives = list ("ManaLeak" = 1, "WeaponBreaker" = 1, "Juggernaut" = 1,\
-				 "Hardening" = 2, "CriticalDamage" = 0.5, "CriticalChance" = 5)
+				 "Harden" = 2, "CriticalDamage" = 0.5, "CriticalChance" = 5)
 				DefMult=0.5
 				IconLock='BusoKoka.dmi'
 				LockX=0
@@ -2897,7 +2896,7 @@ NEW VARIABLES
 					var/reducedPot = totalPot/10
 					passives = list("ManaLeak" = 1 - totalPot/200, "WeaponBreaker" = 0.3 * reducedPot, \
 					"BlockChance" = round(reducedPot/10,1), "CriticalBlock" = round(reducedPot/15), \
-					"Hardening" = reducedPot * 0.5, "Juggernaut" = 1, "DemonicDurability" = reducedPot * 0.3)
+					"Harden" = reducedPot * 0.5, "Juggernaut" = 1, "DemonicDurability" = reducedPot * 0.3)
 				verb/Armstrong_Augmentation()
 					set category="Skills"
 					adjust(usr)
@@ -4486,7 +4485,7 @@ NEW VARIABLES
 			OffMult=1.5
 			SpecialSlot=1
 			passives = list("GodKi" = 0.25, "BlockChance" = 50, "CriticalBlock" = 0.5, "Sunyata" = 3, "Deflection" = 10, "Reversal" = 1, "GiantForm" = 1, \
-								"Blubber" = 5, "KBRes" = 5, "Hardening" = 5, "CounterMaster" = 10, "Juggernaut" = 5, "LikeWater" = 10, "LifeGeneration" = 5, "Death X-Antibody" = 1)
+								"Blubber" = 5, "KBRes" = 5, "Harden" = 5, "CounterMaster" = 10, "Juggernaut" = 5, "LikeWater" = 10, "LifeGeneration" = 5, "Death X-Antibody" = 1)
 			FlashChange=1
 			ActiveMessage="taps into the power of the X-Antibody within them, achieving an evolution superior to any other."
 			OffMessage="releases the power of their evolution."
@@ -5346,8 +5345,7 @@ NEW VARIABLES
 				SkillCost=TIER_3_COST
 				Copyable=3
 				ManaCost=3
-				passives = list("Hardening" = 0.5)
-				Hardening=0.5
+				passives = list("Harden" = 0.5)
 				ActiveMessage="uses a spell to give themselves the endurance of the earth!"
 				OffMessage="dissipates their earth protection..."
 				TextColor=rgb(153, 51, 0)
@@ -5366,10 +5364,9 @@ NEW VARIABLES
 				Copyable=4
 				PreRequisite=list("/obj/Skills/Buffs/SlotlessBuffs/Magic/Stone_Skin")
 				ManaCost=12
-				passives = list("Hardening" = 1, "Pursuer" = 1, "Instinct" = 1)
+				passives = list("Harden" = 1, "Pursuer" = 1, "Instinct" = 1)
 				Instinct=1
 				Pursuer=1
-				Hardening=3
 				TextColor=rgb(255, 0, 0)
 				ActiveMessage="uses a spell to draw out their highest effort!"
 				OffMessage="dissipates their extra effort..."
@@ -5389,11 +5386,10 @@ NEW VARIABLES
 				PreRequisite=list("/obj/Skills/Buffs/SlotlessBuffs/Magic/True_Effort")
 				ManaCost=10
 				TimerLimit=30
-				passives = list("Hardening" = 1.5, "Flow" = 1, "Instinct" = 1, "Pursuer" = 1)
+				passives = list("Harden" = 1.5, "Flow" = 1, "Instinct" = 1, "Pursuer" = 1)
 				Flow=1
 				Instinct=1
 				Pursuer=1
-				Hardening=3
 				TextColor=rgb(255, 0, 0)
 				ActiveMessage="uses a spell to mimic the will of a hero!"
 				OffMessage="dissipates their heroic will..."
@@ -5650,7 +5646,7 @@ NEW VARIABLES
 						if(p.isInnovative(ELF, "Any") && !isInnovationDisable(p))
 							VaizardHealth=1.5
 							AffectTarget = 0
-							passives = list("Hardening" = p.getTotalMagicLevel()/10)
+							passives = list("Harden" = p.getTotalMagicLevel()/10)
 							applyToTarget=0
 							TimerLimit= 30 + p.getTotalMagicLevel()
 							VaizardShatter=1
@@ -5712,7 +5708,7 @@ NEW VARIABLES
 						if(p.isInnovative(ELF, "Any") && !isInnovationDisable(p))
 							VaizardHealth=3
 							AffectTarget = 0
-							passives = list("Hardening" = p.getTotalMagicLevel()/5)
+							passives = list("Harden" = p.getTotalMagicLevel()/5)
 							TimerLimit=30 + p.getTotalMagicLevel()
 							VaizardShatter=1
 							applyToTarget = 0
@@ -5838,7 +5834,7 @@ NEW VARIABLES
 						if(p.isInnovative(ELF, "Any")&& !isInnovationDisable(p))
 							VaizardHealth=5
 							AffectTarget = 0
-							passives = list("Hardening" = p.getTotalMagicLevel()/5)
+							passives = list("Harden" = p.getTotalMagicLevel()/5)
 							TimerLimit= 60 + p.getTotalMagicLevel() * 2
 							VaizardShatter=1
 							applyToTarget = 0
@@ -9218,12 +9214,11 @@ NEW VARIABLES
 		Haki
 			Cooldown=0
 			Haki_Armament
-				Hardening=1
 				NoForcedWhiff=1
 				adjust(mob/p)
 					if(altered) return
 					var/secretLevel = p.secretDatum.currentTier
-					passives = list("Hardening" = clamp(secretLevel,1,2), "NoForcedWhiff" = 1, "UnarmedDamage" = secretLevel/2, "SwordDamage" = secretLevel/2 )
+					passives = list("Harden" = clamp(secretLevel,1,2), "NoForcedWhiff" = 1, "UnarmedDamage" = secretLevel/2, "SwordDamage" = secretLevel/2 )
 					strAdd = 0.1 * secretLevel
 					endAdd = 0.05 * secretLevel
 				Trigger(mob/User, Override = 1)
@@ -9235,14 +9230,13 @@ NEW VARIABLES
 				Cooldown=30
 				CooldownStatic=1
 				TimerLimit=15
-				Hardening=2
 				KBRes=2
 				KBMult=2
 				ActiveMessage="darkens their entire body with indomitable willpower!"
 				adjust(mob/p)
 					if(altered) return
 					var/secretLevel = p.secretDatum.currentTier
-					passives = list("Hardening" = clamp(secretLevel,1,4), "KBRes" = secretLevel, "KBMult" = secretLevel)
+					passives = list("Harden" = clamp(secretLevel,1,4), "KBRes" = secretLevel, "KBMult" = secretLevel)
 					StrMult = 1.05 + (0.05 * secretLevel)
 					EndMult = 1.05 + (0.05 * secretLevel)
 					TimerLimit = 20 + (10 * secretLevel)
@@ -9260,7 +9254,7 @@ NEW VARIABLES
 				adjust(mob/p)
 					if(altered) return
 					var/secretLevel = p.secretDatum.currentTier
-					passives = list("Hardening" = secretLevel/2)
+					passives = list("Harden" = secretLevel/2)
 					StrMult = 1 + (0.05 * secretLevel)
 					EndMult = 1 + (0.05 * secretLevel)
 					TimerLimit = 15 + (5 * secretLevel)
@@ -9563,7 +9557,7 @@ NEW VARIABLES
 										"AngerThreshold" = 1.25 + (0.15 * (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired)),\
 						 				"Pursuer" = (p.transUnlocked ? p.transUnlocked : p.AscensionsAcquired),\
 										"CallousedHands" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],250),\
-						  				"Hardening" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],50), \
+						  				"Harden" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],50), \
 										"Flicker" = ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25));
 
 						PowerMult=1+(0.05+(0.05*ROUND_DIVIDE(p.secretDatum.secretVariable["Madness"],25)))
@@ -9936,7 +9930,7 @@ NEW VARIABLES
 						DefMult=1.25
 						ElementalOffense="Dark"
 						ElementalDefense="Dark"
-						passives = list("TensionLock" = 1, "SpiritHand" = 1, "SpiritFlow" = 1, "PureReduction" = 2, "TechniqueMastery" = 5, "Hardening" = 1, "SpiritualDamage" = 2, "DeathField" = 2)
+						passives = list("TensionLock" = 1, "SpiritHand" = 1, "SpiritFlow" = 1, "PureReduction" = 2, "TechniqueMastery" = 5, "Harden" = 1, "SpiritualDamage" = 2, "DeathField" = 2)
 						ActiveMessage="enters a Dire Trance!!"
 						OffMessage="loses their magical rage..."
 					Astral_Empowerment
@@ -10931,7 +10925,7 @@ NEW VARIABLES
 						ElementalDefense = "Earth"
 						endAdd = 0.15 * asc
 						passives = list("PureReduction" = asc+1, "BlockChance" = (5*(asc+1)), "CriticalBlock" = (0.1*(asc+1)),\
-										"CallousedHands" = (0.15*(asc+1)), "Hardening" = 2 + (asc/2))
+										"CallousedHands" = (0.15*(asc+1)), "Harden" = 2 + (asc/2))
 					Trigger(mob/User, Override = FALSE)
 						if(!User.BuffOn(src))
 							adjust(User)
@@ -11058,7 +11052,7 @@ NEW VARIABLES
 				adjust(mob/p)
 					if(altered) return
 					var/asc = p.AscensionsAcquired
-					passives = list("Unstoppable" = 1, "Hardening" = 1 + (0.5 * asc), "LifeSteal" = 1.5*asc, "Godspeed" = 1+(asc), "SweepingStrike" = 1)
+					passives = list("Unstoppable" = 1, "Harden" = 1 + (0.5 * asc), "LifeSteal" = 1.5*asc, "Godspeed" = 1+(asc), "SweepingStrike" = 1)
 					VaizardHealth = 1.5 + p.GetEnd() + (p.TotalInjury/25) + (asc)
 					// this was 17.5% guys lol
 					if(asc>=1)

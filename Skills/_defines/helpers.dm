@@ -1,7 +1,3 @@
-// proc/isAChild(typePath, parentPath)
-//     if(typePath in typesof(parentPath))
-//         return TRUE
-//     return FALSE
 /mob/proc/throwSkill(obj/Skills/s)
     if(istype(s, /obj/Skills/AutoHit))
         Activate(s, TRUE)
@@ -20,7 +16,7 @@
             path = text2path(path)
         if(!s)
             s = new path
-    else
+    else//unsure if this will ever fire, and if it does, it might not be a good thing...? but whatever
         s = path
     AddSkill(s)
     return s

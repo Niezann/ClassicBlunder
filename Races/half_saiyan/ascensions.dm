@@ -160,5 +160,5 @@ ascension
 					..()
 					owner << "You embrace domination, primal ferocity and power surge through you!"
 					if(owner.Class == "Justice")
-						user.race.transformations += new /transformation/saiyan/super_saiyan_3()
-						user.race.transformations += new /transformation/saiyan/super_saiyan_4()
+						owner.race.transformations += new /transformation/saiyan/super_saiyan_3()
+						owner.race.transformations += new /transformation/saiyan/super_saiyan_4()

@@ -127,6 +127,25 @@ mob/proc/AppearanceOn()
 			I.suffix = null
 			I.AlignEquip(src)
 
+	if(WarpStrikeHidingWeapon)
+		var/obj/Items/Sword/sword = EquippedSword()
+		var/obj/Items/Enchantment/Staff/staff = EquippedStaff()
+		var/obj/Items/weapon = sword ? sword : staff
+		if(weapon)
+			var/placement = FLOAT_LAYER-3
+			if(weapon.LayerPriority)
+				placement -= weapon.LayerPriority
+			if(weapon.EquipIcon)
+				overlays -= image(icon=weapon.EquipIcon, pixel_x=weapon.pixel_x, pixel_y=weapon.pixel_y, layer=placement)
+			else
+				var/image/im = image(icon=weapon.icon, pixel_x=weapon.pixel_x, pixel_y=weapon.pixel_y, layer=placement)
+				overlays -= im
+				if(istype(weapon, /obj/Items/Sword) || istype(weapon, /obj/Items/Enchantment/Staff))
+					var/image/im2 = image(icon=weapon.icon, pixel_x=weapon.pixel_x, pixel_y=weapon.pixel_y, layer=placement)
+					im2.transform *= 3
+					im2.appearance_flags += 512
+					overlays -= im2
+
 
 	src.Hairz("Add")
 

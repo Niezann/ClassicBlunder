@@ -362,6 +362,7 @@ mob
 			if(src.HasDebuffResistance())
 				Value/=1+src.GetDebuffResistance()
 			Value = Value*(1-(src.Slow/glob.DEBUFF_STACK_RESISTANCE))
+			Value -= (Value * getChillResistValue())
 			src.Slow+=Value
 
 			if(Value >=1)

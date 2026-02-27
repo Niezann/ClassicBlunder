@@ -19,7 +19,7 @@
         EndMult = 1.2 + (0.05 * secretLevel) 
         DefMult = 1.2 + (0.05 * secretLevel)
         // Tier Adjusted Passives
-        passives["Hardening"] = clamp(secretLevel*2, 1, 5) // starts at 1, adds 2 per tier, caps at 5 (tier 3)
+        passives["Harden"] = clamp(secretLevel*2, 1, 5) // starts at 1, adds 2 per tier, caps at 5 (tier 3)
         passives["PureReduction"] = clamp(secretLevel >= 3 ? (secretLevel+mod) : 0, 0, 5); //Scales from tier 3 (1) to tier 5 (5)
         passives["Godspeed"] = secretLevel
         passives["Deflection"] = (0.5 * secretLevel) //Goes from 1 to 3

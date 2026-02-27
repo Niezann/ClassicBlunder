@@ -5,7 +5,7 @@ race
 		visual = 'Yokai.png'
 
 		skills = list(/obj/Skills/Buffs/SlotlessBuffs/Spirit_Form, /obj/Skills/AutoHit/Mist_Form)
-		passives = list("ManaGeneration" = 2, "Touch of Death" = 1, )
+		passives = list("ManaGeneration" = 2, "Touch of Death" = 1)
 		strength = 1.25
 		endurance = 1.25
 		speed = 1

@@ -53,9 +53,9 @@
 	log2text("Damage", "After BalanceDamage", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("Damage", val,"damageDebugs.txt", "[src.ckey]/[src.name]")
 	#endif
-	val /= getInfactuation(defender)//TODO between wipes: typo
+	val /= getInfatuation(defender)
 	#if DEBUG_DAMAGE
-	log2text("Damage", "After Infactuation", "damageDebugs.txt", "[src.ckey]/[src.name]")
+	log2text("Damage", "After Infatuation", "damageDebugs.txt", "[src.ckey]/[src.name]")
 	log2text("Damage", val,"damageDebugs.txt", "[src.ckey]/[src.name]")
 	#endif
 	var/preCrit = val

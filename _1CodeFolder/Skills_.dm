@@ -362,10 +362,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 								var/obj/Skills/Queue/Vampire_Rage/VR=new/obj/Skills/Queue/Vampire_Rage
 								VR.adjust(src)
 								src.SetQueue(VR)
-						if(src.Secret=="Eldritch" && CheckSlotless("True Form") && !src.AttackQueue)
-							var/obj/Skills/Queue/Eldritch_Ruinate/ER=new/obj/Skills/Queue/Eldritch_Ruinate
-							ER.adjust(src)
-							src.SetQueue(ER)
+						if(canSetEldritchRuinate()) setEldritchRuinate();
 
 				if(Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Dragon Dash"))
 					Delay = 0.75 / secretDatum?:getBoon(src, "Dragon Dash")

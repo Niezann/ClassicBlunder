@@ -395,6 +395,7 @@ mob/var
 	tmp/IconClicked=0
 	tmp/NextAttack		//As world.time
 	tmp/ContinuousAttacking
+	tmp/WarpStrikeHidingWeapon=0
 	tmp/mob/Grab
 	Power_Multiplier=1 //This changes temporarily with the use of power altering abilities.
 	PowerEroded=0
@@ -472,7 +473,6 @@ mob/var
 	StanceActive
 	Style
 	StyleActive
-	Hardening=0
 	Confused//The amount of time you have reversed movement for.
 	AngerMult//allows anger multipliers to stack. oh my god
 	AngerThreshold//if you're not angry enough, this will make you angry enough
