@@ -98,6 +98,7 @@ Inspiration taken from Sett (League of Legends)}",\
 
 				if("Trickster")
 					imagination = 2
+					intellect = 1;
 					p.passive_handler.Increase("Spiritual Tactician", 1)
 					p.AddSkill(new/obj/Skills/Utility/Imitate)
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Racial/Blend_In)

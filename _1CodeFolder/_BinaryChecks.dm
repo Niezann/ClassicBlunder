@@ -2593,21 +2593,6 @@ mob
 			if(src.MeditateModule)
 				Total+=3
 			return Total
-		HasEnhancementChips()
-			var/Total=0
-			if(src.EnhancedStrength)
-				Total+=src.EnhancedStrength
-			if(src.EnhancedForce)
-				Total+=src.EnhancedForce
-			if(src.EnhancedEndurance)
-				Total+=src.EnhancedEndurance
-			if(src.EnhancedAggression)
-				Total+=src.EnhancedAggression
-			if(src.EnhancedReflexes)
-				Total+=src.EnhancedReflexes
-			if(src.EnhancedSpeed)
-				Total+=src.EnhancedSpeed
-			return Total
 
 
 		CursedWounds()

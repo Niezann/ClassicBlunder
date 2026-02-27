@@ -58,7 +58,8 @@ ascension
 			offense = 0.25
 			defense = 0.25
 			speed = 0.25
-			passives = list("DebuffResistance" = 0.5, "SoulFire" = 1, "DeathField" = 2.5, "VoidField" = 2.5, "PureDamage"=1, "PureReduction"=1, "BlockChance"=5, "CriticalBlock"=0.1, "BuffMastery"=1)
+			enhanceChips = 14;
+			passives = list("MovementMastery"=2, "DebuffResistance" = 0.5, "SoulFire" = 1, "DeathField" = 2.5, "VoidField" = 2.5, "PureDamage"=1, "PureReduction"=1, "BlockChance"=5, "CriticalBlock"=0.1, "BuffMastery"=1)
 			on_ascension_message = "Your fantasies are bleeding entropy... But what fantasy do you chase?"
 			onAscension(mob/owner)
 				switch(owner.race.ascensions[1].choiceSelected)
