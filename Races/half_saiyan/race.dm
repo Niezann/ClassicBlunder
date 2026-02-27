@@ -40,22 +40,22 @@ race
 			user.race.transformations.Cut()
 
 			if(user.Class == "Compassion")
-				for(var/transformation/saiyan/ssj in o.race.transformations)
-					o.race.transformations -=ssj
+				for(var/transformation/saiyan/ssj in user.race.transformations)
+					user.race.transformations -=ssj
 					del ssj
-				for(var/transformation/half_saiyan/UM in o.race.transformations)
-					o.race.transformations -=UM
-					del UM				
+				for(var/transformation/half_saiyan/UM in user.race.transformations)
+					usr.race.transformations -=UM
+					del UM
 				user.race.transformations += new /transformation/saiyan/super_saiyan()
 				user.race.transformations += new /transformation/saiyan/super_saiyan_2()
 				user.race.transformations.Add(new/transformation/half_saiyan/human/ultimate_mode())
 				user.race.transformations.Add(new/transformation/half_saiyan/human/beast_mode())
 			else if(user.Class == "Justice")
-				for(var/transformation/saiyan/ssj in o.race.transformations)
-					o.race.transformations -=ssj
+				for(var/transformation/saiyan/ssj in user.race.transformations)
+					user.race.transformations -=ssj
 					del ssj
-				for(var/transformation/half_saiyan/UM in o.race.transformations)
-					o.race.transformations -=UM
-					del UM				
+				for(var/transformation/half_saiyan/UM in user.race.transformations)
+					user.race.transformations -=UM
+					del UM
 				user.race.transformations += new /transformation/saiyan/super_saiyan()
 				user.race.transformations += new /transformation/saiyan/super_saiyan_2()

@@ -146,7 +146,7 @@ transformation
 			strengthadd = 0.2
 			forceadd = 0.2
 			mastery_boons(mob/user)
-				if(mastery >= 100 && user.Class == "Justice"))
+				if(mastery >= 100 && user.Class == "Justice")
 					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/half_saiyan/adaptive)
 						if(mastery >= 100)
 							user.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/SuperSaiyan2Enhanced)
