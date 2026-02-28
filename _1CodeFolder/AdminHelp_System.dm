@@ -76,6 +76,7 @@ mob/verb/AdminHelp(var/txt as message)
 	set category="Other"
 	if(!(world.time > verb_delay)) return
 	verb_delay=world.time+1
+	if(!txt || length(txt) <= 0) return
 	//var/obj/Admin_Help_Object/A_Apply = new()
 	var/obj/Admin_Help_Object/AHelp = new()
 	AHelp.name = "[usr.key]     "
@@ -87,14 +88,6 @@ mob/verb/AdminHelp(var/txt as message)
 	txt=copytext(txt,1,10000)
 	AHelp.AdminHelp_Message = txt
 	AdminHelps.Add(AHelp)
-	if(glob.discordAdminHelpWebhookURL)
-		usr.client.HttpPost(
-			"[glob.discordAdminHelpWebhookURL]",
-			list(
-				content = "	**[usr.key]'s AHelp:** ```"+txt+"```",
-				username = "AdminHelp"
-			)
-		)
 	for(var/mob/Players/M in admins)
 		if(M.Admin)
 			M <<"<font color=red>(PLAYER HELP)</font color> <a href=?src=\ref[usr];action=MasterControl;do=PM;ID=[AHelp.UniqueID]>[usr.key]</a href>[M.Controlz(usr)] : [txt]"
@@ -103,6 +96,8 @@ mob/verb/AdminHelp(var/txt as message)
 				winset(M, "mainwindow", "flash=-1")
 	Log("AdminPM","(Admin Help from [usr.key]): [txt]")
 	usr<<"Your message:\n\n[txt]\n\nhas been sent to the admin!"
+	if(glob.discordAdminHelpWebhookURL)
+		world.Export("[glob.discordAdminHelpWebhookURL]", list("content" = "**[usr.key]'s AHelp:** ```"+txt+"```"), 0, null, "POST")
 
 
 mob/verb/DeleteAdminHelp()
