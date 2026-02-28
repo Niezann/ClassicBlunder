@@ -15,7 +15,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 0
+	var/UPDATE_VERSION = 1
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)

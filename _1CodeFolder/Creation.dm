@@ -181,8 +181,6 @@ mob/Players
 			var/updateversion = "/update/version[glob.UPDATE_VERSION]"
 			if(ispath(updateversion))
 				updateVersion = new updateversion
-				if(isRace(ANDROID) && updateVersion.version == 2)
-					updateVersion.updateMob(src)
 		if(RPPSpendable + RPPSpent > RPPCurrent)
 			AdminMessage("[src] has more rpp than they should.")
 

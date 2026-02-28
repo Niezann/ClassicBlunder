@@ -779,28 +779,16 @@ mob/Admin2/verb
 				switch(input("IC Announcement or OOC Announcement?") in list("IC", "OOC"))
 					if("IC")
 						if(glob.discordICAnnounceWebhookURL)
-							usr.client.HttpPost(
-								"[glob.discordICAnnounceWebhookURL]",
-								list(
-									content = discord_output,
-									username = "Story Announcement"
-								)
-							)
+							for(var/mob/M in admins) M<<"[usr] used message (global)."
+							world.Export("[glob.discordICAnnounceWebhookURL]", list("content" = discord_output), 0, null, "POST")
 						else
-							usr << "The OOCAnnounce webhook wasn't set up!"
+							usr << "The ICAnnounce webhook wasn't set up!"
 					if("OOC")
 						if(glob.discordOOCAnnounceWebhookURL)
-							usr.client.HttpPost(
-								"[glob.discordOOCAnnounceWebhookURL]",
-								list(
-									content = discord_output,
-									username = "OOC Announcement"
-								)
-							)
+							for(var/mob/M in admins) M<<"[usr] used message (global)."
+							world.Export("[glob.discordOOCAnnounceWebhookURL]", list("content" = discord_output), 0, null, "POST")
 						else
 							usr << "The OOCAnnounce webhook wasn't set up!"
-
-		for(var/mob/M in admins) M<<"[usr] used message (global)."
 
 	Teleport(mob/M as mob|obj in world)
 		set category="Admin"
