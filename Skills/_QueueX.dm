@@ -965,7 +965,7 @@ obj
 							Grapple = 0
 							FollowUp = null
 
-						if(!usr.Secret && !usr.HasWitchCraft()||usr.isRace(ANGEL) || usr.Secret == "Goetic Virtue"||usr.Secret == "Ultra Instinct" || usr.Secret == "Stellar Constellation" || usr.Secret == "Elven Sanctuary" || usr.Secret == "Eldritch" && !usr.CheckSlotless("True Form") || usr.Secret == "Jagan" ||usr.Secret=="Necromancy"||usr.Secret=="Ripple"&&!usr.HasRipple()||usr.Secret=="Senjutsu"&&!usr.CheckSlotless("Senjutsu Focus") || usr.Secret =="Heavenly Restriction" && !usr.secretDatum?:hasImprovement("Heavy Strike") || usr.Secret=="Shin")//Just default Heavy Strike
+						if(!usr.Secret && !usr.HasWitchCraft()||usr.isRace(ANGEL) || usr.Secret == "Goetic Virtue"||usr.Secret == "Ultra Instinct" || usr.Secret == "Stellar Constellation" || usr.Secret == "Elven Sanctuary" || usr.Secret == "Eldritch" && !usr.CheckSlotless("True Form") || usr.Secret == "Jagan" ||usr.Secret=="Necromancy"||usr.Secret=="Ripple"&&!usr.HasRipple()||usr.Secret=="Senjutsu"&&!usr.CheckSlotless("Senjutsu Focus") || usr.Secret =="Heavenly Restriction" && !usr.secretDatum?:hasImprovement("Heavy Strike") || usr.Secret=="Shin" && (!usr.CheckSlotless("Shin Radiance") || !usr.CheckSlotless("Mang Resonance")))//Just default Heavy Strike
 							src.name="Heavy Strike"
 							src.DamageMult=2
 							src.AccuracyMult=1
@@ -1571,10 +1571,64 @@ obj
 							usr.SetQueue(src)
 							return
 						if(usr.Secret=="Shin" && usr.CheckSlotless("Shin Radiance")) //You'll find this under Shin/skills.dm
-							ShinHeavyStrike()
+							src.name="Shin Strike"
+							src.DamageMult=2
+							src.AccuracyMult=1
+							Duration=10
+							src.KBAdd=5
+							src.KBMult=3
+							src.Cooldown=30
+							src.ActiveMessage="channels Shin into their next strike."
+							src.HitMessage="delivers a blow radiating with power!"
+							src.Ooze = 0
+							src.CursedWounds=0
+							src.Scorching=0
+							src.Freezing=0
+							src.Paralyzing=0
+							src.Shattering=0
+							src.Toxic=0
+							src.Combo=0
+							src.Warp=0
+							src.Rapid=0
+							src.LifeSteal=0
+							src.Crippling=0
+							src.Grapple=0
+							src.ManaGain= clamp(usr.ShinSecretLevel()*5, 10, 30) // Tier 1/2= 10 tier 3 = 15, Tier 4 = 20 Tier 5 = 25 tier 6 = 30
+							Dunker = 0
+							Launcher = 0
+							PushOutWaves = 0
+							PushOut = 0
+							usr.SetQueue(src)
 							return
-						if(usr.Secret=="Shin" && usr.CheckSlotless("Shin Radiance"))
-							MangHeavyStrike()
+						if(usr.Secret=="Shin" && usr.CheckSlotless("Mang Resonance"))
+							src.name="Mang Strike"
+							src.DamageMult=clamp(usr.GetMangLevel()*2, 3, 10) // yeah this is gonna get out of hand real fucking fast
+							src.AccuracyMult=1
+							Duration=10
+							src.KBAdd=5
+							src.KBMult=3
+							src.Cooldown=40
+							src.ActiveMessage="concentrates their mang."
+							src.HitMessage="strikes with the power of [usr.GetMangLevel()] Mang."
+							src.Ooze = 0
+							src.CursedWounds=0
+							src.Scorching=0
+							src.Freezing=0
+							src.Paralyzing=0
+							src.Shattering=0
+							src.Toxic=0
+							src.Combo=0
+							src.Warp=0
+							src.Rapid=0
+							src.LifeSteal=0
+							src.Crippling=0
+							src.Grapple=0
+							src.ManaGain=0
+							Dunker = 0
+							Launcher = 0
+							PushOutWaves = 0
+							PushOut = 0
+							usr.SetQueue(src)
 							return
 			Meteor_Mash
 				name="Meteor Mash"

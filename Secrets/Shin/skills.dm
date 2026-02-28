@@ -28,7 +28,7 @@ obj/Skills/Queue/Heavy_Strike/proc/ShinHeavyStrike(mob/m) // This is called in Q
     PushOut = 0
     return
 
-obj/Skills/Queue/proc/MangHeavyStrike(mob/m) // This is also called in QueueX
+obj/Skills/Queue/Heavy_Strike/proc/MangHeavyStrike(mob/m) // This is also called in QueueX
     src.name="Mang Strike"
     src.DamageMult=clamp(m.GetMangLevel()*2, 3, 10) // yeah this is gonna get out of hand real fucking fast
     src.AccuracyMult=1
