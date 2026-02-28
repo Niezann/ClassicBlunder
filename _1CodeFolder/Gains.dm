@@ -722,7 +722,7 @@ mob
 					senjutsuOverloadAlert=FALSE
 					src << "You exhaust your natural energy, avoiding death by overexposure."
 
-			if(src.HasRipple()||(!src.CheckSlotless("Half Moon Form")&&!src.CheckSlotless("Full Moon Form"))||src.Secret=="Senjutsu"&&src.CheckSlotless("Senjutsu Focus")||Secret=="Eldritch"&&!CheckSlotless("True Form"))
+			if(src.RippleActive()||(!src.CheckSlotless("Half Moon Form")&&!src.CheckSlotless("Full Moon Form"))||src.Secret=="Senjutsu"&&src.CheckSlotless("Senjutsu Focus")||Secret=="Eldritch"&&!CheckSlotless("True Form"))
 				if(src.icon_state=="Train"&&!src.PoseEnhancement)
 					if(src.Secret=="Werewolf"&&!src.PoseTime)
 						src << "You focus your instincts perfectly on the chosen target, ready to leap any second!"
@@ -733,9 +733,9 @@ mob
 							PoseTime = 0
 							for(var/obj/Skills/Buffs/SlotlessBuffs/Eldritch/True_Form/fmf in src)
 								fmf.Trigger(src)
-						if(src.HasRipple() && src.PoseTime==5)
+						if(src.RippleActive() && src.PoseTime==5)
 							src << "The Ripple flows through your body perfectly!  You have gained full control over your breathing!"
-						if(src.HasRipple())
+						if(src.RippleActive())
 							if(src.Swim==1)
 								src.RemoveWaterOverlay()
 								src.underlays+=image('The Ripple.dmi', pixel_x=-32, pixel_y=-32)

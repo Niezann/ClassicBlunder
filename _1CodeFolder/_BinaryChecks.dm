@@ -1463,17 +1463,10 @@ mob
 			if(passive_handler.Get("NeedsSword"))
 				return 1
 			return 0
-		HasRipple()
+		RippleActive()
 			if(passive_handler.Get("Ripple"))
 				return 1
-			if(secretDatum && Secret == "Ripple")
-				return 1
 			return 0
-		HasWitchCraft()
-			if(locate(/obj/Items/WitchCraft/WitchesBook, src.contents))
-				return 1
-			else
-				return 0
 		GetRipple()
 			var/RippleEffectivness=1
 			if(src.Slow)
@@ -2267,13 +2260,13 @@ mob
 		HasBeyondPurity()
 			if(passive_handler.Get("BeyondPurity"))
 				return 1
-			if(src.SlotlessBuffs["Sparkling Ripple"]&&src.HasRipple())//Ripple Pure shenanigans
+			if(src.SlotlessBuffs["Sparkling Ripple"]&&RippleActive())//Ripple Pure shenanigans
 				return 1
 			return 0
 		HasPurity()
 			if(passive_handler.Get("Purity"))
 				return 1
-			if(src.SlotlessBuffs["Sparkling Ripple"]&&src.HasRipple())//Ripple Pure shenanigans
+			if(src.SlotlessBuffs["Sparkling Ripple"]&&RippleActive())//Ripple Pure shenanigans
 				return 1
 			return 0
 		HasNoAnger()

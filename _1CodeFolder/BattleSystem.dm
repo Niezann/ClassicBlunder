@@ -2094,7 +2094,7 @@ mob/proc/Grab_Update()
 			src.Grab_Release()
 
 mob/proc/Grab_Effects(var/mob/P)
-	if(src.HasRipple())
+	if(src.RippleActive())
 		if(src.Oxygen > src.OxygenMax*0.9)
 			src.OMessage(10,"[src] channels the Ripple into [P]...","[src]([src.key]) tests [ExtractInfo(P)]")
 			src.Oxygen-=0.1*src.OxygenMax

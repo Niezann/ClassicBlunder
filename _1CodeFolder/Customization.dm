@@ -93,7 +93,7 @@ mob/proc/Auraz(var/Z)
 
 		src.Auraz("Remove")
 
-		if(src.HasRipple())
+		if(src.RippleActive())
 			src.underlays+=gold2
 
 		if(src.AuraLocked==1)

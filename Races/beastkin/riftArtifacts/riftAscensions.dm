@@ -17,7 +17,6 @@
     speed = 1;
     offense = 0.5;
 
-//i be making new passives n shit
 /ascension/sub_ascension/beastkin/rus
     passives = list("GodSpeed" = 1, "ChillResistance" = 1);
     speed = 1.5;

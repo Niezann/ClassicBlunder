@@ -5529,7 +5529,7 @@ obj
 							src.transform*=Z.IconSize
 					src.ProjectileSpin=Z.ProjectileSpin
 
-					if(src.Owner.HasRipple())
+					if(src.Owner.RippleActive())
 						BreathCost=1*src.DamageMult
 						if(Z.AttackReplace==1)
 							BreathCost=0.2
@@ -5776,7 +5776,7 @@ obj
 								return
 
 
-							if(src.Owner.HasRipple())
+							if(src.Owner.RippleActive())
 								if(src.Owner.Oxygen>=BreathCost)
 									var/RipplePower=(1+(0.25*src.Owner.GetRipple()*max(1,src.Owner.PoseEnhancement*2)))
 									accmult*=RipplePower
@@ -5929,7 +5929,7 @@ obj
 						#endif
 						if(Bounce)
 							Damage *= max(1-glob.BOUNCE_REDUCTION * CurrentBounce, 0.25)
-						if(src.Owner.HasRipple())
+						if(src.Owner.RippleActive())
 							if(src.Owner.Oxygen>=BreathCost)
 								var/RipplePower=(1+(0.25*src.Owner.GetRipple()*max(1,src.Owner.PoseEnhancement*2)))
 								Damage*=RipplePower

@@ -5091,7 +5091,7 @@ mob
 				Z.ExtendMemory=src.GetExtend()
 				Z.Distance+=Z.ExtendMemory//Increase distance for this shot...
 				Z.Size+=Z.ExtendMemory
-			if(src.HasRipple())
+			if(src.RippleActive())
 				var/BreathCost=Z.DamageMult*10
 				if(Z.Rounds)
 					BreathCost*=sqrt(Z.Rounds)
@@ -5595,7 +5595,7 @@ mob
 				src.Frozen=0
 			if(Z.Attracting)
 				src.Attracting-=Z.Attracting
-			if(src.HasRipple())
+			if(src.RippleActive())
 				Z.DamageMult/=Z.RipplePower
 				Z.RipplePower=1
 			if(Z.OldHitSpark)

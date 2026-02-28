@@ -5,7 +5,7 @@
 #define MADNESS_ADD_PER_TIER 25
 
 #define VALID_SECRET_LIST list("Jagan Eye", "Haki", "Hamon", "Vampire", "Eldritch", "Werewolf", "Heavenly Restriction", "Senjutsu", "Shin",\
-"Ultra Instinct")
+"Ultra Instinct", "Zombie", "Necromancy")
 
 //thank you hadoje
 /mob/var/SecretInformation/secretDatum = new()
@@ -310,6 +310,7 @@ SecretInformation
 		secretVariable = list("Madness" = 0, "Madness Active" = 0, "Lunatic Mode" = 0, "Power From Blood" = 0, "Blood Stock" = 0, "Resource Stock" = 0)
 		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/Eldritch/True_Form")
 		applySecret(mob/p)
+			p << "You have awakened the [currentTier]\th tier of Eldritch secrets!";
 			switch(currentTier)
 				if(1)
 					giveSkills(p)
@@ -619,11 +620,11 @@ mob/Admin3/verb
 					P.Secret = "Heavenly Restriction"
 					P.giveSecret("HeavenlyRestriction")
 				if("Jagan")
-					P.Secret = "Jagan"
+					P.Secret = "Jagan Eye"
 					P.giveSecret("Jagan")
 				if("Hamon of the Sun")
 					P.ModifyPrime+=1
-					P.Secret="Ripple"
+					P.Secret="Hamon"
 					P.giveSecret("Hamon")
 				if("Sage Arts")
 					P.ModifyPrime+=1

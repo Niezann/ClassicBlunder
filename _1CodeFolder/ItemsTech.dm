@@ -2346,7 +2346,7 @@ obj/Items/Tech
 									m.BPPoison=min(0.2*bloodPower,0.9)
 									m.BPPoisonTimer=RawHours(6)/bloodPower
 								if("Ripple")
-									if(m.HasRipple()&&!m.PoseEnhancement)
+									if(m.RippleActive()&&!m.PoseEnhancement)
 										m.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Ripple_Enhancement)
 	Portable_Projector
 		Health=5
@@ -2441,7 +2441,7 @@ obj/Items/Tech
 									m.BPPoison=min(0.2*bloodPower,0.9)
 									m.BPPoisonTimer=RawHours(6)/bloodPower
 								if("Ripple")
-									if(m.HasRipple()&&!m.PoseEnhancement)
+									if(m.RippleActive()&&!m.PoseEnhancement)
 										m.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Ripple_Enhancement)
 
 

@@ -658,12 +658,15 @@
 #include "Secrets\WitchCraft.dm"
 #include "Secrets\Haki\buffs.dm"
 #include "Secrets\Haki\Skills.dm"
+#include "Secrets\Haki\utility.dm"
 #include "Secrets\hats\hatsbuffs.dm"
 #include "Secrets\hats\hatskills.dm"
 #include "Secrets\hats\spirits.dm"
 #include "Secrets\hats\datums\makespace.dm"
 #include "Secrets\HeavenlyRestriction\buffs.dm"
 #include "Secrets\HeavenlyRestriction\toji.dm"
+#include "Secrets\HeavyStrike\_SecretHeavyStrikeUtility.dm"
+#include "Secrets\HeavyStrike\SecretHeavyStrike.dm"
 #include "Secrets\Necromancy\_NecroDefines.dm"
 #include "Secrets\Nox\buffs.dm"
 #include "Secrets\Nox\crisis.dm"
@@ -788,6 +791,7 @@
 #include "Skills\styles\weapon\t4weaponstyles.dm"
 #include "UpdateNotes\update.dm"
 #include "Utility\UtilityPath.dm"
+#include "Utility\UtilityPower.dm"
 // END_INCLUDE
 #define floor(x) round(x)
 #define ceil(x) (-round(-(x)))

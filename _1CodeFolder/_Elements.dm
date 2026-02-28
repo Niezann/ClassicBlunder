@@ -1,3 +1,26 @@
+/mob/proc
+	getElementalOffense()
+		var/list/l = list();
+		if(ElementalOffense) l |= ElementalOffense;
+		if(Infusion && InfusionElement) l |= InfusionElement;
+		if(StyleBuff && StyleBuff.ElementalOffense) l |= StyleBuff.ElementalOffense;
+		return l;
+	getElementalDefense()
+		var/list/l = list();
+		if(ElementalDefense) l |= ElementalDefense;
+		if(Infusion && InfusionElement) l |= InfusionElement;
+		if(StyleBuff && StyleBuff.ElementalDefense) l |= StyleBuff.ElementalDefense;
+		return l;
+
+
+/mob/proc/
+	hasElementalOffense(off)
+		if(off in getElementalOffense()) return 1;
+		return 0;
+	hasElementalDefense(def)
+		if(def in getElementalDefense()) return 1;
+		return 0;
+
 proc
 	ElementalCheck(var/mob/Attacker, var/mob/Defender, var/ForcedDebuff=0, var/DebuffIntensity=glob.DEBUFF_INTENSITY, list/bonusElements,damageOnly = FALSE, list/onlyTheseElements)
 		var/list/attackElements = list()
@@ -5,15 +28,8 @@ proc
 		if(bonusElements&&bonusElements.len>0)
 			attackElements |= bonusElements
 
-		for(var/possible_extra_element in debuffVars)
-			if(Attacker.passive_handler.Get(possible_extra_element))
-				attackElements |= debuff2Element[possible_extra_element]
-		if(Attacker.ElementalOffense)
-			attackElements |= Attacker.ElementalOffense
-		if(Attacker.Infusion && Attacker.InfusionElement)
-			attackElements |= Attacker.InfusionElement;
-		if(Attacker.StyleBuff && Attacker.StyleBuff.ElementalOffense)
-			attackElements |= Attacker.StyleBuff.ElementalOffense;
+		attackElements = Attacker.getElementalOffense()
+		defenseElements = Defender.getElementalDefense();
 
 		var/obj/Items/Enchantment/Staff/staf=Attacker.EquippedStaff()
 		var/obj/Items/Sword/sord=Attacker.EquippedSword()
@@ -36,12 +52,7 @@ proc
 
 		if(onlyTheseElements)
 			attackElements = onlyTheseElements
-		if(Defender.StyleBuff && Defender.StyleBuff.ElementalDefense)
-			attackElements |= Defender.StyleBuff.ElementalDefense;
-		if(Defender.ElementalDefense)
-			defenseElements |= Defender.ElementalDefense
-		if(Defender.Infusion && Defender.InfusionElement)
-			defenseElements |= Defender.InfusionElement;
+		
 		if(armr && armr.Element)
 			defenseElements |= armr.Element
 

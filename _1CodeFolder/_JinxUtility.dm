@@ -2090,7 +2090,7 @@ mob
 			if(src.isRace(NAMEKIAN)&&src.transActive())
 				if(Recov<2)
 					Recov=2
-			if(src.HasRipple())
+			if(src.RippleActive())
 				Recov*=max(min(src.Oxygen/src.OxygenMax,1.5),0.5)
 			var/TotalTax
 			if(src.RecovTax)
@@ -3156,7 +3156,7 @@ mob
 				b.GodKi=val
 				src.AddSkill(b)
 		SecretToss(var/obj/Skills/Grapple/Toss/Z)
-			if(src.HasRipple())
+			if(src.RippleActive())
 				for(var/obj/Skills/Buffs/SlotlessBuffs/Ripple/Life_Magnetism_Overdrive/H in src)
 					H.Trigger(src)
 				src.Oxygen+=(src.OxygenMax)*0.25

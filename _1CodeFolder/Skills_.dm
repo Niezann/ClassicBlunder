@@ -260,7 +260,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 				if(is_arcane_beast)
 					for(var/mob/Player/AI/Nympharum/n in ai_followers)
 						n.PlayAction("NymphReverseDashSupport")
-				if(src.HasRipple())
+				if(src.RippleActive())
 					src.OMessage(10,"[src] increases their distance from [src.Target] to regain the rhythm of their breathing!","<font color=red>[src]([src.key]) used  Back Dash.")
 					src.Oxygen+=(src.OxygenMax)*0.25
 					if(src.Oxygen>=(src.OxygenMax)*2)
@@ -272,7 +272,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 				while(Distance>0)
 					if(src.StyleActive == "Crane Style")
 						src.icon_state="KB"
-					else if(src.HasRipple())
+					else if(src.RippleActive())
 						src.icon_state="Train"
 					else
 						src.icon_state="Flight"
@@ -343,7 +343,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 
 				if(!src.AttackQueue)
 					if(Secret)
-						if(src.HasRipple())
+						if(src.RippleActive())
 							if(src.Oxygen>src.OxygenMax*1.25&&src.Oxygen>150&&src.PoseEnhancement&&src.HealthAnnounce25==1)
 								src.HealthAnnounce25=2
 								var/obj/Skills/Queue/Sunlight_Yellow_Overdrive/SYO=new/obj/Skills/Queue/Sunlight_Yellow_Overdrive
@@ -410,7 +410,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 					RecoverImage(src)
 					src.AerialRecovery=1
 					src.StopKB()
-					if(src.HasRipple()&&src.Oxygen>=30)
+					if(src.RippleActive()&&src.Oxygen>=30)
 						if(!src.AttackQueue)
 							src.SetQueue(new/obj/Skills/Queue/Rebuff_Overdrive)
 						Z.Cooldown(1.5)
@@ -451,7 +451,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 				src.StopKB()
 				src.DashTo(src.Target, Distance, Delay)
 				src.AerialRecovery=0
-				if(src.HasRipple()&&src.Oxygen>=30)
+				if(src.RippleActive()&&src.Oxygen>=30)
 					if(!src.AttackQueue)
 						src.SetQueue(new/obj/Skills/Queue/Rebuff_Overdrive)
 					Z.Cooldown(1.5)
